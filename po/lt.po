@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-20 18:36+0000\n"
-"PO-Revision-Date: 2013-08-18 23:02+0300\n"
+"POT-Creation-Date: 2016-01-08 19:54+0000\n"
+"PO-Revision-Date: 2016-01-08 23:17+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -22,9 +22,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.8.6\n"
 
-#: ../accessx-status/applet.c:139
+#: ../accessx-status/accessx-status-applet-menu.xml.h:1
+msgid "_Keyboard Accessibility Preferences"
+msgstr "_Klaviatūros pritaikymo neįgaliesiems nuostatos"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:2
+#: ../battstat/battstat-applet-menu.xml.h:2
+#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
+#: ../cpufreq/cpufreq-applet-menu.xml.h:2
+#: ../drivemount/drivemount-applet-menu.xml.h:1
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
+#: ../gweather/gweather-applet-menu.xml.h:4
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
+#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
+#: ../netspeed/data/netspeed-menu.xml.h:3
+#: ../stickynotes/stickynotes-applet-menu.xml.h:6
+#: ../trashapplet/trashapplet-menu.xml.h:3
+msgid "_Help"
+msgstr "_Žinynas"
+
+#: ../accessx-status/accessx-status-applet-menu.xml.h:3
+#: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:3
+#: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
+#: ../drivemount/drivemount-applet-menu.xml.h:2
+#: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
+#: ../modemlights/modem-applet-menu.xml.h:4
+#: ../multiload/multiload-applet-menu.xml.h:4
+#: ../netspeed/data/netspeed-menu.xml.h:4
+#: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
+msgid "_About"
+msgstr "_Apie"
+
+#: ../accessx-status/applet.c:138
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Rodo AccessX ypatybių tokių kaip „latched modifiers“ būseną"
 
@@ -32,14 +69,14 @@ msgstr "Rodo AccessX ypatybių tokių kaip „latched modifiers“ būseną"
 #. about.set_documenters([])
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:144 ../battstat/battstat_applet.c:1206
-#: ../charpick/charpick.c:612 ../cpufreq/src/cpufreq-applet.c:611
-#: ../drivemount/drivemount.c:106 ../geyes/geyes.c:153
-#: ../gweather/gweather-about.c:55 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../mixer/applet.c:1424
-#: ../modemlights/modem-applet.c:1023 ../multiload/main.c:61
-#: ../stickynotes/stickynotes_applet_callbacks.c:383
-#: ../trashapplet/src/trashapplet.c:431
+#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
+#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
+#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Paskutinis vertėjas:\n"
@@ -49,78 +86,54 @@ msgstr ""
 "Vaidotas Zemlys <mpiktas@delfi.lt>\n"
 "Gediminas Paulauskas <menesis@delfi.lt>"
 
-#: ../accessx-status/applet.c:169
+#: ../accessx-status/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Įvyko klaida paleidžiant žinyno žiūryklę: %s"
 
-#: ../accessx-status/applet.c:201
-msgid "Open the keyboard preferences dialog"
-msgstr "Atverti klaviatūros nustatymų dialogą"
+#: ../accessx-status/applet.c:204
+msgid "Open the universal access preferences dialog"
+msgstr "Atverti universalios prieigos nuostatų dialogą"
 
-#: ../accessx-status/applet.c:219
+#: ../accessx-status/applet.c:222
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Įvyko klaida paleidžiant klaviatūros nustatymų dialogą: %s"
-
-#: ../accessx-status/applet.c:238
-msgid "_Keyboard Accessibility Preferences"
-msgstr "_Klaviatūros pritaikymo neįgaliesiems nustatymai"
-
-#: ../accessx-status/applet.c:241 ../battstat/battstat_applet.c:64
-#: ../charpick/charpick.c:719 ../cpufreq/src/cpufreq-applet.c:126
-#: ../drivemount/drivemount.c:144 ../geyes/geyes.c:318
-#: ../gweather/gweather-applet.c:124
-#: ../mini-commander/src/mini-commander_applet.c:56 ../mixer/applet.c:381
-#: ../modemlights/modem-applet.c:151 ../multiload/main.c:465
-#: ../stickynotes/stickynotes_applet.c:45 ../trashapplet/src/trashapplet.c:75
-msgid "_Help"
-msgstr "_Žinynas"
-
-#: ../accessx-status/applet.c:244 ../battstat/battstat_applet.c:67
-#: ../charpick/charpick.c:722 ../cpufreq/src/cpufreq-applet.c:129
-#: ../drivemount/drivemount.c:147 ../geyes/geyes.c:321
-#: ../gweather/gweather-applet.c:127
-#: ../mini-commander/src/mini-commander_applet.c:59 ../mixer/applet.c:384
-#: ../modemlights/modem-applet.c:154 ../multiload/main.c:468
-#: ../stickynotes/stickynotes_applet.c:48 ../trashapplet/src/trashapplet.c:78
-msgid "_About"
-msgstr "_Apie"
+msgstr "Įvyko klaida, paleidžiant klaviatūros nuostatų dialogą: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:468 ../accessx-status/applet.c:508
+#: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:981 ../accessx-status/applet.c:1055
-#: ../accessx-status/applet.c:1124 ../accessx-status/applet.c:1290
+#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
+#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1298
 msgid "AccessX Status"
 msgstr "AccessX būklė"
 
-#: ../accessx-status/applet.c:982 ../accessx-status/applet.c:1125
+#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Rodo klaviatūros būseną, kai naudojamos pritaikymo neįgaliesiems funkcijos."
 
-#: ../accessx-status/applet.c:1017
+#: ../accessx-status/applet.c:1014
 msgid "XKB Extension is not enabled"
 msgstr "XKB plėtinys neįjungtas"
 
-#: ../accessx-status/applet.c:1022
+#: ../accessx-status/applet.c:1019
 msgid "Unknown error"
 msgstr "Nežinoma klaida"
 
-#: ../accessx-status/applet.c:1030
+#: ../accessx-status/applet.c:1027
 #, c-format
 msgid "Error: %s"
 msgstr "Klaida: %s"
 
-#: ../accessx-status/applet.c:1287
+#: ../accessx-status/applet.c:1295
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Klaviatūros prieinamumo būklė"
 
-#: ../accessx-status/applet.c:1292
+#: ../accessx-status/applet.c:1300
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Rodo dabartinę klaviatūros pritaikymo neįgaliesiems funkcijų būseną"
 
@@ -136,38 +149,30 @@ msgstr "Klaviatūros pritaikymo neįgaliesiems būsenos įtaiso gamykla"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Rodo klaviatūros pritaikymo neįgaliesiems funkcijų būseną"
 
-#: ../battstat/battstat_applet.c:61 ../charpick/charpick.c:716
-#: ../cpufreq/src/cpufreq-applet.c:123 ../geyes/geyes.c:315
-#: ../gweather/gweather-applet.c:121
-#: ../mini-commander/src/mini-commander_applet.c:53 ../mixer/applet.c:387
-#: ../multiload/main.c:459 ../stickynotes/stickynotes_applet.c:42
-msgid "_Preferences"
-msgstr "_Nustatymai"
-
-#: ../battstat/battstat_applet.c:72
+#: ../battstat/battstat_applet.c:62
 msgid "System is running on AC power"
 msgstr "Sistema naudoja kintamą srovę"
 
-#: ../battstat/battstat_applet.c:73
+#: ../battstat/battstat_applet.c:63
 msgid "System is running on battery power"
 msgstr "Sistema naudoja baterijos energiją"
 
-#: ../battstat/battstat_applet.c:339
+#: ../battstat/battstat_applet.c:329
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterija įkrauta (%d%%)"
 
-#: ../battstat/battstat_applet.c:341
+#: ../battstat/battstat_applet.c:331
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Nežinoma, kiek liko laiko (%d%%)"
 
-#: ../battstat/battstat_applet.c:343
+#: ../battstat/battstat_applet.c:333
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Nežinoma, kiek liko laiko iki įkrovimo (%d%%)"
 
-#: ../battstat/battstat_applet.c:348
+#: ../battstat/battstat_applet.c:338
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -175,7 +180,7 @@ msgstr[0] "liko %d minutė (%d%%)"
 msgstr[1] "liko %d minutės (%d%%)"
 msgstr[2] "liko %d minučių (%d%%)"
 
-#: ../battstat/battstat_applet.c:353
+#: ../battstat/battstat_applet.c:343
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -183,7 +188,7 @@ msgstr[0] "%d minutė iki įkrovimo (%d%%)"
 msgstr[1] "%d minutės iki įkrovimo (%d%%)"
 msgstr[2] "%d minučių iki įkrovimo (%d%%)"
 
-#: ../battstat/battstat_applet.c:359
+#: ../battstat/battstat_applet.c:349
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -191,7 +196,7 @@ msgstr[0] "liko %d valanda (%d%%)"
 msgstr[1] "liko %d valandos (%d%%)"
 msgstr[2] "liko %d valandų (%d%%)"
 
-#: ../battstat/battstat_applet.c:364
+#: ../battstat/battstat_applet.c:354
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -201,19 +206,19 @@ msgstr[2] "%d valandų iki įkrovimo (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:371
+#: ../battstat/battstat_applet.c:361
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "liko %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:372 ../battstat/battstat_applet.c:379
+#: ../battstat/battstat_applet.c:362 ../battstat/battstat_applet.c:369
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "valanda"
 msgstr[1] "valandos"
 msgstr[2] "valandų"
 
-#: ../battstat/battstat_applet.c:373 ../battstat/battstat_applet.c:380
+#: ../battstat/battstat_applet.c:363 ../battstat/battstat_applet.c:370
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutė"
@@ -222,30 +227,30 @@ msgstr[2] "minučių"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:378
+#: ../battstat/battstat_applet.c:368
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s iki įkrovimo (%d%%)"
 
-#: ../battstat/battstat_applet.c:392
+#: ../battstat/battstat_applet.c:382
 msgid "Battery Monitor"
 msgstr "Baterijos stebėtuvas"
 
-#: ../battstat/battstat_applet.c:402 ../battstat/battstat_applet.c:461
+#: ../battstat/battstat_applet.c:392 ../battstat/battstat_applet.c:451
 msgid "Your battery is now fully recharged"
 msgstr "Baterija dabar yra pilnai įkrauta"
 
-#: ../battstat/battstat_applet.c:438 ../battstat/battstat_applet.c:593
+#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:583
 msgid "Battery Notice"
 msgstr "Baterijos pranešimas"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:538
+#: ../battstat/battstat_applet.c:528
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Liko %d%% baterijos."
 
-#: ../battstat/battstat_applet.c:544
+#: ../battstat/battstat_applet.c:534
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -258,20 +263,20 @@ msgstr[2] "Baterijos energijos liko %d minučių (%d%% visos talpos)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:556
+#: ../battstat/battstat_applet.c:546
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
 " • save open documents and shut your laptop down."
 msgstr ""
 "Kad išvengtumėte neišsaugotų duomenų praradimo:\n"
-" • įjunkite savo nešiojamąjį kompiuterį į tinklą, arba\n"
+" • įjunkite savo nešiojamąjį kompiuterį į maitinimo šaltinį, arba\n"
 " • įrašykite atvertus dokumentus ir išjunkite kompiuterį."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:564
+#: ../battstat/battstat_applet.c:554
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -279,69 +284,63 @@ msgid ""
 " • save open documents and shut your laptop down."
 msgstr ""
 "Kad išvengtumėte neišsaugotų duomenų praradimo:\n"
-" • užmigdykite savo nešiojamąjį kompiuterį\n"
-" • įjunkite kompiuterį į tinklą,\n"
+" • pristabdykite savo nešiojamąjį kompiuterį\n"
+" • įjunkite kompiuterį į maitinimo šaltinį,\n"
 " • išsaugokite atvertus dokumentus ir kompiuterį išjunkite."
 
-#: ../battstat/battstat_applet.c:572
+#: ../battstat/battstat_applet.c:562
 msgid "Your battery is running low"
 msgstr "Baterija baigia išsikrauti"
 
-#: ../battstat/battstat_applet.c:667
+#: ../battstat/battstat_applet.c:657
 msgid "No battery present"
 msgstr "Baterijos nėra"
 
-#: ../battstat/battstat_applet.c:670
+#: ../battstat/battstat_applet.c:660
 msgid "Battery status unknown"
 msgstr "Baterijos būsena nežinoma"
 
-#: ../battstat/battstat_applet.c:850
+#: ../battstat/battstat_applet.c:840
 msgid "N/A"
 msgstr "N/A"
 
-#: ../battstat/battstat_applet.c:1150 ../drivemount/drivemount.c:132
-#: ../geyes/geyes.c:303 ../geyes/themes.c:242 ../gweather/gweather-applet.c:70
-#: ../gweather/gweather-pref.c:617 ../mini-commander/src/preferences.c:366
-#: ../stickynotes/stickynotes_applet_callbacks.c:349
-#: ../stickynotes/stickynotes_applet_callbacks.c:565
-#: ../trashapplet/src/trashapplet.c:398
+#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
+#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
+#: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
+#: ../stickynotes/stickynotes_applet_callbacks.c:358
+#: ../stickynotes/stickynotes_applet_callbacks.c:542
+#: ../trashapplet/src/trashapplet.c:386
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Įvyko klaida rodant žinyną: %s"
 
-#: ../battstat/battstat_applet.c:1190
+#: ../battstat/battstat_applet.c:1189
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ši pagalbinė programa parodo nešiojamo kompiuterio baterijos būseną."
 
 #. true
-#: ../battstat/battstat_applet.c:1192
-#| msgid "HAL backend enabled."
+#: ../battstat/battstat_applet.c:1191
 msgid "upower backend enabled."
 msgstr "upower posistemė įjungta."
 
-#. true
-#: ../battstat/battstat_applet.c:1194
-msgid "HAL backend enabled."
-msgstr "HAL posistemė įjungta."
-
 #. false
-#: ../battstat/battstat_applet.c:1195
+#: ../battstat/battstat_applet.c:1192
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Sena (ne HAL) posistemė įjungta."
 
-#: ../battstat/battstat_applet.c:1572 ../battstat/battstat_applet.c:1625
+#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Baterijos įkrovos stebyklė"
 
-#: ../battstat/battstat_applet.c:1626
+#: ../battstat/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Stebėti likusią nešiojamojo kompiuterio energiją"
 
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
-msgstr "Baterijos įkrovos stebėtuvo nustatymai"
+msgstr "Baterijos įkrovos stebėtuvo nuostatos"
 
 #: ../battstat/battstat_applet.ui.h:2
 msgid "Appearance"
@@ -379,7 +378,7 @@ msgstr "Rodyti likusius _procentus"
 msgid "Notifications"
 msgstr "Pranešimai"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Perspėti, kai baterija išsikrauna iki:"
@@ -388,28 +387,27 @@ msgstr "_Perspėti, kai baterija išsikrauna iki:"
 msgid "_Notify when battery is fully recharged"
 msgstr "Pra_nešti, kai baterija yra visiškai įkrauta"
 
-#: ../battstat/battstat-hal.c:343 ../battstat/battstat-hal.c:368
-msgid "HAL error"
-msgstr "HAL klaida"
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Nuostatos"
 
-#: ../battstat/battstat-hal.c:343
-msgid "Could not create libhal_ctx"
-msgstr "Nepavyko sukurti libhal_ctx"
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
+msgid "Battstat Factory"
+msgstr "Battstat gamykla"
 
-#: ../battstat/battstat-hal.c:368
-msgid "No batteries found"
-msgstr "Nerasta baterija"
-
-#: ../battstat/battstat-hal.c:417
-#, c-format
-msgid "Unable to initialise HAL: %s: %s"
-msgstr "Nepavyko inicializuoti HAL: %s: %s"
-
-#: ../battstat/battstat.schemas.in.h:1
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:1
 msgid "Red value level"
 msgstr "Raudonos vertės lygis"
 
-#: ../battstat/battstat.schemas.in.h:2
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
 msgid ""
 "The battery level below which the battery is displayed as red. Also the "
 "value at which the low battery warning is displayed."
@@ -417,47 +415,51 @@ msgstr ""
 "Baterijos lygis žemiau kurio baterija yra raudonos spalvos, tai taip pat yra "
 "reikšmė, esant kuriai yra parodomas perspėjimas apie baterijos išsikrovimą."
 
-#: ../battstat/battstat.schemas.in.h:3
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
 msgid "Warn on low time rather than low percentage"
 msgstr "Įspėti, kai lieka mažai laiko, o ne procentų"
 
-#: ../battstat/battstat.schemas.in.h:4
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
+#, fuzzy
+#| msgid ""
+#| "Use the value defined in red_value as a time remaining to show the "
+#| "warning dialog rather than a percentage."
 msgid ""
-"Use the value defined in red_value as a time remaining to show the warning "
+"Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
 msgstr ""
 "Vietoje procentų naudoti reikšmę, nurodytą red_value rakte, kaip laiką, "
 "likusį iki perspėjimo parodymo."
 
-#: ../battstat/battstat.schemas.in.h:5
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
 msgid "Low Battery Notification"
 msgstr "Įspėjimas baterijai išsikraunant"
 
-#: ../battstat/battstat.schemas.in.h:6
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:6
 msgid "Notify user when the battery is low."
 msgstr "Pranešti, kai baterija beveik išsikrovusi."
 
-#: ../battstat/battstat.schemas.in.h:7
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:7
 msgid "Full Battery Notification"
 msgstr "Įspėjimas įkrovus bateriją"
 
-#: ../battstat/battstat.schemas.in.h:8
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:8
 msgid "Notify user when the battery is full."
 msgstr "Pranešti, kai baterija įkrauta."
 
-#: ../battstat/battstat.schemas.in.h:9
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:9
 msgid "Beep for warnings"
 msgstr "Pyptelėti atsiradus įspėjimų"
 
-#: ../battstat/battstat.schemas.in.h:10
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:10
 msgid "Beep when displaying a warning."
 msgstr "Pyptelėti, kai rodomas įspėjimas."
 
-#: ../battstat/battstat.schemas.in.h:11
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:11
 msgid "Drain from top"
 msgstr "Mažėti iš viršaus"
 
-#: ../battstat/battstat.schemas.in.h:12
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
 msgid ""
 "Show the battery meter draining from the top of the battery. Only "
 "implemented for traditional battery view."
@@ -465,39 +467,35 @@ msgstr ""
 "Rodyti baterijos įkrovos matuoklį, mažėjantį nuo baterijos viršaus. Kol kas "
 "ši funkcija įgyvendinta tik tradiciniam baterijos rodiniui."
 
-#: ../battstat/battstat.schemas.in.h:13
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
 msgid "Upright (small) battery"
 msgstr "Stačia (maža) baterija"
 
-#: ../battstat/battstat.schemas.in.h:14
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:14
 msgid "Show the upright, smaller battery on the panel."
 msgstr "Rodyti stačią, mažesnę bateriją."
 
-#: ../battstat/battstat.schemas.in.h:15
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:15
 msgid "Show the horizontal battery"
 msgstr "Rodyti bateriją horizontaliai"
 
-#: ../battstat/battstat.schemas.in.h:16
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:16
 msgid "Show the traditional, horizontal battery on the panel."
 msgstr "Rodyti tradicinę, horizontalią bateriją."
 
-#: ../battstat/battstat.schemas.in.h:17
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:17
 msgid "Show the time/percent label"
 msgstr "Rodyti laiko/procentų užrašą"
 
-#: ../battstat/battstat.schemas.in.h:18
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
 msgid "0 for no label, 1 for percentage and 2 for time remaining."
 msgstr "0 – nėra užrašo, 1 – procentai, 2 – likęs laikas"
-
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
-msgid "Battstat Factory"
-msgstr "Battstat gamykla"
 
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: ../battstat/properties.c:314
+#: ../battstat/properties.c:276
 msgid "Percent"
 msgstr "proc."
 
@@ -505,7 +503,7 @@ msgstr "proc."
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: ../battstat/properties.c:320
+#: ../battstat/properties.c:282
 msgid "Minutes Remaining"
 msgstr "min. iki išsikrovimo"
 
@@ -521,7 +519,67 @@ msgstr "Baterija beveik išsikrovusi"
 msgid "Battery fully re-charged"
 msgstr "Baterija yra pilnai įkrauta."
 
-#: ../charpick/charpick.c:438
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Trash Applet"
+msgid "Brightness Applet"
+msgstr "Šiukšlinės įtaisas"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Nepavyksta prisijungti prie gnome-settings-daemon"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr ""
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr ""
+
+#: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Prieinamos paletės"
 
@@ -529,21 +587,21 @@ msgstr "Prieinamos paletės"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:485
+#: ../charpick/charpick.c:473
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Įterpti „%s“"
 
-#: ../charpick/charpick.c:488
+#: ../charpick/charpick.c:476
 msgid "Insert special character"
 msgstr "Įterpkite specialų simbolį"
 
-#: ../charpick/charpick.c:492
+#: ../charpick/charpick.c:480
 #, c-format
 msgid "insert special character %s"
 msgstr "įterpti specialų simbolį %s"
 
-#: ../charpick/charpick.c:607
+#: ../charpick/charpick.c:599
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -551,26 +609,26 @@ msgstr ""
 "GNOME skydelio įtaisas, padedantis įterpti keistus simbolius, kurių nėra "
 "klaviatūroje. Išleistas GPL sąlygomis."
 
-#: ../charpick/charpick.c:745 ../charpick/charpick.c:759
+#: ../charpick/charpick.c:716 ../charpick/charpick.c:731
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-#: ../charpick/properties.c:451
+#: ../charpick/properties.c:426
 msgid "Character Palette"
 msgstr "Simbolių paletė"
 
-#: ../charpick/charpick.c:745
+#: ../charpick/charpick.c:716
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
 msgid "Insert characters"
 msgstr "Įterpti simbolius"
 
-#: ../charpick/charpick.schemas.in.h:1
-msgid "DEPRECATED - Characters shown on applet startup"
-msgstr "NENAUDOJAMA - Simboliai rodomi įtaiso paleidimo metu"
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
+msgid "Charpicker Applet Factory"
+msgstr "Charpicker įtaiso gamykla"
 
-#: ../charpick/charpick.schemas.in.h:2
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
 msgid "Characters shown on applet startup"
 msgstr "Simboliai rodomi įtaiso paleidimo metu"
 
-#: ../charpick/charpick.schemas.in.h:3
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
@@ -578,119 +636,101 @@ msgstr ""
 "Eilutė kurią vartotojas buvo pažymėjęs paskutinio įtaiso naudojimo metu. Ši "
 "eilutė bus rodoma kai vartotojas vėl paleis įtaisą."
 
-#: ../charpick/charpick.schemas.in.h:4 ../charpick/properties.c:378
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
+#: ../charpick/properties.c:353
 msgid "List of available palettes"
 msgstr "Galimų palečių sąrašas"
 
-#: ../charpick/charpick.schemas.in.h:5
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
 msgid "List of strings containing the available palettes."
 msgstr "Eilučių, turinčių prieinamas paletes, sąrašas."
 
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
-msgid "Charpicker Applet Factory"
-msgstr "Charpicker įtaiso gamykla"
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
+#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
+msgid "_Cancel"
+msgstr "_Atsisakyti"
 
-#: ../charpick/properties.c:28
-msgid "_Edit"
-msgstr "_Keisti"
+#: ../charpick/properties.c:74
+msgid "_OK"
+msgstr "_Gerai"
 
-#: ../charpick/properties.c:116
+#: ../charpick/properties.c:93
 msgid "_Palette:"
 msgstr "_Paletė:"
 
-#: ../charpick/properties.c:124
+#: ../charpick/properties.c:101
 msgid "Palette entry"
 msgstr "Paletės įvestis"
 
-#: ../charpick/properties.c:125
+#: ../charpick/properties.c:102
 msgid "Modify a palette by adding or removing characters"
 msgstr "Modifikuoti paletę pridedant arba pašalinant simbolius"
 
-#: ../charpick/properties.c:239
+#: ../charpick/properties.c:214
 msgid "Add Palette"
 msgstr "Pridėti paletę"
 
-#: ../charpick/properties.c:276
+#: ../charpick/properties.c:251
 msgid "Edit Palette"
 msgstr "Redaguoti paletę"
 
-#: ../charpick/properties.c:377
+#: ../charpick/properties.c:352
 msgid "Palettes list"
 msgstr "Palečių sąrašas"
 
-#: ../charpick/properties.c:456
+#: ../charpick/properties.c:431
 msgid "_Palettes:"
 msgstr "_Paletės:"
 
-#: ../charpick/properties.c:472
+#: ../charpick/properties.c:443
+msgid "_Add"
+msgstr "_Pridėti"
+
+#: ../charpick/properties.c:447
 msgid "Add button"
 msgstr "Pridėti mygtuką"
 
-#: ../charpick/properties.c:473
+#: ../charpick/properties.c:448
 msgid "Click to add a new palette"
 msgstr "Norėdami pridėti naują paletę, spragtelkit čia"
 
-#: ../charpick/properties.c:480
+#: ../charpick/properties.c:450
+msgid "_Edit"
+msgstr "_Keisti"
+
+#: ../charpick/properties.c:455
 msgid "Edit button"
 msgstr "Redaguoti mygtuką"
 
-#: ../charpick/properties.c:481
+#: ../charpick/properties.c:456
 msgid "Click to edit the selected palette"
 msgstr "Norėdami redaguoti pasirinktą paletę, spragtelkite čia"
 
-#: ../charpick/properties.c:488
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
+msgid "_Delete"
+msgstr "_Ištrinti"
+
+#: ../charpick/properties.c:463
 msgid "Delete button"
 msgstr "Pašalinti mygtuką"
 
-#: ../charpick/properties.c:489
+#: ../charpick/properties.c:464
 msgid "Click to delete the selected palette"
 msgstr "Norėdami ištrinti pasirinktą paletę, spragtelkite čia"
 
-#: ../charpick/properties.c:540
+#: ../charpick/properties.c:518
 msgid "Character Palette Preferences"
-msgstr "Simbolių paletės nustatymai"
+msgstr "Simbolių paletės nuostatos"
 
-#: ../cpufreq/cpufreq-applet.schemas.in.h:1
-msgid "CPU to Monitor"
-msgstr "Stebimas CPU"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:2
-msgid ""
-"Set the CPU to monitor. In a single processor system you don't have to "
-"change it."
-msgstr ""
-"Nurodykite stebimą CPU. Vieno procesoriaus sistemoje, jums jo keisti "
-"nereikia."
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:3
-msgid "Mode to show cpu usage"
-msgstr "CPU apkrovos rodymo režimas"
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:4
-msgid ""
-"A 0 value means to show the applet in graphic mode (pixmap only), 1 to show "
-"the applet in text mode (not to show the pixmap) and 2 to show the applet in "
-"graphic and text mode."
-msgstr ""
-"0-inė vertė reiškia, kad įtaisas rodomas grafiniame režime (tik "
-"paveikslėlis), 1 - kad įtaisas rodomas tekstiniame režime (paveikslėlis "
-"nerodomas) ir 2 - kad įtaisas rodomas ir grafiniame, ir tekstiniame režime."
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:5
-msgid "The type of text to display (if the text is enabled)."
-msgstr "Rodomo teksto tipas (jei tekstas įjungtas)."
-
-#: ../cpufreq/cpufreq-applet.schemas.in.h:6
-msgid ""
-"A 0 value means to show cpu frequency, 1 to show frequency and units, and 2 "
-"to show percentage instead of frequency."
-msgstr ""
-"0-inė reikšmė reiškia, kad rodomas cpu dažnis, 1 - kad rodomas dažnis ir "
-"vienetai, 2 - kad vietoje dažnio rodomi procentai."
+#: ../charpick/properties.c:521 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
+msgid "_Close"
+msgstr "_Užverti"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
-msgstr "CPU dažnio stebėjimo nustatymai"
+msgstr "CPU dažnio stebėjimo nuostatos"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:2
 msgid "Monitor Settings"
@@ -721,7 +761,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Rodyti CPU dažnį _procentais"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1003
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU dažnio mastelio stebėtuvas"
 
@@ -729,31 +769,79 @@ msgstr "CPU dažnio mastelio stebėtuvas"
 msgid "Monitor the CPU Frequency Scaling"
 msgstr "Stebėti CPU dažnio mastelį"
 
-#: ../cpufreq/src/cpufreq-applet.c:579 ../cpufreq/src/cpufreq-prefs.c:478
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:1
+msgid "CPU to Monitor"
+msgstr "Stebimas CPU"
+
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:2
+msgid ""
+"Set the CPU to monitor. In a single processor system you don't have to "
+"change it."
+msgstr ""
+"Nurodykite stebimą CPU. Vieno procesoriaus sistemoje, jums jo keisti "
+"nereikia."
+
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:3
+msgid "Mode to show cpu usage"
+msgstr "CPU apkrovos rodymo režimas"
+
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
+#, fuzzy
+#| msgid ""
+#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
+#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
+#| "applet in graphic and text mode."
+msgid ""
+"A 'graphic' value means to show the applet in graphic mode (pixmap only), "
+"'text' to show the applet in text mode (not to show the pixmap) and 'both' "
+"to show the applet in graphic and text mode."
+msgstr ""
+"0-inė vertė reiškia, kad įtaisas rodomas grafiniame režime (tik "
+"paveikslėlis), 1 - kad įtaisas rodomas tekstiniame režime (paveikslėlis "
+"nerodomas) ir 2 - kad įtaisas rodomas ir grafiniame, ir tekstiniame režime."
+
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
+msgid "The type of text to display (if the text is enabled)."
+msgstr "Rodomo teksto tipas (jei tekstas įjungtas)."
+
+#: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
+#, fuzzy
+#| msgid ""
+#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
+#| "2 to show percentage instead of frequency."
+msgid ""
+"A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
+"frequency and units, and 'percentage' to show percentage instead of "
+"frequency."
+msgstr ""
+"0-inė reikšmė reiškia, kad rodomas cpu dažnis, 1 - kad rodomas dažnis ir "
+"vienetai, 2 - kad vietoje dažnio rodomi procentai."
+
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "Nepavyko atverti žinyno dokumento"
 
-#: ../cpufreq/src/cpufreq-applet.c:606
+#: ../cpufreq/src/cpufreq-applet.c:604
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ši pagalbinė programa rodo esamą CPU dažnio mastelį."
 
-#: ../cpufreq/src/cpufreq-applet.c:1004
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ši pagalbinė programa rodo esamą CPU dažnį"
 
-#: ../cpufreq/src/cpufreq-prefs.c:613
+#: ../cpufreq/src/cpufreq-prefs.c:495
 msgid "Graphic"
 msgstr "Grafikas"
 
-#: ../cpufreq/src/cpufreq-prefs.c:618
+#: ../cpufreq/src/cpufreq-prefs.c:500
 msgid "Text"
 msgstr "Tekstas"
 
-#: ../cpufreq/src/cpufreq-prefs.c:623
+#: ../cpufreq/src/cpufreq-prefs.c:505
 msgid "Graphic and Text"
 msgstr "Grafikas ir tekstas"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:121
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Dažnio keitimas nepalaikomas"
 
@@ -761,11 +849,11 @@ msgstr "Dažnio keitimas nepalaikomas"
 #. * I think is better than do nothing. I have to notify it to the user, because
 #. * he could think that cpufreq is supported but it doesn't work succesfully
 #.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:59
+#: ../cpufreq/src/cpufreq-monitor-factory.c:58
 msgid "CPU frequency scaling unsupported"
 msgstr "CPU dažnio keitimas nepalaikomas"
 
-#: ../cpufreq/src/cpufreq-monitor-factory.c:60
+#: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -782,66 +870,109 @@ msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
 "Norint keisti CPU dažnių reguliavimą reikia turėti administratoriaus teises."
 
-#: ../drivemount/drive-button.c:342 ../drivemount/drive-button.c:355
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Trash Applet"
+msgid "Inhibit Applet"
+msgstr "Šiukšlinės įtaisas"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr ""
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr ""
+
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(prijungtas)"
 
-#: ../drivemount/drive-button.c:344
+#: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(neprijungtas)"
 
-#: ../drivemount/drive-button.c:562
+#: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
-msgstr "Nepavyko paleisti Nautilus failų tvarkyklės"
+msgstr "Nepavyko paleisti Nautilus failų tvarkytuvės"
 
-#: ../drivemount/drive-button.c:569
+#: ../drivemount/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "Nepavyko rasti Nautilus"
 
-#: ../drivemount/drive-button.c:893
+#: ../drivemount/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_Rodyti DVD "
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:867
 msgid "_Play CD"
 msgstr "_Groti CD"
 
-#: ../drivemount/drive-button.c:900
+#: ../drivemount/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "_Atverti %s"
 
-#: ../drivemount/drive-button.c:908
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "A_tjungti %s"
 
-#: ../drivemount/drive-button.c:914
+#: ../drivemount/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "_Prijungti %s"
 
-#: ../drivemount/drive-button.c:922
+#: ../drivemount/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "_Išmesti %s"
 
-#: ../drivemount/drivemount.c:103
+#: ../drivemount/drivemount.c:105
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Įtaisas duomenų laikmenų prijungimui ir atjungimui."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Diskų prijungimas"
-
-#: ../drivemount/drivemount.schemas.in.h:1
-msgid "Interval timeout to check mount point status"
-msgstr "Intervalas tarp prijungimo vietų patikrinimų"
-
-#: ../drivemount/drivemount.schemas.in.h:2
-msgid "Time in seconds between status updates"
-msgstr "Laiko tarpas sekundėmis tarp būklės atnaujinimų"
 
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
 msgid "Drive Mount Applet Factory"
@@ -855,23 +986,19 @@ msgstr "Diskų prijungimo priedo gamykla"
 msgid "Mount local disks and devices"
 msgstr "Prijungti vietinius diskus ir įrenginius"
 
-#: ../geyes/geyes.c:148
+#: ../geyes/geyes.c:173
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr ""
 "Keletas kvailų akių GNOME skydeliui. Jų žvilgsnis seka jūsų pelės žymiklį."
 
-#: ../geyes/geyes.c:348 ../geyes/geyes.c:379 ../geyes/geyes.c:381
+#: ../geyes/geyes.c:373 ../geyes/geyes.c:406 ../geyes/geyes.c:408
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
 msgid "Eyes"
 msgstr "Akys"
 
-#: ../geyes/geyes.c:382
+#: ../geyes/geyes.c:409
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Akys žiūri pelės žymeklio kryptimis"
-
-#: ../geyes/geyes.schemas.in.h:1
-msgid "Directory in which the theme is located"
-msgstr "Aplankas, kuriame yra tema"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
 msgid "Geyes Applet Factory"
@@ -881,56 +1008,52 @@ msgstr "Geyes įtaiso gamykla"
 msgid "A set of eyeballs for your panel"
 msgstr "Keletas akių jūsų skydeliui pagražinti"
 
-#: ../geyes/themes.c:127
+#: ../geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in.h:1
+msgid "Directory in which the theme is located"
+msgstr "Aplankas, kuriame yra tema"
+
+#: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
 msgstr "Nepavyko paleisti akių įtaiso."
 
-#: ../geyes/themes.c:128
+#: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Įkeliant temą įvyko lemtinga klaida."
 
-#: ../geyes/themes.c:301
+#: ../geyes/themes.c:292
 msgid "Geyes Preferences"
-msgstr "Geyes nustatymai"
+msgstr "Geyes nuostatos"
 
-#: ../geyes/themes.c:334
+#: ../geyes/themes.c:325
 msgid "Themes"
 msgstr "Temos"
 
-#: ../geyes/themes.c:355
+#: ../geyes/themes.c:346
 msgid "_Select a theme:"
 msgstr "Pa_sirinkite temą:"
 
-#: ../gweather/gweather-about.c:50
+#: ../gweather/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 S. Papadimitriou ir kiti"
 
-#: ../gweather/gweather-about.c:51
+#: ../gweather/gweather-about.c:56
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Skydelio įtaisas, skirtas vietinėms oro sąlygoms stebėti."
 
-#: ../gweather/gweather-applet.c:115
-msgid "_Details"
-msgstr "_Išsamiau"
-
-#: ../gweather/gweather-applet.c:118 ../gweather/gweather-dialog.c:157
-msgid "_Update"
-msgstr "_Atnaujinti"
-
-#: ../gweather/gweather-applet.c:318
+#: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Orų prognozė"
 
-#: ../gweather/gweather-applet.c:336 ../gweather/gweather-applet.c:340
+#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "GNOME oras"
 
-#: ../gweather/gweather-applet.c:439
+#: ../gweather/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "Orų prognozė"
 
-#: ../gweather/gweather-applet.c:451
+#: ../gweather/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -941,138 +1064,146 @@ msgstr ""
 "Dangus: %s\n"
 "Temperatūra: %s"
 
-#: ../gweather/gweather-applet.c:500
+#: ../gweather/gweather-applet.c:529
 msgid "Updating..."
 msgstr "Atnaujinama..."
 
-#: ../gweather/gweather-dialog.c:155
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "_Išsamiau"
+
+#: ../gweather/gweather-applet-menu.xml.h:2 ../gweather/gweather-dialog.c:160
+msgid "_Update"
+msgstr "_Atnaujinti"
+
+#: ../gweather/gweather-dialog.c:158
 msgid "Details"
 msgstr "Išsami informacija"
 
-#: ../gweather/gweather-dialog.c:196
+#: ../gweather/gweather-dialog.c:199
 msgid "City:"
 msgstr "Miestas:"
 
-#: ../gweather/gweather-dialog.c:204
+#: ../gweather/gweather-dialog.c:207
 msgid "Last update:"
 msgstr "Paskutinis atnaujinimas:"
 
-#: ../gweather/gweather-dialog.c:212
+#: ../gweather/gweather-dialog.c:215
 msgid "Conditions:"
 msgstr "Sąlygos:"
 
-#: ../gweather/gweather-dialog.c:220
+#: ../gweather/gweather-dialog.c:223
 msgid "Sky:"
 msgstr "Dangus:"
 
-#: ../gweather/gweather-dialog.c:228
+#: ../gweather/gweather-dialog.c:231
 msgid "Temperature:"
 msgstr "Temperatūra:"
 
-#: ../gweather/gweather-dialog.c:236
+#: ../gweather/gweather-dialog.c:239
 msgid "Feels like:"
 msgstr "Jaučiama kaip:"
 
-#: ../gweather/gweather-dialog.c:244
+#: ../gweather/gweather-dialog.c:247
 msgid "Dew point:"
 msgstr "Rasos taškas:"
 
-#: ../gweather/gweather-dialog.c:252
+#: ../gweather/gweather-dialog.c:255
 msgid "Relative humidity:"
 msgstr "Santykinis drėgnumas:"
 
-#: ../gweather/gweather-dialog.c:260
+#: ../gweather/gweather-dialog.c:263
 msgid "Wind:"
 msgstr "Vėjas:"
 
-#: ../gweather/gweather-dialog.c:268
+#: ../gweather/gweather-dialog.c:271
 msgid "Pressure:"
 msgstr "Slėgis:"
 
-#: ../gweather/gweather-dialog.c:276
+#: ../gweather/gweather-dialog.c:279
 msgid "Visibility:"
 msgstr "Matomumas:"
 
-#: ../gweather/gweather-dialog.c:284
+#: ../gweather/gweather-dialog.c:287
 msgid "Sunrise:"
 msgstr "Saulėtekis:"
 
-#: ../gweather/gweather-dialog.c:292
+#: ../gweather/gweather-dialog.c:295
 msgid "Sunset:"
 msgstr "Saulėlydis:"
 
-#: ../gweather/gweather-dialog.c:426
+#: ../gweather/gweather-dialog.c:429
 msgid "Current Conditions"
 msgstr "Dabartinės sąlygos"
 
-#: ../gweather/gweather-dialog.c:441
+#: ../gweather/gweather-dialog.c:444
 msgid "Forecast Report"
 msgstr "Prognozės ataskaita"
 
-#: ../gweather/gweather-dialog.c:441
+#: ../gweather/gweather-dialog.c:444
 msgid "See the ForeCast Details"
 msgstr "Žiūrėti išsamesnę prognozę"
 
-#: ../gweather/gweather-dialog.c:451
+#: ../gweather/gweather-dialog.c:454
 msgid "Forecast"
 msgstr "Prognozė"
 
-#: ../gweather/gweather-dialog.c:457
+#: ../gweather/gweather-dialog.c:460
 msgid "Radar Map"
 msgstr "Radarinis žemėlapis"
 
 #. XXX: weather.com? is this an advert?
-#: ../gweather/gweather-dialog.c:489
+#: ../gweather/gweather-dialog.c:492
 msgid "_Visit Weather.com"
 msgstr "_Aplankyti Weather.com"
 
-#: ../gweather/gweather-dialog.c:490
+#: ../gweather/gweather-dialog.c:493
 msgid "Visit Weather.com"
 msgstr "Aplankyti Weather.com"
 
-#: ../gweather/gweather-dialog.c:490
+#: ../gweather/gweather-dialog.c:493
 msgid "Click to Enter Weather.com"
 msgstr "Spustelėkite, jei norite aplankyti Weather.com"
 
-#: ../gweather/gweather-dialog.c:573
+#: ../gweather/gweather-dialog.c:571
 msgid "Forecast not currently available for this location."
 msgstr "Šiuo metu prognozė šiai vietovei yra neprieinama."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Location view"
 msgstr "Vietovės vaizdas"
 
-#: ../gweather/gweather-pref.c:130
+#: ../gweather/gweather-pref.c:135
 msgid "Select Location from the list"
 msgstr "Pasirinkite vietovę iš sąrašo"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Update spin button"
 msgstr "Atnaujinimo mygtukas"
 
-#: ../gweather/gweather-pref.c:131
+#: ../gweather/gweather-pref.c:136
 msgid "Spinbutton for updating"
 msgstr "Mygtukas atnaujinimui"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Address Entry"
 msgstr "Adreso įvesties elementas"
 
-#: ../gweather/gweather-pref.c:132
+#: ../gweather/gweather-pref.c:137
 msgid "Enter the URL"
 msgstr "Įveskite URL"
 
-#: ../gweather/gweather-pref.c:298
+#: ../gweather/gweather-pref.c:372
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "Nepavyko įkelti vietovių XML duomenų bazės. Praneškite apie klaidą"
 
-#: ../gweather/gweather-pref.c:676
+#: ../gweather/gweather-pref.c:736
 msgid "Weather Preferences"
-msgstr "Oro sąlygų stebyklės nustatymai"
+msgstr "Oro sąlygų stebyklės nuostatos"
 
-#: ../gweather/gweather-pref.c:707 ../gweather/gweather-pref.c:868
+#: ../gweather/gweather-pref.c:767 ../gweather/gweather-pref.c:932
 msgid "_Automatically update every:"
 msgstr "_Automatiškai atnaujinti kas:"
 
@@ -1080,191 +1211,197 @@ msgstr "_Automatiškai atnaujinti kas:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:718
+#: ../gweather/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "_Temperatūros vienetai:"
 
-#: ../gweather/gweather-pref.c:727
+#. Default means device with default route set
+#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
+#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../netspeed/src/preferences.c:162
+msgid "Default"
+msgstr "Numatytasis"
+
+#: ../gweather/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Kelvino"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:729
+#: ../gweather/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Celsijaus"
 
-#: ../gweather/gweather-pref.c:730
+#: ../gweather/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:734
+#: ../gweather/gweather-pref.c:795
 msgid "_Wind speed unit:"
 msgstr "_Vėjo greičio vienetai:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:744
+#: ../gweather/gweather-pref.c:806
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:746
+#: ../gweather/gweather-pref.c:808
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:748
+#: ../gweather/gweather-pref.c:810
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:750
+#: ../gweather/gweather-pref.c:812
 msgid "knots"
 msgstr "mazgai"
 
-#: ../gweather/gweather-pref.c:752
+#: ../gweather/gweather-pref.c:814
 msgid "Beaufort scale"
 msgstr "Boforto skalė"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:756
+#: ../gweather/gweather-pref.c:818
 msgid "_Pressure unit:"
 msgstr "_Slėgio vienetai:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:766
+#: ../gweather/gweather-pref.c:829
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:768
+#: ../gweather/gweather-pref.c:831
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:770
+#: ../gweather/gweather-pref.c:833
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:772
+#: ../gweather/gweather-pref.c:835
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:774
+#: ../gweather/gweather-pref.c:837
 msgid "inHg"
 msgstr "colHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:776
+#: ../gweather/gweather-pref.c:839
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:780
+#: ../gweather/gweather-pref.c:843
 msgid "_Visibility unit:"
 msgstr "_Matomumo vienetai:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/gweather-pref.c:854
 msgid "meters"
 msgstr "metrai"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:792
+#: ../gweather/gweather-pref.c:856
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:794
+#: ../gweather/gweather-pref.c:858
 msgid "miles"
 msgstr "mylios"
 
-#: ../gweather/gweather-pref.c:825
+#: ../gweather/gweather-pref.c:889
 msgid "Enable _radar map"
 msgstr "Įjungti _radarinį žemėlapį"
 
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/gweather-pref.c:901
 msgid "Use _custom address for radar map"
 msgstr "Naudoti _pasirinktinį adresą radaro žemėlapiui"
 
-#: ../gweather/gweather-pref.c:852
+#: ../gweather/gweather-pref.c:916
 msgid "A_ddress:"
 msgstr "A_dresas:"
 
-#: ../gweather/gweather-pref.c:864
+#: ../gweather/gweather-pref.c:928
 msgid "Update"
 msgstr "Atnaujinimas"
 
-#: ../gweather/gweather-pref.c:888
+#: ../gweather/gweather-pref.c:952
 msgid "minutes"
 msgstr "minutę (-čių)"
 
-#: ../gweather/gweather-pref.c:900
+#: ../gweather/gweather-pref.c:964
 msgid "Display"
 msgstr "Rodymas"
 
-#: ../gweather/gweather-pref.c:915
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Pagrindiniai"
 
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/gweather-pref.c:992
 msgid "_Select a location:"
 msgstr "_Pasirinkite vietovę:"
 
-#: ../gweather/gweather-pref.c:953
+#: ../gweather/gweather-pref.c:1017
 msgid "_Find:"
 msgstr "_Rasti:"
 
-#: ../gweather/gweather-pref.c:960
+#: ../gweather/gweather-pref.c:1024
 msgid "Find _Next"
 msgstr "Rasti _kitą"
 
-#: ../gweather/gweather-pref.c:978
+#: ../gweather/gweather-pref.c:1042
 msgid "Location"
 msgstr "Vietovė"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:1
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
 msgstr "Automatiškai atnaujinti duomenis"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:2
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "Nustato, ar įtaisas automatiškai atnaujina orų statistiką."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:3
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
 msgid "Update interval"
 msgstr "Atnaujinimo intervalas"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:4
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Laiko tarpas sekundėmis tarp būklės atnaujinimų."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:5
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
 msgid "Display radar map"
 msgstr "Rodyti radarinį žemėlapį"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:6
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
 msgid "Fetch a radar map on each update."
 msgstr "Kiekvieno atnaujinimo metu parsiųsti radarinį žemėlapį."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:7
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
 msgid "Show notification"
 msgstr "Rodyti pranešimą"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:8
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
 msgid "Show notifications for critical weather conditions"
 msgstr "Rodyti pranešimus kritinėms orų sąlygoms"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:9
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
 msgid "Show detailed forecast"
 msgstr "Rodyti detalią prognozę"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.gschema.xml.in.in.h:10
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
 msgid "If true, additional details about weather will be downloaded and shown."
 msgstr "Jei teigiama, papildomi duomenys apie orą bus parsiųsti ir parodyti."
 
@@ -1298,8 +1435,25 @@ msgstr "Investuokite"
 msgid "Track your invested money."
 msgstr "Stebėkite savo investicijas."
 
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Atnaujinti"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Nuostatos"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Žinynas"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "Apie"
+
 #: ../invest-applet/data/financialchart.ui.h:1
-#: ../invest-applet/invest/chart.py:112
+#: ../invest-applet/invest/chart.py:108
 msgid "Financial Chart"
 msgstr "Finansinis grafikas"
 
@@ -1353,133 +1507,133 @@ msgstr "Slankusis vidurkis: "
 msgid "Exponential moving average: "
 msgstr "Eksponentinis slankusis vidurkis: "
 
-#: ../invest-applet/data/financialchart.ui.h:16
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:18
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:20
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "200"
-msgstr "200"
-
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Overlays: "
 msgstr "Perdengimai: "
 
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "Indicators: "
+msgstr "Indikatoriai: "
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "Line"
+msgstr "Eilutė"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Bar"
+msgstr "Juosta"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Candle"
+msgstr "Žvakė"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Scale: "
+msgstr "Skalė:"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Linear"
+msgstr "Tiesinė"
+
 #: ../invest-applet/data/financialchart.ui.h:25
+msgid "Logarithmic"
+msgstr "Logaritminė"
+
+#: ../invest-applet/data/financialchart.ui.h:26
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:31
+msgid "200"
+msgstr "200"
+
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:33
 msgid "Bollinger"
 msgstr "Bolindžeris"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "SAR"
 msgstr "SAR"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "Splits"
 msgstr "Padalinimai"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:39
 msgid "Volumes"
 msgstr "Kiekiai"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:33
-msgid "Indicators: "
-msgstr "Indikatoriai: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
-msgid "RSI"
-msgstr "RSI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:37
-msgid "Vol"
-msgstr "Kiek"
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "MACD"
+msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:43
 msgid "MFI"
 msgstr "MFI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:41
-msgid "Slow stoch"
-msgstr "Lėta stochastika"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:43
-msgid "Vol+MA"
-msgstr "Kiekiai+MA"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
 msgid "ROC"
 msgstr "ROC"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
 #: ../invest-applet/data/financialchart.ui.h:47
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:49
+msgid "Vol"
+msgstr "Kiek"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:51
+msgid "Slow stoch"
+msgstr "Lėta stochastika"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:53
+msgid "Vol+MA"
+msgstr "Kiekiai+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:55
 msgid "Fast stoch"
 msgstr "Greita stochastika"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:50
+#: ../invest-applet/data/financialchart.ui.h:58
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:52
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.ui.h:53
-msgid "Line"
-msgstr "Eilutė"
-
-#: ../invest-applet/data/financialchart.ui.h:54
-msgid "Bar"
-msgstr "Juosta"
-
-#: ../invest-applet/data/financialchart.ui.h:55
-msgid "Candle"
-msgstr "Žvakė"
-
-#: ../invest-applet/data/financialchart.ui.h:56
-msgid "Scale: "
-msgstr "Skalė:"
-
-#: ../invest-applet/data/financialchart.ui.h:57
-msgid "Linear"
-msgstr "Tiesinė"
-
-#: ../invest-applet/data/financialchart.ui.h:58
-msgid "Logarithmic"
-msgstr "Logaritminė"
-
 #: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
-msgstr "_Parinktys"
+msgstr "_Parametrai"
 
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
@@ -1487,7 +1641,7 @@ msgstr "Atsiųsti grafiką iš <b>Yahoo!</b>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
-msgstr "Invest nustatymai"
+msgstr "Invest nuostatos"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:2
 msgid "label"
@@ -1497,7 +1651,7 @@ msgstr "užrašas"
 msgid "Stocks"
 msgstr "Akcijos"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1549,33 +1703,16 @@ msgid ""
 "Type the target currency to which all stock quotes will be converted to."
 msgstr "Tikslo valiuda, į kurią bus konvertuojamos visos akcijų vertės."
 
-#. name, stock_id, label, accellerator, tooltip, callback
-#: ../invest-applet/invest/applet.py:24
-msgid "About"
-msgstr "Apie"
-
-#: ../invest-applet/invest/applet.py:25
-msgid "Help"
-msgstr "Žinynas"
-
-#: ../invest-applet/invest/applet.py:26
-msgid "Preferences"
-msgstr "Nustatymai"
-
-#: ../invest-applet/invest/applet.py:27
-msgid "Refresh"
-msgstr "Atnaujinti"
-
 #. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:60
+#: ../invest-applet/invest/applet.py:70
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Neįvedėte akcijų informacijos</b>"
 
-#: ../invest-applet/invest/applet.py:65
+#: ../invest-applet/invest/applet.py:75
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Akcijų verčių negauta</b>"
 
-#: ../invest-applet/invest/applet.py:66
+#: ../invest-applet/invest/applet.py:76
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1583,20 +1720,20 @@ msgstr ""
 "Nepavyko susisiekti su serveriu. Kompiuteris išjungtas arba serveriai "
 "nepasiekiami. Bandykite vėliau."
 
-#: ../invest-applet/invest/chart.py:161
+#: ../invest-applet/invest/chart.py:157
 #, python-format
 msgid "Financial Chart - %s"
 msgstr "Finansinis grafikas – %s"
 
-#: ../invest-applet/invest/chart.py:228
+#: ../invest-applet/invest/chart.py:224
 msgid "Opening Chart"
 msgstr "Atveriamas grafikas"
 
-#: ../invest-applet/invest/chart.py:243
+#: ../invest-applet/invest/chart.py:239
 msgid "Chart downloaded"
 msgstr "Grafikas parsiųstas"
 
-#: ../invest-applet/invest/chart.py:245
+#: ../invest-applet/invest/chart.py:241
 msgid "Chart could not be downloaded"
 msgstr "Grafiko parsiųsti nepavyko"
 
@@ -1624,19 +1761,19 @@ msgstr "Komisiniai"
 msgid "Currency Rate"
 msgstr "Valiutos kursas"
 
-#: ../invest-applet/invest/preferences.py:244
+#: ../invest-applet/invest/preferences.py:246
 msgid "Stock Group"
 msgstr "Akcijų grupė"
 
 #. translators: Asks the user to confirm deletion of a group of stocks
-#: ../invest-applet/invest/preferences.py:269
+#: ../invest-applet/invest/preferences.py:271
 msgid "Delete entire stock group?"
 msgstr "Ištrinti visą akcijų grupę?"
 
 #. translators: stocks can be grouped together into a "stock group".
 #. The user wants to delete a group, but the group still contains stocks.
 #. By deleting the group, also all stocks will be removed from configuration
-#: ../invest-applet/invest/preferences.py:277
+#: ../invest-applet/invest/preferences.py:279
 msgid ""
 "This removes all stocks contained in this stock group!\n"
 "Do you really want to remove this stock group?"
@@ -1644,23 +1781,23 @@ msgstr ""
 "Tai pašalina visas akcijas iš šios grupės!\n"
 "Ar tikrai norite pašalinti šią akcijų grupę?"
 
-#: ../invest-applet/invest/quotes.py:284
+#: ../invest-applet/invest/quotes.py:286
 msgid "Invest could not connect to Yahoo! Finance"
 msgstr "Invest nepavyko prisijungti prie Yahoo! Finance"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:327
+#: ../invest-applet/invest/quotes.py:329
 #, python-format
 msgid "Average change: %s"
 msgstr "Vidutinis pokytis: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:336
+#: ../invest-applet/invest/quotes.py:338
 #, python-format
 msgid "Positions balance: %s %s (%s)"
 msgstr "Pozicijų balansas: %s %s (%s)"
 
-#: ../invest-applet/invest/quotes.py:338
+#: ../invest-applet/invest/quotes.py:340
 #, python-format
 msgid "Updated at %s"
 msgstr "Atnaujinta %s"
@@ -1669,37 +1806,29 @@ msgstr "Atnaujinta %s"
 #. Translators: these words all refer to a stock. Last is short
 #. for "last price". Gain is referring to the gain since the
 #. stock was purchased.
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Ticker"
 msgstr "Skydelis"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Last"
 msgstr "Paskutinis"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Change %"
 msgstr "Pokytis %"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Chart"
 msgstr "Grafikas"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain"
 msgstr "Augimas"
 
-#: ../invest-applet/invest/widgets.py:52
+#: ../invest-applet/invest/widgets.py:49
 msgid "Gain %"
 msgstr "Augimas %"
-
-#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Deskbar (formerly Mini-Commander)"
-msgstr "Deskbar (anksčiau Mini-Commander)"
-
-#: ../mini-commander/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Deskbar (transparent upgrade from Mini-Commander)"
-msgstr "Deskbar (atnaujinimas nuo Mini-Commander)"
 
 #: ../mini-commander/src/about.c:48
 msgid ""
@@ -1709,81 +1838,26 @@ msgstr ""
 "Šis GNOME įtaisas įdeda į skydelį komandų eilutę. Jame yra komandų "
 "pabaigimas, komandų istorija ir keičiamos makro komandos."
 
-#: ../mini-commander/src/command_line.c:362
+#: ../mini-commander/src/command_line.c:361
 msgid "No items in history"
 msgstr "Įrašų istorijoje nėra"
 
 #. build file select dialog
-#: ../mini-commander/src/command_line.c:488
+#: ../mini-commander/src/command_line.c:487
 msgid "Start program"
 msgstr "Paleisti programą"
 
-#: ../mini-commander/src/command_line.c:541
+#: ../mini-commander/src/command_line.c:540
 msgid "Command line"
 msgstr "Komandinė eilutė"
 
-#: ../mini-commander/src/command_line.c:542
+#: ../mini-commander/src/command_line.c:541
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Įveskite čia komandą – GNOME ją įvykdys"
 
-#: ../mini-commander/src/mc-install-default-macros.c:80
-#, c-format
-msgid "Cannot get schema for %s: %s"
-msgstr "Negaliu gauti schemos reikalingos %s : %s"
-
-#: ../mini-commander/src/mc-install-default-macros.c:111
-#, c-format
-msgid "Cannot set schema for %s: %s"
-msgstr "Negaliu pritaikyti schemos reikalingos %s : %s"
-
-#: ../mini-commander/src/mc-install-default-macros.c:117
-#, c-format
-msgid "Set default list value for %s\n"
-msgstr "Nustatyti numatytąją sąrašo reikšmę %s\n"
-
-#: ../mini-commander/src/mc-install-default-macros.c:129
-#, c-format
-msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
-"Yra nustatyta GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, todėl schemas nebus "
-"diegiamos\n"
-
-#: ../mini-commander/src/mc-install-default-macros.c:137
-#, c-format
-msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-
-#: ../mini-commander/src/mc-install-default-macros.c:154
-#, c-format
-msgid "Failed to access configuration source(s): %s\n"
-msgstr "Nepavyko pasiekti nustatymų šaltinio(ių): %s\n"
-
-#: ../mini-commander/src/mc-install-default-macros.c:169
-#, c-format
-msgid "Error syncing config data: %s"
-msgstr "Klaida suvienodinant nustatymų duomenis: %s "
-
-#: ../mini-commander/src/mini-commander-global.schemas.in.h:1
-#: ../mini-commander/src/mini-commander.schemas.in.h:26
-msgid "Macro pattern list"
-msgstr "Makrokomandų šablonų sąrašas"
-
-#: ../mini-commander/src/mini-commander-global.schemas.in.h:2
-msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr "GConfValue elementų, turinčių makrokomandų šablonų eilutes, sąrašas"
-
-#: ../mini-commander/src/mini-commander-global.schemas.in.h:3
-#: ../mini-commander/src/mini-commander.schemas.in.h:28
-msgid "Macro command list"
-msgstr "Makrokomandų sąrašas"
-
-#: ../mini-commander/src/mini-commander-global.schemas.in.h:4
-msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr "GConfValue elementų, turinčių makrokomandų eilutes, sąrašas."
-
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
-msgstr "Komandinės eilutės nustatymai"
+msgstr "Komandinės eilutės nuostatos"
 
 #: ../mini-commander/src/mini-commander.ui.h:2
 msgid "Auto Completion"
@@ -1798,15 +1872,15 @@ msgid "Size"
 msgstr "Dydis"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "_Plotis:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:524
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "taškų"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:569
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Spalvos"
 
@@ -1854,148 +1928,38 @@ msgstr "_Šablonas:"
 msgid "Co_mmand:"
 msgstr "Ko_manda:"
 
-#: ../mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Show handle"
-msgstr "Rodyti rankenėlę"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Show a handle so the applet can be detached from the panel."
-msgstr "Rodyti rankeną, kad būtų galima atkabinti įtaisą nuo skydelio."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Show frame"
-msgstr "Rodyti rėmelį"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show a frame surrounding the applet."
-msgstr "Rodyti aplink įtaisą rėmelį."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Perform history autocompletion"
-msgstr "Automatiškai užbaigti remiantis retrospektyva"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
-"Bandyti automatiškai užbaigti vesti komandą remiantis įvestų komandų "
-"retrospektyva."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Width"
-msgstr "Plotis"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:8
-msgid "Width of the applet"
-msgstr "Priedo plotis"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:9
-msgid "Not used anymore"
-msgstr "Daugiau nebenaudojamas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:10
-msgid "Use the default theme colors"
-msgstr "Naudoti numatytasias temos spalvas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:11
-msgid "Use theme colors instead of custom ones."
-msgstr "Naudoti temos spalvas vietoje pasirinktų."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:12
-msgid "Foreground color, red component"
-msgstr "Pirmo plano spalva, raudonas komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:13
-msgid "The red component of the foreground color."
-msgstr "Priekinio plano spalvos raudonas komponentas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:14
-msgid "Foreground color, green component"
-msgstr "Pirmo plano spalva, žalias komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:15
-msgid "The green component of the foreground color."
-msgstr "Priekinio plano spalvos žalias komponentas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:16
-msgid "Foreground color, blue component"
-msgstr "Pirmo plano spalva, mėlynas komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:17
-msgid "The blue component of the foreground color."
-msgstr "Priekinio plano spalvos mėlynas komponentas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:18
-msgid "Background color, red component"
-msgstr "Fono spalva, raudonas komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:19
-msgid "The red component of the background color."
-msgstr "Fono spalvos raudonas komponentas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:20
-msgid "Background color, green component"
-msgstr "Fono spalva, žalias komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:21
-msgid "The green component of the background color."
-msgstr "Fono spalvos žalias komponentas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:22
-msgid "Background color, blue component"
-msgstr "Fono spalva, mėlynas komponentas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:23
-msgid "The blue component of the background color."
-msgstr "Fono spalvos mėlynas elementas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:24
-msgid "History list"
-msgstr "Žurnalas"
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:25
-msgid "List of GConfValue entries containing strings for history entries."
-msgstr "GConfValue elementų, turinčių istorijos žurnalo eilutes, sąrašas."
-
-#: ../mini-commander/src/mini-commander.schemas.in.h:27
-msgid ""
-"This per-applet key is deprecated in favour of the global key, /schemas/apps/"
-"mini-commander-global/macro_patterns."
-msgstr ""
-"Šis kiekvienam įtaisui atskiras raktas yra nebenaudojamas dėl naujo, "
-"globalaus rakto, /schemas/apps/mini-commander-global/macro_patterns."
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-#: ../mini-commander/src/mini-commander_applet.c:246
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
 msgid "Browser"
 msgstr "Naršyklė"
 
-#: ../mini-commander/src/mini-commander_applet.c:247
+#: ../mini-commander/src/mini-commander_applet.c:242
 msgid "Click this button to start the browser"
 msgstr "Norėdami paleisti naršyklę, spauskite šį mygtuką"
 
-#: ../mini-commander/src/mini-commander_applet.c:260
-#: ../mini-commander/src/mini-commander_applet.c:264
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
 msgid "History"
 msgstr "Žurnalas"
 
-#: ../mini-commander/src/mini-commander_applet.c:265
+#: ../mini-commander/src/mini-commander_applet.c:260
 msgid "Click this button for the list of previous commands"
 msgstr "Norėdami gauti pastarųjų komandų sąrašą, spauskite šį mygtuką"
 
-#: ../mini-commander/src/mini-commander_applet.c:346
+#: ../mini-commander/src/mini-commander_applet.c:348
 msgid "Command line has been disabled by your system administrator"
 msgstr "Komandinė eilutė buvo išjungta sistemos administratoriaus"
 
-#: ../mini-commander/src/mini-commander_applet.c:360
+#: ../mini-commander/src/mini-commander_applet.c:363
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
 msgid "Command Line"
 msgstr "Komandinė eilutė"
 
-#: ../mini-commander/src/mini-commander_applet.c:406
+#: ../mini-commander/src/mini-commander_applet.c:411
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander įtaisas"
 
-#: ../mini-commander/src/mini-commander_applet.c:407
+#: ../mini-commander/src/mini-commander_applet.c:412
 msgid "This applet adds a command line to the panel"
 msgstr "Šis įtaisas į skydelį įdeda komandinę eilutę"
 
@@ -2007,169 +1971,131 @@ msgstr "MiniCommander įtaiso gamykla"
 msgid "Mini-Commander"
 msgstr "Komandinė eilutė"
 
-#: ../mini-commander/src/preferences.c:401
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:1
+msgid "Macro pattern list"
+msgstr "Makrokomandų šablonų sąrašas"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
+#, fuzzy
+#| msgid ""
+#| "List of GConfValue entries containing strings for the macro patterns."
+msgid "List of entries containing strings for the macro patterns."
+msgstr "GConfValue elementų, turinčių makrokomandų šablonų eilutes, sąrašas"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:3
+msgid "Macro command list"
+msgstr "Makrokomandų sąrašas"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
+#, fuzzy
+#| msgid ""
+#| "List of GConfValue entries containing strings for the macro commands."
+msgid "List of entries containing strings for the macro commands."
+msgstr "GConfValue elementų, turinčių makrokomandų eilutes, sąrašas."
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:5
+msgid "Show handle"
+msgstr "Rodyti rankenėlę"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:6
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Rodyti rankeną, kad būtų galima atkabinti įtaisą nuo skydelio."
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:7
+msgid "Show frame"
+msgstr "Rodyti rėmelį"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:8
+msgid "Show a frame surrounding the applet."
+msgstr "Rodyti aplink įtaisą rėmelį."
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:9
+msgid "Perform history autocompletion"
+msgstr "Automatiškai užbaigti remiantis retrospektyva"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:10
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr ""
+"Bandyti automatiškai užbaigti vesti komandą remiantis įvestų komandų "
+"retrospektyva."
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:11
+msgid "Width"
+msgstr "Plotis"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:12
+msgid "Width of the applet"
+msgstr "Priedo plotis"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:13
+msgid "Use the default theme colors"
+msgstr "Naudoti numatytasias temos spalvas"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:14
+msgid "Use theme colors instead of custom ones."
+msgstr "Naudoti temos spalvas vietoje pasirinktų."
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:15
+msgid "Foreground color"
+msgstr "Priekinio plano spalva"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:16
+msgid "Background color"
+msgstr "Fono spalva"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:17
+msgid "History list"
+msgstr "Žurnalas"
+
+#: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
+#, fuzzy
+#| msgid "List of GConfValue entries containing strings for history entries."
+msgid "List of entries containing strings for history entries."
+msgstr "GConfValue elementų, turinčių istorijos žurnalo eilutes, sąrašas."
+
+#: ../mini-commander/src/preferences.c:294
 msgid "You must specify a pattern"
 msgstr "Turite nurodyti raštą"
 
-#: ../mini-commander/src/preferences.c:405
+#: ../mini-commander/src/preferences.c:298
 msgid "You must specify a pattern and a command"
 msgstr "Turite nurodyti raštą ir komandą"
 
-#: ../mini-commander/src/preferences.c:406
+#: ../mini-commander/src/preferences.c:299
 msgid "You must specify a command"
 msgstr "Turite nurodyti komandą"
 
-#: ../mini-commander/src/preferences.c:409
+#: ../mini-commander/src/preferences.c:302
 msgid "You may not specify duplicate patterns"
 msgstr "Negalite nurodyti dubliuotų raštų"
 
-#: ../mini-commander/src/preferences.c:779
+#: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Raštas"
 
-#: ../mini-commander/src/preferences.c:789
+#: ../mini-commander/src/preferences.c:672
 msgid "Command"
 msgstr "Komanda"
 
-#: ../mixer/applet.c:179
-msgid "Volume Applet"
-msgstr "Garsumo įtaisas"
-
-#. tooltip over applet
-#: ../mixer/applet.c:195 ../mixer/applet.c:216
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:1
-#: ../null_applet/null_applet.c:55 ../null_applet/null_applet.c:57
-msgid "Volume Control"
-msgstr "Garsumo valdymas"
-
-#: ../mixer/applet.c:378
-msgid "_Open Volume Control"
-msgstr "_Atverti garso valdymą"
-
-#: ../mixer/applet.c:392
-msgid "Mu_te"
-msgstr "_Nutildyti"
-
-#: ../mixer/applet.c:558
-msgid ""
-"The volume control did not find any elements and/or devices to control. This "
-"means either that you don't have the right GStreamer plugins installed, or "
-"that you don't have a sound card configured."
-msgstr ""
-"Garsumo valdymo programa nerado jokių kontroliuotinų elementų ir/arba "
-"įrenginių. Tai reiškia, kad neturite įdiegtų reikiamų GStreamer įskiepių, "
-"arba garso plokštė yra nesukonfigūruota."
-
-#: ../mixer/applet.c:562
-msgid ""
-"You can remove the volume control from the panel by right-clicking the "
-"speaker icon on the panel and selecting \"Remove From Panel\" from the menu."
-msgstr ""
-"Galite pašalinti garso kontrolę iš skydelio paspaudę dešinįjį klavišą ant "
-"garsiakalbio piktogramos, esančios skydelyje, ir meniu pasirinkę „Pašalinti "
-"iš skydelio“."
-
-#: ../mixer/applet.c:745
-#, c-format
-msgid "Failed to start Volume Control: %s"
-msgstr "Nepavyko paleisti Garsumo valdymo: %s"
-
-#: ../mixer/applet.c:1160
-#, c-format
-msgid "%s: muted"
-msgstr "%s: nutildytas"
-
-#. Translator comment: I'm not all too sure if this makes sense
-#. * to mark as a translation, but anyway. The string is a list of
-#. * selected tracks, the number is the volume in percent. You
-#. * most likely want to keep this as-is.
-#: ../mixer/applet.c:1166
-#, c-format
-msgid "%s: %d%%"
-msgstr "%s: %d%%"
-
-#: ../mixer/applet.c:1402
-#, c-format
-msgid "Failed to display help: %s"
-msgstr "Nepavyko parodyti žinyno: %s"
-
-#: ../mixer/applet.c:1415
-msgid "Volume control for your GNOME Panel."
-msgstr "Garsumo valdymas GNOME skydelyje."
-
-#: ../mixer/applet.c:1416
-msgid "Using GStreamer 0.10."
-msgstr "Naudojama GStreamer 0.10"
-
-#: ../mixer/dock.c:219
-msgid "Mute"
-msgstr "Nutildyti"
-
-#: ../mixer/dock.c:225
-msgid "Volume Control..."
-msgstr "Garsumo valdymas..."
-
-#: ../mixer/load.c:86
-#, c-format
-msgid "Unknown Volume Control %d"
-msgstr "Nežinomas Garsumo valdiklis %d"
-
-#: ../mixer/mixer.schemas.in.h:1
-msgid "Channel controlled by applet. Only for OSS setups"
-msgstr "Kanalas valdomas įtaiso. Tinka tik naudojant OSS."
-
-#: ../mixer/mixer.schemas.in.h:2
-msgid "Saved mute state"
-msgstr "Išsaugota tyli būklė"
-
-#: ../mixer/mixer.schemas.in.h:3
-msgid "Saved volume to restore on startup"
-msgstr "Išsaugotas garsumo lygis atstatomas paleidmo metu"
-
-#: ../mixer/org.gnome.applets.MixerApplet.panel-applet.in.in.h:2
-msgid "Adjust the sound volume"
-msgstr "Reguliuoti garsumą"
-
-#. make window look cute
-#: ../mixer/preferences.c:90
-msgid "Volume Control Preferences"
-msgstr "Garsumo valdymo nustatymai"
-
-#: ../mixer/preferences.c:102
-msgid "Select the device and track to control."
-msgstr "Pasirinkite valdomą įrenginį ir takelį."
-
-#: ../modemlights/modem-applet.c:142
-msgid "_Activate"
-msgstr "_Aktyvuoti"
-
-#: ../modemlights/modem-applet.c:145
-msgid "_Deactivate"
-msgstr "_Deaktyvuoti"
-
-#: ../modemlights/modem-applet.c:148 ../stickynotes/stickynotes.ui.h:4
-msgid "_Properties"
-msgstr "_Savybės"
-
-#: ../modemlights/modem-applet.c:184
+#: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Modemo stebyklė"
 
-#: ../modemlights/modem-applet.c:710
+#: ../modemlights/modem-applet.c:671
 msgid "Connection active, but could not get connection time"
 msgstr "Prisijungimas aktyvus, bet nepavyko gauti prisijungimo laiko"
 
-#: ../modemlights/modem-applet.c:726
+#: ../modemlights/modem-applet.c:687
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Prisijungimo laikas: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:730
+#: ../modemlights/modem-applet.c:691
 msgid "Not connected"
 msgstr "Neprijungta"
 
-#: ../modemlights/modem-applet.c:752
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2177,7 +2103,7 @@ msgstr ""
 "Norint prisijungti prie Interneto paslaugų tiekėjo, reikalingos "
 "administratoriaus privilegijos"
 
-#: ../modemlights/modem-applet.c:753
+#: ../modemlights/modem-applet.c:714
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2185,38 +2111,38 @@ msgstr ""
 "Norint atsijungti nuo Interneto paslaugų tiekėjo, reikalingos "
 "administratoriaus privilegijos"
 
-#: ../modemlights/modem-applet.c:828
+#: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
 msgstr "Įvestas slaptažodis yra netinkamas"
 
-#: ../modemlights/modem-applet.c:830
+#: ../modemlights/modem-applet.c:791
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
 msgstr ""
 "Patikrinkite ar įvedėte teisingai, ir ar neaktyvavote „Caps Lock“ klavišo"
 
-#: ../modemlights/modem-applet.c:932
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
 msgstr "Norite prisijungti?"
 
-#: ../modemlights/modem-applet.c:933
+#: ../modemlights/modem-applet.c:903
 msgid "Do you want to disconnect?"
 msgstr "Norite atsijungti?"
 
-#: ../modemlights/modem-applet.c:942
+#: ../modemlights/modem-applet.c:912
 msgid "C_onnect"
 msgstr "P_risijungti"
 
-#: ../modemlights/modem-applet.c:942
+#: ../modemlights/modem-applet.c:912
 msgid "_Disconnect"
 msgstr "_Atsijungti"
 
-#: ../modemlights/modem-applet.c:995
+#: ../modemlights/modem-applet.c:971
 msgid "Could not launch network configuration tool"
 msgstr "Nepavyko paleisti tinklo konfigūravimo įrankio"
 
-#: ../modemlights/modem-applet.c:997
+#: ../modemlights/modem-applet.c:973
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2224,9 +2150,22 @@ msgstr ""
 "Patikrinkite ar jis įdiegtas teisingame kelyje, ir ar turite teises jį "
 "paleisti"
 
-#: ../modemlights/modem-applet.c:1020
+#: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Įtaisas skirtas aktyvuoti ir stebėti telefoninio ryšio prijungimą."
+
+#: ../modemlights/modem-applet-menu.xml.h:1
+msgid "_Activate"
+msgstr "_Aktyvuoti"
+
+#: ../modemlights/modem-applet-menu.xml.h:2
+msgid "_Deactivate"
+msgstr "_Deaktyvuoti"
+
+#: ../modemlights/modem-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-note-menu.xml.h:4
+msgid "_Properties"
+msgstr "_Savybės"
 
 #: ../modemlights/modemlights.ui.h:1
 msgid "Enter password"
@@ -2248,7 +2187,7 @@ msgstr "Jungiamasi prie Interneto paslaugų tiekėjo"
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktyvuoti ir stebėti telefoninio ryšio prisijungimą"
 
-#: ../multiload/main.c:56
+#: ../multiload/main.c:57
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2256,43 +2195,43 @@ msgstr ""
 "Sistemos apkrovos stebyklė, galinti grafiškai rodyti procesoriaus, RAM, swap "
 "failo ir tinklo apkrovą."
 
-#: ../multiload/main.c:129
+#: ../multiload/main.c:131
 msgid "Start system-monitor"
 msgstr "Paleisti sistemos stebyklę"
 
-#: ../multiload/main.c:150
+#: ../multiload/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Įvyko klaida vykdant „%s“: %s"
 
-#: ../multiload/main.c:278 ../multiload/properties.c:594
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "Procesorius"
 
-#: ../multiload/main.c:280 ../multiload/properties.c:602
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Atmintis"
 
-#: ../multiload/main.c:282 ../multiload/properties.c:610
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Tinklas"
 
-#: ../multiload/main.c:284 ../multiload/properties.c:617
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Swap talpa"
 
-#: ../multiload/main.c:286 ../multiload/main.c:365
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Apkrovos vidurkis"
 
-#: ../multiload/main.c:288
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Diskas"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:304
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2303,13 +2242,13 @@ msgstr ""
 "%u%% naudojama programų\n"
 "%u%% naudojama kaip podėlis"
 
-#: ../multiload/main.c:312
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Sistemos apkrovos vidurkis yra %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:320
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2320,7 +2259,7 @@ msgstr ""
 "Gaunama %s\n"
 "Siunčiama %s"
 
-#: ../multiload/main.c:336
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2338,162 +2277,34 @@ msgstr[2] ""
 "%s:\n"
 "naudojama %u%% "
 
-#: ../multiload/main.c:361
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "CPU apkrova"
 
-#: ../multiload/main.c:362
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Atminties apkrova"
 
-#: ../multiload/main.c:363
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Tinklo apkrovimas"
 
-#: ../multiload/main.c:364
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Swap apkrova"
 
-#: ../multiload/main.c:366
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Disko apkrova"
 
-#: ../multiload/main.c:462
-msgid "_Open System Monitor"
-msgstr "_Atverti sistemos stebyklę"
-
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Sistemos stebyklė"
 
-#: ../multiload/multiload.schemas.in.h:1
-msgid "Enable CPU load graph"
-msgstr "Įjungti CPU apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:2
-msgid "Enable memory load graph"
-msgstr "Įjungti atminties apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:3
-msgid "Enable network load graph"
-msgstr "Įjungti tinklo apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:4
-msgid "Enable swap load graph"
-msgstr "Įjungti swap apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:5
-msgid "Enable load average graph"
-msgstr "Įjungti vidutinės apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:6
-msgid "Enable disk load graph"
-msgstr "Įjungti disko apkrovos grafiką"
-
-#: ../multiload/multiload.schemas.in.h:7
-msgid "Applet refresh rate in milliseconds"
-msgstr "Įtaiso atnaujinimo dažnis milisekundėmis"
-
-#: ../multiload/multiload.schemas.in.h:8
-msgid "Graph size"
-msgstr "Grafiko dydis"
-
-#: ../multiload/multiload.schemas.in.h:9
-msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical "
-"panels, this is the height of the graphs."
-msgstr ""
-"Horizontaliems skydeliams, grafikų plotis taškais. Vertikaliems skydeliams, "
-"tai yra grafikų aukštis."
-
-#: ../multiload/multiload.schemas.in.h:10
-msgid "Graph color for user-related CPU activity"
-msgstr "Grafiko, susijusio su vartotojo CPU veikla, spalva"
-
-#: ../multiload/multiload.schemas.in.h:11
-msgid "Graph color for system-related CPU activity"
-msgstr "Grafiko, susijusio su sistemos CPU veikla, spalva"
-
-#: ../multiload/multiload.schemas.in.h:12
-msgid "Graph color for nice-related CPU activity"
-msgstr "Grafiko, susijusio su nice CPU veikla, spalva"
-
-#: ../multiload/multiload.schemas.in.h:13
-msgid "Graph color for iowait related CPU activity"
-msgstr "CPU veiklos, susijusios su iowait, grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:14
-msgid "CPU graph background color"
-msgstr "CPU grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:15
-msgid "Graph color for user-related memory usage"
-msgstr "Grafiko, susijusio su vartotojo naudojama atmintimi, spalva"
-
-#: ../multiload/multiload.schemas.in.h:16
-msgid "Graph color for shared memory"
-msgstr "Bendrai naudojamos atminties grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:17
-msgid "Graph color for buffer memory"
-msgstr "Buferio atminties grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:18
-msgid "Graph color for cached memory"
-msgstr "Sparčiosios atmintinės grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:19
-msgid "Memory graph background color"
-msgstr "Atminties grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:20
-msgid "Graph color for input network activity"
-msgstr "Tinklo gaunamų duomenų grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:21
-msgid "Graph color for output network activity"
-msgstr "Tinklo siunčiamų duomenų grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:22
-msgid "Graph color for loopback network usage"
-msgstr "„Loopback“ tinklo grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:23
-msgid "Network graph background color"
-msgstr "Tinklo grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:24
-msgid "Graph color for user-related swap usage"
-msgstr "Grafiko, susijusio su vartotojo swap naudojimu, spalva"
-
-#: ../multiload/multiload.schemas.in.h:25
-msgid "Swap graph background color"
-msgstr "Mainų srities grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:26
-msgid "Graph color for load average"
-msgstr "Vidutinės apkrovos grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:27
-msgid "Load graph background color"
-msgstr "Apkrovos grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:28
-msgid "Graph color for disk read"
-msgstr "Disko skaitymo grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:29
-msgid "Graph color for disk write"
-msgstr "Disko rašymo grafiko spalva"
-
-#: ../multiload/multiload.schemas.in.h:30
-msgid "Background color for disk load graph"
-msgstr "Disko apkrovos grafiko fono spalva"
-
-#: ../multiload/multiload.schemas.in.h:31
-msgid "The desktop description file to execute as the system monitor"
-msgstr "Darbastalio aprašymo failas, vykdytinas kaip sistemos monitorius"
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "_Atverti sistemos stebyklę"
 
 #: ../multiload/netspeed.c:40
 #, c-format
@@ -2504,733 +2315,318 @@ msgstr "%s/s"
 msgid "A system load indicator"
 msgstr "Sistemos apkrovos indikatorius"
 
-#: ../multiload/properties.c:355
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:1
+msgid "Enable CPU load graph"
+msgstr "Įjungti CPU apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:2
+msgid "Enable memory load graph"
+msgstr "Įjungti atminties apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:3
+msgid "Enable network load graph"
+msgstr "Įjungti tinklo apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:4
+msgid "Enable swap load graph"
+msgstr "Įjungti swap apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:5
+msgid "Enable load average graph"
+msgstr "Įjungti vidutinės apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:6
+msgid "Enable disk load graph"
+msgstr "Įjungti disko apkrovos grafiką"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
+msgid "Applet refresh rate in milliseconds"
+msgstr "Įtaiso atnaujinimo dažnis milisekundėmis"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
+msgid "Graph size"
+msgstr "Grafiko dydis"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Horizontaliems skydeliams, grafikų plotis taškais. Vertikaliems skydeliams, "
+"tai yra grafikų aukštis."
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
+msgid "Graph color for user-related CPU activity"
+msgstr "Grafiko, susijusio su vartotojo CPU veikla, spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:11
+msgid "Graph color for system-related CPU activity"
+msgstr "Grafiko, susijusio su sistemos CPU veikla, spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
+msgid "Graph color for nice-related CPU activity"
+msgstr "Grafiko, susijusio su nice CPU veikla, spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
+#, fuzzy
+#| msgid "Graph color for iowait related CPU activity"
+msgid "Graph color for iowait-related CPU activity"
+msgstr "CPU veiklos, susijusios su iowait, grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
+msgid "CPU graph background color"
+msgstr "CPU grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:15
+msgid "Graph color for user-related memory usage"
+msgstr "Grafiko, susijusio su vartotojo naudojama atmintimi, spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:16
+msgid "Graph color for shared memory"
+msgstr "Bendrai naudojamos atminties grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:17
+msgid "Graph color for buffer memory"
+msgstr "Buferio atminties grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
+msgid "Graph color for cached memory"
+msgstr "Sparčiosios atmintinės grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
+msgid "Memory graph background color"
+msgstr "Atminties grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:20
+msgid "Graph color for input network activity"
+msgstr "Tinklo gaunamų duomenų grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:21
+msgid "Graph color for output network activity"
+msgstr "Tinklo siunčiamų duomenų grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:22
+msgid "Graph color for loopback network usage"
+msgstr "„Loopback“ tinklo grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:23
+msgid "Network graph background color"
+msgstr "Tinklo grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:24
+msgid "Graph color for user-related swap usage"
+msgstr "Grafiko, susijusio su vartotojo swap naudojimu, spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:25
+msgid "Swap graph background color"
+msgstr "Mainų srities grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:26
+msgid "Graph color for load average"
+msgstr "Vidutinės apkrovos grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:27
+msgid "Load graph background color"
+msgstr "Apkrovos grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:28
+msgid "Graph color for disk read"
+msgstr "Disko skaitymo grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:29
+msgid "Graph color for disk write"
+msgstr "Disko rašymo grafiko spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:30
+msgid "Background color for disk load graph"
+msgstr "Disko apkrovos grafiko fono spalva"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
+msgid "The desktop description file to execute as the system monitor"
+msgstr "Darbalaukio aprašymo failas, vykdytinas kaip sistemos monitorius"
+
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "Stebimi ištekliai"
 
-#: ../multiload/properties.c:380
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "_Procesorius"
 
-#: ../multiload/properties.c:393
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "_Atmintis"
 
-#: ../multiload/properties.c:406
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Tinklas"
 
-#: ../multiload/properties.c:419
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "_Mainų srities vieta"
 
-#: ../multiload/properties.c:432
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "_Apkrova"
 
-#: ../multiload/properties.c:445
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "_Standusis diskas"
 
-#: ../multiload/properties.c:461
+#: ../multiload/properties.c:413
 msgid "Options"
-msgstr "Nustatymai"
+msgstr "Parametrai"
 
-#: ../multiload/properties.c:491
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "Sistemos stebėtuvo plotis:"
 
-#: ../multiload/properties.c:493
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "Sistemos stebėtuvo aukštis:"
 
-#: ../multiload/properties.c:532
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Sis_temos stebėtuvo atnaujinimo intervalas:"
 
-#: ../multiload/properties.c:558
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "milisekundžių"
 
-#: ../multiload/properties.c:596 ../multiload/properties.c:604
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Naudotojas"
 
-#: ../multiload/properties.c:597
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "S_istema"
 
-#: ../multiload/properties.c:598
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "N_ice"
 
-#: ../multiload/properties.c:599
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "I_OLaukimas"
 
-#: ../multiload/properties.c:600
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "Ne_veikli"
 
-#: ../multiload/properties.c:605
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "Be_ndra"
 
-#: ../multiload/properties.c:606
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "_Buferiai"
 
-#: ../multiload/properties.c:607
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "K_ešuota"
 
-#: ../multiload/properties.c:608
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "L_aisva"
 
-#: ../multiload/properties.c:612
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "_Į"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "_Iš"
 
-#: ../multiload/properties.c:614
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Vietinis"
 
-#: ../multiload/properties.c:615 ../multiload/properties.c:625
-#: ../multiload/properties.c:631
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "_Fonas"
 
-#: ../multiload/properties.c:619
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "_Užimta"
 
-#: ../multiload/properties.c:620
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "_Laisva"
 
-#: ../multiload/properties.c:622
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Apkrova"
 
-#: ../multiload/properties.c:624
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "_Vidurkis"
 
-#: ../multiload/properties.c:627
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Standusis diskas"
 
-#: ../multiload/properties.c:629
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "_Skaitymas"
 
-#: ../multiload/properties.c:630
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "_Rašymas"
 
-#: ../multiload/properties.c:655
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
-msgstr "Sistemos stebėtuvo nustatymai"
+msgstr "Sistemos stebėtuvo nuostatos"
 
-#: ../null_applet/null_applet.c:51
-msgid "Inbox Monitor"
-msgstr "Pranešimų stebyklė"
-
-#: ../null_applet/null_applet.c:53
-msgid "CD Player"
-msgstr "CD grotuvas"
-
-#: ../null_applet/null_applet.c:59
-msgid "Keyboard Indicator"
-msgstr "Klaviatūros indikatorius"
-
-#: ../null_applet/null_applet.c:157
-msgid "Some panel items are no longer available"
-msgstr "Kai kurie skydelio elementai yra daugiau nebeprieinami"
-
-#: ../null_applet/null_applet.c:158
-msgid ""
-"One or more panel items (also referred to as applets) are no longer "
-"available in the GNOME desktop."
-msgstr ""
-"Vienas ar keletas skydelio elementų (įtaisų) yra daugiau nebeprieinami GNOME "
-"aplinkoje."
-
-#: ../null_applet/null_applet.c:160
-msgid "These items will now be removed from your configuration:"
-msgstr "Šie elementai dabar bus pašalinti iš konfigūracijos:"
-
-#: ../null_applet/null_applet.c:163
-msgid "You will not receive this message again."
-msgstr "Ši žinutė Jums daugiau nebus rodoma."
-
-#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:1
-msgid "Tomboy (ne Stickynotes)"
-msgstr "Tomboy (buvęs Stickynotes)"
-
-#: ../stickynotes/data/GNOME_StickyNotesApplet.server.in.h:2
-msgid "Tomboy (transparent upgrade from stickynotes)"
-msgstr "Tomboy (sklandus lipnių raštelių atnaujinimas)"
-
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
-msgid "Sticky Notes Applet Factory"
-msgstr "Lipnių raštelių priedo gamykla"
-
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:146
-#: ../stickynotes/stickynotes_applet.c:427
-msgid "Sticky Notes"
-msgstr "Lipnūs rašteliai"
-
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
-msgid "Create, view, and manage sticky notes on the desktop"
-msgstr "Kurkite, žiūrėkite ir tvarkykite lipnius darbastalio raštelius"
-
-#: ../stickynotes/stickynotes.c:630
-msgid "This note is locked."
-msgstr "Šis raštelis yra užrakintas."
-
-#: ../stickynotes/stickynotes.c:634
-msgid "This note is unlocked."
-msgstr "Šis raštelis yra atrakintas."
-
-#: ../stickynotes/stickynotes.ui.h:1 ../stickynotes/stickynotes_applet.c:33
-msgid "_New Note"
-msgstr "_Naujas raštelis"
-
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "_Delete Note..."
-msgstr "_Pašalinti raštelį..."
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "_Lock Note"
-msgstr "_Užrakinti raštelį"
-
-#: ../stickynotes/stickynotes.ui.h:5
-msgid "Sticky Notes Preferences"
-msgstr "Lipnių raštelių nustatymai"
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid "Default Note Properties"
-msgstr "Numatytosios raštelio savybės"
-
-#: ../stickynotes/stickynotes.ui.h:7
-msgid "Choose a font to use for all sticky notes"
-msgstr "Pasirinkite šriftą, naudotiną visuose lipniuose rašteliuose"
-
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Pick a default sticky note font"
-msgstr "Pasirinkite numatytąją lipnaus raštelio šriftą"
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "_Font:"
-msgstr "Šri_ftas:"
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Use fo_nt from the system theme"
-msgstr "Naudoti sistemos temos šri_ftą"
-
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Note C_olor:"
-msgstr "Raštelio sp_alva:"
-
-#: ../stickynotes/stickynotes.ui.h:12
-msgid "Font Co_lor:"
-msgstr "Šrifto spa_lva:"
-
-#: ../stickynotes/stickynotes.ui.h:13
-msgid "Choose a base color to use for all sticky notes"
-msgstr "Pasirinkite pagrindo spalvą, naudotiną visuose lipniuose rašteliuose"
-
-#: ../stickynotes/stickynotes.ui.h:14
-msgid "Pick a default sticky note color"
-msgstr "Pasirinkite numatytąją lipnaus raštelio spalvą"
-
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Use co_lor from the system theme"
-msgstr "Naudoti sistemos temos _spalvą"
-
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "Nurodykite numatytąją naujų raštelių aukštį (taškais)"
-
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "Nurodykite numatytąją naujų raštelių plotį (taškais)"
-
-#: ../stickynotes/stickynotes.ui.h:18
-msgid "H_eight:"
-msgstr "_Aukštis:"
-
-#: ../stickynotes/stickynotes.ui.h:20
-msgid "Behavior"
-msgstr "Veikimas"
-
-#: ../stickynotes/stickynotes.ui.h:21
-msgid "Hide notes when the des_ktop is clicked on"
-msgstr "Paslėpti raštelius spustelėjus _darbastalyje"
-
-#: ../stickynotes/stickynotes.ui.h:22
-msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr ""
-"Pasirinkite, ar norite paslėpti visus raštelius, kuomet pasirenkama "
-"darbastalyje"
-
-#: ../stickynotes/stickynotes.ui.h:23
-msgid "Force _default color and font on notes"
-msgstr "Priverstinai nau_doti numatytąjį šriftą ir spalvas"
-
-#: ../stickynotes/stickynotes.ui.h:24
-msgid "Choose if the default style is forced on all notes"
-msgstr ""
-"Pasirinkite, jeigu visuose rašteliuose priverstinai naudojamas numatytasis "
-"stilius"
-
-#: ../stickynotes/stickynotes.ui.h:25
-msgid "_Put notes on all workspaces"
-msgstr "_Patalpinti visuose darbalaukiuose"
-
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Choose if notes are visible on all workspaces"
-msgstr "Pasirinkite, jeigu rašteliai yra matomi visose darbo erdvėse"
-
-#: ../stickynotes/stickynotes.ui.h:27
-msgid "Delete this sticky note?"
-msgstr "Ištrinti šį lipnų raštelį?"
-
-#: ../stickynotes/stickynotes.ui.h:28
-msgid "This cannot be undone."
-msgstr "Veiksmas negali būti atšauktas."
-
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Delete all sticky notes?"
-msgstr "Ištrinti visus lipnius raštelius?"
-
-#: ../stickynotes/stickynotes.ui.h:30
-msgid "_Delete All"
-msgstr "_Pašalinti visus"
-
-#: ../stickynotes/stickynotes.ui.h:31
-msgid "Sticky Note"
-msgstr "Lipnus raštelis"
-
-#: ../stickynotes/stickynotes.ui.h:32
-msgid "Lock/Unlock note"
-msgstr "Užrakinti/atrakinti raštelį"
-
-#: ../stickynotes/stickynotes.ui.h:33
-msgid "Close note"
-msgstr "Užverti raštelį"
-
-#: ../stickynotes/stickynotes.ui.h:34
-msgid "Resize note"
-msgstr "Pakeisti raštelio dydį"
-
-#: ../stickynotes/stickynotes.ui.h:35
-msgid "Sticky Note Properties"
-msgstr "Lipnių raštelių savybės"
-
-#: ../stickynotes/stickynotes.ui.h:36
-msgid "Properties"
-msgstr "Savybės"
-
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Choose a font for the note"
-msgstr "Pasirinkite raštelio šriftą"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "Pick a font for the sticky note"
-msgstr "Pasirinkite lipnaus raštelio šriftą"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "Use default fo_nt"
-msgstr "Naudoti numatytąjį š_riftą"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "Choose a color for the note"
-msgstr "Pasirinkite raštelio spalvą"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "Pick a color for the sticky note"
-msgstr "Pasirinkite lipnaus raštelio spalvą"
-
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "Note _Color:"
-msgstr "Raštelio _spalva:"
-
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "Font C_olor:"
-msgstr "Šrifto s_palva:"
-
-#: ../stickynotes/stickynotes.ui.h:44
-msgid "Use default co_lor"
-msgstr "Naudoti numatytąją spa_lvą"
-
-#: ../stickynotes/stickynotes.ui.h:45
-msgid "Specify a title for the note"
-msgstr "Nurodykite raštelio antraštę"
-
-#: ../stickynotes/stickynotes.ui.h:46
-msgid "_Title:"
-msgstr "_Antraštė:"
-
-#: ../stickynotes/stickynotes.schemas.in.h:1
-msgid "Default width for new notes"
-msgstr "Numatytasis naujų raštelių plotis"
-
-#: ../stickynotes/stickynotes.schemas.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Numatytasis naujų raštelių plotis taškais."
-
-#: ../stickynotes/stickynotes.schemas.in.h:3
-msgid "Default height for new notes"
-msgstr "Numatytasis naujų raštelių aukštis"
-
-#: ../stickynotes/stickynotes.schemas.in.h:4
-msgid "Default height for new sticky notes in pixels."
-msgstr "Numatytasis naujų raštelių aukštis taškais."
-
-#: ../stickynotes/stickynotes.schemas.in.h:5
-msgid "Default color for new notes"
-msgstr "Numatytoji naujų raštelių spalva"
-
-#: ../stickynotes/stickynotes.schemas.in.h:6
-msgid ""
-"Default color for new sticky notes. This should be in html hex "
-"specification, for example \"#30FF50\"."
-msgstr ""
-"Numatytoji lipnių raštelių spalva. Ji turėtų būti nurodyta šešioliktaine "
-"HTML išraiška, pvz., „#30FF50“."
-
-#: ../stickynotes/stickynotes.schemas.in.h:7
-msgid "Default color for font"
-msgstr "Numatytoji šrifto spalva"
-
-#: ../stickynotes/stickynotes.schemas.in.h:8
-msgid ""
-"Default font color for new sticky notes. This should be in html hex "
-"specification, for example \"#000000\"."
-msgstr ""
-"Numatytoji naujų lipnių raštelių šrifto spalva. Ji turėtų būti nurodyta "
-"šešioliktaine HTML išraiška, pvz., „#000000“."
-
-#: ../stickynotes/stickynotes.schemas.in.h:9
-msgid "Default font for new notes"
-msgstr "Numatytasis naujų raštelių šriftas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:10
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Numatytasis naujų lipnių raštelių šriftas. Tai turėtų būti Pango šrifto "
-"vardas, pvz., „Sans Italic 10“."
-
-#: ../stickynotes/stickynotes.schemas.in.h:11
-msgid "Sticky notes' workspace stickyness"
-msgstr "Lipnių raštelių darbo erdvių lipnumas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:12
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Nurodo, ar lipnūs rašteliai yra matomi VISOSE darbo erdvėse darbastalyje, ar "
-"ne"
-
-#: ../stickynotes/stickynotes.schemas.in.h:13
-msgid "Sticky notes' locked state"
-msgstr "Lipnių raštelių užrakinimo būsena"
-
-#: ../stickynotes/stickynotes.schemas.in.h:14
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Nurodo, ar lipnūs rašteliai yra užrakinti (ne redaguojami) ar ne."
-
-#: ../stickynotes/stickynotes.schemas.in.h:15
-msgid "Date format of note's title"
-msgstr "Datos formatas raštelio antraštėje"
-
-#: ../stickynotes/stickynotes.schemas.in.h:16
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Standartiškai, lipniems rašteliams yra priskiriama dabartinė data kaip "
-"pavadinimas kai tik jie sukuriami. Naudojamas šis formatas; viskas kas gali "
-"būti apdorojama strftime() funkcijos tinka."
-
-#: ../stickynotes/stickynotes.schemas.in.h:17
-msgid "Whether to use the default system color"
-msgstr "Ar naudoti numatytąsias sistemos spalvas"
-
-#: ../stickynotes/stickynotes.schemas.in.h:18
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Jeigu šis nustatymas yra atjungtas, bus naudojama vartotojo parinkta spalva "
-"kaip numatytoji spalva visiems lipniems lapeliams."
-
-#: ../stickynotes/stickynotes.schemas.in.h:19
-msgid "Whether to use the default system font"
-msgstr "Ar naudoti numatytąjį sistemos šriftą"
-
-#: ../stickynotes/stickynotes.schemas.in.h:20
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Jeigu šis nustatymas yra atjungtas, bus naudojmas vartotojo parinktas "
-"šriftas kaip numatytasis šriftas visuose lipniuose lapaliuose."
-
-#: ../stickynotes/stickynotes.schemas.in.h:21
-msgid "Whether to force the default color and font on all notes"
-msgstr ""
-"Ar priverstinai naudoti numatytąjį šriftą ir spalvas visuose rašteliuose"
-
-#: ../stickynotes/stickynotes.schemas.in.h:22
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Jeigu ši parinktis yra įjungta, bus nepaisoma paskiriems rašteliams "
-"priskirtų pasirinktinių spalvų ir šriftų."
-
-#: ../stickynotes/stickynotes.schemas.in.h:23
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr "Ar paslėpti visus raštelius, kuomet pažymimas darbastalis"
-
-#: ../stickynotes/stickynotes.schemas.in.h:24
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Jei ši parinktis įjungta, spustelėjus darbastalį ar jame esantį elementą, "
-"automatiškai bus paslėpti visi atverti rašteliai."
-
-#: ../stickynotes/stickynotes.schemas.in.h:25
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Ar klausti patvirtinimo ištrinant raštelį"
-
-#: ../stickynotes/stickynotes.schemas.in.h:26
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Tušti rašteliai visada ištrinami neprašant patvirtinimo."
-
-#: ../stickynotes/stickynotes_applet.c:36
-msgid "Hi_de Notes"
-msgstr "P_aslėpti raštelius"
-
-#: ../stickynotes/stickynotes_applet.c:39
-msgid "_Delete Notes"
-msgstr "_Pašalinti raštelius"
-
-#: ../stickynotes/stickynotes_applet.c:55
-msgid "_Lock Notes"
-msgstr "_Užrakinti raštelius"
-
-#: ../stickynotes/stickynotes_applet.c:620
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d raštelis"
-msgstr[1] "%d rašteliai"
-msgstr[2] "%d raštelių"
-
-#: ../stickynotes/stickynotes_applet.c:621
-msgid "Show sticky notes"
-msgstr "Rodyti lipnius raštelius"
-
-#: ../stickynotes/stickynotes_applet_callbacks.c:379
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Lipnūs rašteliai skirti GNOME darbo aplinkai"
-
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Šiukšlinė"
-
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "Eiti į šiukšlinę"
-
-#: ../trashapplet/src/trashapplet.c:69 ../trashapplet/src/trash-empty.c:343
-msgid "_Empty Trash"
-msgstr "_Išvalyti šiukšlinę"
-
-#: ../trashapplet/src/trashapplet.c:72
-msgid "_Open Trash"
-msgstr "_Atverti šiukšlinę"
-
-#: ../trashapplet/src/trashapplet.c:128
-#, c-format
-msgid "%d Item in Trash"
-msgid_plural "%d Items in Trash"
-msgstr[0] "Šiukšlinėje yra %d elementas"
-msgstr[1] "Šiukšlinėje yra %d elementai"
-msgstr[2] "Šiukšlinėje yra %d elementų"
-
-#: ../trashapplet/src/trashapplet.c:136
-msgid "No Items in Trash"
-msgstr "Šiukšlinėje nieko nėra"
-
-#: ../trashapplet/src/trashapplet.c:377
-#, c-format
-msgid ""
-"Error while spawning Nautilus:\n"
-"%s"
-msgstr ""
-"Iškviečiant nautilių, įvyko klaida:\n"
-"%s"
-
-#: ../trashapplet/src/trashapplet.c:426
-msgid ""
-"A GNOME trash bin that lives in your panel. You can use it to view the trash "
-"or drag and drop items into the trash."
-msgstr ""
-"Skydelyje esanti GNOME šiukšlinė. Galite ją naudoti norėdami pamatyti "
-"išmestus failus arba ant jos užvilkti ir paleisti norimus ištrinti elementus."
-
-#: ../trashapplet/src/trashapplet.c:451
-msgid "Delete Immediately?"
-msgstr "Ištrinti tuojau pat?"
-
-#: ../trashapplet/src/trashapplet.c:480
-msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr ""
-"Perkelti elementų į šiukšlinę nepavyko, ar norite juos iškart ištrinti?"
-
-#: ../trashapplet/src/trashapplet.c:485
-msgid ""
-"Cannot move some items to trash, do you want to delete these immediately?"
-msgstr ""
-"Kai kurių elementų nepavyko perkelti į šiukšlinę, ar norite juos iškart "
-"ištrinti?"
-
-#: ../trashapplet/src/trashapplet.c:615
-msgid "Trash Applet"
-msgstr "Šiukšlinės įtaisas"
-
-#. Translators: the %s in this string should be read as %d.
-#: ../trashapplet/src/trash-empty.c:73
-#, c-format
-msgid "Removing item %s of %s"
-msgstr "Šalinamas %s elementas iš %s"
-
-#. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:99
-#, c-format
-msgid "Removing: %s"
-msgstr "Šalinama: %s"
-
-#: ../trashapplet/src/trash-empty.c:322
-msgid "Empty all of the items from the trash?"
-msgstr "Iš šiukšlinės išvalyti visus elementus?"
-
-#: ../trashapplet/src/trash-empty.c:329
-msgid ""
-"If you choose to empty the trash, all items in it will be permanently lost. "
-"Please note that you can also delete them separately."
-msgstr ""
-"Jeigu pasirinksite išvalyti šiukšlinę, visi elementai joje bus negrįžtamai "
-"prarasti. Turėkite omenyje, kad taip pat galite ištrinti kiekvieną elementą "
-"atskirai."
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:1
-msgid "Emptying the Trash"
-msgstr "Valoma šiukšlinė"
-
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
-msgid "From:"
-msgstr "Nuo:"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internetas"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Netspeed įtaisas"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:3
-msgid "Netspeed Applet Factory"
-msgstr "Netspeed įtaiso gamykla"
-
-#: ../GNOME_NetspeedApplet.server.in.in.h:4
-msgid "Network Monitor"
-msgstr "Tinklo monitorius"
-
-#: ../src/netspeed.c:409
+#: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
 
-#: ../src/netspeed.c:409
+#: ../netspeed/src/netspeed.c:368
 msgid "B/s"
 msgstr "B/s"
 
-#: ../src/netspeed.c:411
+#: ../netspeed/src/netspeed.c:370
 msgid "bits"
 msgstr "bitų"
 
-#: ../src/netspeed.c:411
+#: ../netspeed/src/netspeed.c:370
 msgid "bytes"
 msgstr "baitų"
 
-#: ../src/netspeed.c:418
+#: ../netspeed/src/netspeed.c:377
 msgid "kb/s"
 msgstr "kb/s"
 
-#: ../src/netspeed.c:418
+#: ../netspeed/src/netspeed.c:377
 msgid "KiB/s"
 msgstr "KiB/s"
 
-#: ../src/netspeed.c:420
+#: ../netspeed/src/netspeed.c:379
 msgid "kb"
 msgstr "kb"
 
-#: ../src/netspeed.c:420
+#: ../netspeed/src/netspeed.c:379
 msgid "KiB"
 msgstr "KiB"
 
-#: ../src/netspeed.c:429
+#: ../netspeed/src/netspeed.c:388
 msgid "Mb/s"
 msgstr "Mb/s"
 
-#: ../src/netspeed.c:429
+#: ../netspeed/src/netspeed.c:388
 msgid "MiB/s"
 msgstr "MiB/s"
 
-#: ../src/netspeed.c:431
+#: ../netspeed/src/netspeed.c:390
 msgid "Mb"
 msgstr "Mb"
 
-#: ../src/netspeed.c:431
+#: ../netspeed/src/netspeed.c:390
 msgid "MiB"
 msgstr "MiB"
 
-#: ../src/netspeed.c:757
-#, c-format
-msgid ""
-"There was an error displaying help:\n"
-"%s"
-msgstr ""
-"Klaida rodant žinyną:\n"
-"%s"
-
-#: ../src/netspeed.c:808
-#, c-format
-msgid ""
-"Failed to show:\n"
-"%s"
-msgstr ""
-"Nepavyko parodyti:\n"
-"%s"
-
-#: ../src/netspeed.c:839
+#: ../netspeed/src/netspeed.c:634
 msgid ""
 "A little applet that displays some information on the traffic on the "
 "specified network device"
@@ -3238,118 +2634,70 @@ msgstr ""
 "Paprastas įtaisas, rodantis informaciją apie nurodyto tinklo įrenginio "
 "aktyvumą"
 
-#: ../src/netspeed.c:844
+#: ../netspeed/src/netspeed.c:639
 msgid "Netspeed Website"
 msgstr "Netspeed svetainė"
 
-#: ../src/netspeed.c:970
-msgid "Netspeed Preferences"
-msgstr "Netspeed nustatymai"
-
-#: ../src/netspeed.c:993
-msgid "General Settings"
-msgstr "Bendrieji nustatymai"
-
-#: ../src/netspeed.c:1014
-msgid "Network _device:"
-msgstr "Tinklo _įrenginys:"
-
-#. Default means device with default route set
-#: ../src/netspeed.c:1025
-msgid "Default"
-msgstr "Numatytasis"
-
-#: ../src/netspeed.c:1038
-msgid "Show _sum instead of in & out"
-msgstr "Rodyti _sumą vietoje gaunamo ir siunčiamo srauto"
-
-#: ../src/netspeed.c:1042
-msgid "Show _bits instead of bytes"
-msgstr "Rodyti _bitus vietoje baitų"
-
-#: ../src/netspeed.c:1046
-msgid "Change _icon according to the selected device"
-msgstr "Keisti _piktogramą atsižvelgiant į pasirinktą įrenginį"
-
-#: ../src/netspeed.c:1157
+#: ../netspeed/src/netspeed.c:902
 #, c-format
 msgid "Device Details for %s"
 msgstr "Įrenginio %s informacija"
 
-#: ../src/netspeed.c:1183
+#: ../netspeed/src/netspeed.c:927
 msgid "_In graph color"
 msgstr "_Gaunamų duomenų grafiko spalva"
 
-#: ../src/netspeed.c:1184
+#: ../netspeed/src/netspeed.c:928
 msgid "_Out graph color"
 msgstr "_Siunčiamų duomenų grafiko spalva"
 
-#: ../src/netspeed.c:1200
+#: ../netspeed/src/netspeed.c:944
 msgid "Internet Address:"
 msgstr "Interneto adresas:"
 
-#: ../src/netspeed.c:1201
+#: ../netspeed/src/netspeed.c:945
 msgid "Netmask:"
 msgstr "Tinklo kaukė:"
 
-#: ../src/netspeed.c:1202
+#: ../netspeed/src/netspeed.c:946
 msgid "Hardware Address:"
 msgstr "Įrenginio adresas:"
 
-#: ../src/netspeed.c:1203
+#: ../netspeed/src/netspeed.c:947
 msgid "P-t-P Address:"
 msgstr "P-t-P adresas:"
 
-#: ../src/netspeed.c:1204
+#: ../netspeed/src/netspeed.c:948
 msgid "Bytes in:"
 msgstr "Baitų gauta:"
 
-#: ../src/netspeed.c:1205
+#: ../netspeed/src/netspeed.c:949
 msgid "Bytes out:"
 msgstr "Baitų išsiųsta:"
 
-#: ../src/netspeed.c:1207 ../src/netspeed.c:1208 ../src/netspeed.c:1209
-#: ../src/netspeed.c:1210
+#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
+#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
 msgid "none"
 msgstr "jokio"
 
-#: ../src/netspeed.c:1249
+#: ../netspeed/src/netspeed.c:993
 msgid "IPv6 Address:"
 msgstr "IPv6 adresas:"
 
-#: ../src/netspeed.c:1281
+#: ../netspeed/src/netspeed.c:1025
 msgid "Signal Strength:"
 msgstr "Signalo stiprumas:"
 
-#: ../src/netspeed.c:1282
+#: ../netspeed/src/netspeed.c:1026
 msgid "ESSID:"
 msgstr "ESSID:"
 
-#: ../src/netspeed.c:1368
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr "Ar norite dabar atjungti %s?"
-
-#: ../src/netspeed.c:1372
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr "Ar norite dabar prijungti %s?"
-
-#: ../src/netspeed.c:1398
-#, c-format
-msgid ""
-"<b>Running command %s failed</b>\n"
-"%s"
-msgstr ""
-"<b>Nepavyko paleisti komandos %s</b>\n"
-"%s"
-
-#: ../src/netspeed.c:1454
+#: ../netspeed/src/netspeed.c:1076
 #, c-format
 msgid "%s is down"
 msgstr "%s atjungtas"
 
-#: ../src/netspeed.c:1459
+#: ../netspeed/src/netspeed.c:1081
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -3358,11 +2706,11 @@ msgstr ""
 "%s: %s\n"
 "gaunama: %s siunčiama: %s"
 
-#: ../src/netspeed.c:1461 ../src/netspeed.c:1470
+#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
 msgid "has no ip"
 msgstr "neturi ip"
 
-#: ../src/netspeed.c:1468
+#: ../netspeed/src/netspeed.c:1090
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -3371,7 +2719,7 @@ msgstr ""
 "%s: %s\n"
 "suma: %s"
 
-#: ../src/netspeed.c:1477
+#: ../netspeed/src/netspeed.c:1099
 #, c-format
 msgid ""
 "\n"
@@ -3382,22 +2730,1022 @@ msgstr ""
 "ESSID: %s\n"
 "Stiprumas: %d %%"
 
-#: ../src/netspeed.c:1478
+#: ../netspeed/src/netspeed.c:1100
 msgid "unknown"
 msgstr "nežinoma"
 
-#: ../src/netspeed.c:1525
+#: ../netspeed/src/netspeed.c:1165
+#, c-format
+msgid "Do you want to disconnect %s now?"
+msgstr "Ar norite dabar atjungti %s?"
+
+#: ../netspeed/src/netspeed.c:1167
+#, c-format
+msgid "Do you want to connect %s now?"
+msgstr "Ar norite dabar prijungti %s?"
+
+#: ../netspeed/src/netspeed.c:1190
+#, c-format
+msgid ""
+"<b>Running command %s failed</b>\n"
+"%s"
+msgstr ""
+"<b>Nepavyko paleisti komandos %s</b>\n"
+"%s"
+
+#: ../netspeed/src/netspeed.c:1457
 msgid "Netspeed"
 msgstr "Netspeed"
 
-#: ../src/netspeed.c:1693
+#: ../netspeed/src/netspeed.c:1549
+#, c-format
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr ""
+"Klaida rodant žinyną:\n"
+"%s"
+
+#: ../netspeed/src/preferences.c:152
+msgid "Network _device:"
+msgstr "Tinklo _įrenginys:"
+
+#: ../netspeed/src/preferences.c:219
+msgid "General Settings"
+msgstr "Bendrieji nustatymai"
+
+#: ../netspeed/src/preferences.c:240
+msgid "Show _sum instead of in & out"
+msgstr "Rodyti _sumą vietoje gaunamo ir siunčiamo srauto"
+
+#: ../netspeed/src/preferences.c:246
+msgid "Show _bits instead of bytes"
+msgstr "Rodyti _bitus vietoje baitų"
+
+#: ../netspeed/src/preferences.c:252
+msgid "Change _icon according to the selected device"
+msgstr "Keisti _piktogramą atsižvelgiant į pasirinktą įrenginį"
+
+#: ../netspeed/src/preferences.c:312
+msgid "Netspeed Preferences"
+msgstr "Netspeed nuostatos"
+
+#: ../netspeed/data/netspeed-menu.xml.h:1
 msgid "Device _Details"
 msgstr "Įrenginio _informacija"
 
-#: ../src/netspeed.c:1693
-msgid "_Preferences..."
-msgstr "_Nustatymai..."
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Netspeed įtaiso gamykla"
 
-#: ../src/netspeed.c:1693
-msgid "_About..."
-msgstr "_Apie..."
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Netspeed įtaisas"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Tinklo monitorius"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+#, fuzzy
+#| msgid "Show frame"
+msgid "Show sum"
+msgstr "Rodyti rėmelį"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+#, fuzzy
+#| msgid "Show _sum instead of in & out"
+msgid "Show sum instead of in &amp; out"
+msgstr "Rodyti _sumą vietoje gaunamo ir siunčiamo srauto"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+#, fuzzy
+#| msgid "Show sticky notes"
+msgid "Show bits"
+msgstr "Rodyti lipnius raštelius"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+#, fuzzy
+#| msgid "Show _bits instead of bytes"
+msgid "Show bits instead of bytes"
+msgstr "Rodyti _bitus vietoje baitų"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+#, fuzzy
+#| msgid "Change %"
+msgid "Change icon"
+msgstr "Pokytis %"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+#, fuzzy
+#| msgid "Change _icon according to the selected device"
+msgid "Change icon according to the selected device"
+msgstr "Keisti _piktogramą atsižvelgiant į pasirinktą įrenginį"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr ""
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Atnaujinimo laikas"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Atnaujinimo laikas milisekundėmis"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Tinklo įrenginys"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+#, fuzzy
+#| msgid "Command"
+msgid "Up command"
+msgstr "Komanda"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+#, fuzzy
+#| msgid "Command"
+msgid "Down command"
+msgstr "Komanda"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+#, fuzzy
+#| msgid "_In graph color"
+msgid "In graph color"
+msgstr "_Gaunamų duomenų grafiko spalva"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+#, fuzzy
+#| msgid "_Out graph color"
+msgid "Out graph color"
+msgstr "_Siunčiamų duomenų grafiko spalva"
+
+#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
+msgid "Sticky Notes Applet Factory"
+msgstr "Lipnių raštelių priedo gamykla"
+
+#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:380
+msgid "Sticky Notes"
+msgstr "Lipnūs rašteliai"
+
+#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
+msgid "Create, view, and manage sticky notes on the desktop"
+msgstr "Kurkite, žiūrėkite ir tvarkykite lipnius darbalaukio raštelius"
+
+#: ../stickynotes/stickynotes.c:591
+msgid "This note is locked."
+msgstr "Šis raštelis yra užrakintas."
+
+#: ../stickynotes/stickynotes.c:595
+msgid "This note is unlocked."
+msgstr "Šis raštelis yra atrakintas."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Ištrinti šį lipnų raštelį?"
+
+#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+msgid "This cannot be undone."
+msgstr "Veiksmas negali būti atšauktas."
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:1
+msgid "_Delete All"
+msgstr "_Pašalinti visus"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:2
+msgid "Delete all sticky notes?"
+msgstr "Ištrinti visus lipnius raštelius?"
+
+#: ../stickynotes/stickynotes-note.ui.h:1
+msgid "Sticky Note"
+msgstr "Lipnus raštelis"
+
+#: ../stickynotes/stickynotes-note.ui.h:2
+msgid "Lock/Unlock note"
+msgstr "Užrakinti/atrakinti raštelį"
+
+#: ../stickynotes/stickynotes-note.ui.h:3
+msgid "Close note"
+msgstr "Užverti raštelį"
+
+#: ../stickynotes/stickynotes-note.ui.h:4
+msgid "Resize note"
+msgstr "Pakeisti raštelio dydį"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:1
+msgid "Sticky Notes Preferences"
+msgstr "Lipnių raštelių nuostatos"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:2
+msgid "Default Note Properties"
+msgstr "Numatytosios raštelio savybės"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:4
+msgid "H_eight:"
+msgstr "_Aukštis:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:5
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Nurodykite numatytąją naujų raštelių plotį (taškais)"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:6
+msgid "1"
+msgstr "1"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:7
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Nurodykite numatytąją naujų raštelių aukštį (taškais)"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:8
+msgid "0"
+msgstr "0"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:9
+msgid "Use co_lor from the system theme"
+msgstr "Naudoti sistemos temos _spalvą"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:10
+msgid "Font Co_lor:"
+msgstr "Šrifto spa_lva:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:11
+msgid "Note C_olor:"
+msgstr "Raštelio sp_alva:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:12
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Pasirinkite pagrindo spalvą, naudotiną visuose lipniuose rašteliuose"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:13
+msgid "Pick a default sticky note color"
+msgstr "Pasirinkite numatytąją lipnaus raštelio spalvą"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:14
+msgid "Use fo_nt from the system theme"
+msgstr "Naudoti sistemos temos šri_ftą"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:15
+#: ../stickynotes/stickynotes-properties.ui.h:11
+msgid "_Font:"
+msgstr "Šri_ftas:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:16
+msgid "Choose a font to use for all sticky notes"
+msgstr "Pasirinkite šriftą, naudotiną visuose lipniuose rašteliuose"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:17
+msgid "Pick a default sticky note font"
+msgstr "Pasirinkite numatytąją lipnaus raštelio šriftą"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:18
+msgid "Behavior"
+msgstr "Veikimas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:19
+msgid "_Put notes on all workspaces"
+msgstr "_Patalpinti visose darbo srityse"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:20
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Pasirinkite, jeigu rašteliai yra matomi visose darbo srityse"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:21
+msgid "Force _default color and font on notes"
+msgstr "Priverstinai nau_doti numatytąjį šriftą ir spalvas"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:22
+msgid "Choose if the default style is forced on all notes"
+msgstr ""
+"Pasirinkite, jeigu visuose rašteliuose priverstinai naudojamas numatytasis "
+"stilius"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:23
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Paslėpti raštelius spustelėjus _darbalaukyje"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:24
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr ""
+"Pasirinkite, ar norite paslėpti visus raštelius, kuomet pasirenkama "
+"darbalaukyje"
+
+#: ../stickynotes/stickynotes-properties.ui.h:1
+msgid "Sticky Note Properties"
+msgstr "Lipnių raštelių savybės"
+
+#: ../stickynotes/stickynotes-properties.ui.h:2
+msgid "Properties"
+msgstr "Savybės"
+
+#: ../stickynotes/stickynotes-properties.ui.h:3
+msgid "_Title:"
+msgstr "_Antraštė:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:4
+msgid "Specify a title for the note"
+msgstr "Nurodykite raštelio antraštę"
+
+#: ../stickynotes/stickynotes-properties.ui.h:5
+msgid "Use default co_lor"
+msgstr "Naudoti numatytąją spa_lvą"
+
+#: ../stickynotes/stickynotes-properties.ui.h:6
+msgid "Font C_olor:"
+msgstr "Šrifto s_palva:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:7
+msgid "Note _Color:"
+msgstr "Raštelio _spalva:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:8
+msgid "Use default fo_nt"
+msgstr "Naudoti numatytąjį š_riftą"
+
+#: ../stickynotes/stickynotes-properties.ui.h:9
+msgid "Choose a color for the note"
+msgstr "Pasirinkite raštelio spalvą"
+
+#: ../stickynotes/stickynotes-properties.ui.h:10
+msgid "Pick a color for the sticky note"
+msgstr "Pasirinkite lipnaus raštelio spalvą"
+
+#: ../stickynotes/stickynotes-properties.ui.h:12
+msgid "Choose a font for the note"
+msgstr "Pasirinkite raštelio šriftą"
+
+#: ../stickynotes/stickynotes-properties.ui.h:13
+msgid "Pick a font for the sticky note"
+msgstr "Pasirinkite lipnaus raštelio šriftą"
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d raštelis"
+msgstr[1] "%d rašteliai"
+msgstr[2] "%d raštelių"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Rodyti lipnius raštelius"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Lipnūs rašteliai skirti GNOME darbalaukio aplinkai"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "_Naujas raštelis"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "P_aslėpti raštelius"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Užrakinti raštelius"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "_Pašalinti raštelius"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Pašalinti raštelį..."
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Užrakinti raštelį"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Šiukšlinė"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Eiti į šiukšlinę"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Numatytasis naujų raštelių plotis"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Numatytasis naujų raštelių plotis taškais."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Numatytasis naujų raštelių aukštis"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Numatytoji naujų raštelių spalva"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+#, fuzzy
+#| msgid ""
+#| "Default color for new sticky notes. This should be in html hex "
+#| "specification, for example \"#30FF50\"."
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Numatytoji lipnių raštelių spalva. Ji turėtų būti nurodyta šešioliktaine "
+"HTML išraiška, pvz., „#30FF50“."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Numatytoji šrifto spalva"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+#, fuzzy
+#| msgid ""
+#| "Default font color for new sticky notes. This should be in html hex "
+#| "specification, for example \"#000000\"."
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Numatytoji naujų lipnių raštelių šrifto spalva. Ji turėtų būti nurodyta "
+"šešioliktaine HTML išraiška, pvz., „#000000“."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Numatytasis naujų raštelių šriftas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Numatytasis naujų lipnių raštelių šriftas. Tai turėtų būti Pango šrifto "
+"vardas, pvz., „Sans Italic 10“."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Lipnių raštelių darbo sričių lipnumas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Nurodo, ar lipnūs rašteliai yra matomi VISOSE darbo srityse darbalaukyje, ar "
+"ne"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Lipnių raštelių užrakinimo būsena"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr "Nurodo, ar lipnūs rašteliai yra užrakinti (ne redaguojami) ar ne."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "Datos formatas raštelio antraštėje"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Standartiškai, lipniems rašteliams yra priskiriama dabartinė data kaip "
+"pavadinimas kai tik jie sukuriami. Naudojamas šis formatas; viskas kas gali "
+"būti apdorojama strftime() funkcijos tinka."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Ar naudoti numatytąsias sistemos spalvas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Jeigu šis parametras yra išjungtas, bus naudojama vartotojo parinkta spalva "
+"kaip numatytoji spalva visiems lipniems lapeliams."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Ar naudoti numatytąjį sistemos šriftą"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Jeigu šis parametras yra išjungtas, bus naudojmas vartotojo parinktas "
+"šriftas kaip numatytasis šriftas visuose lipniuose lapaliuose."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr ""
+"Ar priverstinai naudoti numatytąjį šriftą ir spalvas visuose rašteliuose"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Jeigu šis parametras yra įjungtas, bus nepaisoma paskiriems rašteliams "
+"priskirtų pasirinktinių spalvų ir šriftų."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Ar paslėpti visus raštelius, kuomet pažymimas darbalaukis"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Jei šis parametras įjungtas, spustelėjus darbalaukį ar jame esantį elementą, "
+"automatiškai bus paslėpti visi atverti rašteliai."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Ar klausti patvirtinimo ištrinant raštelį"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Tušti rašteliai visada ištrinami neprašant patvirtinimo."
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr ""
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+msgid "Other"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+msgid "Applications"
+msgstr "Programos"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+msgid "Fonts"
+msgstr "Šriftai"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Archyvai"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+#, fuzzy
+#| msgid "_Title:"
+msgid "Title"
+msgstr "_Antraštė:"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+
+#: ../trashapplet/src/trashapplet.c:122
+#, c-format
+msgid "%d Item in Trash"
+msgid_plural "%d Items in Trash"
+msgstr[0] "Šiukšlinėje yra %d elementas"
+msgstr[1] "Šiukšlinėje yra %d elementai"
+msgstr[2] "Šiukšlinėje yra %d elementų"
+
+#: ../trashapplet/src/trashapplet.c:130
+msgid "No Items in Trash"
+msgstr "Šiukšlinėje nieko nėra"
+
+#: ../trashapplet/src/trashapplet.c:363
+#, c-format
+msgid ""
+"Error while spawning Nautilus:\n"
+"%s"
+msgstr ""
+"Iškviečiant nautilių, įvyko klaida:\n"
+"%s"
+
+#: ../trashapplet/src/trashapplet.c:415
+msgid ""
+"A GNOME trash bin that lives in your panel. You can use it to view the trash "
+"or drag and drop items into the trash."
+msgstr ""
+"Skydelyje esanti GNOME šiukšlinė. Galite ją naudoti norėdami pamatyti "
+"išmestus failus arba ant jos užvilkti ir paleisti norimus ištrinti elementus."
+
+#: ../trashapplet/src/trashapplet.c:440
+msgid "Delete Immediately?"
+msgstr "Ištrinti tuojau pat?"
+
+#: ../trashapplet/src/trashapplet.c:469
+msgid "Cannot move items to trash, do you want to delete them immediately?"
+msgstr ""
+"Perkelti elementų į šiukšlinę nepavyko, ar norite juos iškart ištrinti?"
+
+#: ../trashapplet/src/trashapplet.c:474
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
+msgstr ""
+"Kai kurių elementų nepavyko perkelti į šiukšlinę, ar norite juos iškart "
+"ištrinti?"
+
+#: ../trashapplet/src/trashapplet.c:604
+msgid "Trash Applet"
+msgstr "Šiukšlinės įtaisas"
+
+#. Translators: the %s in this string should be read as %d.
+#: ../trashapplet/src/trash-empty.c:70
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Šalinamas %s elementas iš %s"
+
+#. Translators: %s is a file name
+#: ../trashapplet/src/trash-empty.c:96
+#, c-format
+msgid "Removing: %s"
+msgstr "Šalinama: %s"
+
+#: ../trashapplet/src/trash-empty.c:321
+msgid "Empty all of the items from the trash?"
+msgstr "Iš šiukšlinės išvalyti visus elementus?"
+
+#: ../trashapplet/src/trash-empty.c:328
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Jeigu pasirinksite išvalyti šiukšlinę, visi elementai joje bus negrįžtamai "
+"prarasti. Turėkite omenyje, kad taip pat galite ištrinti kiekvieną elementą "
+"atskirai."
+
+#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
+msgid "_Empty Trash"
+msgstr "_Išvalyti šiukšlinę"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "_Atverti šiukšlinę"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:1
+msgid "Emptying the Trash"
+msgstr "Valoma šiukšlinė"
+
+#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+msgid "From:"
+msgstr "Nuo:"
+
+#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
+#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
+msgid "Home"
+msgstr ""
+
+#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr ""
+
+#: ../windowpicker/src/task-title.c:262
+msgid "Close window"
+msgstr "Užverti langą"
+
+#: ../windowpicker/src/task-title.c:366
+msgid "Close"
+msgstr "Užverti"
+
+#: ../windowpicker/src/task-title.c:367
+msgid "Close current window."
+msgstr ""
+
+#: ../windowpicker/src/task-item.c:716
+msgid "Window Task Button"
+msgstr ""
+
+#: ../windowpicker/src/wp-about-dialog.c:97
+msgid "Window Picker"
+msgstr ""
+
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
+msgid "Show windows from all workspaces"
+msgstr "Rodyti langus iš visų darbo sričių"
+
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
+msgid ""
+"Show the home title and\n"
+"log out icon when on the desktop"
+msgstr ""
+"Rodyti namų antraštę ir\n"
+"atsijungimo piktogramą, kai darbalaukyje"
+
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
+msgid ""
+"Show the application title and close icon\n"
+"for maximized windows"
+msgstr ""
+
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
+msgid "Grey out non-active window icons"
+msgstr ""
+
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
+msgid "Automatically expand task list to use full space"
+msgstr ""
+
+#~ msgid "HAL backend enabled."
+#~ msgstr "HAL posistemė įjungta."
+
+#~ msgid "HAL error"
+#~ msgstr "HAL klaida"
+
+#~ msgid "Could not create libhal_ctx"
+#~ msgstr "Nepavyko sukurti libhal_ctx"
+
+#~ msgid "No batteries found"
+#~ msgstr "Nerasta baterija"
+
+#~ msgid "Unable to initialise HAL: %s: %s"
+#~ msgstr "Nepavyko inicializuoti HAL: %s: %s"
+
+#~ msgid "DEPRECATED - Characters shown on applet startup"
+#~ msgstr "NENAUDOJAMA - Simboliai rodomi įtaiso paleidimo metu"
+
+#~ msgid "Interval timeout to check mount point status"
+#~ msgstr "Intervalas tarp prijungimo vietų patikrinimų"
+
+#~ msgid "Time in seconds between status updates"
+#~ msgstr "Laiko tarpas sekundėmis tarp būklės atnaujinimų"
+
+#~ msgid "Deskbar (formerly Mini-Commander)"
+#~ msgstr "Deskbar (anksčiau Mini-Commander)"
+
+#~ msgid "Deskbar (transparent upgrade from Mini-Commander)"
+#~ msgstr "Deskbar (atnaujinimas nuo Mini-Commander)"
+
+#~ msgid "Cannot get schema for %s: %s"
+#~ msgstr "Negaliu gauti schemos reikalingos %s : %s"
+
+#~ msgid "Cannot set schema for %s: %s"
+#~ msgstr "Negaliu pritaikyti schemos reikalingos %s : %s"
+
+#~ msgid "Set default list value for %s\n"
+#~ msgstr "Nustatyti numatytąją sąrašo reikšmę %s\n"
+
+#~ msgid ""
+#~ "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+#~ msgstr ""
+#~ "Yra nustatyta GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, todėl schemas nebus "
+#~ "diegiamos\n"
+
+#~ msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+#~ msgstr "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+
+#~ msgid "Failed to access configuration source(s): %s\n"
+#~ msgstr "Nepavyko pasiekti nustatymų šaltinio(ių): %s\n"
+
+#~ msgid "Error syncing config data: %s"
+#~ msgstr "Klaida suvienodinant nustatymų duomenis: %s "
+
+#~ msgid "Not used anymore"
+#~ msgstr "Daugiau nebenaudojamas"
+
+#~ msgid "The red component of the foreground color."
+#~ msgstr "Priekinio plano spalvos raudonas komponentas."
+
+#~ msgid "Foreground color, green component"
+#~ msgstr "Pirmo plano spalva, žalias komponentas"
+
+#~ msgid "The green component of the foreground color."
+#~ msgstr "Priekinio plano spalvos žalias komponentas."
+
+#~ msgid "Foreground color, blue component"
+#~ msgstr "Pirmo plano spalva, mėlynas komponentas"
+
+#~ msgid "The blue component of the foreground color."
+#~ msgstr "Priekinio plano spalvos mėlynas komponentas."
+
+#~ msgid "Background color, red component"
+#~ msgstr "Fono spalva, raudonas komponentas"
+
+#~ msgid "The red component of the background color."
+#~ msgstr "Fono spalvos raudonas komponentas."
+
+#~ msgid "Background color, green component"
+#~ msgstr "Fono spalva, žalias komponentas"
+
+#~ msgid "The green component of the background color."
+#~ msgstr "Fono spalvos žalias komponentas."
+
+#~ msgid "Background color, blue component"
+#~ msgstr "Fono spalva, mėlynas komponentas"
+
+#~ msgid "The blue component of the background color."
+#~ msgstr "Fono spalvos mėlynas elementas."
+
+#~ msgid ""
+#~ "This per-applet key is deprecated in favour of the global key, /schemas/"
+#~ "apps/mini-commander-global/macro_patterns."
+#~ msgstr ""
+#~ "Šis kiekvienam įtaisui atskiras raktas yra nebenaudojamas dėl naujo, "
+#~ "globalaus rakto, /schemas/apps/mini-commander-global/macro_patterns."
+
+#~ msgid "Volume Applet"
+#~ msgstr "Garsumo įtaisas"
+
+#~ msgid "Volume Control"
+#~ msgstr "Garsumo valdymas"
+
+#~ msgid "_Open Volume Control"
+#~ msgstr "_Atverti garso valdymą"
+
+#~ msgid "Mu_te"
+#~ msgstr "_Nutildyti"
+
+#~ msgid ""
+#~ "The volume control did not find any elements and/or devices to control. "
+#~ "This means either that you don't have the right GStreamer plugins "
+#~ "installed, or that you don't have a sound card configured."
+#~ msgstr ""
+#~ "Garsumo valdymo programa nerado jokių kontroliuotinų elementų ir/arba "
+#~ "įrenginių. Tai reiškia, kad neturite įdiegtų reikiamų GStreamer įskiepių, "
+#~ "arba garso plokštė yra nesukonfigūruota."
+
+#~ msgid ""
+#~ "You can remove the volume control from the panel by right-clicking the "
+#~ "speaker icon on the panel and selecting \"Remove From Panel\" from the "
+#~ "menu."
+#~ msgstr ""
+#~ "Galite pašalinti garso kontrolę iš skydelio paspaudę dešinįjį klavišą ant "
+#~ "garsiakalbio piktogramos, esančios skydelyje, ir meniu pasirinkę "
+#~ "„Pašalinti iš skydelio“."
+
+#~ msgid "Failed to start Volume Control: %s"
+#~ msgstr "Nepavyko paleisti Garsumo valdymo: %s"
+
+#~ msgid "%s: muted"
+#~ msgstr "%s: nutildytas"
+
+#~ msgid "%s: %d%%"
+#~ msgstr "%s: %d%%"
+
+#~ msgid "Failed to display help: %s"
+#~ msgstr "Nepavyko parodyti žinyno: %s"
+
+#~ msgid "Volume control for your GNOME Panel."
+#~ msgstr "Garsumo valdymas GNOME skydelyje."
+
+#~ msgid "Using GStreamer 0.10."
+#~ msgstr "Naudojama GStreamer 0.10"
+
+#~ msgid "Mute"
+#~ msgstr "Nutildyti"
+
+#~ msgid "Volume Control..."
+#~ msgstr "Garsumo valdymas..."
+
+#~ msgid "Unknown Volume Control %d"
+#~ msgstr "Nežinomas Garsumo valdiklis %d"
+
+#~ msgid "Channel controlled by applet. Only for OSS setups"
+#~ msgstr "Kanalas valdomas įtaiso. Tinka tik naudojant OSS."
+
+#~ msgid "Saved mute state"
+#~ msgstr "Išsaugota tyli būklė"
+
+#~ msgid "Saved volume to restore on startup"
+#~ msgstr "Išsaugotas garsumo lygis atstatomas paleidmo metu"
+
+#~ msgid "Adjust the sound volume"
+#~ msgstr "Reguliuoti garsumą"
+
+#~ msgid "Volume Control Preferences"
+#~ msgstr "Garsumo valdymo nustatymai"
+
+#~ msgid "Select the device and track to control."
+#~ msgstr "Pasirinkite valdomą įrenginį ir takelį."
+
+#~ msgid "Inbox Monitor"
+#~ msgstr "Pranešimų stebyklė"
+
+#~ msgid "CD Player"
+#~ msgstr "CD grotuvas"
+
+#~ msgid "Keyboard Indicator"
+#~ msgstr "Klaviatūros indikatorius"
+
+#~ msgid "Some panel items are no longer available"
+#~ msgstr "Kai kurie skydelio elementai yra daugiau nebeprieinami"
+
+#~ msgid ""
+#~ "One or more panel items (also referred to as applets) are no longer "
+#~ "available in the GNOME desktop."
+#~ msgstr ""
+#~ "Vienas ar keletas skydelio elementų (įtaisų) yra daugiau nebeprieinami "
+#~ "GNOME aplinkoje."
+
+#~ msgid "These items will now be removed from your configuration:"
+#~ msgstr "Šie elementai dabar bus pašalinti iš konfigūracijos:"
+
+#~ msgid "You will not receive this message again."
+#~ msgstr "Ši žinutė Jums daugiau nebus rodoma."
+
+#~ msgid "Tomboy (ne Stickynotes)"
+#~ msgstr "Tomboy (buvęs Stickynotes)"
+
+#~ msgid "Tomboy (transparent upgrade from stickynotes)"
+#~ msgstr "Tomboy (sklandus lipnių raštelių atnaujinimas)"
+
+#~ msgid "Default height for new sticky notes in pixels."
+#~ msgstr "Numatytasis naujų raštelių aukštis taškais."
+
+#~ msgid "Internet"
+#~ msgstr "Internetas"
+
+#~ msgid ""
+#~ "Failed to show:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nepavyko parodyti:\n"
+#~ "%s"
+
+#~ msgid "_Preferences..."
+#~ msgstr "_Nustatymai..."
+
+#~ msgid "_About..."
+#~ msgstr "_Apie..."
