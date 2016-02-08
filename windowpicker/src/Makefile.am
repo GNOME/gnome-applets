@@ -7,7 +7,6 @@ libwindow_picker_applet_la_CFLAGS = \
 	-D_GNU_SOURCE \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \
-	-DGTK_DISABLE_SINGLE_INCLUDES \
 	-I$(top_builddir) \
 	-I$(top_srcdir) \
 	$(GNOME_APPLETS_CFLAGS) \
