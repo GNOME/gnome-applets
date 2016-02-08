@@ -43,20 +43,22 @@
 
 struct _WpApplet
 {
-  PanelApplet  parent;
+  PanelApplet       parent;
 
-  GSettings   *settings;
+  GSettings        *settings;
 
-  GtkWidget   *about_dialog;
-  GtkWidget   *preferences_dialog;
+  GtkWidget        *about_dialog;
+  GtkWidget        *preferences_dialog;
 
-  gboolean     show_all_windows;
-  gboolean     icons_greyscale;
-  gboolean     expand_task_list;
+  GtkStyleProvider *provider;
 
-  GtkWidget   *container;
-  GtkWidget   *tasks;
-  GtkWidget   *title;
+  gboolean          show_all_windows;
+  gboolean          icons_greyscale;
+  gboolean          expand_task_list;
+
+  GtkWidget        *container;
+  GtkWidget        *tasks;
+  GtkWidget        *title;
 };
 
 enum
@@ -203,9 +205,57 @@ wp_applet_setup_title (WpApplet *applet)
 }
 
 static void
+theme_changed (GtkSettings *settings,
+               WpApplet    *applet)
+{
+  GdkScreen *screen;
+  gchar *theme_name;
+  gboolean dark_theme;
+  guint priority;
+  gchar *resource;
+  GtkCssProvider *css;
+
+  screen = gdk_screen_get_default ();
+
+  if (applet->provider != NULL)
+    {
+      gtk_style_context_remove_provider_for_screen (screen, applet->provider);
+      g_clear_object (&applet->provider);
+    }
+
+  g_object_get (settings, "gtk-theme-name", &theme_name, NULL);
+
+  if (g_strcmp0 (theme_name, "Adwaita") != 0 &&
+      g_strcmp0 (theme_name, "HighContrast") != 0)
+    {
+      g_free (theme_name);
+      return;
+    }
+
+  g_object_get (settings,
+                "gtk-application-prefer-dark-theme", &dark_theme,
+                NULL);
+
+  priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
+  resource = g_strdup_printf (GRESOURCE "theme/%s/windowpicker%s.css",
+                              theme_name, dark_theme ? "-dark" : "");
+
+  css = gtk_css_provider_new ();
+  applet->provider = GTK_STYLE_PROVIDER (css);
+
+  gtk_css_provider_load_from_resource (css, resource);
+  gtk_style_context_add_provider_for_screen (screen, applet->provider,
+                                             priority);
+
+  g_free (theme_name);
+  g_free (resource);
+}
+
+static void
 wp_applet_load (PanelApplet *panel_applet)
 {
   WpApplet *applet;
+  GtkSettings *gtk_settings;
 
   applet = WP_APPLET (panel_applet);
 
@@ -227,6 +277,13 @@ wp_applet_load (PanelApplet *panel_applet)
 
   g_settings_bind (applet->settings, KEY_EXPAND_TASK_LIST,
                    applet, KEY_EXPAND_TASK_LIST, G_SETTINGS_BIND_GET);
+
+  gtk_settings = gtk_settings_get_default ();
+  g_signal_connect (gtk_settings, "notify::gtk-theme-name",
+                    G_CALLBACK (theme_changed), applet);
+  g_signal_connect (gtk_settings, "notify::gtk-application-prefer-dark-theme",
+                    G_CALLBACK (theme_changed), applet);
+  theme_changed (gtk_settings, applet);
 
   gtk_widget_show_all (GTK_WIDGET (applet));
 }

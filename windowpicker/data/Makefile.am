@@ -1,3 +1,9 @@
+NULL =
+
+SUBDIRS = \
+	theme \
+	$(NULL)
+
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.WindowPicker.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)

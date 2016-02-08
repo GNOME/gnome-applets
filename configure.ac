@@ -741,6 +741,9 @@ AC_CONFIG_FILES([
 
   windowpicker/Makefile
   windowpicker/data/Makefile
+  windowpicker/data/theme/Makefile
+  windowpicker/data/theme/Adwaita/Makefile
+  windowpicker/data/theme/HighContrast/Makefile
   windowpicker/src/Makefile
 ])
 
