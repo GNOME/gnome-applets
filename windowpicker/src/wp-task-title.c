@@ -24,6 +24,7 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
+#include <gio/gio.h>
 #include <libwnck/libwnck.h>
 #include <panel-applet.h>
 
@@ -45,6 +46,7 @@ struct _WpTaskTitle
   PanelAppletOrient  applet_orient;
 
   WnckWindow        *active_window;
+  GDBusProxy        *session_proxy;
 };
 
 enum
@@ -61,6 +63,28 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 G_DEFINE_TYPE (WpTaskTitle, wp_task_title, GTK_TYPE_BOX)
 
 static void disconnect_active_window (WpTaskTitle *title);
+
+static void
+logout_ready_callback (GObject      *source_object,
+                       GAsyncResult *res,
+                       WpTaskTitle  *title)
+{
+  GError *error;
+  GVariant *result;
+
+  error = NULL;
+  result = g_dbus_proxy_call_finish (title->session_proxy, res, &error);
+
+  if (result)
+    g_variant_unref (result);
+
+  if (error)
+    {
+      g_warning ("Could not ask session manager to log out: %s",
+                 error->message);
+      g_error_free (error);
+    }
+}
 
 static gboolean
 button_press_event_cb (GtkButton *button,
@@ -96,6 +120,10 @@ button_press_event_cb (GtkButton *button,
     }
   else if (g_strcmp0 (icon, LOGOUT_ICON) == 0)
     {
+      g_dbus_proxy_call (title->session_proxy, "Logout",
+                         g_variant_new ("(u)", 0), G_DBUS_CALL_FLAGS_NONE,
+                         -1, NULL, (GAsyncReadyCallback) logout_ready_callback,
+                         title);
     }
   else
     {
@@ -197,6 +225,9 @@ update_title_visibility (WpTaskTitle *title)
         return;
 
       if (is_desktop_visible () == FALSE)
+        return;
+
+      if (title->session_proxy == NULL)
         return;
 
       show_home_title (title);
@@ -313,6 +344,24 @@ update_label_rotation (WpTaskTitle *title)
 }
 
 static void
+proxy_ready_cb (GObject      *source_object,
+                GAsyncResult *result,
+                WpTaskTitle  *title)
+{
+  GError *error;
+
+  error = NULL;
+  title->session_proxy = g_dbus_proxy_new_for_bus_finish (result, &error);
+
+  if (error)
+    {
+      g_warning ("[windowpicker] Could not connect to session manager: %s",
+                 error->message);
+      g_error_free (error);
+    }
+}
+
+static void
 wp_task_title_set_property (GObject      *object,
                             guint         property_id,
                             const GValue *value,
@@ -371,6 +420,8 @@ wp_task_title_dispose (GObject *object)
 
   title = WP_TASK_TITLE (object);
   screen = wnck_screen_get_default ();
+
+  g_clear_object (&title->session_proxy);
 
   g_signal_handlers_disconnect_by_func (screen, active_window_changed_cb, title);
 }
@@ -527,6 +578,12 @@ wp_task_title_init (WpTaskTitle *title)
   wp_task_title_setup_label (title);
   wp_task_title_setup_button (title);
   wp_task_title_setup_wnck (title);
+
+  g_dbus_proxy_new_for_bus (G_BUS_TYPE_SESSION, G_DBUS_PROXY_FLAGS_NONE, NULL,
+                            "org.gnome.SessionManager",
+                            "/org/gnome/SessionManager",
+                            "org.gnome.SessionManager",
+                            NULL, (GAsyncReadyCallback) proxy_ready_cb, title);
 }
 
 GtkWidget *
