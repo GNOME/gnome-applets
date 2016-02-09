@@ -39,6 +39,7 @@
 #define SETTINGS_SCHEMA "org.gnome.gnome-applets.window-picker-applet"
 #define GRESOURCE "/org/gnome/gnome-applets/window-picker/"
 #define TITLE_BUTTON_SPACE 6
+#define CONTAINER_SPACING 10
 
 struct _WpApplet
 {
@@ -252,6 +253,47 @@ wp_applet_factory (PanelApplet *applet,
 }
 
 static void
+wp_applet_size_allocate (GtkWidget     *widget,
+                         GtkAllocation *allocation)
+{
+  WpApplet *applet;
+  PanelApplet *panel_applet;
+  GtkOrientation orientation;
+  gint size_hints[2];
+  gint size;
+
+  GTK_WIDGET_CLASS (wp_applet_parent_class)->size_allocate (widget, allocation);
+
+  applet = WP_APPLET (widget);
+  panel_applet = PANEL_APPLET (widget);
+
+  orientation = panel_applet_get_gtk_orientation (panel_applet);
+
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    gtk_widget_get_preferred_width (applet->tasks, NULL, &size);
+  else
+    gtk_widget_get_preferred_height (applet->tasks, NULL, &size);
+
+  size_hints[0] = size;
+  size_hints[1] = 0;
+
+  if (gtk_widget_is_visible (applet->title))
+    {
+      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        gtk_widget_get_preferred_width (applet->title, NULL, &size);
+      else
+        gtk_widget_get_preferred_height (applet->title, NULL, &size);
+
+      if (size != 0)
+        size_hints[0] += CONTAINER_SPACING;
+
+      size_hints[0] += size;
+    }
+
+  panel_applet_set_size_hints (panel_applet, size_hints, 2, 0);
+}
+
+static void
 wp_applet_dispose (GObject *object)
 {
   WpApplet *applet;
@@ -387,10 +429,14 @@ static void
 wp_applet_class_init (WpAppletClass *applet_class)
 {
   GObjectClass *object_class;
+  GtkWidgetClass *widget_class;
   PanelAppletClass *panel_applet_class;
 
   object_class = G_OBJECT_CLASS (applet_class);
+  widget_class = GTK_WIDGET_CLASS (applet_class);
   panel_applet_class = PANEL_APPLET_CLASS (applet_class);
+
+  widget_class->size_allocate = wp_applet_size_allocate;
 
   object_class->dispose = wp_applet_dispose;
   object_class->set_property = wp_applet_set_property;
@@ -436,7 +482,7 @@ wp_applet_init (WpApplet *applet)
 
   panel_applet_set_flags (panel_applet, flags);
 
-  applet->container = gtk_box_new (orientation, 10);
+  applet->container = gtk_box_new (orientation, CONTAINER_SPACING);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
 
   wp_applet_setup_list (applet);
@@ -461,12 +507,6 @@ gboolean
 wp_applet_get_icons_greyscale (WpApplet *applet)
 {
   return applet->icons_greyscale;
-}
-
-gboolean
-wp_applet_get_expand_task_list (WpApplet *applet)
-{
-  return applet->expand_task_list;
 }
 
 PANEL_APPLET_IN_PROCESS_FACTORY ("WindowPickerFactory", WP_TYPE_APPLET,
