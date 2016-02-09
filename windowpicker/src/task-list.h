@@ -52,7 +52,7 @@ struct _TaskList {
 };
 
 struct _TaskListClass {
-    GtkGridClass   parent_class;
+    GtkBoxClass parent_class;
 };
 
 GType task_list_get_type (void) G_GNUC_CONST;
