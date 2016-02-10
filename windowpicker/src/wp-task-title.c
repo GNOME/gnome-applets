@@ -87,12 +87,15 @@ logout_ready_callback (GObject      *source_object,
 }
 
 static gboolean
-button_press_event_cb (GtkButton *button,
-                       GdkEvent  *event,
-                       gpointer   user_data)
+button_press_event_cb (GtkButton      *button,
+                       GdkEventButton *event,
+                       gpointer        user_data)
 {
   WpTaskTitle *title;
   const gchar *icon;
+
+  if (event->button != 1)
+    return GDK_EVENT_STOP;
 
   title = WP_TASK_TITLE (user_data);
 
@@ -130,7 +133,7 @@ button_press_event_cb (GtkButton *button,
       g_assert_not_reached ();
     }
 
-  return FALSE;
+  return GDK_EVENT_PROPAGATE;
 }
 
 static gboolean
