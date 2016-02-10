@@ -240,9 +240,6 @@ update_title_visibility (WpTaskTitle *title)
       if (title->show_application_title == FALSE)
         return;
 
-      if (wnck_window_is_maximized (title->active_window) == FALSE)
-        return;
-
       show_application_title (title);
     }
 
