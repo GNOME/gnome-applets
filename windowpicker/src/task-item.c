@@ -78,6 +78,8 @@ static const GtkTargetEntry drag_types[] = {
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
 
+static void task_item_close (TaskItem *item);
+
 static void update_hints (TaskItem *item) {
     GtkWidget *parent, *widget;
     GtkAllocation allocation_parent, allocation_widget;
@@ -509,21 +511,52 @@ static void on_screen_window_closed (
     TaskItemPrivate *priv = item->priv;
     g_return_if_fail (WNCK_IS_WINDOW (priv->window));
     if (priv->window == window) {
-        g_signal_handlers_disconnect_by_func (screen,
-            G_CALLBACK (on_screen_window_closed), item);
-        g_signal_handlers_disconnect_by_func (screen,
-            G_CALLBACK (on_screen_active_window_changed), item);
-        g_signal_handlers_disconnect_by_func (screen,
-            G_CALLBACK (on_screen_active_workspace_changed), item);
-        g_signal_handlers_disconnect_by_func (screen,
-            G_CALLBACK (on_screen_window_closed), item);
-        g_signal_handlers_disconnect_by_func (window,
-            G_CALLBACK (on_window_workspace_changed), item);
-        g_signal_handlers_disconnect_by_func (window,
-            G_CALLBACK (on_window_state_changed), item);
-        g_signal_emit (G_OBJECT (item),
-            task_item_signals[TASK_ITEM_CLOSED_SIGNAL], 0);
+        task_item_close (item);
     }
+}
+
+static void
+disconnect_screen (TaskItem *item)
+{
+    WnckScreen *screen;
+
+    screen = item->priv->screen;
+
+    g_signal_handlers_disconnect_by_func (screen, on_screen_window_closed,
+                                          item);
+    g_signal_handlers_disconnect_by_func (screen,
+                                          on_screen_active_window_changed,
+                                          item);
+    g_signal_handlers_disconnect_by_func (screen,
+                                          on_screen_active_workspace_changed,
+                                          item);
+    g_signal_handlers_disconnect_by_func (screen,
+                                          on_screen_active_viewport_changed,
+                                          item);
+}
+
+static void
+disconnect_window (TaskItem *item)
+{
+    WnckWindow *window;
+
+    window = item->priv->window;
+
+    g_signal_handlers_disconnect_by_func (window, on_window_workspace_changed,
+                                          item);
+    g_signal_handlers_disconnect_by_func (window, on_window_state_changed,
+                                          item);
+    g_signal_handlers_disconnect_by_func (window, on_window_icon_changed, item);
+}
+
+static void
+task_item_close (TaskItem   *item)
+{
+    disconnect_window (item);
+    disconnect_screen (item);
+
+    g_signal_emit (G_OBJECT (item),
+                   task_item_signals[TASK_ITEM_CLOSED_SIGNAL], 0);
 }
 
 static gboolean activate_window (GtkWidget *widget) {
@@ -723,13 +756,8 @@ task_item_dispose (GObject *object)
 {
     TaskItem *task_item = TASK_ITEM (object);
 
-    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_viewport_changed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_window_changed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_active_workspace_changed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->screen, on_screen_window_closed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_workspace_changed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_state_changed, task_item);
-    g_signal_handlers_disconnect_by_func (task_item->priv->window, on_window_icon_changed, task_item);
+    disconnect_window (task_item);
+    disconnect_screen (task_item);
 
     G_OBJECT_CLASS (task_item_parent_class)->dispose (object);
 }
