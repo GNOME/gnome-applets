@@ -91,7 +91,7 @@ EXTRA_DIST = \
 	COPYING-DOCS \
 	$(NULL)
 
-DISTCHECK_CONFIGURE_FLAGS =	\
+AM_DISTCHECK_CONFIGURE_FLAGS =	\
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets' \
 	--enable-mini-commander
 
