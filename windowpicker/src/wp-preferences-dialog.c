@@ -37,7 +37,6 @@ struct _WpPreferencesDialog
   GtkWidget *check_show_application_title;
   GtkWidget *check_show_home_title;
   GtkWidget *check_icons_greyscale;
-  GtkWidget *check_expand_task_list;
 };
 
 enum
@@ -74,10 +73,6 @@ wp_preferences_dialog_constructed (GObject *object)
 
   g_settings_bind (dialog->settings, KEY_ICONS_GREYSCALE,
                    dialog->check_icons_greyscale, "active",
-                   G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind (dialog->settings, KEY_EXPAND_TASK_LIST,
-                   dialog->check_expand_task_list, "active",
                    G_SETTINGS_BIND_DEFAULT);
 }
 
@@ -149,8 +144,6 @@ wp_preferences_dialog_class_init (WpPreferencesDialogClass *dialog_class)
                                         check_show_home_title);
   gtk_widget_class_bind_template_child (widget_class, WpPreferencesDialog,
                                         check_icons_greyscale);
-  gtk_widget_class_bind_template_child (widget_class, WpPreferencesDialog,
-                                        check_expand_task_list);
 }
 
 static void
