@@ -543,7 +543,6 @@ wp_task_title_setup_button (WpTaskTitle *title)
   gtk_widget_set_valign (widget, GTK_ALIGN_CENTER);
 
   gtk_button_set_image (GTK_BUTTON (widget), title->image);
-  gtk_button_set_relief (GTK_BUTTON (widget), GTK_RELIEF_NONE);
 
   gtk_box_pack_start (GTK_BOX (title), title->button, FALSE, FALSE, 0);
   gtk_widget_show (title->button);
