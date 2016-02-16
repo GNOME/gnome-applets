@@ -608,6 +608,8 @@ disconnect_window (TaskItem *item)
                                           item);
     g_signal_handlers_disconnect_by_func (window, on_window_icon_changed, item);
     g_signal_handlers_disconnect_by_func (window, on_window_type_changed, item);
+    g_signal_handlers_disconnect_by_func (window, on_window_geometry_changed,
+                                          item);
 }
 
 static void
