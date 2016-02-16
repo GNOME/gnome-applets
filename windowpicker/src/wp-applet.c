@@ -52,7 +52,6 @@ struct _WpApplet
 
   gboolean     show_all_windows;
   gboolean     icons_greyscale;
-  gboolean     expand_task_list;
 
   GtkWidget   *container;
   GtkWidget   *tasks;
@@ -64,7 +63,6 @@ enum
   PROP_0,
   PROP_SHOW_ALL_WINDOWS,
   PROP_ICONS_GREYSCALE,
-  PROP_EXPAND_TASK_LIST,
   LAST_PROP
 };
 
@@ -225,9 +223,6 @@ wp_applet_load (PanelApplet *panel_applet)
   g_settings_bind (applet->settings, KEY_ICONS_GREYSCALE,
                    applet, KEY_ICONS_GREYSCALE, G_SETTINGS_BIND_GET);
 
-  g_settings_bind (applet->settings, KEY_EXPAND_TASK_LIST,
-                   applet, KEY_EXPAND_TASK_LIST, G_SETTINGS_BIND_GET);
-
   gtk_widget_show_all (GTK_WIDGET (applet));
 }
 
@@ -324,7 +319,6 @@ wp_applet_set_property (GObject      *object,
                         GParamSpec   *pspec)
 {
   WpApplet *applet;
-  gboolean expand_task_list;
 
   applet = WP_APPLET (object);
 
@@ -336,30 +330,6 @@ wp_applet_set_property (GObject      *object,
 
       case PROP_ICONS_GREYSCALE:
         applet->icons_greyscale = g_value_get_boolean (value);
-        break;
-
-      case PROP_EXPAND_TASK_LIST:
-        expand_task_list = g_value_get_boolean (value);
-
-        if (applet->expand_task_list != expand_task_list)
-          {
-            PanelApplet *panel_applet;
-            PanelAppletFlags flags;
-
-            panel_applet = PANEL_APPLET (applet);
-            flags = panel_applet_get_flags (panel_applet);
-
-            if (expand_task_list == TRUE)
-              flags |= PANEL_APPLET_EXPAND_MAJOR;
-            else
-              flags &= ~PANEL_APPLET_EXPAND_MAJOR;
-
-            panel_applet_set_flags (panel_applet, flags);
-
-            applet->expand_task_list = expand_task_list;
-
-            gtk_widget_queue_resize (GTK_WIDGET (applet));
-          }
         break;
 
       default:
@@ -386,10 +356,6 @@ wp_applet_get_property (GObject    *object,
 
       case PROP_ICONS_GREYSCALE:
         g_value_set_boolean (value, applet->icons_greyscale);
-        break;
-
-      case PROP_EXPAND_TASK_LIST:
-        g_value_set_boolean (value, applet->expand_task_list);
         break;
 
       default:
@@ -458,13 +424,6 @@ wp_applet_class_init (WpAppletClass *applet_class)
                           FALSE,
                           G_PARAM_READWRITE);
 
-  properties[PROP_EXPAND_TASK_LIST] =
-    g_param_spec_boolean ("expand-task-list",
-                          "Expand Task List",
-                          "Whether the task list will expand automatically and use all available space",
-                          FALSE,
-                          G_PARAM_READWRITE);
-
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
@@ -477,7 +436,8 @@ wp_applet_init (WpApplet *applet)
 
   panel_applet = PANEL_APPLET (applet);
 
-  flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE;
+  flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE |
+          PANEL_APPLET_EXPAND_MAJOR;
   orientation = panel_applet_get_gtk_orientation (panel_applet);
 
   panel_applet_set_flags (panel_applet, flags);
