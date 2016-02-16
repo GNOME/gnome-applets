@@ -568,12 +568,6 @@ wp_task_title_setup_wnck (WpTaskTitle *title)
 static void
 wp_task_title_init (WpTaskTitle *title)
 {
-  GtkWidget *widget;
-
-  widget = GTK_WIDGET (title);
-
-  gtk_widget_set_name (widget, "tasklist-button");
-
   wp_task_title_setup_label (title);
   wp_task_title_setup_button (title);
   wp_task_title_setup_wnck (title);
