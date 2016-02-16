@@ -91,11 +91,18 @@ button_press_event_cb (GtkButton      *button,
                        GdkEventButton *event,
                        gpointer        user_data)
 {
-  WpTaskTitle *title;
-  const gchar *icon;
-
   if (event->button != 1)
     return GDK_EVENT_STOP;
+
+  return GDK_EVENT_PROPAGATE;
+}
+
+static gboolean
+button_clicked_cb (GtkButton *button,
+                   gpointer   user_data)
+{
+  WpTaskTitle *title;
+  const gchar *icon;
 
   title = WP_TASK_TITLE (user_data);
 
@@ -105,7 +112,6 @@ button_press_event_cb (GtkButton      *button,
     {
       WnckScreen *screen;
       WnckWindow *active_window;
-      GdkEventButton *event_button;
 
       screen = wnck_screen_get_default ();
       active_window = wnck_screen_get_active_window (screen);
@@ -116,10 +122,10 @@ button_press_event_cb (GtkButton      *button,
       if (title->active_window != active_window)
         return FALSE;
 
-      event_button = (GdkEventButton *) event;
-
       disconnect_active_window (title);
-      wnck_window_close (active_window, event_button->time);
+      wnck_window_close (active_window, gtk_get_current_event_time ());
+
+      return GDK_EVENT_STOP;
     }
   else if (g_strcmp0 (icon, LOGOUT_ICON) == 0)
     {
@@ -127,6 +133,8 @@ button_press_event_cb (GtkButton      *button,
                          g_variant_new ("(u)", 0), G_DBUS_CALL_FLAGS_NONE,
                          -1, NULL, (GAsyncReadyCallback) logout_ready_callback,
                          title);
+
+      return GDK_EVENT_STOP;
     }
   else
     {
@@ -546,6 +554,9 @@ wp_task_title_setup_button (WpTaskTitle *title)
 
   gtk_box_pack_start (GTK_BOX (title), title->button, FALSE, FALSE, 0);
   gtk_widget_show (title->button);
+
+  g_signal_connect (title->button, "clicked",
+                    G_CALLBACK (button_clicked_cb), title);
 
   g_signal_connect (title->button, "button-press-event",
                     G_CALLBACK (button_press_event_cb), title);
