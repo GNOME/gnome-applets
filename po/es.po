@@ -19,15 +19,15 @@
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
 # 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015., 2015.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015., 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-01 07:49+0000\n"
-"PO-Revision-Date: 2015-12-02 16:40+0100\n"
+"POT-Creation-Date: 2016-02-18 19:51+0000\n"
+"PO-Revision-Date: 2016-02-19 08:43+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -530,28 +530,28 @@ msgstr "Batería recargada completamente"
 #, fuzzy
 #| msgid "Invest Applet"
 msgid "Brightness Applet"
-msgstr "Miniaplicación de inversiones"
+msgstr "Aplicación de luminosidad"
 
 #: ../brightness/brightness-applet.c:96
 msgid "Adjusts laptop panel brightness."
-msgstr ""
+msgstr "Ajusta el panel de brillo del portátil"
 
 #: ../brightness/brightness-applet.c:213
 msgid "Cannot connect to gnome-settings-daemon"
-msgstr ""
+msgstr "No se pudo conectar el demonio gnome-settings-daemon"
 
 #: ../brightness/brightness-applet.c:215
 msgid "Cannot get laptop panel brightness"
-msgstr ""
+msgstr "No se pudo obtener el panel de brillo del portátil"
 
 #: ../brightness/brightness-applet.c:217
 #, c-format
 msgid "LCD brightness : %d%%"
-msgstr ""
+msgstr "brillo LCD : %d%%"
 
 #: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
 msgid "Licensed under the GNU General Public License Version 2"
-msgstr ""
+msgstr "Licenciado bajo Licencia Pública general GNU Versión 2"
 
 #: ../brightness/brightness-applet.c:650
 msgid ""
@@ -560,6 +560,11 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
+"La miniaaplicación de brillo es software libre, usted puede\n"
+"redistribuirla y modificarla bajo los términos de la\n"
+"Licencia pública general GNU como fue publicada por\n"
+"la Fundación de Software Libre en su versión 2 o cualquier\n"
+"versión posterior."
 
 #: ../brightness/brightness-applet.c:654
 msgid ""
@@ -568,6 +573,11 @@ msgid ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
 msgstr ""
+"La miniaplicación de brillo distribuye con la esperanza\n"
+"de que le sea útil, pero con ninguna garantía de ello\n"
+"ni siquiera la garantía de comercialización o de adecuación para\n"
+"un propósito específico. Vea la licencia pública general GNU\n"
+"para más detalles."
 
 #: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
 msgid ""
@@ -583,7 +593,7 @@ msgstr "Copyright © 2006 Benjamin Canou"
 
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
 msgid "Adjusts Laptop panel brightness"
-msgstr ""
+msgstr "Ajusta el panel de brillo del equipo"
 
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
@@ -3293,7 +3303,6 @@ msgid "Documents"
 msgstr "Documentos"
 
 #: ../tracker-search-bar/tracker-results-window.c:723
-#| msgid "Notifications"
 msgid "Applications"
 msgstr "Aplicaciones"
 
@@ -3310,7 +3319,6 @@ msgid "Folders"
 msgstr "Carpetas"
 
 #: ../tracker-search-bar/tracker-results-window.c:727
-#| msgid "_Font:"
 msgid "Fonts"
 msgstr "Tipografías"
 
@@ -3460,30 +3468,7 @@ msgstr "Vaciando la papelera"
 msgid "From:"
 msgstr "Desde:"
 
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
-msgid "Home"
-msgstr "Inicio"
-
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr ""
-"Terminar la sesión, cambiar de usuario, bloquear la pantalla o apagar el "
-"equipo"
-
-#: ../windowpicker/src/task-title.c:262
-msgid "Close window"
-msgstr "Cerrar la ventana"
-
-#: ../windowpicker/src/task-title.c:366
-msgid "Close"
-msgstr "Cerrar"
-
-#: ../windowpicker/src/task-title.c:367
-msgid "Close current window."
-msgstr "Cerrar la ventana actual."
-
-#: ../windowpicker/src/task-item.c:716
+#: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
 msgstr "Botón de la ventana de tareas"
 
@@ -3504,9 +3489,13 @@ msgstr ""
 "icono de salir cuando esté en el escritorio"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
+#, fuzzy
+#| msgid ""
+#| "Show the application title and close icon\n"
+#| "for maximized windows"
 msgid ""
 "Show the application title and close icon\n"
-"for maximized windows"
+"for the active window"
 msgstr ""
 "Mostrar el título de la aplicación y el icono de cerrar\n"
 "para ventanas maximizadas"
@@ -3515,9 +3504,29 @@ msgstr ""
 msgid "Grey out non-active window icons"
 msgstr "Sombrear los iconos de la ventana no activos"
 
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
-msgid "Automatically expand task list to use full space"
-msgstr "Expandir la lista de tareas automáticamente para usar todo el espacio"
+#: ../windowpicker/src/wp-task-title.c:186
+msgid "Home"
+msgstr "Inicio"
+
+#: ../windowpicker/src/wp-task-title.c:187
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr ""
+"Terminar la sesión, cambiar de usuario, bloquear la pantalla o apagar el "
+"equipo"
+
+#: ../windowpicker/src/wp-task-title.c:205
+msgid "Close window"
+msgstr "Cerrar la ventana"
+
+#~ msgid "Close"
+#~ msgstr "Cerrar"
+
+#~ msgid "Close current window."
+#~ msgstr "Cerrar la ventana actual."
+
+#~ msgid "Automatically expand task list to use full space"
+#~ msgstr ""
+#~ "Expandir la lista de tareas automáticamente para usar todo el espacio"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
