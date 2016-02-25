@@ -19,15 +19,15 @@
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
-# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015.
+# Marek Černocký <marek@manet.cz>, 2011, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-09 07:54+0000\n"
-"PO-Revision-Date: 2015-11-09 14:33+0100\n"
+"POT-Creation-Date: 2016-02-25 07:54+0000\n"
+"PO-Revision-Date: 2016-02-25 10:19+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -49,8 +49,8 @@ msgstr "Předvolby zpřístupnění _klávesnice"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3
-#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
+#: ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -1359,8 +1359,7 @@ msgstr "minut"
 msgid "Display"
 msgstr "Zobrazení"
 
-#: ../gweather/gweather-pref.c:979
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Obecné"
 
@@ -2887,11 +2886,11 @@ msgstr "Lepicí poznámky"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytváří, zobrazuje a spravuje lepicí poznámky na pracovní ploše"
 
-#: ../stickynotes/stickynotes.c:593
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Tato poznámka je zamčena."
 
-#: ../stickynotes/stickynotes.c:597
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Tato poznámka je odemčena."
 
@@ -3445,8 +3444,7 @@ msgstr ""
 "Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo "
 "smazány. Vezměte prosím na vědomí, že je lze mazat po jedné."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
 
@@ -3462,28 +3460,7 @@ msgstr "Vyprazdňuje se koš"
 msgid "From:"
 msgstr "Z:"
 
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:341 ../windowpicker/src/task-title.c:428
-msgid "Home"
-msgstr "Domů"
-
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:425
-msgid "Log off, switch user, lock screen or power down the computer"
-msgstr "Odhlásit, přepnout uživatele, zamknout obrazovku nebo vypnout počítač"
-
-#: ../windowpicker/src/task-title.c:262
-msgid "Close window"
-msgstr "Zavřít okno"
-
-#: ../windowpicker/src/task-title.c:366
-msgid "Close"
-msgstr "Zavřít"
-
-#: ../windowpicker/src/task-title.c:367
-msgid "Close current window."
-msgstr "Zavřít aktuální okno"
-
-#: ../windowpicker/src/task-item.c:716
+#: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
 msgstr "Tlačítko úlohy okna"
 
@@ -3506,15 +3483,23 @@ msgstr ""
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
 msgid ""
 "Show the application title and close icon\n"
-"for maximized windows"
+"for the active window"
 msgstr ""
 "Zobrazovat název aplikace a zavírací ikonu\n"
-"pro maximalizovaná okna"
+"pro aktivní okna"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
 msgstr "Zašedit ikony neaktivních oken"
 
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:9
-msgid "Automatically expand task list to use full space"
-msgstr "Automaticky roztahovat seznam úloh, aby využil celé místo"
+#: ../windowpicker/src/wp-task-title.c:186
+msgid "Home"
+msgstr "Domů"
+
+#: ../windowpicker/src/wp-task-title.c:187
+msgid "Log off, switch user, lock screen or power down the computer"
+msgstr "Odhlásit, přepnout uživatele, zamknout obrazovku nebo vypnout počítač"
+
+#: ../windowpicker/src/wp-task-title.c:205
+msgid "Close window"
+msgstr "Zavřít okno"
