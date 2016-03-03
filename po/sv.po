@@ -7,6 +7,7 @@
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
+# Josef Andersson <josef.andersson@fripost.org>, 2015.
 #
 #
 msgid ""
@@ -14,16 +15,16 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-05-07 06:00+0000\n"
-"PO-Revision-Date: 2015-05-08 17:33+0100\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"POT-Creation-Date: 2016-03-03 07:52+0000\n"
+"PO-Revision-Date: 2016-02-29 22:34+0100\n"
+"Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -33,8 +34,9 @@ msgstr "Inställningar för _tangentbordstillgänglighet"
 #: ../battstat/battstat-applet-menu.xml.h:2
 #: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
-#: ../drivemount/drivemount-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:2
-#: ../geyes/themes.c:295 ../gweather/gweather-applet-menu.xml.h:4
+#: ../drivemount/drivemount-applet-menu.xml.h:1
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
+#: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../netspeed/data/netspeed-menu.xml.h:3
@@ -45,15 +47,19 @@ msgstr "_Hjälp"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
-#: ../charpick/charpick-applet-menu.xml.h:3 ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../drivemount/drivemount-applet-menu.xml.h:2 ../geyes/geyes-applet-menu.xml.h:3
-#: ../gweather/gweather-applet-menu.xml.h:5
+#: ../brightness/brightness-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:3
+#: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
+#: ../drivemount/drivemount-applet-menu.xml.h:2
+#: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_Om"
 
@@ -113,7 +119,8 @@ msgstr "AccessX-status"
 
 #: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
-msgstr "Visar statusen för tangentbordet när tillgänglighetsfunktionerna används."
+msgstr ""
+"Visar statusen för tangentbordet när tillgänglighetsfunktionerna används."
 
 #: ../accessx-status/applet.c:1014
 msgid "XKB Extension is not enabled"
@@ -139,12 +146,12 @@ msgstr "Visar den aktuella statusen för tangentbordstillgänglighetsfunktioner"
 
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:1
 msgid "AccessX Status Applet Factory"
-msgstr "Fabrik för AccessX-statuspanelprogrammet"
+msgstr "Fabrik för AccessX-statusminiprogrammet"
 
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
 msgid "Keyboard Accessibility Status Applet Factory"
 msgstr ""
-"Fabrik för tillverkning av statuspanelprogram för tangentbordstillgänglighet"
+"Fabrik för tillverkning av statusminiprogram för tangentbordstillgänglighet"
 
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
@@ -247,10 +254,12 @@ msgstr "%d%% återstår av din totala batterikapacitet."
 
 #: ../battstat/battstat_applet.c:534
 #, c-format
-msgid "You have %d minute of battery power remaining (%d%% of the total capacity)."
+msgid ""
+"You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] "Din återstående batteritid är %d minut (%d%% av den totala kapaciteten)"
+msgstr[0] ""
+"Din återstående batteritid är %d minut (%d%% av den totala kapaciteten)"
 msgstr[1] ""
 "Din återstående batteritid är %d minuter (%d%% av den totala kapaciteten)"
 
@@ -372,7 +381,7 @@ msgstr "Visa _procentandel som återstår"
 msgid "Notifications"
 msgstr "Aviseringar"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "_Varna när batteriladdningen faller till:"
@@ -382,13 +391,14 @@ msgid "_Notify when battery is fully recharged"
 msgstr "_Meddela när batteriet är helt uppladdat"
 
 #: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1 ../cpufreq/cpufreq-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:1 ../gweather/gweather-applet-menu.xml.h:3
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Inställningar"
 
@@ -402,11 +412,11 @@ msgstr "Röd värdenivå"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
 msgid ""
-"The battery level below which the battery is displayed as red. Also the value at "
-"which the low battery warning is displayed."
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
 msgstr ""
-"Den batterinivå under vilken batteriet visas i rött. Även det värde vid vilket "
-"varningen för låg batterispänning visas."
+"Den batterinivå under vilken batteriet visas i rött. Även det värde vid "
+"vilket varningen för låg batterispänning visas."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
 msgid "Warn on low time rather than low percentage"
@@ -417,8 +427,8 @@ msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
 msgstr ""
-"Använd värdet som är definierat i red-value som en återstående tid för visning "
-"av varningsdialogen snarare än en procentandel."
+"Använd värdet som är definierat i red-value som en återstående tid för "
+"visning av varningsdialogen snarare än en procentandel."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
 msgid "Low Battery Notification"
@@ -450,11 +460,11 @@ msgstr "Minska från toppen"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
 msgid ""
-"Show the battery meter draining from the top of the battery. Only implemented "
-"for traditional battery view."
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
 msgstr ""
-"Visa batterimätaren minskandes från toppen av batteriet. Endast implementerat i "
-"den traditionella batterivyn."
+"Visa batterimätaren minskandes från toppen av batteriet. Endast "
+"implementerat i den traditionella batterivyn."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
 msgid "Upright (small) battery"
@@ -508,6 +518,78 @@ msgstr "Låg batteriladdning"
 msgid "Battery fully re-charged"
 msgstr "Batteriet helt uppladdat"
 
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+msgid "Brightness Applet"
+msgstr "Miniprogrammet Ljusstyrka"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr "Justerar ljusstyrkan på bärbar dator."
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr "Kan inte ansluta till gnome-settings-daemon"
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr "Kunde inte hämta ljusstyrkan för bärbara datorns skärm"
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr "LCD-ljusstyrka : %d%%"
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr "Licensierad under GNU General Public License Version 2"
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Miniprogrammet Ljusstyrka är fri programvara. Du kan distribuera det och/"
+"eller\n"
+"modifiera det under villkoren i GNU General Public License\n"
+"publicerad av Free Software Foundation, antingen version 2\n"
+"eller (om du så vill) någon senare version."
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Miniprogrammet Ljusstyrka distribueras i hopp om att det ska vara "
+"användbart,\n"
+"men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om\n"
+"SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se\n"
+"GNU General Public License för ytterligare information."
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+"Du bör ha fått en kopia av GNU General Public License\n"
+"tillsammans med detta program. Om inte, skriv till Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA"
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Copyright © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "Justerar ljusstyrkan på bärbar dator"
+
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Tillgängliga paletter"
@@ -532,10 +614,10 @@ msgstr "infoga specialtecknet %s"
 
 #: ../charpick/charpick.c:599
 msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my keyboard. "
-"Released under GNU General Public Licence."
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Gnome-panelprogram för att välja underliga tecken som inte finns på mitt "
+"Gnome-miniprogram för att välja underliga tecken som inte finns på mitt "
 "tangentbord. Släppt under GNU General Public License."
 
 #: ../charpick/charpick.c:716 ../charpick/charpick.c:731
@@ -551,19 +633,19 @@ msgstr "Infoga tecken"
 
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
 msgid "Charpicker Applet Factory"
-msgstr "Fabrik för teckenväljarpanelprogram"
+msgstr "Fabrik för teckenväljarminiprogram"
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
 msgid "Characters shown on applet startup"
-msgstr "Tecken som visas vid uppstart av panelprogrammet"
+msgstr "Tecken som visas vid uppstart av miniprogrammet"
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
 msgid ""
-"The string that the user had selected when the applet was last used. This string "
-"will be displayed when the user starts the applet."
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
 msgstr ""
-"Strängen som användaren hade markerat då panelprogrammet senast användes. Denna "
-"sträng kommer att visas då användaren startar panelprogrammet."
+"Strängen som användaren hade markerat då miniprogrammet senast användes. "
+"Denna sträng kommer att visas då användaren startar miniprogrammet."
 
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
 #: ../charpick/properties.c:353
@@ -653,6 +735,7 @@ msgstr "Inställningar för teckenpalett"
 
 #: ../charpick/properties.c:521 ../geyes/themes.c:294
 #: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "S_täng"
 
@@ -703,7 +786,8 @@ msgstr "Processor att övervaka"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:2
 msgid ""
-"Set the CPU to monitor. In a single processor system you don't have to change it."
+"Set the CPU to monitor. In a single processor system you don't have to "
+"change it."
 msgstr ""
 "Ställ in den processor som ska övervakas. I ett system med bara en processor "
 "behöver du inte ändra detta."
@@ -714,13 +798,14 @@ msgstr "Läge att visa processoranvändning"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
 msgid ""
-"A 'graphic' value means to show the applet in graphic mode (pixmap only), 'text' "
-"to show the applet in text mode (not to show the pixmap) and 'both' to show the "
-"applet in graphic and text mode."
+"A 'graphic' value means to show the applet in graphic mode (pixmap only), "
+"'text' to show the applet in text mode (not to show the pixmap) and 'both' "
+"to show the applet in graphic and text mode."
 msgstr ""
-"Värdet \"graphic\" betyder att panelprogrammet ska visas i grafiskt läge (endast "
-"bild), \"text\" att panelprogrammet ska visas i textläge (bilden ska inte "
-"visas), och \"both\" att panelprogrammet ska visas i grafiskt läge och textläge."
+"Värdet \"graphic\" betyder att miniprogrammet ska visas i grafiskt läge "
+"(endast bild), \"text\" att miniprogrammet ska visas i textläge (bilden ska "
+"inte visas), och \"both\" att miniprogrammet ska visas i grafiskt läge och "
+"textläge."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
@@ -729,11 +814,12 @@ msgstr "Typen av text att visa (om texten är aktiverad)."
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
-"frequency and units, and 'percentage' to show percentage instead of frequency."
+"frequency and units, and 'percentage' to show percentage instead of "
+"frequency."
 msgstr ""
-"Värdet \"frequency\" betyder att processorfrekvensen ska visas, \"frequency-unit"
-"\" att frekvens och enhet ska visas, och \"percentage\" att procentandel ska "
-"visas istället för frekvensen."
+"Värdet \"frequency\" betyder att processorfrekvensen ska visas, \"frequency-"
+"unit\" att frekvens och enhet ska visas, och \"percentage\" att procentandel "
+"ska visas istället för frekvensen."
 
 #: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
@@ -773,8 +859,8 @@ msgstr "Skalning av processorfrekvens stöds inte"
 
 #: ../cpufreq/src/cpufreq-monitor-factory.c:59
 msgid ""
-"You will not be able to modify the frequency of your machine.  Your machine may "
-"be misconfigured or not have hardware support for CPU frequency scaling."
+"You will not be able to modify the frequency of your machine.  Your machine "
+"may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
 "Du kommer inte att kunna ändra frekvensen på din maskin. Din maskin kan vara "
 "felaktigt konfigurerad, eller så har den inte hårdvarustöd för skalning av "
@@ -787,6 +873,63 @@ msgstr "Ändra processorfrekvensskalning"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Behörighet krävs för att ändra processorfrekvensskalningen."
+
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Miniprogrammet Hindra"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge."
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Kan inte ansluta till gnome-session"
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatiskt viloläge hindrat"
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatiskt viloläge aktiverat"
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Hindra manuellt"
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Miniprogrammet Hindra är fri programvara. Du kan distribuera det och/eller\n"
+"modifiera det under villkoren i GNU General Public License\n"
+"publicerad av Free Software Foundation, antingen version 2\n"
+"eller (om du så vill) någon senare version."
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Miniprogrammet Hindra distribueras i hopp om att det ska vara användbart,\n"
+"men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om\n"
+"SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se\n"
+"GNU General Public License för ytterligare information."
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -834,7 +977,7 @@ msgstr "_Mata ut %s"
 
 #: ../drivemount/drivemount.c:105
 msgid "Applet for mounting and unmounting block volumes."
-msgstr "Panelprogram för montering och avmontering av blockvolymer."
+msgstr "Miniprogram för montering och avmontering av blockvolymer."
 
 #: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
@@ -843,11 +986,11 @@ msgstr "Diskmonterare"
 
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
 msgid "Drive Mount Applet Factory"
-msgstr "Fabrik för enhetsmonteringspanelprogram"
+msgstr "Fabrik för enhetsmonteringsminiprogram"
 
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
 msgid "Factory for drive mount applet"
-msgstr "Fabrik för enhetsmonteringspanelprogram"
+msgstr "Fabrik för enhetsmonteringsminiprogram"
 
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:4
 msgid "Mount local disks and devices"
@@ -868,7 +1011,7 @@ msgstr "Ögonen tittar i muspekarens riktning"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
 msgid "Geyes Applet Factory"
-msgstr "Fabrik för panelprogrammet Geyes"
+msgstr "Fabrik för miniprogrammet Geyes"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
 msgid "A set of eyeballs for your panel"
@@ -880,7 +1023,7 @@ msgstr "Katalog där temat finns"
 
 #: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
-msgstr "Kan inte starta ögonpanelprogrammet."
+msgstr "Kan inte starta ögonminiprogrammet."
 
 #: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
@@ -904,7 +1047,7 @@ msgstr "© 1999-2005 av S. Papadimitriou och andra"
 
 #: ../gweather/gweather-about.c:56
 msgid "A panel application for monitoring local weather conditions."
-msgstr "Ett panelprogram för övervakning av lokala väderförhållanden."
+msgstr "Ett miniprogram för övervakning av lokala väderförhållanden."
 
 #: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
@@ -1061,10 +1204,11 @@ msgid "Enter the URL"
 msgstr "Ange URL:en"
 
 #: ../gweather/gweather-pref.c:372
-msgid "Failed to load the Locations XML database.  Please report this as a bug."
+msgid ""
+"Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
-"Misslyckades med att läsa in XML-databasen Locations. Rapportera detta som ett "
-"fel."
+"Misslyckades med att läsa in XML-databasen Locations. Rapportera detta som "
+"ett fel."
 
 #: ../gweather/gweather-pref.c:736
 msgid "Weather Preferences"
@@ -1238,11 +1382,11 @@ msgstr "Uppdatera data automatiskt"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
 msgid ""
-"Determines whether the applet automatically updates its weather statistics or "
-"not."
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
 msgstr ""
-"Avgör huruvida panelprogrammet automatiskt uppdaterar sin väderstatistik eller "
-"inte."
+"Avgör huruvida miniprogrammet automatiskt uppdaterar sin väderstatistik "
+"eller inte."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
 msgid "Update interval"
@@ -1278,11 +1422,11 @@ msgstr "Om sant kommer ytterligare detaljer om väder att hämtas och visas."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
 msgid "Gweather Applet Factory"
-msgstr "Fabrik för panelprogrammet Gweather"
+msgstr "Fabrik för miniprogrammet Gweather"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
 msgid "Factory for creating the weather applet."
-msgstr "Fabrik för skapande av väderpanelprogrammet."
+msgstr "Fabrik för skapande av väderminiprogrammet."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
@@ -1290,11 +1434,11 @@ msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
 msgid "Invest Applet Factory"
-msgstr "Fabrik för panelprogrammet Investera"
+msgstr "Fabrik för miniprogrammet Investera"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
 msgid "Factory for creating the invest applet."
-msgstr "Fabrik för skapande av panelprogrammet Investera."
+msgstr "Fabrik för skapande av miniprogrammet Investera."
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
 #: ../invest-applet/invest/about.py:17
@@ -1311,7 +1455,7 @@ msgid "Refresh"
 msgstr "Uppdatera"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:248
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -1366,7 +1510,7 @@ msgstr "Maximalt"
 
 #: ../invest-applet/data/financialchart.ui.h:11
 msgid "_Graph style: "
-msgstr "_Diagramstil:"
+msgstr "_Diagramstil: "
 
 #. see http://biz.yahoo.com/charts/guide11.html and http://en.wikipedia.org/wiki/Moving_average
 #: ../invest-applet/data/financialchart.ui.h:13
@@ -1522,7 +1666,7 @@ msgstr "etikett"
 msgid "Stocks"
 msgstr "Aktier"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
 msgctxt " "
 msgid "Add Group"
@@ -1535,8 +1679,8 @@ msgstr "Visa aktier i indexvärden"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid ""
-"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based on a "
-"number of stocks. This option allows to also show the quotes of the "
+"An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
+"on a number of stocks. This option allows to also show the quotes of the "
 "<i><b>stocks</b></i> an index is based on."
 msgstr ""
 "Ett indexvärde, till exempel <i>NASDAQ Composite</i> (^IXIC), baseras på ett "
@@ -1550,26 +1694,28 @@ msgstr "Dölj diagram i kurslistan"
 #: ../invest-applet/data/prefs-dialog.ui.h:10
 msgid ""
 "A small chart image is shown next to each quote. The retrieval of each chart "
-"image causes network traffic. Hiding charts reduces the network bandwidth demand "
-"significantly."
+"image causes network traffic. Hiding charts reduces the network bandwidth "
+"demand significantly."
 msgstr ""
 "Ett litet diagram visas bredvid varje kurs. Hämtningen av varje diagram kan "
-"orsaka nätverkstrafik. Döljer man diagrammen så minskas nätverkstrafiken markant."
+"orsaka nätverkstrafik. Döljer man diagrammen så minskas nätverkstrafiken "
+"markant."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid ""
-"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</"
-"a> (at least 15 minutes delayed)</small></i>"
+"<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (at least 15 minutes delayed)</small></i>"
 msgstr ""
-"<i><small><b>Källa:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! Finance</a> "
-"(minst 15 minuter fördröjd)</small></i>"
+"<i><small><b>Källa:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finance</a> (minst 15 minuter fördröjd)</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:12
 msgid "Currency"
 msgstr "Valuta"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:13
-msgid "Type the target currency to which all stock quotes will be converted to."
+msgid ""
+"Type the target currency to which all stock quotes will be converted to."
 msgstr "Ange målvalutan till vilken alla aktiekurser ska konverteras till."
 
 #. a) We aren't configured yet
@@ -1583,11 +1729,11 @@ msgstr "<b>Inga aktiekurser finns tillgängliga för närvarande</b>"
 
 #: ../invest-applet/invest/applet.py:76
 msgid ""
-"The server could not be contacted. The computer is either offline or the servers "
-"are down. Try again later."
+"The server could not be contacted. The computer is either offline or the "
+"servers are down. Try again later."
 msgstr ""
-"Servern kunde inte kontaktas. Datorn är antingen frånkopplad eller att servrarna "
-"är nere. Försök igen senare."
+"Servern kunde inte kontaktas. Datorn är antingen frånkopplad eller att "
+"servrarna är nere. Försök igen senare."
 
 #: ../invest-applet/invest/chart.py:157
 #, python-format
@@ -1705,7 +1851,7 @@ msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
 msgstr ""
-"Detta GNOME-panelprogram lägger till en kommandorad på panelen. Det stöder "
+"Detta GNOME-miniprogram lägger till en kommandorad på panelen. Det stöder "
 "kommandokomplettering, kommandohistorik och ändringsbara makron."
 
 #: ../mini-commander/src/command_line.c:361
@@ -1746,11 +1892,11 @@ msgstr "Storlek"
 msgid "_Width:"
 msgstr "_Bredd:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:480
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "bildpunkter"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:525
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Färger"
 
@@ -1827,15 +1973,15 @@ msgstr "Kommandorad"
 
 #: ../mini-commander/src/mini-commander_applet.c:411
 msgid "Mini-Commander applet"
-msgstr "Panelprogrammet Mini-Commander"
+msgstr "Miniprogrammet Mini-Commander"
 
 #: ../mini-commander/src/mini-commander_applet.c:412
 msgid "This applet adds a command line to the panel"
-msgstr "Detta panelprogram lägger till en kommandorad på panelen"
+msgstr "Detta miniprogram lägger till en kommandorad på panelen"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
-msgstr "Fabrik för panelprogrammet MiniCommander"
+msgstr "Fabrik för miniprogrammet MiniCommander"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:3
 msgid "Mini-Commander"
@@ -1863,7 +2009,7 @@ msgstr "Visa handtag"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:6
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr "Visa ett handtag så att panelprogrammet kan tas loss från panelen."
+msgstr "Visa ett handtag så att miniprogrammet kan tas loss från panelen."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:7
 msgid "Show frame"
@@ -1871,7 +2017,7 @@ msgstr "Visa ram"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:8
 msgid "Show a frame surrounding the applet."
-msgstr "Visa en ram runt panelprogrammet."
+msgstr "Visa en ram runt miniprogrammet."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:9
 msgid "Perform history autocompletion"
@@ -1889,7 +2035,7 @@ msgstr "Bredd"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:12
 msgid "Width of the applet"
-msgstr "Bredd på panelprogrammet"
+msgstr "Bredd på miniprogrammet"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:13
 msgid "Use the default theme colors"
@@ -1959,7 +2105,8 @@ msgstr "Inte ansluten"
 
 #: ../modemlights/modem-applet.c:713
 msgid ""
-"To connect to your Internet service provider, you need administrator privileges"
+"To connect to your Internet service provider, you need administrator "
+"privileges"
 msgstr ""
 "Du behöver administratörsrättigheter för att kunna ansluta till din "
 "internetleverantör"
@@ -1969,8 +2116,8 @@ msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
 msgstr ""
-"Du behöver administratörsrättigheter för att kunna koppla från anslutningen till "
-"din internetleverantör"
+"Du behöver administratörsrättigheter för att kunna koppla från anslutningen "
+"till din internetleverantör"
 
 #: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
@@ -1978,11 +2125,11 @@ msgstr "Det angivna lösenordet är ogiltigt"
 
 #: ../modemlights/modem-applet.c:791
 msgid ""
-"Check that you have typed it correctly and that you haven't activated the \"caps "
-"lock\" key"
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
 msgstr ""
-"Kontrollera att du har angivit det korrekt och att du inte har aktiverat \"caps "
-"lock\"-tangenten"
+"Kontrollera att du har angivit det korrekt och att du inte har aktiverat "
+"\"caps lock\"-tangenten"
 
 #: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
@@ -2009,12 +2156,13 @@ msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
 msgstr ""
-"Kontrollera att det är installerat i rätt sökväg och att det har rätt rättigheter"
+"Kontrollera att det är installerat i rätt sökväg och att det har rätt "
+"rättigheter"
 
 #: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
-"Panelprogram för aktivering och övervakning av en uppringd nätverksanslutning."
+"Miniprogram för aktivering och övervakning av en uppringd nätverksanslutning."
 
 #: ../modemlights/modem-applet-menu.xml.h:1
 msgid "_Activate"
@@ -2051,11 +2199,11 @@ msgstr "Aktivera och övervaka en uppringd nätverksanslutning"
 
 #: ../multiload/main.c:57
 msgid ""
-"A system load monitor capable of displaying graphs for CPU, ram, and swap space "
-"use, plus network traffic."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"space use, plus network traffic."
 msgstr ""
-"En systembelastningsövervakare som kan visa diagram för användning av processor, "
-"minne och växlingsutrymme samt nätverkstrafik."
+"En systembelastningsövervakare som kan visa diagram för användning av "
+"processor, minne och växlingsutrymme samt nätverkstrafik."
 
 #: ../multiload/main.c:131
 msgid "Start system-monitor"
@@ -2066,34 +2214,34 @@ msgstr "Starta Systemövervakare"
 msgid "There was an error executing '%s': %s"
 msgstr "Ett fel inträffade vid körning av \"%s\": %s"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:550
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "Processor"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:558
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Minne"
 
-#: ../multiload/main.c:296 ../multiload/properties.c:566
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Nätverk"
 
-#: ../multiload/main.c:298 ../multiload/properties.c:573
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Växlingsutrymme"
 
-#: ../multiload/main.c:300 ../multiload/main.c:379
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Medelbelastning"
 
-#: ../multiload/main.c:302
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Disk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:318
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2104,13 +2252,13 @@ msgstr ""
 "%u%% används av program\n"
 "%u%% används som cache"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Systemets medelbelastning är %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:334
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2121,7 +2269,7 @@ msgstr ""
 "Tar emot %s\n"
 "Skickar %s"
 
-#: ../multiload/main.c:350
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2136,27 +2284,27 @@ msgstr[1] ""
 "%s:\n"
 "%u%% används"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "Processorbelastning"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
-#: ../multiload/main.c:378
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Växlingsutrymmesbelastning"
 
-#: ../multiload/main.c:380
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Diskbelastning"
 
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Systemövervakare"
@@ -2200,7 +2348,7 @@ msgstr "Aktivera diskbelastningsdiagram"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
 msgid "Applet refresh rate in milliseconds"
-msgstr "Uppdateringshastigheten för panelprogrammet i millisekunder"
+msgstr "Uppdateringshastigheten för miniprogrammet i millisekunder"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
 msgid "Graph size"
@@ -2208,11 +2356,11 @@ msgstr "Diagramstorlek"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
 msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical panels, "
-"this is the height of the graphs."
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
 msgstr ""
-"För horisontella paneler är detta bredden på diagramen i bildpunkter. För "
-"vertikala paneler är detta höjden på diagramen."
+"För horisontella paneler är detta bredden på diagrammen i bildpunkter. För "
+"vertikala paneler är detta höjden på diagrammen."
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
 msgid "Graph color for user-related CPU activity"
@@ -2302,136 +2450,136 @@ msgstr "Bakgrundsfärg för diskbelastningsdiagram"
 msgid "The desktop description file to execute as the system monitor"
 msgstr "Skrivbordsbeskrivningsfilen att köra som systemövervakaren"
 
-#: ../multiload/properties.c:312
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "Övervakade resurser"
 
-#: ../multiload/properties.c:337
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "_Processor"
 
-#: ../multiload/properties.c:350
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "_Minne"
 
-#: ../multiload/properties.c:363
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Nätverk"
 
-#: ../multiload/properties.c:376
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "Vä_xlingsutrymme"
 
-#: ../multiload/properties.c:389
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "_Belastning"
 
-#: ../multiload/properties.c:402
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "_Hårddisk"
 
-#: ../multiload/properties.c:417
+#: ../multiload/properties.c:413
 msgid "Options"
 msgstr "Alternativ"
 
-#: ../multiload/properties.c:447
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "System_övervakarbredd: "
 
-#: ../multiload/properties.c:449
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "System_övervakarhöjd: "
 
-#: ../multiload/properties.c:488
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Uppdateringsintervall för Sys_temövervakare: "
 
-#: ../multiload/properties.c:514
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: ../multiload/properties.c:552 ../multiload/properties.c:560
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Användare"
 
-#: ../multiload/properties.c:553
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "S_ystem"
 
-#: ../multiload/properties.c:554
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "\"N_ice\""
 
-#: ../multiload/properties.c:555
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "\"I_OWait\""
 
-#: ../multiload/properties.c:556
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "_Tomgång (idle)"
 
-#: ../multiload/properties.c:561
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "_Delat"
 
-#: ../multiload/properties.c:562
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "_Buffertar"
 
-#: ../multiload/properties.c:563
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "_Cachat"
 
-#: ../multiload/properties.c:564
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "Ledi_gt"
 
-#: ../multiload/properties.c:568
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "_In"
 
-#: ../multiload/properties.c:569
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "_Ut"
 
-#: ../multiload/properties.c:570
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Lokal"
 
-#: ../multiload/properties.c:571 ../multiload/properties.c:581
-#: ../multiload/properties.c:587
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "_Bakgrund"
 
-#: ../multiload/properties.c:575
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "Anv_änt"
 
-#: ../multiload/properties.c:576
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "_Ledigt"
 
-#: ../multiload/properties.c:578
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Belastning"
 
-#: ../multiload/properties.c:580
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "_Medel"
 
-#: ../multiload/properties.c:583
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Hårddisk"
 
-#: ../multiload/properties.c:585
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "_Läs"
 
-#: ../multiload/properties.c:586
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "_Skriv"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Inställningar för Systemövervakare"
 
@@ -2485,10 +2633,10 @@ msgstr "MiB"
 
 #: ../netspeed/src/netspeed.c:634
 msgid ""
-"A little applet that displays some information on the traffic on the specified "
-"network device"
+"A little applet that displays some information on the traffic on the "
+"specified network device"
 msgstr ""
-"Ett litet panelprogram som visar trafikinformation på en angiven nätverksenhet"
+"Ett litet miniprogram som visar trafikinformation på en angiven nätverksenhet"
 
 #: ../netspeed/src/netspeed.c:639
 msgid "Netspeed Website"
@@ -2652,11 +2800,11 @@ msgstr "Enhets_detaljer"
 
 #: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
 msgid "Netspeed Applet Factory"
-msgstr "Panelprogramsfabrik för Näthastighet"
+msgstr "Miniprogramsfabrik för Näthastighet"
 
 #: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
 msgid "Netspeed Applet"
-msgstr "Panelprogrammet Näthastighet"
+msgstr "Miniprogrammet Näthastighet"
 
 #: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
 msgid "Network Monitor"
@@ -2720,10 +2868,11 @@ msgstr "Utdiagramfärg"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
-msgstr "Panelprogramsfabrik för klisterlappar"
+msgstr "Miniprogramsfabrik för klisterlappar"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:146 ../stickynotes/stickynotes_applet.c:380
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:380
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -2731,11 +2880,11 @@ msgstr "Klisterlappar"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
-#: ../stickynotes/stickynotes.c:638
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Denna klisterlapp är låst."
 
-#: ../stickynotes/stickynotes.c:642
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Denna klisterlapp är olåst."
 
@@ -2797,7 +2946,6 @@ msgid "Specify the default height (in pixels) of new notes"
 msgstr "Ange standardhöjden (i bildpunkter) för nya lappar"
 
 #: ../stickynotes/stickynotes-preferences.ui.h:8
-#| msgid "10"
 msgid "0"
 msgstr "0"
 
@@ -2983,8 +3131,8 @@ msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
 msgstr ""
-"Standardfärg för nya klisterlappar. Detta kan vara standardnamn, hexadecimalt "
-"värde, RGB-färg eller RGBA-färg."
+"Standardfärg för nya klisterlappar. Detta kan vara standardnamn, "
+"hexadecimalt värde, RGB-färg eller RGBA-färg."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
 msgid "Default color for font"
@@ -2992,8 +3140,8 @@ msgstr "Standardfärg för typsnitt"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
 msgid ""
-"Default font color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
 msgstr ""
 "Standardtypsnittsfärg för nya klisterlappar. Detta kan vara standardnamn, "
 "hexadecimalt värde, RGB-färg eller RGBA-färg."
@@ -3004,8 +3152,8 @@ msgstr "Standardtypsnitt för nya lappar"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
 msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for example "
-"\"Sans Italic 10\"."
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
 msgstr ""
 "Standardtypsnitt för nya klisterlappar. Detta måste vara ett Pango-"
 "typsnittsnamn, till exempel \"Sans Italic 10\"."
@@ -3016,8 +3164,8 @@ msgstr "Arbetsyteklistrighet för klisterlappar"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
 msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the desktop, "
-"or not."
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
 msgstr ""
 "Anger huruvida klisterlapparna är synliga på ALLA arbetsytor på skrivbordet "
 "eller inte."
@@ -3036,8 +3184,9 @@ msgstr "Datumformat för lappens titel"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
 msgid ""
-"By default, sticky notes are given the current date as the title when they are "
-"created. This format is used; anything that can be parsed by strftime() is valid."
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
 msgstr ""
 "Som standard får klisterlappar det aktuella datumet som titel när de skapas. "
 "Detta format används. Allt som kan tolkas av strftime() är giltigt."
@@ -3048,8 +3197,8 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
 msgid ""
-"If this option is disabled, a custom color can be used as the default color for "
-"all sticky notes."
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
 msgstr ""
 "Om detta alternativ är inaktiverat kommer en anpassad färg att användas som "
 "standardfärgen för alla klisterlappar."
@@ -3060,23 +3209,24 @@ msgstr "Huruvida standardsystemtypsnittet ska användas"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
 msgid ""
-"If this option is disabled, a custom font can be used as the default font for "
-"all sticky notes."
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
 msgstr ""
-"Om detta alternativ är inaktiverat kommer ett anpassat typsnitt att användas som "
-"standardtypsnittet för alla klisterlappar."
+"Om detta alternativ är inaktiverat kommer ett anpassat typsnitt att användas "
+"som standardtypsnittet för alla klisterlappar."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
 msgid "Whether to force the default color and font on all notes"
-msgstr "Huruvida standardfärgen och standardtypsnittet ska tvingas på alla lappar"
+msgstr ""
+"Huruvida standardfärgen och standardtypsnittet ska tvingas på alla lappar"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
 msgid ""
-"If this option is enabled, the custom colors and fonts that have been assigned "
-"to individual notes will be ignored."
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
 msgstr ""
-"Om detta alternativ är aktiverat kommer de anpassade färgerna och typsnitten som "
-"har tilldelats till individuella lappar att ignoreras."
+"Om detta alternativ är aktiverat kommer de anpassade färgerna och typsnitten "
+"som har tilldelats till individuella lappar att ignoreras."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
 msgid "Whether to hide all notes when the desktop is selected"
@@ -3084,11 +3234,11 @@ msgstr "Huruvida alla anteckningar ska döljas när skrivbordet markeras"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
-"If this option is enabled, selecting the desktop in any way will automatically "
-"hide all the open notes."
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
 msgstr ""
-"Om detta alternativ aktiveras kommer markering av skrivbordet, på valfritt sätt, "
-"att automatiskt dölja alla öppnade anteckningar. "
+"Om detta alternativ aktiveras kommer markering av skrivbordet, på valfritt "
+"sätt, att automatiskt dölja alla öppnade anteckningar."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
 msgid "Whether to ask for confirmation when deleting a note"
@@ -3097,6 +3247,121 @@ msgstr "Huruvida det ska frågas efter bekräftelse vid borttagning av en lapp"
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Tomma lappar tas alltid bort utan bekräftelse."
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr "Tracker-sökfält"
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr "Finn snabbt dina data med Tracker"
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+msgid "Other"
+msgstr "Övrigt"
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr "Kontakter"
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr "Taggar"
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr "E-postadresser"
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr "Dokument"
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+msgid "Applications"
+msgstr "Program"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr "Bilder"
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr "Ljud"
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr "Mappar"
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+msgid "Fonts"
+msgstr "Typsnitt"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr "Videor"
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr "Arkiv"
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr "Länkar"
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr "Kategori"
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+msgid "Title"
+msgstr "Titel"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr "Inga resultat funna för ”%s”"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr "Copyright Trackers upphovsmän 2005-2010"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr "Ett sökfältsminiprogram för att hitta innehåll lagrat i Tracker"
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
+"Tracker är fri programvara. Du kan distribuera det och/eller modifiera det "
+"under villkoren i GNU General Public License, publicerad av Free Software "
+"Foundation, antingen version 2 eller (om du så vill) någon senare version.\n"
+"\n"
+"Tracker distribueras i hopp om att det ska vara användbart, men UTAN NÅGON "
+"SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller "
+"LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för "
+"ytterligare information.\n"
+"\n"
+"Du bör ha fått en kopia av GNU General Public License tillsammans med detta "
+"program. Om inte, skriv till Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
 
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
@@ -3120,8 +3385,8 @@ msgstr ""
 
 #: ../trashapplet/src/trashapplet.c:415
 msgid ""
-"A GNOME trash bin that lives in your panel. You can use it to view the trash or "
-"drag and drop items into the trash."
+"A GNOME trash bin that lives in your panel. You can use it to view the trash "
+"or drag and drop items into the trash."
 msgstr ""
 "En GNOME-papperskorg som bor i din panel. Du kan använda den för att visa "
 "papperskorgen eller för att dra och släppa objekt till papperskorgen."
@@ -3132,16 +3397,19 @@ msgstr "Ta bort omedelbart?"
 
 #: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr "Kan inte flytta objekt till papperskorgen, vill du ta bort dem omedelbart?"
+msgstr ""
+"Kan inte flytta objekt till papperskorgen, vill du ta bort dem omedelbart?"
 
 #: ../trashapplet/src/trashapplet.c:474
-msgid "Cannot move some items to trash, do you want to delete these immediately?"
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
-"Kan inte flytta en del objekt till papperskorgen, vill du ta bort dem omedelbart?"
+"Kan inte flytta en del objekt till papperskorgen, vill du ta bort dem "
+"omedelbart?"
 
 #: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
-msgstr "Papperskorgspanelprogram"
+msgstr "Papperskorgsminiprogram"
 
 #. Translators: the %s in this string should be read as %d.
 #: ../trashapplet/src/trash-empty.c:70
@@ -3164,8 +3432,8 @@ msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
 msgstr ""
-"Om du väljer att tömma papperskorgen kommer alla objekt i den att permanent gå "
-"förlorade. Observera att du även kan ta bort dem separat."
+"Om du väljer att tömma papperskorgen kommer alla objekt i den att permanent "
+"gå förlorade. Observera att du även kan ta bort dem separat."
 
 #: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
@@ -3183,15 +3451,20 @@ msgstr "Tömmer papperskorgen"
 msgid "From:"
 msgstr "Från:"
 
-#: ../windowpicker/src/applet.c:198 ../windowpicker/src/applet.c:199
+# Osäker
+#: ../windowpicker/src/task-item.c:812
+msgid "Window Task Button"
+msgstr "Fönsteraktivitetsknapp"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "Fönsterväljare"
 
-#: ../windowpicker/src/applet.c:261
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "Visa fönster från alla arbetsytor"
 
-#: ../windowpicker/src/applet.c:264
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
@@ -3199,48 +3472,40 @@ msgstr ""
 "Visa hemtiteln och\n"
 "utloggningsikonen när på skrivbordet"
 
-#: ../windowpicker/src/applet.c:269
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
 msgid ""
-"Show the application title and\n"
-"close icon"
+"Show the application title and close icon\n"
+"for the active window"
 msgstr ""
-"Visa programtiteln och\n"
-"stängningsikon"
+"Visa programtiteln och stängikon\n"
+"för det aktiva fönstret"
 
-#: ../windowpicker/src/applet.c:273
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
 msgstr "Gråfärga fönsterikoner som ej är aktiva"
 
-# Osäker
-#: ../windowpicker/src/applet.c:276
-msgid "Automatically expand task list to use full space"
-msgstr "Expandera automatiskt aktivitetslista till att använda hela utrymmet"
-
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
+#: ../windowpicker/src/wp-task-title.c:186
 msgid "Home"
 msgstr "Startsida"
 
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
+#: ../windowpicker/src/wp-task-title.c:187
 msgid "Log off, switch user, lock screen or power down the computer"
 msgstr "Logga ut, byt användare, lås skärmen eller stäng av datorn"
 
-#: ../windowpicker/src/task-title.c:232
+#: ../windowpicker/src/wp-task-title.c:205
 msgid "Close window"
 msgstr "Stäng fönster"
 
-#: ../windowpicker/src/task-title.c:337
-msgid "Close"
-msgstr "Stäng"
+#~ msgid "Close"
+#~ msgstr "Stäng"
 
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "Stäng aktuellt fönster."
+#~ msgid "Close current window."
+#~ msgstr "Stäng aktuellt fönster."
 
 # Osäker
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "Fönsteraktivitetsknapp"
+#~ msgid "Automatically expand task list to use full space"
+#~ msgstr ""
+#~ "Expandera automatiskt aktivitetslista till att använda hela utrymmet"
 
 #~ msgid "Internet"
 #~ msgstr "Internet"
