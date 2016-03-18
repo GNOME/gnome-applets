@@ -646,6 +646,9 @@ AC_CONFIG_FILES([
 
   charpick/help/Makefile
   charpick/Makefile
+
+  command/Makefile
+
   cpufreq/help/Makefile
   cpufreq/Makefile
   cpufreq/pixmaps/Makefile
@@ -761,6 +764,7 @@ echo "    accessx-status ................: $HAVE_XKB"
 echo "    batstat .......................: $build_battstat_applet"
 echo "    brightness ....................: always"
 echo "    charpick ......................: always"
+echo "    command .......................: always"
 echo "    cpufreq .......................: $build_cpufreq_applet"
 echo "    drivemount ....................: always"
 echo "    geyes .........................: always"

@@ -40,6 +40,7 @@ endif
 always_built_SUBDIRS =  \
 	charpick	\
 	brightness	\
+	command		\
 	drivemount	\
 	inhibit		\
 	invest-applet	\
@@ -84,6 +85,7 @@ DIST_SUBDIRS = \
 	inhibit		\
 	brightness	\
 	tracker-search-bar \
+	command		\
 	$(NULL)
 
 EXTRA_DIST = \
