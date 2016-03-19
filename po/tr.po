@@ -10,26 +10,25 @@
 # Copyright (C) 2009 THE window-picker-applet'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
-# Muhammet Kara <muhammetk@gmail.com>, 2014.
+# Necdet Yücel <necdetyucel@gmail.com>, 2015.
+# Muhammet Kara <muhammetk@gmail.com>, 2014, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-12-14 18:55+0000\n"
-"PO-Revision-Date: 2014-12-14 22:03+0200\n"
+"POT-Creation-Date: 2016-02-16 21:31+0000\n"
+"PO-Revision-Date: 2016-03-19 14:34+0200\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  tr.po (gnome-applets)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"#-#-#-#-#  tr.po (window-picker-applet)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.6\n"
+"X-POOTLE-MTIME: 1424440211.000000\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -40,10 +39,11 @@ msgstr "Klavye _Erişilebilirlik Tercihleri"
 #: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
 #: ../drivemount/drivemount-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:283
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -51,15 +51,19 @@ msgstr "_Yardım"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:3
 #: ../battstat/battstat-applet-menu.xml.h:3
+#: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
+#: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/data/menu.xml.h:2
+#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
+#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "_Hakkında"
 
@@ -74,12 +78,13 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:610
+#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
 #: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
 #: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:995
-#: ../multiload/main.c:62 ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:424
+#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
+#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Barış Çiçek <baris@teamforce.name.tr>\n"
@@ -290,11 +295,11 @@ msgid "N/A"
 msgstr "Yok"
 
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
-#: ../geyes/geyes.c:334 ../geyes/themes.c:219 ../gweather/gweather-applet.c:72
+#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:390
+#: ../trashapplet/src/trashapplet.c:386
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Yardım gösterilirken hata oluştu: %s"
@@ -305,7 +310,6 @@ msgstr "Bu araç dizüstü bilgisayarınızın pil durumunu gösterir."
 
 #. true
 #: ../battstat/battstat_applet.c:1191
-#| msgid "HAL backend enabled."
 msgid "upower backend enabled."
 msgstr "upower arka ucu etkinleştirildi."
 
@@ -314,12 +318,12 @@ msgstr "upower arka ucu etkinleştirildi."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Eski (HAL olmayan) arka uç etkinleştirildi."
 
-#: ../battstat/battstat_applet.c:1567 ../battstat/battstat_applet.c:1620
+#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Pil Doluluk İzleyicisi"
 
-#: ../battstat/battstat_applet.c:1621
+#: ../battstat/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Dizüstü bilgisayarın kalan gücünü izler"
@@ -364,7 +368,7 @@ msgstr "Kalan _yüzdeyi göster"
 msgid "Notifications"
 msgstr "Uyarılar"
 
-#. TRANSLATOR: This is the beginning of the sentence 'Warn when battery charge drops to: [XX] percent/minutes remaining'
+#. TRANSLATOR: This is the beginning of the sentence
 #: ../battstat/battstat_applet.ui.h:12
 msgid "_Warn when battery charge drops to:"
 msgstr "Pil doluluğu _uyarılma yüzdesi:"
@@ -379,8 +383,9 @@ msgstr "Pil _tam olarak dolduğunda uyar"
 #: ../gweather/gweather-applet-menu.xml.h:3
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
 #: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/data/menu.xml.h:1
+#: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Tercihler"
 
@@ -405,16 +410,12 @@ msgid "Warn on low time rather than low percentage"
 msgstr "Düşük yüzde yerine düşük zaman için uyar"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-#, fuzzy
-#| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the "
-#| "warning dialog rather than a percentage."
 msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
 msgstr ""
-"red_value içinde tanımlanmış değeri uyarı penceresini çıkarmak için kalan "
-"yüzde yerine kalan süre olarak kullan."
+"Kırmızı-değer içinde tanımlanmış değeri yüzde yerine, uyarı penceresini "
+"çıkarmak için kalan süre olarak kullan."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
 msgid "Low Battery Notification"
@@ -504,6 +505,65 @@ msgstr "Pil gücü zayıf"
 msgid "Battery fully re-charged"
 msgstr "Pil tamamen doldu"
 
+#: ../brightness/brightness-applet.c:95
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#| msgid "Invest Applet"
+msgid "Brightness Applet"
+msgstr "Parlaklık Uygulamacığı"
+
+#: ../brightness/brightness-applet.c:96
+msgid "Adjusts laptop panel brightness."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:213
+msgid "Cannot connect to gnome-settings-daemon"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:215
+msgid "Cannot get laptop panel brightness"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:217
+#, c-format
+msgid "LCD brightness : %d%%"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+msgid "Licensed under the GNU General Public License Version 2"
+msgstr ""
+
+#: ../brightness/brightness-applet.c:650
+msgid ""
+"Brightness Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:654
+msgid ""
+"Brightness Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+msgid ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
+msgstr ""
+
+#: ../brightness/brightness-applet.c:672
+msgid "Copyright © 2006 Benjamin Canou"
+msgstr "Telif Hakkı © 2006 Benjamin Canou"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr ""
+
 #: ../charpick/charpick.c:426
 msgid "Available palettes"
 msgstr "Kullanılabilir paletler"
@@ -570,14 +630,14 @@ msgstr "Kullanılabilir paletlerin listesi"
 msgid "List of strings containing the available palettes."
 msgstr "Kullanılabilir paletleri içeren dizgilerin listesi."
 
-#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:906
-#: ../trashapplet/src/trashapplet.c:501 ../trashapplet/src/trash-empty.c:339
+#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
+#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
 msgid "_Cancel"
-msgstr ""
+msgstr "_İptal"
 
 #: ../charpick/properties.c:74
 msgid "_OK"
-msgstr ""
+msgstr "_Tamam"
 
 #: ../charpick/properties.c:93
 msgid "_Palette:"
@@ -609,7 +669,7 @@ msgstr "_Paletler:"
 
 #: ../charpick/properties.c:443
 msgid "_Add"
-msgstr ""
+msgstr "_Ekle"
 
 #: ../charpick/properties.c:447
 msgid "Add button"
@@ -631,8 +691,7 @@ msgstr "Düzenleme düğmesi"
 msgid "Click to edit the selected palette"
 msgstr "Seçili paleti düzenlemek için tıklayın"
 
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:503
-#| msgid "_Delete All"
+#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
 msgid "_Delete"
 msgstr "_Sil"
 
@@ -648,8 +707,9 @@ msgstr "Seçilen paleti silmek için tıklayın"
 msgid "Character Palette Preferences"
 msgstr "Karakter Paleti Tercihleri"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:282
-#| msgid "Close note"
+#: ../charpick/properties.c:521 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Kapat"
 
@@ -686,7 +746,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "İşlemci frekansını _yüzde olarak göster"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:944 ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
 msgid "CPU Frequency Scaling Monitor"
 msgstr "İşlemci Frekansı Seviyesi İzleyicisi"
 
@@ -711,46 +771,38 @@ msgid "Mode to show cpu usage"
 msgstr "İşlemci kullanımını gösteren kip"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
-#, fuzzy
-#| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
-#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
-#| "applet in graphic and text mode."
 msgid ""
 "A 'graphic' value means to show the applet in graphic mode (pixmap only), "
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
 "to show the applet in graphic and text mode."
 msgstr ""
-"0 değeri uygulamacığın grafik kipinde (sadece piksel eşlem) gösterileceği, 1 "
-"değeri uygulamacığın metin kipinde gösterileceğini ve 2 değeri uygulamacığın "
-"hem grafik hem metin kipinde gösterileceği anlamına gelir."
+"'grafik' değeri uygulamacığın grafik kipinde (sadece piksel eşlem), 'metin' "
+"metin kipinde ve 'ikisi de' değeri uygulamacığın hem grafik hem metin "
+"kipinde gösterileceği anlamına gelir."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Gösterilecek metnin türü (eğer metin etkin ise)."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
-#, fuzzy
-#| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
-#| "2 to show percentage instead of frequency."
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 msgstr ""
-"0 değeri işlemci frekansını göster; 1 değeri frekansı ve birimleri göster 2 "
-"değeri de frekans yerine yüzde olarak göster anlamına gelir."
+"'frekans' değeri işlemci frekansını göster; 'frekans-birimi' değeri frekansı "
+"ve birimleri göster 'yüzde' değeri de frekans yerine yüzde olarak göster "
+"anlamına gelir."
 
-#: ../cpufreq/src/cpufreq-applet.c:577 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
 msgid "Could not open help document"
 msgstr "Yardım dosyası açılamadı"
 
-#: ../cpufreq/src/cpufreq-applet.c:605
+#: ../cpufreq/src/cpufreq-applet.c:604
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Bu yardımcı şu anki işlemci frekans seviyesini gösterir."
 
-#: ../cpufreq/src/cpufreq-applet.c:1001
+#: ../cpufreq/src/cpufreq-applet.c:1000
 msgid "This utility shows the current CPU Frequency"
 msgstr "Bu yardımcı, şu anki işlemci frekansını gösterir"
 
@@ -794,46 +846,97 @@ msgstr "İşlemci Frekans ölçeklemesini değiştir"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "İşlemci Frekansı ölçeklemesini değiştirmek için yetkiler gerekli."
 
-#: ../drivemount/drive-button.c:338 ../drivemount/drive-button.c:351
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Invest Applet"
+msgid "Inhibit Applet"
+msgstr "Yatırım Uygulamacığı"
+
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Telif Hakkı © 2006-2007 Richard Hughes"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr ""
+
+#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
 msgstr "(bağlı)"
 
-#: ../drivemount/drive-button.c:340
+#: ../drivemount/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(bağlanmamış)"
 
-#: ../drivemount/drive-button.c:558
+#: ../drivemount/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
 msgstr "Nautilus Dosya Yöneticisi başlatılamıyor"
 
-#: ../drivemount/drive-button.c:565
+#: ../drivemount/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "Nautilus bulunamadı"
 
-#: ../drivemount/drive-button.c:876
+#: ../drivemount/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_DVD Oynat"
 
-#: ../drivemount/drive-button.c:880
+#: ../drivemount/drive-button.c:867
 msgid "_Play CD"
 msgstr "_CD Oynat"
 
-#: ../drivemount/drive-button.c:883
+#: ../drivemount/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "%s _Aç"
 
-#: ../drivemount/drive-button.c:891
+#: ../drivemount/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "%s _Ayır"
 
-#: ../drivemount/drive-button.c:897
+#: ../drivemount/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "%s _Bağla"
 
-#: ../drivemount/drive-button.c:905
+#: ../drivemount/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "%s _Çıkart"
@@ -842,7 +945,7 @@ msgstr "%s _Çıkart"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Blok birimlerini bağlamak ve ayırmak için uygulamacık."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:201
+#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Disk Bağlayıcı"
@@ -884,23 +987,23 @@ msgstr "Paneliniz için bir çift göz"
 msgid "Directory in which the theme is located"
 msgstr "Temanın bulunduğu dizin"
 
-#: ../geyes/themes.c:124
+#: ../geyes/themes.c:139
 msgid "Can not launch the eyes applet."
 msgstr "Gözler uygulamacığı başlatılamıyor."
 
-#: ../geyes/themes.c:125
+#: ../geyes/themes.c:140
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Tema yüklenmeye çalışılırken önemli bir hata oluştu."
 
-#: ../geyes/themes.c:280
+#: ../geyes/themes.c:292
 msgid "Geyes Preferences"
 msgstr "Geyes Tercihleri"
 
-#: ../geyes/themes.c:313
+#: ../geyes/themes.c:325
 msgid "Themes"
 msgstr "Temalar"
 
-#: ../geyes/themes.c:334
+#: ../geyes/themes.c:346
 msgid "_Select a theme:"
 msgstr "_Bir tema seçin:"
 
@@ -915,20 +1018,20 @@ msgstr ""
 "\n"
 "Yerel hava durumunu izlemeye yarayan bir uygulamacık."
 
-#: ../gweather/gweather-applet.c:339
+#: ../gweather/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Hava Raporu"
 
-#: ../gweather/gweather-applet.c:357 ../gweather/gweather-applet.c:361
+#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "GNOME Have Durumu"
 
-#: ../gweather/gweather-applet.c:466
+#: ../gweather/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "Hava Tahmini"
 
-#: ../gweather/gweather-applet.c:478
+#: ../gweather/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -939,7 +1042,7 @@ msgstr ""
 "Gökyüzü: %s\n"
 "Sıcaklık: %s"
 
-#: ../gweather/gweather-applet.c:532
+#: ../gweather/gweather-applet.c:529
 msgid "Updating..."
 msgstr "Güncelleniyor..."
 
@@ -1092,8 +1195,10 @@ msgstr "Bu aralıklarla _otomatik güncelle:"
 msgid "_Temperature unit:"
 msgstr "_Sıcaklık Birimi:"
 
+#. Default means device with default route set
 #: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
 #: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../netspeed/src/preferences.c:162
 msgid "Default"
 msgstr "Öntanımlı"
 
@@ -1248,39 +1353,32 @@ msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
+"Uygulama programının hava durumu istatistiklerini otomatik güncelleyip "
+"güncellemeyeceğini belirler."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
-#| msgid "Update spin button"
 msgid "Update interval"
 msgstr "Güncelleme aralığı"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
-#| msgid "Time in seconds between status updates"
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Otomatik güncellemeler arasındaki saniye cinsinden zaman aralığı."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
-#| msgid "Enable _radar map"
 msgid "Display radar map"
 msgstr "Radar haritasını göster"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
 msgid "Fetch a radar map on each update."
-msgstr ""
+msgstr "Her güncellemede radar haritası getir."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
-#| msgid "Notifications"
 msgid "Show notification"
 msgstr "Bildirim göster"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
-#, fuzzy
-#| msgid "A panel application for monitoring local weather conditions."
 msgid "Show notifications for critical weather conditions"
-msgstr ""
-"GNU Genel Kamu Lisansı ile yayınlanmıştır.\n"
-"\n"
-"Yerel hava durumunu izlemeye yarayan bir uygulamacık."
+msgstr "Kritik hava durumları için ileti göster"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
 msgid "Show detailed forecast"
@@ -1288,7 +1386,7 @@ msgstr "Ayrıntılı hava durumu göster"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
 msgid "If true, additional details about weather will be downloaded and shown."
-msgstr ""
+msgstr "Seçilirse, hava durumuyla ilgili ek detaylar indirilir ve gösterilir."
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
 msgid "Gweather Applet Factory"
@@ -1303,16 +1401,12 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Şu andaki hava durumunu ve tahminlerini izle"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-#, fuzzy
-#| msgid "Geyes Applet Factory"
 msgid "Invest Applet Factory"
-msgstr "Geyes Uygulamacığı Üreticisi"
+msgstr "Invest Uygulamacığı Üreticisi"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-#, fuzzy
-#| msgid "Factory for creating the weather applet."
 msgid "Factory for creating the invest applet."
-msgstr "Hava durumu uygulamacığı için üretici."
+msgstr "Invest uygulama programı oluşturmak için üretici."
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
 #: ../invest-applet/invest/about.py:17
@@ -1325,22 +1419,19 @@ msgid "Track your invested money."
 msgstr "Yatırımlarınızı takip edin."
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:1
-#| msgid "_Refresh"
 msgid "Refresh"
 msgstr "Tazele"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/applet.c:249
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
 msgid "Preferences"
 msgstr "Tercihler"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:3
-#| msgid "_Help"
 msgid "Help"
 msgstr "Yardım"
 
 #: ../invest-applet/data/invest-applet-menu.xml.h:4
-#| msgid "_About"
 msgid "About"
 msgstr "Hakkında"
 
@@ -1399,129 +1490,129 @@ msgstr "Taşınan ortalama: "
 msgid "Exponential moving average: "
 msgstr "Artan taşıma ortalaması: "
 
-#: ../invest-applet/data/financialchart.ui.h:16
-msgid "5"
-msgstr "5"
-
-#: ../invest-applet/data/financialchart.ui.h:17
-msgid "10"
-msgstr "10"
-
-#: ../invest-applet/data/financialchart.ui.h:18
-msgid "20"
-msgstr "20"
-
-#: ../invest-applet/data/financialchart.ui.h:19
-msgid "50"
-msgstr "50"
-
-#: ../invest-applet/data/financialchart.ui.h:20
-msgid "100"
-msgstr "100"
-
-#: ../invest-applet/data/financialchart.ui.h:21
-msgid "200"
-msgstr "200"
-
 #. see http://en.wikipedia.org/wiki/Technical_analysis#Overlays
-#: ../invest-applet/data/financialchart.ui.h:23
+#: ../invest-applet/data/financialchart.ui.h:17
 msgid "Overlays: "
 msgstr "Kaplamalar: "
 
-#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
+#: ../invest-applet/data/financialchart.ui.h:19
+msgid "Indicators: "
+msgstr "Belirteçler: "
+
+#: ../invest-applet/data/financialchart.ui.h:20
+msgid "Line"
+msgstr "Çizgi"
+
+#: ../invest-applet/data/financialchart.ui.h:21
+msgid "Bar"
+msgstr "Çubuk"
+
+#: ../invest-applet/data/financialchart.ui.h:22
+msgid "Candle"
+msgstr "Mum"
+
+#: ../invest-applet/data/financialchart.ui.h:23
+msgid "Scale: "
+msgstr "Ölçek:"
+
+#: ../invest-applet/data/financialchart.ui.h:24
+msgid "Linear"
+msgstr "Doğrusal"
+
 #: ../invest-applet/data/financialchart.ui.h:25
+msgid "Logarithmic"
+msgstr "Logaritmik"
+
+#: ../invest-applet/data/financialchart.ui.h:26
+msgid "5"
+msgstr "5"
+
+#: ../invest-applet/data/financialchart.ui.h:27
+msgid "10"
+msgstr "10"
+
+#: ../invest-applet/data/financialchart.ui.h:28
+msgid "20"
+msgstr "20"
+
+#: ../invest-applet/data/financialchart.ui.h:29
+msgid "50"
+msgstr "50"
+
+#: ../invest-applet/data/financialchart.ui.h:30
+msgid "100"
+msgstr "100"
+
+#: ../invest-applet/data/financialchart.ui.h:31
+msgid "200"
+msgstr "200"
+
+#. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands
+#: ../invest-applet/data/financialchart.ui.h:33
 msgid "Bollinger"
 msgstr "Bollinger"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR
-#: ../invest-applet/data/financialchart.ui.h:27
+#: ../invest-applet/data/financialchart.ui.h:35
 msgid "SAR"
 msgstr "SAR"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split
-#: ../invest-applet/data/financialchart.ui.h:29
+#: ../invest-applet/data/financialchart.ui.h:37
 msgid "Splits"
 msgstr "Splitler"
 
 #. Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:31
+#: ../invest-applet/data/financialchart.ui.h:39
 msgid "Volumes"
 msgstr "Birimler"
 
-#. see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators
-#: ../invest-applet/data/financialchart.ui.h:33
-msgid "Indicators: "
-msgstr "Belirteçler: "
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
-#: ../invest-applet/data/financialchart.ui.h:35
-msgid "RSI"
-msgstr "RSI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:37
-msgid "Vol"
-msgstr "Birim"
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
+#: ../invest-applet/data/financialchart.ui.h:41
+msgid "MACD"
+msgstr "MACD"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index
-#: ../invest-applet/data/financialchart.ui.h:39
+#: ../invest-applet/data/financialchart.ui.h:43
 msgid "MFI"
 msgstr "MFI"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
-#: ../invest-applet/data/financialchart.ui.h:41
-msgid "Slow stoch"
-msgstr "Yavaş stoch"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
-#: ../invest-applet/data/financialchart.ui.h:43
-msgid "Vol+MA"
-msgstr "Birim+MA"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29
 #: ../invest-applet/data/financialchart.ui.h:45
 msgid "ROC"
 msgstr "ROC"
 
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index
 #: ../invest-applet/data/financialchart.ui.h:47
+msgid "RSI"
+msgstr "RSI"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:49
+msgid "Vol"
+msgstr "Birim"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:51
+msgid "Slow stoch"
+msgstr "Yavaş stoch"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29
+#: ../invest-applet/data/financialchart.ui.h:53
+msgid "Vol+MA"
+msgstr "Birim+MA"
+
+#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator
+#: ../invest-applet/data/financialchart.ui.h:55
 msgid "Fast stoch"
 msgstr "Hızlı stoch"
 
 #. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R
-#: ../invest-applet/data/financialchart.ui.h:50
+#: ../invest-applet/data/financialchart.ui.h:58
 #, no-c-format
 msgid "W%R"
 msgstr "W%R"
-
-#. Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD
-#: ../invest-applet/data/financialchart.ui.h:52
-msgid "MACD"
-msgstr "MACD"
-
-#: ../invest-applet/data/financialchart.ui.h:53
-msgid "Line"
-msgstr "Çizgi"
-
-#: ../invest-applet/data/financialchart.ui.h:54
-msgid "Bar"
-msgstr "Çubuk"
-
-#: ../invest-applet/data/financialchart.ui.h:55
-msgid "Candle"
-msgstr "Mum"
-
-#: ../invest-applet/data/financialchart.ui.h:56
-msgid "Scale: "
-msgstr "Ölçek:"
-
-#: ../invest-applet/data/financialchart.ui.h:57
-msgid "Linear"
-msgstr "Doğrusal"
-
-#: ../invest-applet/data/financialchart.ui.h:58
-msgid "Logarithmic"
-msgstr "Logaritmik"
 
 #: ../invest-applet/data/financialchart.ui.h:59
 msgid "_Options"
@@ -1543,9 +1634,8 @@ msgstr "etiket"
 msgid "Stocks"
 msgstr "Senetler"
 
-#. Instead of adding a single stock to the list of stocks, the 'Add Group' button adds a group (kind of a sub folder) to which numerous stocks can be added. A group here refers to a group of stocks.
+#. Instead of adding a single stock to the list of stocks, the
 #: ../invest-applet/data/prefs-dialog.ui.h:5
-#| msgid "_Groups"
 msgctxt " "
 msgid "Add Group"
 msgstr "Grup Ekle"
@@ -1553,7 +1643,7 @@ msgstr "Grup Ekle"
 #. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
 #: ../invest-applet/data/prefs-dialog.ui.h:7
 msgid "Show stocks of index values"
-msgstr ""
+msgstr "İndis değerlerinin stoklarını göster"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid ""
@@ -1561,10 +1651,13 @@ msgid ""
 "on a number of stocks. This option allows to also show the quotes of the "
 "<i><b>stocks</b></i> an index is based on."
 msgstr ""
+"İndis değeri, örneğin <i>NASDAQ Bileşiği</i> (^IXIC), belli sayıda stoğa "
+"temellidir. Bu seçenek bir indisin temel aldığı <i><b>stokların</b></i> "
+"kotalarını da göstermeye izin verir."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:9
 msgid "Hide charts in quotes list"
-msgstr ""
+msgstr "Kota listesinde çizelgeleri gizle"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:10
 msgid ""
@@ -1572,12 +1665,17 @@ msgid ""
 "image causes network traffic. Hiding charts reduces the network bandwidth "
 "demand significantly."
 msgstr ""
+"Her kota yanında küçük bir çizelge resmi gösterilir. Her çizelge resminin "
+"getirilmesi ağ trafiği demektir. Çizelgelerin gizlenmesi ağ trafiğinde gözle "
+"görülür azalma sağlar."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:11
 msgid ""
 "<i><small><b>Source:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finance</a> (at least 15 minutes delayed)</small></i>"
 msgstr ""
+"<i><small><b>Kaynak:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
+"Finans</a> (en az 15 dakika gecikmeli)</small></i>"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:12
 msgid "Currency"
@@ -1586,7 +1684,7 @@ msgstr "Para Birimi"
 #: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid ""
 "Type the target currency to which all stock quotes will be converted to."
-msgstr ""
+msgstr "Tüm stok kotalarının dönüştürüleceği hedef para birimini girin."
 
 #. a) We aren't configured yet
 #: ../invest-applet/invest/applet.py:70
@@ -1644,18 +1742,16 @@ msgstr "Komisyon"
 
 #: ../invest-applet/invest/preferences.py:44
 msgid "Currency Rate"
-msgstr ""
+msgstr "Para Birimi Kuru"
 
 #: ../invest-applet/invest/preferences.py:246
 msgid "Stock Group"
-msgstr ""
+msgstr "Stok Grubu"
 
 #. translators: Asks the user to confirm deletion of a group of stocks
 #: ../invest-applet/invest/preferences.py:271
-#, fuzzy
-#| msgid "Delete this sticky note?"
 msgid "Delete entire stock group?"
-msgstr "Bu yapışkan not silinsin mi?"
+msgstr "Tüm stok grubu silinsin mi?"
 
 #. translators: stocks can be grouped together into a "stock group".
 #. The user wants to delete a group, but the group still contains stocks.
@@ -1665,6 +1761,8 @@ msgid ""
 "This removes all stocks contained in this stock group!\n"
 "Do you really want to remove this stock group?"
 msgstr ""
+"Bu stok grubunda bulunan tüm stoklar silinecek!\n"
+"Gerçekten bu stok grubunu silmek istiyor musunuz?"
 
 #: ../invest-applet/invest/quotes.py:286
 msgid "Invest could not connect to Yahoo! Finance"
@@ -1672,17 +1770,15 @@ msgstr "Yatırım Yahoo! Finance'a bağlanamadı"
 
 #. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
 #: ../invest-applet/invest/quotes.py:329
-#, fuzzy, python-format
-#| msgid "Quotes average change %%: %+.2f%%"
+#, python-format
 msgid "Average change: %s"
-msgstr "Hisse senetlerindeki ortalama %% değişim: %%%+.2f"
+msgstr "Ortalama değişim: %s"
 
 #. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
 #: ../invest-applet/invest/quotes.py:338
-#, fuzzy, python-format
-#| msgid "Positions balance: %+.2f"
+#, python-format
 msgid "Positions balance: %s %s (%s)"
-msgstr "Pozisyon dengesi: %+.2f"
+msgstr "Pozisyon dengesi: %s %s (%s)"
 
 #: ../invest-applet/invest/quotes.py:340
 #, python-format
@@ -1759,15 +1855,15 @@ msgid "Size"
 msgstr "Boyut"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes.ui.h:19
+#: ../stickynotes/stickynotes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "_Genişlik:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:480
+#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
 msgid "pixels"
 msgstr "piksel"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:525
+#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
 msgid "Colors"
 msgstr "Renkler"
 
@@ -1863,24 +1959,16 @@ msgid "Macro pattern list"
 msgstr "Makro desen listesi"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
-#, fuzzy
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
-msgstr ""
-"Makro desenleri için dizgileri saklayan GConfValue girdileri için liste."
+msgstr "Makro desenleri için dizgileri saklayan girdi listesi."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:3
 msgid "Macro command list"
 msgstr "Makro komut listesi"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
-#, fuzzy
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
-msgstr ""
-"Makro komutları için dizgileri saklayan GConfValue girdileri için liste."
+msgstr "Makro komutları için dizgileri saklayan girdi listesi."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:5
 msgid "Show handle"
@@ -1923,12 +2011,10 @@ msgid "Use theme colors instead of custom ones."
 msgstr "Özelleri yerine tema renklerini kullan."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:15
-#| msgid "Foreground color, red component"
 msgid "Foreground color"
 msgstr "Önplan rengi"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:16
-#| msgid "_Background"
 msgid "Background color"
 msgstr "Arkaplan rengi"
 
@@ -1937,11 +2023,8 @@ msgid "History list"
 msgstr "Geçmiş listesi"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
-#, fuzzy
-#| msgid "List of GConfValue entries containing strings for history entries."
 msgid "List of entries containing strings for history entries."
-msgstr ""
-"Geçmiş girişleri için dizgileri saklayan GConfValue girdileri için liste."
+msgstr "Geçmiş girişleri için dizgileri saklayan girdi listesi."
 
 #: ../mini-commander/src/preferences.c:294
 msgid "You must specify a pattern"
@@ -1972,20 +2055,20 @@ msgstr "Komut"
 msgid "Modem Monitor"
 msgstr "Modem İzleyicisi"
 
-#: ../modemlights/modem-applet.c:666
+#: ../modemlights/modem-applet.c:671
 msgid "Connection active, but could not get connection time"
 msgstr "Bağlantı etkin, fakat bağlantı zamanını belirleyemiyor"
 
-#: ../modemlights/modem-applet.c:682
+#: ../modemlights/modem-applet.c:687
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Bağlantı süresi: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:686
+#: ../modemlights/modem-applet.c:691
 msgid "Not connected"
 msgstr "Bağlı değil"
 
-#: ../modemlights/modem-applet.c:708
+#: ../modemlights/modem-applet.c:713
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -1993,7 +2076,7 @@ msgstr ""
 "İnternet servis sağlayacınıza bağlanabilmeniz için yönetici haklarına "
 "ihtiyacınız var"
 
-#: ../modemlights/modem-applet.c:709
+#: ../modemlights/modem-applet.c:714
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2001,11 +2084,11 @@ msgstr ""
 "İnternet servis sağlayacınızla olan bağlantınızı kesmek için yönetici "
 "haklarına ihtiyacınız var"
 
-#: ../modemlights/modem-applet.c:784
+#: ../modemlights/modem-applet.c:789
 msgid "The entered password is invalid"
 msgstr "Girilen parola geçerli değil"
 
-#: ../modemlights/modem-applet.c:786
+#: ../modemlights/modem-applet.c:791
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2013,27 +2096,27 @@ msgstr ""
 "Doğru yazıp yazmadığınızı ve \"CapsLock\" tuşunuzu etkinleştirip "
 "etkinleştirmediğinizi kontrol edin"
 
-#: ../modemlights/modem-applet.c:897
+#: ../modemlights/modem-applet.c:902
 msgid "Do you want to connect?"
 msgstr "Bağlanmak istiyor musunuz?"
 
-#: ../modemlights/modem-applet.c:898
+#: ../modemlights/modem-applet.c:903
 msgid "Do you want to disconnect?"
 msgstr "Bağlantıyı kesmek istiyor musunuz?"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "C_onnect"
 msgstr "_Bağlan"
 
-#: ../modemlights/modem-applet.c:907
+#: ../modemlights/modem-applet.c:912
 msgid "_Disconnect"
 msgstr "_Bağlantıyı Kes"
 
-#: ../modemlights/modem-applet.c:966
+#: ../modemlights/modem-applet.c:971
 msgid "Could not launch network configuration tool"
 msgstr "Ağ yapılandırma aracı başlatılamıyor"
 
-#: ../modemlights/modem-applet.c:968
+#: ../modemlights/modem-applet.c:973
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2041,7 +2124,7 @@ msgstr ""
 "Doğru yere yüklendiğinden ve sizin yüklenen yer üzerinde gerekli izinlere "
 "sahip olduğunuzdan emin olun"
 
-#: ../modemlights/modem-applet.c:992
+#: ../modemlights/modem-applet.c:997
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr ""
 "Bir çevirmeli ağ bağlantısını etkinleştirip izlemeye yarayan uygulamacık."
@@ -2054,7 +2137,8 @@ msgstr "_Etkinleştir"
 msgid "_Deactivate"
 msgstr "_Devre Dışı Bırak"
 
-#: ../modemlights/modem-applet-menu.xml.h:3 ../stickynotes/stickynotes.ui.h:4
+#: ../modemlights/modem-applet-menu.xml.h:3
+#: ../stickynotes/stickynotes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "Ö_zellikler"
 
@@ -2089,7 +2173,6 @@ msgstr ""
 "gösterebilen bir sistem yükü izleyicisidir."
 
 #: ../multiload/main.c:131
-#| msgid "System Monitor"
 msgid "Start system-monitor"
 msgstr "Sistem gözlemcisini başlat"
 
@@ -2098,34 +2181,34 @@ msgstr "Sistem gözlemcisini başlat"
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' çalıştırılırken hata oluştu: %s"
 
-#: ../multiload/main.c:292 ../multiload/properties.c:550
+#: ../multiload/main.c:275 ../multiload/properties.c:546
 msgid "Processor"
 msgstr "İşlemci"
 
-#: ../multiload/main.c:294 ../multiload/properties.c:558
+#: ../multiload/main.c:277 ../multiload/properties.c:554
 msgid "Memory"
 msgstr "Bellek"
 
-#: ../multiload/main.c:296 ../multiload/properties.c:566
+#: ../multiload/main.c:279 ../multiload/properties.c:562
 msgid "Network"
 msgstr "Ağ"
 
-#: ../multiload/main.c:298 ../multiload/properties.c:573
+#: ../multiload/main.c:281 ../multiload/properties.c:569
 msgid "Swap Space"
 msgstr "Takas Alanı"
 
-#: ../multiload/main.c:300 ../multiload/main.c:379
+#: ../multiload/main.c:283 ../multiload/main.c:362
 msgid "Load Average"
 msgstr "Ortalama Yük"
 
-#: ../multiload/main.c:302
+#: ../multiload/main.c:285
 msgid "Disk"
 msgstr "Disk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:318
+#: ../multiload/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2136,13 +2219,13 @@ msgstr ""
 "%%%u kadarı programlar tarafından kullanımda\n"
 "%%%u kadarı önbellek"
 
-#: ../multiload/main.c:326
+#: ../multiload/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Sistem yük ortalaması %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:334
+#: ../multiload/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2153,7 +2236,7 @@ msgstr ""
 "Alınan %s\n"
 "Gönderilen %s"
 
-#: ../multiload/main.c:350
+#: ../multiload/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2165,27 +2248,27 @@ msgstr[0] ""
 "%s:\n"
 "%%%u kullanımda"
 
-#: ../multiload/main.c:375
+#: ../multiload/main.c:358
 msgid "CPU Load"
 msgstr "Işlemci Yükü"
 
-#: ../multiload/main.c:376
+#: ../multiload/main.c:359
 msgid "Memory Load"
 msgstr "Bellek Yükü"
 
-#: ../multiload/main.c:377
+#: ../multiload/main.c:360
 msgid "Net Load"
 msgstr "Ağ Yükü"
 
-#: ../multiload/main.c:378
+#: ../multiload/main.c:361
 msgid "Swap Load"
 msgstr "Takas Yükü"
 
-#: ../multiload/main.c:380
+#: ../multiload/main.c:363
 msgid "Disk Load"
 msgstr "Disk Yükü"
 
-#: ../multiload/main.c:490
+#: ../multiload/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Sistem İzleyici"
@@ -2256,10 +2339,8 @@ msgid "Graph color for nice-related CPU activity"
 msgstr "Öncelikle ilgili işlemci aktivitesi için grafik rengi"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-#, fuzzy
-#| msgid "Graph color for iowait related CPU activity"
 msgid "Graph color for iowait-related CPU activity"
-msgstr "Öncelikle ilgili işlemci aktivitesi için grafik rengi"
+msgstr "Girdi çıktı bekleme ilişkili CPU aktivitesi için grafik rengi"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
 msgid "CPU graph background color"
@@ -2333,146 +2414,470 @@ msgstr "Disk yükü grafiği için arkaplan rengi"
 msgid "The desktop description file to execute as the system monitor"
 msgstr "Sistem izleyici olarak çalıştırılacak masaüstü tanım dosyası"
 
-#: ../multiload/properties.c:312
+#: ../multiload/properties.c:308
 msgid "Monitored Resources"
 msgstr "İzlenen Özkaynaklar"
 
-#: ../multiload/properties.c:337
+#: ../multiload/properties.c:333
 msgid "_Processor"
 msgstr "İş_lemci"
 
-#: ../multiload/properties.c:350
+#: ../multiload/properties.c:346
 msgid "_Memory"
 msgstr "_Bellek"
 
-#: ../multiload/properties.c:363
+#: ../multiload/properties.c:359
 msgid "_Network"
 msgstr "_Ağ"
 
-#: ../multiload/properties.c:376
+#: ../multiload/properties.c:372
 msgid "S_wap Space"
 msgstr "_Takas Alanı"
 
-#: ../multiload/properties.c:389
+#: ../multiload/properties.c:385
 msgid "_Load"
 msgstr "_Yük"
 
-#: ../multiload/properties.c:402
+#: ../multiload/properties.c:398
 msgid "_Harddisk"
 msgstr "_Sabit Disk"
 
-#: ../multiload/properties.c:417
+#: ../multiload/properties.c:413
 msgid "Options"
 msgstr "Seçenekler"
 
-#: ../multiload/properties.c:447
+#: ../multiload/properties.c:443
 msgid "System m_onitor width: "
 msgstr "Sistem izleyici _genişliği: "
 
-#: ../multiload/properties.c:449
+#: ../multiload/properties.c:445
 msgid "System m_onitor height: "
 msgstr "Sistem izleyici _yüksekliği: "
 
-#: ../multiload/properties.c:488
+#: ../multiload/properties.c:484
 msgid "Sys_tem monitor update interval: "
 msgstr "Sistem izleyici güncelleme _sıklığı: "
 
-#: ../multiload/properties.c:514
+#: ../multiload/properties.c:510
 msgid "milliseconds"
 msgstr "milisaniye"
 
-#: ../multiload/properties.c:552 ../multiload/properties.c:560
+#: ../multiload/properties.c:548 ../multiload/properties.c:556
 msgid "_User"
 msgstr "_Kullanıcı"
 
-#: ../multiload/properties.c:553
+#: ../multiload/properties.c:549
 msgid "S_ystem"
 msgstr "_Sistem"
 
-#: ../multiload/properties.c:554
+#: ../multiload/properties.c:550
 msgid "N_ice"
 msgstr "Ö_ncelik"
 
-#: ../multiload/properties.c:555
+#: ../multiload/properties.c:551
 msgid "I_OWait"
 msgstr "I_OWait"
 
-#: ../multiload/properties.c:556
+#: ../multiload/properties.c:552
 msgid "I_dle"
 msgstr "B_eklemede"
 
-#: ../multiload/properties.c:561
+#: ../multiload/properties.c:557
 msgid "Sh_ared"
 msgstr "_Paylaşımda"
 
-#: ../multiload/properties.c:562
+#: ../multiload/properties.c:558
 msgid "_Buffers"
 msgstr "_Tamponlar"
 
-#: ../multiload/properties.c:563
+#: ../multiload/properties.c:559
 msgid "Cach_ed"
 msgstr "Önb_ellekli"
 
-#: ../multiload/properties.c:564
+#: ../multiload/properties.c:560
 msgid "F_ree"
 msgstr "B_oş"
 
-#: ../multiload/properties.c:568
+#: ../multiload/properties.c:564
 msgid "_In"
 msgstr "_Gelen"
 
-#: ../multiload/properties.c:569
+#: ../multiload/properties.c:565
 msgid "_Out"
 msgstr "_Giden"
 
-#: ../multiload/properties.c:570
+#: ../multiload/properties.c:566
 msgid "_Local"
 msgstr "_Yerel"
 
-#: ../multiload/properties.c:571 ../multiload/properties.c:581
-#: ../multiload/properties.c:587
+#: ../multiload/properties.c:567 ../multiload/properties.c:577
+#: ../multiload/properties.c:583
 msgid "_Background"
 msgstr "A_rkaplan"
 
-#: ../multiload/properties.c:575
+#: ../multiload/properties.c:571
 msgid "_Used"
 msgstr "_Kullanılıyor"
 
-#: ../multiload/properties.c:576
+#: ../multiload/properties.c:572
 msgid "_Free"
 msgstr "_Boş"
 
-#: ../multiload/properties.c:578
+#: ../multiload/properties.c:574
 msgid "Load"
 msgstr "Yük"
 
-#: ../multiload/properties.c:580
+#: ../multiload/properties.c:576
 msgid "_Average"
 msgstr "Ortalam_a"
 
-#: ../multiload/properties.c:583
+#: ../multiload/properties.c:579
 msgid "Harddisk"
 msgstr "Sabit Disk"
 
-#: ../multiload/properties.c:585
+#: ../multiload/properties.c:581
 msgid "_Read"
 msgstr "_Okuma"
 
-#: ../multiload/properties.c:586
+#: ../multiload/properties.c:582
 msgid "_Write"
 msgstr "_Yazma"
 
-#: ../multiload/properties.c:613
+#: ../multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Sistem İzleyici Tercihleri"
+
+#: ../netspeed/src/netspeed.c:368
+#, fuzzy
+#| msgid "m/s"
+msgid "b/s"
+msgstr "m/s"
+
+#: ../netspeed/src/netspeed.c:368
+#, fuzzy
+#| msgid "m/s"
+msgid "B/s"
+msgstr "m/s"
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bits"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:370
+msgid "bytes"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:377
+msgid "kb/s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:377
+msgid "KiB/s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:379
+msgid "kb"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:379
+msgid "KiB"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:388
+msgid "Mb/s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:388
+msgid "MiB/s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:390
+msgid "Mb"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:390
+msgid "MiB"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:634
+msgid ""
+"A little applet that displays some information on the traffic on the "
+"specified network device"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:639
+msgid "Netspeed Website"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:902
+#, c-format
+msgid "Device Details for %s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:927
+msgid "_In graph color"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:928
+msgid "_Out graph color"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:944
+#, fuzzy
+#| msgid "A_ddress:"
+msgid "Internet Address:"
+msgstr "A_dres:"
+
+#: ../netspeed/src/netspeed.c:945
+msgid "Netmask:"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:946
+#, fuzzy
+#| msgid "A_ddress:"
+msgid "Hardware Address:"
+msgstr "A_dres:"
+
+#: ../netspeed/src/netspeed.c:947
+#, fuzzy
+#| msgid "A_ddress:"
+msgid "P-t-P Address:"
+msgstr "A_dres:"
+
+#: ../netspeed/src/netspeed.c:948
+msgid "Bytes in:"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:949
+msgid "Bytes out:"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
+#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
+msgid "none"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:993
+#, fuzzy
+#| msgid "A_ddress:"
+msgid "IPv6 Address:"
+msgstr "A_dres:"
+
+#: ../netspeed/src/netspeed.c:1025
+msgid "Signal Strength:"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1026
+msgid "ESSID:"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1076
+#, c-format
+msgid "%s is down"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1081
+#, c-format
+msgid ""
+"%s: %s\n"
+"in: %s out: %s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
+msgid "has no ip"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1090
+#, c-format
+msgid ""
+"%s: %s\n"
+"sum: %s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1099
+#, c-format
+msgid ""
+"\n"
+"ESSID: %s\n"
+"Strength: %d %%"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1100
+#, fuzzy
+#| msgid "Unknown"
+msgid "unknown"
+msgstr "Bilinmiyor"
+
+#: ../netspeed/src/netspeed.c:1165
+#, fuzzy, c-format
+#| msgid "Do you want to disconnect?"
+msgid "Do you want to disconnect %s now?"
+msgstr "Bağlantıyı kesmek istiyor musunuz?"
+
+#: ../netspeed/src/netspeed.c:1167
+#, fuzzy, c-format
+#| msgid "Do you want to connect?"
+msgid "Do you want to connect %s now?"
+msgstr "Bağlanmak istiyor musunuz?"
+
+#: ../netspeed/src/netspeed.c:1190
+#, c-format
+msgid ""
+"<b>Running command %s failed</b>\n"
+"%s"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1457
+msgid "Netspeed"
+msgstr ""
+
+#: ../netspeed/src/netspeed.c:1549
+#, fuzzy, c-format
+#| msgid "There was an error displaying help: %s"
+msgid ""
+"There was an error displaying help:\n"
+"%s"
+msgstr "Yardım gösterilirken hata oluştu: %s"
+
+#: ../netspeed/src/preferences.c:152
+#, fuzzy
+#| msgid "Network"
+msgid "Network _device:"
+msgstr "Ağ"
+
+#: ../netspeed/src/preferences.c:219
+#, fuzzy
+#| msgid "Monitor Settings"
+msgid "General Settings"
+msgstr "Ekran Ayarları"
+
+#: ../netspeed/src/preferences.c:240
+msgid "Show _sum instead of in & out"
+msgstr ""
+
+#: ../netspeed/src/preferences.c:246
+msgid "Show _bits instead of bytes"
+msgstr ""
+
+#: ../netspeed/src/preferences.c:252
+#, fuzzy
+#| msgid "Click to edit the selected palette"
+msgid "Change _icon according to the selected device"
+msgstr "Seçili paleti düzenlemek için tıklayın"
+
+#: ../netspeed/src/preferences.c:312
+#, fuzzy
+#| msgid "Weather Preferences"
+msgid "Netspeed Preferences"
+msgstr "Hava Durumu Tercihleri"
+
+#: ../netspeed/data/netspeed-menu.xml.h:1
+#, fuzzy
+#| msgid "_Details"
+msgid "Device _Details"
+msgstr "_Ayrıntılar"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "Geyes Applet Factory"
+msgid "Netspeed Applet Factory"
+msgstr "Geyes Uygulamacığı Üreticisi"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+#, fuzzy
+#| msgid "Invest Applet"
+msgid "Netspeed Applet"
+msgstr "Yatırım Uygulamacığı"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+#, fuzzy
+#| msgid "CPU to Monitor"
+msgid "Network Monitor"
+msgstr "İzlenecek İşlemci"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+#, fuzzy
+#| msgid "Show frame"
+msgid "Show sum"
+msgstr "Çerçeve göster"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr ""
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+#, fuzzy
+#| msgid "Show sticky notes"
+msgid "Show bits"
+msgstr "Yapışkan notları göster"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr ""
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+#, fuzzy
+#| msgid "Change %"
+msgid "Change icon"
+msgstr "Değişim %"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+#, fuzzy
+#| msgid "Click to edit the selected palette"
+msgid "Change icon according to the selected device"
+msgstr "Seçili paleti düzenlemek için tıklayın"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr ""
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+#, fuzzy
+#| msgid "Refresh"
+msgid "Refresh time"
+msgstr "Tazele"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+#, fuzzy
+#| msgid "Applet refresh rate in milliseconds"
+msgid "Refresh time in milliseconds"
+msgstr "Milisaniye cinsinden uygulamacık tazeleme hızı"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+#, fuzzy
+#| msgid "Network"
+msgid "Network device"
+msgstr "Ağ"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+#, fuzzy
+#| msgid "Command"
+msgid "Up command"
+msgstr "Komut"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+#, fuzzy
+#| msgid "Command"
+msgid "Down command"
+msgstr "Komut"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+#, fuzzy
+#| msgid "Pick a color"
+msgid "In graph color"
+msgstr "Bir renk seç"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr ""
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Yapışkan Notlar Uygulamacık Üreticisi"
 
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:127
-#: ../stickynotes/stickynotes_applet.c:387
+#: ../stickynotes/stickynotes_applet.c:146
+#: ../stickynotes/stickynotes_applet.c:380
 msgid "Sticky Notes"
 msgstr "Yapışkan Notlar"
 
@@ -2480,204 +2885,210 @@ msgstr "Yapışkan Notlar"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Masaüstünüzde yapışkan notları oluşturun, görüntüleyin ve yönetin"
 
-#: ../stickynotes/stickynotes.c:619
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Bu not kilitlendi."
 
-#: ../stickynotes/stickynotes.c:623
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Bu notun kilidi açıldı."
 
-#: ../stickynotes/stickynotes.ui.h:1
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-msgid "_New Note"
-msgstr "_Yeni Not"
-
-#: ../stickynotes/stickynotes.ui.h:2
-msgid "_Delete Note..."
-msgstr "_Notu Sil..."
-
-#: ../stickynotes/stickynotes.ui.h:3
-msgid "_Lock Note"
-msgstr "_Notu Kilitle"
-
-#: ../stickynotes/stickynotes.ui.h:5
-msgid "Sticky Notes Preferences"
-msgstr "Yapışkan Notlar Tercihleri"
-
-#: ../stickynotes/stickynotes.ui.h:6
-msgid "Default Note Properties"
-msgstr "Öntanımlı Not Özellikleri"
-
-#: ../stickynotes/stickynotes.ui.h:7
-msgid "Choose a font to use for all sticky notes"
-msgstr "Tüm yapışkan notlarda kullanılacak yazıtipini seçin"
-
-#: ../stickynotes/stickynotes.ui.h:8
-msgid "Pick a default sticky note font"
-msgstr "Öntanımlı yapışkan not yazıtipini seçin"
-
-#: ../stickynotes/stickynotes.ui.h:9
-msgid "_Font:"
-msgstr "_Yazıtipi:"
-
-#: ../stickynotes/stickynotes.ui.h:10
-msgid "Use fo_nt from the system theme"
-msgstr "Sistem temasından _yazıtipi kullan"
-
-#: ../stickynotes/stickynotes.ui.h:11
-msgid "Note C_olor:"
-msgstr "Not _Rengi:"
-
-#: ../stickynotes/stickynotes.ui.h:12
-msgid "Font Co_lor:"
-msgstr "Yazıtipi R_engi:"
-
-#: ../stickynotes/stickynotes.ui.h:13
-msgid "Choose a base color to use for all sticky notes"
-msgstr "Tüm yapışkan notlar için kullanılacak temel rengi seçin"
-
-#: ../stickynotes/stickynotes.ui.h:14
-msgid "Pick a default sticky note color"
-msgstr "Öntanımlı yapışkan not rengini seçin"
-
-#: ../stickynotes/stickynotes.ui.h:15
-msgid "Use co_lor from the system theme"
-msgstr "Sistem temasından _renk kullan"
-
-#: ../stickynotes/stickynotes.ui.h:16
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "Yeni notlar için öntanımlı boy (piksel cinsinden) belirleyin"
-
-#: ../stickynotes/stickynotes.ui.h:17
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "Yeni notlar için öntanımlı genişlik (piksel cinsinden) belirleyin"
-
-#: ../stickynotes/stickynotes.ui.h:18
-msgid "H_eight:"
-msgstr "_Yükseklik:"
-
-#: ../stickynotes/stickynotes.ui.h:20
-msgid "Behavior"
-msgstr "İşleyiş"
-
-#: ../stickynotes/stickynotes.ui.h:21
-msgid "Hide notes when the des_ktop is clicked on"
-msgstr ""
-
-#: ../stickynotes/stickynotes.ui.h:22
-msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr ""
-
-#: ../stickynotes/stickynotes.ui.h:23
-msgid "Force _default color and font on notes"
-msgstr "Notlarda _öntanımlı renk ve yazıtipini kullan"
-
-#: ../stickynotes/stickynotes.ui.h:24
-msgid "Choose if the default style is forced on all notes"
-msgstr "Tüm notlara öntanımlı biçemin uygulanıp uygulanmamasını seçin"
-
-#: ../stickynotes/stickynotes.ui.h:25
-msgid "_Put notes on all workspaces"
-msgstr "Notu tüm ç_alışma alanlarına koy"
-
-#: ../stickynotes/stickynotes.ui.h:26
-msgid "Choose if notes are visible on all workspaces"
-msgstr "Notların tüm çalışma alanlarında görüntülenip görüntülenmemesini seçin"
-
-#: ../stickynotes/stickynotes.ui.h:27
+#: ../stickynotes/stickynotes-delete.ui.h:1
 msgid "Delete this sticky note?"
 msgstr "Bu yapışkan not silinsin mi?"
 
-#: ../stickynotes/stickynotes.ui.h:28
+#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
 msgid "This cannot be undone."
 msgstr "Bu geri alınamaz."
 
-#: ../stickynotes/stickynotes.ui.h:29
-msgid "Delete all sticky notes?"
-msgstr "Tüm yapışkan notlar silinsin mi?"
-
-#: ../stickynotes/stickynotes.ui.h:30
+#: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "_Hepsini Sil"
 
-#: ../stickynotes/stickynotes.ui.h:31
+#: ../stickynotes/stickynotes-delete-all.ui.h:2
+msgid "Delete all sticky notes?"
+msgstr "Tüm yapışkan notlar silinsin mi?"
+
+#: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
 msgstr "Yapışkan Not"
 
-#: ../stickynotes/stickynotes.ui.h:32
+#: ../stickynotes/stickynotes-note.ui.h:2
 msgid "Lock/Unlock note"
 msgstr "Notu kilitle/serbest bırak"
 
-#: ../stickynotes/stickynotes.ui.h:33
+#: ../stickynotes/stickynotes-note.ui.h:3
 msgid "Close note"
 msgstr "Notu kapat"
 
-#: ../stickynotes/stickynotes.ui.h:34
+#: ../stickynotes/stickynotes-note.ui.h:4
 msgid "Resize note"
 msgstr "Notu yeniden boyutlandırın"
 
-#: ../stickynotes/stickynotes.ui.h:35
+#: ../stickynotes/stickynotes-preferences.ui.h:1
+msgid "Sticky Notes Preferences"
+msgstr "Yapışkan Notlar Tercihleri"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:2
+msgid "Default Note Properties"
+msgstr "Öntanımlı Not Özellikleri"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:4
+msgid "H_eight:"
+msgstr "_Yükseklik:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:5
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "Yeni notlar için öntanımlı genişlik (piksel cinsinden) belirleyin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:6
+#, fuzzy
+#| msgid "10"
+msgid "1"
+msgstr "10"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:7
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "Yeni notlar için öntanımlı boy (piksel cinsinden) belirleyin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:8
+#, fuzzy
+#| msgid "10"
+msgid "0"
+msgstr "10"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:9
+msgid "Use co_lor from the system theme"
+msgstr "Sistem temasından _renk kullan"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:10
+msgid "Font Co_lor:"
+msgstr "Yazıtipi R_engi:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:11
+msgid "Note C_olor:"
+msgstr "Not _Rengi:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:12
+msgid "Choose a base color to use for all sticky notes"
+msgstr "Tüm yapışkan notlar için kullanılacak temel rengi seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:13
+msgid "Pick a default sticky note color"
+msgstr "Öntanımlı yapışkan not rengini seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:14
+msgid "Use fo_nt from the system theme"
+msgstr "Sistem temasından _yazıtipi kullan"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:15
+#: ../stickynotes/stickynotes-properties.ui.h:11
+msgid "_Font:"
+msgstr "_Yazıtipi:"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:16
+msgid "Choose a font to use for all sticky notes"
+msgstr "Tüm yapışkan notlarda kullanılacak yazıtipini seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:17
+msgid "Pick a default sticky note font"
+msgstr "Öntanımlı yapışkan not yazıtipini seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:18
+msgid "Behavior"
+msgstr "İşleyiş"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:19
+msgid "_Put notes on all workspaces"
+msgstr "Notu tüm ç_alışma alanlarına koy"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:20
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Notların tüm çalışma alanlarında görüntülenip görüntülenmemesini seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:21
+msgid "Force _default color and font on notes"
+msgstr "Notlarda _öntanımlı renk ve yazıtipini kullan"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:22
+msgid "Choose if the default style is forced on all notes"
+msgstr "Tüm notlara öntanımlı biçemin uygulanıp uygulanmamasını seçin"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:23
+msgid "Hide notes when the des_ktop is clicked on"
+msgstr "Masa _üstü tıklandığında notları gizle"
+
+#: ../stickynotes/stickynotes-preferences.ui.h:24
+msgid "Choose whether to hide all notes when selecting on the desktop"
+msgstr "Masa üstü seçildiğinde tüm notların gizlenip gizlenmeyeceğini seçin"
+
+#: ../stickynotes/stickynotes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "Yapışkan Not Özellikleri"
 
-#: ../stickynotes/stickynotes.ui.h:36
+#: ../stickynotes/stickynotes-properties.ui.h:2
 msgid "Properties"
 msgstr "Özellikler"
 
-#: ../stickynotes/stickynotes.ui.h:37
-msgid "Choose a font for the note"
-msgstr "Not için bir yazıtipi seçin"
-
-#: ../stickynotes/stickynotes.ui.h:38
-msgid "Pick a font for the sticky note"
-msgstr "Yapışkan not için yazıtipini seçin"
-
-#: ../stickynotes/stickynotes.ui.h:39
-msgid "Use default fo_nt"
-msgstr "Ö_ntanımlı yazıtipini kullan"
-
-#: ../stickynotes/stickynotes.ui.h:40
-msgid "Choose a color for the note"
-msgstr "Not için bir renk seçin"
-
-#: ../stickynotes/stickynotes.ui.h:41
-msgid "Pick a color for the sticky note"
-msgstr "Yapışkan not için bir renk seçin"
-
-#: ../stickynotes/stickynotes.ui.h:42
-msgid "Note _Color:"
-msgstr "Not R_engi:"
-
-#: ../stickynotes/stickynotes.ui.h:43
-msgid "Font C_olor:"
-msgstr "Yazıtipi _Rengi:"
-
-#: ../stickynotes/stickynotes.ui.h:44
-msgid "Use default co_lor"
-msgstr "Öntanımlı _rengi kullan"
-
-#: ../stickynotes/stickynotes.ui.h:45
-msgid "Specify a title for the note"
-msgstr "Not için bir başlık belirleyin"
-
-#: ../stickynotes/stickynotes.ui.h:46
+#: ../stickynotes/stickynotes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_Başlık:"
 
-#: ../stickynotes/stickynotes_applet.c:553
+#: ../stickynotes/stickynotes-properties.ui.h:4
+msgid "Specify a title for the note"
+msgstr "Not için bir başlık belirleyin"
+
+#: ../stickynotes/stickynotes-properties.ui.h:5
+msgid "Use default co_lor"
+msgstr "Öntanımlı _rengi kullan"
+
+#: ../stickynotes/stickynotes-properties.ui.h:6
+msgid "Font C_olor:"
+msgstr "Yazıtipi _Rengi:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:7
+msgid "Note _Color:"
+msgstr "Not R_engi:"
+
+#: ../stickynotes/stickynotes-properties.ui.h:8
+msgid "Use default fo_nt"
+msgstr "Ö_ntanımlı yazıtipini kullan"
+
+#: ../stickynotes/stickynotes-properties.ui.h:9
+msgid "Choose a color for the note"
+msgstr "Not için bir renk seçin"
+
+#: ../stickynotes/stickynotes-properties.ui.h:10
+msgid "Pick a color for the sticky note"
+msgstr "Yapışkan not için bir renk seçin"
+
+#: ../stickynotes/stickynotes-properties.ui.h:12
+msgid "Choose a font for the note"
+msgstr "Not için bir yazıtipi seçin"
+
+#: ../stickynotes/stickynotes-properties.ui.h:13
+msgid "Pick a font for the sticky note"
+msgstr "Yapışkan not için yazıtipini seçin"
+
+#: ../stickynotes/stickynotes_applet.c:539
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d not"
 
-#: ../stickynotes/stickynotes_applet.c:554
+#: ../stickynotes/stickynotes_applet.c:540
 msgid "Show sticky notes"
 msgstr "Yapışkan notları göster"
 
 #: ../stickynotes/stickynotes_applet_callbacks.c:387
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "GNOME Masaüstü Ortamı için Yapışkan Notlar"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "_Yeni Not"
 
 #: ../stickynotes/stickynotes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
@@ -2690,6 +3101,14 @@ msgstr "N_otları Kilitle"
 #: ../stickynotes/stickynotes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "_Notları Sil"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Notu Sil..."
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Notu Kilitle"
 
 #: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -2716,32 +3135,24 @@ msgid "Default color for new notes"
 msgstr "Yeni notlar için öntanımlı renk"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-#, fuzzy
-#| msgid ""
-#| "Default color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#30FF50\"."
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
 msgstr ""
-"Yeni yapışkan notlar için öntanımlı renk. Bu html onaltılı belirtimde "
-"olmalıdır, örneğin \"#30FF50\"."
+"Yeni yapışkan notlar için öntanımlı renk. Bu standart bir isim, onaltılık "
+"değer, RGB renk veya RGBA renk olabilir."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
 msgid "Default color for font"
 msgstr "Yazıtipi için öntanımlı renk"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-#, fuzzy
-#| msgid ""
-#| "Default font color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#000000\"."
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
 msgstr ""
-"Yeni yapışkan notlar için öntanımlı yazıtipi rengi. Bu html onaltılı "
-"belirtimde olmalıdır, örneğin \"#000000\"."
+"Yeni yapışkan notlar için varsayılan yazı tipi rengi. Bu standart isim, "
+"onaltılık değer, RGB rengi veya RGBA rengi olabilir."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
 msgid "Default font for new notes"
@@ -2827,13 +3238,15 @@ msgstr ""
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
 msgid "Whether to hide all notes when the desktop is selected"
-msgstr ""
+msgstr "Masa üstü seçildiğinde tüm notlar gizlenmeli mi"
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
 msgstr ""
+"Bu seçenek etkinleştirilirse, masa üstünü herhangi bir yolla seçmek tüm açık "
+"notları otomatik olarak gizler."
 
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
 msgid "Whether to ask for confirmation when deleting a note"
@@ -2842,6 +3255,117 @@ msgstr "Notları silerken onay sorulup sorulmaması"
 #: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Boş notlar her zaman onay sorulmadan silinir."
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+msgid "Tracker Search Bar"
+msgstr ""
+
+#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+msgid "Find your data quickly using Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:718
+#: ../tracker-search-bar/tracker-results-window.c:734
+#, fuzzy
+#| msgid "Othe_r"
+msgid "Other"
+msgstr "_Diğer"
+
+#: ../tracker-search-bar/tracker-results-window.c:719
+msgid "Contacts"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:720
+msgid "Tags"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:721
+msgid "Email Addresses"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:722
+msgid "Documents"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:723
+#, fuzzy
+#| msgid "Notifications"
+msgid "Applications"
+msgstr "Uyarılar"
+
+#: ../tracker-search-bar/tracker-results-window.c:724
+msgid "Images"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:725
+msgid "Audio"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:726
+msgid "Folders"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:727
+#, fuzzy
+#| msgid "_Font:"
+msgid "Fonts"
+msgstr "_Yazıtipi:"
+
+#: ../tracker-search-bar/tracker-results-window.c:728
+msgid "Videos"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:729
+msgid "Archives"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:730
+msgid "Bookmarks"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:731
+msgid "Links"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:1107
+msgid "Category"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-results-window.c:1135
+#, fuzzy
+#| msgid "_Title:"
+msgid "Title"
+msgstr "_Başlık:"
+
+#: ../tracker-search-bar/tracker-results-window.c:1201
+#, c-format
+msgid "No results found for “%s”"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+msgid "Copyright Tracker Authors 2005-2010"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+msgid "A search bar applet for finding content stored in Tracker"
+msgstr ""
+
+#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+msgid ""
+"Tracker is free software; you can redistribute it and/or modify it under the "
+"terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
+"\n"
+"Tracker is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA  02110-1301, USA."
+msgstr ""
 
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
@@ -2853,11 +3377,8 @@ msgstr[0] "%d Öğe Çöpte"
 msgid "No Items in Trash"
 msgstr "Çöpte hiç öğe yok"
 
-#: ../trashapplet/src/trashapplet.c:367
-#, fuzzy, c-format
-#| msgid ""
-#| "Error while spawning nautilus:\n"
-#| "%s"
+#: ../trashapplet/src/trashapplet.c:363
+#, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
 "%s"
@@ -2865,7 +3386,7 @@ msgstr ""
 "Nautilus başlatılırken hata:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:419
+#: ../trashapplet/src/trashapplet.c:415
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -2873,20 +3394,20 @@ msgstr ""
 "GNOME Çöp Kutusu, panelinizde durur. Burdan Çöp kutunuzun durumunu görebilir "
 "ya da sürükle bırak yöntemi ile öğeleri çöpe atabilirsiniz."
 
-#: ../trashapplet/src/trashapplet.c:444
+#: ../trashapplet/src/trashapplet.c:440
 msgid "Delete Immediately?"
 msgstr "Hemen Silinsin mi?"
 
-#: ../trashapplet/src/trashapplet.c:473
+#: ../trashapplet/src/trashapplet.c:469
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Öğeler çöpe taşınamıyor, önları direk silmek ister misiniz?"
 
-#: ../trashapplet/src/trashapplet.c:478
+#: ../trashapplet/src/trashapplet.c:474
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Bazı öğeler çöpe taşınamıyor, önları direk silmek ister misiniz?"
 
-#: ../trashapplet/src/trashapplet.c:608
+#: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
 msgstr "Çöp Uygulamacığı"
 
@@ -2931,272 +3452,63 @@ msgstr "Çöp Boşaltılıyor"
 msgid "From:"
 msgstr "Kimden:"
 
-#: ../windowpicker/src/applet.c:199 ../windowpicker/src/applet.c:200
+#: ../windowpicker/src/task-item.c:812
+msgid "Window Task Button"
+msgstr "Pencere Görev Düğmesi"
+
+#: ../windowpicker/src/wp-about-dialog.c:97
 msgid "Window Picker"
 msgstr "Pencere Seçicisi"
 
-#: ../windowpicker/src/applet.c:262
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
 msgstr "Tüm çalışma yerlerinden pencereleri göster"
 
-#: ../windowpicker/src/applet.c:265
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:4
 msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
 msgstr ""
+"Masa üstündeyken ev başlığını\n"
+"ve çıkış simgesini göster"
 
-#: ../windowpicker/src/applet.c:270
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:6
+#, fuzzy
+#| msgid ""
+#| "Show the application title and\n"
+#| "close icon"
 msgid ""
-"Show the application title and\n"
-"close icon"
+"Show the application title and close icon\n"
+"for the active window"
 msgstr ""
+"Uygulama başlığını ve kapatma\n"
+"simgesini göster"
 
-#: ../windowpicker/src/applet.c:274
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:8
 msgid "Grey out non-active window icons"
-msgstr ""
+msgstr "Etkin olmayan pencere simgelerini grileştir"
 
-#: ../windowpicker/src/applet.c:277
-msgid "Automatically expand task list to use full space"
-msgstr ""
-
-#: ../windowpicker/src/task-title.c:168 ../windowpicker/src/task-title.c:175
-#: ../windowpicker/src/task-title.c:312 ../windowpicker/src/task-title.c:399
+#: ../windowpicker/src/wp-task-title.c:186
 msgid "Home"
 msgstr "Ana"
 
-#: ../windowpicker/src/task-title.c:172 ../windowpicker/src/task-title.c:396
+#: ../windowpicker/src/wp-task-title.c:187
 msgid "Log off, switch user, lock screen or power down the computer"
 msgstr "Çık, kullanıcı değiştir, ekranı kilitle veya bilgisayarı kapat"
 
-#: ../windowpicker/src/task-title.c:232
+#: ../windowpicker/src/wp-task-title.c:205
 msgid "Close window"
 msgstr "Pencereyi kapat"
 
-#: ../windowpicker/src/task-title.c:337
-msgid "Close"
-msgstr "Kapat"
+#~ msgid "Automatically expand task list to use full space"
+#~ msgstr ""
+#~ "Görev listesini otomatik olarak tüm alanı kapsayacak şekilde genişlet"
 
-#: ../windowpicker/src/task-title.c:338
-msgid "Close current window."
-msgstr "Geçerli pencereyi kapat."
+#~ msgid "Close"
+#~ msgstr "Kapat"
 
-#: ../windowpicker/src/task-item.c:717
-msgid "Window Task Button"
-msgstr "Pencere Görev Düğmesi"
-
-#: ../GNOME_NetspeedApplet.server.in.h:1
-msgid "Internet"
-msgstr "İnternet"
-
-#: ../GNOME_NetspeedApplet.server.in.h:2
-msgid "Netspeed Applet"
-msgstr "Nethızı Apleti"
-
-#: ../GNOME_NetspeedApplet.server.in.h:3
-msgid "Netspeed Applet Factory"
-msgstr "Nethızı Apleti Üreticisi"
-
-#: ../GNOME_NetspeedApplet.server.in.h:4
-msgid "Network Monitor"
-msgstr ""
-
-#: ../src/netspeed.c:276
-msgid "b/s"
-msgstr "b/s"
-
-#: ../src/netspeed.c:276
-msgid "B/s"
-msgstr "B/s"
-
-#: ../src/netspeed.c:276
-msgid "byte"
-msgstr "bayt"
-
-#: ../src/netspeed.c:279 ../src/netspeed.c:282
-msgid "kb/s"
-msgstr "kb/s"
-
-#: ../src/netspeed.c:279 ../src/netspeed.c:282
-msgid "kB/s"
-msgstr "kB/s"
-
-#: ../src/netspeed.c:279 ../src/netspeed.c:282
-msgid "kbyte"
-msgstr "kbayt"
-
-#: ../src/netspeed.c:284
-msgid "Mb/s"
-msgstr "Mb/s"
-
-#: ../src/netspeed.c:284
-msgid "MB/s"
-msgstr "MB/s"
-
-#: ../src/netspeed.c:284
-msgid "Mbyte"
-msgstr "MBayt"
-
-#: ../src/netspeed.c:468
-#, c-format
-msgid ""
-"%s :%s\n"
-"in: %s out: %s"
-msgstr ""
-"%s :%s\n"
-"gelen: %s giden: %s"
-
-#: ../src/netspeed.c:469 ../src/netspeed.c:472
-msgid "has no ip"
-msgstr "ip yok"
-
-#: ../src/netspeed.c:471
-#, c-format
-msgid ""
-"%s: %s\n"
-"sum: %s"
-msgstr ""
-"%s: %s\n"
-"toplam: %s"
-
-#: ../src/netspeed.c:479
-#, c-format
-msgid "%s is down"
-msgstr "%s kapalı"
-
-#. Feel free to put your names here translators :-)
-#: ../src/netspeed.c:590
-msgid "TRANSLATORS"
-msgstr "Arman Aksoy (Armish) <armish@linux-sevenler.de>"
-
-#: ../src/netspeed.c:595
-#, fuzzy
-msgid "Netspeed"
-msgstr "Nethızı Apleti"
-
-#: ../src/netspeed.c:598
-msgid ""
-"A little applet that displays some information on the traffic on the "
-"specified network device"
-msgstr ""
-"Belirten ağ aygıtındaki veri trafiği hakkında bilgi veren küçük bit aplet"
-
-#: ../src/netspeed.c:791
-msgid "Netspeed Preferences"
-msgstr ""
-
-#: ../src/netspeed.c:814
-#, fuzzy
-msgid "General Settings"
-msgstr "Tercihler:"
-
-#: ../src/netspeed.c:835
-msgid "Network _device:"
-msgstr "Ağ _aygıtı:"
-
-#: ../src/netspeed.c:859
-msgid "_Update interval:"
-msgstr "_Yenileme aralığı:"
-
-#: ../src/netspeed.c:875
-#, fuzzy
-msgid "millisecond"
-msgstr "milisaniye"
-
-#: ../src/netspeed.c:884
-msgid "Label _font size:"
-msgstr "Etiket yazı _tipi boyutu:"
-
-#: ../src/netspeed.c:900
-msgid "points"
-msgstr "noktalar"
-
-#: ../src/netspeed.c:906
-msgid "Show _sum instead of in & out"
-msgstr "Giden & gelen yerine _toplam kullan"
-
-#: ../src/netspeed.c:910
-msgid "Show _bits/s (b/s) instead of bytes/s (B/s)"
-msgstr "bayt/s (B/s) yerine bit/s (b/s) kullan"
-
-#: ../src/netspeed.c:914
-msgid "Change _icon according to the selected device"
-msgstr "Seçilen aygıta göre _simgeyi değiştir"
-
-#: ../src/netspeed.c:919
-msgid "_Always monitor a connected device, if possible"
-msgstr ""
-
-#: ../src/netspeed.c:1041
-#, c-format
-msgid "Device Details for %s"
-msgstr "%s için Aygıt Detayları"
-
-#: ../src/netspeed.c:1067
-msgid "_In graph color"
-msgstr "Grafiksel _renklerde"
-
-#: ../src/netspeed.c:1068
-msgid "_Out graph color"
-msgstr "G_iden grafik rengi"
-
-#: ../src/netspeed.c:1087
-msgid "Internet Address:"
-msgstr "İnternet Adresi:"
-
-#: ../src/netspeed.c:1088
-msgid "Netmask:"
-msgstr "Ağ maskesi:"
-
-#: ../src/netspeed.c:1089
-msgid "Hardware Address:"
-msgstr "Donanım Adresi:"
-
-#: ../src/netspeed.c:1090
-msgid "P-t-P Address:"
-msgstr "P-t-P Adresi:"
-
-#: ../src/netspeed.c:1091
-msgid "Bytes in:"
-msgstr "Gelen bayt:"
-
-#: ../src/netspeed.c:1092
-msgid "Bytes out:"
-msgstr "Giden bayt:"
-
-#: ../src/netspeed.c:1094 ../src/netspeed.c:1095 ../src/netspeed.c:1096
-#: ../src/netspeed.c:1097
-msgid "none"
-msgstr "yok"
-
-#: ../src/netspeed.c:1226
-#, c-format
-msgid "Do you want to disconnect %s now?"
-msgstr ""
-
-#: ../src/netspeed.c:1230
-#, c-format
-msgid "Do you want to connect %s now?"
-msgstr ""
-
-#: ../src/netspeed.c:1455
-#, fuzzy
-msgid "Device _Details"
-msgstr "Aygıt _Detayları..."
-
-#: ../src/netspeed.c:1455
-#, fuzzy
-msgid "_Preferences..."
-msgstr "_Seçenekler..."
-
-#: ../src/netspeed.c:1455
-msgid "_About..."
-msgstr "_Hakkında..."
-
-#~ msgid "Netspeed Applet Settings"
-#~ msgstr "Net hızı Apleti Tercihleri"
-
-#~ msgid "Device %s"
-#~ msgstr "%s Aygıtı"
+#~ msgid "Close current window."
+#~ msgstr "Geçerli pencereyi kapat."
 
 #~ msgid "HAL error"
 #~ msgstr "HAL hatası"
@@ -3699,9 +4011,6 @@ msgstr "_Hakkında..."
 #~ msgid "Keyboard layout indicator"
 #~ msgstr "Klavye düzen belirteci"
 
-#~ msgid "Unknown"
-#~ msgstr "Bilinmiyor"
-
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "Klavye Düzeni \"%s\""
 
@@ -3723,9 +4032,6 @@ msgstr "_Hakkında..."
 #~ msgstr ""
 #~ "<i><small><b>Not:</b> Değerler en az 15 dakika gecikmelidir.\n"
 #~ "<b>Kaynak: </b> Yahoo!</small></i>"
-
-#~ msgid "Invest Applet"
-#~ msgstr "Yatırım Uygulamacığı"
 
 #~ msgid "Deskbar (formerly Mini-Commander)"
 #~ msgstr "Deskbar (önceden küçük komutandı)"
@@ -3956,9 +4262,6 @@ msgstr "_Hakkında..."
 
 #~ msgid "_Ethernet"
 #~ msgstr "_Ethernet"
-
-#~ msgid "Othe_r"
-#~ msgstr "_Diğer"
 
 #~ msgid "_Open"
 #~ msgstr "_Aç"
