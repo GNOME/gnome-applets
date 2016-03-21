@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-20 19:54+0000\n"
-"PO-Revision-Date: 2016-02-21 07:21+0200\n"
+"POT-Creation-Date: 2016-03-21 18:49+0000\n"
+"PO-Revision-Date: 2016-03-21 21:13+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
@@ -34,8 +34,8 @@ msgstr "Поставке приступачности _тастатуре"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -46,9 +46,9 @@ msgstr "_Помоћ"
 #: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -69,13 +69,14 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -97,7 +98,7 @@ msgstr "Отвара прозорче поставки универзалног 
 #: ../accessx-status/applet.c:222
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
-msgstr "Дошло је до грешке при приказивању прозорчета поставки тастатуре: %s"
+msgstr "Дошло је до грешке приказивања прозорчета поставки тастатуре: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
 #: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
@@ -347,6 +348,18 @@ msgstr "Праћење стања батерије"
 msgid "Monitor a laptop's remaining power"
 msgstr "Пратите преостало напајање преносног рачунара"
 
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Поставке"
+
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
 msgstr "Поставке праћења стања батерије"
@@ -395,18 +408,6 @@ msgstr "_Упозори када напуњеност батерија спад�
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Обавести када се батерија потпуно напуни"
-
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "_Поставке"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -737,11 +738,85 @@ msgstr "Кликните да обришете изабрану палету"
 msgid "Character Palette Preferences"
 msgstr "Поставке палете знакова"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Затвори"
+
+#: ../command/command.c:119
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+msgid "Shows the output of a command"
+msgstr "Приказује испис наредбе"
+
+#: ../command/command.c:140
+#| msgid "Command Line Preferences"
+msgid "Command Applet Preferences"
+msgstr "Поставке терминалчића"
+
+#: ../command/command.c:153
+#| msgid "Co_mmand:"
+msgid "Command:"
+msgstr "Наредба:"
+
+#: ../command/command.c:165
+msgid "Interval (seconds):"
+msgstr "Период (у секундама):"
+
+#: ../command/command.c:177
+msgid "Maximum width (chars):"
+msgstr "Највећа ширина (знакова):"
+
+#: ../command/command.c:189
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+#| msgid "Show notification"
+msgid "Show icon"
+msgstr "Приказује иконицу"
+
+#: ../command/command.c:340
+#| msgid "Command line"
+msgid "Command Applet"
+msgstr "Терминалчић"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+#| msgid "MiniCommander Applet Factory"
+msgid "Command Factory"
+msgstr "Производња терминалчића"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Наредба"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
+#| msgid "Command Line Preferences"
+msgid "Command to execute"
+msgstr "Наредба за извршавање"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:2
+msgid "Command/script to execute to get the output"
+msgstr "Наредба или скрипта за извршавање која ће дати испис"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:3
+msgid "Interval for the command"
+msgstr "Период наредбе"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
+msgid "Interval to execute the command (in seconds)"
+msgstr "Период за извршавање наредбе (у секундама)"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
+#| msgid "Width of the applet"
+msgid "Width of output"
+msgstr "Ширина исписа"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:6
+msgid "Number of characters to display"
+msgstr "Број знакова за исписивање"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
+msgid "If applet icon is shown or not"
+msgstr "Да ли ће се приказивати иконица програмчета"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -834,18 +909,6 @@ msgstr "Ова алатка приказује текуће стање фрек�
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ова алатка приказује текућу фреквенцију процесора"
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
-msgid "Graphic"
-msgstr "График"
-
-#: ../cpufreq/src/cpufreq-prefs.c:500
-msgid "Text"
-msgstr "Текст"
-
-#: ../cpufreq/src/cpufreq-prefs.c:505
-msgid "Graphic and Text"
-msgstr "График и текст"
-
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Није подржана промена фреквенције"
@@ -866,6 +929,18 @@ msgstr ""
 "Нећете моћи да измените фреквенцију рачунара.  Рачунар можда није добро "
 "подешен или не подржава измену фреквенције процесора."
 
+#: ../cpufreq/src/cpufreq-prefs.c:495
+msgid "Graphic"
+msgstr "График"
+
+#: ../cpufreq/src/cpufreq-prefs.c:500
+msgid "Text"
+msgstr "Текст"
+
+#: ../cpufreq/src/cpufreq-prefs.c:505
+msgid "Graphic and Text"
+msgstr "График и текст"
+
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
 msgstr "Промене фреквенције процесора"
@@ -873,63 +948,6 @@ msgstr "Промене фреквенције процесора"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Потребна су овлашћења за промену фреквенције процесора."
-
-#: ../inhibit/inhibit-applet.c:85
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-msgid "Inhibit Applet"
-msgstr "Програмче спречавања"
-
-#: ../inhibit/inhibit-applet.c:86
-msgid "Allows user to inhibit automatic power saving."
-msgstr "Омогућава корисницима да спрече самостално чување енергије."
-
-#: ../inhibit/inhibit-applet.c:233
-msgid "Cannot connect to gnome-session"
-msgstr "Не могу да се повежем са гномовом сесијом"
-
-#: ../inhibit/inhibit-applet.c:236
-msgid "Automatic sleep inhibited"
-msgstr "Самостално спавање је спречено"
-
-#: ../inhibit/inhibit-applet.c:238
-msgid "Automatic sleep enabled"
-msgstr "Самостално спавање је укључено"
-
-#: ../inhibit/inhibit-applet.c:266
-msgid "Manual inhibit"
-msgstr "Ручно спречи"
-
-#: ../inhibit/inhibit-applet.c:298
-msgid ""
-"Inhibit Applet is free software; you can redistribute it and/or\n"
-"modify it under the terms of the GNU General Public License\n"
-"as published by the Free Software Foundation; either version 2\n"
-"of the License, or (at your option) any later version."
-msgstr ""
-"Програмче спречавања је слободан софтвер; можете га расподељивати\n"
-"и/или мењати под условима Гнуове опште јавне лиценце коју\n"
-"је објавила Задужбина слободног софтвера; издања 2 лиценце\n"
-"или (по вашем избору) било којег новијег издања."
-
-#: ../inhibit/inhibit-applet.c:302
-msgid ""
-"Inhibit Applet is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details."
-msgstr ""
-"Програмче спречавања се расподељује у нади да ће бити корисно,\n"
-"али БЕЗ ИКАКВЕ ГАРАНЦИЈЕ; чак и без примењене гаранције\n"
-"ТРЖИШНЕ ВРЕДНОСТИ или ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.\n"
-"Погледајте Гнуову Општу јавну лиценцу за више детаља."
-
-#: ../inhibit/inhibit-applet.c:320
-msgid "Copyright © 2006-2007 Richard Hughes"
-msgstr "Ауторска права © 2006-2007 Ричард Хјуџис"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Омогућава корисницима да спрече самостално чување енергије"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1375,6 +1393,18 @@ msgstr "Нађи _следеће"
 msgid "Location"
 msgstr "Место"
 
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Фабрика програмчета Гпрогнозе"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Фабрика за прављење програмчета за време."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Праћење тренутних временских прилика и временске прогнозе"
+
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
 msgstr "Самостално освежавање података"
@@ -1419,52 +1449,62 @@ msgid "If true, additional details about weather will be downloaded and shown."
 msgstr ""
 "Ако је изабрано, додатне појединости о времену ће бити скинуте и приказане."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Фабрика програмчета Гпрогнозе"
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Програмче спречавања"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Фабрика за прављење програмчета за време."
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Омогућава корисницима да спрече самостално чување енергије."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "Праћење тренутних временских прилика и временске прогнозе"
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Не могу да се повежем са гномовом сесијом"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-msgid "Invest Applet Factory"
-msgstr "Фабрика програмчета улагања"
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Самостално спавање је спречено"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the invest applet."
-msgstr "Фабрика за прављење програмчета улагања."
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Самостално спавање је укључено"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
-msgid "Invest"
-msgstr "Улагања"
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Ручно спречи"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
-msgid "Track your invested money."
-msgstr "Пратите ваш уложен новац."
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Програмче спречавања је слободан софтвер; можете га расподељивати\n"
+"и/или мењати под условима Гнуове опште јавне лиценце коју\n"
+"је објавила Задужбина слободног софтвера; издања 2 лиценце\n"
+"или (по вашем избору) било којег новијег издања."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:1
-msgid "Refresh"
-msgstr "Освежи"
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Програмче спречавања се расподељује у нади да ће бити корисно,\n"
+"али БЕЗ ИКАКВЕ ГАРАНЦИЈЕ; чак и без примењене гаранције\n"
+"ТРЖИШНЕ ВРЕДНОСТИ или ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.\n"
+"Погледајте Гнуову Општу јавну лиценцу за више детаља."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Поставке"
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Ауторска права © 2006-2007 Ричард Хјуџис"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:3
-msgid "Help"
-msgstr "Помоћ"
-
-#: ../invest-applet/data/invest-applet-menu.xml.h:4
-msgid "About"
-msgstr "О програму"
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Омогућава корисницима да спрече самостално чување енергије"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1652,6 +1692,41 @@ msgstr "_Опције"
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Преузимам графикон са <b>Јахуа!</b>"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Освежи"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Поставке"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Помоћ"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "О програму"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Фабрика програмчета улагања"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the invest applet."
+msgstr "Фабрика за прављење програмчета улагања."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+#: ../invest-applet/invest/about.py:17
+msgid "Invest"
+msgstr "Улагања"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
+#: ../invest-applet/invest/about.py:20
+msgid "Track your invested money."
+msgstr "Пратите ваш уложен новац."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1872,9 +1947,45 @@ msgstr "Наредба"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Овде унесите наредбу и Гном ће је извршити за вас"
 
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
+msgid "Browser"
+msgstr "Претражи"
+
+#: ../mini-commander/src/mini-commander_applet.c:242
+msgid "Click this button to start the browser"
+msgstr "Притисните ово дугме да изаберете програм са диска"
+
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
+msgid "History"
+msgstr "Претходне наредбе"
+
+#: ../mini-commander/src/mini-commander_applet.c:260
+msgid "Click this button for the list of previous commands"
+msgstr "Притисните ово дугме да видите списак претходних наредби"
+
+#: ../mini-commander/src/mini-commander_applet.c:348
+msgid "Command line has been disabled by your system administrator"
+msgstr "Линију за унос наредбе је искључио администратор вашег система"
+
+# Команда!
+#: ../mini-commander/src/mini-commander_applet.c:363
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Наредба"
+
+#: ../mini-commander/src/mini-commander_applet.c:411
+msgid "Mini-Commander applet"
+msgstr "Програмче Мали-наредник"
+
+#: ../mini-commander/src/mini-commander_applet.c:412
+msgid "This applet adds a command line to the panel"
+msgstr "Ово програмче додаје поље за издавање наредби на панел"
+
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
-msgstr "Подешавања терминалчића"
+msgstr "Поставке терминалчића"
 
 #: ../mini-commander/src/mini-commander.ui.h:2
 msgid "Auto Completion"
@@ -1944,42 +2055,6 @@ msgstr "М_устра:"
 #: ../mini-commander/src/mini-commander.ui.h:19
 msgid "Co_mmand:"
 msgstr "_Наредба:"
-
-#: ../mini-commander/src/mini-commander_applet.c:237
-#: ../mini-commander/src/mini-commander_applet.c:241
-msgid "Browser"
-msgstr "Претражи"
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-msgid "Click this button to start the browser"
-msgstr "Притисните ово дугме да изаберете програм са диска"
-
-#: ../mini-commander/src/mini-commander_applet.c:255
-#: ../mini-commander/src/mini-commander_applet.c:259
-msgid "History"
-msgstr "Претходне наредбе"
-
-#: ../mini-commander/src/mini-commander_applet.c:260
-msgid "Click this button for the list of previous commands"
-msgstr "Притисните ово дугме да видите списак претходних наредби"
-
-#: ../mini-commander/src/mini-commander_applet.c:348
-msgid "Command line has been disabled by your system administrator"
-msgstr "Линију за унос наредбе је искључио администратор вашег система"
-
-# Команда!
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Наредба"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
-msgid "Mini-Commander applet"
-msgstr "Програмче Мали-наредник"
-
-#: ../mini-commander/src/mini-commander_applet.c:412
-msgid "This applet adds a command line to the panel"
-msgstr "Ово програмче додаје поље за издавање наредби на панел"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
@@ -2080,10 +2155,6 @@ msgstr "Не можете двоструко навести исте обрас�
 #: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Образац"
-
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Наредба"
 
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
@@ -2593,6 +2664,78 @@ msgstr "_Упис"
 msgid "System Monitor Preferences"
 msgstr "Поставке праћења система"
 
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "Подаци _уређаја"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Приказује укупност"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Приказује укупност уместо улаза и излаза"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Приказује бите"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Приказује бите уместо бајтова"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Мења иконицу"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Мења иконицу у складу са изабраним уређајем"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Самостално мења уређај"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Време освежавања"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Време освежавања у милисекундама"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Мрежни уређај"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Наредба за послато"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Наредба за примљено"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Боја графика улаза"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Боја графика излаза"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Производња програмчета брзине мреже"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Програмче брзине мреже"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Надзорник мреже"
+
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
@@ -2805,78 +2948,6 @@ msgstr "Промени _иконицу у складу са изабраним �
 msgid "Netspeed Preferences"
 msgstr "Поставке Брзине мреже"
 
-#: ../netspeed/data/netspeed-menu.xml.h:1
-msgid "Device _Details"
-msgstr "Подаци _уређаја"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
-msgid "Netspeed Applet Factory"
-msgstr "Производња програмчета брзине мреже"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Програмче брзине мреже"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
-msgid "Network Monitor"
-msgstr "Надзорник мреже"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-msgid "Show sum"
-msgstr "Приказује укупност"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-msgid "Show sum instead of in &amp; out"
-msgstr "Приказује укупност уместо улаза и излаза"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-msgid "Show bits"
-msgstr "Приказује бите"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-msgid "Show bits instead of bytes"
-msgstr "Приказује бите уместо бајтова"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-msgid "Change icon"
-msgstr "Мења иконицу"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-msgid "Change icon according to the selected device"
-msgstr "Мења иконицу у складу са изабраним уређајем"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-msgid "Auto change device"
-msgstr "Самостално мења уређај"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-msgid "Refresh time"
-msgstr "Време освежавања"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-msgid "Refresh time in milliseconds"
-msgstr "Време освежавања у милисекундама"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-msgid "Network device"
-msgstr "Мрежни уређај"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-msgid "Up command"
-msgstr "Наредба за послато"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-msgid "Down command"
-msgstr "Наредба за примљено"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-msgid "In graph color"
-msgstr "Боја графика улаза"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-msgid "Out graph color"
-msgstr "Боја графика излаза"
-
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Производња програмчета за белешке"
@@ -2891,6 +2962,175 @@ msgstr "Белешке"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Направите, гледајте и управљајте белешкама на радној површини"
 
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Уобичајена ширина за нове белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Уобичајена ширина у тачкама за нове белешке."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Уобичајена висина за нове белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Уобичајена боја за нове белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Основна боја за нове лепљиве белешке. Ово може бити уобичајени назив, "
+"хексадецимална вредност, РГБ боја или РГБА боја."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Основна боја словног лика"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Основна боја слова за нове лепљиве белешке. Ово може бити уобичајени назив, "
+"хексадецимална вредност, РГБ боја или РГБА боја."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Основна слова за нове белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Основна слова за нове лепљиве белешке. Ово треба да буде назив слова за "
+"Панго, нпр. „Sans Italic 10“."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Лепљивост белешки за радну површину"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr "Одређује да ли се белешке виде на СВИМ радним површинама, или не."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Закључано стање белешки"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr "Одређује да ли су белешке закључане (не могу се изменити) или не."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "Образац за датум у насловима белешки"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Уобичајено, када се направе белешке, користи се текући датум за наслов. Овај "
+"образац се користи; све што прихвата „strftime()“ је дозвољено."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Да ли се користи подразумевана боја система"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Уколико је ова опција искључена, може се користити боја по избору као "
+"уобичајена боја за све белешке."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Да ли се користи подразумевани системски словни лик"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Уколико је ова опција искључена, може се користити словни лик по избору као "
+"уобичајени словни лик за све белешке."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr "Да ли да наметнем подразумевану боју и словни лик за све белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Уколико је ова опција укључена, неће се користити подешавања боја и словних "
+"ликова за појединачне белешке."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Да ли да сакријем све белешке при избору радне површи"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Уколико је ова опција укључена, избор радне површине на било кој начин ће "
+"сакрити све отворене белешке."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Да ли се тражи одобрење при брисању белешке"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Празне белешке се увек бришу без потврде."
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d белешка"
+msgstr[1] "%d белешке"
+msgstr[2] "%d белешки"
+msgstr[3] "Једна белешка"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Прикажи белешке"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Белешке за радно окружење Гном"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "_Нова белешка"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "Сак_риј белешке"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Закључај белешке"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "_Уклони белешке"
+
 #: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Ова белешка је закључана."
@@ -2899,15 +3139,6 @@ msgstr "Ова белешка је закључана."
 msgid "This note is unlocked."
 msgstr "Ова белешка је откључана."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
-msgid "Delete this sticky note?"
-msgstr "Да обришем лепљиву белешку?"
-
-#: ../stickynotes/stickynotes-delete.ui.h:2
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-msgid "This cannot be undone."
-msgstr "Ово не можете поништити."
-
 #: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "Обриши _све"
@@ -2915,6 +3146,23 @@ msgstr "Обриши _све"
 #: ../stickynotes/stickynotes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Да обришем све лепљиве белешке?"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+#: ../stickynotes/stickynotes-delete.ui.h:2
+msgid "This cannot be undone."
+msgstr "Ово не можете поништити."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Да обришем лепљиву белешку?"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Обриши белешку..."
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Закључај белешку"
 
 #: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
@@ -3075,190 +3323,87 @@ msgstr "Уобичајени словни лик белешке"
 msgid "Pick a font for the sticky note"
 msgstr "Изаберите словни лик за белешку"
 
-#: ../stickynotes/stickynotes_applet.c:539
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d белешка"
-msgstr[1] "%d белешке"
-msgstr[2] "%d белешки"
-msgstr[3] "Једна белешка"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
+msgstr "Производња времена"
 
-#: ../stickynotes/stickynotes_applet.c:540
-msgid "Show sticky notes"
-msgstr "Прикажи белешке"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Одбројавач"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Белешке за радно окружење Гном"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
+msgstr "Покрените одбројавач и примите обавештење када буде завршио"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
-msgid "_New Note"
-msgstr "_Нова белешка"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+msgid "'Timer'"
+msgstr "'Одбројавач'"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
-msgid "Hi_de Notes"
-msgstr "Сак_риј белешке"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+msgid "Name of timer"
+msgstr "Назив одбројавача"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
-msgid "_Lock Notes"
-msgstr "_Закључај белешке"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+#| msgid "Refresh time in milliseconds"
+msgid "Duration of timer in seconds"
+msgstr "Време одбројавача у секундама"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
-msgid "_Delete Notes"
-msgstr "_Уклони белешке"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+#| msgid "Show notifications for critical weather conditions"
+msgid "Show notification popup when timer finish"
+msgstr "Приказује облачић обавештења када се заврши одбројавање"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
-msgid "_Delete Note..."
-msgstr "_Обриши белешку..."
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+msgid "Show dialog window when timer finish"
+msgstr "Приказује прозорчић када се заврши одбројавање"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
-msgid "_Lock Note"
-msgstr "_Закључај белешку"
+#: ../timerapplet/timerapplet.c:158
+msgid "Finished"
+msgstr "Завршено"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Смеће"
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
+msgstr "Одбројавање је завршено!"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "Иди до Смећа"
+#: ../timerapplet/timerapplet.c:321
+#| msgid "Geyes Preferences"
+msgid "Timer Applet Preferences"
+msgstr "Поставке одбројавача"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
-msgid "Default width for new notes"
-msgstr "Уобичајена ширина за нове белешке"
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Назив:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Уобичајена ширина у тачкама за нове белешке."
+#: ../timerapplet/timerapplet.c:347
+msgid "Hours:"
+msgstr "Часови:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
-msgid "Default height for new notes"
-msgstr "Уобичајена висина за нове белешке"
+# bug:plural-forms
+#: ../timerapplet/timerapplet.c:362
+#| msgid "minutes"
+msgid "Minutes:"
+msgstr "Минути:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
-msgid "Default color for new notes"
-msgstr "Уобичајена боја за нове белешке"
+#: ../timerapplet/timerapplet.c:377
+#| msgid "milliseconds"
+msgid "Seconds:"
+msgstr "Секунде:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
-msgstr ""
-"Основна боја за нове лепљиве белешке. Ово може бити уобичајени назив, "
-"хексадецимална вредност, РГБ боја или РГБА боја."
+#: ../timerapplet/timerapplet.c:392
+#| msgid "Show notification"
+msgid "Show notification popup"
+msgstr "Прикажи облачић обавештења"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
-msgid "Default color for font"
-msgstr "Основна боја словног лика"
+#: ../timerapplet/timerapplet.c:398
+#| msgid "Show handle"
+msgid "Show dialog"
+msgstr "Прикажи прозорче"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-msgid ""
-"Default font color for new sticky notes. This can be standard name, "
-"hexadecimal value, RGB color or RGBA color."
-msgstr ""
-"Основна боја слова за нове лепљиве белешке. Ово може бити уобичајени назив, "
-"хексадецимална вредност, РГБ боја или РГБА боја."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
-msgid "Default font for new notes"
-msgstr "Основна слова за нове белешке"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Основна слова за нове лепљиве белешке. Ово треба да буде назив слова за "
-"Панго, нпр. „Sans Italic 10“."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
-msgid "Sticky notes' workspace stickyness"
-msgstr "Лепљивост белешки за радну површину"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr "Одређује да ли се белешке виде на СВИМ радним површинама, или не."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
-msgid "Sticky notes' locked state"
-msgstr "Закључано стање белешки"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Одређује да ли су белешке закључане (не могу се изменити) или не."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
-msgid "Date format of note's title"
-msgstr "Образац за датум у насловима белешки"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Уобичајено, када се направе белешке, користи се текући датум за наслов. Овај "
-"образац се користи; све што прихвата „strftime()“ је дозвољено."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
-msgid "Whether to use the default system color"
-msgstr "Да ли се користи подразумевана боја система"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Уколико је ова опција искључена, може се користити боја по избору као "
-"уобичајена боја за све белешке."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
-msgid "Whether to use the default system font"
-msgstr "Да ли се користи подразумевани системски словни лик"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Уколико је ова опција искључена, може се користити словни лик по избору као "
-"уобичајени словни лик за све белешке."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
-msgid "Whether to force the default color and font on all notes"
-msgstr "Да ли да наметнем подразумевану боју и словни лик за све белешке"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Уколико је ова опција укључена, неће се користити подешавања боја и словних "
-"ликова за појединачне белешке."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr "Да ли да сакријем све белешке при избору радне површи"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Уколико укључите ову опцију, избор радне површине на било кој начин ће "
-"сакрити све отворене белешке."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Да ли се тражи одобрење при брисању белешке"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Празне белешке се увек бришу без потврде."
+#: ../timerapplet/timerapplet.c:422
+#| msgid "Trash Applet"
+msgid "Timer Applet"
+msgstr "Програмче одбројавања"
 
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
@@ -3377,6 +3522,14 @@ msgstr ""
 "софтвера на адресу: „Free Software Foundation, Inc., 51 Franklin Street, "
 "Fifth Floor, Boston, MA  02110-1301, USA“."
 
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Смеће"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Иди до Смећа"
+
 # bug: plural-forms
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
@@ -3454,10 +3607,6 @@ msgstr ""
 msgid "_Empty Trash"
 msgstr "Из_баци смеће"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
-msgid "_Open Trash"
-msgstr "_Отвори смеће"
-
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Избацивање смећа"
@@ -3465,6 +3614,10 @@ msgstr "Избацивање смећа"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Из:"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "_Отвори смеће"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
@@ -3487,9 +3640,6 @@ msgstr ""
 "одјављивања када је на радној површи"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for maximized windows"
 msgid ""
 "Show the application title and close icon\n"
 "for the active window"
