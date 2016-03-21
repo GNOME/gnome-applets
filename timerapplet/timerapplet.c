@@ -307,7 +307,7 @@ timer_preferences_callback (GSimpleAction *action, GVariant *parameter, gpointer
 {
     TimerApplet *applet;
     GtkDialog *dialog;
-    GtkTable *table;
+    GtkGrid *grid;
     GtkWidget *widget;
     gint duration, hours, minutes, seconds;
 
@@ -324,9 +324,9 @@ timer_preferences_callback (GSimpleAction *action, GVariant *parameter, gpointer
                                                      _("_Close"),
                                                      GTK_RESPONSE_CLOSE,
                                                      NULL));
-    table = GTK_TABLE (gtk_table_new (6, 2, FALSE));
-    gtk_table_set_row_spacings (table, 12);
-    gtk_table_set_col_spacings (table, 12);
+    grid = GTK_GRID (gtk_grid_new ());
+    gtk_grid_set_row_spacing (grid, 12);
+    gtk_grid_set_column_spacing (grid, 12);
 
     gtk_window_set_default_size (GTK_WINDOW (dialog), 350, 150);
     gtk_container_set_border_width (GTK_CONTAINER (dialog), 10);
@@ -334,74 +334,54 @@ timer_preferences_callback (GSimpleAction *action, GVariant *parameter, gpointer
     widget = gtk_label_new (_("Name:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.5);
-    gtk_table_attach (table, widget, 1, 2, 0, 1,
-                      GTK_FILL, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 1, 0, 1, 1);
 
     widget = gtk_entry_new ();
-    gtk_table_attach (table, widget, 2, 3, 0, 1,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 0, 1, 1);
     g_settings_bind (applet->settings, NAME_KEY, widget, "text", G_SETTINGS_BIND_DEFAULT);
 
     widget = gtk_label_new (_("Hours:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.5);
-    gtk_table_attach (table, widget, 1, 2, 1, 2,
-                      GTK_FILL, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 1, 1, 1, 1);
 
     widget = gtk_spin_button_new_with_range (0.0, 100.0, 1.0);
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), hours);
-    gtk_table_attach (table, widget, 2, 3, 1, 2,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 1, 1, 1);
     applet->hours = GTK_SPIN_BUTTON (widget);
     g_signal_connect (widget, "value-changed", G_CALLBACK (timer_spin_button_value_changed), applet);
 
     widget = gtk_label_new (_("Minutes:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.5);
-    gtk_table_attach (table, widget, 1, 2, 2, 3,
-                      GTK_FILL, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 1, 2, 1, 1);
 
     widget = gtk_spin_button_new_with_range (0.0, 59.0, 1.0);
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), minutes);
-    gtk_table_attach (table, widget, 2, 3, 2, 3,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 2, 1, 1);
     applet->minutes = GTK_SPIN_BUTTON (widget);
     g_signal_connect (widget, "value-changed", G_CALLBACK (timer_spin_button_value_changed), applet);
 
     widget = gtk_label_new (_("Seconds:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
     gtk_label_set_yalign (GTK_LABEL (widget), 0.5);
-    gtk_table_attach (table, widget, 1, 2, 3, 4,
-                      GTK_FILL, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 1, 3, 1, 1);
 
     widget = gtk_spin_button_new_with_range (0.0, 59.0, 1.0);
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (widget), seconds);
-    gtk_table_attach (table, widget, 2, 3, 3, 4,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 3, 1, 1);
     applet->seconds = GTK_SPIN_BUTTON (widget);
     g_signal_connect (widget, "value-changed", G_CALLBACK (timer_spin_button_value_changed), applet);
 
     widget = gtk_check_button_new_with_label (_("Show notification popup"));
-    gtk_table_attach (table, widget, 2, 3, 4, 5,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 4, 1, 1);
     g_settings_bind (applet->settings, SHOW_NOTIFICATION_KEY, widget, "active", G_SETTINGS_BIND_DEFAULT);
 
     widget = gtk_check_button_new_with_label (_("Show dialog"));
-    gtk_table_attach (table, widget, 2, 3, 5, 6,
-                      GTK_EXPAND | GTK_FILL | GTK_SHRINK, GTK_FILL,
-                      0, 0);
+    gtk_grid_attach (grid, widget, 2, 5, 1, 1);
     g_settings_bind (applet->settings, SHOW_DIALOG_KEY, widget, "active", G_SETTINGS_BIND_DEFAULT);
 
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), GTK_WIDGET (table), TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), GTK_WIDGET (grid), TRUE, TRUE, 0);
 
     g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), dialog);
 
