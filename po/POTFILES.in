@@ -6,8 +6,8 @@
 accessx-status/applet.c
 [type: gettext/ini]accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in
 battstat/battstat_applet.c
-[type: gettext/glade]battstat/battstat_applet.ui
 [type: gettext/glade]battstat/battstat-applet-menu.xml
+[type: gettext/glade]battstat/battstat_applet.ui
 [type: gettext/ini]battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in
 battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in
 battstat/properties.c
@@ -15,33 +15,31 @@ battstat/sounds/battstat_applet.soundlist.in
 brightness/brightness-applet.c
 [type: gettext/glade]brightness/brightness-applet-menu.xml
 [type: gettext/ini]brightness/org.gnome.BrightnessApplet.panel-applet.in.in
-charpick/charpick.c
 [type: gettext/glade]charpick/charpick-applet-menu.xml
+charpick/charpick.c
 [type: gettext/ini]charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in
 charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in
 charpick/properties.c
-[type: gettext/ini]command/org.gnome.applets.CommandApplet.panel-applet.in.in
 command/command.c
+[type: gettext/ini]command/org.gnome.applets.CommandApplet.panel-applet.in.in
+command/org.gnome.gnome-applets.command.gschema.xml.in.in
 [type: gettext/glade]cpufreq/cpufreq-applet-menu.xml
 [type: gettext/glade]cpufreq/cpufreq-preferences.ui
 [type: gettext/ini]cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in
 cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in
 cpufreq/src/cpufreq-applet.c
-cpufreq/src/cpufreq-prefs.c
 cpufreq/src/cpufreq-monitor-cpuinfo.c
 cpufreq/src/cpufreq-monitor-factory.c
 cpufreq/src/cpufreq-monitor-procfs.c
 cpufreq/src/cpufreq-popup.c
+cpufreq/src/cpufreq-prefs.c
 cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in
-inhibit/inhibit-applet.c
-[type: gettext/glade]inhibit/inhibit-applet-menu.xml
-[type: gettext/ini]inhibit/org.gnome.InhibitApplet.panel-applet.in.in
 drivemount/drive-button.c
-drivemount/drivemount.c
 [type: gettext/glade]drivemount/drivemount-applet-menu.xml
+drivemount/drivemount.c
 [type: gettext/ini]drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in
-geyes/geyes.c
 [type: gettext/glade]geyes/geyes-applet-menu.xml
+geyes/geyes.c
 [type: gettext/ini]geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in
 geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in
 geyes/themes.c
@@ -51,11 +49,14 @@ gweather/gweather-applet.c
 gweather/gweather-dialog.c
 gweather/gweather-pref.c
 gweather/main.c
-gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in
 [type: gettext/ini]gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in
-[type: gettext/ini]invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in
-[type: gettext/glade]invest-applet/data/invest-applet-menu.xml
+gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in
+inhibit/inhibit-applet.c
+[type: gettext/glade]inhibit/inhibit-applet-menu.xml
+[type: gettext/ini]inhibit/org.gnome.InhibitApplet.panel-applet.in.in
 [type: gettext/glade]invest-applet/data/financialchart.ui
+[type: gettext/glade]invest-applet/data/invest-applet-menu.xml
+[type: gettext/ini]invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in
 [type: gettext/glade]invest-applet/data/prefs-dialog.ui
 invest-applet/invest/about.py
 invest-applet/invest/applet.py
@@ -71,9 +72,9 @@ mini-commander/src/exec.c
 mini-commander/src/help.c
 mini-commander/src/history.c
 mini-commander/src/macro.c
+mini-commander/src/mini-commander_applet.c
 [type: gettext/glade]mini-commander/src/mini-commander-applet-menu.xml
 [type: gettext/glade]mini-commander/src/mini-commander.ui
-mini-commander/src/mini-commander_applet.c
 [type: gettext/ini]mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in
 mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in
 mini-commander/src/preferences.c
@@ -89,36 +90,37 @@ multiload/netspeed.c
 [type: gettext/ini]multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in
 multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in
 multiload/properties.c
+[type: gettext/glade]netspeed/data/netspeed-menu.xml
+netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in
+[type: gettext/ini]netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in
 netspeed/src/netspeed.c
 netspeed/src/preferences.c
-[type: gettext/glade]netspeed/data/netspeed-menu.xml
-[type: gettext/ini]netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in
-netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in
 [type: gettext/ini]stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in
+stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
+stickynotes/stickynotes_applet.c
+stickynotes/stickynotes_applet_callbacks.c
+[type: gettext/glade]stickynotes/stickynotes-applet-menu.xml
 stickynotes/stickynotes.c
-[type: gettext/glade]stickynotes/stickynotes-delete.ui
+stickynotes/stickynotes_callbacks.c
 [type: gettext/glade]stickynotes/stickynotes-delete-all.ui
+[type: gettext/glade]stickynotes/stickynotes-delete.ui
+[type: gettext/glade]stickynotes/stickynotes-note-menu.xml
 [type: gettext/glade]stickynotes/stickynotes-note.ui
 [type: gettext/glade]stickynotes/stickynotes-preferences.ui
 [type: gettext/glade]stickynotes/stickynotes-properties.ui
-stickynotes/stickynotes_applet.c
-stickynotes/stickynotes_applet_callbacks.c
-stickynotes/stickynotes_callbacks.c
-[type: gettext/glade]stickynotes/stickynotes-applet-menu.xml
-[type: gettext/glade]stickynotes/stickynotes-note-menu.xml
-[type: gettext/ini]trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in
-stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in
 [type: gettext/ini]timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in
+timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in
 timerapplet/timerapplet.c
 [type: gettext/ini]tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in
 tracker-search-bar/tracker-applet.c
 tracker-search-bar/tracker-results-window.c
-[type: gettext/glade]tracker-search-bar/tracker-search-bar.ui
 [type: gettext/glade]tracker-search-bar/tracker-search-bar-menu.xml
+[type: gettext/glade]tracker-search-bar/tracker-search-bar.ui
+[type: gettext/ini]trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in
 trashapplet/src/trashapplet.c
 trashapplet/src/trash-empty.c
-[type: gettext/glade]trashapplet/trashapplet-menu.xml
 [type: gettext/glade]trashapplet/trashapplet-empty-progress.ui
+[type: gettext/glade]trashapplet/trashapplet-menu.xml
 windowpicker/src/task-item.c
 windowpicker/src/wp-about-dialog.c
 windowpicker/src/wp-applet.c
