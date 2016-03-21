@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation for gnome-applets
-# Copyright (C) 2000-2015 Free Software Foundation, Inc.
+# Copyright (C) 2000-2016 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
 # Gustavo Maciel Dias Vieira <gustavo@sagui.org>, 2000-2001.
 # Alexandre Folle de Menezes <afmenez@terra.com.br>, 2003.
@@ -14,23 +14,23 @@
 # Henrique P. Machado <zehrique@gmail.com>, 2008.
 # Andre Gondim <In memoriam>, 2009.
 # Krix Apolinário <krixapolinario@gmail.com>, 2009.
-# Rafael Fontenelle <rffontenelle@gmail.com>, 2012, 2013, 2015.
-#
+# Rafael Fontenelle <rafaelff@gnome.org>, 2012, 2013, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-24 07:50+0000\n"
-"PO-Revision-Date: 2016-02-24 06:29-0300\n"
-"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>\n"
+"POT-Creation-Date: 2016-03-21 12:50+0000\n"
+"PO-Revision-Date: 2016-03-21 15:11-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -78,13 +78,14 @@ msgstr "Mostra o estado das funções AccessX tais como modificadores de acesso"
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Sun Microsystems\n"
@@ -750,11 +751,54 @@ msgstr "Clique para excluir a paleta selecionada"
 msgid "Character Palette Preferences"
 msgstr "Preferências do Seletor de Caracteres"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Fechar"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+#| msgid "MiniCommander Applet Factory"
+msgid "Command Factory"
+msgstr "Fábrica de comando"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Comando"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+#: ../command/command.c:119
+msgid "Shows the output of a command"
+msgstr "Mostra a saída de um comando"
+
+#: ../command/command.c:140
+#| msgid "Command Line Preferences"
+msgid "Command Applet Preferences"
+msgstr "Preferências do miniaplicativo de comando"
+
+#: ../command/command.c:153
+#| msgid "Co_mmand:"
+msgid "Command:"
+msgstr "Comando:"
+
+#: ../command/command.c:165
+msgid "Interval (seconds):"
+msgstr "Intervalo (segundos):"
+
+#: ../command/command.c:177
+msgid "Maximum width (chars):"
+msgstr "Largura máxima (caracteres):"
+
+#: ../command/command.c:189
+#| msgid "Show notification"
+msgid "Show icon"
+msgstr "Mostrar ícone"
+
+#: ../command/command.c:340
+#| msgid "Command line"
+msgid "Command Applet"
+msgstr "Miniaplicativo de comando"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -2140,10 +2184,6 @@ msgstr "Você não pode especificar padrões duplicados"
 msgid "Pattern"
 msgstr "Padrão"
 
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Comando"
-
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
@@ -2943,11 +2983,11 @@ msgstr "Notas"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Cria, vê e gerencia notas na área de trabalho"
 
-#: ../stickynotes/stickynotes.c:593
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Esta nota está bloqueada."
 
-#: ../stickynotes/stickynotes.c:597
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
@@ -3314,6 +3354,67 @@ msgstr "Pedir confirmação ao excluir uma nota"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Notas vazias são sempre excluídas sem confirmação."
 
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
+msgstr "Fábrica de temporizador"
+
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Temporizador"
+
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
+msgstr "Inicia um temporizador e recebe uma notificação ele finalizar"
+
+#: ../timerapplet/timerapplet.c:158
+#| msgid "Finnish keymap"
+msgid "Finished"
+msgstr "Finalizado"
+
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
+msgstr "Temporizador finalizou!"
+
+# SUN NEW TRANSLATION
+#: ../timerapplet/timerapplet.c:321
+#| msgid "Geyes Preferences"
+msgid "Timer Applet Preferences"
+msgstr "Preferências do miniaplicativo de temporizador"
+
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Nome:"
+
+#: ../timerapplet/timerapplet.c:347
+msgid "Hours:"
+msgstr "Horas:"
+
+#: ../timerapplet/timerapplet.c:362
+#| msgid "minutes"
+msgid "Minutes:"
+msgstr "Minutos:"
+
+#: ../timerapplet/timerapplet.c:377
+#| msgid "milliseconds"
+msgid "Seconds:"
+msgstr "Segundos:"
+
+#: ../timerapplet/timerapplet.c:392
+#| msgid "Show notification"
+msgid "Show notification popup"
+msgstr "Mostrar janela de notificação"
+
+#: ../timerapplet/timerapplet.c:398
+#| msgid "Show handle"
+msgid "Show dialog"
+msgstr "Mostrar diálogo"
+
+#: ../timerapplet/timerapplet.c:422
+#| msgid "Trash Applet"
+msgid "Timer Applet"
+msgstr "Miniaplicativo Temporizador"
+
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
 msgstr "Barra de pesquisa do Tracker"
@@ -3394,7 +3495,7 @@ msgstr "Nenhum resultado encontrado para \"%s\""
 
 #: ../tracker-search-bar/tracker-search-bar.ui.h:1
 msgid "Copyright Tracker Authors 2005-2010"
-msgstr "Copyright © %Id Os autores de Tracker"
+msgstr "Copyright 2005-2010 Os autores do Tracker"
 
 #: ../tracker-search-bar/tracker-search-bar.ui.h:2
 msgid "A search bar applet for finding content stored in Tracker"
@@ -3854,9 +3955,6 @@ msgstr "Fechar janela"
 
 #~ msgid "Estonian keymap"
 #~ msgstr "Mapa de teclado estônio"
-
-#~ msgid "Finnish keymap"
-#~ msgstr "Mapa de teclado finlandês"
 
 #~ msgid "French Swiss"
 #~ msgstr "Francês da Suíça"
