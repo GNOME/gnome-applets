@@ -7,7 +7,7 @@
 # Andras Timar <timar at gnome dot hu>, 2001, 2002, 2003.
 # Gabor Sari <saga at gnome dot hu>, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2015.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2016.
 # Mate ORY <orymate at gmail d0t com>, 2006.
 # Balázs Úr <urbalazs at gmail dot com>, 2012, 2013, 2014, 2015, 2016.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
@@ -16,9 +16,9 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-04 19:49+0000\n"
-"PO-Revision-Date: 2016-03-04 23:07+0100\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2016-03-22 08:07+0000\n"
+"PO-Revision-Date: 2016-03-22 10:57+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  hu.po (gnome-applets master)  #-#-#-#-#\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.5\n"
 "#-#-#-#-#  hu.po (window-picker-applet)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -42,8 +42,8 @@ msgstr "_Billentyűzet akadálymentesítésének beállítása"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -54,9 +54,9 @@ msgstr "_Súgó"
 #: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -71,7 +71,7 @@ msgstr "_Névjegy"
 #: ../accessx-status/applet.c:138
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
-"Az AccessX szolgáltatások, mint a lezárt módosítóbillentyűk állapotát "
+"Az AccessX szolgáltatások, mint a zárolt módosítóbillentyűk állapotát "
 "jeleníti meg"
 
 #. about.set_artists([])
@@ -79,13 +79,14 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -350,6 +351,18 @@ msgstr "Akkumulátortöltöttség-figyelő"
 msgid "Monitor a laptop's remaining power"
 msgstr "A laptop maradék töltését figyeli"
 
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Beállítások"
+
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
 msgstr "Akkumulátortöltöttség-figyelő beállításai"
@@ -399,18 +412,6 @@ msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
-
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "_Beállítások"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -750,11 +751,85 @@ msgstr "Kattintson a kijelölt paletta törléséhez"
 msgid "Character Palette Preferences"
 msgstr "Karakterpaletta beállításai"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Bezárás"
+
+#: ../command/command.c:119
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+msgid "Shows the output of a command"
+msgstr "Parancs kimenetének megjelenítése"
+
+#: ../command/command.c:140
+#| msgid "Command Line Preferences"
+msgid "Command Applet Preferences"
+msgstr "Parancssor kisalkalmazás beállításai"
+
+#: ../command/command.c:153
+#| msgid "Co_mmand:"
+msgid "Command:"
+msgstr "Parancs:"
+
+#: ../command/command.c:161
+msgid "Interval (seconds):"
+msgstr "Gyakoriság (másodperc):"
+
+#: ../command/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Maximális szélesség (karakter):"
+
+#: ../command/command.c:177
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+#| msgid "Show notification"
+msgid "Show icon"
+msgstr "Ikon megjelenítése"
+
+#: ../command/command.c:326
+#| msgid "Command line"
+msgid "Command Applet"
+msgstr "Parancssor kisalkalmazás"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+#| msgid "MiniCommander Applet Factory"
+msgid "Command Factory"
+msgstr "Parancssor factory"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Parancs"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
+#| msgid "Command Line Preferences"
+msgid "Command to execute"
+msgstr "Végrehajtandó parancs"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:2
+msgid "Command/script to execute to get the output"
+msgstr "A kimenet megkapásához végrehajtandó parancs/parancsfájl"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:3
+msgid "Interval for the command"
+msgstr "A parancs gyakorisága"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
+msgid "Interval to execute the command (in seconds)"
+msgstr "A parancs végrehajtásának gyakorisága (másodpercben)"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
+#| msgid "Width of the applet"
+msgid "Width of output"
+msgstr "A kimenet szélessége"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:6
+msgid "Number of characters to display"
+msgstr "Megjelenítendő karakterek száma"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
+msgid "If applet icon is shown or not"
+msgstr "A kisalkalmazás ikonja megjelenik-e"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -848,18 +923,6 @@ msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelének változását jelzi."
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelét jelzi"
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
-msgid "Graphic"
-msgstr "Kép"
-
-#: ../cpufreq/src/cpufreq-prefs.c:500
-msgid "Text"
-msgstr "Szöveg"
-
-#: ../cpufreq/src/cpufreq-prefs.c:505
-msgid "Graphic and Text"
-msgstr "Kép és szöveg"
-
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Az órajel változtatása nem támogatott"
@@ -881,6 +944,18 @@ msgstr ""
 "hibásan van beállítva vagy nem rendelkezik a CPU órajelének változtatásához "
 "szükséges hardvertámogatással."
 
+#: ../cpufreq/src/cpufreq-prefs.c:495
+msgid "Graphic"
+msgstr "Kép"
+
+#: ../cpufreq/src/cpufreq-prefs.c:500
+msgid "Text"
+msgstr "Szöveg"
+
+#: ../cpufreq/src/cpufreq-prefs.c:505
+msgid "Graphic and Text"
+msgstr "Kép és szöveg"
+
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
 msgstr "A CPU órajelének módosítása"
@@ -888,65 +963,6 @@ msgstr "A CPU órajelének módosítása"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "A CPU órajelének módosításához jogosultság szükséges."
-
-#: ../inhibit/inhibit-applet.c:85
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-msgid "Inhibit Applet"
-msgstr "Energiagazdálkodás korlátozása"
-
-#: ../inhibit/inhibit-applet.c:86
-msgid "Allows user to inhibit automatic power saving."
-msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását."
-
-#: ../inhibit/inhibit-applet.c:233
-msgid "Cannot connect to gnome-session"
-msgstr "Nem lehet csatlakozni a gnome-session folyamathoz"
-
-#: ../inhibit/inhibit-applet.c:236
-msgid "Automatic sleep inhibited"
-msgstr "Automatikus energiatakarékosság korlátozva"
-
-#: ../inhibit/inhibit-applet.c:238
-msgid "Automatic sleep enabled"
-msgstr "Automatikus energiatakarékosság engedélyezve"
-
-#: ../inhibit/inhibit-applet.c:266
-msgid "Manual inhibit"
-msgstr "Kézi korlátozás"
-
-#: ../inhibit/inhibit-applet.c:298
-msgid ""
-"Inhibit Applet is free software; you can redistribute it and/or\n"
-"modify it under the terms of the GNU General Public License\n"
-"as published by the Free Software Foundation; either version 2\n"
-"of the License, or (at your option) any later version."
-msgstr ""
-"Az Energiagazdálkodás korlátozása szabad szoftver, terjesztheti és/vagy\n"
-"módosíthatja a Free Software Foundation által kiadott GNU\n"
-"General Public License második (vagy bármely későbbi)\n"
-"változatában foglaltak alapján."
-
-#: ../inhibit/inhibit-applet.c:302
-msgid ""
-"Inhibit Applet is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details."
-msgstr ""
-"Az Energiagazdálkodás korlátozása programot abban a reményben terjesztjük,\n"
-"hogy hasznos lesz, de nem vállalunk SEMMIFÉLE GARANCIÁT, még olyan "
-"értelemben\n"
-"sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT "
-"ELVÉGZÉSÉRE.\n"
-"További részletekért tanulmányozza a GNU GPL licencet."
-
-#: ../inhibit/inhibit-applet.c:320
-msgid "Copyright © 2006-2007 Richard Hughes"
-msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1391,6 +1407,18 @@ msgstr "_Következő találat"
 msgid "Location"
 msgstr "Hely"
 
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Időjárás-jelentés kisalkalmazás factory"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Factory az időjárás kisalkalmazás készítéséhez."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "A jelenlegi és az előrejelzett időjárást figyeli"
+
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
 msgstr "Automatikus adatfrissítés"
@@ -1436,52 +1464,64 @@ msgid "If true, additional details about weather will be downloaded and shown."
 msgstr ""
 "Ha igaz, az időjárás további részletei kerülnek letöltésre és megjelenítésre."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Időjárás-jelentés kisalkalmazás factory"
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Energiagazdálkodás korlátozása"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Factory az időjárás kisalkalmazás készítéséhez."
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "A jelenlegi és az előrejelzett időjárást figyeli"
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Nem lehet csatlakozni a gnome-session folyamathoz"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-msgid "Invest Applet Factory"
-msgstr "Invest kisalkalmazás factory"
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatikus energiatakarékosság korlátozva"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the invest applet."
-msgstr "Factory az Invest kisalkalmazás készítéséhez."
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatikus energiatakarékosság engedélyezve"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
-msgid "Invest"
-msgstr "Invest"
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Kézi korlátozás"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
-msgid "Track your invested money."
-msgstr "Befektetések követése."
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Az Energiagazdálkodás korlátozása szabad szoftver, terjesztheti és/vagy\n"
+"módosíthatja a Free Software Foundation által kiadott GNU\n"
+"General Public License második (vagy bármely későbbi)\n"
+"változatában foglaltak alapján."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:1
-msgid "Refresh"
-msgstr "Frissítés"
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Az Energiagazdálkodás korlátozása programot abban a reményben terjesztjük,\n"
+"hogy hasznos lesz, de nem vállalunk SEMMIFÉLE GARANCIÁT, még olyan "
+"értelemben\n"
+"sem, hogy a program alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT "
+"ELVÉGZÉSÉRE.\n"
+"További részletekért tanulmányozza a GNU GPL licencet."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Beállítások"
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:3
-msgid "Help"
-msgstr "Súgó"
-
-#: ../invest-applet/data/invest-applet-menu.xml.h:4
-msgid "About"
-msgstr "Névjegy"
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1669,6 +1709,41 @@ msgstr "_Beállítások"
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Grafikon letöltése a <b>Yahoo!</b>-tól"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Súgó"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "Névjegy"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Invest kisalkalmazás factory"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the invest applet."
+msgstr "Factory az Invest kisalkalmazás készítéséhez."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+#: ../invest-applet/invest/about.py:17
+msgid "Invest"
+msgstr "Invest"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
+#: ../invest-applet/invest/about.py:20
+msgid "Track your invested money."
+msgstr "Befektetések követése."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1889,6 +1964,41 @@ msgstr "Parancssor"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Írjon be egy parancsot ide, a Gnome elindítja önnek"
 
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
+msgid "Browser"
+msgstr "Böngésző"
+
+#: ../mini-commander/src/mini-commander_applet.c:242
+msgid "Click this button to start the browser"
+msgstr "Kattintson erre a gombra a böngésző indításához"
+
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
+msgid "History"
+msgstr "Előzmények"
+
+#: ../mini-commander/src/mini-commander_applet.c:260
+msgid "Click this button for the list of previous commands"
+msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
+
+#: ../mini-commander/src/mini-commander_applet.c:348
+msgid "Command line has been disabled by your system administrator"
+msgstr "A parancssort letiltotta a rendszergazda"
+
+#: ../mini-commander/src/mini-commander_applet.c:363
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Parancssor"
+
+#: ../mini-commander/src/mini-commander_applet.c:411
+msgid "Mini-Commander applet"
+msgstr "Parancssor kisalkalmazás"
+
+#: ../mini-commander/src/mini-commander_applet.c:412
+msgid "This applet adds a command line to the panel"
+msgstr "Ez a kisalkalmazás egy parancssort ad a panelhez"
+
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
 msgstr "A Parancssor beállításai"
@@ -1961,41 +2071,6 @@ msgstr "_Minta:"
 #: ../mini-commander/src/mini-commander.ui.h:19
 msgid "Co_mmand:"
 msgstr "_Parancs:"
-
-#: ../mini-commander/src/mini-commander_applet.c:237
-#: ../mini-commander/src/mini-commander_applet.c:241
-msgid "Browser"
-msgstr "Böngésző"
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-msgid "Click this button to start the browser"
-msgstr "Kattintson erre a gombra a böngésző indításához"
-
-#: ../mini-commander/src/mini-commander_applet.c:255
-#: ../mini-commander/src/mini-commander_applet.c:259
-msgid "History"
-msgstr "Előzmények"
-
-#: ../mini-commander/src/mini-commander_applet.c:260
-msgid "Click this button for the list of previous commands"
-msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
-
-#: ../mini-commander/src/mini-commander_applet.c:348
-msgid "Command line has been disabled by your system administrator"
-msgstr "A parancssort letiltotta a rendszergazda"
-
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Parancssor"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
-msgid "Mini-Commander applet"
-msgstr "Parancssor kisalkalmazás"
-
-#: ../mini-commander/src/mini-commander_applet.c:412
-msgid "This applet adds a command line to the panel"
-msgstr "Ez a kisalkalmazás egy parancssort ad a panelhez"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
@@ -2098,10 +2173,6 @@ msgstr "Nem adhat meg kétszer egy mintát"
 #: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Minta"
-
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Parancs"
 
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
@@ -2607,6 +2678,78 @@ msgstr "Í_rás"
 msgid "System Monitor Preferences"
 msgstr "Rendszerfigyelő beállításai"
 
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "Eszköz _adatai…"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Összeg megjelenítése"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Összeg megjelenítése a ki- és bemenő forgalom helyett"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Bitek megjelenítése"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Bitek megjelenítése bájtok helyett"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Ikon lecserélése"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Ikon lecserélése a kijelölt eszköznek megfelelően"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Eszköz automatikus módosítása"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Frissítési idő"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Frissítési gyakoriság ezredmásodpercben"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Hálózati eszköz"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Fel parancs"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Le parancs"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Bejövő grafikon színe"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Kimenő grafikon színe"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Hálózatsebesség kisalkalmazás factory"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Hálózatsebesség kisalkalmazás"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Hálózatfigyelő"
+
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
@@ -2819,78 +2962,6 @@ msgstr "_Ikon változtatása a kijelölt eszköznek megfelelően"
 msgid "Netspeed Preferences"
 msgstr "Hálózatsebesség kisalkalmazás beállításai"
 
-#: ../netspeed/data/netspeed-menu.xml.h:1
-msgid "Device _Details"
-msgstr "Eszköz _adatai…"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
-msgid "Netspeed Applet Factory"
-msgstr "Hálózatsebesség kisalkalmazás factory"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Hálózatsebesség kisalkalmazás"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
-msgid "Network Monitor"
-msgstr "Hálózatfigyelő"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-msgid "Show sum"
-msgstr "Összeg megjelenítése"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-msgid "Show sum instead of in &amp; out"
-msgstr "Összeg megjelenítése a ki- és bemenő forgalom helyett"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-msgid "Show bits"
-msgstr "Bitek megjelenítése"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-msgid "Show bits instead of bytes"
-msgstr "Bitek megjelenítése bájtok helyett"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-msgid "Change icon"
-msgstr "Ikon lecserélése"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-msgid "Change icon according to the selected device"
-msgstr "Ikon lecserélése a kijelölt eszköznek megfelelően"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-msgid "Auto change device"
-msgstr "Eszköz automatikus módosítása"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-msgid "Refresh time"
-msgstr "Frissítési idő"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-msgid "Refresh time in milliseconds"
-msgstr "Frissítési gyakoriság ezredmásodpercben"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-msgid "Network device"
-msgstr "Hálózati eszköz"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-msgid "Up command"
-msgstr "Fel parancs"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-msgid "Down command"
-msgstr "Le parancs"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-msgid "In graph color"
-msgstr "Bejövő grafikon színe"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-msgid "Out graph color"
-msgstr "Kimenő grafikon színe"
-
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Ragadós cetlik kisalkalmazás factory"
@@ -2905,22 +2976,184 @@ msgstr "Ragadós cetlik"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Ragadós cetlik létrehozása, megtekintése és kezelése"
 
-#: ../stickynotes/stickynotes.c:593
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Új cetlik alapértelmezett magassága"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Az újonnan létrehozott cetlik alapértelmezett szélessége képpontban."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Új cetlik alapértelmezett magassága"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Új cetlik alapértelmezett színe"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Új ragadós cetlik alapértelmezett színe. Ezt lehet szabványos név, "
+"hexadecimális érték, RGB szín vagy RGBA szín."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Betűkészlet alapértelmezett színe"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Új ragadós cetlik alapértelmezett betűszíne. Ezt lehet szabványos név, "
+"hexadecimális érték, RGB szín vagy RGBA szín."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Új cetlik alapértelmezett betűkészlete"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Új ragadós cetlik alapértelmezett betűkészlete. Ez egy Pango betűkészletnév "
+"kell legyen, például „Sans Italic 10”."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Ragadós cetlik munkaterületre ragadóssága"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Megadja, hogy a ragadós cetlik láthatóak-e az asztal MINDEN munkaterületén "
+"vagy sem."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Ragadós cetlik zárolt állapota"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr "Megadja, hogy a ragadós cetlik zároltak (nem szerkeszthetők) vagy sem."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "A cetli címének dátumformátuma"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Alapértelmezésben a ragadós cetlik létrehozásukkor a jelenlegi dátumot "
+"kapják címként. Ez ennek a formátumnak a használatával áll elő, bármi, amit "
+"az strftime() fel tud dolgozni, érvényes."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Használja-e az alapértelmezett rendszerszíneket"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Ha ez az opció le van tiltva, egyéni szín használható alapértelmezett "
+"színként az összes ragadós cetlihez."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Használja-e az alapértelmezett rendszerbetűkészletet"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Ha ez az opció le van tiltva, egyéni betűkészlet használható alapértelmezett "
+"betűkészletként az összes ragadós cetlihez."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr ""
+"Kényszerítse-e az alapértelmezett színt és betűkészletet az összes cetlire"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Ha ez az opció engedélyezve van, az egyes cetlikhez rendelt egyéni színek és "
+"betűkészletek mellőzve lesznek."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Cetlik elrejtése az asztal kiválasztásakor"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Ha ez engedélyezve van, akkor az asztal kiválasztása automatikusan elrejti "
+"az összes megnyitott cetlit."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Kérjen-e megerősítést cetli törlésekor"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Az üres cetlik automatikus törlése."
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d cetli"
+msgstr[1] "%d cetli"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Ragadós cetlik mutatása"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Ragadós cetlik a GNOME asztali környezethez"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "Ú_j cetli"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "Cetlik _elrejtése"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Cetlik zárolása"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "Cetlik _törlése"
+
+#: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Ez a cetli zárolva van."
 
-#: ../stickynotes/stickynotes.c:597
+#: ../stickynotes/stickynotes.c:595
 msgid "This note is unlocked."
 msgstr "Ez a cetli nincs zárolva."
-
-#: ../stickynotes/stickynotes-delete.ui.h:1
-msgid "Delete this sticky note?"
-msgstr "Törli ezt a ragadós cetlit?"
-
-#: ../stickynotes/stickynotes-delete.ui.h:2
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-msgid "This cannot be undone."
-msgstr "Ez nem vonható vissza."
 
 #: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
@@ -2929,6 +3162,23 @@ msgstr "Összes _törlése"
 #: ../stickynotes/stickynotes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Törli az összes ragadós cetlit?"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+#: ../stickynotes/stickynotes-delete.ui.h:2
+msgid "This cannot be undone."
+msgstr "Ez nem vonható vissza."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Törli ezt a ragadós cetlit?"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "Cetli _törlése…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "Cetli _zárolása"
 
 #: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
@@ -3089,192 +3339,87 @@ msgstr "Válassza ki a cetli betűkészletét"
 msgid "Pick a font for the sticky note"
 msgstr "Válassza ki a ragadós cetli színét"
 
-#: ../stickynotes/stickynotes_applet.c:539
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d cetli"
-msgstr[1] "%d cetli"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
+msgstr "Időzítő factory"
 
-#: ../stickynotes/stickynotes_applet.c:540
-msgid "Show sticky notes"
-msgstr "Ragadós cetlik mutatása"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Időzítő"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Ragadós cetlik a GNOME asztali környezethez"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
+msgstr "Időzítő beállítása, és értesítés amikor lejár"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
-msgid "_New Note"
-msgstr "Ú_j cetli"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+msgid "'Timer'"
+msgstr "'Időzítő'"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
-msgid "Hi_de Notes"
-msgstr "Cetlik _elrejtése"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+msgid "Name of timer"
+msgstr "Az időzítő neve"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
-msgid "_Lock Notes"
-msgstr "_Cetlik zárolása"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+#| msgid "Refresh time in milliseconds"
+msgid "Duration of timer in seconds"
+msgstr "Időzítés hossza másodpercben"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
-msgid "_Delete Notes"
-msgstr "Cetlik _törlése"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+#| msgid "Show notifications for critical weather conditions"
+msgid "Show notification popup when timer finish"
+msgstr "Értesítés megjelenítése az időzítő lejáratakor"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
-msgid "_Delete Note..."
-msgstr "Cetli _törlése…"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+msgid "Show dialog window when timer finish"
+msgstr "Ablak megjelenítése az időzítő lejáratakor"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
-msgid "_Lock Note"
-msgstr "Cetli _zárolása"
+#: ../timerapplet/timerapplet.c:158
+#| msgid "Finnish keymap"
+msgid "Finished"
+msgstr "Lejárt"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Kuka"
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
+msgstr "Az időzítő lejárt!"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "A Kuka megnyitása"
+#: ../timerapplet/timerapplet.c:321
+#| msgid "Geyes Preferences"
+msgid "Timer Applet Preferences"
+msgstr "Időzítő kisalkalmazás beállításai"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
-msgid "Default width for new notes"
-msgstr "Új cetlik alapértelmezett magassága"
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Név:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Az újonnan létrehozott cetlik alapértelmezett szélessége képpontban."
+#: ../timerapplet/timerapplet.c:343
+msgid "Hours:"
+msgstr "Óra:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
-msgid "Default height for new notes"
-msgstr "Új cetlik alapértelmezett magassága"
+#: ../timerapplet/timerapplet.c:354
+#| msgid "minutes"
+msgid "Minutes:"
+msgstr "Perc:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
-msgid "Default color for new notes"
-msgstr "Új cetlik alapértelmezett színe"
+#: ../timerapplet/timerapplet.c:365
+#| msgid "milliseconds"
+msgid "Seconds:"
+msgstr "Másodperc:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
-msgstr ""
-"Új ragadós cetlik alapértelmezett színe. Ezt lehet szabványos név, "
-"hexadecimális érték, RGB szín vagy RGBA szín."
+#: ../timerapplet/timerapplet.c:376
+#| msgid "Show notification"
+msgid "Show notification popup"
+msgstr "Értesítési buborék megjelenítése"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
-msgid "Default color for font"
-msgstr "Betűkészlet alapértelmezett színe"
+#: ../timerapplet/timerapplet.c:380
+#| msgid "Show handle"
+msgid "Show dialog"
+msgstr "Párbeszédablak megjelenítése"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-msgid ""
-"Default font color for new sticky notes. This can be standard name, "
-"hexadecimal value, RGB color or RGBA color."
-msgstr ""
-"Új ragadós cetlik alapértelmezett betűszíne. Ezt lehet szabványos név, "
-"hexadecimális érték, RGB szín vagy RGBA szín."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
-msgid "Default font for new notes"
-msgstr "Új cetlik alapértelmezett betűkészlete"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Új ragadós cetlik alapértelmezett betűkészlete. Ez egy Pango betűkészletnév "
-"kell legyen, például „Sans Italic 10”."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
-msgid "Sticky notes' workspace stickyness"
-msgstr "Ragadós cetlik munkaterületre ragadóssága"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Megadja, hogy a ragadós cetlik láthatóak-e az asztal MINDEN munkaterületén "
-"vagy sem."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
-msgid "Sticky notes' locked state"
-msgstr "Ragadós cetlik zárolt állapota"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Megadja, hogy a ragadós cetlik zároltak (nem szerkeszthetők) vagy sem."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
-msgid "Date format of note's title"
-msgstr "A cetli címének dátumformátuma"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Alapértelmezésben a ragadós cetlik létrehozásukkor a jelenlegi dátumot "
-"kapják címként. Ez ennek a formátumnak a használatával áll elő, bármi, amit "
-"az strftime() fel tud dolgozni, érvényes."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
-msgid "Whether to use the default system color"
-msgstr "Használja-e az alapértelmezett rendszerszíneket"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Ha ez az opció le van tiltva, egyéni szín használható alapértelmezett "
-"színként az összes ragadós cetlihez."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
-msgid "Whether to use the default system font"
-msgstr "Használja-e az alapértelmezett rendszerbetűkészletet"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Ha ez az opció le van tiltva, egyéni betűkészlet használható alapértelmezett "
-"betűkészletként az összes ragadós cetlihez."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
-msgid "Whether to force the default color and font on all notes"
-msgstr ""
-"Kényszerítse-e az alapértelmezett színt és betűkészletet az összes cetlire"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Ha ez az opció engedélyezve van, az egyes cetlikhez rendelt egyéni színek és "
-"betűkészletek mellőzve lesznek."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr "Cetlik elrejtése az asztal kiválasztásakor"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Ha ez engedélyezve van, akkor az asztal kiválasztása automatikusan elrejti "
-"az összes megnyitott cetlit."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Kérjen-e megerősítést cetli törlésekor"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Az üres cetlik automatikus törlése."
+#: ../timerapplet/timerapplet.c:402
+#| msgid "Trash Applet"
+msgid "Timer Applet"
+msgstr "Időzítő kisalkalmazás"
 
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
@@ -3391,6 +3536,14 @@ msgstr ""
 "nem kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Kuka"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "A Kuka megnyitása"
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3464,10 +3617,6 @@ msgstr ""
 msgid "_Empty Trash"
 msgstr "_Kuka ürítése"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
-msgid "_Open Trash"
-msgstr "K_uka megnyitása"
-
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
 msgstr "A Kuka ürítése"
@@ -3475,6 +3624,10 @@ msgstr "A Kuka ürítése"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Innen:"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "K_uka megnyitása"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
@@ -3497,9 +3650,6 @@ msgstr ""
 "és a kijelentkezési ikon az asztalon"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for maximized windows"
 msgid ""
 "Show the application title and close icon\n"
 "for the active window"
@@ -3814,9 +3964,6 @@ msgstr "Ablak bezárása"
 
 #~ msgid "Estonian keymap"
 #~ msgstr "Észt billentyűzetkiosztás"
-
-#~ msgid "Finnish keymap"
-#~ msgstr "Finn billentyűzetkiosztás"
 
 #~ msgid "French Swiss"
 #~ msgstr "Svájci francia"
