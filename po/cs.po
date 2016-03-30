@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-25 07:54+0000\n"
-"PO-Revision-Date: 2016-02-25 10:19+0100\n"
+"POT-Creation-Date: 2016-03-30 07:09+0000\n"
+"PO-Revision-Date: 2016-03-30 17:40+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -49,8 +49,8 @@ msgstr "Předvolby zpřístupnění _klávesnice"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -61,9 +61,9 @@ msgstr "Nápo_věda"
 #: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -83,13 +83,14 @@ msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikát
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -354,6 +355,18 @@ msgstr "Sledování stavu baterie"
 msgid "Monitor a laptop's remaining power"
 msgstr "Sleduje zbývající energii notebooku"
 
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "Př_edvolby"
+
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
 msgstr "Předvolby sledování stavu baterie"
@@ -402,18 +415,6 @@ msgstr "_Varovat, když nabití baterie klesne na:"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "Upozor_nit, když je baterie zcela dobita"
-
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "Př_edvolby"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -743,11 +744,78 @@ msgstr "Kliknutím smažete vybranou paletu"
 msgid "Character Palette Preferences"
 msgstr "Předvolby palety znaků"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Zavřít"
+
+#: ../command/command.c:119
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+msgid "Shows the output of a command"
+msgstr "Zobrazuje výstup příkazů"
+
+#: ../command/command.c:140
+msgid "Command Applet Preferences"
+msgstr "Předvolby apletu Příkaz"
+
+#: ../command/command.c:153
+msgid "Command:"
+msgstr "Příkaz:"
+
+#: ../command/command.c:161
+msgid "Interval (seconds):"
+msgstr "Interval (ve vteřinách):"
+
+#: ../command/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Maximální šířka (ve znacích):"
+
+#: ../command/command.c:177
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+msgid "Show icon"
+msgstr "Zobrazovat ikonu"
+
+#: ../command/command.c:326
+msgid "Command Applet"
+msgstr "Aplet Příkaz"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+msgid "Command Factory"
+msgstr "Generátor apletu Příkaz"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Příkaz"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
+msgid "Command to execute"
+msgstr "Příkaz ke spuštění"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:2
+msgid "Command/script to execute to get the output"
+msgstr "Příkaz/skript, který se má spustit pro získání výstupu"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:3
+msgid "Interval for the command"
+msgstr "Interval pro příkaz"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
+msgid "Interval to execute the command (in seconds)"
+msgstr "Jak často se má příkaz spouštět (ve vteřinách)"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
+msgid "Width of output"
+msgstr "Šířka výstupu"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:6
+msgid "Number of characters to display"
+msgstr "Počet zobrazovaných znaků"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
+msgid "If applet icon is shown or not"
+msgstr "Jestli je nebo není zobrazena ikona apletu"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -841,18 +909,6 @@ msgstr "Tento nástroj zobrazuje aktuální změny frekvence CPU."
 msgid "This utility shows the current CPU Frequency"
 msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU"
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
-msgid "Graphic"
-msgstr "Grafika"
-
-#: ../cpufreq/src/cpufreq-prefs.c:500
-msgid "Text"
-msgstr "Text"
-
-#: ../cpufreq/src/cpufreq-prefs.c:505
-msgid "Graphic and Text"
-msgstr "Grafika a text"
-
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Změna frekvence nepodporována"
@@ -873,6 +929,18 @@ msgstr ""
 "Nebudete moci změnit frekvenci svého počítače. Váš počítač je možná špatně "
 "nastaven nebo nemá hardwarovou podporu změny frekvence CPU."
 
+#: ../cpufreq/src/cpufreq-prefs.c:495
+msgid "Graphic"
+msgstr "Grafika"
+
+#: ../cpufreq/src/cpufreq-prefs.c:500
+msgid "Text"
+msgstr "Text"
+
+#: ../cpufreq/src/cpufreq-prefs.c:505
+msgid "Graphic and Text"
+msgstr "Grafika a text"
+
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
 msgstr "Změnit frekvenci CPU"
@@ -880,63 +948,6 @@ msgstr "Změnit frekvenci CPU"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Ke změně frekvence CPU jsou vyžadována oprávnění."
-
-#: ../inhibit/inhibit-applet.c:85
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-msgid "Inhibit Applet"
-msgstr "Aplet potlačení"
-
-#: ../inhibit/inhibit-applet.c:86
-msgid "Allows user to inhibit automatic power saving."
-msgstr "Umožňuje uživateli potlačit automatické šetření energie."
-
-#: ../inhibit/inhibit-applet.c:233
-msgid "Cannot connect to gnome-session"
-msgstr "Nelze se spojit s gnome-session"
-
-#: ../inhibit/inhibit-applet.c:236
-msgid "Automatic sleep inhibited"
-msgstr "Automatické uspávání potlačeno"
-
-#: ../inhibit/inhibit-applet.c:238
-msgid "Automatic sleep enabled"
-msgstr "Automatické uspávání povoleno"
-
-#: ../inhibit/inhibit-applet.c:266
-msgid "Manual inhibit"
-msgstr "Ručně potlačit"
-
-#: ../inhibit/inhibit-applet.c:298
-msgid ""
-"Inhibit Applet is free software; you can redistribute it and/or\n"
-"modify it under the terms of the GNU General Public License\n"
-"as published by the Free Software Foundation; either version 2\n"
-"of the License, or (at your option) any later version."
-msgstr ""
-"Aplet potlačení je svobodný software: Můžete jej dále šířit a/nebo upravovat "
-"za podmínek licence GNU General Public License v podobě, v jaké ji vydala "
-"Free Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší "
-"volby) v libovolné novější verzi."
-
-#: ../inhibit/inhibit-applet.c:302
-msgid ""
-"Inhibit Applet is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details."
-msgstr ""
-"Aplet potlačení je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV "
-"ZÁRUK, a to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO "
-"KONKRÉTNÍ ÚČEL. Více podrobností najdete přímo v licenci GNU General Public "
-"License.  Podrobnosti viz GNU General Public License."
-
-#: ../inhibit/inhibit-applet.c:320
-msgid "Copyright © 2006-2007 Richard Hughes"
-msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Umožňuje uživateli potlačit automatické šetření energií"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1359,7 +1370,8 @@ msgstr "minut"
 msgid "Display"
 msgstr "Zobrazení"
 
-#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979
+#: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Obecné"
 
@@ -1378,6 +1390,18 @@ msgstr "Hledat da_lší"
 #: ../gweather/gweather-pref.c:1042
 msgid "Location"
 msgstr "Poloha"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Generátor apletu Gweather"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Generátor apletu Počasí."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Sleduje aktuální počasí a předpovědi"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
@@ -1425,52 +1449,62 @@ msgstr ""
 "Je-li zapnuto, bodou se stahovat a zobrazovat doplňkové podrobné informace o "
 "počasí."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Generátor apletu Gweather"
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Aplet potlačení"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Generátor apletu Počasí."
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Umožňuje uživateli potlačit automatické šetření energie."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "Sleduje aktuální počasí a předpovědi"
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Nelze se spojit s gnome-session"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-msgid "Invest Applet Factory"
-msgstr "Generátor apletu Investice"
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatické uspávání potlačeno"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the invest applet."
-msgstr "Generátor pro vytváření apletu Investice."
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatické uspávání povoleno"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
-msgid "Invest"
-msgstr "Investice"
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Ručně potlačit"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
-msgid "Track your invested money."
-msgstr "Sledujte své investované peníze."
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Aplet potlačení je svobodný software: Můžete jej dále šířit a/nebo upravovat "
+"za podmínek licence GNU General Public License v podobě, v jaké ji vydala "
+"Free Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší "
+"volby) v libovolné novější verzi."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:1
-msgid "Refresh"
-msgstr "Aktualizovat"
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Aplet potlačení je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV "
+"ZÁRUK, a to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO "
+"KONKRÉTNÍ ÚČEL. Více podrobností najdete přímo v licenci GNU General Public "
+"License.  Podrobnosti viz GNU General Public License."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Předvolby"
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:3
-msgid "Help"
-msgstr "Nápověda"
-
-#: ../invest-applet/data/invest-applet-menu.xml.h:4
-msgid "About"
-msgstr "O aplikaci"
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Umožňuje uživateli potlačit automatické šetření energií"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1658,6 +1692,41 @@ msgstr "Vol_by"
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Stahuje se graf z <b>Yahoo!</b>"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Aktualizovat"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Předvolby"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Nápověda"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "O aplikaci"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Generátor apletu Investice"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the invest applet."
+msgstr "Generátor pro vytváření apletu Investice."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+#: ../invest-applet/invest/about.py:17
+msgid "Invest"
+msgstr "Investice"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
+#: ../invest-applet/invest/about.py:20
+msgid "Track your invested money."
+msgstr "Sledujte své investované peníze."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1875,6 +1944,41 @@ msgstr "Příkazový řádek"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Napište zde příkaz a prostředí GNOME ho pro vás vykoná"
 
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
+msgid "Browser"
+msgstr "Procházet"
+
+#: ../mini-commander/src/mini-commander_applet.c:242
+msgid "Click this button to start the browser"
+msgstr "Kliknutím na toto tlačítko spustíte procházení souborů"
+
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
+msgid "History"
+msgstr "Historie"
+
+#: ../mini-commander/src/mini-commander_applet.c:260
+msgid "Click this button for the list of previous commands"
+msgstr "Kliknutím na toto tlačítko necháte vypsat předchozí příkazy"
+
+#: ../mini-commander/src/mini-commander_applet.c:348
+msgid "Command line has been disabled by your system administrator"
+msgstr "Příkazový řádek byl zakázán vaším správcem systému"
+
+#: ../mini-commander/src/mini-commander_applet.c:363
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Příkazový řádek"
+
+#: ../mini-commander/src/mini-commander_applet.c:411
+msgid "Mini-Commander applet"
+msgstr "Aplet Mini-Commander"
+
+#: ../mini-commander/src/mini-commander_applet.c:412
+msgid "This applet adds a command line to the panel"
+msgstr "Tento aplet přidá na panel příkazový řádek"
+
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
 msgstr "Předvolby příkazového řádku"
@@ -1947,41 +2051,6 @@ msgstr "_Vzor:"
 #: ../mini-commander/src/mini-commander.ui.h:19
 msgid "Co_mmand:"
 msgstr "Pří_kaz:"
-
-#: ../mini-commander/src/mini-commander_applet.c:237
-#: ../mini-commander/src/mini-commander_applet.c:241
-msgid "Browser"
-msgstr "Procházet"
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-msgid "Click this button to start the browser"
-msgstr "Kliknutím na toto tlačítko spustíte procházení souborů"
-
-#: ../mini-commander/src/mini-commander_applet.c:255
-#: ../mini-commander/src/mini-commander_applet.c:259
-msgid "History"
-msgstr "Historie"
-
-#: ../mini-commander/src/mini-commander_applet.c:260
-msgid "Click this button for the list of previous commands"
-msgstr "Kliknutím na toto tlačítko necháte vypsat předchozí příkazy"
-
-#: ../mini-commander/src/mini-commander_applet.c:348
-msgid "Command line has been disabled by your system administrator"
-msgstr "Příkazový řádek byl zakázán vaším správcem systému"
-
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Příkazový řádek"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
-msgid "Mini-Commander applet"
-msgstr "Aplet Mini-Commander"
-
-#: ../mini-commander/src/mini-commander_applet.c:412
-msgid "This applet adds a command line to the panel"
-msgstr "Tento aplet přidá na panel příkazový řádek"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
@@ -2082,10 +2151,6 @@ msgstr "Není možné zadávat duplicitní vzory"
 #: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Vzor"
-
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Příkaz"
 
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
@@ -2588,6 +2653,78 @@ msgstr "Záp_is"
 msgid "System Monitor Preferences"
 msgstr "Předvolby sledování systému"
 
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "Po_drobnosti o zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Zobrazovat součet"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Ukazovat celkový _součet místo údajů vstupu a výstupu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Zobrazit bity"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Zobrazovat bity místo bajtů"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Měnit ikonu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Měnit ikonu podle vybraného zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Automaticky měnit zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Čas občerstvování"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Prodleva mezi občerstvováním apletů v milisekundách"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Síťové zařízení"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Příkaz pro nahození"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Příkaz pro shození"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Barva grafu vstupu"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Barva grafu výstupu"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Generátor appletu Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Applet Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Sledování sítě"
+
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
@@ -2800,78 +2937,6 @@ msgstr "Měnit _ikonu podle vybraného zařízení"
 msgid "Netspeed Preferences"
 msgstr "Předvolby Netspeed"
 
-#: ../netspeed/data/netspeed-menu.xml.h:1
-msgid "Device _Details"
-msgstr "Po_drobnosti o zařízení"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
-msgid "Netspeed Applet Factory"
-msgstr "Generátor appletu Netspeed"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Applet Netspeed"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
-msgid "Network Monitor"
-msgstr "Sledování sítě"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-msgid "Show sum"
-msgstr "Zobrazovat součet"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-msgid "Show sum instead of in &amp; out"
-msgstr "Ukazovat celkový _součet místo údajů vstupu a výstupu"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-msgid "Show bits"
-msgstr "Zobrazit bity"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-msgid "Show bits instead of bytes"
-msgstr "Zobrazovat bity místo bajtů"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-msgid "Change icon"
-msgstr "Měnit ikonu"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-msgid "Change icon according to the selected device"
-msgstr "Měnit ikonu podle vybraného zařízení"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-msgid "Auto change device"
-msgstr "Automaticky měnit zařízení"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-msgid "Refresh time"
-msgstr "Čas občerstvování"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-msgid "Refresh time in milliseconds"
-msgstr "Prodleva mezi občerstvováním apletů v milisekundách"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-msgid "Network device"
-msgstr "Síťové zařízení"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-msgid "Up command"
-msgstr "Příkaz pro nahození"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-msgid "Down command"
-msgstr "Příkaz pro shození"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-msgid "In graph color"
-msgstr "Barva grafu vstupu"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-msgid "Out graph color"
-msgstr "Barva grafu výstupu"
-
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Generátor apletu Lepicí poznámky"
@@ -2886,6 +2951,177 @@ msgstr "Lepicí poznámky"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytváří, zobrazuje a spravuje lepicí poznámky na pracovní ploše"
 
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Výchozí šířka nových poznámek"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Výchozí šířka nových poznámek v pixelech."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Výchozí výška nových poznámek"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Výchozí barva nových poznámek"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Výchozí barva nové lepicí poznámky. Může to být standardní název, "
+"šestnáctková hodnota, barva RGB nebo barva RGBA."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Výchozí barva písma"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Výchozí barva písma nové lepicí poznámky. Může to být standardní název, "
+"šestnáctková hodnota, barva RGB nebo barva RGBA."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Výchozí písmo nových poznámek"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Výchozí písmo nových lepicích poznámek. Mělo by se jednat o název písma "
+"systému Pango, například „Sans Italic 10“."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Přilepení poznámek na pracovní plochu"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Určuje, jestli jsou lepicí poznámky viditelné na VŠECH pracovních plochách "
+"nebo ne."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Stav zamčení lepicích poznámek"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr "Určuje, jestli jsou lepicí poznámky zamčené (needitovatelné) nebo ne."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "Datum formátu titulku poznámky"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Ve výchozím stavu dostanou lepicí poznámky při vytvoření jako nadpis "
+"aktuální datum. Používá se tento formát; platné je cokoli, co může být "
+"zpracováno pomocí funkce strftime()."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Jestli se má použít výchozí barva motivu"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Pokud je tato volba vypnuta, lze použít vlastní barvu jako výchozí barvu "
+"všech lepicích poznámek."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Jestli se má použít výchozí písmo motivu"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Pokud je tato volba vypnuta, lze použít vlastní písmo jako výchozí písmo "
+"všech lepicích poznámek."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr "Jestli se má vždy použít výchozí barva a písmo na všechny poznámky"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Pokud je tato volba zapnuta, vlastní barvy a písma, které byly přiřazeny "
+"jednotlivým poznámkám, budou ignorovány."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Jestli se při výběru pracovní plochy mají skrývat všechny poznámky"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Pokud je tato volba zapnuta, vybrání pracovní plochy libovolným způsobem "
+"skryje automaticky všechny otevřené poznámky."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Jestli se má potvrzovat smazání poznámky"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Prázdné poznámky lze smazat bez potvrzení."
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d poznámka"
+msgstr[1] "%d poznámky"
+msgstr[2] "%d poznámek"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Zobrazit lepicí poznámky"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Lepicí poznámky pro prostředí GNOME"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "Nová pozná_mka"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "_Skrýt poznámky"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Zamknout poznámky"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "Smazat poznámk_y"
+
 #: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Tato poznámka je zamčena."
@@ -2894,15 +3130,6 @@ msgstr "Tato poznámka je zamčena."
 msgid "This note is unlocked."
 msgstr "Tato poznámka je odemčena."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
-msgid "Delete this sticky note?"
-msgstr "Odstranit tuto lepicí poznámku?"
-
-#: ../stickynotes/stickynotes-delete.ui.h:2
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-msgid "This cannot be undone."
-msgstr "Krok nelze vrátit zpět."
-
 #: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "Smaza_t vše"
@@ -2910,6 +3137,23 @@ msgstr "Smaza_t vše"
 #: ../stickynotes/stickynotes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Odstranit všechny lepicí poznámky?"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+#: ../stickynotes/stickynotes-delete.ui.h:2
+msgid "This cannot be undone."
+msgstr "Krok nelze vrátit zpět."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Odstranit tuto lepicí poznámku?"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "S_mazat poznámku…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Zamknout poznámku"
 
 #: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
@@ -3070,192 +3314,78 @@ msgstr "Vyberte písmo poznámky"
 msgid "Pick a font for the sticky note"
 msgstr "Vyberte písmo lepicí poznámky"
 
-#: ../stickynotes/stickynotes_applet.c:539
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d poznámka"
-msgstr[1] "%d poznámky"
-msgstr[2] "%d poznámek"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
+msgstr "Generátor apletu Odpočet"
 
-#: ../stickynotes/stickynotes_applet.c:540
-msgid "Show sticky notes"
-msgstr "Zobrazit lepicí poznámky"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Odpočet"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Lepicí poznámky pro prostředí GNOME"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
+msgstr "Začít odpočet a obdržet upozornění, až doběhne"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
-msgid "_New Note"
-msgstr "Nová pozná_mka"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+msgid "'Timer'"
+msgstr "'Odpočet'"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
-msgid "Hi_de Notes"
-msgstr "_Skrýt poznámky"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+msgid "Name of timer"
+msgstr "Název odpočtu"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
-msgid "_Lock Notes"
-msgstr "_Zamknout poznámky"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+msgid "Duration of timer in seconds"
+msgstr "Délka odpočtu ve vteřinách"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
-msgid "_Delete Notes"
-msgstr "Smazat poznámk_y"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+msgid "Show notification popup when timer finish"
+msgstr "Po doběhnutí odpočtu zobrazit upozornění"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
-msgid "_Delete Note..."
-msgstr "S_mazat poznámku…"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+msgid "Show dialog window when timer finish"
+msgstr "Po doběhnutí odpočtu zobrazit dialogové okno"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
-msgid "_Lock Note"
-msgstr "_Zamknout poznámku"
+#: ../timerapplet/timerapplet.c:158
+msgid "Finished"
+msgstr "Dokončeno"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Koš"
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
+msgstr "Odpočet doběhl!"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "Přejít do koše"
+#: ../timerapplet/timerapplet.c:321
+msgid "Timer Applet Preferences"
+msgstr "Předvolby apletu Odpočet"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
-msgid "Default width for new notes"
-msgstr "Výchozí šířka nových poznámek"
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Název:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Výchozí šířka nových poznámek v pixelech."
+#: ../timerapplet/timerapplet.c:343
+msgid "Hours:"
+msgstr "Hodiny:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
-msgid "Default height for new notes"
-msgstr "Výchozí výška nových poznámek"
+#: ../timerapplet/timerapplet.c:354
+msgid "Minutes:"
+msgstr "Minuty:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
-msgid "Default color for new notes"
-msgstr "Výchozí barva nových poznámek"
+#: ../timerapplet/timerapplet.c:365
+msgid "Seconds:"
+msgstr "Vteřiny:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
-msgstr ""
-"Výchozí barva nové lepicí poznámky. Může to být standardní název, "
-"šestnáctková hodnota, barva RGB nebo barva RGBA."
+#: ../timerapplet/timerapplet.c:376
+msgid "Show notification popup"
+msgstr "Zobrazit upozornění"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
-msgid "Default color for font"
-msgstr "Výchozí barva písma"
+#: ../timerapplet/timerapplet.c:380
+msgid "Show dialog"
+msgstr "Zobrazit dialogové okno"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-msgid ""
-"Default font color for new sticky notes. This can be standard name, "
-"hexadecimal value, RGB color or RGBA color."
-msgstr ""
-"Výchozí barva písma nové lepicí poznámky. Může to být standardní název, "
-"šestnáctková hodnota, barva RGB nebo barva RGBA."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
-msgid "Default font for new notes"
-msgstr "Výchozí písmo nových poznámek"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Výchozí písmo nových lepicích poznámek. Mělo by se jednat o název písma "
-"systému Pango, například „Sans Italic 10“."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
-msgid "Sticky notes' workspace stickyness"
-msgstr "Přilepení poznámek na pracovní plochu"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Určuje, jestli jsou lepicí poznámky viditelné na VŠECH pracovních plochách "
-"nebo ne."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
-msgid "Sticky notes' locked state"
-msgstr "Stav zamčení lepicích poznámek"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Určuje, jestli jsou lepicí poznámky zamčené (needitovatelné) nebo ne."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
-msgid "Date format of note's title"
-msgstr "Datum formátu titulku poznámky"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Ve výchozím stavu dostanou lepicí poznámky při vytvoření jako nadpis "
-"aktuální datum. Používá se tento formát; platné je cokoli, co může být "
-"zpracováno pomocí funkce strftime()."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
-msgid "Whether to use the default system color"
-msgstr "Jestli se má použít výchozí barva motivu"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Pokud je tato volba vypnuta, lze použít vlastní barvu jako výchozí barvu "
-"všech lepicích poznámek."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
-msgid "Whether to use the default system font"
-msgstr "Jestli se má použít výchozí písmo motivu"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Pokud je tato volba vypnuta, lze použít vlastní písmo jako výchozí písmo "
-"všech lepicích poznámek."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
-msgid "Whether to force the default color and font on all notes"
-msgstr "Jestli se má vždy použít výchozí barva a písmo na všechny poznámky"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Pokud je tato volba zapnuta, vlastní barvy a písma, které byly přiřazeny "
-"jednotlivým poznámkám, budou ignorovány."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr "Jestli se při výběru pracovní plochy mají skrývat všechny poznámky"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Pokud je tato volba zapnuta, vybrání pracovní plochy libovolným způsobem "
-"skryje automaticky všechny otevřené poznámky."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Jestli se má potvrzovat smazání poznámky"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Prázdné poznámky lze smazat bez potvrzení."
+#: ../timerapplet/timerapplet.c:402
+msgid "Timer Applet"
+msgstr "Aplet Odpočet"
 
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
@@ -3373,6 +3503,14 @@ msgstr ""
 "Public License. Pokud se tak nestalo, napište na Free Software Foundation, "
 "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
 
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Koš"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Přejít do koše"
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3417,7 +3555,7 @@ msgstr "Některé položky do koše nelze přesunout, chcete je smazat okamžit�
 
 #: ../trashapplet/src/trashapplet.c:604
 msgid "Trash Applet"
-msgstr "Aplet koše"
+msgstr "Aplet Koš"
 
 # Broken, see bug 591904.
 #. Translators: the %s in this string should be read as %d.
@@ -3444,13 +3582,10 @@ msgstr ""
 "Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo "
 "smazány. Vezměte prosím na vědomí, že je lze mazat po jedné."
 
-#: ../trashapplet/src/trash-empty.c:342 ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trashapplet/src/trash-empty.c:342
+#: ../trashapplet/trashapplet-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
-
-#: ../trashapplet/trashapplet-menu.xml.h:1
-msgid "_Open Trash"
-msgstr "_Otevřít koš"
 
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
@@ -3459,6 +3594,10 @@ msgstr "Vyprazdňuje se koš"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Z:"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "_Otevřít koš"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
