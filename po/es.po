@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-26 19:53+0000\n"
-"PO-Revision-Date: 2016-02-29 08:57+0100\n"
+"POT-Creation-Date: 2016-05-05 07:14+0000\n"
+"PO-Revision-Date: 2016-05-26 12:57+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -53,7 +53,7 @@ msgstr "Preferencias de accesibilidad del _teclado"
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
-#: ../netspeed/src/preferences.c:324 ../netspeed/data/netspeed-menu.xml.h:3
+#: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -64,9 +64,9 @@ msgstr "Ay_uda"
 #: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -88,13 +88,14 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>\n"
@@ -348,6 +349,18 @@ msgstr "Monitor de carga de la batería"
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un portátil"
 
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "Prefere_ncias"
+
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencias del monitor de carga de la batería"
@@ -396,18 +409,6 @@ msgstr "_Avisar cuando la carga de la batería baje hasta:"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Notificarme cuando la batería esté recargada completamente"
-
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "Prefere_ncias"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -527,7 +528,6 @@ msgstr "Batería recargada completamente"
 
 #: ../brightness/brightness-applet.c:95
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
-#| msgid "Invest Applet"
 msgid "Brightness Applet"
 msgstr "Miniaplicación de brillo"
 
@@ -743,11 +743,86 @@ msgstr "Pulse para borrar la paleta seleccionada"
 msgid "Character Palette Preferences"
 msgstr "Preferencias de la paleta de caracteres"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Cerrar"
+
+#: ../command/command.c:119
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+msgid "Shows the output of a command"
+msgstr "Muestra la salida de un comando"
+
+#: ../command/command.c:140
+#| msgid "Command Line Preferences"
+msgid "Command Applet Preferences"
+msgstr "Preferencias de la miniaplicaicón de comandos"
+
+#: ../command/command.c:153
+#| msgid "Co_mmand:"
+msgid "Command:"
+msgstr "Comando:"
+
+#: ../command/command.c:161
+msgid "Interval (seconds):"
+msgstr "Intervalo (segundos):"
+
+#: ../command/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Anchura máxima (caracteres):"
+
+#: ../command/command.c:177
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+#| msgid "Show notification"
+msgid "Show icon"
+msgstr "Mostrar icono"
+
+#: ../command/command.c:326
+#| msgid "Command line"
+msgid "Command Applet"
+msgstr "Miniaplicaicón de comandos"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+#, fuzzy
+#| msgid "MiniCommander Applet Factory"
+msgid "Command Factory"
+msgstr "Fábrica de la miniaplicación Mini-Commander"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Comando"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
+#| msgid "Cannot execute '%s'"
+msgid "Command to execute"
+msgstr "Comando que ejecutar"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:2
+msgid "Command/script to execute to get the output"
+msgstr "Comando/script que ejecutar para obtener la salida"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:3
+msgid "Interval for the command"
+msgstr "Intervalo para el comando"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
+msgid "Interval to execute the command (in seconds)"
+msgstr "Intervalo para ejecutar el comando (en segundos)"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
+#| msgid "Width of the applet"
+msgid "Width of output"
+msgstr "Anchura de la salida"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:6
+msgid "Number of characters to display"
+msgstr "Número de caracteres que mostrar"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
+msgid "If applet icon is shown or not"
+msgstr "Si se muestra o no el icono de la miniaplicación"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -844,18 +919,6 @@ msgstr ""
 msgid "This utility shows the current CPU Frequency"
 msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
-msgid "Graphic"
-msgstr "Gráfico"
-
-#: ../cpufreq/src/cpufreq-prefs.c:500
-msgid "Text"
-msgstr "Texto"
-
-#: ../cpufreq/src/cpufreq-prefs.c:505
-msgid "Graphic and Text"
-msgstr "Gráfico y texto"
-
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Sin soporte para escalado de frecuencia"
@@ -877,6 +940,18 @@ msgstr ""
 "configurada o no tener soporte hardware para el escalado de frecuencia de la "
 "CPU."
 
+#: ../cpufreq/src/cpufreq-prefs.c:495
+msgid "Graphic"
+msgstr "Gráfico"
+
+#: ../cpufreq/src/cpufreq-prefs.c:500
+msgid "Text"
+msgstr "Texto"
+
+#: ../cpufreq/src/cpufreq-prefs.c:505
+msgid "Graphic and Text"
+msgstr "Gráfico y texto"
+
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
 msgstr "Cambiar la frecuencia de escalado de la CPU"
@@ -885,64 +960,6 @@ msgstr "Cambiar la frecuencia de escalado de la CPU"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
 "Se necesitan privilegios para cambiar la frecuencia de escalado de la CPU"
-
-#: ../inhibit/inhibit-applet.c:85
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-msgid "Inhibit Applet"
-msgstr "Miniaplicación de bloqueo"
-
-#: ../inhibit/inhibit-applet.c:86
-msgid "Allows user to inhibit automatic power saving."
-msgstr "Permite al usuario el bloqueo automático del ahorro de energía."
-
-#: ../inhibit/inhibit-applet.c:233
-msgid "Cannot connect to gnome-session"
-msgstr "No se puede conectar a gnome-session"
-
-#: ../inhibit/inhibit-applet.c:236
-msgid "Automatic sleep inhibited"
-msgstr "Bloquear la suspensión automática"
-
-#: ../inhibit/inhibit-applet.c:238
-msgid "Automatic sleep enabled"
-msgstr "Suspensión automática activada"
-
-#: ../inhibit/inhibit-applet.c:266
-msgid "Manual inhibit"
-msgstr "Bloquear manualmente"
-
-#: ../inhibit/inhibit-applet.c:298
-msgid ""
-"Inhibit Applet is free software; you can redistribute it and/or\n"
-"modify it under the terms of the GNU General Public License\n"
-"as published by the Free Software Foundation; either version 2\n"
-"of the License, or (at your option) any later version."
-msgstr ""
-"La miniaplicación de bloqueo es software libre, usted puede redistribuirla\n"
-"y/o modificarla bajo los términos de la Licencia pública general GNU\n"
-"ya sea en su versión 2, o en alguna versión posterior\n"
-"(a su criterio)."
-
-#: ../inhibit/inhibit-applet.c:302
-msgid ""
-"Inhibit Applet is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details."
-msgstr ""
-"La miniaplicación de bloqueo se distribuye con la esperanza\n"
-"de que le sea útil, pero con ninguna garantía de ello\n"
-"ni siquiera la garantía de comercialización o de adecuación para\n"
-"un propósito específico. Vea la licencia pública general GNU\n"
-"para más detalles."
-
-#: ../inhibit/inhibit-applet.c:320
-msgid "Copyright © 2006-2007 Richard Hughes"
-msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Permite al usuario bloquear el ahorro de energía automáticamente"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1388,6 +1405,18 @@ msgstr "Buscar _siguiente"
 msgid "Location"
 msgstr "Zona"
 
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Fábrica de la miniaplicación GWeather"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Fábrica para crear la miniaplicación de meteorología."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Monitoriza la condiciones meteorológicas actuales y los pronósticos"
+
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
 msgstr "Actualizar los datos automáticamente"
@@ -1433,52 +1462,63 @@ msgid "If true, additional details about weather will be downloaded and shown."
 msgstr ""
 "Si es cierto, se descargarán y mostrarán detalles adicionales sobre el tiempo"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Fábrica de la miniaplicación GWeather"
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Miniaplicación de bloqueo"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Fábrica para crear la miniaplicación de meteorología."
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Permite al usuario el bloqueo automático del ahorro de energía."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "Monitoriza la condiciones meteorológicas actuales y los pronósticos"
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "No se puede conectar a gnome-session"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-msgid "Invest Applet Factory"
-msgstr "Fábrica de la miniaplicación Inversiones"
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Bloquear la suspensión automática"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the invest applet."
-msgstr "Fábrica para crear la miniaplicación de inversiones."
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Suspensión automática activada"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
-msgid "Invest"
-msgstr "Inversiones"
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Bloquear manualmente"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
-msgid "Track your invested money."
-msgstr "Seguimiento de inversiones."
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"La miniaplicación de bloqueo es software libre, usted puede redistribuirla\n"
+"y/o modificarla bajo los términos de la Licencia pública general GNU\n"
+"ya sea en su versión 2, o en alguna versión posterior\n"
+"(a su criterio)."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:1
-msgid "Refresh"
-msgstr "Actualizar"
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"La miniaplicación de bloqueo se distribuye con la esperanza\n"
+"de que le sea útil, pero con ninguna garantía de ello\n"
+"ni siquiera la garantía de comercialización o de adecuación para\n"
+"un propósito específico. Vea la licencia pública general GNU\n"
+"para más detalles."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Preferencias"
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:3
-msgid "Help"
-msgstr "Ayuda"
-
-#: ../invest-applet/data/invest-applet-menu.xml.h:4
-msgid "About"
-msgstr "Acerca de"
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Permite al usuario bloquear el ahorro de energía automáticamente"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1666,6 +1706,41 @@ msgstr "_Opciones"
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Descargando gráfica desde <b>Yahoo!</b>"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Actualizar"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Ayuda"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "Acerca de"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Fábrica de la miniaplicación Inversiones"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the invest applet."
+msgstr "Fábrica para crear la miniaplicación de inversiones."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+#: ../invest-applet/invest/about.py:17
+msgid "Invest"
+msgstr "Inversiones"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
+#: ../invest-applet/invest/about.py:20
+msgid "Track your invested money."
+msgstr "Seguimiento de inversiones."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1886,6 +1961,42 @@ msgstr "Línea de comandos"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Escriba un comando aquí y GNOME lo ejecutará por usted"
 
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
+msgid "Browser"
+msgstr "Navegador"
+
+#: ../mini-commander/src/mini-commander_applet.c:242
+msgid "Click this button to start the browser"
+msgstr "Pulse sobre este botón para iniciar el navegador"
+
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
+msgid "History"
+msgstr "Histórico"
+
+#: ../mini-commander/src/mini-commander_applet.c:260
+msgid "Click this button for the list of previous commands"
+msgstr "Pulse sobre este botón para la lista de comandos anteriores"
+
+#: ../mini-commander/src/mini-commander_applet.c:348
+msgid "Command line has been disabled by your system administrator"
+msgstr ""
+"La línea de comandos ha sido desactivada por su administrador del sistema"
+
+#: ../mini-commander/src/mini-commander_applet.c:363
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Línea de comandos"
+
+#: ../mini-commander/src/mini-commander_applet.c:411
+msgid "Mini-Commander applet"
+msgstr "Miniaplicación Mini-Commander"
+
+#: ../mini-commander/src/mini-commander_applet.c:412
+msgid "This applet adds a command line to the panel"
+msgstr "Esta miniaplicación añade una línea de comandos al panel"
+
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
 msgstr "Preferencias de línea de comandos"
@@ -1959,42 +2070,6 @@ msgstr "_Patrón:"
 #: ../mini-commander/src/mini-commander.ui.h:19
 msgid "Co_mmand:"
 msgstr "Co_mando:"
-
-#: ../mini-commander/src/mini-commander_applet.c:237
-#: ../mini-commander/src/mini-commander_applet.c:241
-msgid "Browser"
-msgstr "Navegador"
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-msgid "Click this button to start the browser"
-msgstr "Pulse sobre este botón para iniciar el navegador"
-
-#: ../mini-commander/src/mini-commander_applet.c:255
-#: ../mini-commander/src/mini-commander_applet.c:259
-msgid "History"
-msgstr "Histórico"
-
-#: ../mini-commander/src/mini-commander_applet.c:260
-msgid "Click this button for the list of previous commands"
-msgstr "Pulse sobre este botón para la lista de comandos anteriores"
-
-#: ../mini-commander/src/mini-commander_applet.c:348
-msgid "Command line has been disabled by your system administrator"
-msgstr ""
-"La línea de comandos ha sido desactivada por su administrador del sistema"
-
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Línea de comandos"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
-msgid "Mini-Commander applet"
-msgstr "Miniaplicación Mini-Commander"
-
-#: ../mini-commander/src/mini-commander_applet.c:412
-msgid "This applet adds a command line to the panel"
-msgstr "Esta miniaplicación añade una línea de comandos al panel"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
@@ -2098,10 +2173,6 @@ msgstr "No puede especificar patrones duplicados"
 #: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Patrón"
-
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Comando"
 
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
@@ -2609,6 +2680,78 @@ msgstr "_Escritura"
 msgid "System Monitor Preferences"
 msgstr "Preferencias del monitor del sistema"
 
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "_Detalles del dispositivo"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Mostrar el total"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Mostrar el total en lugar de bajada y subida"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Mostrar bits"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Mostrar bits en lugar de bytes"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Cambiar icono"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Cambiar icono según el dispositivo seleccionado"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Cambiar dispositivo automáticamente"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Tasa de refresco"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Tasa de refresco, en milisegundos"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Dispositivo de red"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Comando de subida"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Comando de bajada"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Color del gráfico de bajada"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Color del gráfico de subida"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Fábrica de miniaplicaciones Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Miniaplicación Netspeed"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Monitor de la red"
+
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
@@ -2821,78 +2964,6 @@ msgstr "Cambiar _icono según el dispositivo seleccionado"
 msgid "Netspeed Preferences"
 msgstr "Preferencias de Netspeed"
 
-#: ../netspeed/data/netspeed-menu.xml.h:1
-msgid "Device _Details"
-msgstr "_Detalles del dispositivo"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
-msgid "Netspeed Applet Factory"
-msgstr "Fábrica de miniaplicaciones Netspeed"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Miniaplicación Netspeed"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
-msgid "Network Monitor"
-msgstr "Monitor de la red"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-msgid "Show sum"
-msgstr "Mostrar el total"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-msgid "Show sum instead of in &amp; out"
-msgstr "Mostrar el total en lugar de bajada y subida"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-msgid "Show bits"
-msgstr "Mostrar bits"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-msgid "Show bits instead of bytes"
-msgstr "Mostrar bits en lugar de bytes"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-msgid "Change icon"
-msgstr "Cambiar icono"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-msgid "Change icon according to the selected device"
-msgstr "Cambiar icono según el dispositivo seleccionado"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-msgid "Auto change device"
-msgstr "Cambiar dispositivo automáticamente"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-msgid "Refresh time"
-msgstr "Tasa de refresco"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-msgid "Refresh time in milliseconds"
-msgstr "Tasa de refresco, en milisegundos"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-msgid "Network device"
-msgstr "Dispositivo de red"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-msgid "Up command"
-msgstr "Comando de subida"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-msgid "Down command"
-msgstr "Comando de bajada"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-msgid "In graph color"
-msgstr "Color del gráfico de bajada"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-msgid "Out graph color"
-msgstr "Color del gráfico de subida"
-
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Fábrica miniaplicación de Notas adhesivas"
@@ -2907,6 +2978,181 @@ msgstr "Notas adhesivas"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, muestra y administra notas adhesivas en el escritorio"
 
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Anchura predeterminado para las notas nuevas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Anchura predeterminado en píxeles para las notas adhesivas nuevas."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Altura predeterminada para las notas nuevas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Color de predeterminado para las notas nuevas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Color predeterminado para las notas adhesivas nuevas. Este puede ser el "
+"nombre estándar, su valor hexadecimal, color RGB o color RGBA."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Color de predeterminado para la tipografía"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Color predeterminado de la tipografía para las notas adhesivas nuevas. Este "
+"puede ser el nombre estándar, su valor hexadecimal, color RGB o color RGBA."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Tipografía predeterminada para las notas nuevas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Tipografía predeterminada para las notas adhesivas nuevas. Esto debería ser "
+"un nombre de tipografía Pango, por ejemplo «Sans Italic 10»."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Área de trabajo no pegadiza para las notas adhesivas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Especifica si las notas adhesivas son visibles en TODAS las áreas de trabajo "
+"del escritorio, o no."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Estado de bloqueo de las notas adhesivas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr ""
+"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "Formato de fecha del título de la nota"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Por omisión, las notas adhesivas utilizan la fecha actual como título al "
+"crearse. Este es el formato utilizado. Cualquier formato que pueda ser "
+"analizado por strftime() es válido."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Indica si se debe utilizar el color predeterminado del sistema"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Si esta opción está desactivada se puede utilizar una color personalizado "
+"como el color predeterminado para todas las notas adhesivas."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Indica si se debe utilizar la tipografía predeterminada del sistema"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Si esta opción está desactivada, se puede utilizar una tipografía "
+"personalizada como tipografía predeterminada para todas las notas adhesivas."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr ""
+"Indica si se debe forzar el uso del color y la tipografía predeterminada en "
+"todas las notas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Si esta opción esta activada los colores y tipografías personalizadas que "
+"han sido asignados a las notas individuales se ignorarán."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr ""
+"Indica si ocultar todas las notas cuando el escritorio está seleccionado"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Si esta opción está activada, seleccionar el escritorio de cualquier forma "
+"ocultará automáticamente todas las notas abiertas."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr ""
+"Indica si se debe solicitar una confirmación cuando se está borrando una nota"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Las notas vacías siempre se borran sin confirmación."
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d nota"
+msgstr[1] "%d notas"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Mostrar notas adhesivas"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Notas adhesivas para el «Entorno de escritorio GNOME»"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "Nota _nueva"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "_Ocultar notas"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "B_loquear las notas"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "_Borrar las notas"
+
 #: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Esta nota está bloqueada."
@@ -2915,15 +3161,6 @@ msgstr "Esta nota está bloqueada."
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
-msgid "Delete this sticky note?"
-msgstr "¿Borrar esta nota adhesiva?"
-
-#: ../stickynotes/stickynotes-delete.ui.h:2
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-msgid "This cannot be undone."
-msgstr "Esto no se puede deshacer."
-
 #: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "_Borrar todas"
@@ -2931,6 +3168,23 @@ msgstr "_Borrar todas"
 #: ../stickynotes/stickynotes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "¿Borrar todas las notas adhesivas?"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+#: ../stickynotes/stickynotes-delete.ui.h:2
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "¿Borrar esta nota adhesiva?"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Borrar la nota…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "B_loquear la nota"
 
 #: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
@@ -3092,196 +3346,88 @@ msgstr "Seleccionar una tipografía para la nota"
 msgid "Pick a font for the sticky note"
 msgstr "Seleccione una tipografía para la nota adhesiva"
 
-#: ../stickynotes/stickynotes_applet.c:539
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d nota"
-msgstr[1] "%d notas"
-
-#: ../stickynotes/stickynotes_applet.c:540
-msgid "Show sticky notes"
-msgstr "Mostrar notas adhesivas"
-
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Notas adhesivas para el «Entorno de escritorio GNOME»"
-
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
-msgid "_New Note"
-msgstr "Nota _nueva"
-
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
-msgid "Hi_de Notes"
-msgstr "_Ocultar notas"
-
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
-msgid "_Lock Notes"
-msgstr "B_loquear las notas"
-
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
-msgid "_Delete Notes"
-msgstr "_Borrar las notas"
-
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
-msgid "_Delete Note..."
-msgstr "_Borrar la nota…"
-
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
-msgid "_Lock Note"
-msgstr "B_loquear la nota"
-
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Papelera"
-
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "Ir a la papelera"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
-msgid "Default width for new notes"
-msgstr "Anchura predeterminado para las notas nuevas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Anchura predeterminado en píxeles para las notas adhesivas nuevas."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
-msgid "Default height for new notes"
-msgstr "Altura predeterminada para las notas nuevas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
-msgid "Default color for new notes"
-msgstr "Color de predeterminado para las notas nuevas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
 msgstr ""
-"Color predeterminado para las notas adhesivas nuevas. Este puede ser el "
-"nombre estándar, su valor hexadecimal, color RGB o color RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
-msgid "Default color for font"
-msgstr "Color de predeterminado para la tipografía"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Temporizador"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-msgid ""
-"Default font color for new sticky notes. This can be standard name, "
-"hexadecimal value, RGB color or RGBA color."
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
 msgstr ""
-"Color predeterminado de la tipografía para las notas adhesivas nuevas. Este "
-"puede ser el nombre estándar, su valor hexadecimal, color RGB o color RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
-msgid "Default font for new notes"
-msgstr "Tipografía predeterminada para las notas nuevas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+msgid "'Timer'"
 msgstr ""
-"Tipografía predeterminada para las notas adhesivas nuevas. Esto debería ser "
-"un nombre de tipografía Pango, por ejemplo «Sans Italic 10»."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
-msgid "Sticky notes' workspace stickyness"
-msgstr "Área de trabajo no pegadiza para las notas adhesivas"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+msgid "Name of timer"
+msgstr "Nombre del temporizador"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+#| msgid "Refresh time in milliseconds"
+msgid "Duration of timer in seconds"
+msgstr "Duración del temporizador, en milisegundos"
+
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+#, fuzzy
+#| msgid "Show notifications for critical weather conditions"
+msgid "Show notification popup when timer finish"
+msgstr "Mostrar notificaciones para condiciones meteorológicas críticas"
+
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+msgid "Show dialog window when timer finish"
 msgstr ""
-"Especifica si las notas adhesivas son visibles en TODAS las áreas de trabajo "
-"del escritorio, o no."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
-msgid "Sticky notes' locked state"
-msgstr "Estado de bloqueo de las notas adhesivas"
+#: ../timerapplet/timerapplet.c:158
+#| msgid "Finnish keymap"
+msgid "Finished"
+msgstr "Terminado"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
 msgstr ""
-"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
-msgid "Date format of note's title"
-msgstr "Formato de fecha del título de la nota"
+#: ../timerapplet/timerapplet.c:321
+#| msgid "Geyes Preferences"
+msgid "Timer Applet Preferences"
+msgstr "Preferencias de la miniaplicación de temporizador"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Por omisión, las notas adhesivas utilizan la fecha actual como título al "
-"crearse. Este es el formato utilizado. Cualquier formato que pueda ser "
-"analizado por strftime() es válido."
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Nombre:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
-msgid "Whether to use the default system color"
-msgstr "Indica si se debe utilizar el color predeterminado del sistema"
+#: ../timerapplet/timerapplet.c:343
+msgid "Hours:"
+msgstr "Horas:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Si esta opción está desactivada se puede utilizar una color personalizado "
-"como el color predeterminado para todas las notas adhesivas."
+#: ../timerapplet/timerapplet.c:354
+#| msgid "minutes"
+msgid "Minutes:"
+msgstr "Minutos:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
-msgid "Whether to use the default system font"
-msgstr "Indica si se debe utilizar la tipografía predeterminada del sistema"
+#: ../timerapplet/timerapplet.c:365
+#| msgid "milliseconds"
+msgid "Seconds:"
+msgstr "Segundos:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Si esta opción está desactivada, se puede utilizar una tipografía "
-"personalizada como tipografía predeterminada para todas las notas adhesivas."
+#: ../timerapplet/timerapplet.c:376
+#| msgid "Show notification"
+msgid "Show notification popup"
+msgstr "Mostrar notificación emergente"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
-msgid "Whether to force the default color and font on all notes"
-msgstr ""
-"Indica si se debe forzar el uso del color y la tipografía predeterminada en "
-"todas las notas"
+#: ../timerapplet/timerapplet.c:380
+#| msgid "Show handle"
+msgid "Show dialog"
+msgstr "Mostrar diálogo"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Si esta opción esta activada los colores y tipografías personalizadas que "
-"han sido asignados a las notas individuales se ignorarán."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr ""
-"Indica si ocultar todas las notas cuando el escritorio está seleccionado"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Si esta opción está activada, seleccionar el escritorio de cualquier forma "
-"ocultará automáticamente todas las notas abiertas."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
-"Indica si se debe solicitar una confirmación cuando se está borrando una nota"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Las notas vacías siempre se borran sin confirmación."
+#: ../timerapplet/timerapplet.c:402
+#| msgid "Trash Applet"
+msgid "Timer Applet"
+msgstr "Miniaplicación de temporizador"
 
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
@@ -3353,7 +3499,6 @@ msgid "Category"
 msgstr "Categoría"
 
 #: ../tracker-search-bar/tracker-results-window.c:1135
-#| msgid "_Title:"
 msgid "Title"
 msgstr "Título"
 
@@ -3401,6 +3546,14 @@ msgstr ""
 "Debe haber recibido una copia de la Licencia pública general GNU junto con "
 "Tracker; si no, puede escribir a la Fundación Software Libre, 51 Franklin "
 "Street,Fifth Floor, Boston, MA 02110-1301, USA."
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Papelera"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Ir a la papelera"
 
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
@@ -3480,10 +3633,6 @@ msgstr ""
 msgid "_Empty Trash"
 msgstr "_Vaciar papelera"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
-msgid "_Open Trash"
-msgstr "_Abrir papelera"
-
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
@@ -3491,6 +3640,10 @@ msgstr "Vaciando la papelera"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Desde:"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "_Abrir papelera"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
@@ -3513,9 +3666,6 @@ msgstr ""
 "icono de salir cuando esté en el escritorio"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:6
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for maximized windows"
 msgid ""
 "Show the application title and close icon\n"
 "for the active window"
@@ -3836,9 +3986,6 @@ msgstr "Cerrar la ventana"
 
 #~ msgid "Estonian keymap"
 #~ msgstr "Mapa de teclado estonio"
-
-#~ msgid "Finnish keymap"
-#~ msgstr "Mapa de teclado finlandés"
 
 #~ msgid "French Swiss"
 #~ msgstr "Suizo francés"
@@ -4282,9 +4429,6 @@ msgstr "Cerrar la ventana"
 
 #~ msgid "Keyboard layout indicator"
 #~ msgstr "Indicador de distribución del teclado"
-
-#~ msgid "Cannot execute '%s'"
-#~ msgstr "No se puede ejecutar «%s»"
 
 #~ msgid "Keyboard _Preferences"
 #~ msgstr "Prefere_ncias del teclado"
