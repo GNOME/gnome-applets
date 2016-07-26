@@ -75,14 +75,6 @@ size_allocate (PanelApplet  *applet,
 }
 
 static void
-change_background (PanelApplet     *applet,
-                   cairo_pattern_t *pattern,
-		   DriveList       *drivelist)
-{
-    drive_list_set_transparent (drivelist, pattern != NULL);
-}
-
-static void
 display_about_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
@@ -174,8 +166,6 @@ applet_factory (PanelApplet *applet,
 				 G_CALLBACK (change_orient), drive_list, 0);
 	g_signal_connect_object (applet, "size_allocate",
 				 G_CALLBACK (size_allocate), drive_list, 0);
-	g_signal_connect (applet, "change_background",
-			  G_CALLBACK (change_background), drive_list);
 
 	/* set initial state */
 	change_orient (applet,
