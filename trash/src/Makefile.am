@@ -14,7 +14,8 @@ trashapplet_CPPFLAGS = \
 libexec_PROGRAMS = trashapplet
 
 trashapplet_SOURCES = \
-	trashapplet.c \
+	trash-applet.c \
+	trash-applet.h \
 	trash-empty.h \
 	trash-empty.c
 

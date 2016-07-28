@@ -1,5 +1,4 @@
 /* -*- mode: c; c-basic-offset: 8 -*-
- * trashapplet.h
  *
  * Copyright (c) 2004  Michiel Sikkes <michiel@eyesopened.nl>,
  *               2004  Emmanuele Bassi <ebassi@gmail.com>
