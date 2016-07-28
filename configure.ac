@@ -737,9 +737,9 @@ AC_CONFIG_FILES([
 
   tracker-search-bar/Makefile
 
-  trashapplet/help/Makefile
-  trashapplet/Makefile
-  trashapplet/src/Makefile
+  trash/help/Makefile
+  trash/Makefile
+  trash/src/Makefile
 
   windowpicker/Makefile
   windowpicker/data/Makefile
@@ -786,7 +786,7 @@ echo "    netspeed ......................: $build_gtop_applets"
 echo "    stickynotes ...................: $enable_stickynotes"
 echo "    timerapplet ...................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
-echo "    trashapplet ...................: always"
+echo "    trash .........................: always"
 echo "    windowpicker ..................: always"
 echo ""
 echo "  charpick"

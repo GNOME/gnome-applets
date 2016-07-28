@@ -50,7 +50,7 @@ always_built_SUBDIRS =  \
 	invest-applet	\
 	geyes		\
 	stickynotes	\
-	trashapplet \
+	trash \
 	windowpicker \
 	$(NULL)
 
@@ -83,7 +83,7 @@ DIST_SUBDIRS = \
 	man		\
 	accessx-status	\
 	stickynotes	\
-	trashapplet	\
+	trash	\
 	cpufreq		\
 	invest-applet	\
 	windowpicker	\
