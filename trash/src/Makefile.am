@@ -17,7 +17,8 @@ trashapplet_SOURCES = \
 	trash-applet.c \
 	trash-applet.h \
 	trash-empty.h \
-	trash-empty.c
+	trash-empty.c \
+	$(NULL)
 
 trashapplet_LDFLAGS = \
 	$(WARN_LDFLAGS) \
@@ -27,6 +28,7 @@ trashapplet_LDFLAGS = \
 trashapplet_LDADD = 		\
 	$(GNOME_APPLETS_LIBS) 	\
 	$(GIO_LIBS)		\
-	$(X_LIBS)
+	$(X_LIBS) \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk
