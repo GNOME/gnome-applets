@@ -598,7 +598,7 @@ trash_applet_factory (PanelApplet *applet,
   if (!strcmp (iid, "TrashApplet"))
     {
       GSimpleActionGroup *action_group;
-      gchar          *ui_path;
+      const gchar *resource_name;
 
       g_set_application_name (_("Trash Applet"));
 
@@ -610,9 +610,11 @@ trash_applet_factory (PanelApplet *applet,
                                        trash_applet_menu_actions,
                                        G_N_ELEMENTS (trash_applet_menu_actions),
                                        applet);
-      ui_path = g_build_filename (TRASH_MENU_UI_DIR, "trashapplet-menu.xml", NULL);
-      panel_applet_setup_menu_from_file (applet, ui_path, action_group, GETTEXT_PACKAGE);
-      g_free (ui_path);
+
+      resource_name = "/org/gnome/gnome-applets/trash/trash-menu.xml";
+
+      panel_applet_setup_menu_from_resource (applet, resource_name,
+                                             action_group, GETTEXT_PACKAGE);
 
       gtk_widget_insert_action_group (GTK_WIDGET (applet), "trash",
                                       G_ACTION_GROUP (action_group));

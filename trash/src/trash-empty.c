@@ -233,11 +233,13 @@ trash_empty_start (GtkWidget *parent)
   GCancellable *cancellable;
   GtkBuilder *builder;
   gint i;
+  const gchar *resource_name;
 
   builder = gtk_builder_new ();
-  gtk_builder_add_from_file (builder,
-                             GTK_BUILDERDIR "/trashapplet-empty-progress.ui",
-                             NULL);
+
+  resource_name = "/org/gnome/gnome-applets/trash/trash-empty.ui";
+
+  gtk_builder_add_from_resource (builder, resource_name, NULL);
 
   for (i = 0; i < G_N_ELEMENTS (widgets); i++)
     {

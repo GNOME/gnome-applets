@@ -1,3 +1,5 @@
+NULL =
+
 SUBDIRS = help src
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
@@ -21,17 +23,10 @@ org.gnome.panel.applet.TrashAppletFactory.service: $(service_in_files)
             -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
             $< > $@
 
-uidir = $(pkgdatadir)/ui
-ui_DATA = trashapplet-menu.xml
-
-builderdir = $(pkgdatadir)/builder
-builder_DATA = trashapplet-empty-progress.ui
-
 EXTRA_DIST = \
-	$(ui_DATA) \
 	org.gnome.applets.TrashApplet.panel-applet.in.in \
 	$(service_in_files) \
-	$(builder_DATA)
+	$(NULL)
 
 CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
