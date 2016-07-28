@@ -629,7 +629,7 @@ trash_applet_factory (PanelApplet *applet,
   return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("TrashAppletFactory",
+PANEL_APPLET_IN_PROCESS_FACTORY ("TrashAppletFactory",
 				  TRASH_TYPE_APPLET,
 				  trash_applet_factory,
 				  NULL)

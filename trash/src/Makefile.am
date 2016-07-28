@@ -1,34 +1,40 @@
 NULL =
 
-trashapplet_CPPFLAGS = \
+trash_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
+trash_lib_LTLIBRARIES=libtrash-applet.la
+
+libtrash_applet_la_CPPFLAGS = \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-I$(top_builddir) \
 	-I$(top_srcdir) \
-	$(GNOME_APPLETS_CFLAGS)	\
+	$(NULL)
+
+libtrash_applet_la_CFLAGS = \
+	$(GNOME_APPLETS_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-libexec_PROGRAMS = trashapplet
+libtrash_applet_la_LDFLAGS = \
+	-module -avoid-version \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
-trashapplet_SOURCES = \
+libtrash_applet_la_LIBADD = \
+	$(GNOME_APPLETS_LIBS) \
+	$(GIO_LIBS) \
+	$(X_LIBS) \
+	$(NULL)
+
+libtrash_applet_la_SOURCES = \
 	trash-applet.c \
 	trash-applet.h \
 	trash-empty.h \
 	trash-empty.c \
 	trash-resources.c \
 	trash-resources.h \
-	$(NULL)
-
-trashapplet_LDFLAGS = \
-	$(WARN_LDFLAGS) \
-	$(AM_LDFLAGS) \
-	$(NULL)
-
-trashapplet_LDADD = 		\
-	$(GNOME_APPLETS_LIBS) 	\
-	$(GIO_LIBS)		\
-	$(X_LIBS) \
 	$(NULL)
 
 trash-resources.c: trash-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/trash-resources.gresource.xml)
