@@ -736,6 +736,7 @@ AC_CONFIG_FILES([
   timerapplet/Makefile
 
   tracker-search-bar/Makefile
+  tracker-search-bar/src/Makefile
 
   trash/help/Makefile
   trash/Makefile
