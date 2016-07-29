@@ -457,7 +457,7 @@ applet_factory (PanelApplet *applet,
 /*
  * Generate the boilerplate to hook into GObject/Bonobo.
  */
-PANEL_APPLET_OUT_PROCESS_FACTORY ("SearchBarFactory",
-                                  PANEL_TYPE_APPLET,
-                                  applet_factory,
-                                  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("SearchBarFactory",
+                                 PANEL_TYPE_APPLET,
+                                 applet_factory,
+                                 NULL)
