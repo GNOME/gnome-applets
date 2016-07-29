@@ -361,28 +361,15 @@ static gboolean
 applet_new (PanelApplet *parent_applet)
 {
 	TrackerApplet *applet;
-	GError *error = NULL;
 	GtkBuilder *builder;
 	GSimpleActionGroup *action_group;
-	gchar *ui_path;
+	const gchar *resource_name;
 
 	builder = gtk_builder_new ();
-	ui_path = g_build_filename (PKG_DATA_DIR,
-	                            "ui",
-	                            "tracker-search-bar.ui",
-	                            NULL);
 
-	if (gtk_builder_add_from_file (builder, ui_path, &error) == 0) {
-		g_printerr ("Could not load builder file, %s", error->message);
-		g_error_free (error);
-		g_free (ui_path);
-		g_object_unref (builder);
+	resource_name = "/org/gnome/gnome-applets/tracker-search-bar.ui";
 
-		return FALSE;
-	}
-
-	g_print ("Added builder file:'%s'\n", ui_path);
-	g_free (ui_path);
+	gtk_builder_add_from_resource (builder, resource_name, NULL);
 
 	applet = g_new0 (TrackerApplet, 1);
 
@@ -405,15 +392,13 @@ applet_new (PanelApplet *parent_applet)
 	                                 applet_menu_actions,
 	                                 G_N_ELEMENTS (applet_menu_actions),
 	                                 applet);
-	ui_path = g_build_filename (PKG_DATA_DIR,
-	                            "ui",
-	                            "tracker-search-bar-menu.xml",
-	                            NULL);
-	panel_applet_setup_menu_from_file (PANEL_APPLET (applet->parent),
-	                                   ui_path,
-	                                   action_group,
-	                                   GETTEXT_PACKAGE);
-	g_free (ui_path);
+
+	resource_name = "/org/gnome/gnome-applets/tracker-search-bar-menu.xml";
+
+	panel_applet_setup_menu_from_resource (PANEL_APPLET (applet->parent),
+	                                       resource_name,
+	                                       action_group,
+	                                       GETTEXT_PACKAGE);
 
 	gtk_widget_insert_action_group (GTK_WIDGET (applet->parent), "tracker-search-bar",
 	                                G_ACTION_GROUP (action_group));

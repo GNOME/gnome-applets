@@ -36,6 +36,25 @@ libtracker_search_bar_applet_la_SOURCES = \
 	tracker-results-window.h \
 	tracker-utils.c \
 	tracker-utils.h \
+	tracker-resources.c \
+	tracker-resources.h \
+	$(NULL)
+
+tracker-resources.c: tracker-search-bar-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/tracker-search-bar-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name tracker $<
+
+tracker-resources.h: tracker-search-bar-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/tracker-search-bar-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name tracker $<
+
+EXTRA_DIST = \
+	tracker-search-bar.ui \
+	tracker-search-bar-menu.xml \
+	tracker-search-bar-resources.gresource.xml \
+	$(NULL)
+
+CLEANFILES = \
+	tracker-resources.c \
+	tracker-resources.h \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
