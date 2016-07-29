@@ -740,6 +740,7 @@ AC_CONFIG_FILES([
   trash/help/Makefile
   trash/Makefile
   trash/src/Makefile
+  trash/data/Makefile
 
   windowpicker/Makefile
   windowpicker/data/Makefile
