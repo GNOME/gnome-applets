@@ -737,6 +737,7 @@ AC_CONFIG_FILES([
 
   tracker-search-bar/Makefile
   tracker-search-bar/src/Makefile
+  tracker-search-bar/data/Makefile
 
   trash/help/Makefile
   trash/Makefile
