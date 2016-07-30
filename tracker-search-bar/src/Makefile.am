@@ -17,7 +17,7 @@ libtracker_search_bar_applet_la_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-libtracker_search_bar_appet_la_LDFLAGS = \
+libtracker_search_bar_applet_la_LDFLAGS = \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
