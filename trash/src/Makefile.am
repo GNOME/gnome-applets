@@ -49,7 +49,7 @@ EXTRA_DIST = \
 	trash-resources.gresource.xml \
 	$(NULL)
 
-CLEAN_FILES = \
+CLEANFILES = \
 	trash-resources.c \
 	trash-resources.h \
 	$(NULL)
