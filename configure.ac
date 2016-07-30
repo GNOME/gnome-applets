@@ -734,6 +734,7 @@ AC_CONFIG_FILES([
   stickynotes/pixmaps/Makefile
 
   timer/Makefile
+  timer/src/Makefile
 
   tracker-search-bar/Makefile
   tracker-search-bar/src/Makefile
