@@ -526,10 +526,10 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
-dnl *** timerapplet specific checks                                       ***
+dnl *** timer applet specific checks                                        ***
 dnl ***************************************************************************
 
-AM_CONDITIONAL(BUILD_TIMERAPPLET, test "x$HAVE_LIBNOTIFY" = "xyes")
+AM_CONDITIONAL(BUILD_TIMER, test "x$HAVE_LIBNOTIFY" = "xyes")
 
 dnl ***************************************************************************
 dnl *** Check if IPv6 is available                                          ***
@@ -733,7 +733,7 @@ AC_CONFIG_FILES([
   stickynotes/Makefile
   stickynotes/pixmaps/Makefile
 
-  timerapplet/Makefile
+  timer/Makefile
 
   tracker-search-bar/Makefile
   tracker-search-bar/src/Makefile
@@ -787,7 +787,7 @@ echo "    modemlights ...................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
 echo "    stickynotes ...................: $enable_stickynotes"
-echo "    timerapplet ...................: $HAVE_LIBNOTIFY"
+echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
 echo "    windowpicker ..................: always"

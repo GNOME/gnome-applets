@@ -37,8 +37,8 @@ if HAVE_TRACKER_SEARCH_BAR
 tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
-if BUILD_TIMERAPPLET
-timeapplet_SUBDIR = timerapplet
+if BUILD_TIMER
+timer_SUBDIR = timer
 endif
 
 always_built_SUBDIRS =  \
@@ -66,7 +66,7 @@ SUBDIRS = \
 	$(cpufreq_SUBDIR) \
 	$(minicommander_applet_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \
-	$(timeapplet_SUBDIR) \
+	$(timer_SUBDIR) \
 	$(NULL)
 
 DIST_SUBDIRS = \
@@ -91,7 +91,7 @@ DIST_SUBDIRS = \
 	brightness	\
 	tracker-search-bar \
 	command		\
-	timerapplet	\
+	timer	\
 	$(NULL)
 
 EXTRA_DIST = \
