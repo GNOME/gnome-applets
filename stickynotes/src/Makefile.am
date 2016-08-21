@@ -2,15 +2,19 @@ NULL =
 
 if BUILD_STICKYNOTES_APPLET
 
-libexec_PROGRAMS = stickynotes_applet
+stickynotes_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+stickynotes_applet_lib_LTLIBRARIES = libsticky-notes-applet.la
 
-stickynotes_applet_CFLAGS = \
-	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
-	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+libsticky_notes_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	$(NULL)
+
+libsticky_notes_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
 	$(XML2_CFLAGS) \
@@ -18,7 +22,7 @@ stickynotes_applet_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-stickynotes_applet_SOURCES = \
+libsticky_notes_applet_la_SOURCES = \
 	gsettings.h \
 	stickynotes.c \
 	stickynotes.h \
@@ -32,12 +36,12 @@ stickynotes_applet_SOURCES = \
 	util.h \
 	$(NULL)
 
-stickynotes_applet_LDFLAGS = \
+libsticky_notes_applet_la_LDFLAGS = \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-stickynotes_applet_LDADD = \
+libsticky_notes_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBWNCK_LIBS) \
 	$(X_LIBS) \
