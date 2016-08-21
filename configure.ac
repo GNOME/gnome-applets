@@ -730,6 +730,7 @@ AC_CONFIG_FILES([
   netspeed/Makefile
 
   stickynotes/Makefile
+  stickynotes/data/Makefile
   stickynotes/src/Makefile
   stickynotes/help/Makefile
   stickynotes/pixmaps/Makefile
