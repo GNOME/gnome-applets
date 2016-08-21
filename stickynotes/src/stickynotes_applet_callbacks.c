@@ -24,6 +24,8 @@
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 
+#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
+
 static gboolean get_desktop_window (Window *window)
 {
 	Window *desktop_window;
@@ -295,7 +297,9 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-delete-all.ui", NULL);
+	gtk_builder_add_from_resource (builder,
+	                               GRESOURCE "/sticky-notes-delete-all.ui",
+	                               NULL);
 
 	if (applet->destroy_all_dialog != NULL) {
 		gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),

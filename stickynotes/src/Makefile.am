@@ -32,6 +32,8 @@ libsticky_notes_applet_la_SOURCES = \
 	stickynotes_applet_callbacks.h \
 	stickynotes_callbacks.c \
 	stickynotes_callbacks.h \
+	sticky-notes-resources.c \
+	sticky-notes-resources.h \
 	util.c \
 	util.h \
 	$(NULL)
@@ -62,15 +64,31 @@ gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
 
 @GSETTINGS_RULES@
 
+sticky-notes-resources.c: sticky-notes-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/sticky-notes-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name sticky_notes $<
+
+sticky-notes-resources.h: sticky-notes-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/sticky-notes-resources.gresource.xml)
+	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name sticky_notes $<
+
 CLEANFILES = \
 	$(gsettings_SCHEMAS) \
 	*.gschema.valid \
+	sticky-notes-resources.c \
+	sticky-notes-resources.h \
 	$(NULL)
 
 endif
 
 EXTRA_DIST = \
 	$(gsettings_schemas_in_in) \
+	sticky-notes-applet-menu.xml \
+	sticky-notes-delete.ui \
+	sticky-notes-delete-all.ui \
+	sticky-notes-note.ui \
+	sticky-notes-note-menu.xml \
+	sticky-notes-preferences.ui \
+	sticky-notes-properties.ui
+	sticky-notes-resources.gresource.xml \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

@@ -24,6 +24,8 @@
 
 #include <gtk/gtk.h>
 
+#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
+
 StickyNotes *stickynotes = NULL;
 
 /* Popup menu on the applet */
@@ -185,7 +187,9 @@ void stickynotes_applet_init_prefs(void)
 
 	stickynotes->builder = gtk_builder_new ();
 
-        gtk_builder_add_from_file (stickynotes->builder, GTK_BUILDERDIR "/stickynotes-preferences.ui", NULL);
+	gtk_builder_add_from_resource (stickynotes->builder,
+	                               GRESOURCE "sticky-notes-preferences.ui",
+	                               NULL);
 
 	stickynotes->w_prefs = GTK_WIDGET (gtk_builder_get_object (stickynotes->builder,
 			"preferences_dialog"));
@@ -315,7 +319,7 @@ StickyNotesApplet *
 stickynotes_applet_new (PanelApplet *panel_applet)
 {
 	AtkObject *atk_obj;
-	gchar *ui_path;
+	const gchar *resource_name;
 	GAction *action;
 
 	/* Create Sticky Notes Applet */
@@ -344,9 +348,12 @@ stickynotes_applet_new (PanelApplet *panel_applet)
 	                                 stickynotes_applet_menu_actions,
 	                                 G_N_ELEMENTS (stickynotes_applet_menu_actions),
 	                                 applet);
-	ui_path = g_build_filename (STICKYNOTES_MENU_UI_DIR, "stickynotes-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file(panel_applet, ui_path, applet->action_group, GETTEXT_PACKAGE);
-	g_free (ui_path);
+
+	resource_name = GRESOURCE "sticky-notes-applet-menu.xml";
+	panel_applet_setup_menu_from_resource (panel_applet,
+	                                       resource_name,
+	                                       applet->action_group,
+	                                       GETTEXT_PACKAGE);
 
 	gtk_widget_insert_action_group (GTK_WIDGET (panel_applet), "stickynotes",
 	                                G_ACTION_GROUP (applet->action_group));

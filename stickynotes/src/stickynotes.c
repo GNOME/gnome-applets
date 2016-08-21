@@ -29,6 +29,7 @@
 #include "stickynotes_applet.h"
 #include "gsettings.h"
 
+#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
 #define XML_PATH	"/.config/gnome-applets/stickynotes"
@@ -53,6 +54,7 @@ setup_note_menu (StickyNote *note)
 	gchar *ui_file;
 	GtkBuilder *builder;
 	GMenu *gmenu;
+	const gchar *resource_name;
 
 	action_group = g_simple_action_group_new ();
 	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
@@ -60,9 +62,8 @@ setup_note_menu (StickyNote *note)
 	                                 G_N_ELEMENTS (stickynotes_note_menu_actions),
 	                                 note);
 
-	ui_file = g_build_filename (STICKYNOTES_MENU_UI_DIR, "stickynotes-note-menu.xml", NULL);
-	builder = gtk_builder_new_from_file (ui_file);
-	g_free (ui_file);
+	resource_name = GRESOURCE "sticky-notes-note-menu.xml";
+	builder = gtk_builder_new_from_resource (resource_name);
 
 	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 
@@ -140,8 +141,10 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	note = g_new (StickyNote, 1);
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-note.ui", NULL);
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-properties.ui", NULL);
+	gtk_builder_add_from_resource (builder,
+	                               GRESOURCE "sticky-notes-note.ui", NULL);
+	gtk_builder_add_from_resource (builder,
+	                               GRESOURCE "sticky-notes-properties.ui", NULL);
 
 	note->w_window = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_window"));
 	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
@@ -671,7 +674,8 @@ void stickynotes_remove(StickyNote *note)
 	GtkWidget *dialog;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/stickynotes-delete.ui", NULL);
+	gtk_builder_add_from_resource (builder,
+	                               GRESOURCE "/sticky-notes-delete.ui", NULL);
 
 	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_dialog"));
 
