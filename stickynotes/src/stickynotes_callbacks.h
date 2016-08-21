@@ -18,7 +18,7 @@
 #ifndef __STICKYNOTES_CALLBACKS_H__
 #define __STICKYNOTES_CALLBACKS_H__
 
-#include <stickynotes.h>
+#include "stickynotes.h"
 
 /* Callbacks for the sticky notes windows */
 gboolean stickynote_toggle_lock_cb(GtkWidget *widget, StickyNote *note);

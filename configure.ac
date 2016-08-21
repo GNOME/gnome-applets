@@ -729,8 +729,9 @@ AC_CONFIG_FILES([
   netspeed/src/Makefile
   netspeed/Makefile
 
-  stickynotes/help/Makefile
   stickynotes/Makefile
+  stickynotes/src/Makefile
+  stickynotes/help/Makefile
   stickynotes/pixmaps/Makefile
 
   timer/Makefile

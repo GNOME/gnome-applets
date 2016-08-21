@@ -15,7 +15,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stickynotes_applet.h>
+#include "stickynotes_applet.h"
 
 #ifndef __STICKYNOTES_APPLET_CALLBACKS_H__
 #define __STICKYNOTES_APPLET_CALLBACKS_H__

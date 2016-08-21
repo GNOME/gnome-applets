@@ -16,7 +16,7 @@
  */
 
 #include <config.h>
-#include <stickynotes_callbacks.h>
+#include "stickynotes_callbacks.h"
 
 /* Sticky Window Callback : Lock/Unlock the window */
 gboolean
