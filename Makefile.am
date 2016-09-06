@@ -49,7 +49,7 @@ always_built_SUBDIRS =  \
 	inhibit		\
 	invest-applet	\
 	geyes		\
-	stickynotes	\
+	sticky-notes	\
 	trash \
 	windowpicker \
 	$(NULL)
@@ -82,7 +82,7 @@ DIST_SUBDIRS = \
 	gweather 	\
 	man		\
 	accessx-status	\
-	stickynotes	\
+	sticky-notes	\
 	trash	\
 	cpufreq		\
 	invest-applet	\

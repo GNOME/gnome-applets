@@ -729,11 +729,11 @@ AC_CONFIG_FILES([
   netspeed/src/Makefile
   netspeed/Makefile
 
-  stickynotes/Makefile
-  stickynotes/data/Makefile
-  stickynotes/src/Makefile
-  stickynotes/help/Makefile
-  stickynotes/pixmaps/Makefile
+  sticky-notes/Makefile
+  sticky-notes/data/Makefile
+  sticky-notes/src/Makefile
+  sticky-notes/help/Makefile
+  sticky-notes/pixmaps/Makefile
 
   timer/Makefile
   timer/data/Makefile
@@ -790,7 +790,7 @@ echo "    mini-commander ................: $enable_mini_commander"
 echo "    modemlights ...................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
-echo "    stickynotes ...................: $enable_stickynotes"
+echo "    sticky-notes ..................: $enable_stickynotes"
 echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
