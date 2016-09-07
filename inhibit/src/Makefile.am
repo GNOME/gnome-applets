@@ -2,30 +2,35 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-libexec_PROGRAMS=gnome-inhibit-applet
+inhibit_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+inhibit_appletlib_LTLIBRARIES = libinhibit-applet.la
 
-gnome_inhibit_applet_CFLAGS = \
+libinhibit_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DINHIBIT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	$(NULL)
+
+libinhibit_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-gnome_inhibit_applet_SOURCES = \
+libinhibit_applet_la_SOURCES = \
 	$(BUILT_SOURCES) \
 	inhibit-applet.c \
 	$(NULL)
 
-gnome_inhibit_applet_LDFLAGS = \
+libinhibit_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-gnome_inhibit_applet_LDADD = \
+libinhibit_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(NULL)
 
