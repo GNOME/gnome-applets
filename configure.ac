@@ -706,8 +706,9 @@ AC_CONFIG_FILES([
 
   modemlights/Makefile
 
-  multiload/help/Makefile
   multiload/Makefile
+  multiload/help/Makefile
+  multiload/src/Makefile
 
   netspeed/data/Makefile
   netspeed/help/Makefile

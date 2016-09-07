@@ -1,7 +1,7 @@
 #ifndef LINUX_PROC_H__
 #define LINUX_PROC_H__
 
-#include <load-graph.h>
+#include "load-graph.h"
 
 G_GNUC_INTERNAL void GetLoad (int Maximum, int data [5], LoadGraph *g);
 G_GNUC_INTERNAL void GetDiskLoad (int Maximum, int data [3], LoadGraph *g);
