@@ -2,13 +2,17 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-libexec_PROGRAMS = gweather-applet-2
+gweather_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+gweather_appletlib_LTLIBRARIES = libgweather-applet.la
 
-gweather_applet_2_CFLAGS = \
+libgweather_applet_la_CPPFLAGS = \
 	-I$(srcdir) \
 	-I$(top_srcdir) \
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	$(NULL)
+
+libgweather_applet_la_CFLAGS = \
 	$(DBUS_CFLAGS) \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(DBUS_CFLAGS) \
@@ -18,7 +22,7 @@ gweather_applet_2_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-gweather_applet_2_SOURCES = \
+libgweather_applet_la_SOURCES = \
 	gweather.h \
 	gweather-about.c \
 	gweather-about.h \
@@ -33,12 +37,13 @@ gweather_applet_2_SOURCES = \
 	main.c \
 	$(NULL)
 
-gweather_applet_2_LDFLAGS = \
+libgweather_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-gweather_applet_2_LDADD = \
+libgweather_applet_la_LIBADD = \
 	$(DBUS_LIBS) \
 	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS) \

@@ -57,7 +57,7 @@ gweather_applet_factory(PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("GWeatherAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  gweather_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("GWeatherAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 gweather_applet_factory,
+                                 NULL)
