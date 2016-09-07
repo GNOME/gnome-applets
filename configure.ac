@@ -684,6 +684,7 @@ AC_CONFIG_FILES([
   inhibit/icons/scalable/Makefile
   inhibit/icons/scalable/apps/Makefile
   inhibit/icons/scalable/status/Makefile
+  inhibit/src/Makefile
 
   geyes/help/Makefile
   geyes/Makefile
