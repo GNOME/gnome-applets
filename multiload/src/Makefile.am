@@ -2,12 +2,16 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-libexec_PROGRAMS = multiload-applet-2
+multiload_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+multiload_appletlib_LTLIBRARIES = libmultiload-applet.la
 
-multiload_applet_2_CFLAGS = \
+libmultiload_applet_la_CPPFLAGS = \
 	-I$(srcdir) \
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	$(NULL)
+
+libmultiload_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GTOP_APPLETS_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
@@ -15,25 +19,27 @@ multiload_applet_2_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-multiload_applet_2_SOURCES = \
-	global.h \
-	linux-proc.h \
-	load-graph.h \
-	linux-proc.c \
-	load-graph.c \
-	main.c \
-	properties.c \
-	netspeed.c netspeed.h \
+libmultiload_applet_la_SOURCES = \
 	autoscaler.c \
 	autoscaler.h \
+	global.h \
+	linux-proc.c \
+	linux-proc.h \
+	load-graph.h \
+	load-graph.c \
+	main.c \
+	netspeed.c \
+	netspeed.h \
+	properties.c \
 	$(NULL)
 
-multiload_applet_2_LDFLAGS = \
+libmultiload_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-multiload_applet_2_LDADD = \
+libmultiload_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(GTOP_APPLETS_LIBS) \
 	$(GIO_UNIX_LIBS) \

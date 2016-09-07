@@ -536,7 +536,7 @@ multiload_factory (PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("MultiLoadAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  multiload_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("MultiLoadAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 multiload_factory,
+                                 NULL)
