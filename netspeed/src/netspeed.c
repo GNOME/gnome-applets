@@ -1594,7 +1594,7 @@ netspeed_applet_get_auto_device_name (void)
 	return g_strdup ("lo");
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("NetspeedAppletFactory",
-                                  NETSPEED_TYPE_APPLET,
-                                  netspeed_applet_factory,
-                                  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("NetspeedAppletFactory",
+                                 NETSPEED_TYPE_APPLET,
+                                 netspeed_applet_factory,
+                                 NULL)
