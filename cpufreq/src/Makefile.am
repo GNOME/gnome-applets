@@ -14,6 +14,8 @@ libcpu_frequency_applet_la_CPPFLAGS = \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DCPUFREQ_PIXMAPS_DIR=\""$(pkgdatadir)/cpufreq-applet/pixmaps"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.cpu-frequency\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libcpu_frequency_applet_la_CFLAGS = \

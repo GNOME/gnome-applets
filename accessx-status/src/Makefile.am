@@ -9,6 +9,8 @@ libaccessx_status_applet_la_CPPFLAGS = \
 	-DACCESSX_PIXMAPS_DIR=\""$(pkgdatadir)/accessx-status-applet/pixmaps"\" \
 	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.accessx-status\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libaccessx_status_applet_la_CFLAGS = \

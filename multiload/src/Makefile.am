@@ -9,6 +9,8 @@ libmultiload_applet_la_CPPFLAGS = \
 	-I$(srcdir) \
 	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.multiload\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libmultiload_applet_la_CFLAGS = \

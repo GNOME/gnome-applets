@@ -10,6 +10,8 @@ libgweather_applet_la_CPPFLAGS = \
 	-I$(top_srcdir) \
 	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.gweather\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libgweather_applet_la_CFLAGS = \

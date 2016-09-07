@@ -5,6 +5,8 @@ trash_lib_LTLIBRARIES=libtrash-applet.la
 
 libtrash_applet_la_CPPFLAGS = \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.trash\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-I$(top_builddir) \
 	-I$(top_srcdir) \
 	$(NULL)

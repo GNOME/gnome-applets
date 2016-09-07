@@ -10,6 +10,8 @@ libdrive_mount_applet_la_CPPFLAGS = \
 	-I$(srcdir) \
 	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.drive-mount\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libdrive_mount_applet_la_CFLAGS = \

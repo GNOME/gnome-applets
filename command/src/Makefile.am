@@ -8,6 +8,8 @@ libcommand_applet_la_CPPFLAGS = \
 	-I$(srcdir) \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.command\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libcommand_applet_la_CFLAGS = \

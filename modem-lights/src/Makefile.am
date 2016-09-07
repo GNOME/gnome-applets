@@ -8,6 +8,8 @@ modem_lights_appletlib_LTLIBRARIES = libmodem-lights-applet.la
 libmodem_lights_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.modem-lights\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \

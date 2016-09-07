@@ -6,6 +6,8 @@ netspeed_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
 netspeed_applet_lib_LTLIBRARIES = libnet-speed-applet.la
 
 libnet_speed_applet_la_CPPFLAGS = \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.net-speed\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DNETSPEED_MENU_UI_DIR=\""$(uidir)"\" \
 	-I$(top_srcdir) \

@@ -11,6 +11,8 @@ libinhibit_applet_la_CPPFLAGS = \
 	-DINHIBIT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.inhibit\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libinhibit_applet_la_CFLAGS = \

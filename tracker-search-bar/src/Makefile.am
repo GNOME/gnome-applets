@@ -6,6 +6,8 @@ tracker_search_bar_lib_LTLIBRARIES=libtracker-search-bar-applet.la
 libtracker_search_bar_applet_la_CPPFLAGS = \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.tracker-search-bar\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-I. \
 	-I$(srcdir) \
 	$(NULL)

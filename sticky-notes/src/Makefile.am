@@ -8,6 +8,8 @@ stickynotes_applet_lib_LTLIBRARIES = libsticky-notes-applet.la
 libsticky_notes_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.sticky-notes\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\" \

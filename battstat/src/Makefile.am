@@ -28,6 +28,8 @@ libbattery_status_applet_la_CPPFLAGS = \
 	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.battery-status\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libbattery_status_applet_la_CFLAGS = \

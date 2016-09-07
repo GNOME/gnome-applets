@@ -6,6 +6,8 @@ timer_applet_lib_LTLIBRARIES = libtimer-applet.la
 libtimer_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
+	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.timer\" \
+	-DG_LOG_USE_STRUCTURED=1 \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	$(NULL)
