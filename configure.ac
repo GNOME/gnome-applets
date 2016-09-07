@@ -690,8 +690,9 @@ AC_CONFIG_FILES([
   geyes/Makefile
   geyes/themes/Makefile
 
-  gweather/help/Makefile
   gweather/Makefile
+  gweather/help/Makefile
+  gweather/src/Makefile
 
   invest-applet/data/art/Makefile
   invest-applet/data/Makefile
