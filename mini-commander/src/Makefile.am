@@ -1,47 +1,54 @@
 NULL =
 
-mini_commander_applet_CFLAGS = \
-	-I.				\
-	-I$(srcdir)			\
-	-DMC_MENU_UI_DIR=\""$(uidir)"\"	\
+mini_commander_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+mini_commander_applet_lib_LTLIBRARIES = libmini-commander-applet.la
+
+libmini_commander_applet_la_CPPFLAGS = \
+	-I. \
+	-I$(srcdir) \
+	-DMC_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	$(NULL)
+
+libmini_commander_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GNOME_INCLUDEDIR) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-libexec_PROGRAMS = mini_commander_applet
-
-mini_commander_applet_SOURCES =			\
-	about.c					\
-	about.h					\
-	cmd_completion.c			\
-	cmd_completion.h			\
-	command_line.c				\
-	command_line.h				\
-	exec.c					\
-	exec.h					\
-	mini-commander_applet.c			\
-	mini-commander_applet.h			\
-	help.c					\
-	help.h					\
-	history.c				\
-	history.h				\
-	macro.c					\
-	macro.h					\
-	preferences.c				\
-	preferences.h				\
+libmini_commander_applet_la_SOURCES = \
+	about.c \
+	about.h \
+	cmd_completion.c \
+	cmd_completion.h\
+	command_line.c \
+	command_line.h \
+	exec.c \
+	exec.h \
+	mini-commander_applet.c \
+	mini-commander_applet.h \
+	help.c \
+	help.h \
+	history.c \
+	history.h \
+	macro.c \
+	macro.h \
+	preferences.c \
+	preferences.h \
 	gsettings.h
+	$(NULL)
 
-mini_commander_applet_LDFLAGS = \
+libmini_commander_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-mini_commander_applet_LDADD =	\
+libmini_commander_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS)
+	$(NULL)
 
 builderdir = $(pkgdatadir)/builder
 builder_DATA = mini-commander.ui
@@ -65,26 +72,20 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
+APPLET_LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libmini-commander-applet.so
+
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.MiniCommanderApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 $(applet_in_files): $(applet_in_files).in Makefile
 	$(AM_V_GEN)sed \
-            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+            -e "s|\@APPLET_LOCATION\@|$(APPLET_LOCATION)|" \
             -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
             $< > $@
 
 %.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-servicedir       = $(datadir)/dbus-1/services
-service_in_files = org.gnome.panel.applet.MiniCommanderAppletFactory.service.in
-service_DATA     = $(service_in_files:.service.in=.service)
-
-org.gnome.panel.applet.MiniCommanderAppletFactory.service: $(service_in_files)
-	$(AM_V_GEN)sed \
-            -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
-            $< > $@
 
 gsettings_schemas_in_in = \
 	org.gnome.gnome-applets.mini-commander.gschema.xml.in.in

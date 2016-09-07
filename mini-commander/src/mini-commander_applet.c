@@ -427,7 +427,7 @@ mini_commander_applet_factory (PanelApplet *applet,
         return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("MiniCommanderAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  mini_commander_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("MiniCommanderAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 mini_commander_applet_factory,
+                                 NULL)
