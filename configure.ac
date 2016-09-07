@@ -704,7 +704,7 @@ AC_CONFIG_FILES([
   mini-commander/Makefile
   mini-commander/src/Makefile
 
-  modemlights/Makefile
+  modem-lights/Makefile
 
   multiload/Makefile
   multiload/help/Makefile
@@ -788,7 +788,7 @@ echo "    gweather ......................: $build_libgweather_applets"
 echo "    inhibit .......................: always"
 echo "    invest-applet .................: always"
 echo "    mini-commander ................: $enable_mini_commander"
-echo "    modemlights ...................: $BUILD_MODEM_LIGHTS"
+echo "    modem-lights ..................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
 echo "    sticky-notes ..................: $enable_stickynotes"

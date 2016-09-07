@@ -12,7 +12,7 @@ libgweather_SUBDIRS = $(libgweather_applets)
 endif
 
 modemlights_applets = \
-	modemlights
+	modem-lights
 if APPLET_MODEMLIGHTS
 modemlights_SUBDIRS = $(modemlights_applets)
 endif
@@ -71,7 +71,7 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	po		\
-	modemlights	\
+	modem-lights	\
 	drivemount	\
 	charpick	\
 	geyes		\
