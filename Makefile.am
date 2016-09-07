@@ -80,7 +80,6 @@ DIST_SUBDIRS = \
 	multiload	\
 	netspeed	\
 	gweather 	\
-	man		\
 	accessx-status	\
 	sticky-notes	\
 	trash	\

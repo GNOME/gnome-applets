@@ -707,8 +707,6 @@ AC_CONFIG_FILES([
   invest-applet/invest/Makefile
   invest-applet/Makefile
 
-  man/Makefile
-
   mini-commander/help/Makefile
   mini-commander/Makefile
   mini-commander/src/Makefile
