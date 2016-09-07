@@ -1047,7 +1047,7 @@ modem_applet_factory (PanelApplet *applet,
   return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("ModemAppletFactory",
-				  TYPE_MODEM_APPLET,
-				  modem_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("ModemAppletFactory",
+                                 TYPE_MODEM_APPLET,
+                                 modem_applet_factory,
+                                 NULL)

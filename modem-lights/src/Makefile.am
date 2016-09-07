@@ -2,31 +2,36 @@ NULL =
 
 uidir	= $(pkgdatadir)/ui
 
-libexec_PROGRAMS = modem_applet
+modem_lights_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+modem_lights_appletlib_LTLIBRARIES = libmodem-lights-applet.la
 
-modem_applet_CFLAGS = \
+libmodem_lights_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DMODEM_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	$(NULL)
+
+libmodem_lights_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(XML2_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-modem_applet_SOURCES = \
+libmodem_lights_applet_la_SOURCES = \
 	modem-applet.c \
 	modem-applet.h \
 	$(NULL)
 
-modem_applet_LDFLAGS = \
+libmodem_lights_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-modem_applet_LDADD = \
+libmodem_lights_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(MODEMLIGHTS_LIBS) \
 	$(XML2_LIBS) \
