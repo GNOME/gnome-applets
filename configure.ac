@@ -705,6 +705,7 @@ AC_CONFIG_FILES([
   mini-commander/src/Makefile
 
   modem-lights/Makefile
+  modem-lights/src/Makefile
 
   multiload/Makefile
   multiload/help/Makefile
