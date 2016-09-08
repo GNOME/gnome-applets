@@ -1,34 +1,6 @@
 NULL =
 
-SUBDIRS = help themes
-
-geyes_applet2_CFLAGS = \
-	-I.						\
-	-I$(srcdir) 					\
-	$(GNOME_APPLETS_CFLAGS)				\
-	-I$(includedir) 				\
-	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\"	\
-	-DGEYES_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	$(WARN_CFLAGS) \
-	$(AM_CFLAGS) \
-	$(NULL)
-
-libexec_PROGRAMS = geyes_applet2
-
-geyes_applet2_SOURCES =	\
-        geyes.c \
-	themes.c \
-	geyes.h
-
-geyes_applet2_LDFLAGS = \
-	$(WARN_LDFLAGS) \
-	$(AM_LDFLAGS) \
-	$(NULL)
-
-geyes_applet2_LDADD = 		\
-	$(GNOME_APPLETS_LIBS)	\
-	$(LIBM)
+SUBDIRS = help themes src
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.GeyesApplet.panel-applet.in
