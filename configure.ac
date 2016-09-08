@@ -661,8 +661,9 @@ AC_CONFIG_FILES([
   cpufreq/src/cpufreq-selector/Makefile
   cpufreq/src/Makefile
 
-  drivemount/help/Makefile
   drivemount/Makefile
+  drivemount/help/Makefile
+  drivemount/src/Makefile
 
   inhibit/Makefile
   inhibit/icons/Makefile
