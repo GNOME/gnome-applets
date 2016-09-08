@@ -197,6 +197,7 @@ applet_factory (PanelApplet *applet,
     return ret;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY (factory_iid,
-				  PANEL_TYPE_APPLET,
-				  applet_factory, NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY (factory_iid,
+                                 PANEL_TYPE_APPLET,
+                                 applet_factory,
+                                 NULL)

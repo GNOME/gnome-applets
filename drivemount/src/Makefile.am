@@ -2,20 +2,24 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-libexec_PROGRAMS = drivemount_applet2
+drivemount_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+drivemount_applet_lib_LTLIBRARIES = libdrive-mount-applet.la
 
-drivemount_applet2_CFLAGS = \
+libdrive_mount_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	$(NULL)
+
+libdrive_mount_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-drivemount_applet2_SOURCES = \
+libdrive_mount_applet_la_SOURCES = \
 	drivemount.c \
 	drive-list.c \
 	drive-list.h \
@@ -23,12 +27,13 @@ drivemount_applet2_SOURCES = \
 	drive-button.h \
 	$(NULL)
 
-drivemount_applet2_LDFLAGS = \
+libdrive_mount_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-drivemount_applet2_LDADD = \
+libdrive_mount_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(GIO_UNIX_LIBS) \
 	$(NULL)
