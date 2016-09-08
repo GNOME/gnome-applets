@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 17:31+0200\n"
-"PO-Revision-Date: 2016-08-21 17:32+0200\n"
+"POT-Creation-Date: 2016-09-08 23:29+0200\n"
+"PO-Revision-Date: 2016-09-08 23:30+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -44,7 +44,7 @@ msgstr "Preferencje dostępności _klawiatury"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
 #: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../stickynotes/stickynotes-applet-menu.xml.h:6
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:6
 #: ../trash/src/trash-menu.xml.h:3
 msgid "_Help"
 msgstr "Pomo_c"
@@ -61,7 +61,7 @@ msgstr "Pomo_c"
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
-#: ../stickynotes/stickynotes-applet-menu.xml.h:7
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:7
 #: ../tracker-search-bar/src/tracker-search-bar-menu.xml.h:1
 #: ../trash/src/trash-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
@@ -80,9 +80,9 @@ msgstr "Wyświetla stan funkcji AccessX, takich jak modyfikatory zapadkowe"
 #: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:100
 #: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
 #: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
-#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../modemlights/modem-applet.c:1000 ../multiload/src/main.c:62
 #: ../netspeed/src/netspeed.c:637
-#: ../stickynotes/stickynotes_applet_callbacks.c:391
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:395
 #: ../timer/src/timer-applet.c:286 ../trash/src/trash-applet.c:419
 msgid "translator-credits"
 msgstr ""
@@ -320,8 +320,8 @@ msgstr "Nie dotyczy"
 #: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:128
 #: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
-#: ../stickynotes/stickynotes_applet_callbacks.c:358
-#: ../stickynotes/stickynotes_applet_callbacks.c:542
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:362
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:546
 #: ../trash/src/trash-applet.c:385
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -358,7 +358,7 @@ msgstr "Monitoruje poziomu naładowania akumulatora w laptopie"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
 #: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "_Preferencje"
@@ -426,7 +426,7 @@ msgid ""
 "value at which the low battery warning is displayed."
 msgstr ""
 "Poziom naładowania akumulatora, poniżej którego jego symbol jest wyświetlany "
-"na czerwono. Również wartość przy której jest wyświetlanie ostrzeżenie "
+"na czerwono. Również wartość, przy której jest wyświetlane ostrzeżenie "
 "o rozładowaniu."
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
@@ -563,11 +563,11 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
-"Aplet jasności jest wolnym oprogramowaniem; można go\n"
-"rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
-"Licencji Publicznej GNU, wydanej przez Fundację Wolnego\n"
-"Oprogramowania (Free Software Foundation) — według wersji drugiej\n"
-"tej Licencji lub którejś z późniejszych wersji."
+"Aplet jasności jest wolnym oprogramowaniem; można go rozprowadzać\n"
+"dalej i/lub modyfikować na warunkach Powszechnej Licencji Publicznej\n"
+"GNU, wydanej przez Fundację Wolnego Oprogramowania (Free Software\n"
+"Foundation) — według wersji drugiej tej Licencji lub którejś\n"
+"z późniejszych wersji."
 
 #: ../brightness/brightness-applet.c:654
 msgid ""
@@ -576,11 +576,11 @@ msgid ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
 msgstr ""
-"Aplet jasności jest rozpowszechniany jest z nadzieją, iż\n"
-"będzie on użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet\n"
-"domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI\n"
-"DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji\n"
-"należy zapoznać się z Powszechną Licencją Publiczną GNU."
+"Aplet jasności rozpowszechniany jest z nadzieją, iż będzie on\n"
+"użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej\n"
+"gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH\n"
+"ZASTOSOWAŃ. W celu uzyskania bliższych informacji należy zapoznać\n"
+"się z Powszechną Licencją Publiczną GNU."
 
 #: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
 msgid ""
@@ -589,10 +589,10 @@ msgid ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
 msgstr ""
-"Z pewnością wraz z niniejszym programem dostarczono także\n"
-"egzemplarz Powszechnej Licencji Publicznej GNU (GNU General Public\n"
-"License); jeśli nie — proszę napisać do Free Software Foundation,\n"
-"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
+"Z pewnością wraz z niniejszym programem dostarczono także egzemplarz\n"
+"Powszechnej Licencji Publicznej GNU (GNU General Public License);\n"
+"jeśli nie — proszę napisać do Free Software Foundation, Inc., 51\n"
+"Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
 
 #: ../brightness/brightness-applet.c:672
 msgid "Copyright © 2006 Benjamin Canou"
@@ -766,11 +766,11 @@ msgstr "Polecenie:"
 
 #: ../command/command.c:161
 msgid "Interval (seconds):"
-msgstr "Czas między wykonywaniem polecenia (w sekundach):"
+msgstr "Czas między wykonywaniem polecenia (w sekundach):"
 
 #: ../command/command.c:169
 msgid "Maximum width (chars):"
-msgstr "Maksymalna szerokość (w znakach):"
+msgstr "Maksymalna szerokość (w znakach):"
 
 #: ../command/command.c:177
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
@@ -804,7 +804,7 @@ msgstr "Czas między wykonywaniem polecenia"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
 msgid "Interval to execute the command (in seconds)"
-msgstr "Czas między wykonywaniem polecenia (w sekundach)"
+msgstr "Czas między wykonywaniem polecenia (w sekundach)"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
 msgid "Width of output"
@@ -868,12 +868,12 @@ msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
-"Ustawia procesor do śledzenia. Nie ma potrzeby zmieniania tego w systemach "
-"jednoprocesorowych."
+"Ustawia procesor do śledzenia. Nie ma potrzeby zmieniania tego w komputerach "
+"z jednym procesorem."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:3
 msgid "Mode to show cpu usage"
-msgstr "Tryb wyświetlania zużycia procesora"
+msgstr "Tryb wyświetlania użycia procesora"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
 msgid ""
@@ -881,9 +881,9 @@ msgid ""
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
 "to show the applet in graphic and text mode."
 msgstr ""
-"Wartość „graphic” oznacza wyświetlanie apletu w trybie graficznym (sama "
-"piksmapa), „text” wyświetlenie apletu w trybie tekstowym (bez wyświetlania "
-"piksmapy), „both” wyświetlenie grafiki i tekstu."
+"Wartość „graphic” oznacza wyświetlanie apletu w trybie graficznym (sama mapa "
+"pikseli), „text” wyświetlenie apletu w trybie tekstowym (bez wyświetlania "
+"mapy pikseli), „both” wyświetlenie grafiki i tekstu."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
@@ -1193,7 +1193,7 @@ msgstr "Wyświetla stronę Weather.com"
 
 #: ../gweather/gweather-dialog.c:493
 msgid "Click to Enter Weather.com"
-msgstr "Należy kliknąć, aby odwiedzić witrynę Weather.com"
+msgstr "Kliknięcie otworzy witrynę Weather.com"
 
 #: ../gweather/gweather-dialog.c:571
 msgid "Forecast not currently available for this location."
@@ -1458,7 +1458,7 @@ msgstr "Aplet wyłączania"
 #: ../inhibit/inhibit-applet.c:86
 msgid "Allows user to inhibit automatic power saving."
 msgstr ""
-"Pozwala użytkownikowi na wyłączenie automatycznego oszczędzania zasilania."
+"Umożliwia użytkownikowi wyłączanie automatycznego oszczędzania zasilania."
 
 #: ../inhibit/inhibit-applet.c:233
 msgid "Cannot connect to gnome-session"
@@ -1483,11 +1483,11 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
-"Aplet wyłączania jest wolnym oprogramowaniem; można go\n"
-"rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej\n"
-"Licencji Publicznej GNU, wydanej przez Fundację Wolnego\n"
-"Oprogramowania (Free Software Foundation) — według wersji drugiej\n"
-"tej Licencji lub którejś z późniejszych wersji."
+"Aplet wyłączania jest wolnym oprogramowaniem; można go rozprowadzać\n"
+"dalej i/lub modyfikować na warunkach Powszechnej Licencji Publicznej\n"
+"GNU, wydanej przez Fundację Wolnego Oprogramowania (Free Software\n"
+"Foundation) — według wersji drugiej tej Licencji lub którejś\n"
+"z późniejszych wersji."
 
 #: ../inhibit/inhibit-applet.c:302
 msgid ""
@@ -1496,11 +1496,11 @@ msgid ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
 msgstr ""
-"Aplet wyłączania jest rozpowszechniany jest z nadzieją, iż\n"
-"będzie on użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet\n"
-"domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI\n"
-"DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji\n"
-"należy zapoznać się z Powszechną Licencją Publiczną GNU."
+"Aplet wyłączania rozpowszechniany jest z nadzieją, iż będzie on\n"
+"użyteczny — jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej\n"
+"gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH\n"
+"ZASTOSOWAŃ. W celu uzyskania bliższych informacji należy zapoznać\n"
+"się z Powszechną Licencją Publiczną GNU."
 
 #: ../inhibit/inhibit-applet.c:320
 msgid "Copyright © 2006-2007 Richard Hughes"
@@ -1509,7 +1509,7 @@ msgstr "Copyright © 2006-2007 Richard Hughes"
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
 msgid "Allows user to inhibit automatic power saving"
 msgstr ""
-"Pozwala użytkownikowi na wyłączenie automatycznego oszczędzania zasilania"
+"Umożliwia użytkownikowi wyłączanie automatycznego oszczędzania zasilania"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1972,7 +1972,7 @@ msgstr "Proszę kliknąć ten przycisk, aby uzyskać listę poprzednich poleceń
 
 #: ../mini-commander/src/mini-commander_applet.c:348
 msgid "Command line has been disabled by your system administrator"
-msgstr "Wiersz poleceń został zablokowany przez twojego administratora systemu"
+msgstr "Wiersz poleceń został zablokowany przez administratora komputera"
 
 #: ../mini-commander/src/mini-commander_applet.c:363
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
@@ -1997,22 +1997,24 @@ msgstr "Automatyczne uzupełnianie"
 
 #: ../mini-commander/src/mini-commander.ui.h:3
 msgid "E_nable history-based auto completion"
-msgstr "Automatycz_ne uzupełnianie poleceń oparte na historii"
+msgstr "Automatycz_ne uzupełnianie poleceń na podstawie historii"
 
 #: ../mini-commander/src/mini-commander.ui.h:4
 msgid "Size"
 msgstr "Rozmiar"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes-preferences.ui.h:3
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "_Szerokość:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
+#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../multiload/src/properties.c:476
 msgid "pixels"
 msgstr "pikseli"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
+#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../multiload/src/properties.c:521
 msgid "Colors"
 msgstr "Kolory"
 
@@ -2102,7 +2104,7 @@ msgstr "Wyświetlanie ramki dookoła apletu."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:9
 msgid "Perform history autocompletion"
-msgstr "Automatyczne uzupełnianie poleceń oparte na historii"
+msgstr "Automatyczne uzupełnianie poleceń na podstawie historii"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:10
 msgid "Attempt to autocomplete a command from the history of commands entered."
@@ -2249,7 +2251,7 @@ msgid "_Deactivate"
 msgstr "_Dezaktywuj"
 
 #: ../modemlights/modem-applet-menu.xml.h:3
-#: ../stickynotes/stickynotes-note-menu.xml.h:4
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "_Właściwości"
 
@@ -2273,7 +2275,7 @@ msgstr "Łączenie z dostawcą usług internetowych"
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktywuje i monitoruje wdzwaniane połączenie sieciowe"
 
-#: ../multiload/main.c:57
+#: ../multiload/src/main.c:57
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2281,43 +2283,43 @@ msgstr ""
 "Monitor obciążenia systemu wyświetlający wykresy dla procesora, pamięci, "
 "przestrzeni wymiany oraz sieci."
 
-#: ../multiload/main.c:131
+#: ../multiload/src/main.c:131
 msgid "Start system-monitor"
 msgstr "Uruchamia monitor systemu"
 
-#: ../multiload/main.c:152
+#: ../multiload/src/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Wystąpił błąd podczas wykonywania „%s”: %s"
 
-#: ../multiload/main.c:275 ../multiload/properties.c:546
+#: ../multiload/src/main.c:275 ../multiload/src/properties.c:546
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:277 ../multiload/properties.c:554
+#: ../multiload/src/main.c:277 ../multiload/src/properties.c:554
 msgid "Memory"
 msgstr "Pamięć"
 
-#: ../multiload/main.c:279 ../multiload/properties.c:562
+#: ../multiload/src/main.c:279 ../multiload/src/properties.c:562
 msgid "Network"
 msgstr "Sieć"
 
-#: ../multiload/main.c:281 ../multiload/properties.c:569
+#: ../multiload/src/main.c:281 ../multiload/src/properties.c:569
 msgid "Swap Space"
 msgstr "Obszar wymiany"
 
-#: ../multiload/main.c:283 ../multiload/main.c:362
+#: ../multiload/src/main.c:283 ../multiload/src/main.c:362
 msgid "Load Average"
 msgstr "Średnie obciążenie"
 
-#: ../multiload/main.c:285
+#: ../multiload/src/main.c:285
 msgid "Disk"
 msgstr "Dysk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:301
+#: ../multiload/src/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2328,13 +2330,13 @@ msgstr ""
 "%u%% w użyciu przez programy\n"
 "%u%% w użyciu jako bufor"
 
-#: ../multiload/main.c:309
+#: ../multiload/src/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Średnie obciążenie systemu wynosi %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:317
+#: ../multiload/src/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2345,7 +2347,7 @@ msgstr ""
 "Odbieranie %s\n"
 "Wysyłanie %s"
 
-#: ../multiload/main.c:333
+#: ../multiload/src/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2363,39 +2365,172 @@ msgstr[2] ""
 "%s:\n"
 "użyte %u%%"
 
-#: ../multiload/main.c:358
+#: ../multiload/src/main.c:358
 msgid "CPU Load"
-msgstr "Obciążenie CPU"
+msgstr "Obciążenie procesora"
 
-#: ../multiload/main.c:359
+#: ../multiload/src/main.c:359
 msgid "Memory Load"
 msgstr "Wykorzystanie pamięci operacyjnej"
 
-#: ../multiload/main.c:360
+#: ../multiload/src/main.c:360
 msgid "Net Load"
 msgstr "Obciążenie sieci"
 
-#: ../multiload/main.c:361
+#: ../multiload/src/main.c:361
 msgid "Swap Load"
 msgstr "Wykorzystanie obszaru wymiany"
 
-#: ../multiload/main.c:363
+#: ../multiload/src/main.c:363
 msgid "Disk Load"
 msgstr "Obciążenie dysku"
 
-#: ../multiload/main.c:473
+#: ../multiload/src/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Monitor systemu"
 
-#: ../multiload/multiload-applet-menu.xml.h:1
-msgid "_Open System Monitor"
-msgstr "_Otwórz monitor systemu"
-
-#: ../multiload/netspeed.c:40
+#: ../multiload/src/netspeed.c:40
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
+
+#: ../multiload/src/properties.c:308
+msgid "Monitored Resources"
+msgstr "Monitorowane zasoby"
+
+#: ../multiload/src/properties.c:333
+msgid "_Processor"
+msgstr "_Procesor"
+
+#: ../multiload/src/properties.c:346
+msgid "_Memory"
+msgstr "P_amięć"
+
+#: ../multiload/src/properties.c:359
+msgid "_Network"
+msgstr "_Sieć"
+
+#: ../multiload/src/properties.c:372
+msgid "S_wap Space"
+msgstr "Obsza_r wymiany"
+
+#: ../multiload/src/properties.c:385
+msgid "_Load"
+msgstr "O_bciążenie"
+
+#: ../multiload/src/properties.c:398
+msgid "_Harddisk"
+msgstr "_Dysk twardy"
+
+#: ../multiload/src/properties.c:413
+msgid "Options"
+msgstr "Opcje"
+
+#: ../multiload/src/properties.c:443
+msgid "System m_onitor width: "
+msgstr "_Szerokość monitora systemu: "
+
+#: ../multiload/src/properties.c:445
+msgid "System m_onitor height: "
+msgstr "_Wysokość monitora systemu: "
+
+#: ../multiload/src/properties.c:484
+msgid "Sys_tem monitor update interval: "
+msgstr "_Okres odświeżania monitora systemu: "
+
+#: ../multiload/src/properties.c:510
+msgid "milliseconds"
+msgstr "ms"
+
+#: ../multiload/src/properties.c:548 ../multiload/src/properties.c:556
+msgid "_User"
+msgstr "_Użytkownik"
+
+#: ../multiload/src/properties.c:549
+msgid "S_ystem"
+msgstr "_System"
+
+#: ../multiload/src/properties.c:550
+msgid "N_ice"
+msgstr "_Nice"
+
+#: ../multiload/src/properties.c:551
+msgid "I_OWait"
+msgstr "I_OWait"
+
+#: ../multiload/src/properties.c:552
+msgid "I_dle"
+msgstr "_Wolna"
+
+#: ../multiload/src/properties.c:557
+msgid "Sh_ared"
+msgstr "_Dzielona"
+
+#: ../multiload/src/properties.c:558
+msgid "_Buffers"
+msgstr "_Bufory"
+
+#: ../multiload/src/properties.c:559
+msgid "Cach_ed"
+msgstr "Strony w _buforze"
+
+#: ../multiload/src/properties.c:560
+msgid "F_ree"
+msgstr "W_olna"
+
+#: ../multiload/src/properties.c:564
+msgid "_In"
+msgstr "_Wchodzący"
+
+#: ../multiload/src/properties.c:565
+msgid "_Out"
+msgstr "Wy_chodzący"
+
+#: ../multiload/src/properties.c:566
+msgid "_Local"
+msgstr "_Lokalny"
+
+#: ../multiload/src/properties.c:567 ../multiload/src/properties.c:577
+#: ../multiload/src/properties.c:583
+msgid "_Background"
+msgstr "_Tło"
+
+#: ../multiload/src/properties.c:571
+msgid "_Used"
+msgstr "_Używany"
+
+#: ../multiload/src/properties.c:572
+msgid "_Free"
+msgstr "Wol_ny"
+
+#: ../multiload/src/properties.c:574
+msgid "Load"
+msgstr "Obciążenie"
+
+#: ../multiload/src/properties.c:576
+msgid "_Average"
+msgstr "Średn_ia"
+
+#: ../multiload/src/properties.c:579
+msgid "Harddisk"
+msgstr "Dysk twardy"
+
+#: ../multiload/src/properties.c:581
+msgid "_Read"
+msgstr "_Odczyt"
+
+#: ../multiload/src/properties.c:582
+msgid "_Write"
+msgstr "_Zapis"
+
+#: ../multiload/src/properties.c:609
+msgid "System Monitor Preferences"
+msgstr "Preferencje monitora systemu"
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "_Otwórz monitor systemu"
 
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
 msgid "A system load indicator"
@@ -2528,139 +2663,6 @@ msgstr "Kolor tła wykresu obciążenia dysku"
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
 msgid "The desktop description file to execute as the system monitor"
 msgstr "Plik desktop do uruchomienia jako monitor systemu"
-
-#: ../multiload/properties.c:308
-msgid "Monitored Resources"
-msgstr "Monitorowane zasoby"
-
-#: ../multiload/properties.c:333
-msgid "_Processor"
-msgstr "_Procesor"
-
-#: ../multiload/properties.c:346
-msgid "_Memory"
-msgstr "P_amięć"
-
-#: ../multiload/properties.c:359
-msgid "_Network"
-msgstr "_Sieć"
-
-#: ../multiload/properties.c:372
-msgid "S_wap Space"
-msgstr "Obsza_r wymiany"
-
-#: ../multiload/properties.c:385
-msgid "_Load"
-msgstr "O_bciążenie"
-
-#: ../multiload/properties.c:398
-msgid "_Harddisk"
-msgstr "_Dysk twardy"
-
-#: ../multiload/properties.c:413
-msgid "Options"
-msgstr "Opcje"
-
-#: ../multiload/properties.c:443
-msgid "System m_onitor width: "
-msgstr "_Szerokość monitora systemu: "
-
-#: ../multiload/properties.c:445
-msgid "System m_onitor height: "
-msgstr "_Wysokość monitora systemu: "
-
-#: ../multiload/properties.c:484
-msgid "Sys_tem monitor update interval: "
-msgstr "_Okres odświeżania monitora systemu: "
-
-#: ../multiload/properties.c:510
-msgid "milliseconds"
-msgstr "ms"
-
-#: ../multiload/properties.c:548 ../multiload/properties.c:556
-msgid "_User"
-msgstr "_Użytkownik"
-
-#: ../multiload/properties.c:549
-msgid "S_ystem"
-msgstr "_System"
-
-#: ../multiload/properties.c:550
-msgid "N_ice"
-msgstr "_Nice"
-
-#: ../multiload/properties.c:551
-msgid "I_OWait"
-msgstr "I_OWait"
-
-#: ../multiload/properties.c:552
-msgid "I_dle"
-msgstr "_Wolna"
-
-#: ../multiload/properties.c:557
-msgid "Sh_ared"
-msgstr "_Dzielona"
-
-#: ../multiload/properties.c:558
-msgid "_Buffers"
-msgstr "_Bufory"
-
-#: ../multiload/properties.c:559
-msgid "Cach_ed"
-msgstr "Strony w _buforze"
-
-#: ../multiload/properties.c:560
-msgid "F_ree"
-msgstr "W_olna"
-
-#: ../multiload/properties.c:564
-msgid "_In"
-msgstr "_Wchodzący"
-
-#: ../multiload/properties.c:565
-msgid "_Out"
-msgstr "Wy_chodzący"
-
-#: ../multiload/properties.c:566
-msgid "_Local"
-msgstr "_Lokalny"
-
-#: ../multiload/properties.c:567 ../multiload/properties.c:577
-#: ../multiload/properties.c:583
-msgid "_Background"
-msgstr "_Tło"
-
-#: ../multiload/properties.c:571
-msgid "_Used"
-msgstr "_Używany"
-
-#: ../multiload/properties.c:572
-msgid "_Free"
-msgstr "Wol_ny"
-
-#: ../multiload/properties.c:574
-msgid "Load"
-msgstr "Obciążenie"
-
-#: ../multiload/properties.c:576
-msgid "_Average"
-msgstr "Średn_ia"
-
-#: ../multiload/properties.c:579
-msgid "Harddisk"
-msgstr "Dysk twardy"
-
-#: ../multiload/properties.c:581
-msgid "_Read"
-msgstr "_Odczyt"
-
-#: ../multiload/properties.c:582
-msgid "_Write"
-msgstr "_Zapis"
-
-#: ../multiload/properties.c:609
-msgid "System Monitor Preferences"
-msgstr "Preferencje monitora systemu"
 
 #: ../netspeed/data/netspeed-menu.xml.h:1
 msgid "Device _Details"
@@ -2863,7 +2865,7 @@ msgstr ""
 
 #: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
 msgid "has no ip"
-msgstr "nie posiada adresu IP"
+msgstr "nie ma adresu IP"
 
 #: ../netspeed/src/netspeed.c:1090
 #, c-format
@@ -2945,38 +2947,38 @@ msgstr "Zmienianie _ikony stosownie do wybranego urządzenia"
 msgid "Netspeed Preferences"
 msgstr "Preferencje"
 
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Generator apletu notatek"
 
 #  FIXME : Hack because libglade does not properly set these
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:146
-#: ../stickynotes/stickynotes_applet.c:380
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
+#: ../sticky-notes/src/stickynotes_applet.c:150
+#: ../sticky-notes/src/stickynotes_applet.c:389
 msgid "Sticky Notes"
 msgstr "Notatki"
 
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Tworzenie, podgląd i zarządzanie notatkami na pulpicie"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
 msgid "Default width for new notes"
 msgstr "Domyślna szerokość nowych notatek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
 msgid "Default width for new sticky notes in pixels."
 msgstr "Domyślna szerokość w pikselach nowej notatki."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
 msgid "Default height for new notes"
 msgstr "Domyślna wysokość nowej notatki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
 msgid "Default color for new notes"
 msgstr "Domyślny kolor dla nowej notatki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -2984,11 +2986,11 @@ msgstr ""
 "Domyślny kolor dla nowej notatki. Może zostać podany w postaci standardowej "
 "nazwy, wartości szesnastkowej, koloru RGB lub koloru RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
 msgid "Default color for font"
 msgstr "Domyślny kolor dla czcionki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -2996,11 +2998,11 @@ msgstr ""
 "Domyślny kolor czcionki dla nowej notatki. Może zostać podany w postaci "
 "standardowej nazwy, wartości szesnastkowej, koloru RGB lub koloru RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
 msgid "Default font for new notes"
 msgstr "Domyślna czcionka dla nowej notatki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
@@ -3008,42 +3010,42 @@ msgstr ""
 "Domyślna czcionka dla nowej notatki. Powinna to być nazwa czcionki "
 "biblioteki Pango, przykładowo „Sans Italic 10”."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
 msgid "Sticky notes' workspace stickyness"
 msgstr "Przyklejanie notatek do obszarów roboczych"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr "Określa, czy notatki są widoczne na wszystkich obszarach roboczych."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
 msgid "Sticky notes' locked state"
 msgstr "Stan zablokowania notatek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Określa, czy notatki są zablokowane (tylko do odczytu)."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
 msgid "Date format of note's title"
 msgstr "Format daty w tytule notatki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
 "Domyślnie, nowym notatkom zostanie nadana bieżąca data. Używany jest ten "
-"format; dopuszczalne jest wszystko co można przetworzyć przez strftime()."
+"format. Dopuszczalne jest wszystko, co można przetworzyć przez strftime()."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
 msgid "Whether to use the default system color"
 msgstr "Określa, czy używane będą domyślne kolory systemowe"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -3051,11 +3053,11 @@ msgstr ""
 "Jeżeli wyłączone, można użyć dowolnego koloru jako domyślnego dla wszystkich "
 "notatek."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
 msgid "Whether to use the default system font"
 msgstr "Określa, czy używana będzie domyślna czcionka systemowa"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -3063,13 +3065,13 @@ msgstr ""
 "Jeżeli wyłączone, można użyć dowolnej czcionki jako domyślnej dla wszystkich "
 "notatek."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
 msgid "Whether to force the default color and font on all notes"
 msgstr ""
 "Określa, czy wymuszane będzie na wszystkich notatkach użycie domyślnych "
 "kolorów i czcionek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -3077,27 +3079,35 @@ msgstr ""
 "Określa, czy kolory i czcionki przyporządkowane do poszczególnych notatek "
 "będą ignorowane."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
 msgid "Whether to hide all notes when the desktop is selected"
 msgstr "Określa, czy ukrywać wszystkie notatki podczas zaznaczania na pulpicie"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
 msgstr ""
-"Jeśli włączone, kliknięcie na pulpit w dowolny sposób automatycznie ukryje "
+"Jeśli włączone, kliknięcie pulpitu w dowolny sposób automatycznie ukryje "
 "wszystkie otwarte notatki."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Określa, czy będzie wymagane potwierdzanie usunięcia notatki"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Puste notatki są zawsze usuwane bez potwierdzenia."
 
-#: ../stickynotes/stickynotes_applet.c:539
+#: ../sticky-notes/src/stickynotes.c:594
+msgid "This note is locked."
+msgstr "Notatka jest zablokowana."
+
+#: ../sticky-notes/src/stickynotes.c:598
+msgid "This note is unlocked."
+msgstr "Notatka jest odblokowana."
+
+#: ../sticky-notes/src/stickynotes_applet.c:548
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -3105,222 +3115,214 @@ msgstr[0] "%d notatka"
 msgstr[1] "%d notatki"
 msgstr[2] "%d notatek"
 
-#: ../stickynotes/stickynotes_applet.c:540
+#: ../sticky-notes/src/stickynotes_applet.c:549
 msgid "Show sticky notes"
 msgstr "Wyświetla notatki"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:391
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notatki dla środowiska GNOME"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:1
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:1
 msgid "_New Note"
 msgstr "_Nowa notatka"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
 msgstr "U_kryj notatki"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:3
 msgid "_Lock Notes"
 msgstr "Za_blokuj notatki"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "_Usuń notatki"
 
-#: ../stickynotes/stickynotes.c:591
-msgid "This note is locked."
-msgstr "Notatka jest zablokowana."
-
-#: ../stickynotes/stickynotes.c:595
-msgid "This note is unlocked."
-msgstr "Notatka jest odblokowana."
-
-#: ../stickynotes/stickynotes-delete-all.ui.h:1
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "Usuń _wszystko"
 
-#: ../stickynotes/stickynotes-delete-all.ui.h:2
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Usunąć wszystkie notatki?"
 
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:3
+#: ../sticky-notes/src/sticky-notes-delete.ui.h:2
 msgid "This cannot be undone."
 msgstr "Czynności nie można cofnąć."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
+#: ../sticky-notes/src/sticky-notes-delete.ui.h:1
 msgid "Delete this sticky note?"
 msgstr "Usunąć tę notatkę?"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:2
 msgid "_Delete Note..."
 msgstr "_Usuń notatkę…"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:3
 msgid "_Lock Note"
 msgstr "Za_blokuj notatkę"
 
-#: ../stickynotes/stickynotes-note.ui.h:1
+#: ../sticky-notes/src/sticky-notes-note.ui.h:1
 msgid "Sticky Note"
 msgstr "Notatka"
 
-#: ../stickynotes/stickynotes-note.ui.h:2
+#: ../sticky-notes/src/sticky-notes-note.ui.h:2
 msgid "Lock/Unlock note"
 msgstr "Zablokowanie/Odblokowanie notatki"
 
-#: ../stickynotes/stickynotes-note.ui.h:3
+#: ../sticky-notes/src/sticky-notes-note.ui.h:3
 msgid "Close note"
 msgstr "Zamknięcie notatki"
 
-#: ../stickynotes/stickynotes-note.ui.h:4
+#: ../sticky-notes/src/sticky-notes-note.ui.h:4
 msgid "Resize note"
 msgstr "Zmiana rozmiaru notatki"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:1
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:1
 msgid "Sticky Notes Preferences"
 msgstr "Preferencje programu Notatki"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:2
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:2
 msgid "Default Note Properties"
 msgstr "Domyślne właściwości notatki"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:4
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:4
 msgid "H_eight:"
 msgstr "Wy_sokość:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:5
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:5
 msgid "Specify the default width (in pixels) of new notes"
-msgstr "Określenie domyślnej szerokości (w pikselach) nowych notatek"
+msgstr "Określenie domyślnej szerokości (w pikselach) nowych notatek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:6
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:6
 msgid "1"
 msgstr "1"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:7
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:7
 msgid "Specify the default height (in pixels) of new notes"
-msgstr "Określenie domyślnej wysokości (w pikselach) nowych notatek"
+msgstr "Określenie domyślnej wysokości (w pikselach) nowych notatek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:8
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:8
 msgid "0"
 msgstr "0"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:9
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:9
 msgid "Use co_lor from the system theme"
-msgstr "Użycie ko_loru z motywu systemowego"
+msgstr "Ko_lor z motywu systemowego"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:10
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:10
 msgid "Font Co_lor:"
 msgstr "Ko_lor czcionki:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:11
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:11
 msgid "Note C_olor:"
 msgstr "K_olor notatki:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:12
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:12
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Proszę wybrać podstawowy kolor dla wszystkich notatek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:13
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:13
 msgid "Pick a default sticky note color"
 msgstr "Wybór domyślnego koloru dla notatki"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:14
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:14
 msgid "Use fo_nt from the system theme"
-msgstr "Użycie czcio_nki systemowej"
+msgstr "Czcio_nka systemowa"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:15
-#: ../stickynotes/stickynotes-properties.ui.h:11
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:15
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:11
 msgid "_Font:"
 msgstr "_Czcionka:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:16
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:16
 msgid "Choose a font to use for all sticky notes"
 msgstr "Proszę wybrać czcionkę dla wszystkich notatek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:17
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:17
 msgid "Pick a default sticky note font"
 msgstr "Wybór domyślnej czcionki dla notatki"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:18
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:18
 msgid "Behavior"
 msgstr "Zachowanie"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:19
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:19
 msgid "_Put notes on all workspaces"
 msgstr "_Notatki na wszystkich obszarach roboczych"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:20
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:20
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Proszę określić, czy notatki są widoczne na wszystkich obszarach"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:21
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:21
 msgid "Force _default color and font on notes"
 msgstr "_Domyślny kolor i czcionka w notatkach"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:22
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:22
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
 "Proszę określić, czy użycie domyślnego stylu będzie wymuszane na wszystkich "
 "notatkach"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:23
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:23
 msgid "Hide notes when the des_ktop is clicked on"
-msgstr "Ukrywanie notatek po _kliknięciu na pulpit"
+msgstr "Ukrywanie notatek po _kliknięciu pulpitu"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:24
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:24
 msgid "Choose whether to hide all notes when selecting on the desktop"
 msgstr ""
 "Proszę określić, czy ukrywać wszystkie notatki podczas zaznaczania na "
 "pulpicie"
 
-#: ../stickynotes/stickynotes-properties.ui.h:1
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "Właściwości programu Notatki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:2
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:2
 msgid "Properties"
 msgstr "Właściwości"
 
-#: ../stickynotes/stickynotes-properties.ui.h:3
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_Tytuł:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:4
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:4
 msgid "Specify a title for the note"
 msgstr "Określenie tytułu notatki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:5
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:5
 msgid "Use default co_lor"
 msgstr "Użyj domyślnego ko_loru"
 
-#: ../stickynotes/stickynotes-properties.ui.h:6
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:6
 msgid "Font C_olor:"
 msgstr "K_olor czcionki:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:7
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:7
 msgid "Note _Color:"
 msgstr "Ko_lor notatki:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:8
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:8
 msgid "Use default fo_nt"
 msgstr "Użyj domyślnej czcio_nki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:9
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:9
 msgid "Choose a color for the note"
 msgstr "Proszę wybrać kolor dla notatki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:10
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:10
 msgid "Pick a color for the sticky note"
 msgstr "Wybór domyślnego koloru dla notatki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:12
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:12
 msgid "Choose a font for the note"
 msgstr "Proszę wybrać czcionkę dla notatki"
 
-#: ../stickynotes/stickynotes-properties.ui.h:13
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:13
 msgid "Pick a font for the sticky note"
 msgstr "Wybór czcionki dla notatki"
 
