@@ -445,7 +445,7 @@ geyes_applet_factory (PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("GeyesAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  geyes_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("GeyesAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 geyes_applet_factory,
+                                 NULL)
