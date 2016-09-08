@@ -6,46 +6,67 @@ endif
 
 SUBDIRS = $(selector_SUBDIR)
 
-cpufreq_applet_CFLAGS = \
-	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" 		\
+cpu_frequency_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+cpu_frequency_applet_lib_LTLIBRARIES = libcpu-frequency-applet.la
+
+libcpu_frequency_applet_la_CPPFLAGS = \
+	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DCPUFREQ_PIXMAPS_DIR=\""$(pkgdatadir)/cpufreq-applet/pixmaps"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
-	$(GNOME_APPLETS_CFLAGS) 				\
-	$(LIBGLADE_CFLAGS)					\
+	$(NULL)
+
+libcpu_frequency_applet_la_CFLAGS = \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(LIBGLADE_CFLAGS) \
 	$(DBUS_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-libexec_PROGRAMS = cpufreq-applet
+libcpu_frequency_applet_la_SOURCES = \
+	cpufreq-applet.c \
+	cpufreq-applet.h \
+	cpufreq-utils.c \
+	cpufreq-utils.h \
+	cpufreq-prefs.c \
+	cpufreq-prefs.h \
+	cpufreq-selector.c \
+	cpufreq-selector.h \
+	cpufreq-popup.c \
+	cpufreq-popup.h \
+	cpufreq-monitor.c \
+	cpufreq-monitor.h \
+	cpufreq-monitor-factory.c \
+	cpufreq-monitor-factory.h \
+	cpufreq-monitor-procfs.c \
+	cpufreq-monitor-procfs.h \
+	cpufreq-monitor-sysfs.c \
+	cpufreq-monitor-sysfs.h \
+	cpufreq-monitor-cpuinfo.c \
+	cpufreq-monitor-cpuinfo.h \
+	$(cpufreq_files) \
+	$(NULL)
 
-if HAVE_LIBCPUFREQ
-cpufreq_files=cpufreq-monitor-libcpufreq.c    cpufreq-monitor-libcpufreq.h
-endif
-
-cpufreq_applet_SOURCES =  \
-	cpufreq-applet.c        	cpufreq-applet.h        	\
-	cpufreq-utils.c			cpufreq-utils.h			\
-	cpufreq-prefs.c         	cpufreq-prefs.h         	\
-	cpufreq-selector.c		cpufreq-selector.h		\
-	cpufreq-popup.c                 cpufreq-popup.h			\
-	cpufreq-monitor.c       	cpufreq-monitor.h	      	\
-	cpufreq-monitor-factory.c	cpufreq-monitor-factory.h	\
-	cpufreq-monitor-procfs.c	cpufreq-monitor-procfs.h	\
-	cpufreq-monitor-sysfs.c	        cpufreq-monitor-sysfs.h	        \
-	$(cpufreq_files)						\
-	cpufreq-monitor-cpuinfo.c       cpufreq-monitor-cpuinfo.h
-
-cpufreq_applet_LDADD =  \
-	$(GNOME_APPLETS_LIBS)   	\
-	$(LIBGLADE_LIBS)		\
-	$(LIBCPUFREQ_LIBS)		\
-	$(DBUS_LIBS)
-
-cpufreq_applet_LDFLAGS = \
+libcpu_frequency_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
+
+libcpu_frequency_applet_la_LIBADD = \
+	$(GNOME_APPLETS_LIBS) \
+	$(LIBGLADE_LIBS) \
+	$(LIBCPUFREQ_LIBS) \
+	$(NULL)
+
+if HAVE_LIBCPUFREQ
+
+cpufreq_files = \
+    cpufreq-monitor-libcpufreq.c \
+    cpufreq-monitor-libcpufreq.h \
+    $(NULL)
+
+endif
 
 -include $(top_srcdir)/git.mk

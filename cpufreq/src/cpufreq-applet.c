@@ -1019,7 +1019,7 @@ cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
         return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("CPUFreqAppletFactory",
-				  CPUFREQ_TYPE_APPLET,
-				  (PanelAppletFactoryCallback) cpufreq_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("CPUFreqAppletFactory",
+                                 CPUFREQ_TYPE_APPLET,
+                                 (PanelAppletFactoryCallback) cpufreq_applet_factory,
+                                 NULL)
