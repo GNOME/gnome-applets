@@ -402,7 +402,7 @@ command_factory (PanelApplet* applet, const char* iid, gpointer data)
 }
 
 /* needed by gnome-panel applet library */
-PANEL_APPLET_OUT_PROCESS_FACTORY("CommandAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 command_factory,
-                                 NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY("CommandAppletFactory",
+                                PANEL_TYPE_APPLET,
+                                command_factory,
+                                NULL)
