@@ -654,6 +654,7 @@ AC_CONFIG_FILES([
   charpick/Makefile
 
   command/Makefile
+  command/src/Makefile
 
   cpufreq/help/Makefile
   cpufreq/Makefile
