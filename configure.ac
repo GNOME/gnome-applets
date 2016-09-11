@@ -625,10 +625,11 @@ AC_CONFIG_FILES([
   accessx-status/pixmaps/Makefile
   accessx-status/src/Makefile
 
-  battstat/apmlib/Makefile
-  battstat/help/Makefile
   battstat/Makefile
+  battstat/help/Makefile
   battstat/sounds/Makefile
+  battstat/src/Makefile
+  battstat/src/apmlib/Makefile
 
   brightness/Makefile
   brightness/icons/Makefile

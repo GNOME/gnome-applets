@@ -6,6 +6,10 @@
 
 NULL =
 
+if NEED_LIBAPM
+
+if !HAVE_LIBAPM
+
 noinst_LTLIBRARIES = libapm.la
 
 libapm_la_SOURCES = \
@@ -26,5 +30,9 @@ libapm_la_LDFLAGS = \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
+
+endif
+
+endif
 
 -include $(top_srcdir)/git.mk
