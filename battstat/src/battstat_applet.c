@@ -1638,9 +1638,7 @@ battstat_applet_factory (PanelApplet *applet,
 }
 
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("BattstatAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  battstat_applet_factory,
-				  NULL)
-      
-
+PANEL_APPLET_IN_PROCESS_FACTORY ("BattstatAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 battstat_applet_factory,
+                                 NULL)

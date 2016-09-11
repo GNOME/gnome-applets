@@ -20,23 +20,27 @@ APMDIR =
 APMINC =
 endif
 
-libexec_PROGRAMS = battstat-applet-2
+battery_status_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+battery_status_applet_lib_LTLIBRARIES = libbattery-status-applet.la
 
-battstat_applet_2_CFLAGS = \
+libbattery_status_applet_la_CPPFLAGS = \
+	-DG_LOG_DOMAIN=\"battstat_applet\" \
+	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	$(NULL)
+
+libbattery_status_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBNOTIFY_CFLAGS) \
 	$(UPOWER_CFLAGS) \
 	$(APMINC) \
 	$(ACPIINC) \
-	-DG_LOG_DOMAIN=\"battstat_applet\" \
-	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-battstat_applet_2_SOURCES = \
+libbattery_status_applet_la_SOURCES = \
 	battstat.h \
 	pixmaps.h \
 	properties.c \
@@ -50,12 +54,13 @@ battstat_applet_2_SOURCES = \
 	battstat-upower.h \
 	$(NULL)
 
-battstat_applet_2_LDFLAGS = \
+libbattery_status_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-battstat_applet_2_LDADD = \
+libbattery_status_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBNOTIFY_LIBS) \
 	$(UPOWER_LIBS) \
