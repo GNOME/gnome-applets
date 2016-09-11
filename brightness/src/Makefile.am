@@ -2,30 +2,35 @@ NULL =
 
 uidir   = $(pkgdatadir)/ui
 
-libexec_PROGRAMS=gnome-brightness-applet
+brightness_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+brightness_applet_lib_LTLIBRARIES = libbrightness-applet.la
 
-gnome_brightness_applet_CFLAGS = \
+libbrightness_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DBRIGHTNESS_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	$(NULL)
+
+libbrightness_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-gnome_brightness_applet_SOURCES = \
+libbrightness_applet_la_SOURCES = \
 	$(BUILT_SOURCES) \
 	brightness-applet.c \
 	$(NULL)
 
-gnome_brightness_applet_LDFLAGS = \
+libbrightness_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-gnome_brightness_applet_LDADD = \
+libbrightness_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(NULL)
 

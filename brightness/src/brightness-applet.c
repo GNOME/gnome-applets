@@ -883,10 +883,7 @@ gpm_applet_cb (PanelApplet *_applet, const gchar *iid, gpointer data)
 /**
  * this generates a main with a applet factory
  **/
-PANEL_APPLET_OUT_PROCESS_FACTORY
-	(/* the factory iid */
-	GPM_BRIGHTNESS_APPLET_FACTORY_ID,
-	/* generates brighness applets instead of regular gnome applets  */
-	GPM_TYPE_BRIGHTNESS_APPLET,
-	/* our callback (with no user data) */
-	gpm_applet_cb, NULL);
+PANEL_APPLET_IN_PROCESS_FACTORY (GPM_BRIGHTNESS_APPLET_FACTORY_ID,
+                                 GPM_TYPE_BRIGHTNESS_APPLET,
+                                 gpm_applet_cb,
+                                 NULL);
