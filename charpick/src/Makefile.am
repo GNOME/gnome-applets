@@ -1,30 +1,39 @@
 NULL =
 
-libexec_PROGRAMS = charpick_applet2
+uidir = $(pkgdatadir)/ui
 
-charpick_applet2_CFLAGS = \
+charpick_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+charpick_applet_lib_LTLIBRARIES = libcharacter-picker-applet.la
+
+libcharacter_picker_applet_la_CPPFLAGS = \
 	-I. \
 	-I$(srcdir) \
 	-DCHARPICK_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	$(NULL)
+
+libcharacter_picker_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GUCHARMAP_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-charpick_applet2_SOURCES = \
+libcharacter_picker_applet_la_SOURCES = \
 	charpick.c \
 	charpick.h \
 	properties.c \
 	$(NULL)
 
-charpick_applet2_LDFLAGS = \
+libcharacter_picker_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-charpick_applet2_LDADD = \
+libcharacter_picker_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(GUCHARMAP_LIBS) \
 	$(NULL)
+
+-include $(top_srcdir)/git.mk
