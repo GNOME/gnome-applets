@@ -39,6 +39,7 @@ libsticky_notes_applet_la_SOURCES = \
 	$(NULL)
 
 libsticky_notes_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
