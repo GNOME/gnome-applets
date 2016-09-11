@@ -623,6 +623,7 @@ AC_CONFIG_FILES([
   accessx-status/help/Makefile
   accessx-status/Makefile
   accessx-status/pixmaps/Makefile
+  accessx-status/src/Makefile
 
   battstat/apmlib/Makefile
   battstat/help/Makefile
