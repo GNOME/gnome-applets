@@ -2,12 +2,16 @@ NULL =
 
 uidir   = $(pkgdatadir)/ui
 
-libexec_PROGRAMS = accessx-status-applet
+accessx_status_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+accessx_status_applet_lib_LTLIBRARIES = libaccessx-status-applet.la
 
-accessx_status_applet_CFLAGS = \
+libaccessx_status_applet_la_CPPFLAGS = \
 	-DACCESSX_PIXMAPS_DIR=\""$(pkgdatadir)/accessx-status-applet/pixmaps"\" \
 	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	$(NULL)
+
+libaccessx_status_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
@@ -15,17 +19,18 @@ accessx_status_applet_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-accessx_status_applet_SOURCES = \
+libaccessx_status_applet_la_SOURCES = \
 	applet.c \
 	applet.h \
 	$(NULL)
 
-accessx_status_applet_LDFLAGS = \
+libaccessx_status_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-accessx_status_applet_LDADD = \
+libaccessx_status_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(GIO_LIBS) \
 	$(GIO_UNIX_LIBS) \

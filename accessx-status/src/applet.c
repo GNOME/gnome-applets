@@ -1317,7 +1317,7 @@ accessx_status_applet_factory (PanelApplet *applet,
 	return retval;
 }
 
-PANEL_APPLET_OUT_PROCESS_FACTORY ("AccessxStatusAppletFactory",
-				  PANEL_TYPE_APPLET,
-				  accessx_status_applet_factory,
-				  NULL)
+PANEL_APPLET_IN_PROCESS_FACTORY ("AccessxStatusAppletFactory",
+                                 PANEL_TYPE_APPLET,
+                                 accessx_status_applet_factory,
+                                 NULL)
