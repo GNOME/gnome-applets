@@ -1,40 +1,6 @@
 NULL =
 
-SUBDIRS = icons
-
-libexec_PROGRAMS=gnome-brightness-applet
-
-gnome_brightness_applet_CFLAGS = \
-	-I.					\
-	-I$(srcdir)				\
-	-DBRIGHTNESS_MENU_UI_DIR=\""$(uidir)"\"	\
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
-	$(GNOME_APPLETS_CFLAGS)			\
-	$(WARN_CFLAGS) \
-	$(AM_CFLAGS) \
-	$(NULL)
-
-gnome_brightness_applet_SOURCES =				\
-	dbus-brightness.h					\
-	dbus-brightness.c					\
-	brightness-applet.c
-
-gnome_brightness_applet_LDFLAGS = \
-	$(WARN_LDFLAGS) \
-	$(AM_LDFLAGS) \
-	$(NULL)
-
-gnome_brightness_applet_LDADD =					\
-	$(GNOME_APPLETS_LIBS)
-
-dbus-brightness.h:
-dbus-brightness.c: org.gnome.SettingsDaemon.Power.Screen.xml
-	$(AM_V_GEN) gdbus-codegen \
-		--interface-prefix=org.gnome. \
-		--generate-c-code dbus-brightness \
-		--c-namespace DBus \
-		$(srcdir)/org.gnome.SettingsDaemon.Power.Screen.xml
+SUBDIRS = icons src
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.BrightnessApplet.panel-applet.in
@@ -60,12 +26,7 @@ org.gnome.panel.applet.BrightnessAppletFactory.service: $(service_in_files)
 uidir   = $(pkgdatadir)/ui
 ui_DATA = brightness-applet-menu.xml
 
-BUILT_SOURCES = \
-	dbus-brightness.c \
-	dbus-brightness.h \
-	$(NULL)
-
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(BUILT_SOURCES) $(service_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.BrightnessApplet.panel-applet.in.in \
