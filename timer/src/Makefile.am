@@ -22,6 +22,7 @@ libtimer_applet_la_SOURCES = \
 	$(NULL)
 
 libtimer_applet_la_LDFLAGS = \
+	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
