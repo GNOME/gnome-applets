@@ -650,8 +650,9 @@ AC_CONFIG_FILES([
   brightness/icons/scalable/apps/Makefile
   brightness/icons/scalable/status/Makefile
 
-  charpick/help/Makefile
   charpick/Makefile
+  charpick/help/Makefile
+  charpick/src/Makefile
 
   command/Makefile
   command/src/Makefile
