@@ -15,16 +15,16 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-29 08:01+0000\n"
-"PO-Revision-Date: 2016-02-29 22:34+0100\n"
-"Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
+"POT-Creation-Date: 2016-07-17 17:50+0000\n"
+"PO-Revision-Date: 2016-08-20 14:47+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -38,8 +38,8 @@ msgstr "Inställningar för _tangentbordstillgänglighet"
 #: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
-#: ../multiload/multiload-applet-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../netspeed/data/netspeed-menu.xml.h:3
+#: ../multiload/multiload-applet-menu.xml.h:3
+#: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
 #: ../trashapplet/trashapplet-menu.xml.h:3
 msgid "_Help"
@@ -50,9 +50,9 @@ msgstr "_Hjälp"
 #: ../brightness/brightness-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:3
 #: ../cpufreq/cpufreq-applet-menu.xml.h:3
-#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../drivemount/drivemount-applet-menu.xml.h:2
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
+#: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
 #: ../modemlights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
@@ -74,13 +74,14 @@ msgstr ""
 #. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../cpufreq/src/cpufreq-applet.c:609
-#: ../drivemount/drivemount.c:108 ../geyes/geyes.c:178
-#: ../gweather/gweather-about.c:60 ../invest-applet/invest/about.py:29
-#: ../mini-commander/src/about.c:53 ../modemlights/modem-applet.c:1000
-#: ../multiload/main.c:62 ../netspeed/src/netspeed.c:637
+#: ../charpick/charpick.c:604 ../command/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
+#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
+#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../trashapplet/src/trashapplet.c:420
+#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -341,6 +342,18 @@ msgstr "Övervaka batteriladdning"
 msgid "Monitor a laptop's remaining power"
 msgstr "Övervaka strömkapaciteten i en bärbar dator"
 
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Inställningar"
+
 #: ../battstat/battstat_applet.ui.h:1
 msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för Batteriladdningsövervakare"
@@ -389,18 +402,6 @@ msgstr "_Varna när batteriladdningen faller till:"
 #: ../battstat/battstat_applet.ui.h:13
 msgid "_Notify when battery is fully recharged"
 msgstr "_Meddela när batteriet är helt uppladdat"
-
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "_Inställningar"
 
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
 msgid "Battstat Factory"
@@ -733,11 +734,78 @@ msgstr "Klicka för att ta bort den valda paletten"
 msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
-#: ../charpick/properties.c:521 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325
+#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
+#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "S_täng"
+
+#: ../command/command.c:119
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+msgid "Shows the output of a command"
+msgstr "Visar utdata för ett kommando"
+
+#: ../command/command.c:140
+msgid "Command Applet Preferences"
+msgstr "Inställningar för kommandominiprogram"
+
+#: ../command/command.c:153
+msgid "Command:"
+msgstr "Kommando:"
+
+#: ../command/command.c:161
+msgid "Interval (seconds):"
+msgstr "Intervall (sekunder):"
+
+#: ../command/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Maximal bredd (tecken):"
+
+#: ../command/command.c:177
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+msgid "Show icon"
+msgstr "Visa ikon"
+
+#: ../command/command.c:326
+msgid "Command Applet"
+msgstr "Kommandominiprogram"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
+msgid "Command Factory"
+msgstr "Kommandofabrik"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:2
+#: ../mini-commander/src/preferences.c:672
+msgid "Command"
+msgstr "Kommando"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
+msgid "Command to execute"
+msgstr "Kommando att utföra"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:2
+msgid "Command/script to execute to get the output"
+msgstr "Kommando/skript att utföra för att få utdata"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:3
+msgid "Interval for the command"
+msgstr "Intervall för kommandot"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:4
+msgid "Interval to execute the command (in seconds)"
+msgstr "Intervall för att utföra kommandot (i sekunder)"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
+msgid "Width of output"
+msgstr "Bredd på utdata"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:6
+msgid "Number of characters to display"
+msgstr "Antal tecken att visa"
+
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
+msgid "If applet icon is shown or not"
+msgstr "Om ikon för miniprogram visas eller inte"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -833,18 +901,6 @@ msgstr "Detta verktyg visar den aktuella skalningen utav processorfrekvensen."
 msgid "This utility shows the current CPU Frequency"
 msgstr "Detta verktyg visar den aktuella processorfrekvensen"
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
-msgid "Graphic"
-msgstr "Grafik"
-
-#: ../cpufreq/src/cpufreq-prefs.c:500
-msgid "Text"
-msgstr "Text"
-
-#: ../cpufreq/src/cpufreq-prefs.c:505
-msgid "Graphic and Text"
-msgstr "Grafik och text"
-
 #: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
 msgid "Frequency Scaling Unsupported"
 msgstr "Frekvensskalning stöds inte"
@@ -866,6 +922,18 @@ msgstr ""
 "felaktigt konfigurerad, eller så har den inte hårdvarustöd för skalning av "
 "processorfrekvens."
 
+#: ../cpufreq/src/cpufreq-prefs.c:495
+msgid "Graphic"
+msgstr "Grafik"
+
+#: ../cpufreq/src/cpufreq-prefs.c:500
+msgid "Text"
+msgstr "Text"
+
+#: ../cpufreq/src/cpufreq-prefs.c:505
+msgid "Graphic and Text"
+msgstr "Grafik och text"
+
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:1
 msgid "Change CPU Frequency scaling"
 msgstr "Ändra processorfrekvensskalning"
@@ -873,63 +941,6 @@ msgstr "Ändra processorfrekvensskalning"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Behörighet krävs för att ändra processorfrekvensskalningen."
-
-#: ../inhibit/inhibit-applet.c:85
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
-msgid "Inhibit Applet"
-msgstr "Miniprogrammet Hindra"
-
-#: ../inhibit/inhibit-applet.c:86
-msgid "Allows user to inhibit automatic power saving."
-msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge."
-
-#: ../inhibit/inhibit-applet.c:233
-msgid "Cannot connect to gnome-session"
-msgstr "Kan inte ansluta till gnome-session"
-
-#: ../inhibit/inhibit-applet.c:236
-msgid "Automatic sleep inhibited"
-msgstr "Automatiskt viloläge hindrat"
-
-#: ../inhibit/inhibit-applet.c:238
-msgid "Automatic sleep enabled"
-msgstr "Automatiskt viloläge aktiverat"
-
-#: ../inhibit/inhibit-applet.c:266
-msgid "Manual inhibit"
-msgstr "Hindra manuellt"
-
-#: ../inhibit/inhibit-applet.c:298
-msgid ""
-"Inhibit Applet is free software; you can redistribute it and/or\n"
-"modify it under the terms of the GNU General Public License\n"
-"as published by the Free Software Foundation; either version 2\n"
-"of the License, or (at your option) any later version."
-msgstr ""
-"Miniprogrammet Hindra är fri programvara. Du kan distribuera det och/eller\n"
-"modifiera det under villkoren i GNU General Public License\n"
-"publicerad av Free Software Foundation, antingen version 2\n"
-"eller (om du så vill) någon senare version."
-
-#: ../inhibit/inhibit-applet.c:302
-msgid ""
-"Inhibit Applet is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details."
-msgstr ""
-"Miniprogrammet Hindra distribueras i hopp om att det ska vara användbart,\n"
-"men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om\n"
-"SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se\n"
-"GNU General Public License för ytterligare information."
-
-#: ../inhibit/inhibit-applet.c:320
-msgid "Copyright © 2006-2007 Richard Hughes"
-msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge"
 
 #: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
 msgid "(mounted)"
@@ -1376,6 +1387,18 @@ msgstr "Sök _nästa"
 msgid "Location"
 msgstr "Plats"
 
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Fabrik för miniprogrammet Gweather"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Fabrik för skapande av väderminiprogrammet."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
+
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
 msgid "Update the data automatically"
 msgstr "Uppdatera data automatiskt"
@@ -1420,52 +1443,62 @@ msgstr "Visa detaljerad prognos"
 msgid "If true, additional details about weather will be downloaded and shown."
 msgstr "Om sant kommer ytterligare detaljer om väder att hämtas och visas."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Fabrik för miniprogrammet Gweather"
+#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+msgid "Inhibit Applet"
+msgstr "Miniprogrammet Hindra"
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Fabrik för skapande av väderminiprogrammet."
+#: ../inhibit/inhibit-applet.c:86
+msgid "Allows user to inhibit automatic power saving."
+msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge."
 
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
+#: ../inhibit/inhibit-applet.c:233
+msgid "Cannot connect to gnome-session"
+msgstr "Kan inte ansluta till gnome-session"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
-msgid "Invest Applet Factory"
-msgstr "Fabrik för miniprogrammet Investera"
+#: ../inhibit/inhibit-applet.c:236
+msgid "Automatic sleep inhibited"
+msgstr "Automatiskt viloläge hindrat"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the invest applet."
-msgstr "Fabrik för skapande av miniprogrammet Investera."
+#: ../inhibit/inhibit-applet.c:238
+msgid "Automatic sleep enabled"
+msgstr "Automatiskt viloläge aktiverat"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
-msgid "Invest"
-msgstr "Investera"
+#: ../inhibit/inhibit-applet.c:266
+msgid "Manual inhibit"
+msgstr "Hindra manuellt"
 
-#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
-msgid "Track your invested money."
-msgstr "Bevaka dina investerade pengar."
+#: ../inhibit/inhibit-applet.c:298
+msgid ""
+"Inhibit Applet is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
+msgstr ""
+"Miniprogrammet Hindra är fri programvara. Du kan distribuera det och/eller\n"
+"modifiera det under villkoren i GNU General Public License\n"
+"publicerad av Free Software Foundation, antingen version 2\n"
+"eller (om du så vill) någon senare version."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:1
-msgid "Refresh"
-msgstr "Uppdatera"
+#: ../inhibit/inhibit-applet.c:302
+msgid ""
+"Inhibit Applet is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
+msgstr ""
+"Miniprogrammet Hindra distribueras i hopp om att det ska vara användbart,\n"
+"men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om\n"
+"SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se\n"
+"GNU General Public License för ytterligare information."
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:2
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Inställningar"
+#: ../inhibit/inhibit-applet.c:320
+msgid "Copyright © 2006-2007 Richard Hughes"
+msgstr "Copyright © 2006-2007 Richard Hughes"
 
-#: ../invest-applet/data/invest-applet-menu.xml.h:3
-msgid "Help"
-msgstr "Hjälp"
-
-#: ../invest-applet/data/invest-applet-menu.xml.h:4
-msgid "About"
-msgstr "Om"
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Tillåter användaren att hindra automatiskt energibesparingsläge"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/chart.py:108
@@ -1653,6 +1686,41 @@ msgstr "Alt_ernativ"
 #: ../invest-applet/data/financialchart.ui.h:60
 msgid "Downloading chart from <b>Yahoo!</b>"
 msgstr "Hämtar diagram från <b>Yahoo!</b>"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:1
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:2
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:3
+msgid "Help"
+msgstr "Hjälp"
+
+#: ../invest-applet/data/invest-applet-menu.xml.h:4
+msgid "About"
+msgstr "Om"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:1
+msgid "Invest Applet Factory"
+msgstr "Fabrik för miniprogrammet Investera"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the invest applet."
+msgstr "Fabrik för skapande av miniprogrammet Investera."
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
+#: ../invest-applet/invest/about.py:17
+msgid "Invest"
+msgstr "Investera"
+
+#: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
+#: ../invest-applet/invest/about.py:20
+msgid "Track your invested money."
+msgstr "Bevaka dina investerade pengar."
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1871,6 +1939,41 @@ msgstr "Kommandorad"
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ange ett kommando här och Gnome kommer att utföra det åt dig"
 
+#: ../mini-commander/src/mini-commander_applet.c:237
+#: ../mini-commander/src/mini-commander_applet.c:241
+msgid "Browser"
+msgstr "Bläddrare"
+
+#: ../mini-commander/src/mini-commander_applet.c:242
+msgid "Click this button to start the browser"
+msgstr "Klicka på denna knapp för att starta webbläsaren"
+
+#: ../mini-commander/src/mini-commander_applet.c:255
+#: ../mini-commander/src/mini-commander_applet.c:259
+msgid "History"
+msgstr "Historik"
+
+#: ../mini-commander/src/mini-commander_applet.c:260
+msgid "Click this button for the list of previous commands"
+msgstr "Klicka på denna knapp för listan med tidigare kommandon"
+
+#: ../mini-commander/src/mini-commander_applet.c:348
+msgid "Command line has been disabled by your system administrator"
+msgstr "Kommandoraden har inaktiverats av din systemadministratör"
+
+#: ../mini-commander/src/mini-commander_applet.c:363
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Kommandorad"
+
+#: ../mini-commander/src/mini-commander_applet.c:411
+msgid "Mini-Commander applet"
+msgstr "Miniprogrammet Mini-Commander"
+
+#: ../mini-commander/src/mini-commander_applet.c:412
+msgid "This applet adds a command line to the panel"
+msgstr "Detta miniprogram lägger till en kommandorad på panelen"
+
 #: ../mini-commander/src/mini-commander.ui.h:1
 msgid "Command Line Preferences"
 msgstr "Inställningar för kommandorad"
@@ -1943,41 +2046,6 @@ msgstr "_Mönster:"
 #: ../mini-commander/src/mini-commander.ui.h:19
 msgid "Co_mmand:"
 msgstr "Ko_mmando:"
-
-#: ../mini-commander/src/mini-commander_applet.c:237
-#: ../mini-commander/src/mini-commander_applet.c:241
-msgid "Browser"
-msgstr "Bläddrare"
-
-#: ../mini-commander/src/mini-commander_applet.c:242
-msgid "Click this button to start the browser"
-msgstr "Klicka på denna knapp för att starta webbläsaren"
-
-#: ../mini-commander/src/mini-commander_applet.c:255
-#: ../mini-commander/src/mini-commander_applet.c:259
-msgid "History"
-msgstr "Historik"
-
-#: ../mini-commander/src/mini-commander_applet.c:260
-msgid "Click this button for the list of previous commands"
-msgstr "Klicka på denna knapp för listan med tidigare kommandon"
-
-#: ../mini-commander/src/mini-commander_applet.c:348
-msgid "Command line has been disabled by your system administrator"
-msgstr "Kommandoraden har inaktiverats av din systemadministratör"
-
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Kommandorad"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
-msgid "Mini-Commander applet"
-msgstr "Miniprogrammet Mini-Commander"
-
-#: ../mini-commander/src/mini-commander_applet.c:412
-msgid "This applet adds a command line to the panel"
-msgstr "Detta miniprogram lägger till en kommandorad på panelen"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
@@ -2080,10 +2148,6 @@ msgstr "Du får inte ange dubblettmönster"
 #: ../mini-commander/src/preferences.c:662
 msgid "Pattern"
 msgstr "Mönster"
-
-#: ../mini-commander/src/preferences.c:672
-msgid "Command"
-msgstr "Kommando"
 
 #: ../modemlights/modem-applet.c:161
 #: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
@@ -2583,6 +2647,78 @@ msgstr "_Skriv"
 msgid "System Monitor Preferences"
 msgstr "Inställningar för Systemövervakare"
 
+#: ../netspeed/data/netspeed-menu.xml.h:1
+msgid "Device _Details"
+msgstr "Enhets_detaljer"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
+msgid "Show sum"
+msgstr "Visa summa"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
+msgid "Show sum instead of in &amp; out"
+msgstr "Visa summa istället för in &amp; ut"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
+msgid "Show bits"
+msgstr "Visa bitar"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
+msgid "Show bits instead of bytes"
+msgstr "Visa bitar istället för byte"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
+msgid "Change icon"
+msgstr "Ändra ikon"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
+msgid "Change icon according to the selected device"
+msgstr "Ändra ikon efter den valda enheten"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
+msgid "Auto change device"
+msgstr "Byt enhet automatiskt"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
+msgid "Refresh time"
+msgstr "Uppdateringstid"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
+msgid "Refresh time in milliseconds"
+msgstr "Uppdateringstiden i millisekunder"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
+msgid "Network device"
+msgstr "Nätverksenhet"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
+msgid "Up command"
+msgstr "Uppkommando"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
+msgid "Down command"
+msgstr "Nerkommando"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
+msgid "In graph color"
+msgstr "Indiagramfärg"
+
+#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
+msgid "Out graph color"
+msgstr "Utdiagramfärg"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
+msgid "Netspeed Applet Factory"
+msgstr "Miniprogramsfabrik för Näthastighet"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
+msgid "Netspeed Applet"
+msgstr "Miniprogrammet Näthastighet"
+
+#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
+msgid "Network Monitor"
+msgstr "Nätverksövervakare"
+
 #: ../netspeed/src/netspeed.c:368
 msgid "b/s"
 msgstr "b/s"
@@ -2794,78 +2930,6 @@ msgstr "Ändra _ikon efter den valda enheten"
 msgid "Netspeed Preferences"
 msgstr "Inställningar för Näthastighet"
 
-#: ../netspeed/data/netspeed-menu.xml.h:1
-msgid "Device _Details"
-msgstr "Enhets_detaljer"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:1
-msgid "Netspeed Applet Factory"
-msgstr "Miniprogramsfabrik för Näthastighet"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:2
-msgid "Netspeed Applet"
-msgstr "Miniprogrammet Näthastighet"
-
-#: ../netspeed/data/org.gnome.panel.Netspeed.panel-applet.in.in.h:3
-msgid "Network Monitor"
-msgstr "Nätverksövervakare"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-msgid "Show sum"
-msgstr "Visa summa"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-msgid "Show sum instead of in &amp; out"
-msgstr "Visa summa istället för in &amp; ut"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-msgid "Show bits"
-msgstr "Visa bitar"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-msgid "Show bits instead of bytes"
-msgstr "Visa bitar istället för byte"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-msgid "Change icon"
-msgstr "Ändra ikon"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-msgid "Change icon according to the selected device"
-msgstr "Ändra ikon efter den valda enheten"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:7
-msgid "Auto change device"
-msgstr "Byt enhet automatiskt"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-msgid "Refresh time"
-msgstr "Uppdateringstid"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-msgid "Refresh time in milliseconds"
-msgstr "Uppdateringstiden i millisekunder"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-msgid "Network device"
-msgstr "Nätverksenhet"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-msgid "Up command"
-msgstr "Uppkommando"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-msgid "Down command"
-msgstr "Nerkommando"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-msgid "In graph color"
-msgstr "Indiagramfärg"
-
-#: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-msgid "Out graph color"
-msgstr "Utdiagramfärg"
-
 #: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Miniprogramsfabrik för klisterlappar"
@@ -2880,6 +2944,176 @@ msgstr "Klisterlappar"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+msgid "Default width for new notes"
+msgstr "Standardbredd för nya lappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+msgid "Default width for new sticky notes in pixels."
+msgstr "Standardbredd för nya klisterlappar i bildpunkter."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+msgid "Default height for new notes"
+msgstr "Standardhöjd för nya lappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+msgid "Default color for new notes"
+msgstr "Standardfärg för nya lappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+msgid ""
+"Default color for new sticky notes. This can be standard name, hexadecimal "
+"value, RGB color or RGBA color."
+msgstr ""
+"Standardfärg för nya klisterlappar. Detta kan vara standardnamn, "
+"hexadecimalt värde, RGB-färg eller RGBA-färg."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+msgid "Default color for font"
+msgstr "Standardfärg för typsnitt"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+msgid ""
+"Default font color for new sticky notes. This can be standard name, "
+"hexadecimal value, RGB color or RGBA color."
+msgstr ""
+"Standardtypsnittsfärg för nya klisterlappar. Detta kan vara standardnamn, "
+"hexadecimalt värde, RGB-färg eller RGBA-färg."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+msgid "Default font for new notes"
+msgstr "Standardtypsnitt för nya lappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\"."
+msgstr ""
+"Standardtypsnitt för nya klisterlappar. Detta måste vara ett Pango-"
+"typsnittsnamn, till exempel \"Sans Italic 10\"."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+msgid "Sticky notes' workspace stickyness"
+msgstr "Arbetsyteklistrighet för klisterlappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Anger huruvida klisterlapparna är synliga på ALLA arbetsytor på skrivbordet "
+"eller inte."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+msgid "Sticky notes' locked state"
+msgstr "Låst tillstånd för klisterlappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr "Anger huruvida klisterlapparna är låsta (oredigerbara) eller inte."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+msgid "Date format of note's title"
+msgstr "Datumformat för lappens titel"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Som standard får klisterlappar det aktuella datumet som titel när de skapas. "
+"Detta format används. Allt som kan tolkas av strftime() är giltigt."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+msgid "Whether to use the default system color"
+msgstr "Huruvida standardsystemfärgen ska användas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Om detta alternativ är inaktiverat kommer en anpassad färg att användas som "
+"standardfärgen för alla klisterlappar."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+msgid "Whether to use the default system font"
+msgstr "Huruvida standardsystemtypsnittet ska användas"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Om detta alternativ är inaktiverat kommer ett anpassat typsnitt att användas "
+"som standardtypsnittet för alla klisterlappar."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+msgid "Whether to force the default color and font on all notes"
+msgstr ""
+"Huruvida standardfärgen och standardtypsnittet ska tvingas på alla lappar"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Om detta alternativ är aktiverat kommer de anpassade färgerna och typsnitten "
+"som har tilldelats till individuella lappar att ignoreras."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+msgid "Whether to hide all notes when the desktop is selected"
+msgstr "Huruvida alla anteckningar ska döljas när skrivbordet markeras"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+msgid ""
+"If this option is enabled, selecting the desktop in any way will "
+"automatically hide all the open notes."
+msgstr ""
+"Om detta alternativ aktiveras kommer markering av skrivbordet, på valfritt "
+"sätt, att automatiskt dölja alla öppnade anteckningar."
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Huruvida det ska frågas efter bekräftelse vid borttagning av en lapp"
+
+#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+msgid "Empty notes are always deleted without confirmation."
+msgstr "Tomma lappar tas alltid bort utan bekräftelse."
+
+#: ../stickynotes/stickynotes_applet.c:539
+#, c-format
+msgid "%d note"
+msgid_plural "%d notes"
+msgstr[0] "%d lapp"
+msgstr[1] "%d lappar"
+
+#: ../stickynotes/stickynotes_applet.c:540
+msgid "Show sticky notes"
+msgstr "Visa klisterlappar"
+
+#: ../stickynotes/stickynotes_applet_callbacks.c:387
+msgid "Sticky Notes for the GNOME Desktop Environment"
+msgstr "Klisterlappar för skrivbordsmiljön GNOME"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:1
+#: ../stickynotes/stickynotes-note-menu.xml.h:1
+msgid "_New Note"
+msgstr "_Ny lapp"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+msgid "Hi_de Notes"
+msgstr "Döl_j lappar"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+msgid "_Lock Notes"
+msgstr "_Lås lappar"
+
+#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+msgid "_Delete Notes"
+msgstr "_Ta bort lappar"
+
 #: ../stickynotes/stickynotes.c:591
 msgid "This note is locked."
 msgstr "Denna klisterlapp är låst."
@@ -2888,15 +3122,6 @@ msgstr "Denna klisterlapp är låst."
 msgid "This note is unlocked."
 msgstr "Denna klisterlapp är olåst."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
-msgid "Delete this sticky note?"
-msgstr "Ta bort denna klisterlapp?"
-
-#: ../stickynotes/stickynotes-delete.ui.h:2
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-msgid "This cannot be undone."
-msgstr "Detta går inte att ångra."
-
 #: ../stickynotes/stickynotes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "_Ta bort alla"
@@ -2904,6 +3129,23 @@ msgstr "_Ta bort alla"
 #: ../stickynotes/stickynotes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Ta bort alla klisterlappar?"
+
+#: ../stickynotes/stickynotes-delete-all.ui.h:3
+#: ../stickynotes/stickynotes-delete.ui.h:2
+msgid "This cannot be undone."
+msgstr "Detta går inte att ångra."
+
+#: ../stickynotes/stickynotes-delete.ui.h:1
+msgid "Delete this sticky note?"
+msgstr "Ta bort denna klisterlapp?"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:2
+msgid "_Delete Note..."
+msgstr "_Ta bort klisterlapp…"
+
+#: ../stickynotes/stickynotes-note-menu.xml.h:3
+msgid "_Lock Note"
+msgstr "_Lås klisterlapp"
 
 #: ../stickynotes/stickynotes-note.ui.h:1
 msgid "Sticky Note"
@@ -3062,191 +3304,78 @@ msgstr "Välj ett typsnitt för klisterlappen"
 msgid "Pick a font for the sticky note"
 msgstr "Välj ett typsnitt för den klistra lappen"
 
-#: ../stickynotes/stickynotes_applet.c:539
-#, c-format
-msgid "%d note"
-msgid_plural "%d notes"
-msgstr[0] "%d lapp"
-msgstr[1] "%d lappar"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+msgid "Timer Factory"
+msgstr "Tidtagarfabrik"
 
-#: ../stickynotes/stickynotes_applet.c:540
-msgid "Show sticky notes"
-msgstr "Visa klisterlappar"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+msgid "Timer"
+msgstr "Tidtagare"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
-msgid "Sticky Notes for the GNOME Desktop Environment"
-msgstr "Klisterlappar för skrivbordsmiljön GNOME"
+#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timerapplet/timerapplet.c:285
+msgid "Start a timer and receive a notification when it is finished"
+msgstr "Starta en tidtagare och erhåll en avisering då den är färdig"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
-msgid "_New Note"
-msgstr "_Ny lapp"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+msgid "'Timer'"
+msgstr "'Tidtagare'"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
-msgid "Hi_de Notes"
-msgstr "Döl_j lappar"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+msgid "Name of timer"
+msgstr "Namn på tidtagare"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
-msgid "_Lock Notes"
-msgstr "_Lås lappar"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+msgid "Duration of timer in seconds"
+msgstr "Längd på tidtagare i sekunder"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
-msgid "_Delete Notes"
-msgstr "_Ta bort lappar"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+msgid "Show notification popup when timer finish"
+msgstr "Visa aviseringspoppupp då tidtagaren är klar"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
-msgid "_Delete Note..."
-msgstr "_Ta bort klisterlapp…"
+#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+msgid "Show dialog window when timer finish"
+msgstr "Visa dialogfönster då tidtagare är färdig"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
-msgid "_Lock Note"
-msgstr "_Lås klisterlapp"
+#: ../timerapplet/timerapplet.c:158
+msgid "Finished"
+msgstr "Färdig"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
-msgid "Trash"
-msgstr "Papperskorg"
+#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+msgid "Timer finished!"
+msgstr "Tidtagare färdig!"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
-msgid "Go to Trash"
-msgstr "Gå till papperskorgen"
+#: ../timerapplet/timerapplet.c:321
+msgid "Timer Applet Preferences"
+msgstr "Inställningar för tidtagarminiprogram"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
-msgid "Default width for new notes"
-msgstr "Standardbredd för nya lappar"
+#: ../timerapplet/timerapplet.c:334
+msgid "Name:"
+msgstr "Namn: "
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
-msgid "Default width for new sticky notes in pixels."
-msgstr "Standardbredd för nya klisterlappar i bildpunkter."
+#: ../timerapplet/timerapplet.c:343
+msgid "Hours:"
+msgstr "Timmar:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
-msgid "Default height for new notes"
-msgstr "Standardhöjd för nya lappar"
+#: ../timerapplet/timerapplet.c:354
+msgid "Minutes:"
+msgstr "Minuter:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
-msgid "Default color for new notes"
-msgstr "Standardfärg för nya lappar"
+#: ../timerapplet/timerapplet.c:365
+msgid "Seconds:"
+msgstr "Sekunder:"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-msgid ""
-"Default color for new sticky notes. This can be standard name, hexadecimal "
-"value, RGB color or RGBA color."
-msgstr ""
-"Standardfärg för nya klisterlappar. Detta kan vara standardnamn, "
-"hexadecimalt värde, RGB-färg eller RGBA-färg."
+#: ../timerapplet/timerapplet.c:376
+msgid "Show notification popup"
+msgstr "Visa aviseringspoppupp"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
-msgid "Default color for font"
-msgstr "Standardfärg för typsnitt"
+#: ../timerapplet/timerapplet.c:380
+msgid "Show dialog"
+msgstr "Visa dialog"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-msgid ""
-"Default font color for new sticky notes. This can be standard name, "
-"hexadecimal value, RGB color or RGBA color."
-msgstr ""
-"Standardtypsnittsfärg för nya klisterlappar. Detta kan vara standardnamn, "
-"hexadecimalt värde, RGB-färg eller RGBA-färg."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
-msgid "Default font for new notes"
-msgstr "Standardtypsnitt för nya lappar"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\"."
-msgstr ""
-"Standardtypsnitt för nya klisterlappar. Detta måste vara ett Pango-"
-"typsnittsnamn, till exempel \"Sans Italic 10\"."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
-msgid "Sticky notes' workspace stickyness"
-msgstr "Arbetsyteklistrighet för klisterlappar"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
-msgstr ""
-"Anger huruvida klisterlapparna är synliga på ALLA arbetsytor på skrivbordet "
-"eller inte."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
-msgid "Sticky notes' locked state"
-msgstr "Låst tillstånd för klisterlappar"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
-msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Anger huruvida klisterlapparna är låsta (oredigerbara) eller inte."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
-msgid "Date format of note's title"
-msgstr "Datumformat för lappens titel"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
-msgstr ""
-"Som standard får klisterlappar det aktuella datumet som titel när de skapas. "
-"Detta format används. Allt som kan tolkas av strftime() är giltigt."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
-msgid "Whether to use the default system color"
-msgstr "Huruvida standardsystemfärgen ska användas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
-msgstr ""
-"Om detta alternativ är inaktiverat kommer en anpassad färg att användas som "
-"standardfärgen för alla klisterlappar."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
-msgid "Whether to use the default system font"
-msgstr "Huruvida standardsystemtypsnittet ska användas"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
-msgstr ""
-"Om detta alternativ är inaktiverat kommer ett anpassat typsnitt att användas "
-"som standardtypsnittet för alla klisterlappar."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
-msgid "Whether to force the default color and font on all notes"
-msgstr ""
-"Huruvida standardfärgen och standardtypsnittet ska tvingas på alla lappar"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
-msgstr ""
-"Om detta alternativ är aktiverat kommer de anpassade färgerna och typsnitten "
-"som har tilldelats till individuella lappar att ignoreras."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
-msgid "Whether to hide all notes when the desktop is selected"
-msgstr "Huruvida alla anteckningar ska döljas när skrivbordet markeras"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
-msgid ""
-"If this option is enabled, selecting the desktop in any way will "
-"automatically hide all the open notes."
-msgstr ""
-"Om detta alternativ aktiveras kommer markering av skrivbordet, på valfritt "
-"sätt, att automatiskt dölja alla öppnade anteckningar."
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
-msgid "Whether to ask for confirmation when deleting a note"
-msgstr "Huruvida det ska frågas efter bekräftelse vid borttagning av en lapp"
-
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
-msgid "Empty notes are always deleted without confirmation."
-msgstr "Tomma lappar tas alltid bort utan bekräftelse."
+#: ../timerapplet/timerapplet.c:402
+msgid "Timer Applet"
+msgstr "Tidtagarminiprogram"
 
 #: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
@@ -3363,6 +3492,14 @@ msgstr ""
 "program. Om inte, skriv till Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA  02110-1301, USA."
 
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+msgid "Trash"
+msgstr "Papperskorg"
+
+#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+msgid "Go to Trash"
+msgstr "Gå till papperskorgen"
+
 #: ../trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "%d Item in Trash"
@@ -3439,10 +3576,6 @@ msgstr ""
 msgid "_Empty Trash"
 msgstr "Töm _papperskorgen"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
-msgid "_Open Trash"
-msgstr "_Öppna papperskorgen"
-
 #: ../trashapplet/trashapplet-empty-progress.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Tömmer papperskorgen"
@@ -3450,6 +3583,10 @@ msgstr "Tömmer papperskorgen"
 #: ../trashapplet/trashapplet-empty-progress.ui.h:2
 msgid "From:"
 msgstr "Från:"
+
+#: ../trashapplet/trashapplet-menu.xml.h:1
+msgid "_Open Trash"
+msgstr "_Öppna papperskorgen"
 
 # Osäker
 #: ../windowpicker/src/task-item.c:812
