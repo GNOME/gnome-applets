@@ -19,14 +19,14 @@
 # This file is distributed under the same license as the window-picker-applet package.
 # Kyle Nitzsche <kyle.nitzsche@canonical.com>, 2009.
 # 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015., 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-05 07:14+0000\n"
+"POT-Creation-Date: 2016-08-15 15:54+0000\n"
 "PO-Revision-Date: 2016-05-26 12:57+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
@@ -52,7 +52,7 @@ msgstr "Preferencias de accesibilidad del _teclado"
 #: ../multiload/multiload-applet-menu.xml.h:3
 #: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
 #: ../stickynotes/stickynotes-applet-menu.xml.h:6
-#: ../trashapplet/trashapplet-menu.xml.h:3
+#: ../trash/src/trash-menu.xml.h:3
 msgid "_Help"
 msgstr "Ay_uda"
 
@@ -69,8 +69,8 @@ msgstr "Ay_uda"
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
+#: ../tracker-search-bar/src/tracker-search-bar-menu.xml.h:1
+#: ../trash/src/trash-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "Acerca _de"
 
@@ -86,13 +86,13 @@ msgstr ""
 #. "documenters",        documenters,
 #: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
 #: ../charpick/charpick.c:604 ../command/command.c:120
-#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
+#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:100
 #: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
 #: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
 #: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
 #: ../netspeed/src/netspeed.c:637
 #: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
+#: ../timer/src/timer-applet.c:286 ../trash/src/trash-applet.c:419
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>\n"
@@ -312,12 +312,12 @@ msgstr "Estado de la batería desconocido"
 msgid "N/A"
 msgstr "N/D"
 
-#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
+#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:128
 #: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
 #: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
 #: ../stickynotes/stickynotes_applet_callbacks.c:358
 #: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:386
+#: ../trash/src/trash-applet.c:385
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
@@ -579,7 +579,7 @@ msgstr ""
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program; if not, write to the Free Software\n"
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"Foundation, Inc, 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
 msgstr ""
 "Debe haber recibido una copia de la Licencia pública general GNU\n"
@@ -664,7 +664,7 @@ msgid "List of strings containing the available palettes."
 msgstr "Lista de cadenas que contienen las paletas disponibles."
 
 #: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
-#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
+#: ../trash/src/trash-applet.c:496 ../trash/src/trash-empty.c:341
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -724,7 +724,7 @@ msgstr "Botón «Editar»"
 msgid "Click to edit the selected palette"
 msgstr "Pulse para editar la paleta seleccionada"
 
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
+#: ../charpick/properties.c:458 ../trash/src/trash-applet.c:498
 msgid "_Delete"
 msgstr "_Eliminar"
 
@@ -741,7 +741,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias de la paleta de caracteres"
 
 #: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
+#: ../netspeed/src/preferences.c:325 ../timer/src/timer-applet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Cerrar"
@@ -752,12 +752,10 @@ msgid "Shows the output of a command"
 msgstr "Muestra la salida de un comando"
 
 #: ../command/command.c:140
-#| msgid "Command Line Preferences"
 msgid "Command Applet Preferences"
 msgstr "Preferencias de la miniaplicaicón de comandos"
 
 #: ../command/command.c:153
-#| msgid "Co_mmand:"
 msgid "Command:"
 msgstr "Comando:"
 
@@ -771,12 +769,10 @@ msgstr "Anchura máxima (caracteres):"
 
 #: ../command/command.c:177
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
-#| msgid "Show notification"
 msgid "Show icon"
 msgstr "Mostrar icono"
 
 #: ../command/command.c:326
-#| msgid "Command line"
 msgid "Command Applet"
 msgstr "Miniaplicaicón de comandos"
 
@@ -792,7 +788,6 @@ msgid "Command"
 msgstr "Comando"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
-#| msgid "Cannot execute '%s'"
 msgid "Command to execute"
 msgstr "Comando que ejecutar"
 
@@ -809,7 +804,6 @@ msgid "Interval to execute the command (in seconds)"
 msgstr "Intervalo para ejecutar el comando (en segundos)"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
-#| msgid "Width of the applet"
 msgid "Width of output"
 msgstr "Anchura de la salida"
 
@@ -1002,11 +996,11 @@ msgstr "_Montar %s"
 msgid "_Eject %s"
 msgstr "_Expulsar %s"
 
-#: ../drivemount/drivemount.c:105
+#: ../drivemount/drivemount.c:97
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Miniaplicación para montar y desmontar volúmenes de bloques."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
+#: ../drivemount/drivemount.c:156 ../drivemount/drivemount.c:190
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Montador de discos"
@@ -1381,8 +1375,7 @@ msgstr "minutos"
 msgid "Display"
 msgstr "Visor"
 
-#: ../gweather/gweather-pref.c:979
-#: ../mini-commander/src/mini-commander.ui.h:12
+#: ../gweather/gweather-pref.c:979 ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "General"
 
@@ -3343,178 +3336,170 @@ msgstr "Seleccionar una tipografía para la nota"
 msgid "Pick a font for the sticky note"
 msgstr "Seleccione una tipografía para la nota adhesiva"
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
 msgid "Timer Factory"
 msgstr ""
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
 msgid "Timer"
 msgstr "Temporizador"
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
-#: ../timerapplet/timerapplet.c:285
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timer/src/timer-applet.c:285
 msgid "Start a timer and receive a notification when it is finished"
 msgstr ""
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
 msgid "'Timer'"
 msgstr ""
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
 msgid "Name of timer"
 msgstr "Nombre del temporizador"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
-#| msgid "Refresh time in milliseconds"
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
 msgid "Duration of timer in seconds"
 msgstr "Duración del temporizador, en milisegundos"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
 #, fuzzy
 #| msgid "Show notifications for critical weather conditions"
 msgid "Show notification popup when timer finish"
 msgstr "Mostrar notificaciones para condiciones meteorológicas críticas"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
 msgid "Show dialog window when timer finish"
 msgstr ""
 
-#: ../timerapplet/timerapplet.c:158
-#| msgid "Finnish keymap"
+#: ../timer/src/timer-applet.c:158
 msgid "Finished"
 msgstr "Terminado"
 
-#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+#: ../timer/src/timer-applet.c:165 ../timer/src/timer-applet.c:177
 msgid "Timer finished!"
 msgstr ""
 
-#: ../timerapplet/timerapplet.c:321
-#| msgid "Geyes Preferences"
+#: ../timer/src/timer-applet.c:321
 msgid "Timer Applet Preferences"
 msgstr "Preferencias de la miniaplicación de temporizador"
 
-#: ../timerapplet/timerapplet.c:334
+#: ../timer/src/timer-applet.c:334
 msgid "Name:"
 msgstr "Nombre:"
 
-#: ../timerapplet/timerapplet.c:343
+#: ../timer/src/timer-applet.c:343
 msgid "Hours:"
 msgstr "Horas:"
 
-#: ../timerapplet/timerapplet.c:354
-#| msgid "minutes"
+#: ../timer/src/timer-applet.c:354
 msgid "Minutes:"
 msgstr "Minutos:"
 
-#: ../timerapplet/timerapplet.c:365
-#| msgid "milliseconds"
+#: ../timer/src/timer-applet.c:365
 msgid "Seconds:"
 msgstr "Segundos:"
 
-#: ../timerapplet/timerapplet.c:376
-#| msgid "Show notification"
+#: ../timer/src/timer-applet.c:376
 msgid "Show notification popup"
 msgstr "Mostrar notificación emergente"
 
-#: ../timerapplet/timerapplet.c:380
-#| msgid "Show handle"
+#: ../timer/src/timer-applet.c:380
 msgid "Show dialog"
 msgstr "Mostrar diálogo"
 
-#: ../timerapplet/timerapplet.c:402
-#| msgid "Trash Applet"
+#: ../timer/src/timer-applet.c:402
 msgid "Timer Applet"
 msgstr "Miniaplicación de temporizador"
 
-#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+#: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
 msgstr "Barra de búsqueda de Tracker"
 
-#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+#: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
 msgid "Find your data quickly using Tracker"
 msgstr "Encuentre sus datos rápidamente usando Tracker"
 
-#: ../tracker-search-bar/tracker-results-window.c:718
-#: ../tracker-search-bar/tracker-results-window.c:734
+#: ../tracker-search-bar/src/tracker-results-window.c:718
+#: ../tracker-search-bar/src/tracker-results-window.c:734
 msgid "Other"
 msgstr "Otros"
 
-#: ../tracker-search-bar/tracker-results-window.c:719
+#: ../tracker-search-bar/src/tracker-results-window.c:719
 msgid "Contacts"
 msgstr "Contactos"
 
-#: ../tracker-search-bar/tracker-results-window.c:720
+#: ../tracker-search-bar/src/tracker-results-window.c:720
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: ../tracker-search-bar/tracker-results-window.c:721
+#: ../tracker-search-bar/src/tracker-results-window.c:721
 msgid "Email Addresses"
 msgstr "Direcciones de correo-e"
 
-#: ../tracker-search-bar/tracker-results-window.c:722
+#: ../tracker-search-bar/src/tracker-results-window.c:722
 msgid "Documents"
 msgstr "Documentos"
 
-#: ../tracker-search-bar/tracker-results-window.c:723
+#: ../tracker-search-bar/src/tracker-results-window.c:723
 msgid "Applications"
 msgstr "Aplicaciones"
 
-#: ../tracker-search-bar/tracker-results-window.c:724
+#: ../tracker-search-bar/src/tracker-results-window.c:724
 msgid "Images"
 msgstr "Imágenes"
 
-#: ../tracker-search-bar/tracker-results-window.c:725
+#: ../tracker-search-bar/src/tracker-results-window.c:725
 msgid "Audio"
 msgstr "Sonido"
 
-#: ../tracker-search-bar/tracker-results-window.c:726
+#: ../tracker-search-bar/src/tracker-results-window.c:726
 msgid "Folders"
 msgstr "Carpetas"
 
-#: ../tracker-search-bar/tracker-results-window.c:727
+#: ../tracker-search-bar/src/tracker-results-window.c:727
 msgid "Fonts"
 msgstr "Tipografías"
 
-#: ../tracker-search-bar/tracker-results-window.c:728
+#: ../tracker-search-bar/src/tracker-results-window.c:728
 msgid "Videos"
 msgstr "Vídeos"
 
-#: ../tracker-search-bar/tracker-results-window.c:729
+#: ../tracker-search-bar/src/tracker-results-window.c:729
 msgid "Archives"
 msgstr "Archivadores"
 
-#: ../tracker-search-bar/tracker-results-window.c:730
+#: ../tracker-search-bar/src/tracker-results-window.c:730
 msgid "Bookmarks"
 msgstr "MArcadores"
 
-#: ../tracker-search-bar/tracker-results-window.c:731
+#: ../tracker-search-bar/src/tracker-results-window.c:731
 msgid "Links"
 msgstr "Enlaces"
 
-#: ../tracker-search-bar/tracker-results-window.c:1107
+#: ../tracker-search-bar/src/tracker-results-window.c:1107
 msgid "Category"
 msgstr "Categoría"
 
-#: ../tracker-search-bar/tracker-results-window.c:1135
+#: ../tracker-search-bar/src/tracker-results-window.c:1135
 msgid "Title"
 msgstr "Título"
 
-#: ../tracker-search-bar/tracker-results-window.c:1201
+#: ../tracker-search-bar/src/tracker-results-window.c:1201
 #, c-format
 msgid "No results found for “%s”"
 msgstr "Resultados no encontrados para %s"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:1
 msgid "Copyright Tracker Authors 2005-2010"
 msgstr "Copyright autores de Tracker 2005-2010"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:2
 msgid "A search bar applet for finding content stored in Tracker"
 msgstr ""
 "Una miniaplicación de barra de búsqueda para buscar contenido guardado en "
 "Tracker"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:3
 msgid ""
 "Tracker is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -3527,7 +3512,7 @@ msgid ""
 "details.\n"
 "\n"
 "You should have received a copy of the GNU General Public License along with "
-"Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
+"Tracker; if not, write to the Free Software Foundation, Inc, 51 Franklin "
 "Street, Fifth Floor, Boston, MA  02110-1301, USA."
 msgstr ""
 "Tracker es software libre, usted puede redistribuirlo y/o modificarlo en los "
@@ -3544,26 +3529,26 @@ msgstr ""
 "Tracker; si no, puede escribir a la Fundación Software Libre, 51 Franklin "
 "Street,Fifth Floor, Boston, MA 02110-1301, USA."
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+#: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
 msgstr "Papelera"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+#: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
 msgid "Go to Trash"
 msgstr "Ir a la papelera"
 
-#: ../trashapplet/src/trashapplet.c:122
+#: ../trash/src/trash-applet.c:121
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d elemento en la papelera"
 msgstr[1] "%d elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:130
+#: ../trash/src/trash-applet.c:129
 msgid "No Items in Trash"
 msgstr "No hay elementos en la papelera"
 
-#: ../trashapplet/src/trashapplet.c:363
+#: ../trash/src/trash-applet.c:362
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3572,7 +3557,7 @@ msgstr ""
 "Error al resucitar Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:415
+#: ../trash/src/trash-applet.c:414
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3580,44 +3565,44 @@ msgstr ""
 "Un cubo de papelera que vive en su panel. Puede usarlo para ver la papelera "
 "o arrastrar y soltar elementos en la papelera."
 
-#: ../trashapplet/src/trashapplet.c:440
+#: ../trash/src/trash-applet.c:439
 msgid "Delete Immediately?"
 msgstr "¿Borrar inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:469
+#: ../trash/src/trash-applet.c:468
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "No se pueden mover los elementos a la papelera, ¿quiere borrarlos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:474
+#: ../trash/src/trash-applet.c:473
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar estos "
 "inmediatamente?"
 
-#: ../trashapplet/src/trashapplet.c:604
+#: ../trash/src/trash-applet.c:603
 msgid "Trash Applet"
 msgstr "Miniaplicación de la papelera"
 
 #. Translators: the %s in this string should be read as %d.
-#: ../trashapplet/src/trash-empty.c:70
+#: ../trash/src/trash-empty.c:70
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Quitando el elemento %s de %s"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:96
+#: ../trash/src/trash-empty.c:96
 #, c-format
 msgid "Removing: %s"
 msgstr "Quitando: %s"
 
-#: ../trashapplet/src/trash-empty.c:321
+#: ../trash/src/trash-empty.c:323
 msgid "Empty all of the items from the trash?"
 msgstr "¿Seguro que quiere vaciar todos los elementos de la papelera?"
 
-#: ../trashapplet/src/trash-empty.c:328
+#: ../trash/src/trash-empty.c:330
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3625,20 +3610,19 @@ msgstr ""
 "Si elije vaciar la papelera, todos los elementos dentro de ella se borrarán "
 "y se perderán para siempre. También puede borrarlos separadamente."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trash/src/trash-empty.c:344 ../trash/src/trash-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Vaciar papelera"
 
-#: ../trashapplet/trashapplet-empty-progress.ui.h:1
+#: ../trash/src/trash-empty.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Vaciando la papelera"
 
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+#: ../trash/src/trash-empty.ui.h:2
 msgid "From:"
 msgstr "Desde:"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
+#: ../trash/src/trash-menu.xml.h:1
 msgid "_Open Trash"
 msgstr "_Abrir papelera"
 
