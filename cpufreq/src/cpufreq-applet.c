@@ -74,9 +74,6 @@ struct _CPUFreqAppletClass {
         PanelAppletClass parent_class;
 };
 
-static void     cpufreq_applet_init              (CPUFreqApplet      *applet);
-static void     cpufreq_applet_class_init        (CPUFreqAppletClass *klass);
-
 static void     cpufreq_applet_preferences_cb    (GSimpleAction *action,
                                                   GVariant      *parameter,
                                                   gpointer       user_data);

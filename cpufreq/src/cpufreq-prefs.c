@@ -55,8 +55,6 @@ struct _CPUFreqPrefsPrivate {
 #define CPUFREQ_PREFS_GET_PRIVATE(object) \
         (G_TYPE_INSTANCE_GET_PRIVATE ((object), CPUFREQ_TYPE_PREFS, CPUFreqPrefsPrivate))
 
-static void cpufreq_prefs_init                      (CPUFreqPrefs      *prefs);
-static void cpufreq_prefs_class_init                (CPUFreqPrefsClass *klass);
 static void cpufreq_prefs_finalize                  (GObject           *object);
 
 static void cpufreq_prefs_set_property              (GObject           *object,

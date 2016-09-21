@@ -50,8 +50,6 @@ struct _CPUFreqPopupPrivate {
 #define CPUFREQ_POPUP_GET_PRIVATE(object) \
         (G_TYPE_INSTANCE_GET_PRIVATE ((object), CPUFREQ_TYPE_POPUP, CPUFreqPopupPrivate))
 
-static void cpufreq_popup_init       (CPUFreqPopup      *popup);
-static void cpufreq_popup_class_init (CPUFreqPopupClass *klass);
 static void cpufreq_popup_finalize   (GObject           *object);
 
 G_DEFINE_TYPE (CPUFreqPopup, cpufreq_popup, G_TYPE_OBJECT)
