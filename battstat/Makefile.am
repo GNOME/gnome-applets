@@ -7,8 +7,6 @@ ACPIINC= @ACPIINC@
 
 SUBDIRS = help sounds src
 
-DIST_SUBDIRS = help sounds
-
 gsettings_schemas_in_in = \
 	org.gnome.gnome-applets.battstat.gschema.xml.in.in
 
