@@ -272,7 +272,6 @@ static void
 menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 {
 	gchar *string;
-	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
 	
 	string = g_object_get_data (G_OBJECT (menuitem), "string");
 	if (g_ascii_strcasecmp (curr_data->charlist, string) == 0)
@@ -578,8 +577,6 @@ about (GSimpleAction *action,
        GVariant      *parameter,
        gpointer       user_data)
 {
-  charpick_data *curr_data = (charpick_data *) user_data;
-
   static const char * const authors[] = {
 	  "Alexandre Muñiz <munizao@xprt.net>",
 	  "Kevin Vandersloot",
