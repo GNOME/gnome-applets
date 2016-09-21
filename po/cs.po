@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-30 07:09+0000\n"
-"PO-Revision-Date: 2016-03-30 17:40+0200\n"
+"POT-Creation-Date: 2016-09-21 12:30+0000\n"
+"PO-Revision-Date: 2016-09-21 21:38+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -43,16 +43,16 @@ msgstr "Předvolby zpřístupnění _klávesnice"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:2
 #: ../battstat/battstat-applet-menu.xml.h:2
-#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/properties.c:522
+#: ../charpick/charpick-applet-menu.xml.h:2 ../charpick/src/properties.c:522
 #: ../cpufreq/cpufreq-applet-menu.xml.h:2
 #: ../drivemount/drivemount-applet-menu.xml.h:1
-#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/themes.c:295
+#: ../geyes/geyes-applet-menu.xml.h:2 ../geyes/src/themes.c:295
 #: ../gweather/gweather-applet-menu.xml.h:4
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:2
 #: ../multiload/multiload-applet-menu.xml.h:3
 #: ../netspeed/data/netspeed-menu.xml.h:3 ../netspeed/src/preferences.c:324
-#: ../stickynotes/stickynotes-applet-menu.xml.h:6
-#: ../trashapplet/trashapplet-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:6
+#: ../trash/src/trash-menu.xml.h:3
 msgid "_Help"
 msgstr "Nápo_věda"
 
@@ -65,32 +65,29 @@ msgstr "Nápo_věda"
 #: ../geyes/geyes-applet-menu.xml.h:3 ../gweather/gweather-applet-menu.xml.h:5
 #: ../inhibit/inhibit-applet-menu.xml.h:1
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:3
-#: ../modemlights/modem-applet-menu.xml.h:4
+#: ../modem-lights/modem-applet-menu.xml.h:4
 #: ../multiload/multiload-applet-menu.xml.h:4
 #: ../netspeed/data/netspeed-menu.xml.h:4
-#: ../stickynotes/stickynotes-applet-menu.xml.h:7
-#: ../tracker-search-bar/tracker-search-bar-menu.xml.h:1
-#: ../trashapplet/trashapplet-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:7
+#: ../tracker-search-bar/src/tracker-search-bar-menu.xml.h:1
+#: ../trash/src/trash-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: ../accessx-status/applet.c:138
+#: ../accessx-status/src/applet.c:138
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikátorů"
 
-#. about.set_artists([])
-#. about.set_documenters([])
-#. translators: These appear in the About dialog, usual format applies.
 #. "documenters",        documenters,
-#: ../accessx-status/applet.c:143 ../battstat/battstat_applet.c:1203
-#: ../charpick/charpick.c:604 ../command/command.c:120
-#: ../cpufreq/src/cpufreq-applet.c:609 ../drivemount/drivemount.c:108
-#: ../geyes/geyes.c:178 ../gweather/gweather-about.c:60
-#: ../invest-applet/invest/about.py:29 ../mini-commander/src/about.c:53
-#: ../modemlights/modem-applet.c:1000 ../multiload/main.c:62
+#: ../accessx-status/src/applet.c:143 ../battstat/src/battstat_applet.c:1203
+#: ../charpick/src/charpick.c:601 ../command/src/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:606 ../drivemount/src/drivemount.c:98
+#: ../geyes/src/geyes.c:176 ../gweather/src/gweather-about.c:60
+#: ../invest-applet/invest/invest-applet.c:273 ../mini-commander/src/about.c:53
+#: ../modem-lights/src/modem-applet.c:998 ../multiload/src/main.c:62
 #: ../netspeed/src/netspeed.c:637
-#: ../stickynotes/stickynotes_applet_callbacks.c:391
-#: ../timerapplet/timerapplet.c:286 ../trashapplet/src/trashapplet.c:420
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:395
+#: ../timer/src/timer-applet.c:286 ../trash/src/trash-applet.c:419
 msgid "translator-credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -104,53 +101,53 @@ msgstr ""
 "Petr Kovář <pknbe@volny.cz>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: ../accessx-status/applet.c:170
+#: ../accessx-status/src/applet.c:170
 #, c-format
 msgid "There was an error launching the help viewer: %s"
 msgstr "Při spouštění prohlížeče nápovědy došlo k chybě: %s"
 
-#: ../accessx-status/applet.c:204
+#: ../accessx-status/src/applet.c:204
 msgid "Open the universal access preferences dialog"
 msgstr "Otevřít dialogové okno s předvolbami univerzálního přístupu"
 
-#: ../accessx-status/applet.c:222
+#: ../accessx-status/src/applet.c:222
 #, c-format
 msgid "There was an error launching the keyboard preferences dialog: %s"
 msgstr "Při spouštění dialogu předvoleb klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: ../accessx-status/applet.c:465 ../accessx-status/applet.c:505
+#: ../accessx-status/src/applet.c:465 ../accessx-status/src/applet.c:505
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/applet.c:978 ../accessx-status/applet.c:1051
-#: ../accessx-status/applet.c:1119 ../accessx-status/applet.c:1298
+#: ../accessx-status/src/applet.c:978 ../accessx-status/src/applet.c:1051
+#: ../accessx-status/src/applet.c:1119 ../accessx-status/src/applet.c:1298
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
-#: ../accessx-status/applet.c:979 ../accessx-status/applet.c:1120
+#: ../accessx-status/src/applet.c:979 ../accessx-status/src/applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Zobrazuje stav klávesnice při použití funkcí zpřístupnění."
 
-#: ../accessx-status/applet.c:1014
+#: ../accessx-status/src/applet.c:1014
 msgid "XKB Extension is not enabled"
 msgstr "Rozšíření XKB není povoleno"
 
-#: ../accessx-status/applet.c:1019
+#: ../accessx-status/src/applet.c:1019
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
-#: ../accessx-status/applet.c:1027
+#: ../accessx-status/src/applet.c:1027
 #, c-format
 msgid "Error: %s"
 msgstr "Chyba: %s"
 
-#: ../accessx-status/applet.c:1295
+#: ../accessx-status/src/applet.c:1295
 #: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
-#: ../accessx-status/applet.c:1300
+#: ../accessx-status/src/applet.c:1300
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav funkcí zpřístupnění klávesnice"
 
@@ -166,30 +163,30 @@ msgstr "Generátor apletu stavu zpřístupnění klávesnice"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
-#: ../battstat/battstat_applet.c:62
+#: ../battstat/src/battstat_applet.c:62
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí"
 
-#: ../battstat/battstat_applet.c:63
+#: ../battstat/src/battstat_applet.c:63
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi"
 
-#: ../battstat/battstat_applet.c:329
+#: ../battstat/src/battstat_applet.c:329
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterie nabita (%d%%)"
 
-#: ../battstat/battstat_applet.c:331
+#: ../battstat/src/battstat_applet.c:331
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Zbývá neznámý čas (%d%%)"
 
-#: ../battstat/battstat_applet.c:333
+#: ../battstat/src/battstat_applet.c:333
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Neznámý čas (%d%%) do dobití"
 
-#: ../battstat/battstat_applet.c:338
+#: ../battstat/src/battstat_applet.c:338
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -197,7 +194,7 @@ msgstr[0] "zbývá %d minuta (%d%%)"
 msgstr[1] "zbývají %d minuty (%d%%)"
 msgstr[2] "zbývá %d minut (%d%%)"
 
-#: ../battstat/battstat_applet.c:343
+#: ../battstat/src/battstat_applet.c:343
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -205,7 +202,7 @@ msgstr[0] "%d minuta do dobití (%d%%)"
 msgstr[1] "%d minuty do dobití (%d%%)"
 msgstr[2] "%d minut do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:349
+#: ../battstat/src/battstat_applet.c:349
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -213,7 +210,7 @@ msgstr[0] "zbývá %d hodina (%d%%)"
 msgstr[1] "zbývají %d hodiny (%d%%)"
 msgstr[2] "zbývá %d hodin (%d%%)"
 
-#: ../battstat/battstat_applet.c:354
+#: ../battstat/src/battstat_applet.c:354
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -223,19 +220,19 @@ msgstr[2] "%d hodin do dobití (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:361
+#: ../battstat/src/battstat_applet.c:361
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Zbývá %d %s %d %s (%d%%)"
 
-#: ../battstat/battstat_applet.c:362 ../battstat/battstat_applet.c:369
+#: ../battstat/src/battstat_applet.c:362 ../battstat/src/battstat_applet.c:369
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hodina"
 msgstr[1] "hodiny"
 msgstr[2] "hodin"
 
-#: ../battstat/battstat_applet.c:363 ../battstat/battstat_applet.c:370
+#: ../battstat/src/battstat_applet.c:363 ../battstat/src/battstat_applet.c:370
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuta"
@@ -244,30 +241,30 @@ msgstr[2] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: ../battstat/battstat_applet.c:368
+#: ../battstat/src/battstat_applet.c:368
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s do dobití (%d%%)"
 
-#: ../battstat/battstat_applet.c:382
+#: ../battstat/src/battstat_applet.c:382
 msgid "Battery Monitor"
 msgstr "Sledování baterie"
 
-#: ../battstat/battstat_applet.c:392 ../battstat/battstat_applet.c:451
+#: ../battstat/src/battstat_applet.c:392 ../battstat/src/battstat_applet.c:451
 msgid "Your battery is now fully recharged"
 msgstr "Vaše baterie je nyní zcela dobita"
 
-#: ../battstat/battstat_applet.c:428 ../battstat/battstat_applet.c:583
+#: ../battstat/src/battstat_applet.c:428 ../battstat/src/battstat_applet.c:583
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
 #. we don't know the remaining time
-#: ../battstat/battstat_applet.c:528
+#: ../battstat/src/battstat_applet.c:528
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Zbývá vám %d%% celkové kapacity baterie."
 
-#: ../battstat/battstat_applet.c:534
+#: ../battstat/src/battstat_applet.c:534
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -280,7 +277,7 @@ msgstr[2] "Zbývá %d minut kapacity baterií (%d%% celkové kapacity)."
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: ../battstat/battstat_applet.c:546
+#: ../battstat/src/battstat_applet.c:546
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -293,7 +290,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: ../battstat/battstat_applet.c:554
+#: ../battstat/src/battstat_applet.c:554
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -305,55 +302,73 @@ msgstr ""
 " • připojte notebook k externímu zdroji, nebo\n"
 " • uložte otevřené dokumenty a vypněte notebook."
 
-#: ../battstat/battstat_applet.c:562
+#: ../battstat/src/battstat_applet.c:562
 msgid "Your battery is running low"
 msgstr "Vaše baterie je téměř vybitá"
 
-#: ../battstat/battstat_applet.c:657
+#: ../battstat/src/battstat_applet.c:657
 msgid "No battery present"
 msgstr "Baterie není k dispozici"
 
-#: ../battstat/battstat_applet.c:660
+#: ../battstat/src/battstat_applet.c:660
 msgid "Battery status unknown"
 msgstr "Stav baterie není znám"
 
-#: ../battstat/battstat_applet.c:840
+#: ../battstat/src/battstat_applet.c:840
 msgid "N/A"
 msgstr "Nic"
 
-#: ../battstat/battstat_applet.c:1143 ../drivemount/drivemount.c:136
-#: ../geyes/geyes.c:334 ../geyes/themes.c:231 ../gweather/gweather-applet.c:72
-#: ../gweather/gweather-pref.c:677 ../mini-commander/src/preferences.c:259
-#: ../stickynotes/stickynotes_applet_callbacks.c:358
-#: ../stickynotes/stickynotes_applet_callbacks.c:542
-#: ../trashapplet/src/trashapplet.c:386
+#: ../battstat/src/battstat_applet.c:1143 ../drivemount/src/drivemount.c:126
+#: ../geyes/src/geyes.c:332 ../geyes/src/themes.c:231
+#: ../gweather/src/gweather-applet.c:72 ../gweather/src/gweather-pref.c:677
+#: ../mini-commander/src/preferences.c:259
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:362
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:546
+#: ../trash/src/trash-applet.c:385
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
 
-#: ../battstat/battstat_applet.c:1189
+#: ../battstat/src/battstat_applet.c:1189
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
 #. true
-#: ../battstat/battstat_applet.c:1191
+#: ../battstat/src/battstat_applet.c:1191
 msgid "upower backend enabled."
 msgstr "Povolena podpůrná vrstva upower."
 
 #. false
-#: ../battstat/battstat_applet.c:1192
+#: ../battstat/src/battstat_applet.c:1192
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Povolena zděděná podpůrná vrstva (bez HAL)."
 
-#: ../battstat/battstat_applet.c:1563 ../battstat/battstat_applet.c:1616
+#: ../battstat/src/battstat_applet.c:1563
+#: ../battstat/src/battstat_applet.c:1616
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
-#: ../battstat/battstat_applet.c:1617
+#: ../battstat/src/battstat_applet.c:1617
 #: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Sleduje zbývající energii notebooku"
+
+#. TRANSLATOR: this is a selectable item in a drop-down menu to end
+#. * this sentence:
+#. *   "Warn when battery charge drops to: [XX] percent".
+#.
+#: ../battstat/src/properties.c:276
+msgid "Percent"
+msgstr "procent"
+
+#. TRANSLATOR: this is a selectable item in a drop-down menu to end
+#. * this sentence:
+#. *   "Warn when battery charge drops to: [XX] minutes remaining"
+#.
+#: ../battstat/src/properties.c:282
+msgid "Minutes Remaining"
+msgstr "zbývajících minut"
 
 #: ../battstat/battstat-applet-menu.xml.h:1
 #: ../charpick/charpick-applet-menu.xml.h:1
@@ -362,7 +377,7 @@ msgstr "Sleduje zbývající energii notebooku"
 #: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
 #: ../multiload/multiload-applet-menu.xml.h:2
 #: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../stickynotes/stickynotes-applet-menu.xml.h:5
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
 #: ../windowpicker/src/wp-menu.xml.h:1
 msgid "_Preferences"
 msgstr "Př_edvolby"
@@ -505,22 +520,6 @@ msgstr "Zobrazovat popisek s časem/procenty"
 msgid "0 for no label, 1 for percentage and 2 for time remaining."
 msgstr "0 značí bez popisku, 1 značí procenta a 2 značí zbývající čas."
 
-#. TRANSLATOR: this is a selectable item in a drop-down menu to end
-#. * this sentence:
-#. *   "Warn when battery charge drops to: [XX] percent".
-#.
-#: ../battstat/properties.c:276
-msgid "Percent"
-msgstr "procent"
-
-#. TRANSLATOR: this is a selectable item in a drop-down menu to end
-#. * this sentence:
-#. *   "Warn when battery charge drops to: [XX] minutes remaining"
-#.
-#: ../battstat/properties.c:282
-msgid "Minutes Remaining"
-msgstr "zbývajících minut"
-
 #: ../battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
 msgstr "Nástroj stavu baterie"
@@ -533,33 +532,34 @@ msgstr "Téměř vybité baterie"
 msgid "Battery fully re-charged"
 msgstr "Baterie jsou plně nabity"
 
-#: ../brightness/brightness-applet.c:95
+#: ../brightness/src/brightness-applet.c:92
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
 msgid "Brightness Applet"
 msgstr "Aplet jasu"
 
-#: ../brightness/brightness-applet.c:96
+#: ../brightness/src/brightness-applet.c:93
 msgid "Adjusts laptop panel brightness."
 msgstr "Přizpůsobte si jas displeje na notebooku."
 
-#: ../brightness/brightness-applet.c:213
+#: ../brightness/src/brightness-applet.c:210
 msgid "Cannot connect to gnome-settings-daemon"
 msgstr "Nelze se spojit s démonem gnome-settings-daemon"
 
-#: ../brightness/brightness-applet.c:215
+#: ../brightness/src/brightness-applet.c:212
 msgid "Cannot get laptop panel brightness"
 msgstr "Nelze zjistit jas displeje notebooku"
 
-#: ../brightness/brightness-applet.c:217
+#: ../brightness/src/brightness-applet.c:214
 #, c-format
 msgid "LCD brightness : %d%%"
 msgstr "Jas LCD: %d %%"
 
-#: ../brightness/brightness-applet.c:649 ../inhibit/inhibit-applet.c:297
+#: ../brightness/src/brightness-applet.c:646
+#: ../inhibit/src/inhibit-applet.c:294
 msgid "Licensed under the GNU General Public License Version 2"
 msgstr "Licencováno pod GNU General Public License Version 2"
 
-#: ../brightness/brightness-applet.c:650
+#: ../brightness/src/brightness-applet.c:647
 msgid ""
 "Brightness Applet is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU General Public License\n"
@@ -571,7 +571,7 @@ msgstr ""
 "Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší volby) "
 "v libovolné novější verzi."
 
-#: ../brightness/brightness-applet.c:654
+#: ../brightness/src/brightness-applet.c:651
 msgid ""
 "Brightness Applet is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -582,7 +582,8 @@ msgstr ""
 "to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO KONKRÉTNÍ "
 "ÚČEL. Více podrobností najdete přímo v licenci GNU General Public License."
 
-#: ../brightness/brightness-applet.c:658 ../inhibit/inhibit-applet.c:306
+#: ../brightness/src/brightness-applet.c:655
+#: ../inhibit/src/inhibit-applet.c:303
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program; if not, write to the Free Software\n"
@@ -593,7 +594,7 @@ msgstr ""
 "License. Pokud se tak nestalo, napište na Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
 
-#: ../brightness/brightness-applet.c:672
+#: ../brightness/src/brightness-applet.c:669
 msgid "Copyright © 2006 Benjamin Canou"
 msgstr "Copyright © 2006 Benjamin Canou"
 
@@ -601,7 +602,7 @@ msgstr "Copyright © 2006 Benjamin Canou"
 msgid "Adjusts Laptop panel brightness"
 msgstr "Upravuje jas displeje notebooku"
 
-#: ../charpick/charpick.c:426
+#: ../charpick/src/charpick.c:425
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
@@ -609,21 +610,21 @@ msgstr "Dostupné palety"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/charpick.c:473
+#: ../charpick/src/charpick.c:472
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Vložit „%s“"
 
-#: ../charpick/charpick.c:476
+#: ../charpick/src/charpick.c:475
 msgid "Insert special character"
 msgstr "Vložit speciální znak"
 
-#: ../charpick/charpick.c:480
+#: ../charpick/src/charpick.c:479
 #, c-format
 msgid "insert special character %s"
 msgstr "vložit speciální znak %s"
 
-#: ../charpick/charpick.c:599
+#: ../charpick/src/charpick.c:596
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -631,16 +632,108 @@ msgstr ""
 "Aplet pro panel GNOME sloužící k výběru znaků, které není možno zadat z "
 "klávesnice. Distribuováno pod podmínkami GNU General Public License."
 
-#: ../charpick/charpick.c:716 ../charpick/charpick.c:731
+#: ../charpick/src/charpick.c:713 ../charpick/src/charpick.c:728
+#: ../charpick/src/properties.c:426
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-#: ../charpick/properties.c:426
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
-#: ../charpick/charpick.c:716
+#: ../charpick/src/charpick.c:713
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
 msgid "Insert characters"
 msgstr "Vkládání znaků"
+
+#: ../charpick/src/properties.c:73
+#: ../invest-applet/invest/invest-preferences.c:324
+#: ../modem-lights/src/modem-applet.c:909 ../trash/src/trash-applet.c:496
+#: ../trash/src/trash-empty.c:341
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: ../charpick/src/properties.c:74
+#: ../invest-applet/invest/invest-preferences.c:325
+msgid "_OK"
+msgstr "_Budiž"
+
+#: ../charpick/src/properties.c:93
+msgid "_Palette:"
+msgstr "_Paleta:"
+
+#: ../charpick/src/properties.c:101
+msgid "Palette entry"
+msgstr "Položka palety"
+
+#: ../charpick/src/properties.c:102
+msgid "Modify a palette by adding or removing characters"
+msgstr "Paletu lze upravit přidáním nebo odstraněním znaků"
+
+#: ../charpick/src/properties.c:214
+msgid "Add Palette"
+msgstr "Přidat paletu"
+
+#: ../charpick/src/properties.c:251
+msgid "Edit Palette"
+msgstr "Upravit paletu"
+
+#: ../charpick/src/properties.c:352
+msgid "Palettes list"
+msgstr "Seznam palet"
+
+#: ../charpick/src/properties.c:353
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
+msgid "List of available palettes"
+msgstr "Seznam dostupných palet"
+
+#: ../charpick/src/properties.c:431
+msgid "_Palettes:"
+msgstr "P_alety:"
+
+#: ../charpick/src/properties.c:443
+msgid "_Add"
+msgstr "Přid_at"
+
+#: ../charpick/src/properties.c:447
+msgid "Add button"
+msgstr "Přidat tlačítko"
+
+#: ../charpick/src/properties.c:448
+msgid "Click to add a new palette"
+msgstr "Kliknutím přidáte novou paletu"
+
+#: ../charpick/src/properties.c:450
+msgid "_Edit"
+msgstr "_Upravit"
+
+#: ../charpick/src/properties.c:455
+msgid "Edit button"
+msgstr "Upravit tlačítko"
+
+#: ../charpick/src/properties.c:456
+msgid "Click to edit the selected palette"
+msgstr "Kliknutím upravíte vybranou paletu"
+
+#: ../charpick/src/properties.c:458 ../trash/src/trash-applet.c:498
+msgid "_Delete"
+msgstr "Smaza_t"
+
+#: ../charpick/src/properties.c:463
+msgid "Delete button"
+msgstr "Smazat tlačítko"
+
+#: ../charpick/src/properties.c:464
+msgid "Click to delete the selected palette"
+msgstr "Kliknutím smažete vybranou paletu"
+
+#: ../charpick/src/properties.c:518
+msgid "Character Palette Preferences"
+msgstr "Předvolby palety znaků"
+
+#: ../charpick/src/properties.c:521 ../command/src/command.c:143
+#: ../geyes/src/themes.c:294 ../netspeed/src/preferences.c:325
+#: ../timer/src/timer-applet.c:324
+#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
+msgid "_Close"
+msgstr "_Zavřít"
 
 #: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
 msgid "Charpicker Applet Factory"
@@ -658,125 +751,37 @@ msgstr ""
 "Řetězec, který uživatel vybral při posledním použití apletu. Tento řetězec "
 "bude zobrazen, když uživatel spustí aplet."
 
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
-#: ../charpick/properties.c:353
-msgid "List of available palettes"
-msgstr "Seznam dostupných palet"
-
 #: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
 msgid "List of strings containing the available palettes."
 msgstr "Seznam řetězců obsahujících dostupné palety."
 
-#: ../charpick/properties.c:73 ../modemlights/modem-applet.c:911
-#: ../trashapplet/src/trashapplet.c:497 ../trashapplet/src/trash-empty.c:339
-msgid "_Cancel"
-msgstr "_Zrušit"
-
-#: ../charpick/properties.c:74
-msgid "_OK"
-msgstr "_Budiž"
-
-#: ../charpick/properties.c:93
-msgid "_Palette:"
-msgstr "_Paleta:"
-
-#: ../charpick/properties.c:101
-msgid "Palette entry"
-msgstr "Položka palety"
-
-#: ../charpick/properties.c:102
-msgid "Modify a palette by adding or removing characters"
-msgstr "Paletu lze upravit přidáním nebo odstraněním znaků"
-
-#: ../charpick/properties.c:214
-msgid "Add Palette"
-msgstr "Přidat paletu"
-
-#: ../charpick/properties.c:251
-msgid "Edit Palette"
-msgstr "Upravit paletu"
-
-#: ../charpick/properties.c:352
-msgid "Palettes list"
-msgstr "Seznam palet"
-
-#: ../charpick/properties.c:431
-msgid "_Palettes:"
-msgstr "P_alety:"
-
-#: ../charpick/properties.c:443
-msgid "_Add"
-msgstr "Přid_at"
-
-#: ../charpick/properties.c:447
-msgid "Add button"
-msgstr "Přidat tlačítko"
-
-#: ../charpick/properties.c:448
-msgid "Click to add a new palette"
-msgstr "Kliknutím přidáte novou paletu"
-
-#: ../charpick/properties.c:450
-msgid "_Edit"
-msgstr "_Upravit"
-
-#: ../charpick/properties.c:455
-msgid "Edit button"
-msgstr "Upravit tlačítko"
-
-#: ../charpick/properties.c:456
-msgid "Click to edit the selected palette"
-msgstr "Kliknutím upravíte vybranou paletu"
-
-#: ../charpick/properties.c:458 ../trashapplet/src/trashapplet.c:499
-msgid "_Delete"
-msgstr "Smaza_t"
-
-#: ../charpick/properties.c:463
-msgid "Delete button"
-msgstr "Smazat tlačítko"
-
-#: ../charpick/properties.c:464
-msgid "Click to delete the selected palette"
-msgstr "Kliknutím smažete vybranou paletu"
-
-#: ../charpick/properties.c:518
-msgid "Character Palette Preferences"
-msgstr "Předvolby palety znaků"
-
-#: ../charpick/properties.c:521 ../command/command.c:143 ../geyes/themes.c:294
-#: ../netspeed/src/preferences.c:325 ../timerapplet/timerapplet.c:324
-#: ../windowpicker/src/wp-preferences-dialog.ui.h:2
-msgid "_Close"
-msgstr "_Zavřít"
-
-#: ../command/command.c:119
+#: ../command/src/command.c:119
 #: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
 msgid "Shows the output of a command"
 msgstr "Zobrazuje výstup příkazů"
 
-#: ../command/command.c:140
+#: ../command/src/command.c:140
 msgid "Command Applet Preferences"
 msgstr "Předvolby apletu Příkaz"
 
-#: ../command/command.c:153
+#: ../command/src/command.c:153
 msgid "Command:"
 msgstr "Příkaz:"
 
-#: ../command/command.c:161
+#: ../command/src/command.c:161
 msgid "Interval (seconds):"
 msgstr "Interval (ve vteřinách):"
 
-#: ../command/command.c:169
+#: ../command/src/command.c:169
 msgid "Maximum width (chars):"
 msgstr "Maximální šířka (ve znacích):"
 
-#: ../command/command.c:177
+#: ../command/src/command.c:177
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
 msgid "Show icon"
 msgstr "Zobrazovat ikonu"
 
-#: ../command/command.c:326
+#: ../command/src/command.c:326
 msgid "Command Applet"
 msgstr "Aplet Příkaz"
 
@@ -850,7 +855,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Zob_razovat frekvenci CPU jako procenta"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:943 ../cpufreq/src/cpufreq-applet.c:999
+#: ../cpufreq/src/cpufreq-applet.c:940 ../cpufreq/src/cpufreq-applet.c:996
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Sledování změny frekvence CPU"
 
@@ -897,19 +902,19 @@ msgstr ""
 "unit“ zobrazovat frekvenci a jednotky a hodnota „percentage“ zobrazovat "
 "procenta místo frekvence."
 
-#: ../cpufreq/src/cpufreq-applet.c:576 ../cpufreq/src/cpufreq-prefs.c:360
+#: ../cpufreq/src/cpufreq-applet.c:573 ../cpufreq/src/cpufreq-prefs.c:358
 msgid "Could not open help document"
 msgstr "Nelze otevřít dokument nápovědy"
 
-#: ../cpufreq/src/cpufreq-applet.c:604
+#: ../cpufreq/src/cpufreq-applet.c:601
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Tento nástroj zobrazuje aktuální změny frekvence CPU."
 
-#: ../cpufreq/src/cpufreq-applet.c:1000
+#: ../cpufreq/src/cpufreq-applet.c:997
 msgid "This utility shows the current CPU Frequency"
 msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU"
 
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:120
+#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:118
 msgid "Frequency Scaling Unsupported"
 msgstr "Změna frekvence nepodporována"
 
@@ -929,15 +934,15 @@ msgstr ""
 "Nebudete moci změnit frekvenci svého počítače. Váš počítač je možná špatně "
 "nastaven nebo nemá hardwarovou podporu změny frekvence CPU."
 
-#: ../cpufreq/src/cpufreq-prefs.c:495
+#: ../cpufreq/src/cpufreq-prefs.c:493
 msgid "Graphic"
 msgstr "Grafika"
 
-#: ../cpufreq/src/cpufreq-prefs.c:500
+#: ../cpufreq/src/cpufreq-prefs.c:498
 msgid "Text"
 msgstr "Text"
 
-#: ../cpufreq/src/cpufreq-prefs.c:505
+#: ../cpufreq/src/cpufreq-prefs.c:503
 msgid "Graphic and Text"
 msgstr "Grafika a text"
 
@@ -949,55 +954,55 @@ msgstr "Změnit frekvenci CPU"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "Ke změně frekvence CPU jsou vyžadována oprávnění."
 
-#: ../drivemount/drive-button.c:324 ../drivemount/drive-button.c:337
+#: ../drivemount/src/drive-button.c:324 ../drivemount/src/drive-button.c:337
 msgid "(mounted)"
 msgstr "(připojen)"
 
-#: ../drivemount/drive-button.c:326
+#: ../drivemount/src/drive-button.c:326
 msgid "(not mounted)"
 msgstr "(odpojen)"
 
-#: ../drivemount/drive-button.c:546
+#: ../drivemount/src/drive-button.c:546
 msgid "Cannot start Nautilus File Manager"
 msgstr "Nelze spustit správce souborů Nautilus"
 
-#: ../drivemount/drive-button.c:553
+#: ../drivemount/src/drive-button.c:553
 msgid "Could not find Nautilus"
 msgstr "Nelze najít aplikaci Nautilus"
 
-#: ../drivemount/drive-button.c:863
+#: ../drivemount/src/drive-button.c:863
 msgid "_Play DVD"
 msgstr "_Přehrát DVD"
 
-#: ../drivemount/drive-button.c:867
+#: ../drivemount/src/drive-button.c:867
 msgid "_Play CD"
 msgstr "_Přehrát CD"
 
-#: ../drivemount/drive-button.c:870
+#: ../drivemount/src/drive-button.c:870
 #, c-format
 msgid "_Open %s"
 msgstr "_Otevřít %s"
 
-#: ../drivemount/drive-button.c:878
+#: ../drivemount/src/drive-button.c:878
 #, c-format
 msgid "Un_mount %s"
 msgstr "Od_pojit %s"
 
-#: ../drivemount/drive-button.c:884
+#: ../drivemount/src/drive-button.c:884
 #, c-format
 msgid "_Mount %s"
 msgstr "_Připojit %s"
 
-#: ../drivemount/drive-button.c:892
+#: ../drivemount/src/drive-button.c:892
 #, c-format
 msgid "_Eject %s"
 msgstr "_Vysunout zařízení %s"
 
-#: ../drivemount/drivemount.c:105
+#: ../drivemount/src/drivemount.c:95
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet připojování a odpojování blokových zařízení."
 
-#: ../drivemount/drivemount.c:164 ../drivemount/drivemount.c:200
+#: ../drivemount/src/drivemount.c:154 ../drivemount/src/drivemount.c:188
 #: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
 msgid "Disk Mounter"
 msgstr "Připojování disků"
@@ -1014,18 +1019,38 @@ msgstr "Generátor apletu připojování disků"
 msgid "Mount local disks and devices"
 msgstr "Připojování lokálních disků a zařízení"
 
-#: ../geyes/geyes.c:173
+#: ../geyes/src/geyes.c:171
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Legrační pár očí pro panel GNOME. Oči sledují vaši myš."
 
-#: ../geyes/geyes.c:373 ../geyes/geyes.c:406 ../geyes/geyes.c:408
+#: ../geyes/src/geyes.c:371 ../geyes/src/geyes.c:404 ../geyes/src/geyes.c:406
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
 msgid "Eyes"
 msgstr "Oči"
 
-#: ../geyes/geyes.c:409
+#: ../geyes/src/geyes.c:407
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Oči pokukují po kurzoru myši"
+
+#: ../geyes/src/themes.c:139
+msgid "Can not launch the eyes applet."
+msgstr "Nelze spustit aplet Oči."
+
+#: ../geyes/src/themes.c:140
+msgid "There was a fatal error while trying to load the theme."
+msgstr "Při pokusu načíst motiv došlo ke kritické chybě."
+
+#: ../geyes/src/themes.c:292
+msgid "Geyes Preferences"
+msgstr "Předvolby Geyes"
+
+#: ../geyes/src/themes.c:325
+msgid "Themes"
+msgstr "Motivy"
+
+#: ../geyes/src/themes.c:346
+msgid "_Select a theme:"
+msgstr "_Vybrat motiv:"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
 msgid "Geyes Applet Factory"
@@ -1039,48 +1064,28 @@ msgstr "Pár očí pro váš panel"
 msgid "Directory in which the theme is located"
 msgstr "Adresář, ve kterém je motiv umístěn"
 
-#: ../geyes/themes.c:139
-msgid "Can not launch the eyes applet."
-msgstr "Nelze spustit aplet Oči."
-
-#: ../geyes/themes.c:140
-msgid "There was a fatal error while trying to load the theme."
-msgstr "Při pokusu načíst motiv došlo ke kritické chybě."
-
-#: ../geyes/themes.c:292
-msgid "Geyes Preferences"
-msgstr "Předvolby Geyes"
-
-#: ../geyes/themes.c:325
-msgid "Themes"
-msgstr "Motivy"
-
-#: ../geyes/themes.c:346
-msgid "_Select a theme:"
-msgstr "_Vybrat motiv:"
-
-#: ../gweather/gweather-about.c:55
+#: ../gweather/src/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 S. Papadimitriou a další"
 
-#: ../gweather/gweather-about.c:56
+#: ../gweather/src/gweather-about.c:56
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Aplikace na panelu ke sledování místního počasí."
 
-#: ../gweather/gweather-applet.c:336
+#: ../gweather/src/gweather-applet.c:336
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
 msgid "Weather Report"
 msgstr "Zprávy o počasí"
 
-#: ../gweather/gweather-applet.c:354 ../gweather/gweather-applet.c:358
+#: ../gweather/src/gweather-applet.c:354 ../gweather/src/gweather-applet.c:358
 msgid "GNOME Weather"
 msgstr "Počasí GNOME"
 
-#: ../gweather/gweather-applet.c:463
+#: ../gweather/src/gweather-applet.c:463
 msgid "Weather Forecast"
 msgstr "Předpověď počasí"
 
-#: ../gweather/gweather-applet.c:475
+#: ../gweather/src/gweather-applet.c:475
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1091,146 +1096,143 @@ msgstr ""
 "Obloha: %s\n"
 "Teplota: %s"
 
-#: ../gweather/gweather-applet.c:529
+#: ../gweather/src/gweather-applet.c:529
 msgid "Updating..."
 msgstr "Aktualizace..."
 
-#: ../gweather/gweather-applet-menu.xml.h:1
-msgid "_Details"
-msgstr "Po_drobnosti"
-
-#: ../gweather/gweather-applet-menu.xml.h:2 ../gweather/gweather-dialog.c:160
-msgid "_Update"
-msgstr "_Aktualizovat"
-
-#: ../gweather/gweather-dialog.c:158
+#: ../gweather/src/gweather-dialog.c:158
 msgid "Details"
 msgstr "Podrobnosti"
 
-#: ../gweather/gweather-dialog.c:199
+#: ../gweather/src/gweather-dialog.c:160
+#: ../gweather/gweather-applet-menu.xml.h:2
+msgid "_Update"
+msgstr "_Aktualizovat"
+
+#: ../gweather/src/gweather-dialog.c:199
 msgid "City:"
 msgstr "Město:"
 
-#: ../gweather/gweather-dialog.c:207
+#: ../gweather/src/gweather-dialog.c:207
 msgid "Last update:"
 msgstr "Poslední aktualizace:"
 
-#: ../gweather/gweather-dialog.c:215
+#: ../gweather/src/gweather-dialog.c:215
 msgid "Conditions:"
 msgstr "Podmínky:"
 
-#: ../gweather/gweather-dialog.c:223
+#: ../gweather/src/gweather-dialog.c:223
 msgid "Sky:"
 msgstr "Obloha:"
 
-#: ../gweather/gweather-dialog.c:231
+#: ../gweather/src/gweather-dialog.c:231
 msgid "Temperature:"
 msgstr "Teplota:"
 
-#: ../gweather/gweather-dialog.c:239
+#: ../gweather/src/gweather-dialog.c:239
 msgid "Feels like:"
 msgstr "Připadá jako:"
 
-#: ../gweather/gweather-dialog.c:247
+#: ../gweather/src/gweather-dialog.c:247
 msgid "Dew point:"
 msgstr "Rosný bod:"
 
-#: ../gweather/gweather-dialog.c:255
+#: ../gweather/src/gweather-dialog.c:255
 msgid "Relative humidity:"
 msgstr "Relativní vlhkost:"
 
-#: ../gweather/gweather-dialog.c:263
+#: ../gweather/src/gweather-dialog.c:263
 msgid "Wind:"
 msgstr "Vítr:"
 
-#: ../gweather/gweather-dialog.c:271
+#: ../gweather/src/gweather-dialog.c:271
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: ../gweather/gweather-dialog.c:279
+#: ../gweather/src/gweather-dialog.c:279
 msgid "Visibility:"
 msgstr "Viditelnost:"
 
-#: ../gweather/gweather-dialog.c:287
+#: ../gweather/src/gweather-dialog.c:287
 msgid "Sunrise:"
 msgstr "Východ Slunce:"
 
-#: ../gweather/gweather-dialog.c:295
+#: ../gweather/src/gweather-dialog.c:295
 msgid "Sunset:"
 msgstr "Západ Slunce:"
 
-#: ../gweather/gweather-dialog.c:429
+#: ../gweather/src/gweather-dialog.c:429
 msgid "Current Conditions"
 msgstr "Aktuální podmínky"
 
-#: ../gweather/gweather-dialog.c:444
+#: ../gweather/src/gweather-dialog.c:444
 msgid "Forecast Report"
 msgstr "Předpověď počasí"
 
-#: ../gweather/gweather-dialog.c:444
+#: ../gweather/src/gweather-dialog.c:444
 msgid "See the ForeCast Details"
 msgstr "Zobrazit detaily předpovědi"
 
-#: ../gweather/gweather-dialog.c:454
+#: ../gweather/src/gweather-dialog.c:454
 msgid "Forecast"
 msgstr "Předpověď"
 
-#: ../gweather/gweather-dialog.c:460
+#: ../gweather/src/gweather-dialog.c:460
 msgid "Radar Map"
 msgstr "Radarová mapa"
 
 #. XXX: weather.com? is this an advert?
-#: ../gweather/gweather-dialog.c:492
+#: ../gweather/src/gweather-dialog.c:492
 msgid "_Visit Weather.com"
 msgstr "_Navštívit weather.com"
 
-#: ../gweather/gweather-dialog.c:493
+#: ../gweather/src/gweather-dialog.c:493
 msgid "Visit Weather.com"
 msgstr "Navštívit weather.com"
 
-#: ../gweather/gweather-dialog.c:493
+#: ../gweather/src/gweather-dialog.c:493
 msgid "Click to Enter Weather.com"
 msgstr "Kliknutím vstoupíte na weather.com"
 
-#: ../gweather/gweather-dialog.c:571
+#: ../gweather/src/gweather-dialog.c:571
 msgid "Forecast not currently available for this location."
 msgstr "K této poloze předpověď momentálně není k dispozici."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: ../gweather/gweather-pref.c:135
+#: ../gweather/src/gweather-pref.c:135
 msgid "Location view"
 msgstr "Zobrazení polohy"
 
-#: ../gweather/gweather-pref.c:135
+#: ../gweather/src/gweather-pref.c:135
 msgid "Select Location from the list"
 msgstr "Vyberte polohu ze seznamu"
 
-#: ../gweather/gweather-pref.c:136
+#: ../gweather/src/gweather-pref.c:136
 msgid "Update spin button"
 msgstr "Aktualizovat tlačítko se šipkami"
 
-#: ../gweather/gweather-pref.c:136
+#: ../gweather/src/gweather-pref.c:136
 msgid "Spinbutton for updating"
 msgstr "Tlačítko se šipkami k aktualizaci"
 
-#: ../gweather/gweather-pref.c:137
+#: ../gweather/src/gweather-pref.c:137
 msgid "Address Entry"
 msgstr "Zadání adresy"
 
-#: ../gweather/gweather-pref.c:137
+#: ../gweather/src/gweather-pref.c:137
 msgid "Enter the URL"
 msgstr "Zadejte prosím URL"
 
-#: ../gweather/gweather-pref.c:372
+#: ../gweather/src/gweather-pref.c:372
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr "Nelze načíst databázi XML s polohami. Ohlaste to prosím jako chybu."
 
-#: ../gweather/gweather-pref.c:736
+#: ../gweather/src/gweather-pref.c:736
 msgid "Weather Preferences"
 msgstr "Předvolby informací o počasí"
 
-#: ../gweather/gweather-pref.c:767 ../gweather/gweather-pref.c:932
+#: ../gweather/src/gweather-pref.c:767 ../gweather/src/gweather-pref.c:932
 msgid "_Automatically update every:"
 msgstr "Automaticky aktualizovat _každých:"
 
@@ -1238,158 +1240,162 @@ msgstr "Automaticky aktualizovat _každých:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: ../gweather/gweather-pref.c:778
+#: ../gweather/src/gweather-pref.c:778
 msgid "_Temperature unit:"
 msgstr "Jednotka _teploty:"
 
 #. Default means device with default route set
-#: ../gweather/gweather-pref.c:787 ../gweather/gweather-pref.c:804
-#: ../gweather/gweather-pref.c:827 ../gweather/gweather-pref.c:852
+#: ../gweather/src/gweather-pref.c:787 ../gweather/src/gweather-pref.c:804
+#: ../gweather/src/gweather-pref.c:827 ../gweather/src/gweather-pref.c:852
 #: ../netspeed/src/preferences.c:162
 msgid "Default"
 msgstr "výchozí"
 
-#: ../gweather/gweather-pref.c:788
+#: ../gweather/src/gweather-pref.c:788
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: ../gweather/gweather-pref.c:790
+#: ../gweather/src/gweather-pref.c:790
 msgid "Celsius"
 msgstr "Stupeň Celsia"
 
-#: ../gweather/gweather-pref.c:791
+#: ../gweather/src/gweather-pref.c:791
 msgid "Fahrenheit"
 msgstr "Stupeň Fahrenheita"
 
 #. Speed Unit
-#: ../gweather/gweather-pref.c:795
+#: ../gweather/src/gweather-pref.c:795
 msgid "_Wind speed unit:"
 msgstr "Jednotka _rychlosti větru:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: ../gweather/gweather-pref.c:806
+#: ../gweather/src/gweather-pref.c:806
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: ../gweather/gweather-pref.c:808
+#: ../gweather/src/gweather-pref.c:808
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: ../gweather/gweather-pref.c:810
+#: ../gweather/src/gweather-pref.c:810
 msgid "mph"
 msgstr "míle za hodinu"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: ../gweather/gweather-pref.c:812
+#: ../gweather/src/gweather-pref.c:812
 msgid "knots"
 msgstr "uzly"
 
-#: ../gweather/gweather-pref.c:814
+#: ../gweather/src/gweather-pref.c:814
 msgid "Beaufort scale"
 msgstr "Beaufortova stupnice"
 
 #. Pressure Unit
-#: ../gweather/gweather-pref.c:818
+#: ../gweather/src/gweather-pref.c:818
 msgid "_Pressure unit:"
 msgstr "Jednotka t_laku:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: ../gweather/gweather-pref.c:829
+#: ../gweather/src/gweather-pref.c:829
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: ../gweather/gweather-pref.c:831
+#: ../gweather/src/gweather-pref.c:831
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: ../gweather/gweather-pref.c:833
+#: ../gweather/src/gweather-pref.c:833
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: ../gweather/gweather-pref.c:835
+#: ../gweather/src/gweather-pref.c:835
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: ../gweather/gweather-pref.c:837
+#: ../gweather/src/gweather-pref.c:837
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: ../gweather/gweather-pref.c:839
+#: ../gweather/src/gweather-pref.c:839
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: ../gweather/gweather-pref.c:843
+#: ../gweather/src/gweather-pref.c:843
 msgid "_Visibility unit:"
 msgstr "Jednotka _viditelnosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: ../gweather/gweather-pref.c:854
+#: ../gweather/src/gweather-pref.c:854
 msgid "meters"
 msgstr "metry"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: ../gweather/gweather-pref.c:856
+#: ../gweather/src/gweather-pref.c:856
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: ../gweather/gweather-pref.c:858
+#: ../gweather/src/gweather-pref.c:858
 msgid "miles"
 msgstr "míle"
 
-#: ../gweather/gweather-pref.c:889
+#: ../gweather/src/gweather-pref.c:889
 msgid "Enable _radar map"
 msgstr "Povolit _radarovou mapu"
 
-#: ../gweather/gweather-pref.c:901
+#: ../gweather/src/gweather-pref.c:901
 msgid "Use _custom address for radar map"
 msgstr "Používat _vlastní adresu pro radarovou mapu"
 
-#: ../gweather/gweather-pref.c:916
+#: ../gweather/src/gweather-pref.c:916
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: ../gweather/gweather-pref.c:928
+#: ../gweather/src/gweather-pref.c:928
 msgid "Update"
 msgstr "Aktualizace"
 
-#: ../gweather/gweather-pref.c:952
+#: ../gweather/src/gweather-pref.c:952
 msgid "minutes"
 msgstr "minut"
 
-#: ../gweather/gweather-pref.c:964
+#: ../gweather/src/gweather-pref.c:964
 msgid "Display"
 msgstr "Zobrazení"
 
-#: ../gweather/gweather-pref.c:979
+#: ../gweather/src/gweather-pref.c:979
 #: ../mini-commander/src/mini-commander.ui.h:12
 msgid "General"
 msgstr "Obecné"
 
-#: ../gweather/gweather-pref.c:992
+#: ../gweather/src/gweather-pref.c:992
 msgid "_Select a location:"
 msgstr "Vyberte poloh_u:"
 
-#: ../gweather/gweather-pref.c:1017
+#: ../gweather/src/gweather-pref.c:1017
 msgid "_Find:"
 msgstr "_Hledat:"
 
-#: ../gweather/gweather-pref.c:1024
+#: ../gweather/src/gweather-pref.c:1024
 msgid "Find _Next"
 msgstr "Hledat da_lší"
 
-#: ../gweather/gweather-pref.c:1042
+#: ../gweather/src/gweather-pref.c:1042
 msgid "Location"
 msgstr "Poloha"
+
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "Po_drobnosti"
 
 #: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
 msgid "Gweather Applet Factory"
@@ -1449,32 +1455,32 @@ msgstr ""
 "Je-li zapnuto, bodou se stahovat a zobrazovat doplňkové podrobné informace o "
 "počasí."
 
-#: ../inhibit/inhibit-applet.c:85
+#: ../inhibit/src/inhibit-applet.c:82
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
 msgid "Inhibit Applet"
 msgstr "Aplet potlačení"
 
-#: ../inhibit/inhibit-applet.c:86
+#: ../inhibit/src/inhibit-applet.c:83
 msgid "Allows user to inhibit automatic power saving."
 msgstr "Umožňuje uživateli potlačit automatické šetření energie."
 
-#: ../inhibit/inhibit-applet.c:233
+#: ../inhibit/src/inhibit-applet.c:230
 msgid "Cannot connect to gnome-session"
 msgstr "Nelze se spojit s gnome-session"
 
-#: ../inhibit/inhibit-applet.c:236
+#: ../inhibit/src/inhibit-applet.c:233
 msgid "Automatic sleep inhibited"
 msgstr "Automatické uspávání potlačeno"
 
-#: ../inhibit/inhibit-applet.c:238
+#: ../inhibit/src/inhibit-applet.c:235
 msgid "Automatic sleep enabled"
 msgstr "Automatické uspávání povoleno"
 
-#: ../inhibit/inhibit-applet.c:266
+#: ../inhibit/src/inhibit-applet.c:263
 msgid "Manual inhibit"
 msgstr "Ručně potlačit"
 
-#: ../inhibit/inhibit-applet.c:298
+#: ../inhibit/src/inhibit-applet.c:295
 msgid ""
 "Inhibit Applet is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU General Public License\n"
@@ -1486,7 +1492,7 @@ msgstr ""
 "Free Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší "
 "volby) v libovolné novější verzi."
 
-#: ../inhibit/inhibit-applet.c:302
+#: ../inhibit/src/inhibit-applet.c:299
 msgid ""
 "Inhibit Applet is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -1498,7 +1504,7 @@ msgstr ""
 "KONKRÉTNÍ ÚČEL. Více podrobností najdete přímo v licenci GNU General Public "
 "License.  Podrobnosti viz GNU General Public License."
 
-#: ../inhibit/inhibit-applet.c:320
+#: ../inhibit/src/inhibit-applet.c:317
 msgid "Copyright © 2006-2007 Richard Hughes"
 msgstr "Copyright © 2006-2007 Richard Hughes"
 
@@ -1507,7 +1513,7 @@ msgid "Allows user to inhibit automatic power saving"
 msgstr "Umožňuje uživateli potlačit automatické šetření energií"
 
 #: ../invest-applet/data/financialchart.ui.h:1
-#: ../invest-applet/invest/chart.py:108
+#: ../invest-applet/invest/invest-chart.c:358
 msgid "Financial Chart"
 msgstr "Finanční graf"
 
@@ -1719,14 +1725,30 @@ msgid "Factory for creating the invest applet."
 msgstr "Generátor pro vytváření apletu Investice."
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:3
-#: ../invest-applet/invest/about.py:17
+#: ../invest-applet/invest/invest-applet.c:271
 msgid "Invest"
 msgstr "Investice"
 
 #: ../invest-applet/data/org.gnome.applets.InvestApplet.panel-applet.in.in.h:4
-#: ../invest-applet/invest/about.py:20
+#: ../invest-applet/invest/invest-applet.c:268
 msgid "Track your invested money."
 msgstr "Sledujte své investované peníze."
+
+#: ../invest-applet/data/org.gnome.gnome-applets.invest.gschema.xml.in.in.h:1
+#: ../invest-applet/data/prefs-dialog.ui.h:12
+msgid "Currency"
+msgstr "Měna"
+
+#: ../invest-applet/data/org.gnome.gnome-applets.invest.gschema.xml.in.in.h:2
+#: ../invest-applet/data/prefs-dialog.ui.h:9
+msgid "Hide charts in quotes list"
+msgstr "Skrýt grafy v seznamu kurzů"
+
+#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
+#: ../invest-applet/data/org.gnome.gnome-applets.invest.gschema.xml.in.in.h:3
+#: ../invest-applet/data/prefs-dialog.ui.h:7
+msgid "Show stocks of index values"
+msgstr "Zobrazovat hodnoty burzovních indexů"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:1
 msgid "Invest Preferences"
@@ -1746,11 +1768,6 @@ msgctxt " "
 msgid "Add Group"
 msgstr "Přidat skupinu"
 
-#. An index value (for instance the NASDAQ Composite) is based on a number of stocks. This option allows to also show the quotes of the stocks an index is based on.
-#: ../invest-applet/data/prefs-dialog.ui.h:7
-msgid "Show stocks of index values"
-msgstr "Zobrazovat hodnoty burzovních indexů"
-
 #: ../invest-applet/data/prefs-dialog.ui.h:8
 msgid ""
 "An index value, for instance the <i>NASDAQ Composite</i> (^IXIC), is based "
@@ -1760,10 +1777,6 @@ msgstr ""
 "Hodnota indexu, například <i>NASDAQ Composite</i> (^IXIC), je založena na "
 "počtu akcií. Tato volba umožňuje zobrazovat kurzy <i><b>akcií</b></i> "
 "vycházející z indexu."
-
-#: ../invest-applet/data/prefs-dialog.ui.h:9
-msgid "Hide charts in quotes list"
-msgstr "Skrýt grafy v seznamu kurzů"
 
 #: ../invest-applet/data/prefs-dialog.ui.h:10
 msgid ""
@@ -1783,25 +1796,20 @@ msgstr ""
 "<i><small><b>Zdroj:</b> <a href=\"http://finance.yahoo.com/\">Yahoo! "
 "Finance</a> (opožděno minimálně o 15 minut)</small></i>"
 
-#: ../invest-applet/data/prefs-dialog.ui.h:12
-msgid "Currency"
-msgstr "Měna"
-
 #: ../invest-applet/data/prefs-dialog.ui.h:13
 msgid ""
 "Type the target currency to which all stock quotes will be converted to."
 msgstr "Zapište cílovou měnu, do které se mají všechny akcie přepočítávat."
 
-#. a) We aren't configured yet
-#: ../invest-applet/invest/applet.py:70
+#: ../invest-applet/invest/invest-applet.c:368
 msgid "<b>You have not entered any stock information yet</b>"
 msgstr "<b>Doposud nebyly zadány žádné burzovní informace</b>"
 
-#: ../invest-applet/invest/applet.py:75
+#: ../invest-applet/invest/invest-applet.c:384
 msgid "<b>No stock quotes are currently available</b>"
 msgstr "<b>Aktuálně nejsou k dispozici žádné ceny akcií</b>"
 
-#: ../invest-applet/invest/applet.py:76
+#: ../invest-applet/invest/invest-applet.c:385
 msgid ""
 "The server could not be contacted. The computer is either offline or the "
 "servers are down. Try again later."
@@ -1809,60 +1817,38 @@ msgstr ""
 "Server nemohl být kontaktován. Počítač je buďto odpojen, nebo jsou servery "
 "mimo provoz. Zkuste to prosím později."
 
-#: ../invest-applet/invest/chart.py:157
-#, python-format
-msgid "Financial Chart - %s"
-msgstr "Finanční graf – %s"
-
-#: ../invest-applet/invest/chart.py:224
-msgid "Opening Chart"
-msgstr "Otvírá se graf"
-
-#: ../invest-applet/invest/chart.py:239
+#: ../invest-applet/invest/invest-chart.c:129
 msgid "Chart downloaded"
 msgstr "Graf stažen"
 
-#: ../invest-applet/invest/chart.py:241
+#: ../invest-applet/invest/invest-chart.c:139
 msgid "Chart could not be downloaded"
 msgstr "Graf nemohl být stažen"
 
-#: ../invest-applet/invest/preferences.py:44
-msgid "Symbol"
-msgstr "Symbol"
+#: ../invest-applet/invest/invest-chart.c:242
+#, c-format
+msgid "Financial Chart - %s"
+msgstr "Finanční graf – %s"
 
-#: ../invest-applet/invest/preferences.py:44
-msgid "Label"
-msgstr "Popisek"
+#: ../invest-applet/invest/invest-chart.c:281
+msgid "Opening Chart"
+msgstr "Otvírá se graf"
 
-#: ../invest-applet/invest/preferences.py:44
-msgid "Amount"
-msgstr "Množství"
-
-#: ../invest-applet/invest/preferences.py:44
-msgid "Price"
-msgstr "Cena"
-
-#: ../invest-applet/invest/preferences.py:44
-msgid "Commission"
-msgstr "Provize"
-
-#: ../invest-applet/invest/preferences.py:44
-msgid "Currency Rate"
-msgstr "Kurz měny"
-
-#: ../invest-applet/invest/preferences.py:246
+#: ../invest-applet/invest/invest-preferences.c:229
 msgid "Stock Group"
 msgstr "Skupina akcií"
 
-#. translators: Asks the user to confirm deletion of a group of stocks
-#: ../invest-applet/invest/preferences.py:271
+#. Translators: Asks the user to confirm deletion of a group of stocks
+#: ../invest-applet/invest/invest-preferences.c:322
 msgid "Delete entire stock group?"
 msgstr "Smazat celou skupinu akcií?"
 
-#. translators: stocks can be grouped together into a "stock group".
-#. The user wants to delete a group, but the group still contains stocks.
-#. By deleting the group, also all stocks will be removed from configuration
-#: ../invest-applet/invest/preferences.py:279
+#. Translators: stocks can be grouped together into a "stock group".
+#. * The user wants to delete a group, but the group still contains
+#. * stocks. By deleting the group, also all stocks will be removed
+#. * from configuration.
+#.
+#: ../invest-applet/invest/invest-preferences.c:339
 msgid ""
 "This removes all stocks contained in this stock group!\n"
 "Do you really want to remove this stock group?"
@@ -1870,52 +1856,82 @@ msgstr ""
 "Tímto se odstraní všechny akci, které jsou součástí skupiny!\n"
 "Opravdu chcete odstranit tuto skupinu akcií?"
 
-#: ../invest-applet/invest/quotes.py:286
-msgid "Invest could not connect to Yahoo! Finance"
-msgstr "Nezdařilo se připojení k Yahoo! Finance"
+#: ../invest-applet/invest/invest-preferences.c:554
+msgid "Currency Rate"
+msgstr "Kurz měny"
 
-#. Translators: This is share-market jargon. It is the average percentage change of all stock prices. The %s gets replaced with the string value of the change (localized), including the percent sign.
-#: ../invest-applet/invest/quotes.py:329
-#, python-format
-msgid "Average change: %s"
-msgstr "Průměrný pohyb: %s"
+#: ../invest-applet/invest/invest-preferences.c:749
+msgid "Symbol"
+msgstr "Symbol"
 
-#. Translators: This is share-market jargon. It refers to the total difference between the current price and purchase price for all the shares put together for a particular currency. i.e. How much money would be earned if they were sold right now. The first string is the change value, the second the currency, and the third value is the percentage of the change, formatted using user's locale.
-#: ../invest-applet/invest/quotes.py:338
-#, python-format
-msgid "Positions balance: %s %s (%s)"
-msgstr "Bilance akcií: %s %s (%s)"
+#: ../invest-applet/invest/invest-preferences.c:750
+msgid "Label"
+msgstr "Popisek"
 
-#: ../invest-applet/invest/quotes.py:340
-#, python-format
+#: ../invest-applet/invest/invest-preferences.c:751
+msgid "Amount"
+msgstr "Množství"
+
+#: ../invest-applet/invest/invest-preferences.c:752
+msgid "Price"
+msgstr "Cena"
+
+#: ../invest-applet/invest/invest-preferences.c:753
+msgid "Commission"
+msgstr "Provize"
+
+#. Translators: This is share-market jargon. It is the average
+#. * percentage change of all stock prices. The %s gets replaced
+#. * with the string value of the change (localized), including
+#. * the percent sign.
+#.
+#: ../invest-applet/invest/invest-quotes.c:179
+#, c-format
+msgid "Average change: %+.2f%%"
+msgstr "Průměrný pohyb: %+.2f%%"
+
+#. Translators: This is share-market jargon. It refers to the total
+#. * difference between the current price and purchase price for all
+#. * the shares put together for a particular currency. i.e. How much
+#. * money would be earned if they were sold right now. The first string
+#. * is the change value, the second the currency, and the third value
+#. * is the percentage of the change, formatted using user's locale.
+#.
+#: ../invest-applet/invest/invest-quotes.c:202
+#, c-format
+msgid "Positions balance: %'+.2f %s (%'+.2f%%)"
+msgstr "Bilance akcií: %'+.2f %s (%'+.2f%%)"
+
+#: ../invest-applet/invest/invest-quotes.c:209
+#, c-format
 msgid "Updated at %s"
 msgstr "Aktualizováno v %s"
 
-#. model: SYMBOL, LABEL, TICKER_ONLY, BALANCE, BALANCE_PCT, VALUE, VARIATION_PCT, PB
-#. Translators: these words all refer to a stock. Last is short
-#. for "last price". Gain is referring to the gain since the
-#. stock was purchased.
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-quotes.c:1131
+msgid "Invest could not connect to Yahoo! Finance"
+msgstr "Nezdařilo se připojení k Yahoo! Finance"
+
+#: ../invest-applet/invest/invest-widget.c:255
 msgid "Ticker"
 msgstr "Burzovní telegraf"
 
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-widget.c:306
 msgid "Last"
 msgstr "Poslední"
 
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-widget.c:356
 msgid "Change %"
 msgstr "Změna v %"
 
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-widget.c:376
 msgid "Chart"
 msgstr "Graf"
 
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-widget.c:434
 msgid "Gain"
 msgstr "Zisk"
 
-#: ../invest-applet/invest/widgets.py:49
+#: ../invest-applet/invest/invest-widget.c:493
 msgid "Gain %"
 msgstr "Zisk v %"
 
@@ -1996,15 +2012,17 @@ msgid "Size"
 msgstr "Velikost"
 
 #: ../mini-commander/src/mini-commander.ui.h:5
-#: ../stickynotes/stickynotes-preferences.ui.h:3
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:3
 msgid "_Width:"
 msgstr "Šíř_ka:"
 
-#: ../mini-commander/src/mini-commander.ui.h:6 ../multiload/properties.c:476
+#: ../mini-commander/src/mini-commander.ui.h:6
+#: ../multiload/src/properties.c:476
 msgid "pixels"
 msgstr "pixelů"
 
-#: ../mini-commander/src/mini-commander.ui.h:7 ../multiload/properties.c:521
+#: ../mini-commander/src/mini-commander.ui.h:7
+#: ../multiload/src/properties.c:521
 msgid "Colors"
 msgstr "Barvy"
 
@@ -2152,25 +2170,25 @@ msgstr "Není možné zadávat duplicitní vzory"
 msgid "Pattern"
 msgstr "Vzor"
 
-#: ../modemlights/modem-applet.c:161
-#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
+#: ../modem-lights/src/modem-applet.c:159
+#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
 msgid "Modem Monitor"
 msgstr "Sledování modemu"
 
-#: ../modemlights/modem-applet.c:671
+#: ../modem-lights/src/modem-applet.c:669
 msgid "Connection active, but could not get connection time"
 msgstr "Spojení aktivní, ale nelze získat dobu spojení"
 
-#: ../modemlights/modem-applet.c:687
+#: ../modem-lights/src/modem-applet.c:685
 #, c-format
 msgid "Time connected: %.1d:%.2d"
 msgstr "Doba spojení: %.1d:%.2d"
 
-#: ../modemlights/modem-applet.c:691
+#: ../modem-lights/src/modem-applet.c:689
 msgid "Not connected"
 msgstr "Nepřipojeno"
 
-#: ../modemlights/modem-applet.c:713
+#: ../modem-lights/src/modem-applet.c:711
 msgid ""
 "To connect to your Internet service provider, you need administrator "
 "privileges"
@@ -2178,7 +2196,7 @@ msgstr ""
 "Chcete-li se připojit ke svému poskytovateli internetového připojení, "
 "potřebujete oprávnění správce"
 
-#: ../modemlights/modem-applet.c:714
+#: ../modem-lights/src/modem-applet.c:712
 msgid ""
 "To disconnect from your Internet service provider, you need administrator "
 "privileges"
@@ -2186,11 +2204,11 @@ msgstr ""
 "Chcete-li se odpojit od svého poskytovatele internetového připojení, je "
 "nutné mít oprávnění správce"
 
-#: ../modemlights/modem-applet.c:789
+#: ../modem-lights/src/modem-applet.c:787
 msgid "The entered password is invalid"
 msgstr "Zadané heslo není platné"
 
-#: ../modemlights/modem-applet.c:791
+#: ../modem-lights/src/modem-applet.c:789
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
@@ -2198,27 +2216,27 @@ msgstr ""
 "Zkontrolujte prosím, že jste jej zadali správně a že jste neaktivovali "
 "klávesu „Caps Lock“"
 
-#: ../modemlights/modem-applet.c:902
+#: ../modem-lights/src/modem-applet.c:900
 msgid "Do you want to connect?"
 msgstr "Chcete se připojit?"
 
-#: ../modemlights/modem-applet.c:903
+#: ../modem-lights/src/modem-applet.c:901
 msgid "Do you want to disconnect?"
 msgstr "Chcete se odpojit?"
 
-#: ../modemlights/modem-applet.c:912
+#: ../modem-lights/src/modem-applet.c:910
 msgid "C_onnect"
 msgstr "Přip_ojit"
 
-#: ../modemlights/modem-applet.c:912
+#: ../modem-lights/src/modem-applet.c:910
 msgid "_Disconnect"
 msgstr "O_dpojit"
 
-#: ../modemlights/modem-applet.c:971
+#: ../modem-lights/src/modem-applet.c:969
 msgid "Could not launch network configuration tool"
 msgstr "Nelze spustit nástroj na nastavení sítě"
 
-#: ../modemlights/modem-applet.c:973
+#: ../modem-lights/src/modem-applet.c:971
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
@@ -2226,44 +2244,44 @@ msgstr ""
 "Zkontrolujte prosím, že je instalován se správnou cestou a že má správná "
 "oprávnění"
 
-#: ../modemlights/modem-applet.c:997
+#: ../modem-lights/src/modem-applet.c:995
 msgid "Applet for activating and monitoring a dial-up network connection."
 msgstr "Aplet pro aktivaci a sledování vytáčeného připojení k síti."
 
-#: ../modemlights/modem-applet-menu.xml.h:1
+#: ../modem-lights/modem-applet-menu.xml.h:1
 msgid "_Activate"
 msgstr "_Aktivovat"
 
-#: ../modemlights/modem-applet-menu.xml.h:2
+#: ../modem-lights/modem-applet-menu.xml.h:2
 msgid "_Deactivate"
 msgstr "_Deaktivovat"
 
-#: ../modemlights/modem-applet-menu.xml.h:3
-#: ../stickynotes/stickynotes-note-menu.xml.h:4
+#: ../modem-lights/modem-applet-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:4
 msgid "_Properties"
 msgstr "_Vlastnosti"
 
-#: ../modemlights/modemlights.ui.h:1
+#: ../modem-lights/modemlights.ui.h:1
 msgid "Enter password"
 msgstr "Zadejte heslo"
 
-#: ../modemlights/modemlights.ui.h:2
+#: ../modem-lights/modemlights.ui.h:2
 msgid "Root password required"
 msgstr "Vyžadováno heslo superuživatele"
 
-#: ../modemlights/modemlights.ui.h:3
+#: ../modem-lights/modemlights.ui.h:3
 msgid "Password:"
 msgstr "Heslo:"
 
-#: ../modemlights/modemlights.ui.h:4
+#: ../modem-lights/modemlights.ui.h:4
 msgid "Connecting with Internet Service Provider"
 msgstr "Připojování k poskytovateli internetového připojení"
 
-#: ../modemlights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
+#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Aktivuje a sleduje vytáčené připojení k síti"
 
-#: ../multiload/main.c:57
+#: ../multiload/src/main.c:57
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2271,43 +2289,43 @@ msgstr ""
 "Sledování zátěže systému schopné zobrazovat grafy CPU, paměti, využití "
 "odkládacího prostoru a zatížení sítě."
 
-#: ../multiload/main.c:131
+#: ../multiload/src/main.c:131
 msgid "Start system-monitor"
 msgstr "Spustit sledování systému"
 
-#: ../multiload/main.c:152
+#: ../multiload/src/main.c:152
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spouštění „%s“ došlo k chybě: %s"
 
-#: ../multiload/main.c:275 ../multiload/properties.c:546
+#: ../multiload/src/main.c:275 ../multiload/src/properties.c:546
 msgid "Processor"
 msgstr "Procesor"
 
-#: ../multiload/main.c:277 ../multiload/properties.c:554
+#: ../multiload/src/main.c:277 ../multiload/src/properties.c:554
 msgid "Memory"
 msgstr "Paměť"
 
-#: ../multiload/main.c:279 ../multiload/properties.c:562
+#: ../multiload/src/main.c:279 ../multiload/src/properties.c:562
 msgid "Network"
 msgstr "Síť"
 
-#: ../multiload/main.c:281 ../multiload/properties.c:569
+#: ../multiload/src/main.c:281 ../multiload/src/properties.c:569
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: ../multiload/main.c:283 ../multiload/main.c:362
+#: ../multiload/src/main.c:283 ../multiload/src/main.c:362
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
-#: ../multiload/main.c:285
+#: ../multiload/src/main.c:285
 msgid "Disk"
 msgstr "Disk"
 
 #. xgettext: use and cache are > 1 most of the time,
 #. please assume that they always are.
 #.
-#: ../multiload/main.c:301
+#: ../multiload/src/main.c:301
 #, c-format
 msgid ""
 "%s:\n"
@@ -2318,13 +2336,13 @@ msgstr ""
 "%u%% používají programy\n"
 "%u%% použitá jako vyrovnávací paměť"
 
-#: ../multiload/main.c:309
+#: ../multiload/src/main.c:309
 #, c-format
 msgid "The system load average is %0.02f"
 msgstr "Průměrná zátěž systému je %0.02f"
 
 #. xgettext: same as in graphic tab of g-s-m
-#: ../multiload/main.c:317
+#: ../multiload/src/main.c:317
 #, c-format
 msgid ""
 "%s:\n"
@@ -2335,7 +2353,7 @@ msgstr ""
 "Příjem %s\n"
 "Odesílání %s"
 
-#: ../multiload/main.c:333
+#: ../multiload/src/main.c:333
 #, c-format
 msgid ""
 "%s:\n"
@@ -2353,39 +2371,172 @@ msgstr[2] ""
 "%s:\n"
 "Používá se %u%%"
 
-#: ../multiload/main.c:358
+#: ../multiload/src/main.c:358
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: ../multiload/main.c:359
+#: ../multiload/src/main.c:359
 msgid "Memory Load"
 msgstr "Využití paměti"
 
-#: ../multiload/main.c:360
+#: ../multiload/src/main.c:360
 msgid "Net Load"
 msgstr "Zatížení sítě"
 
-#: ../multiload/main.c:361
+#: ../multiload/src/main.c:361
 msgid "Swap Load"
 msgstr "Zatížení odkládacího prostoru"
 
-#: ../multiload/main.c:363
+#: ../multiload/src/main.c:363
 msgid "Disk Load"
 msgstr "Zátěž disku"
 
-#: ../multiload/main.c:473
+#: ../multiload/src/main.c:473
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
 msgid "System Monitor"
 msgstr "Sledování systému"
 
-#: ../multiload/multiload-applet-menu.xml.h:1
-msgid "_Open System Monitor"
-msgstr "Otevřít _sledování systému"
-
-#: ../multiload/netspeed.c:40
+#: ../multiload/src/netspeed.c:40
 #, c-format
 msgid "%s/s"
 msgstr "%s/s"
+
+#: ../multiload/src/properties.c:308
+msgid "Monitored Resources"
+msgstr "Sledované zdroje"
+
+#: ../multiload/src/properties.c:333
+msgid "_Processor"
+msgstr "_Procesor"
+
+#: ../multiload/src/properties.c:346
+msgid "_Memory"
+msgstr "Pa_měť"
+
+#: ../multiload/src/properties.c:359
+msgid "_Network"
+msgstr "_Síť"
+
+#: ../multiload/src/properties.c:372
+msgid "S_wap Space"
+msgstr "_Odkládací prostor"
+
+#: ../multiload/src/properties.c:385
+msgid "_Load"
+msgstr "Zá_těž"
+
+#: ../multiload/src/properties.c:398
+msgid "_Harddisk"
+msgstr "Pe_vný disk"
+
+#: ../multiload/src/properties.c:413
+msgid "Options"
+msgstr "Volby"
+
+#: ../multiload/src/properties.c:443
+msgid "System m_onitor width: "
+msgstr "Šířka _grafu: "
+
+#: ../multiload/src/properties.c:445
+msgid "System m_onitor height: "
+msgstr "Výška _grafu: "
+
+#: ../multiload/src/properties.c:484
+msgid "Sys_tem monitor update interval: "
+msgstr "Frekvence _aktualizace grafu: "
+
+#: ../multiload/src/properties.c:510
+msgid "milliseconds"
+msgstr "milisekund"
+
+#: ../multiload/src/properties.c:548 ../multiload/src/properties.c:556
+msgid "_User"
+msgstr "_Uživatel"
+
+#: ../multiload/src/properties.c:549
+msgid "S_ystem"
+msgstr "S_ystém"
+
+#: ../multiload/src/properties.c:550
+msgid "N_ice"
+msgstr "Ni_ce"
+
+#: ../multiload/src/properties.c:551
+msgid "I_OWait"
+msgstr "I_OWait"
+
+#: ../multiload/src/properties.c:552
+msgid "I_dle"
+msgstr "Neč_innost"
+
+#: ../multiload/src/properties.c:557
+msgid "Sh_ared"
+msgstr "Sdíl_eno"
+
+#: ../multiload/src/properties.c:558
+msgid "_Buffers"
+msgstr "Bu_ffery"
+
+#: ../multiload/src/properties.c:559
+msgid "Cach_ed"
+msgstr "Ve vyrovnáva_cí paměti"
+
+#: ../multiload/src/properties.c:560
+msgid "F_ree"
+msgstr "Vo_lné"
+
+#: ../multiload/src/properties.c:564
+msgid "_In"
+msgstr "Vst_up"
+
+#: ../multiload/src/properties.c:565
+msgid "_Out"
+msgstr "Výs_tup"
+
+#: ../multiload/src/properties.c:566
+msgid "_Local"
+msgstr "_Místní"
+
+#: ../multiload/src/properties.c:567 ../multiload/src/properties.c:577
+#: ../multiload/src/properties.c:583
+msgid "_Background"
+msgstr "Poza_dí"
+
+#: ../multiload/src/properties.c:571
+msgid "_Used"
+msgstr "Po_užito"
+
+#: ../multiload/src/properties.c:572
+msgid "_Free"
+msgstr "Vo_lné"
+
+#: ../multiload/src/properties.c:574
+msgid "Load"
+msgstr "Zátěž"
+
+#: ../multiload/src/properties.c:576
+msgid "_Average"
+msgstr "_Průměr"
+
+#: ../multiload/src/properties.c:579
+msgid "Harddisk"
+msgstr "Pevný disk"
+
+#: ../multiload/src/properties.c:581
+msgid "_Read"
+msgstr "Čt_ení"
+
+#: ../multiload/src/properties.c:582
+msgid "_Write"
+msgstr "Záp_is"
+
+#: ../multiload/src/properties.c:609
+msgid "System Monitor Preferences"
+msgstr "Předvolby sledování systému"
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "Otevřít _sledování systému"
 
 #: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
 msgid "A system load indicator"
@@ -2519,139 +2670,6 @@ msgstr "Barva pozadí grafu zatížení disku"
 msgid "The desktop description file to execute as the system monitor"
 msgstr ""
 "Soubor popisu pracovní plochy určený ke spuštění jako sledování systému"
-
-#: ../multiload/properties.c:308
-msgid "Monitored Resources"
-msgstr "Sledované zdroje"
-
-#: ../multiload/properties.c:333
-msgid "_Processor"
-msgstr "_Procesor"
-
-#: ../multiload/properties.c:346
-msgid "_Memory"
-msgstr "Pa_měť"
-
-#: ../multiload/properties.c:359
-msgid "_Network"
-msgstr "_Síť"
-
-#: ../multiload/properties.c:372
-msgid "S_wap Space"
-msgstr "_Odkládací prostor"
-
-#: ../multiload/properties.c:385
-msgid "_Load"
-msgstr "Zá_těž"
-
-#: ../multiload/properties.c:398
-msgid "_Harddisk"
-msgstr "Pe_vný disk"
-
-#: ../multiload/properties.c:413
-msgid "Options"
-msgstr "Volby"
-
-#: ../multiload/properties.c:443
-msgid "System m_onitor width: "
-msgstr "Šířka _grafu: "
-
-#: ../multiload/properties.c:445
-msgid "System m_onitor height: "
-msgstr "Výška _grafu: "
-
-#: ../multiload/properties.c:484
-msgid "Sys_tem monitor update interval: "
-msgstr "Frekvence _aktualizace grafu: "
-
-#: ../multiload/properties.c:510
-msgid "milliseconds"
-msgstr "milisekund"
-
-#: ../multiload/properties.c:548 ../multiload/properties.c:556
-msgid "_User"
-msgstr "_Uživatel"
-
-#: ../multiload/properties.c:549
-msgid "S_ystem"
-msgstr "S_ystém"
-
-#: ../multiload/properties.c:550
-msgid "N_ice"
-msgstr "Ni_ce"
-
-#: ../multiload/properties.c:551
-msgid "I_OWait"
-msgstr "I_OWait"
-
-#: ../multiload/properties.c:552
-msgid "I_dle"
-msgstr "Neč_innost"
-
-#: ../multiload/properties.c:557
-msgid "Sh_ared"
-msgstr "Sdíl_eno"
-
-#: ../multiload/properties.c:558
-msgid "_Buffers"
-msgstr "Bu_ffery"
-
-#: ../multiload/properties.c:559
-msgid "Cach_ed"
-msgstr "Ve vyrovnáva_cí paměti"
-
-#: ../multiload/properties.c:560
-msgid "F_ree"
-msgstr "Vo_lné"
-
-#: ../multiload/properties.c:564
-msgid "_In"
-msgstr "Vst_up"
-
-#: ../multiload/properties.c:565
-msgid "_Out"
-msgstr "Výs_tup"
-
-#: ../multiload/properties.c:566
-msgid "_Local"
-msgstr "_Místní"
-
-#: ../multiload/properties.c:567 ../multiload/properties.c:577
-#: ../multiload/properties.c:583
-msgid "_Background"
-msgstr "Poza_dí"
-
-#: ../multiload/properties.c:571
-msgid "_Used"
-msgstr "Po_užito"
-
-#: ../multiload/properties.c:572
-msgid "_Free"
-msgstr "Vo_lné"
-
-#: ../multiload/properties.c:574
-msgid "Load"
-msgstr "Zátěž"
-
-#: ../multiload/properties.c:576
-msgid "_Average"
-msgstr "_Průměr"
-
-#: ../multiload/properties.c:579
-msgid "Harddisk"
-msgstr "Pevný disk"
-
-#: ../multiload/properties.c:581
-msgid "_Read"
-msgstr "Čt_ení"
-
-#: ../multiload/properties.c:582
-msgid "_Write"
-msgstr "Záp_is"
-
-#: ../multiload/properties.c:609
-msgid "System Monitor Preferences"
-msgstr "Předvolby sledování systému"
 
 #: ../netspeed/data/netspeed-menu.xml.h:1
 msgid "Device _Details"
@@ -2937,37 +2955,37 @@ msgstr "Měnit _ikonu podle vybraného zařízení"
 msgid "Netspeed Preferences"
 msgstr "Předvolby Netspeed"
 
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:1
 msgid "Sticky Notes Applet Factory"
 msgstr "Generátor apletu Lepicí poznámky"
 
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../stickynotes/stickynotes_applet.c:146
-#: ../stickynotes/stickynotes_applet.c:380
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
+#: ../sticky-notes/src/stickynotes_applet.c:150
+#: ../sticky-notes/src/stickynotes_applet.c:389
 msgid "Sticky Notes"
 msgstr "Lepicí poznámky"
 
-#: ../stickynotes/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
+#: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:3
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytváří, zobrazuje a spravuje lepicí poznámky na pracovní ploše"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:1
 msgid "Default width for new notes"
 msgstr "Výchozí šířka nových poznámek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:2
 msgid "Default width for new sticky notes in pixels."
 msgstr "Výchozí šířka nových poznámek v pixelech."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:3
 msgid "Default height for new notes"
 msgstr "Výchozí výška nových poznámek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:4
 msgid "Default color for new notes"
 msgstr "Výchozí barva nových poznámek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -2975,11 +2993,11 @@ msgstr ""
 "Výchozí barva nové lepicí poznámky. Může to být standardní název, "
 "šestnáctková hodnota, barva RGB nebo barva RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
 msgid "Default color for font"
 msgstr "Výchozí barva písma"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -2987,11 +3005,11 @@ msgstr ""
 "Výchozí barva písma nové lepicí poznámky. Může to být standardní název, "
 "šestnáctková hodnota, barva RGB nebo barva RGBA."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
 msgid "Default font for new notes"
 msgstr "Výchozí písmo nových poznámek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:9
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
@@ -2999,11 +3017,11 @@ msgstr ""
 "Výchozí písmo nových lepicích poznámek. Mělo by se jednat o název písma "
 "systému Pango, například „Sans Italic 10“."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:10
 msgid "Sticky notes' workspace stickyness"
 msgstr "Přilepení poznámek na pracovní plochu"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:11
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -3011,19 +3029,19 @@ msgstr ""
 "Určuje, jestli jsou lepicí poznámky viditelné na VŠECH pracovních plochách "
 "nebo ne."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:12
 msgid "Sticky notes' locked state"
 msgstr "Stav zamčení lepicích poznámek"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:13
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Určuje, jestli jsou lepicí poznámky zamčené (needitovatelné) nebo ne."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:14
 msgid "Date format of note's title"
 msgstr "Datum formátu titulku poznámky"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:15
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -3033,11 +3051,11 @@ msgstr ""
 "aktuální datum. Používá se tento formát; platné je cokoli, co může být "
 "zpracováno pomocí funkce strftime()."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:16
 msgid "Whether to use the default system color"
 msgstr "Jestli se má použít výchozí barva motivu"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:17
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -3045,11 +3063,11 @@ msgstr ""
 "Pokud je tato volba vypnuta, lze použít vlastní barvu jako výchozí barvu "
 "všech lepicích poznámek."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:18
 msgid "Whether to use the default system font"
 msgstr "Jestli se má použít výchozí písmo motivu"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:19
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -3057,11 +3075,11 @@ msgstr ""
 "Pokud je tato volba vypnuta, lze použít vlastní písmo jako výchozí písmo "
 "všech lepicích poznámek."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:20
 msgid "Whether to force the default color and font on all notes"
 msgstr "Jestli se má vždy použít výchozí barva a písmo na všechny poznámky"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:21
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -3069,11 +3087,11 @@ msgstr ""
 "Pokud je tato volba zapnuta, vlastní barvy a písma, které byly přiřazeny "
 "jednotlivým poznámkám, budou ignorovány."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
 msgid "Whether to hide all notes when the desktop is selected"
 msgstr "Jestli se při výběru pracovní plochy mají skrývat všechny poznámky"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
@@ -3081,15 +3099,23 @@ msgstr ""
 "Pokud je tato volba zapnuta, vybrání pracovní plochy libovolným způsobem "
 "skryje automaticky všechny otevřené poznámky."
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Jestli se má potvrzovat smazání poznámky"
 
-#: ../stickynotes/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
+#: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:25
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Prázdné poznámky lze smazat bez potvrzení."
 
-#: ../stickynotes/stickynotes_applet.c:539
+#: ../sticky-notes/src/stickynotes.c:594
+msgid "This note is locked."
+msgstr "Tato poznámka je zamčena."
+
+#: ../sticky-notes/src/stickynotes.c:598
+msgid "This note is unlocked."
+msgstr "Tato poznámka je odemčena."
+
+#: ../sticky-notes/src/stickynotes_applet.c:548
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -3097,384 +3123,376 @@ msgstr[0] "%d poznámka"
 msgstr[1] "%d poznámky"
 msgstr[2] "%d poznámek"
 
-#: ../stickynotes/stickynotes_applet.c:540
+#: ../sticky-notes/src/stickynotes_applet.c:549
 msgid "Show sticky notes"
 msgstr "Zobrazit lepicí poznámky"
 
-#: ../stickynotes/stickynotes_applet_callbacks.c:387
+#: ../sticky-notes/src/stickynotes_applet_callbacks.c:391
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Lepicí poznámky pro prostředí GNOME"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:1
-#: ../stickynotes/stickynotes-note-menu.xml.h:1
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:1
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:1
 msgid "_New Note"
 msgstr "Nová pozná_mka"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:2
 msgid "Hi_de Notes"
 msgstr "_Skrýt poznámky"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:3
 msgid "_Lock Notes"
 msgstr "_Zamknout poznámky"
 
-#: ../stickynotes/stickynotes-applet-menu.xml.h:4
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "Smazat poznámk_y"
 
-#: ../stickynotes/stickynotes.c:591
-msgid "This note is locked."
-msgstr "Tato poznámka je zamčena."
-
-#: ../stickynotes/stickynotes.c:595
-msgid "This note is unlocked."
-msgstr "Tato poznámka je odemčena."
-
-#: ../stickynotes/stickynotes-delete-all.ui.h:1
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:1
 msgid "_Delete All"
 msgstr "Smaza_t vše"
 
-#: ../stickynotes/stickynotes-delete-all.ui.h:2
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:2
 msgid "Delete all sticky notes?"
 msgstr "Odstranit všechny lepicí poznámky?"
 
-#: ../stickynotes/stickynotes-delete-all.ui.h:3
-#: ../stickynotes/stickynotes-delete.ui.h:2
+#: ../sticky-notes/src/sticky-notes-delete-all.ui.h:3
+#: ../sticky-notes/src/sticky-notes-delete.ui.h:2
 msgid "This cannot be undone."
 msgstr "Krok nelze vrátit zpět."
 
-#: ../stickynotes/stickynotes-delete.ui.h:1
+#: ../sticky-notes/src/sticky-notes-delete.ui.h:1
 msgid "Delete this sticky note?"
 msgstr "Odstranit tuto lepicí poznámku?"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:2
 msgid "_Delete Note..."
 msgstr "S_mazat poznámku…"
 
-#: ../stickynotes/stickynotes-note-menu.xml.h:3
+#: ../sticky-notes/src/sticky-notes-note-menu.xml.h:3
 msgid "_Lock Note"
 msgstr "_Zamknout poznámku"
 
-#: ../stickynotes/stickynotes-note.ui.h:1
+#: ../sticky-notes/src/sticky-notes-note.ui.h:1
 msgid "Sticky Note"
 msgstr "Lepicí poznámka"
 
-#: ../stickynotes/stickynotes-note.ui.h:2
+#: ../sticky-notes/src/sticky-notes-note.ui.h:2
 msgid "Lock/Unlock note"
 msgstr "Zamknout/odemknout poznámku"
 
-#: ../stickynotes/stickynotes-note.ui.h:3
+#: ../sticky-notes/src/sticky-notes-note.ui.h:3
 msgid "Close note"
 msgstr "Zavřít poznámku"
 
-#: ../stickynotes/stickynotes-note.ui.h:4
+#: ../sticky-notes/src/sticky-notes-note.ui.h:4
 msgid "Resize note"
 msgstr "Změnit velikost poznámky"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:1
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:1
 msgid "Sticky Notes Preferences"
 msgstr "Předvolby lepicích poznámek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:2
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:2
 msgid "Default Note Properties"
 msgstr "Výchozí vlastnosti poznámky"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:4
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:4
 msgid "H_eight:"
 msgstr "_Výška:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:5
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:5
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Zadejte výchozí šířku nových poznámek (v pixelech)"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:6
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:6
 msgid "1"
 msgstr "1"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:7
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:7
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Zadejte výchozí výšku nových poznámek (v pixelech)"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:8
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:8
 msgid "0"
 msgstr "0"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:9
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:9
 msgid "Use co_lor from the system theme"
 msgstr "Používat _barvu ze systémového motivu"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:10
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:10
 msgid "Font Co_lor:"
 msgstr "Barva pís_ma:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:11
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:11
 msgid "Note C_olor:"
 msgstr "B_arva poznámky:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:12
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:12
 msgid "Choose a base color to use for all sticky notes"
 msgstr ""
 "Vyberte základní barvu, kterou chcete používat u všech lepicích poznámek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:13
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:13
 msgid "Pick a default sticky note color"
 msgstr "Vyberte výchozí barvu lepicí poznámky"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:14
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:14
 msgid "Use fo_nt from the system theme"
 msgstr "Používat _písmo ze systémového motivu"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:15
-#: ../stickynotes/stickynotes-properties.ui.h:11
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:15
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:11
 msgid "_Font:"
 msgstr "Písm_o:"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:16
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:16
 msgid "Choose a font to use for all sticky notes"
 msgstr "Vyberte písmo, které se má používat u všech lepicích poznámek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:17
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:17
 msgid "Pick a default sticky note font"
 msgstr "Vyberte výchozí písmo lepicí poznámky"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:18
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:18
 msgid "Behavior"
 msgstr "Chování"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:19
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:19
 msgid "_Put notes on all workspaces"
 msgstr "_Umístit poznámky na všechny pracovní plochy"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:20
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:20
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Vyberte, mají-li být poznámky viditelné na všech pracovních plochách"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:21
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:21
 msgid "Force _default color and font on notes"
 msgstr "Používat vž_dy výchozí barvu a písmo u poznámek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:22
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:22
 msgid "Choose if the default style is forced on all notes"
 msgstr "Vyberte, jestli se má výchozí styl používat u všech poznámek"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:23
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:23
 msgid "Hide notes when the des_ktop is clicked on"
 msgstr "S_krýt poznámky při kliknutí na pracovní plochu"
 
-#: ../stickynotes/stickynotes-preferences.ui.h:24
+#: ../sticky-notes/src/sticky-notes-preferences.ui.h:24
 msgid "Choose whether to hide all notes when selecting on the desktop"
 msgstr ""
 "Vyberte, jestli se při výběru na pracovní ploše mají skrýt všechny poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:1
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:1
 msgid "Sticky Note Properties"
 msgstr "Vlastnosti lepicí poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:2
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:2
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../stickynotes/stickynotes-properties.ui.h:3
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:3
 msgid "_Title:"
 msgstr "_Název:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:4
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:4
 msgid "Specify a title for the note"
 msgstr "Zadejte titulek poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:5
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:5
 msgid "Use default co_lor"
 msgstr "Používat výchozí _barvu"
 
-#: ../stickynotes/stickynotes-properties.ui.h:6
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:6
 msgid "Font C_olor:"
 msgstr "Barva _písma:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:7
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:7
 msgid "Note _Color:"
 msgstr "Barva _poznámky:"
 
-#: ../stickynotes/stickynotes-properties.ui.h:8
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:8
 msgid "Use default fo_nt"
 msgstr "Používat výchozí _písmo"
 
-#: ../stickynotes/stickynotes-properties.ui.h:9
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:9
 msgid "Choose a color for the note"
 msgstr "Vyberte barvu poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:10
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:10
 msgid "Pick a color for the sticky note"
 msgstr "Vyberte barvu lepicí poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:12
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:12
 msgid "Choose a font for the note"
 msgstr "Vyberte písmo poznámky"
 
-#: ../stickynotes/stickynotes-properties.ui.h:13
+#: ../sticky-notes/src/sticky-notes-properties.ui.h:13
 msgid "Pick a font for the sticky note"
 msgstr "Vyberte písmo lepicí poznámky"
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:1
 msgid "Timer Factory"
 msgstr "Generátor apletu Odpočet"
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:2
 msgid "Timer"
 msgstr "Odpočet"
 
-#: ../timerapplet/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
-#: ../timerapplet/timerapplet.c:285
+#: ../timer/data/org.gnome.applets.TimerApplet.panel-applet.in.in.h:3
+#: ../timer/src/timer-applet.c:285
 msgid "Start a timer and receive a notification when it is finished"
 msgstr "Začít odpočet a obdržet upozornění, až doběhne"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:1
 msgid "'Timer'"
 msgstr "'Odpočet'"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:2
 msgid "Name of timer"
 msgstr "Název odpočtu"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:3
 msgid "Duration of timer in seconds"
 msgstr "Délka odpočtu ve vteřinách"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
 msgid "Show notification popup when timer finish"
 msgstr "Po doběhnutí odpočtu zobrazit upozornění"
 
-#: ../timerapplet/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
+#: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
 msgid "Show dialog window when timer finish"
 msgstr "Po doběhnutí odpočtu zobrazit dialogové okno"
 
-#: ../timerapplet/timerapplet.c:158
+#: ../timer/src/timer-applet.c:158
 msgid "Finished"
 msgstr "Dokončeno"
 
-#: ../timerapplet/timerapplet.c:165 ../timerapplet/timerapplet.c:177
+#: ../timer/src/timer-applet.c:165 ../timer/src/timer-applet.c:177
 msgid "Timer finished!"
 msgstr "Odpočet doběhl!"
 
-#: ../timerapplet/timerapplet.c:321
+#: ../timer/src/timer-applet.c:321
 msgid "Timer Applet Preferences"
 msgstr "Předvolby apletu Odpočet"
 
-#: ../timerapplet/timerapplet.c:334
+#: ../timer/src/timer-applet.c:334
 msgid "Name:"
 msgstr "Název:"
 
-#: ../timerapplet/timerapplet.c:343
+#: ../timer/src/timer-applet.c:343
 msgid "Hours:"
 msgstr "Hodiny:"
 
-#: ../timerapplet/timerapplet.c:354
+#: ../timer/src/timer-applet.c:354
 msgid "Minutes:"
 msgstr "Minuty:"
 
-#: ../timerapplet/timerapplet.c:365
+#: ../timer/src/timer-applet.c:365
 msgid "Seconds:"
 msgstr "Vteřiny:"
 
-#: ../timerapplet/timerapplet.c:376
+#: ../timer/src/timer-applet.c:376
 msgid "Show notification popup"
 msgstr "Zobrazit upozornění"
 
-#: ../timerapplet/timerapplet.c:380
+#: ../timer/src/timer-applet.c:380
 msgid "Show dialog"
 msgstr "Zobrazit dialogové okno"
 
-#: ../timerapplet/timerapplet.c:402
+#: ../timer/src/timer-applet.c:402
 msgid "Timer Applet"
 msgstr "Aplet Odpočet"
 
-#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
+#: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
 msgstr "Vyhledávací lišta Tracker"
 
-#: ../tracker-search-bar/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
+#: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:2
 msgid "Find your data quickly using Tracker"
 msgstr "Vyhledávejte svá data rychle pomocí aplikace Tracker"
 
-#: ../tracker-search-bar/tracker-results-window.c:718
-#: ../tracker-search-bar/tracker-results-window.c:734
+#: ../tracker-search-bar/src/tracker-results-window.c:718
+#: ../tracker-search-bar/src/tracker-results-window.c:734
 msgid "Other"
 msgstr "Jiné"
 
-#: ../tracker-search-bar/tracker-results-window.c:719
+#: ../tracker-search-bar/src/tracker-results-window.c:719
 msgid "Contacts"
 msgstr "Kontakty"
 
-#: ../tracker-search-bar/tracker-results-window.c:720
+#: ../tracker-search-bar/src/tracker-results-window.c:720
 msgid "Tags"
 msgstr "Štítky"
 
-#: ../tracker-search-bar/tracker-results-window.c:721
+#: ../tracker-search-bar/src/tracker-results-window.c:721
 msgid "Email Addresses"
 msgstr "E-mailové adresy"
 
-#: ../tracker-search-bar/tracker-results-window.c:722
+#: ../tracker-search-bar/src/tracker-results-window.c:722
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: ../tracker-search-bar/tracker-results-window.c:723
+#: ../tracker-search-bar/src/tracker-results-window.c:723
 msgid "Applications"
 msgstr "Aplikace"
 
-#: ../tracker-search-bar/tracker-results-window.c:724
+#: ../tracker-search-bar/src/tracker-results-window.c:724
 msgid "Images"
 msgstr "Obrázky"
 
-#: ../tracker-search-bar/tracker-results-window.c:725
+#: ../tracker-search-bar/src/tracker-results-window.c:725
 msgid "Audio"
 msgstr "Zvuk"
 
-#: ../tracker-search-bar/tracker-results-window.c:726
+#: ../tracker-search-bar/src/tracker-results-window.c:726
 msgid "Folders"
 msgstr "Složky"
 
-#: ../tracker-search-bar/tracker-results-window.c:727
+#: ../tracker-search-bar/src/tracker-results-window.c:727
 msgid "Fonts"
 msgstr "Písma"
 
-#: ../tracker-search-bar/tracker-results-window.c:728
+#: ../tracker-search-bar/src/tracker-results-window.c:728
 msgid "Videos"
 msgstr "Videa"
 
-#: ../tracker-search-bar/tracker-results-window.c:729
+#: ../tracker-search-bar/src/tracker-results-window.c:729
 msgid "Archives"
 msgstr "Archívy"
 
-#: ../tracker-search-bar/tracker-results-window.c:730
+#: ../tracker-search-bar/src/tracker-results-window.c:730
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: ../tracker-search-bar/tracker-results-window.c:731
+#: ../tracker-search-bar/src/tracker-results-window.c:731
 msgid "Links"
 msgstr "Odkazy"
 
-#: ../tracker-search-bar/tracker-results-window.c:1107
+#: ../tracker-search-bar/src/tracker-results-window.c:1107
 msgid "Category"
 msgstr "Kategorie"
 
-#: ../tracker-search-bar/tracker-results-window.c:1135
+#: ../tracker-search-bar/src/tracker-results-window.c:1135
 msgid "Title"
 msgstr "Název"
 
-#: ../tracker-search-bar/tracker-results-window.c:1201
+#: ../tracker-search-bar/src/tracker-results-window.c:1201
 #, c-format
 msgid "No results found for “%s”"
 msgstr "Pro „%s“ nebyly nalezeny žádné výsledky"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:1
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:1
 msgid "Copyright Tracker Authors 2005-2010"
 msgstr "Copyright 2005 – 2010 autoři aplikace Tracker"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:2
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:2
 msgid "A search bar applet for finding content stored in Tracker"
 msgstr ""
 "Aplet vyhledávací lišty pro hledání obsahu indexovaného aplikací Tracker"
 
-#: ../tracker-search-bar/tracker-search-bar.ui.h:3
+#: ../tracker-search-bar/src/tracker-search-bar.ui.h:3
 msgid ""
 "Tracker is free software; you can redistribute it and/or modify it under the "
 "terms of the GNU General Public License as published by the Free Software "
@@ -3503,15 +3521,15 @@ msgstr ""
 "Public License. Pokud se tak nestalo, napište na Free Software Foundation, "
 "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA."
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
+#: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
 msgstr "Koš"
 
-#: ../trashapplet/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
+#: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:2
 msgid "Go to Trash"
 msgstr "Přejít do koše"
 
-#: ../trashapplet/src/trashapplet.c:122
+#: ../trash/src/trash-applet.c:121
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3519,11 +3537,11 @@ msgstr[0] "%d položka v koši"
 msgstr[1] "%d položky v koši"
 msgstr[2] "%d položek v koši"
 
-#: ../trashapplet/src/trashapplet.c:130
+#: ../trash/src/trash-applet.c:129
 msgid "No Items in Trash"
 msgstr "Žádná položka v koši"
 
-#: ../trashapplet/src/trashapplet.c:363
+#: ../trash/src/trash-applet.c:362
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3532,7 +3550,7 @@ msgstr ""
 "Chyba při spouštění programu Nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:415
+#: ../trash/src/trash-applet.c:414
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3540,41 +3558,41 @@ msgstr ""
 "Koš GNOME nacházející se na vašem panelu. Lze jej používat k zobrazení koše "
 "nebo do něj přetahovat položky."
 
-#: ../trashapplet/src/trashapplet.c:440
+#: ../trash/src/trash-applet.c:439
 msgid "Delete Immediately?"
 msgstr "Smazat ihned?"
 
-#: ../trashapplet/src/trashapplet.c:469
+#: ../trash/src/trash-applet.c:468
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Položky do koše nelze přesunout, chcete je smazat okamžitě?"
 
-#: ../trashapplet/src/trashapplet.c:474
+#: ../trash/src/trash-applet.c:473
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Některé položky do koše nelze přesunout, chcete je smazat okamžitě?"
 
-#: ../trashapplet/src/trashapplet.c:604
+#: ../trash/src/trash-applet.c:603
 msgid "Trash Applet"
 msgstr "Aplet Koš"
 
 # Broken, see bug 591904.
 #. Translators: the %s in this string should be read as %d.
-#: ../trashapplet/src/trash-empty.c:70
+#: ../trash/src/trash-empty.c:70
 #, c-format
 msgid "Removing item %s of %s"
 msgstr "Odstraňování položky %s z %s"
 
 #. Translators: %s is a file name
-#: ../trashapplet/src/trash-empty.c:96
+#: ../trash/src/trash-empty.c:96
 #, c-format
 msgid "Removing: %s"
 msgstr "Odstraňování: %s"
 
-#: ../trashapplet/src/trash-empty.c:321
+#: ../trash/src/trash-empty.c:323
 msgid "Empty all of the items from the trash?"
 msgstr "Odstranit všechny položky z koše?"
 
-#: ../trashapplet/src/trash-empty.c:328
+#: ../trash/src/trash-empty.c:330
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3582,20 +3600,19 @@ msgstr ""
 "Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo "
 "smazány. Vezměte prosím na vědomí, že je lze mazat po jedné."
 
-#: ../trashapplet/src/trash-empty.c:342
-#: ../trashapplet/trashapplet-menu.xml.h:2
+#: ../trash/src/trash-empty.c:344 ../trash/src/trash-menu.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
 
-#: ../trashapplet/trashapplet-empty-progress.ui.h:1
+#: ../trash/src/trash-empty.ui.h:1
 msgid "Emptying the Trash"
 msgstr "Vyprazdňuje se koš"
 
-#: ../trashapplet/trashapplet-empty-progress.ui.h:2
+#: ../trash/src/trash-empty.ui.h:2
 msgid "From:"
 msgstr "Z:"
 
-#: ../trashapplet/trashapplet-menu.xml.h:1
+#: ../trash/src/trash-menu.xml.h:1
 msgid "_Open Trash"
 msgstr "_Otevřít koš"
 
