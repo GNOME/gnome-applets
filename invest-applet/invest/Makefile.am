@@ -1,55 +1,52 @@
-invest-applet: invest-applet.py
-	sed -e "s|\@PYTHONDIR\@|$(pythondir)/|" $< > $@
+NULL =
 
-defs.py: defs.py.in
-	sed \
-		-e "s|\@DATADIR\@|$(datadir)|" \
-		-e "s|\@LIBDIR\@|$(libdir)|" \
-		-e "s|\@VERSION\@|$(VERSION)|" \
-		-e "s|\@PACKAGE\@|$(PACKAGE)|" \
-		-e "s|\@PKGDATADIR\@|$(pkgdatadir)|" \
-		-e "s|\@PYTHONDIR\@|$(pythondir)|" \
-		-e "s|\@GETTEXT_PACKAGE\@|$(GETTEXT_PACKAGE)|" \
-		-e "s|\@GNOMELOCALEDIR\@|$(localedir)|" \
-		-e "s|\@BUILDERDIR\@|$(pkgdatadir)/builder|" \
-		-e "s|\@LIBPANEL_APPLET_API_VERSION\@|$(LIBPANEL_APPLET_API_VERSION)|" \
-		$< > $@
+invest_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+invest_applet_lib_LTLIBRARIES = libinvest-applet.la
 
-bin_SCRIPTS = invest-chart
+libinvest_applet_la_SOURCES = \
+	invest-applet.c \
+	invest-applet.h \
+	invest-cache.c \
+	invest-cache.h \
+	invest-chart.c \
+	invest-chart.h \
+	invest-currencies.c \
+	invest-currencies.h \
+	invest-image-retriever.c \
+	invest-image-retriever.h \
+	invest-preferences.c \
+	invest-preferences.h \
+	invest-quotes.c \
+	invest-quotes.h \
+	invest-quotes-retriever.c \
+	invest-quotes-retriever.h \
+	invest-widget.c \
+	invest-widget.h \
+	invest-window.c \
+	invest-window.h \
+	$(NULL)
 
-libexec_SCRIPTS = invest-applet
+libinvest_applet_la_CPPFLAGS = \
+	-DARTDIR=\""$(pkgdatadir)/invest-applet"\" \
+	-DBUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DUIDIR=\""$(pkgdatadir)/ui"\" \
+	$(NULL)
 
-investdir = $(pythondir)/invest
-invest_PYTHON = \
-	__init__.py \
-	about.py \
-	help.py \
-	applet.py \
-	chart.py \
-	currencies.py \
-	widgets.py \
-	quotes.py \
-	networkmanager.py \
-	preferences.py
-nodist_invest_PYTHON = \
-	defs.py
+libinvest_applet_la_CFLAGS = \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
 
-BUILT_SOURCES = \
-	invest-applet
+libinvest_applet_la_LIBADD = \
+	$(GNOME_APPLETS_LIBS) \
+	$(NULL)
 
-CLEANFILES = \
-	$(BUILT_SOURCES)
-
-DISTCLEANFILES = \
-	defs.py \
-	$(CLEANFILES)
-
-EXTRA_DIST = \
-	defs.py.in \
-	invest-applet.py \
-	invest-chart \
-	test.py
-
-#TESTS = test.py
+libinvest_applet_la_LDFLAGS = \
+	-module -avoid-version \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk

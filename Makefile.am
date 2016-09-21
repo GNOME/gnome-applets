@@ -108,7 +108,6 @@ MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
 	`find "$(srcdir)/m4" -type f -name "*.m4" -print` \
 	$(srcdir)/INSTALL \
-	$(srcdir)/build-aux/py-compile \
 	$(srcdir)/config.h.in~ \
 	$(srcdir)/configure \
 	$(NULL)

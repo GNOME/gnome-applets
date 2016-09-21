@@ -59,7 +59,7 @@ LT_LIB_M
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME-APPLETS                          ***
 dnl ***************************************************************************
-GTK_REQUIRED=3.15.2
+GTK_REQUIRED=3.20.0
 GLIB_REQUIRED=2.44.0
 GIO_REQUIRED=2.26.0
 LIBPANEL_REQUIRED=3.18.0
@@ -88,7 +88,6 @@ AC_PROG_CC
 AC_ISC_POSIX
 AC_STDC_HEADERS
 AC_PATH_XTRA
-AM_PATH_PYTHON(3)
 
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
 AC_SUBST(X_LIBS)
@@ -597,19 +596,6 @@ if test "$gtk_ok" = "yes"; then
   AC_DEFINE([HAVE__NL_MEASUREMENT_MEASUREMENT], [1],
             [Define if _NL_MEASUREMENT_MEASUREMENT is available])
 fi
-
-dnl ***************************************************************************
-dnl *** Set install directories                                             ***
-dnl ***************************************************************************
-AC_ARG_WITH([pythondir],
-	AS_HELP_STRING([--with-pythondir=DIR], [installation path for private Python modules @<:@auto@:>@]),
-	[ac_with_pythondir=$withval], [ac_with_pythondir=""])
-if test "$ac_with_pythondir" != ""; then
-	pythondir=${ac_with_pythondir}
-fi
-
-AC_MSG_NOTICE([installing private Python modules in $pythondir])
-AC_SUBST(pythondir)
 
 dnl **************************************************************************
 dnl Process .in files

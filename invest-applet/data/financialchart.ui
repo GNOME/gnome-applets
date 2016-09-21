@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.20.0 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
-  <object class="GtkWindow" id="window">
+  <requires lib="gtk+" version="3.20"/>
+  <template class="InvestChart" parent="GtkWindow">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="border_width">6</property>
@@ -41,6 +41,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="has_focus">True</property>
+                <signal name="activate" handler="s_activate_cb" object="InvestChart" swapped="no"/>
+                <signal name="changed" handler="s_changed_cb" object="InvestChart" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -50,13 +52,12 @@
             </child>
             <child>
               <object class="GtkCheckButton" id="autorefresh">
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="xalign">0.5</property>
                 <property name="active">True</property>
                 <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="autorefresh_toggled_cb" object="InvestChart" swapped="no"/>
                 <child>
                   <object class="GtkAlignment" id="alignment1">
                     <property name="visible">True</property>
@@ -108,15 +109,17 @@
               <object class="GtkComboBoxText" id="t">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="active">0</property>
                 <items>
-                  <item translatable="yes">Today</item>
-                  <item translatable="yes">5 Days</item>
-                  <item translatable="yes">3 Months</item>
-                  <item translatable="yes">6 Months</item>
-                  <item translatable="yes">1 Year</item>
-                  <item translatable="yes">5 Years</item>
-                  <item translatable="yes">Maximum</item>
+                  <item id="1d" translatable="yes">Today</item>
+                  <item id="5d" translatable="yes">5 Days</item>
+                  <item id="3m" translatable="yes">3 Months</item>
+                  <item id="6m" translatable="yes">6 Months</item>
+                  <item id="1y" translatable="yes">1 Year</item>
+                  <item id="5y" translatable="yes">5 Years</item>
+                  <item id="my" translatable="yes">Maximum</item>
                 </items>
+                <signal name="changed" handler="changed_cb" object="InvestChart" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -196,7 +199,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">end</property>
-                    <property name="xalign">1</property>
                     <property name="label" translatable="yes" comments="see http://biz.yahoo.com/charts/guide10.html and http://en.wikipedia.org/wiki/Technical_indicator#Charting_terms_and_indicators">Indicators: </property>
                   </object>
                   <packing>
@@ -212,11 +214,13 @@
                       <object class="GtkComboBoxText" id="q">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="active">0</property>
                         <items>
-                          <item translatable="yes">Line</item>
-                          <item translatable="yes">Bar</item>
-                          <item translatable="yes">Candle</item>
+                          <item id="l" translatable="yes">Line</item>
+                          <item id="b" translatable="yes">Bar</item>
+                          <item id="c" translatable="yes">Candle</item>
                         </items>
+                        <signal name="changed" handler="changed_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -247,10 +251,12 @@
                       <object class="GtkComboBoxText" id="l">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="active">0</property>
                         <items>
-                          <item translatable="yes">Linear</item>
-                          <item translatable="yes">Logarithmic</item>
+                          <item id="off" translatable="yes">Linear</item>
+                          <item id="on" translatable="yes">Logarithmic</item>
                         </items>
+                        <signal name="changed" handler="changed_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -283,13 +289,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pm5">
                         <property name="label" translatable="yes">5</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -300,13 +305,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pm10">
                         <property name="label" translatable="yes">10</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -317,14 +321,13 @@
                     <child>
                       <object class="GtkCheckButton" id="pm20">
                         <property name="label" translatable="yes">20</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -335,13 +338,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pm50">
                         <property name="label" translatable="yes">50</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -352,13 +354,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pm100">
                         <property name="label" translatable="yes">100</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -369,13 +370,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pm200">
                         <property name="label" translatable="yes">200</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -397,14 +397,13 @@
                     <child>
                       <object class="GtkCheckButton" id="pe5">
                         <property name="label" translatable="yes">5</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -415,13 +414,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pe10">
                         <property name="label" translatable="yes">10</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -432,14 +430,13 @@
                     <child>
                       <object class="GtkCheckButton" id="pe20">
                         <property name="label" translatable="yes">20</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -450,13 +447,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pe50">
                         <property name="label" translatable="yes">50</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -467,13 +463,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pe100">
                         <property name="label" translatable="yes">100</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -484,13 +479,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pe200">
                         <property name="label" translatable="yes">200</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -512,14 +506,13 @@
                     <child>
                       <object class="GtkCheckButton" id="pb">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide13.html and http://en.wikipedia.org/wiki/Bollinger_bands">Bollinger</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -530,13 +523,12 @@
                     <child>
                       <object class="GtkCheckButton" id="pp">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide16.html and http://en.wikipedia.org/wiki/Parabolic_SAR">SAR</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -547,13 +539,12 @@
                     <child>
                       <object class="GtkCheckButton" id="ps">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide6.html and http://en.wikipedia.org/wiki/Stock_split">Splits</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -564,14 +555,13 @@
                     <child>
                       <object class="GtkCheckButton" id="pv">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://biz.yahoo.com/charts/guide20.html and http://en.wikipedia.org/wiki/Volume_%28finance%29">Volumes</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -594,14 +584,13 @@
                     <child>
                       <object class="GtkCheckButton" id="am">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/MACD">MACD</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -611,14 +600,13 @@
                     <child>
                       <object class="GtkCheckButton" id="af">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Money_flow_index">MFI</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -628,13 +616,12 @@
                     <child>
                       <object class="GtkCheckButton" id="ap">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Rate_of_change_%28technical_analysis%29">ROC</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -644,13 +631,12 @@
                     <child>
                       <object class="GtkCheckButton" id="ar">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Relative_Strength_Index">RSI</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -660,13 +646,12 @@
                     <child>
                       <object class="GtkCheckButton" id="av">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29">Vol</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -676,14 +661,13 @@
                     <child>
                       <object class="GtkCheckButton" id="ass">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator">Slow stoch</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -693,13 +677,12 @@
                     <child>
                       <object class="GtkCheckButton" id="avm">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Volume_%28finance%29">Vol+MA</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -709,13 +692,12 @@
                     <child>
                       <object class="GtkCheckButton" id="afs">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Stochastic_oscillator">Fast stoch</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -725,14 +707,13 @@
                     <child>
                       <object class="GtkCheckButton" id="aw">
                         <property name="label" translatable="yes" comments="Please keep this term short. For its meaning, see http://en.wikipedia.org/wiki/Williams_%25R">W%R</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
-                        <property name="xalign">0.5</property>
                         <property name="active">True</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="toggled_cb" object="InvestChart" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -792,7 +773,6 @@
         </child>
         <child>
           <object class="GtkLabel" id="progress">
-            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="label" translatable="yes">Downloading chart from &lt;b&gt;Yahoo!&lt;/b&gt;</property>
             <property name="use_markup">True</property>
@@ -806,5 +786,5 @@
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>
