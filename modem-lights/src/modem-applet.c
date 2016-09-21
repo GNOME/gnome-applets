@@ -103,8 +103,6 @@ struct _BackendDirective
   gboolean show_report;
 };
 
-static void modem_applet_class_init (ModemAppletClass *class);
-static void modem_applet_init       (ModemApplet      *applet);
 static void modem_applet_finalize   (GObject          *object);
 
 static gboolean update_tooltip      (ModemApplet *applet);
