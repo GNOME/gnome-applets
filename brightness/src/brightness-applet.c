@@ -66,9 +66,6 @@ GType                gpm_brightness_applet_get_type  (void);
 #define GSD_DBUS_SERVICE	"org.gnome.SettingsDaemon"
 #define GSD_DBUS_PATH_POWER	"/org/gnome/SettingsDaemon/Power"
 
-static void      gpm_brightness_applet_class_init (GpmBrightnessAppletClass *klass);
-static void      gpm_brightness_applet_init       (GpmBrightnessApplet *applet);
-
 G_DEFINE_TYPE (GpmBrightnessApplet, gpm_brightness_applet, PANEL_TYPE_APPLET)
 
 static void      gpm_applet_update_icon           (GpmBrightnessApplet *applet);
