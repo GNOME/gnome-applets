@@ -90,7 +90,7 @@ EXTRA_DIST = \
 	sticky-notes-note.ui \
 	sticky-notes-note-menu.xml \
 	sticky-notes-preferences.ui \
-	sticky-notes-properties.ui
+	sticky-notes-properties.ui \
 	sticky-notes-resources.gresource.xml \
 	$(NULL)
 
