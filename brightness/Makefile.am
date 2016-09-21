@@ -26,7 +26,6 @@ CLEANFILES = \
 
 EXTRA_DIST = \
 	org.gnome.BrightnessApplet.panel-applet.in.in \
-	org.gnome.SettingsDaemon.Power.Screen.xml \
 	$(ui_DATA) \
 	$(NULL)
 

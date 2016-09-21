@@ -53,4 +53,8 @@ CLEANFILES = \
 	$(BUILT_SOURCES) \
 	$(NULL)
 
+EXTRA_DIST = \
+	org.gnome.SettingsDaemon.Power.Screen.xml \
+	$(NULL)
+
 -include $(top_srcdir)/git.mk
