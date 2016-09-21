@@ -154,8 +154,6 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-	EyesApplet *eyes_applet = (EyesApplet *) user_data;
-
         static const gchar *authors [] = {
 		"Dave Camp <campd@oit.edu>",
 		NULL
