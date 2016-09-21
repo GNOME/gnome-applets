@@ -23,7 +23,6 @@ CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA)
 
 EXTRA_DIST = \
 	org.gnome.InhibitApplet.panel-applet.in.in \
-	org.gnome.SessionManager.xml \
 	$(ui_DATA) \
 	$(service_in_files)
 
