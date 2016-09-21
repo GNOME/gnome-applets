@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-inhibit_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+inhibit_appletlibdir = $(pkglibdir)
 inhibit_appletlib_LTLIBRARIES = libinhibit-applet.la
 
 libinhibit_applet_la_CPPFLAGS = \

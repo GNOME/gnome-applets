@@ -1,6 +1,6 @@
 NULL =
 
-tracker_search_bar_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
+tracker_search_bar_libdir=${pkglibdir}
 tracker_search_bar_lib_LTLIBRARIES=libtracker-search-bar-applet.la
 
 libtracker_search_bar_applet_la_CPPFLAGS = \

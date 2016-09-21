@@ -1,6 +1,6 @@
 NULL =
 
-trash_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
+trash_libdir=${pkglibdir}
 trash_lib_LTLIBRARIES=libtrash-applet.la
 
 libtrash_applet_la_CPPFLAGS = \

@@ -1,6 +1,6 @@
 NULL =
 
-command_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+command_applet_libdir = $(pkglibdir)
 command_applet_lib_LTLIBRARIES = libcommand-applet.la
 
 libcommand_applet_la_CPPFLAGS = \

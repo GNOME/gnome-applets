@@ -2,7 +2,7 @@ NULL =
 
 uidir	= $(pkgdatadir)/ui
 
-modem_lights_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+modem_lights_appletlibdir = $(pkglibdir)
 modem_lights_appletlib_LTLIBRARIES = libmodem-lights-applet.la
 
 libmodem_lights_applet_la_CPPFLAGS = \

@@ -2,7 +2,7 @@ NULL =
 
 SUBDIRS = icons src
 
-APPLET_LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libinhibit-applet.so
+APPLET_LOCATION=$(pkglibdir)/libinhibit-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.InhibitApplet.panel-applet.in

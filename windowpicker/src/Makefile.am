@@ -1,6 +1,6 @@
 NULL =
 
-window_picker_libdir=${pkglibdir}/${LIBPANEL_APPLET_API_VERSION}
+window_picker_libdir=${pkglibdir}
 window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
 libwindow_picker_applet_la_CFLAGS = \

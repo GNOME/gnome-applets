@@ -2,7 +2,7 @@ NULL =
 
 SUBDIRS = help themes src
 
-APPLET_LOCATION = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libgeyes-applet.so
+APPLET_LOCATION = $(pkglibdir)/libgeyes-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.GeyesApplet.panel-applet.in

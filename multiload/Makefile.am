@@ -2,7 +2,7 @@ NULL =
 
 SUBDIRS = help src
 
-APPLET_LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libmultiload-applet.so
+APPLET_LOCATION=$(pkglibdir)/libmultiload-applet.so
 
 gsettings_schemas_in_in = \
 	org.gnome.gnome-applets.multiload.gschema.xml.in.in

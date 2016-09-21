@@ -2,7 +2,7 @@ NULL =
 
 SUBDIRS = help src
 
-APPLET_LOCATION = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libdrive-mount-applet.so
+APPLET_LOCATION = $(pkglibdir)/libdrive-mount-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.DriveMountApplet.panel-applet.in

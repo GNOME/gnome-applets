@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-geyes_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+geyes_appletlibdir = $(pkglibdir)
 geyes_appletlib_LTLIBRARIES = libgeyes-applet.la
 
 libgeyes_applet_la_CPPFLAGS = \

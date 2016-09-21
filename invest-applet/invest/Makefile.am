@@ -1,6 +1,6 @@
 NULL =
 
-invest_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+invest_applet_libdir = $(pkglibdir)
 invest_applet_lib_LTLIBRARIES = libinvest-applet.la
 
 libinvest_applet_la_SOURCES = \

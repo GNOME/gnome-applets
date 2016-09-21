@@ -2,7 +2,7 @@ NULL =
 
 uidir   = $(pkgdatadir)/ui
 
-accessx_status_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+accessx_status_applet_libdir = $(pkglibdir)
 accessx_status_applet_lib_LTLIBRARIES = libaccessx-status-applet.la
 
 libaccessx_status_applet_la_CPPFLAGS = \

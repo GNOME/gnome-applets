@@ -20,7 +20,7 @@ gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
 
 @GSETTINGS_RULES@
 
-APPLET_LOCATION = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libbattery-status-applet.so
+APPLET_LOCATION = $(pkglibdir)/libbattery-status-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.BattstatApplet.panel-applet.in

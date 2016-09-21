@@ -1,6 +1,6 @@
 NULL =
 
-timer_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+timer_applet_libdir = $(pkglibdir)
 timer_applet_lib_LTLIBRARIES = libtimer-applet.la
 
 libtimer_applet_la_CPPFLAGS = \

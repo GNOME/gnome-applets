@@ -1,6 +1,6 @@
 NULL =
 
-mini_commander_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+mini_commander_applet_libdir = $(pkglibdir)
 mini_commander_applet_lib_LTLIBRARIES = libmini-commander-applet.la
 
 libmini_commander_applet_la_CPPFLAGS = \
@@ -74,7 +74,7 @@ update-icon-cache:
 		echo "***   $(gtk_update_icon_cache)"; \
 	fi
 
-APPLET_LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libmini-commander-applet.so
+APPLET_LOCATION=$(pkglibdir)/libmini-commander-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.MiniCommanderApplet.panel-applet.in

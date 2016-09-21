@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-gweather_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+gweather_appletlibdir = $(pkglibdir)
 gweather_appletlib_LTLIBRARIES = libgweather-applet.la
 
 libgweather_applet_la_CPPFLAGS = \

@@ -2,7 +2,7 @@ NULL =
 
 SUBDIRS = src
 
-APPLET_LOCATION = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libcommand-applet.so
+APPLET_LOCATION = $(pkglibdir)/libcommand-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.CommandApplet.panel-applet.in

@@ -6,7 +6,7 @@ endif
 
 SUBDIRS = $(selector_SUBDIR)
 
-cpu_frequency_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+cpu_frequency_applet_libdir = $(pkglibdir)
 cpu_frequency_applet_lib_LTLIBRARIES = libcpu-frequency-applet.la
 
 libcpu_frequency_applet_la_CPPFLAGS = \

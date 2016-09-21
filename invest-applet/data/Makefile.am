@@ -8,7 +8,7 @@ appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.applets.InvestApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
-LOCATION=$(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)/libinvest-applet.so
+LOCATION=$(pkglibdir)/libinvest-applet.so
 
 $(applet_in_files): $(applet_in_files).in Makefile
 	$(AM_V_GEN)sed \

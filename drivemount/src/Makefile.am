@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-drivemount_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+drivemount_applet_libdir = $(pkglibdir)
 drivemount_applet_lib_LTLIBRARIES = libdrive-mount-applet.la
 
 libdrive_mount_applet_la_CPPFLAGS = \

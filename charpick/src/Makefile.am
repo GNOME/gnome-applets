@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-charpick_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+charpick_applet_libdir = $(pkglibdir)
 charpick_applet_lib_LTLIBRARIES = libcharacter-picker-applet.la
 
 libcharacter_picker_applet_la_CPPFLAGS = \

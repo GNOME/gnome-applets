@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-netspeed_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+netspeed_applet_libdir = $(pkglibdir)
 netspeed_applet_lib_LTLIBRARIES = libnet-speed-applet.la
 
 libnet_speed_applet_la_CPPFLAGS = \

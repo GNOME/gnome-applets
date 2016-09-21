@@ -20,7 +20,7 @@ APMDIR =
 APMINC =
 endif
 
-battery_status_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+battery_status_applet_libdir = $(pkglibdir)
 battery_status_applet_lib_LTLIBRARIES = libbattery-status-applet.la
 
 libbattery_status_applet_la_CPPFLAGS = \

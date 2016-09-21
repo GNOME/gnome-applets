@@ -2,7 +2,7 @@ NULL =
 
 uidir = $(pkgdatadir)/ui
 
-multiload_appletlibdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+multiload_appletlibdir = $(pkglibdir)
 multiload_appletlib_LTLIBRARIES = libmultiload-applet.la
 
 libmultiload_applet_la_CPPFLAGS = \

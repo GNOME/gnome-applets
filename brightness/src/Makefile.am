@@ -2,7 +2,7 @@ NULL =
 
 uidir   = $(pkgdatadir)/ui
 
-brightness_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+brightness_applet_libdir = $(pkglibdir)
 brightness_applet_lib_LTLIBRARIES = libbrightness-applet.la
 
 libbrightness_applet_la_CPPFLAGS = \

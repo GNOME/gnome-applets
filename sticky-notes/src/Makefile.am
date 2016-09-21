@@ -2,7 +2,7 @@ NULL =
 
 if BUILD_STICKYNOTES_APPLET
 
-stickynotes_applet_libdir = $(pkglibdir)/$(LIBPANEL_APPLET_API_VERSION)
+stickynotes_applet_libdir = $(pkglibdir)
 stickynotes_applet_lib_LTLIBRARIES = libsticky-notes-applet.la
 
 libsticky_notes_applet_la_CPPFLAGS = \
