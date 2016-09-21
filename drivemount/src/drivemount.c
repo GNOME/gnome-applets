@@ -79,8 +79,6 @@ display_about_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	DriveList *drive_list = (DriveList *) user_data;
-
     const gchar *authors[] = {
 	"James Henstridge <jamesh@canonical.com>",
 	NULL
