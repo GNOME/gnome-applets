@@ -167,6 +167,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
 
     /* Create the temperature label */
     gw_applet->label = gtk_label_new("--");
+    panel_applet_add_text_class (gw_applet->applet, gw_applet->label);
     
     /* Update temperature text */
     if (gw_applet->gweather_info)
