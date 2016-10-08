@@ -1503,6 +1503,8 @@ create_layout(ProgressData *battstat)
   battstat->status = gtk_image_new();
   battstat->battery = gtk_image_new();
 
+  panel_applet_add_text_class (PANEL_APPLET (battstat->applet), battstat->percent);
+
   /* When you first get a pointer to a newly created GtkWidget it has one
      'floating' reference.  When you first add this widget to a container
      the container adds a real reference and removes the floating reference
