@@ -368,28 +368,6 @@ chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 
 static inline void force_no_focus_padding (GtkWidget *widget)
 {
-	gboolean        first_time = TRUE;
-	GtkCssProvider *provider;
-
-	if (first_time) {
-		provider = gtk_css_provider_new ();
-
-		gtk_css_provider_load_from_data (provider,
-		                                 "#charpick-applet-button {\n"
-		                                 "-GtkWidget-focus-line-width: 0px;\n"
-		                                 "-GtkWidget-focus-padding: 0px;\n"
-		                                 "}",
-		                                 -1,
-		                                 NULL);
-		gtk_style_context_add_provider (gtk_widget_get_style_context (widget),
-		                                GTK_STYLE_PROVIDER (provider),
-		                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-		g_object_unref (provider);
-
-		first_time = FALSE;
-	}
-
 	gtk_widget_set_name (widget, "charpick-applet-button");
 }
 
