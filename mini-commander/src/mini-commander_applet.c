@@ -360,10 +360,6 @@ mini_commander_applet_fill (PanelApplet *applet)
     }
     g_object_unref (settings);
 
-    g_set_application_name (_("Command Line"));
-
-    gtk_window_set_default_icon_name ("gnome-mini-commander");
-
     mc = g_new0 (MCData, 1);
     mc->applet = applet;
 

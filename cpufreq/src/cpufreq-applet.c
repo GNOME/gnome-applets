@@ -937,10 +937,6 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 	AtkObject      *atk_obj;
 	GSettings *settings;
 
-	g_set_application_name  (_("CPU Frequency Scaling Monitor"));
-
-	gtk_window_set_default_icon_name ("gnome-cpu-frequency-applet");
-
         /* Preferences */
         if (applet->prefs)
                 g_object_unref (applet->prefs);

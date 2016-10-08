@@ -151,10 +151,6 @@ applet_factory (PanelApplet *applet,
     gchar *ui_path;
 
     if (!strcmp (iid, drivemount_iid)) {
-	g_set_application_name (_("Disk Mounter"));
-
-	gtk_window_set_default_icon_name ("media-floppy");
-
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
 	drive_list = drive_list_new ();

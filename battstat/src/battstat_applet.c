@@ -1562,10 +1562,6 @@ battstat_applet_fill (PanelApplet *applet)
 
   if (DEBUG) g_print("main()\n");
 
-  g_set_application_name (_("Battery Charge Monitor"));
-
-  gtk_window_set_default_icon_name ("battery");
-
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
   
   battstat = g_new0 (ProgressData, 1);

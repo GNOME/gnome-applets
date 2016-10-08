@@ -275,9 +275,6 @@ change_icons(NetspeedApplet *applet)
 	in_arrow = gtk_icon_theme_load_icon(icon_theme, IN_ICON, 16, 0, NULL);
 	out_arrow = gtk_icon_theme_load_icon(icon_theme, OUT_ICON, 16, 0, NULL);
 
-	/* Set the windowmanager icon for the applet */
-	gtk_window_set_default_icon_name(LOGO_ICON);
-
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->out_pix), out_arrow);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(applet->in_pix), in_arrow);
 	g_object_unref(in_arrow);
@@ -1454,7 +1451,6 @@ netspeed_applet_factory (PanelApplet *applet,
 	netspeed = NETSPEED_APPLET (applet);
 
 	glibtop_init();
-	g_set_application_name (_("Netspeed"));
 
 	/* Alloc the applet. The "NULL-setting" is really redudant
  	 * but aren't we paranoid?

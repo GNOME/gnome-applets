@@ -399,9 +399,6 @@ timer_applet_fill (PanelApplet* applet_widget)
 {
     TimerApplet *applet;
 
-    g_set_application_name (_("Timer Applet"));
-    gtk_window_set_default_icon_name (APPLET_ICON);
-
     if (!notify_is_initted ())
         notify_init ("timer-applet");
 

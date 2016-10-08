@@ -470,10 +470,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->prop_dialog = NULL;
         ma->last_clicked = 0;
 
-	g_set_application_name (_("System Monitor"));
-
-	gtk_window_set_default_icon_name ("utilities-system-monitor");
-
 	ma->settings = panel_applet_settings_new (applet, MULTILOAD_SCHEMA);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 

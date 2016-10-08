@@ -147,10 +147,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes->settings = panel_applet_settings_new (panel_applet, STICKYNOTES_SCHEMA);
 	stickynotes->last_timeout_data = 0;
 
-	g_set_application_name (_("Sticky Notes"));
-
-	gtk_window_set_default_icon_name ("gnome-sticky-notes-applet");
-
 	stickynotes->icon_normal = gtk_icon_theme_load_icon (
 			gtk_icon_theme_get_default (),
 			"gnome-sticky-notes-applet",

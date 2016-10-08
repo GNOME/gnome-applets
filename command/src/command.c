@@ -323,9 +323,6 @@ command_applet_fill (PanelApplet* applet)
     CommandApplet *command_applet;
     GSimpleActionGroup *action_group;
 
-    g_set_application_name (_("Command Applet"));
-    gtk_window_set_default_icon_name (APPLET_ICON);
-
     panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
     command_applet = g_malloc0(sizeof(CommandApplet));

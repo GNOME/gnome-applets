@@ -725,10 +725,6 @@ charpicker_applet_fill (PanelApplet *applet)
   GAction *action;
   gchar *ui_path;
 
-  g_set_application_name (_("Character Palette"));
-  
-  gtk_window_set_default_icon_name ("accessories-character-map");
-
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
    
   curr_data = g_new0 (charpick_data, 1);

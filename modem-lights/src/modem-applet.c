@@ -156,8 +156,6 @@ modem_applet_init (ModemApplet *applet)
   ModemAppletPrivate *priv;
   GdkPixbuf *pixbuf;
 
-  g_set_application_name ( _("Modem Monitor"));
-
   priv = MODEM_APPLET_GET_PRIVATE (applet);
 
   priv->builder = gtk_builder_new ();

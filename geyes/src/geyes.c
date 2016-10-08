@@ -368,9 +368,6 @@ geyes_applet_fill (PanelApplet *applet)
 	GAction *action;
 	gchar *ui_path;
 
-	g_set_application_name (_("Eyes"));
-	
-	gtk_window_set_default_icon_name ("gnome-eyes-applet");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	
         eyes_applet = create_eyes (applet);

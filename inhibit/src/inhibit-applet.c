@@ -484,8 +484,6 @@ gpm_applet_cb (PanelApplet *_applet, const gchar *iid, gpointer data)
 		return FALSE;
 	}
 
-	gtk_window_set_default_icon_name (GPM_INHIBIT_APPLET_ICON);
-
 	action_group = g_simple_action_group_new ();
 	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
 					 menu_actions,

@@ -600,10 +600,6 @@ trash_applet_factory (PanelApplet *applet,
       GSimpleActionGroup *action_group;
       const gchar *resource_name;
 
-      g_set_application_name (_("Trash Applet"));
-
-      gtk_window_set_default_icon_name ("user-trash");
-
       /* Set up the menu */
       action_group = g_simple_action_group_new ();
       g_action_map_add_action_entries (G_ACTION_MAP (action_group),

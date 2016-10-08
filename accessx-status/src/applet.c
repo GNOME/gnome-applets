@@ -1048,8 +1048,6 @@ create_applet (PanelApplet *applet)
 	AtkObject           *atko;
 	GdkPixbuf	    *pixbuf;
 
-	g_set_application_name (_("AccessX Status"));
-
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
 	sapplet->box = NULL;
