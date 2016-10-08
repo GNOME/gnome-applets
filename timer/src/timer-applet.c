@@ -416,6 +416,8 @@ timer_applet_fill (PanelApplet* applet_widget)
     applet->pause_image = GTK_IMAGE (gtk_image_new_from_icon_name ("media-playback-pause", GTK_ICON_SIZE_BUTTON));
     applet->label = GTK_LABEL (gtk_label_new (""));
 
+    panel_applet_add_text_class (applet_widget, GTK_WIDGET (applet->label));
+
     /* we add the Gtk label into the applet */
     gtk_box_pack_start (applet->box,
                         GTK_WIDGET (applet->image),
