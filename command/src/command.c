@@ -346,6 +346,8 @@ command_applet_fill (PanelApplet* applet)
                         GTK_WIDGET (command_applet->label),
                         TRUE, TRUE, 0);
 
+    panel_applet_add_text_class (command_applet->applet, GTK_WIDGET (command_applet->label));
+
     gtk_container_add (GTK_CONTAINER (applet),
                        GTK_WIDGET (command_applet->box));
 
