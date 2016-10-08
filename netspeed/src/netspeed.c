@@ -1474,6 +1474,10 @@ netspeed_applet_factory (PanelApplet *applet,
 	netspeed->out_label = netspeed_label_new ();
 	netspeed->sum_label = netspeed_label_new ();
 
+	panel_applet_add_text_class (applet, netspeed->in_label);
+	panel_applet_add_text_class (applet, netspeed->out_label);
+	panel_applet_add_text_class (applet, netspeed->sum_label);
+
 	netspeed->in_pix = gtk_image_new ();
 	netspeed->out_pix = gtk_image_new ();
 	netspeed->dev_pix = gtk_image_new ();
