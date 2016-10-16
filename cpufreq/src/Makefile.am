@@ -60,6 +60,7 @@ libcpu_frequency_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBGLADE_LIBS) \
 	$(LIBCPUFREQ_LIBS) \
+	$(DBUS_LIBS) \
 	$(NULL)
 
 if HAVE_LIBCPUFREQ
