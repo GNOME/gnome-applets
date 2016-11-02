@@ -33,6 +33,8 @@
 #include "tracker-applet.h"
 #include "tracker-results-window.h"
 
+#define RESOURCE_PREFIX "/org/gnome/gnome-applets/tracker-search-bar"
+
 static void applet_about_cb (GSimpleAction *action,
                              GVariant *parameter,
                              gpointer user_data);
@@ -367,8 +369,7 @@ applet_new (PanelApplet *parent_applet)
 
 	builder = gtk_builder_new ();
 
-	resource_name = "/org/gnome/gnome-applets/tracker-search-bar.ui";
-
+	resource_name = RESOURCE_PREFIX "/tracker-search-bar.ui";
 	gtk_builder_add_from_resource (builder, resource_name, NULL);
 
 	applet = g_new0 (TrackerApplet, 1);
@@ -393,8 +394,7 @@ applet_new (PanelApplet *parent_applet)
 	                                 G_N_ELEMENTS (applet_menu_actions),
 	                                 applet);
 
-	resource_name = "/org/gnome/gnome-applets/tracker-search-bar-menu.xml";
-
+	resource_name = RESOURCE_PREFIX "/tracker-search-bar-menu.xml";
 	panel_applet_setup_menu_from_resource (PANEL_APPLET (applet->parent),
 	                                       resource_name,
 	                                       action_group,
