@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-21 12:30+0000\n"
-"PO-Revision-Date: 2016-09-21 20:15+0200\n"
+"POT-Creation-Date: 2016-11-10 09:58+0000\n"
+"PO-Revision-Date: 2016-11-14 11:38+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -63,9 +63,27 @@ msgstr "_Hilfe"
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:7
 #: ../tracker-search-bar/src/tracker-search-bar-menu.xml.h:1
-#: ../trash/src/trash-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
+#: ../trash/src/trash-menu.xml.h:4 ../window-buttons/windowbuttons.c:69
+#: ../windowpicker/src/wp-menu.xml.h:2 ../window-title/windowtitle.c:52
 msgid "_About"
 msgstr "_Info"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:1
+msgid "AccessX Status Applet Factory"
+msgstr "AccessX-Status-Applet-Factory"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
+msgid "Keyboard Accessibility Status Applet Factory"
+msgstr "Factory des Barrierefreiheitsstatus der Tastatur-Applets"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
+#: ../accessx-status/src/applet.c:1293
+msgid "Keyboard Accessibility Status"
+msgstr "Barrierefreiheitsstatus der Tastatur"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:4
+msgid "Shows the status of keyboard accessibility features"
+msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 
 # CHECK gesperrte Umschalter?!
 #: ../accessx-status/src/applet.c:138
@@ -74,12 +92,12 @@ msgstr "Zeigt den Status von AccessX-Funktionen wie gesperrten Umschaltern an"
 
 #. "documenters",        documenters,
 #: ../accessx-status/src/applet.c:143 ../battstat/src/battstat_applet.c:1203
-#: ../charpick/src/charpick.c:601 ../command/src/command.c:120
+#: ../charpick/src/charpick.c:579 ../command/src/command.c:120
 #: ../cpufreq/src/cpufreq-applet.c:606 ../drivemount/src/drivemount.c:98
 #: ../geyes/src/geyes.c:176 ../gweather/src/gweather-about.c:60
 #: ../invest-applet/invest/invest-applet.c:273 ../mini-commander/src/about.c:53
-#: ../modem-lights/src/modem-applet.c:998 ../multiload/src/main.c:62
-#: ../netspeed/src/netspeed.c:637
+#: ../modem-lights/src/modem-applet.c:996 ../multiload/src/main.c:62
+#: ../netspeed/src/netspeed.c:634
 #: ../sticky-notes/src/stickynotes_applet_callbacks.c:395
 #: ../timer/src/timer-applet.c:286 ../trash/src/trash-applet.c:419
 msgid "translator-credits"
@@ -116,12 +134,12 @@ msgstr "Beim Starten der Tastatureinstellungen ist ein Fehler aufgetreten: %s"
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/src/applet.c:978 ../accessx-status/src/applet.c:1051
-#: ../accessx-status/src/applet.c:1119 ../accessx-status/src/applet.c:1298
+#: ../accessx-status/src/applet.c:978 ../accessx-status/src/applet.c:1117
+#: ../accessx-status/src/applet.c:1296
 msgid "AccessX Status"
 msgstr "AccessX-Status"
 
-#: ../accessx-status/src/applet.c:979 ../accessx-status/src/applet.c:1120
+#: ../accessx-status/src/applet.c:979 ../accessx-status/src/applet.c:1118
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Zeigt den Tastaturstatus an, falls die Barrierefreiheitsfunktionen aktiviert "
@@ -140,28 +158,189 @@ msgstr "Unbekannter Fehler"
 msgid "Error: %s"
 msgstr "Fehler: %s"
 
-#: ../accessx-status/src/applet.c:1295
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
-msgid "Keyboard Accessibility Status"
-msgstr "Barrierefreiheitsstatus der Tastatur"
-
-#: ../accessx-status/src/applet.c:1300
+#: ../accessx-status/src/applet.c:1298
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Zeigt den augenblicklichen Status von Barrierefreiheitsfunktionen der "
 "Tastatur an"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:1
-msgid "AccessX Status Applet Factory"
-msgstr "AccessX-Status-Applet-Factory"
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
+#: ../window-buttons/windowbuttons.c:68 ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Einstellungen"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
-msgid "Keyboard Accessibility Status Applet Factory"
-msgstr "Factory des Barrierefreiheitsstatus der Tastatur-Applets"
+#: ../battstat/battstat_applet.ui.h:1
+msgid "Battery Charge Monitor Preferences"
+msgstr "Einstellungen der Akkuladeanzeige"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:4
-msgid "Shows the status of keyboard accessibility features"
-msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
+#: ../battstat/battstat_applet.ui.h:2 ../window-buttons/windowbuttons.ui.h:19
+#: ../window-title/windowtitle.ui.h:19
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "_Compact view"
+msgstr "_Kompakte Darstellung"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "(shows single image for status and charge)"
+msgstr "(zeigt eine Grafik für Status und Ladezustand)"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "_Expanded view"
+msgstr "_Erweiterte Darstellung"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "(two images: one for status, one for charge)"
+msgstr ""
+"(zeigt zwei Grafiken, einen für den Status und eine für den Ladezustand)"
+
+#: ../battstat/battstat_applet.ui.h:7
+msgid "_Show time/percentage:"
+msgstr "_Zeit-/Prozente anzeigen:"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "Show _time remaining"
+msgstr "_Verbleibende Zeit anzeigen"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "Show _percentage remaining"
+msgstr "_Verbleibende Prozent anzeigen"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#. TRANSLATOR: This is the beginning of the sentence
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "_Warnen, falls der Akkustand niedriger ist als:"
+
+#: ../battstat/battstat_applet.ui.h:13
+msgid "_Notify when battery is fully recharged"
+msgstr "Be_nachrichtigen sobald der Akku voll aufgeladen ist"
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
+msgid "Battstat Factory"
+msgstr "Battstat-Factory"
+
+# google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
+#: ../battstat/src/battstat_applet.c:1614
+msgid "Battery Charge Monitor"
+msgstr "Akkuladeanzeige"
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
+#: ../battstat/src/battstat_applet.c:1615
+msgid "Monitor a laptop's remaining power"
+msgstr "Die verbleibende Energie eines Laptops überwachen"
+
+# CHECK
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:1
+msgid "Red value level"
+msgstr "Rotwertniveau"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
+msgstr ""
+"Das Akkuladeniveau, unterhalb dessen der Akku rot eingefärbt wird. Außerdem "
+"der Wert, bei dem die Warnung über geringe Akkuleistung angezeigt wird."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
+msgid "Warn on low time rather than low percentage"
+msgstr "Eher bei geringer Zeit, als bei kleinem Prozentwert warnen"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
+msgid ""
+"Use the value defined in red-value as a time remaining to show the warning "
+"dialog rather than a percentage."
+msgstr ""
+"Den Wert von »red_value« als verbleibende Zeit bis zum Anzeigen des "
+"Warnhinweises statt des Prozentwertes verwenden."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
+msgid "Low Battery Notification"
+msgstr "Akkubenachrichtigung »leer«"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:6
+msgid "Notify user when the battery is low."
+msgstr "Benutzer benachrichtigen, falls der Akkustand niedrig ist"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:7
+msgid "Full Battery Notification"
+msgstr "Akkubenachrichtigung »voll«"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:8
+msgid "Notify user when the battery is full."
+msgstr "Benutzer benachrichtigen, falls der Akku geladen ist."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:9
+msgid "Beep for warnings"
+msgstr "Bei Warnungen Signalton ausgeben"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:10
+msgid "Beep when displaying a warning."
+msgstr "Beim Anzeigen einer Warnung einen Signalton ausgeben."
+
+# CHECK
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:11
+msgid "Drain from top"
+msgstr "Von oben herunterzählen"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Den Akkuzustandsmesser so anzeigen, dass er von oben nach unten "
+"herunterzählt. Dies ist nur für die traditionelle Anzeige verfügbar."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
+msgid "Upright (small) battery"
+msgstr "Aufgerichteter (kleiner) Akku"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:14
+msgid "Show the upright, smaller battery on the panel."
+msgstr "Den aufgerichteten, kleineren Akku im Panel anzeigen."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:15
+msgid "Show the horizontal battery"
+msgstr "Akku horizontal anzeigen"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:16
+msgid "Show the traditional, horizontal battery on the panel."
+msgstr "Den herkömmlichen, horizontalen Akku im Panel anzeigen."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:17
+msgid "Show the time/percent label"
+msgstr "Die Zeit-/Prozent-Beschriftung anzeigen"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
+msgid "0 for no label, 1 for percentage and 2 for time remaining."
+msgstr ""
+"»0« für keine Beschriftung, »1« für Prozentangabe und »2« für die "
+"verbleibende Zeit"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "Akkustatuswerkzeug"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery power low"
+msgstr "Akkuladezustand kritisch"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery fully re-charged"
+msgstr "Akku voll aufgeladen"
 
 #: ../battstat/src/battstat_applet.c:62
 msgid "System is running on AC power"
@@ -339,18 +518,6 @@ msgstr "Upower-Backend aktiviert."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Altes Backend (nicht HAL) aktiviert."
 
-# google sagt: B.-ladeanz. gebräuchlicher als B.-ladungsanz.
-#: ../battstat/src/battstat_applet.c:1563
-#: ../battstat/src/battstat_applet.c:1616
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
-msgid "Battery Charge Monitor"
-msgstr "Akkuladeanzeige"
-
-#: ../battstat/src/battstat_applet.c:1617
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
-msgid "Monitor a laptop's remaining power"
-msgstr "Die verbleibende Energie eines Laptops überwachen"
-
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
@@ -367,176 +534,14 @@ msgstr "Prozent"
 msgid "Minutes Remaining"
 msgstr "Minuten verbleiben"
 
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "_Einstellungen"
-
-#: ../battstat/battstat_applet.ui.h:1
-msgid "Battery Charge Monitor Preferences"
-msgstr "Einstellungen der Akkuladeanzeige"
-
-#: ../battstat/battstat_applet.ui.h:2
-msgid "Appearance"
-msgstr "Erscheinungsbild"
-
-#: ../battstat/battstat_applet.ui.h:3
-msgid "_Compact view"
-msgstr "_Kompakte Darstellung"
-
-#: ../battstat/battstat_applet.ui.h:4
-msgid "(shows single image for status and charge)"
-msgstr "(zeigt eine Grafik für Status und Ladezustand)"
-
-#: ../battstat/battstat_applet.ui.h:5
-msgid "_Expanded view"
-msgstr "_Erweiterte Darstellung"
-
-#: ../battstat/battstat_applet.ui.h:6
-msgid "(two images: one for status, one for charge)"
-msgstr ""
-"(zeigt zwei Grafiken, einen für den Status und eine für den Ladezustand)"
-
-#: ../battstat/battstat_applet.ui.h:7
-msgid "_Show time/percentage:"
-msgstr "_Zeit-/Prozente anzeigen:"
-
-#: ../battstat/battstat_applet.ui.h:8
-msgid "Show _time remaining"
-msgstr "_Verbleibende Zeit anzeigen"
-
-#: ../battstat/battstat_applet.ui.h:9
-msgid "Show _percentage remaining"
-msgstr "_Verbleibende Prozent anzeigen"
-
-#: ../battstat/battstat_applet.ui.h:10
-msgid "Notifications"
-msgstr "Benachrichtigungen"
-
-#. TRANSLATOR: This is the beginning of the sentence
-#: ../battstat/battstat_applet.ui.h:12
-msgid "_Warn when battery charge drops to:"
-msgstr "_Warnen, falls der Akkustand niedriger ist als:"
-
-#: ../battstat/battstat_applet.ui.h:13
-msgid "_Notify when battery is fully recharged"
-msgstr "Be_nachrichtigen sobald der Akku voll aufgeladen ist"
-
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
-msgid "Battstat Factory"
-msgstr "Battstat-Factory"
-
-# CHECK
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:1
-msgid "Red value level"
-msgstr "Rotwertniveau"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
-msgid ""
-"The battery level below which the battery is displayed as red. Also the "
-"value at which the low battery warning is displayed."
-msgstr ""
-"Das Akkuladeniveau, unterhalb dessen der Akku rot eingefärbt wird. Außerdem "
-"der Wert, bei dem die Warnung über geringe Akkuleistung angezeigt wird."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
-msgid "Warn on low time rather than low percentage"
-msgstr "Eher bei geringer Zeit, als bei kleinem Prozentwert warnen"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-msgid ""
-"Use the value defined in red-value as a time remaining to show the warning "
-"dialog rather than a percentage."
-msgstr ""
-"Den Wert von »red_value« als verbleibende Zeit bis zum Anzeigen des "
-"Warnhinweises statt des Prozentwertes verwenden."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
-msgid "Low Battery Notification"
-msgstr "Akkubenachrichtigung »leer«"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:6
-msgid "Notify user when the battery is low."
-msgstr "Benutzer benachrichtigen, falls der Akkustand niedrig ist"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:7
-msgid "Full Battery Notification"
-msgstr "Akkubenachrichtigung »voll«"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:8
-msgid "Notify user when the battery is full."
-msgstr "Benutzer benachrichtigen, falls der Akku geladen ist."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:9
-msgid "Beep for warnings"
-msgstr "Bei Warnungen Signalton ausgeben"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:10
-msgid "Beep when displaying a warning."
-msgstr "Beim Anzeigen einer Warnung einen Signalton ausgeben."
-
-# CHECK
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:11
-msgid "Drain from top"
-msgstr "Von oben herunterzählen"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"Den Akkuzustandsmesser so anzeigen, dass er von oben nach unten "
-"herunterzählt. Dies ist nur für die traditionelle Anzeige verfügbar."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
-msgid "Upright (small) battery"
-msgstr "Aufgerichteter (kleiner) Akku"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:14
-msgid "Show the upright, smaller battery on the panel."
-msgstr "Den aufgerichteten, kleineren Akku im Panel anzeigen."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:15
-msgid "Show the horizontal battery"
-msgstr "Akku horizontal anzeigen"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:16
-msgid "Show the traditional, horizontal battery on the panel."
-msgstr "Den herkömmlichen, horizontalen Akku im Panel anzeigen."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:17
-msgid "Show the time/percent label"
-msgstr "Die Zeit-/Prozent-Beschriftung anzeigen"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
-msgid "0 for no label, 1 for percentage and 2 for time remaining."
-msgstr ""
-"»0« für keine Beschriftung, »1« für Prozentangabe und »2« für die "
-"verbleibende Zeit"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:1
-msgid "Battery Status Utility"
-msgstr "Akkustatuswerkzeug"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:2
-msgid "Battery power low"
-msgstr "Akkuladezustand kritisch"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
-msgid "Battery fully re-charged"
-msgstr "Akku voll aufgeladen"
-
-#: ../brightness/src/brightness-applet.c:92
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#: ../brightness/src/brightness-applet.c:92
 msgid "Brightness Applet"
 msgstr "Helligkeits-Applet"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "Passt die Helligkeit des Laptop-Bildschirms an"
 
 #: ../brightness/src/brightness-applet.c:93
 msgid "Adjusts laptop panel brightness."
@@ -601,11 +606,43 @@ msgstr ""
 msgid "Copyright © 2006 Benjamin Canou"
 msgstr "Copyright © 2006 Benjamin Canou"
 
-#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
-msgid "Adjusts Laptop panel brightness"
-msgstr "Passt die Helligkeit des Laptop-Bildschirms an"
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
+msgid "Charpicker Applet Factory"
+msgstr "Zeichenwähler-Applet-Factory"
 
-#: ../charpick/src/charpick.c:425
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
+#: ../charpick/src/charpick.c:691 ../charpick/src/properties.c:426
+msgid "Character Palette"
+msgstr "Zeichenpalette"
+
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
+#: ../charpick/src/charpick.c:691
+msgid "Insert characters"
+msgstr "Zeichen einfügen"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
+msgid "Characters shown on applet startup"
+msgstr "Beim Applet-Start anzuzeigende Zeichen"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"Die Zeichenkette, die der Benutzer beim letzten Einsatz des Applets gewählt "
+"hat. Diese Zeichenkette wird angezeigt, sobald der Benutzer das Applet "
+"startet."
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
+#: ../charpick/src/properties.c:353
+msgid "List of available palettes"
+msgstr "Liste der verfügbaren Paletten"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
+msgid "List of strings containing the available palettes."
+msgstr "Liste der Zeichenketten, die die verfügbaren Paletten enthalten."
+
+#: ../charpick/src/charpick.c:403
 msgid "Available palettes"
 msgstr "Verfügbare Paletten"
 
@@ -613,21 +650,21 @@ msgstr "Verfügbare Paletten"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/src/charpick.c:472
+#: ../charpick/src/charpick.c:450
 #, c-format
 msgid "Insert \"%s\""
 msgstr "»%s« einfügen"
 
-#: ../charpick/src/charpick.c:475
+#: ../charpick/src/charpick.c:453
 msgid "Insert special character"
 msgstr "Sonderzeichen einfügen"
 
-#: ../charpick/src/charpick.c:479
+#: ../charpick/src/charpick.c:457
 #, c-format
 msgid "insert special character %s"
 msgstr "Sonderzeichen %s einfügen"
 
-#: ../charpick/src/charpick.c:596
+#: ../charpick/src/charpick.c:574
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -636,20 +673,9 @@ msgstr ""
 "der Tastatur eingegeben werden können. Veröffentlicht unter der GNU General "
 "Public License."
 
-#: ../charpick/src/charpick.c:713 ../charpick/src/charpick.c:728
-#: ../charpick/src/properties.c:426
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-msgid "Character Palette"
-msgstr "Zeichenpalette"
-
-#: ../charpick/src/charpick.c:713
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
-msgid "Insert characters"
-msgstr "Zeichen einfügen"
-
 #: ../charpick/src/properties.c:73
 #: ../invest-applet/invest/invest-preferences.c:324
-#: ../modem-lights/src/modem-applet.c:909 ../trash/src/trash-applet.c:496
+#: ../modem-lights/src/modem-applet.c:907 ../trash/src/trash-applet.c:496
 #: ../trash/src/trash-empty.c:341
 msgid "_Cancel"
 msgstr "Abbre_chen"
@@ -682,11 +708,6 @@ msgstr "Palette bearbeiten"
 #: ../charpick/src/properties.c:352
 msgid "Palettes list"
 msgstr "Palettenliste"
-
-#: ../charpick/src/properties.c:353
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
-msgid "List of available palettes"
-msgstr "Liste der verfügbaren Paletten"
 
 #: ../charpick/src/properties.c:431
 msgid "_Palettes:"
@@ -739,57 +760,6 @@ msgstr "Einstellungen der Zeichenpalette"
 msgid "_Close"
 msgstr "S_chließen"
 
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
-msgid "Charpicker Applet Factory"
-msgstr "Zeichenwähler-Applet-Factory"
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
-msgid "Characters shown on applet startup"
-msgstr "Beim Applet-Start anzuzeigende Zeichen"
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
-msgid ""
-"The string that the user had selected when the applet was last used. This "
-"string will be displayed when the user starts the applet."
-msgstr ""
-"Die Zeichenkette, die der Benutzer beim letzten Einsatz des Applets gewählt "
-"hat. Diese Zeichenkette wird angezeigt, sobald der Benutzer das Applet "
-"startet."
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
-msgid "List of strings containing the available palettes."
-msgstr "Liste der Zeichenketten, die die verfügbaren Paletten enthalten."
-
-#: ../command/src/command.c:119
-#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
-msgid "Shows the output of a command"
-msgstr "Die Ausgabe eines Befehls anzeigen"
-
-#: ../command/src/command.c:140
-msgid "Command Applet Preferences"
-msgstr "Befehlszeileneinstellungen"
-
-#: ../command/src/command.c:153
-msgid "Command:"
-msgstr "Befehl:"
-
-#: ../command/src/command.c:161
-msgid "Interval (seconds):"
-msgstr "Intervall (Sekunden):"
-
-#: ../command/src/command.c:169
-msgid "Maximum width (chars):"
-msgstr "Maximale Breite (Zeichen):"
-
-#: ../command/src/command.c:177
-#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
-msgid "Show icon"
-msgstr "Symbol anzeigen"
-
-#: ../command/src/command.c:326
-msgid "Command Applet"
-msgstr "Befehlszeilen-Applet"
-
 #: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
 msgid "Command Factory"
 msgstr "Befehlszeilen-Applet-Factory"
@@ -798,6 +768,11 @@ msgstr "Befehlszeilen-Applet-Factory"
 #: ../mini-commander/src/preferences.c:672
 msgid "Command"
 msgstr "Befehl"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+#: ../command/src/command.c:119
+msgid "Shows the output of a command"
+msgstr "Die Ausgabe eines Befehls anzeigen"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
 msgid "Command to execute"
@@ -823,9 +798,30 @@ msgstr "Breite der Ausgabe"
 msgid "Number of characters to display"
 msgstr "Anzahl der anzuzeigenden Zeichen"
 
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+#: ../command/src/command.c:177
+msgid "Show icon"
+msgstr "Symbol anzeigen"
+
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
 msgid "If applet icon is shown or not"
 msgstr "Gibt an, ob das Symbol angezeigt wird oder nicht"
+
+#: ../command/src/command.c:140
+msgid "Command Applet Preferences"
+msgstr "Befehlszeileneinstellungen"
+
+#: ../command/src/command.c:153
+msgid "Command:"
+msgstr "Befehl:"
+
+#: ../command/src/command.c:161
+msgid "Interval (seconds):"
+msgstr "Intervall (Sekunden):"
+
+#: ../command/src/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Maximale Breite (Zeichen):"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -860,7 +856,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "Prozessortakt in _Prozent anzeigen"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:940 ../cpufreq/src/cpufreq-applet.c:996
+#: ../cpufreq/src/cpufreq-applet.c:992
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Überwachen der Prozessortaktstufen"
 
@@ -916,7 +912,7 @@ msgstr "Hilfedokument konnte nicht geöffnet werden"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dieses Werkzeug zeigt die aktuelle Abstufung des Prozessortakts."
 
-#: ../cpufreq/src/cpufreq-applet.c:997
+#: ../cpufreq/src/cpufreq-applet.c:993
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dieses Werkzeug zeigt den aktuellen Prozessortakt"
 
@@ -961,6 +957,23 @@ msgstr "Prozessortaktstufen ändern"
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr ""
 "Zum Ändern der Prozessortaktstufen sind weitergehende Rechte erforderlich."
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
+msgid "Drive Mount Applet Factory"
+msgstr "Factory für Laufwerks-Mount-Applets"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
+msgid "Factory for drive mount applet"
+msgstr "Factory für Laufwerks-Mount-Applet"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
+#: ../drivemount/src/drivemount.c:184
+msgid "Disk Mounter"
+msgstr "Platten einbinden"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr "Lokale Platten und Geräte einbinden"
 
 #: ../drivemount/src/drive-button.c:324 ../drivemount/src/drive-button.c:337
 msgid "(mounted)"
@@ -1010,34 +1023,29 @@ msgstr "%s _auswerfen"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet zum Einbinden und Aushängen von Blockpartitionen."
 
-#: ../drivemount/src/drivemount.c:154 ../drivemount/src/drivemount.c:188
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
-msgid "Disk Mounter"
-msgstr "Platten einbinden"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
+msgid "Geyes Applet Factory"
+msgstr "Geyes-Applet-Factory"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
-msgid "Drive Mount Applet Factory"
-msgstr "Factory für Laufwerks-Mount-Applets"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
+#: ../geyes/src/geyes.c:401 ../geyes/src/geyes.c:403
+msgid "Eyes"
+msgstr "Augen"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
-msgid "Factory for drive mount applet"
-msgstr "Factory für Laufwerks-Mount-Applet"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
+msgid "A set of eyeballs for your panel"
+msgstr "Ein Paar Augäpfel für Ihr Panel"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:4
-msgid "Mount local disks and devices"
-msgstr "Lokale Platten und Geräte einbinden"
+#: ../geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in.h:1
+msgid "Directory in which the theme is located"
+msgstr "Ordner, in dem sich das Thema befindet"
 
 #: ../geyes/src/geyes.c:171
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr ""
 "Ein Paar alberner Augen für das GNOME-Panel, die den Mauszeiger verfolgen."
 
-#: ../geyes/src/geyes.c:371 ../geyes/src/geyes.c:404 ../geyes/src/geyes.c:406
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
-msgid "Eyes"
-msgstr "Augen"
-
-#: ../geyes/src/geyes.c:407
+#: ../geyes/src/geyes.c:404
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Die Augen schauen in Richtung des Mauszeigers"
 
@@ -1062,17 +1070,75 @@ msgstr "Themen"
 msgid "_Select a theme:"
 msgstr "_Wählen Sie ein Thema:"
 
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
-msgid "Geyes Applet Factory"
-msgstr "Geyes-Applet-Factory"
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "_Details"
 
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
-msgid "A set of eyeballs for your panel"
-msgstr "Ein Paar Augäpfel für Ihr Panel"
+#: ../gweather/gweather-applet-menu.xml.h:2
+#: ../gweather/src/gweather-dialog.c:160
+msgid "_Update"
+msgstr "_Aktualisieren"
 
-#: ../geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in.h:1
-msgid "Directory in which the theme is located"
-msgstr "Ordner, in dem sich das Thema befindet"
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Gweather-Applet-Factory"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Factory zum Erzeugen des Wetter-Applets."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
+msgid "Weather Report"
+msgstr "Wetterbericht"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Die aktuellen Wetterberichte und -vorhersagen abrufen"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
+msgid "Update the data automatically"
+msgstr "Die Daten automatisch aktualisieren"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr ""
+"Legt fest, ob das Applet automatisch seine Wetterstatistiken aktualisiert."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
+msgid "Update interval"
+msgstr "Aktualisierungsintervall"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Das Intervall zwischen automatischen Aktualisierungen in Sekunden."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
+msgid "Display radar map"
+msgstr "Radarkarte anzeigen"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
+msgid "Fetch a radar map on each update."
+msgstr "Bei jedem Aktualisierungsvorgang eine Radarkarte abrufen."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
+msgid "Show notification"
+msgstr "Benachrichtigung anzeigen"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
+msgid "Show notifications for critical weather conditions"
+msgstr "Benachrichtigungen bei kritischen Wetterbedingungen anzeigen"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
+msgid "Show detailed forecast"
+msgstr "Detaillierte Vorhersage anzeigen"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
+msgid "If true, additional details about weather will be downloaded and shown."
+msgstr ""
+"Falls »wahr«, werden zusätzliche Details über das Wetter geladen und "
+"angezeigt."
 
 #: ../gweather/src/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
@@ -1082,20 +1148,15 @@ msgstr "© 1999-2005 S. Papadimitriou und andere"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Ein Panel-Applet zum Überwachen der lokalen Wetterbedingungen."
 
-#: ../gweather/src/gweather-applet.c:336
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
-msgid "Weather Report"
-msgstr "Wetterbericht"
-
-#: ../gweather/src/gweather-applet.c:354 ../gweather/src/gweather-applet.c:358
+#: ../gweather/src/gweather-applet.c:351 ../gweather/src/gweather-applet.c:355
 msgid "GNOME Weather"
 msgstr "Das GNOME-Wetter"
 
-#: ../gweather/src/gweather-applet.c:463
+#: ../gweather/src/gweather-applet.c:460
 msgid "Weather Forecast"
 msgstr "Wettervorhersage"
 
-#: ../gweather/src/gweather-applet.c:475
+#: ../gweather/src/gweather-applet.c:472
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1106,18 +1167,13 @@ msgstr ""
 "Bewölkung: %s\n"
 "Temperatur: %s"
 
-#: ../gweather/src/gweather-applet.c:529
+#: ../gweather/src/gweather-applet.c:526
 msgid "Updating..."
 msgstr "Aktualisierung läuft …"
 
 #: ../gweather/src/gweather-dialog.c:158
 msgid "Details"
 msgstr "Details"
-
-#: ../gweather/src/gweather-dialog.c:160
-#: ../gweather/gweather-applet-menu.xml.h:2
-msgid "_Update"
-msgstr "_Aktualisieren"
 
 #: ../gweather/src/gweather-dialog.c:199
 msgid "City:"
@@ -1386,6 +1442,7 @@ msgstr "Anzeige"
 
 #: ../gweather/src/gweather-pref.c:979
 #: ../mini-commander/src/mini-commander.ui.h:12
+#: ../window-title/windowtitle.ui.h:6
 msgid "General"
 msgstr "Allgemein"
 
@@ -1405,71 +1462,15 @@ msgstr "_Nächsten suchen"
 msgid "Location"
 msgstr "Standort"
 
-#: ../gweather/gweather-applet-menu.xml.h:1
-msgid "_Details"
-msgstr "_Details"
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Gweather-Applet-Factory"
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Factory zum Erzeugen des Wetter-Applets."
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "Die aktuellen Wetterberichte und -vorhersagen abrufen"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
-msgid "Update the data automatically"
-msgstr "Die Daten automatisch aktualisieren"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
-msgid ""
-"Determines whether the applet automatically updates its weather statistics "
-"or not."
-msgstr ""
-"Legt fest, ob das Applet automatisch seine Wetterstatistiken aktualisiert."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
-msgid "Update interval"
-msgstr "Aktualisierungsintervall"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
-msgid "The interval, in seconds, between automatic updates."
-msgstr "Das Intervall zwischen automatischen Aktualisierungen in Sekunden."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
-msgid "Display radar map"
-msgstr "Radarkarte anzeigen"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
-msgid "Fetch a radar map on each update."
-msgstr "Bei jedem Aktualisierungsvorgang eine Radarkarte abrufen."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
-msgid "Show notification"
-msgstr "Benachrichtigung anzeigen"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
-msgid "Show notifications for critical weather conditions"
-msgstr "Benachrichtigungen bei kritischen Wetterbedingungen anzeigen"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
-msgid "Show detailed forecast"
-msgstr "Detaillierte Vorhersage anzeigen"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
-msgid "If true, additional details about weather will be downloaded and shown."
-msgstr ""
-"Falls »wahr«, werden zusätzliche Details über das Wetter geladen und "
-"angezeigt."
-
-#: ../inhibit/src/inhibit-applet.c:82
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#: ../inhibit/src/inhibit-applet.c:82
 msgid "Inhibit Applet"
 msgstr "Energiesparmodus-Unterdrückungs-Applet"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr ""
+"Ermöglicht dem Benutzer, automatische Energiesparfunktionen zu deaktivieren"
 
 #: ../inhibit/src/inhibit-applet.c:83
 msgid "Allows user to inhibit automatic power saving."
@@ -1522,11 +1523,6 @@ msgstr ""
 #: ../inhibit/src/inhibit-applet.c:317
 msgid "Copyright © 2006-2007 Richard Hughes"
 msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr ""
-"Ermöglicht dem Benutzer, automatische Energiesparfunktionen zu deaktivieren"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/invest-chart.c:358
@@ -2004,16 +2000,11 @@ msgstr ""
 msgid "Command line has been disabled by your system administrator"
 msgstr "Ihr Systemadministrator hat den Zugriff auf die Befehlszeile untersagt"
 
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Befehlszeile"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
+#: ../mini-commander/src/mini-commander_applet.c:407
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander-Applet"
 
-#: ../mini-commander/src/mini-commander_applet.c:412
+#: ../mini-commander/src/mini-commander_applet.c:408
 msgid "This applet adds a command line to the panel"
 msgstr "Dieses Applet fügt eine Befehlszeile zum Panel hinzu"
 
@@ -2095,6 +2086,10 @@ msgstr "_Befehl:"
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
 msgstr "MiniCommander-Applet-Factory"
+
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Befehlszeile"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:3
 msgid "Mini-Commander"
@@ -2199,87 +2194,6 @@ msgstr "Sie dürfen Muster nicht mehrfach angeben"
 msgid "Pattern"
 msgstr "Muster"
 
-#: ../modem-lights/src/modem-applet.c:159
-#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
-msgid "Modem Monitor"
-msgstr "Modem überwachen"
-
-#: ../modem-lights/src/modem-applet.c:669
-msgid "Connection active, but could not get connection time"
-msgstr ""
-"Die Verbindung ist aktiv, es konnte jedoch keine Verbindungsdauer ermittelt "
-"werden"
-
-#: ../modem-lights/src/modem-applet.c:685
-#, c-format
-msgid "Time connected: %.1d:%.2d"
-msgstr "Verbindungsdauer: %.1d:%.2d"
-
-#: ../modem-lights/src/modem-applet.c:689
-msgid "Not connected"
-msgstr "Nicht verbunden"
-
-#: ../modem-lights/src/modem-applet.c:711
-msgid ""
-"To connect to your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Um eine Internet-Verbindung herzustellen, benötigen Sie Administrationsrechte"
-
-#: ../modem-lights/src/modem-applet.c:712
-msgid ""
-"To disconnect from your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Um eine Internet-Verbindung zu trennen, benötigen Sie Administrationsrechte"
-
-#: ../modem-lights/src/modem-applet.c:787
-msgid "The entered password is invalid"
-msgstr "Das eingegebene Passwort ist ungültig"
-
-#: ../modem-lights/src/modem-applet.c:789
-msgid ""
-"Check that you have typed it correctly and that you haven't activated the "
-"\"caps lock\" key"
-msgstr ""
-"Bitte stellen Sie sicher, dass Sie das Passwort korrekt eingegeben haben und "
-"dass die »Feststelltaste« nicht aktiv ist"
-
-#: ../modem-lights/src/modem-applet.c:900
-msgid "Do you want to connect?"
-msgstr "Möchten Sie verbinden?"
-
-#: ../modem-lights/src/modem-applet.c:901
-msgid "Do you want to disconnect?"
-msgstr "Möchten Sie die Verbindung trennen?"
-
-#: ../modem-lights/src/modem-applet.c:910
-msgid "C_onnect"
-msgstr "_Verbinden"
-
-#: ../modem-lights/src/modem-applet.c:910
-msgid "_Disconnect"
-msgstr "_Trennen"
-
-#: ../modem-lights/src/modem-applet.c:969
-msgid "Could not launch network configuration tool"
-msgstr ""
-"Das Programm zum Einstellen der Netzwerkverbindungen konnte nicht gestartet "
-"werden"
-
-#: ../modem-lights/src/modem-applet.c:971
-msgid ""
-"Check that it's installed in the correct path and that it has the correct "
-"permissions"
-msgstr ""
-"Bitte überprüfen Sie, dass es im richtigen Pfad installiert ist und das es "
-"die notwendigen Zugriffsrechte besitzt"
-
-#: ../modem-lights/src/modem-applet.c:995
-msgid "Applet for activating and monitoring a dial-up network connection."
-msgstr ""
-"Applet zum Aktivieren und Überwachen von Einwahlverbindung in ein Netzwerk."
-
 #: ../modem-lights/modem-applet-menu.xml.h:1
 msgid "_Activate"
 msgstr "_Aktivieren"
@@ -2290,6 +2204,7 @@ msgstr "_Deaktivieren"
 
 #: ../modem-lights/modem-applet-menu.xml.h:3
 #: ../sticky-notes/src/sticky-notes-note-menu.xml.h:4
+#: ../window-title/windowtitle.c:51
 msgid "_Properties"
 msgstr "Ei_genschaften"
 
@@ -2309,9 +2224,229 @@ msgstr "Passwort:"
 msgid "Connecting with Internet Service Provider"
 msgstr "Verbindung mit dem Internet wird hergestellt"
 
+#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
+msgid "Modem Monitor"
+msgstr "Modem überwachen"
+
 #: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Eine Einwahlverbindung aktivieren und überwachen"
+
+#: ../modem-lights/src/modem-applet.c:667
+msgid "Connection active, but could not get connection time"
+msgstr ""
+"Die Verbindung ist aktiv, es konnte jedoch keine Verbindungsdauer ermittelt "
+"werden"
+
+#: ../modem-lights/src/modem-applet.c:683
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Verbindungsdauer: %.1d:%.2d"
+
+#: ../modem-lights/src/modem-applet.c:687
+msgid "Not connected"
+msgstr "Nicht verbunden"
+
+#: ../modem-lights/src/modem-applet.c:709
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Um eine Internet-Verbindung herzustellen, benötigen Sie Administrationsrechte"
+
+#: ../modem-lights/src/modem-applet.c:710
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Um eine Internet-Verbindung zu trennen, benötigen Sie Administrationsrechte"
+
+#: ../modem-lights/src/modem-applet.c:785
+msgid "The entered password is invalid"
+msgstr "Das eingegebene Passwort ist ungültig"
+
+#: ../modem-lights/src/modem-applet.c:787
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr ""
+"Bitte stellen Sie sicher, dass Sie das Passwort korrekt eingegeben haben und "
+"dass die »Feststelltaste« nicht aktiv ist"
+
+#: ../modem-lights/src/modem-applet.c:898
+msgid "Do you want to connect?"
+msgstr "Möchten Sie verbinden?"
+
+#: ../modem-lights/src/modem-applet.c:899
+msgid "Do you want to disconnect?"
+msgstr "Möchten Sie die Verbindung trennen?"
+
+#: ../modem-lights/src/modem-applet.c:908
+msgid "C_onnect"
+msgstr "_Verbinden"
+
+#: ../modem-lights/src/modem-applet.c:908
+msgid "_Disconnect"
+msgstr "_Trennen"
+
+#: ../modem-lights/src/modem-applet.c:967
+msgid "Could not launch network configuration tool"
+msgstr ""
+"Das Programm zum Einstellen der Netzwerkverbindungen konnte nicht gestartet "
+"werden"
+
+#: ../modem-lights/src/modem-applet.c:969
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr ""
+"Bitte überprüfen Sie, dass es im richtigen Pfad installiert ist und das es "
+"die notwendigen Zugriffsrechte besitzt"
+
+#: ../modem-lights/src/modem-applet.c:993
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr ""
+"Applet zum Aktivieren und Überwachen von Einwahlverbindung in ein Netzwerk."
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "Systemmonitor ö_ffnen"
+
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
+msgid "System Monitor"
+msgstr "Systemmonitor"
+
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
+msgid "A system load indicator"
+msgstr "Eine Systemlastanzeige"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:1
+msgid "Enable CPU load graph"
+msgstr "Prozessorlastgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:2
+msgid "Enable memory load graph"
+msgstr "Speicherlastgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:3
+msgid "Enable network load graph"
+msgstr "Netzwerklastgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:4
+msgid "Enable swap load graph"
+msgstr "Auslagerungslastgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:5
+msgid "Enable load average graph"
+msgstr "Lastmittelgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:6
+msgid "Enable disk load graph"
+msgstr "Plattenlastgraph aktivieren"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
+msgid "Applet refresh rate in milliseconds"
+msgstr "Aktualisierungsintervall des Applets in Millisekunden"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
+msgid "Graph size"
+msgstr "Graphgröße"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Die Breite des Graphen in Pixel, falls das Panel horizontal ist. Falls es "
+"vertikal ist, ist dies die Höhe des Graphen."
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
+msgid "Graph color for user-related CPU activity"
+msgstr "Graphfarbe für benutzerseitige Prozessoraktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:11
+msgid "Graph color for system-related CPU activity"
+msgstr "Graphfarbe für systemseitige Prozessoraktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
+msgid "Graph color for nice-related CPU activity"
+msgstr "Graphfarbe für »nice«-seitige Prozessoraktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
+msgid "Graph color for iowait-related CPU activity"
+msgstr "Graphfarbe für E/A-bezogene Prozessoraktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
+msgid "CPU graph background color"
+msgstr "Hintergrundfarbe des Prozessorgraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:15
+msgid "Graph color for user-related memory usage"
+msgstr "Graphfarbe für benutzerseitige Speicherlast"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:16
+msgid "Graph color for shared memory"
+msgstr "Graphfarbe für gemeinsamen Speicher"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:17
+msgid "Graph color for buffer memory"
+msgstr "Graphfarbe für Pufferspeicher"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
+msgid "Graph color for cached memory"
+msgstr "Graphfarbe für Cache-Speicher"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
+msgid "Memory graph background color"
+msgstr "Hintergrundfarbe des Speichergraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:20
+msgid "Graph color for input network activity"
+msgstr "Graphfarbe für eingehende Netzwerkaktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:21
+msgid "Graph color for output network activity"
+msgstr "Graphfarbe für ausgehende Netzwerkaktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:22
+msgid "Graph color for loopback network usage"
+msgstr "Graphfarbe für Loopback-Schleifen-Netzwerkaktivität"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:23
+msgid "Network graph background color"
+msgstr "Hintergrundfarbe des Netzwerkgraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:24
+msgid "Graph color for user-related swap usage"
+msgstr "Graphfarbe für benutzerseitige Auslagerungslast"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:25
+msgid "Swap graph background color"
+msgstr "Die Hintergrundfarbe des Auslagerungsgraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:26
+msgid "Graph color for load average"
+msgstr "Graphfarbe für Lastmittel"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:27
+msgid "Load graph background color"
+msgstr "Hintergrundfarbe des Auslastungsgraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:28
+msgid "Graph color for disk read"
+msgstr "Graphfarbe für das Lesen von Platte"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:29
+msgid "Graph color for disk write"
+msgstr "Graphfarbe für das Schreiben auf Platte"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:30
+msgid "Background color for disk load graph"
+msgstr "Hintergrundfarbe für den Plattenlastgraphen"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
+msgid "The desktop description file to execute as the system monitor"
+msgstr "Die beim Anklicken zu startende .desktop-Datei"
 
 #: ../multiload/src/main.c:57
 msgid ""
@@ -2419,11 +2554,6 @@ msgstr "Auslagerungslast"
 #: ../multiload/src/main.c:363
 msgid "Disk Load"
 msgstr "Plattenlast"
-
-#: ../multiload/src/main.c:473
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
-msgid "System Monitor"
-msgstr "Systemmonitor"
 
 #: ../multiload/src/netspeed.c:40
 #, c-format
@@ -2563,142 +2693,6 @@ msgstr "_Schreiben"
 msgid "System Monitor Preferences"
 msgstr "Einstellungen des Systemmonitors"
 
-#: ../multiload/multiload-applet-menu.xml.h:1
-msgid "_Open System Monitor"
-msgstr "Systemmonitor ö_ffnen"
-
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
-msgid "A system load indicator"
-msgstr "Eine Systemlastanzeige"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:1
-msgid "Enable CPU load graph"
-msgstr "Prozessorlastgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:2
-msgid "Enable memory load graph"
-msgstr "Speicherlastgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:3
-msgid "Enable network load graph"
-msgstr "Netzwerklastgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:4
-msgid "Enable swap load graph"
-msgstr "Auslagerungslastgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:5
-msgid "Enable load average graph"
-msgstr "Lastmittelgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:6
-msgid "Enable disk load graph"
-msgstr "Plattenlastgraph aktivieren"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
-msgid "Applet refresh rate in milliseconds"
-msgstr "Aktualisierungsintervall des Applets in Millisekunden"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
-msgid "Graph size"
-msgstr "Graphgröße"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
-msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical "
-"panels, this is the height of the graphs."
-msgstr ""
-"Die Breite des Graphen in Pixel, falls das Panel horizontal ist. Falls es "
-"vertikal ist, ist dies die Höhe des Graphen."
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
-msgid "Graph color for user-related CPU activity"
-msgstr "Graphfarbe für benutzerseitige Prozessoraktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:11
-msgid "Graph color for system-related CPU activity"
-msgstr "Graphfarbe für systemseitige Prozessoraktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
-msgid "Graph color for nice-related CPU activity"
-msgstr "Graphfarbe für »nice«-seitige Prozessoraktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-msgid "Graph color for iowait-related CPU activity"
-msgstr "Graphfarbe für E/A-bezogene Prozessoraktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
-msgid "CPU graph background color"
-msgstr "Hintergrundfarbe des Prozessorgraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:15
-msgid "Graph color for user-related memory usage"
-msgstr "Graphfarbe für benutzerseitige Speicherlast"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:16
-msgid "Graph color for shared memory"
-msgstr "Graphfarbe für gemeinsamen Speicher"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:17
-msgid "Graph color for buffer memory"
-msgstr "Graphfarbe für Pufferspeicher"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
-msgid "Graph color for cached memory"
-msgstr "Graphfarbe für Cache-Speicher"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
-msgid "Memory graph background color"
-msgstr "Hintergrundfarbe des Speichergraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:20
-msgid "Graph color for input network activity"
-msgstr "Graphfarbe für eingehende Netzwerkaktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:21
-msgid "Graph color for output network activity"
-msgstr "Graphfarbe für ausgehende Netzwerkaktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:22
-msgid "Graph color for loopback network usage"
-msgstr "Graphfarbe für Loopback-Schleifen-Netzwerkaktivität"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:23
-msgid "Network graph background color"
-msgstr "Hintergrundfarbe des Netzwerkgraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:24
-msgid "Graph color for user-related swap usage"
-msgstr "Graphfarbe für benutzerseitige Auslagerungslast"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:25
-msgid "Swap graph background color"
-msgstr "Die Hintergrundfarbe des Auslagerungsgraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:26
-msgid "Graph color for load average"
-msgstr "Graphfarbe für Lastmittel"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:27
-msgid "Load graph background color"
-msgstr "Hintergrundfarbe des Auslastungsgraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:28
-msgid "Graph color for disk read"
-msgstr "Graphfarbe für das Lesen von Platte"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:29
-msgid "Graph color for disk write"
-msgstr "Graphfarbe für das Schreiben auf Platte"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:30
-msgid "Background color for disk load graph"
-msgstr "Hintergrundfarbe für den Plattenlastgraphen"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
-msgid "The desktop description file to execute as the system monitor"
-msgstr "Die beim Anklicken zu startende .desktop-Datei"
-
 #: ../netspeed/data/netspeed-menu.xml.h:1
 msgid "Device _Details"
 msgstr "Geräte_details"
@@ -2771,55 +2765,55 @@ msgstr "Netzwerkmonitor Applet"
 msgid "Network Monitor"
 msgstr "Netzwerkmonitor"
 
-#: ../netspeed/src/netspeed.c:368
+#: ../netspeed/src/netspeed.c:365
 msgid "b/s"
 msgstr "b/s"
 
-#: ../netspeed/src/netspeed.c:368
+#: ../netspeed/src/netspeed.c:365
 msgid "B/s"
 msgstr "B/s"
 
-#: ../netspeed/src/netspeed.c:370
+#: ../netspeed/src/netspeed.c:367
 msgid "bits"
 msgstr "Bit"
 
-#: ../netspeed/src/netspeed.c:370
+#: ../netspeed/src/netspeed.c:367
 msgid "bytes"
 msgstr "Byte"
 
-#: ../netspeed/src/netspeed.c:377
+#: ../netspeed/src/netspeed.c:374
 msgid "kb/s"
 msgstr "kb/s"
 
-#: ../netspeed/src/netspeed.c:377
+#: ../netspeed/src/netspeed.c:374
 msgid "KiB/s"
 msgstr "KB/s"
 
-#: ../netspeed/src/netspeed.c:379
+#: ../netspeed/src/netspeed.c:376
 msgid "kb"
 msgstr "kb"
 
-#: ../netspeed/src/netspeed.c:379
+#: ../netspeed/src/netspeed.c:376
 msgid "KiB"
 msgstr "KB"
 
-#: ../netspeed/src/netspeed.c:388
+#: ../netspeed/src/netspeed.c:385
 msgid "Mb/s"
 msgstr "Mb/s"
 
-#: ../netspeed/src/netspeed.c:388
+#: ../netspeed/src/netspeed.c:385
 msgid "MiB/s"
 msgstr "MB/s"
 
-#: ../netspeed/src/netspeed.c:390
+#: ../netspeed/src/netspeed.c:387
 msgid "Mb"
 msgstr "Mb"
 
-#: ../netspeed/src/netspeed.c:390
+#: ../netspeed/src/netspeed.c:387
 msgid "MiB"
 msgstr "MB"
 
-#: ../netspeed/src/netspeed.c:634
+#: ../netspeed/src/netspeed.c:631
 msgid ""
 "A little applet that displays some information on the traffic on the "
 "specified network device"
@@ -2827,70 +2821,70 @@ msgstr ""
 "Ein kleines Applet, welches Informationen zum Verkehr auf einem angegebenen "
 "Netzwerkgerät anzeigt"
 
-#: ../netspeed/src/netspeed.c:639
+#: ../netspeed/src/netspeed.c:636
 msgid "Netspeed Website"
 msgstr "Netzwerkmonitor Webseite"
 
-#: ../netspeed/src/netspeed.c:902
+#: ../netspeed/src/netspeed.c:899
 #, c-format
 msgid "Device Details for %s"
 msgstr "Gerätedetails von %s"
 
-#: ../netspeed/src/netspeed.c:927
+#: ../netspeed/src/netspeed.c:924
 msgid "_In graph color"
 msgstr "Graphfarbe an_kommend"
 
-#: ../netspeed/src/netspeed.c:928
+#: ../netspeed/src/netspeed.c:925
 msgid "_Out graph color"
 msgstr "Graphfarbe ab_gehend"
 
-#: ../netspeed/src/netspeed.c:944
+#: ../netspeed/src/netspeed.c:941
 msgid "Internet Address:"
 msgstr "Internetadresse:"
 
-#: ../netspeed/src/netspeed.c:945
+#: ../netspeed/src/netspeed.c:942
 msgid "Netmask:"
 msgstr "Netzmaske:"
 
-#: ../netspeed/src/netspeed.c:946
+#: ../netspeed/src/netspeed.c:943
 msgid "Hardware Address:"
 msgstr "Hardwareadresse:"
 
-#: ../netspeed/src/netspeed.c:947
+#: ../netspeed/src/netspeed.c:944
 msgid "P-t-P Address:"
 msgstr "P-t-P-Adresse:"
 
-#: ../netspeed/src/netspeed.c:948
+#: ../netspeed/src/netspeed.c:945
 msgid "Bytes in:"
 msgstr "Bytes ankommend:"
 
-#: ../netspeed/src/netspeed.c:949
+#: ../netspeed/src/netspeed.c:946
 msgid "Bytes out:"
 msgstr "Bytes abgehend:"
 
-#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
-#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
+#: ../netspeed/src/netspeed.c:948 ../netspeed/src/netspeed.c:949
+#: ../netspeed/src/netspeed.c:950 ../netspeed/src/netspeed.c:951
 msgid "none"
 msgstr "keine"
 
-#: ../netspeed/src/netspeed.c:993
+#: ../netspeed/src/netspeed.c:990
 msgid "IPv6 Address:"
 msgstr "IPv6-Adresse:"
 
-#: ../netspeed/src/netspeed.c:1025
+#: ../netspeed/src/netspeed.c:1022
 msgid "Signal Strength:"
 msgstr "Signalstärke:"
 
-#: ../netspeed/src/netspeed.c:1026
+#: ../netspeed/src/netspeed.c:1023
 msgid "ESSID:"
 msgstr "ESSID:"
 
-#: ../netspeed/src/netspeed.c:1076
+#: ../netspeed/src/netspeed.c:1073
 #, c-format
 msgid "%s is down"
 msgstr "%s ist nicht verbunden"
 
-#: ../netspeed/src/netspeed.c:1081
+#: ../netspeed/src/netspeed.c:1078
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2899,11 +2893,11 @@ msgstr ""
 "%s: %s\n"
 "Ankommend: %s Abgehend: %s"
 
-#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
+#: ../netspeed/src/netspeed.c:1080 ../netspeed/src/netspeed.c:1089
 msgid "has no ip"
 msgstr "hat keine IP"
 
-#: ../netspeed/src/netspeed.c:1090
+#: ../netspeed/src/netspeed.c:1087
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2912,7 +2906,7 @@ msgstr ""
 "%s: %s\n"
 "Summe: %s"
 
-#: ../netspeed/src/netspeed.c:1099
+#: ../netspeed/src/netspeed.c:1096
 #, c-format
 msgid ""
 "\n"
@@ -2923,21 +2917,21 @@ msgstr ""
 "ESSID: %s\n"
 "Stärke: %d %%"
 
-#: ../netspeed/src/netspeed.c:1100
+#: ../netspeed/src/netspeed.c:1097
 msgid "unknown"
 msgstr "unbekannt"
 
-#: ../netspeed/src/netspeed.c:1165
+#: ../netspeed/src/netspeed.c:1162
 #, c-format
 msgid "Do you want to disconnect %s now?"
 msgstr "Soll %s jetzt getrennt werden?"
 
-#: ../netspeed/src/netspeed.c:1167
+#: ../netspeed/src/netspeed.c:1164
 #, c-format
 msgid "Do you want to connect %s now?"
 msgstr "Soll %s jetzt verbunden werden?"
 
-#: ../netspeed/src/netspeed.c:1190
+#: ../netspeed/src/netspeed.c:1187
 #, c-format
 msgid ""
 "<b>Running command %s failed</b>\n"
@@ -2945,10 +2939,6 @@ msgid ""
 msgstr ""
 "<b>Ausführen des Befehls %s ist gescheitert</b>\n"
 "%s"
-
-#: ../netspeed/src/netspeed.c:1457
-msgid "Netspeed"
-msgstr "Netzwerkmonitor"
 
 #: ../netspeed/src/netspeed.c:1549
 #, c-format
@@ -2988,8 +2978,7 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Klebezettel-Applet-Factory"
 
 #: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../sticky-notes/src/stickynotes_applet.c:150
-#: ../sticky-notes/src/stickynotes_applet.c:389
+#: ../sticky-notes/src/stickynotes_applet.c:385
 msgid "Sticky Notes"
 msgstr "Klebezettel"
 
@@ -3140,22 +3129,14 @@ msgstr "Beim Löschen eines Zettels rückfragen?"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Leere Zettel werden immer ohne Rückfrage gelöscht."
 
-#: ../sticky-notes/src/stickynotes.c:594
-msgid "This note is locked."
-msgstr "Dieser Klebezettel ist gesperrt."
-
-#: ../sticky-notes/src/stickynotes.c:598
-msgid "This note is unlocked."
-msgstr "Dieser Klebezettel ist frei gegeben."
-
-#: ../sticky-notes/src/stickynotes_applet.c:548
+#: ../sticky-notes/src/stickynotes_applet.c:544
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d Notiz"
 msgstr[1] "%d Notizen"
 
-#: ../sticky-notes/src/stickynotes_applet.c:549
+#: ../sticky-notes/src/stickynotes_applet.c:545
 msgid "Show sticky notes"
 msgstr "Klebezettel anzeigen"
 
@@ -3179,6 +3160,14 @@ msgstr "Zettel _sperren"
 #: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "Zettel _löschen"
+
+#: ../sticky-notes/src/stickynotes.c:594
+msgid "This note is locked."
+msgstr "Dieser Klebezettel ist gesperrt."
+
+#: ../sticky-notes/src/stickynotes.c:598
+msgid "This note is unlocked."
+msgstr "Dieser Klebezettel ist frei gegeben."
 
 #: ../sticky-notes/src/sticky-notes-delete-all.ui.h:1
 msgid "_Delete All"
@@ -3287,6 +3276,7 @@ msgid "Pick a default sticky note font"
 msgstr "Voreingestellte Klebezettelschrift wählen"
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:18
+#: ../window-buttons/windowbuttons.ui.h:52 ../window-title/windowtitle.ui.h:27
 msgid "Behavior"
 msgstr "Verhalten"
 
@@ -3433,10 +3423,6 @@ msgstr "Benachrichtigung anzeigen"
 msgid "Show dialog"
 msgstr "Dialog anzeigen"
 
-#: ../timer/src/timer-applet.c:402
-msgid "Timer Applet"
-msgstr "Timer-Applet"
-
 #: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
 msgstr "Tracker-Suchleiste"
@@ -3507,6 +3493,7 @@ msgid "Category"
 msgstr "Kategorie"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:1135
+#: ../window-title/windowtitle.ui.h:18
 msgid "Title"
 msgstr "Titel"
 
@@ -3612,10 +3599,6 @@ msgstr ""
 "Einige Objekte konnten nicht in den Mülleimer verschoben werden. Sollen "
 "diese sofort gelöscht werden?"
 
-#: ../trash/src/trash-applet.c:603
-msgid "Trash Applet"
-msgstr "Mülleimer-Applet"
-
 #. Translators: the %s in this string should be read as %d.
 #: ../trash/src/trash-empty.c:70
 #, c-format
@@ -3656,6 +3639,350 @@ msgstr "Von:"
 #: ../trash/src/trash-menu.xml.h:1
 msgid "_Open Trash"
 msgstr "Mülleimer ö_ffnen"
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:1
+msgid "Window Buttons applet Factory"
+msgstr "Factory für Fensterknöpfe-Applet"
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:2
+msgid "Window buttons for your GNOME Panel"
+msgstr "Fensterknöpfe "
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:3
+msgid "Window Buttons"
+msgstr "Fensterknöpfe"
+
+#: ../window-buttons/windowbuttons.c:118
+msgid "Window buttons for your GNOME Panel."
+msgstr "Fensterknöpfe für Ihr GNOME-Panel"
+
+#: ../window-buttons/windowbuttons.c:126 ../window-title/windowtitle.c:104
+msgid "Window Applets on Gnome-Look"
+msgstr "Fenster-Applets auf Gnome-Look"
+
+#: ../window-buttons/windowbuttons.c:240 ../window-buttons/windowbuttons.ui.h:3
+msgid "Unmaximize"
+msgstr "Maximieren aufheben"
+
+#: ../window-buttons/windowbuttons.c:244 ../window-buttons/windowbuttons.ui.h:4
+msgid "Maximize"
+msgstr "Maximieren"
+
+#: ../window-buttons/windowbuttons.c:251 ../window-buttons/windowbuttons.ui.h:6
+msgid "Minimize"
+msgstr "Minimieren"
+
+#: ../window-buttons/windowbuttons.c:252 ../window-buttons/windowbuttons.ui.h:5
+msgid "Close"
+msgstr "Schließen"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:1
+msgid "Determines whether we use custom or Metacity's button layout"
+msgstr ""
+"Legt fest, ob eine benutzerdefinierte Anordnung oder die von Metacity "
+"verwendet wird"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:2
+msgid ""
+"When disabled, this applet's button_layout string will be used to order the "
+"buttons."
+msgstr ""
+"Wenn deaktiviert, wird die button_layout-Zeichenkette dieses Applets zur "
+"Anordnung der Knöpfe verwendet."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:3
+msgid "Layout of buttons."
+msgstr "Anordnung der Knöpfe"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:4
+msgid ""
+"Essentially a copy from Metacity's button_layout, but we can modify it for "
+"custom settings."
+msgstr ""
+"Essenziell eine Kopie von button_layout in Metacity, kann aber für "
+"benutzerdefinierte Einstellungen geändert werden."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:5
+msgid "Button theme"
+msgstr "Knopf-Thema"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:6
+msgid "Name of a folder located in windowapplets/themes/ or \"custom\"."
+msgstr "Name eines Ordners in windowapplets/themes/ oder »custom«."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:7
+msgid "Button orientation"
+msgstr "Knopfanordnung"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:8
+msgid ""
+"May be used to set a static button orientation. Setting this value to 1 will "
+"ensure the buttons are always displayed horizontally. Setting it to 2 will "
+"do the same but vertically. The default setting 0 will set it automatically "
+"according to the panel."
+msgstr ""
+"Kann für eine statische Knopfanordnung verwendet werden. Ein Wert von 1 "
+"stellt sicher, dass die Knöpfe stets horizontal angezeigt werden. Der Wert 2 "
+"erzeugt eine vertikale Anordnung. Die Voreinstellung 0 passt die Knöpfe an "
+"die Ausrichtung des Panels an."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:9
+msgid "Hides buttons when there are no windows present."
+msgstr "Verbirgt Knöpfe, wenn keine Fenster angezeigt werden."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:10
+msgid ""
+"When enabled, the buttons will disappear when there are no maximized (or "
+"active) windows on the screen."
+msgstr ""
+"Wenn aktiviert, werden die Knöpfe ausgeblendet, wenn sich keine maximierten "
+"(oder aktiven) Fenster auf dem Bildschirm befinden."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:11
+#: ../window-title/windowtitle.schemas.in.h:3
+msgid "Only control maximized windows."
+msgstr "Nur maximierte Fenster steuern."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:12
+msgid ""
+"When enabled, the window buttons will always control the upper-most "
+"maximized window."
+msgstr ""
+"Wenn aktiviert, steuern die Fensterknöpfe nur das maximierte Fenster der "
+"obersten Ebene."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:13
+msgid "Reverse the buttons placement."
+msgstr "Knopfanordung umkehren."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:14
+msgid ""
+"When enabled, the window buttons will be placed in reverse order (right to "
+"left instead of left to right, or bottom to top instead of top to bottom)."
+msgstr ""
+"Wenn aktiviert, werden die Fensterknöpfe in umgekehrter Reihenfolge "
+"platziert (von rechts nach links anstatt von links nach rechts, oder von "
+"unten nach oben anstatt von oben nach unten)."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:15
+msgid "Enable click effect."
+msgstr "Klickeffekt aktivieren."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:16
+msgid ""
+"When enabled, the button will change image to 'clicked' whenever it is "
+"clicked."
+msgstr ""
+"Wenn aktiviert, ändert der Knopf die Darstellung auf »geklickt«, wenn er "
+"angeklickt wird."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:17
+msgid "Enable hover effect."
+msgstr "Überfahreffekt aktivieren."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:18
+msgid ""
+"When enabled, the button will change image to 'hovered' whenever the mouse "
+"passes it."
+msgstr ""
+"Wenn aktiviert, ändert der Knopf die Darstellung auf »überfahren«, wenn er "
+"mit dem Mauszeiger berührt wird."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:19
+msgid "Show tooltips on buttons."
+msgstr "Minihilfen auf Knöpfen anzeigen"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:20
+msgid ""
+"When enabled, each button will display its own tooltip, describing the "
+"function that it represents."
+msgstr ""
+"Wenn aktiviert, zeigt jeder Knopf seine eigene Minihilfe an, welche die "
+"zugehörige Funktion beschreibt."
+
+#: ../window-buttons/windowbuttons.ui.h:1
+msgid "Window Buttons Preferences"
+msgstr "Einstellungen für Fensterknöpfe"
+
+#: ../window-buttons/windowbuttons.ui.h:2
+msgid "Theme:"
+msgstr "Thema:"
+
+#: ../window-buttons/windowbuttons.ui.h:7
+msgid ""
+"Focused\n"
+"Normal"
+msgstr ""
+"Fokussiert\n"
+"Normal"
+
+#: ../window-buttons/windowbuttons.ui.h:9
+msgid ""
+"Focused\n"
+"Clicked"
+msgstr ""
+"Fokussiert\n"
+"Geklickt"
+
+#: ../window-buttons/windowbuttons.ui.h:11
+msgid ""
+"Focused\n"
+"Hover"
+msgstr ""
+"Fokussiert\n"
+"Überfahren"
+
+#: ../window-buttons/windowbuttons.ui.h:13
+msgid ""
+"Unfocused\n"
+"Normal"
+msgstr ""
+"Nicht fokussiert\n"
+"Normal"
+
+#: ../window-buttons/windowbuttons.ui.h:15
+msgid ""
+"Unfocused\n"
+"Hover"
+msgstr ""
+"Nicht fokussiert\n"
+"Überfahren"
+
+#: ../window-buttons/windowbuttons.ui.h:17
+msgid ""
+"Unfocused\n"
+"Clicked"
+msgstr ""
+"Nicht fokussiert\n"
+"Geklickt"
+
+#: ../window-buttons/windowbuttons.ui.h:20
+msgid "Use Metacity's button order"
+msgstr "Knopfanordnung von Metacity verwenden"
+
+#: ../window-buttons/windowbuttons.ui.h:21
+msgid ""
+"When checked, the button order will be the same as on Metacity window "
+"borders."
+msgstr ""
+"Wenn aktiviert, werden die Knöpfe in der gleichen Reihenfolge angeordnet wie "
+"in den Titelleisten von Metacity."
+
+#: ../window-buttons/windowbuttons.ui.h:22
+msgid "Custom order:"
+msgstr "Benutzerdefinierte Anordnung:"
+
+#: ../window-buttons/windowbuttons.ui.h:23
+msgid ""
+"Define your custom order by using the words:\n"
+"minimize, maximize and close\n"
+"Separate them by commas (,).\n"
+"Do NOT use double values!"
+msgstr ""
+"Legen Sie die Anordnung mit folgenden Wörtern fest:\n"
+"minimize, maximize und close\n"
+"Trennen Sie sie durch Kommata (,).\n"
+"Werte NICHT mehrfach verwenden!"
+
+#: ../window-buttons/windowbuttons.ui.h:27
+msgid "minimize,maximize,close"
+msgstr "minimize,maximize,close"
+
+#: ../window-buttons/windowbuttons.ui.h:28
+msgid "Reload"
+msgstr "Neu laden"
+
+#: ../window-buttons/windowbuttons.ui.h:29
+msgid "Click to reload buttons."
+msgstr "klicken, um Knöpfe neu zu laden."
+
+#: ../window-buttons/windowbuttons.ui.h:30
+msgid "Reverse order"
+msgstr "Anordnung umkehren"
+
+#: ../window-buttons/windowbuttons.ui.h:31
+msgid "<b>Button Order</b>"
+msgstr "<b>Knopfanordnung</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:32
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: ../window-buttons/windowbuttons.ui.h:33
+msgid "Align buttons with panel orientation."
+msgstr "Knöpfe an der Orientierung des Panels ausrichten."
+
+#: ../window-buttons/windowbuttons.ui.h:34
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: ../window-buttons/windowbuttons.ui.h:35
+msgid "Force buttons to always appear horizontal."
+msgstr "Horizontale Ausrichtung der Knöpfe erzwingen."
+
+#: ../window-buttons/windowbuttons.ui.h:36
+msgid "Vertical"
+msgstr "Vertikal"
+
+#: ../window-buttons/windowbuttons.ui.h:37
+msgid "Force buttons to always appear vertical."
+msgstr "Vertikale Ausrichtung der Knöpfe erzwingen."
+
+#: ../window-buttons/windowbuttons.ui.h:38
+msgid "<b>Button Orientation</b>"
+msgstr "<b>Knopfausrichtung</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:39
+msgid "Minimize Button"
+msgstr "Minimieren-Knopf"
+
+#: ../window-buttons/windowbuttons.ui.h:40
+msgid "Maximize/Unmaximize Button"
+msgstr "Maximieren-/Maximierung-aufheben-Knopf"
+
+#: ../window-buttons/windowbuttons.ui.h:41
+msgid "Close Button"
+msgstr "Schließen-Knopf"
+
+#: ../window-buttons/windowbuttons.ui.h:42
+msgid "<b>Button Hiding</b>"
+msgstr "<b>Knöpfe verbergen</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:43
+msgid "Positioning & Visibility"
+msgstr "Platzierung und Sichtbarkeit"
+
+#: ../window-buttons/windowbuttons.ui.h:44 ../window-title/windowtitle.ui.h:20
+msgid "Control _maximized windows only"
+msgstr "Nur _maximierte Fenster steuern"
+
+#: ../window-buttons/windowbuttons.ui.h:45
+msgid "_Hide when no active maximized window"
+msgstr "_Verbergen, wenn keine Fenster maximiert sind"
+
+#: ../window-buttons/windowbuttons.ui.h:46
+msgid "Enable _click effect"
+msgstr "_Klickeffekt aktivieren"
+
+#: ../window-buttons/windowbuttons.ui.h:47
+msgid "Enable _hover effect"
+msgstr "Über_fahreffekt aktivieren"
+
+#: ../window-buttons/windowbuttons.ui.h:48 ../window-title/windowtitle.ui.h:26
+msgid "Show _tooltips"
+msgstr "_Minihilfen anzeigen"
+
+#: ../window-buttons/windowbuttons.ui.h:49
+msgid "<b>Internal</b>"
+msgstr "<b>Intern</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:50
+msgid "Hide Compiz _decorations for maximized windows"
+msgstr "Compiz-_Dekorationen für maximierte Fenster verbergen"
+
+#: ../window-buttons/windowbuttons.ui.h:51
+msgid "<b>External</b>"
+msgstr "<b>Extern</b>"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
@@ -3704,8 +4031,288 @@ msgstr ""
 msgid "Close window"
 msgstr "Fenster schließen"
 
-#~ msgid "Close"
-#~ msgstr "Schließen"
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:1
+msgid "Window Title applet Factory"
+msgstr "Fenstertitel-Applet-Factory"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:2
+msgid "Factory for Window Title"
+msgstr "Factory für Fenstertitel"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:3
+msgid "Window Title"
+msgstr "Fenstertitel"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:4
+msgid "Window title for your GNOME Panel"
+msgstr "Fenstertitel für Ihr GNOME-Panel"
+
+#: ../window-title/windowtitle.c:96
+msgid "Window title for your GNOME Panel."
+msgstr "Fenstertitel für Ihr GNOME-Panel"
+
+#: ../window-title/windowtitle.schemas.in.h:1
+msgid "Hides title when there are no windows present."
+msgstr "Verbirgt Titel, wenn keine Fenster angezeigt werden."
+
+#: ../window-title/windowtitle.schemas.in.h:2
+msgid ""
+"When enabled, the title will disappear when there are no maximized (or "
+"active) windows on the screen."
+msgstr ""
+"Wenn aktiviert, wird der Titel ausgeblendet, wenn sich keine maximierten "
+"(oder aktiven) Fenster auf dem Bildschirm befinden."
+
+#: ../window-title/windowtitle.schemas.in.h:4
+msgid ""
+"When enabled, the window title will always display the upper-most maximized "
+"window's name."
+msgstr ""
+"Wenn aktiviert, wird als Fenstertitel stets der Name des maximierten "
+"Fensters der obersten Ebene angezeigt."
+
+#: ../window-title/windowtitle.schemas.in.h:5
+msgid "Set the title alignment."
+msgstr "Ausrichtung des Titels festlegen."
+
+#: ../window-title/windowtitle.schemas.in.h:6
+msgid "Legal values are between 0 and 1."
+msgstr "Zulässige Werte liegen zwischen 0 und 1."
+
+#: ../window-title/windowtitle.schemas.in.h:7
+msgid "Swap icon and title."
+msgstr "Symbol und Titel vertauschen."
+
+#: ../window-title/windowtitle.schemas.in.h:8
+msgid ""
+"When enabled, window title will be on the left side and the icon on the "
+"right side."
+msgstr ""
+"Wenn aktiviert, wird der Fenstertitel an der linken Seite und das Symbol an "
+"der rechten Seite angezeigt."
+
+#: ../window-title/windowtitle.schemas.in.h:9
+msgid "Expand the applet"
+msgstr "Applet ausdehnen"
+
+#: ../window-title/windowtitle.schemas.in.h:10
+msgid "When enabled, the applet will use up all available space in the panel."
+msgstr ""
+"Wenn aktiviert, nutzt das Applet den gesamten verfügbaren Platz im Panel."
+
+#: ../window-title/windowtitle.schemas.in.h:11
+msgid "Hide the icon"
+msgstr "Symbol verbergen"
+
+#: ../window-title/windowtitle.schemas.in.h:12
+msgid "When enabled, the window icon will not be displayed."
+msgstr "Wenn aktiviert, wird das Fenstersymbol nicht angezeigt."
+
+#: ../window-title/windowtitle.schemas.in.h:13
+msgid "Hide the title"
+msgstr "Titel verbergen"
+
+#: ../window-title/windowtitle.schemas.in.h:14
+msgid "When enabled, the window title will not be displayed."
+msgstr "Wenn aktiviert, wird der Fenstertitel nicht angezeigt."
+
+#: ../window-title/windowtitle.schemas.in.h:15
+msgid "Show tooltips over title and icon"
+msgstr "Minihilfen zu Titel und Symbol anzeigen"
+
+#: ../window-title/windowtitle.schemas.in.h:16
+msgid ""
+"When enabled, a tooltip carrying the name of the currently active window "
+"will be shown."
+msgstr ""
+"Wenn aktiviert, zeigt eine Minihilfe den Namen des derzeit aktiven Fensters "
+"an."
+
+#: ../window-title/windowtitle.schemas.in.h:17
+msgid "Minimal title size"
+msgstr "Minimale Titelgröße"
+
+#: ../window-title/windowtitle.schemas.in.h:18
+msgid ""
+"This size is used when the applet is not expanded or otherwise to determine "
+"the minimal size the title label can be shrunk to. The value represents the "
+"amount of pixels either in width or height, depending on the panel "
+"orientation."
+msgstr ""
+"Diese Größenangabe wird verwendet, wenn das Applet nicht ausgedehnt ist, "
+"beziehungsweise zur Bestimmung der minimalen Größe, auf die der Titel "
+"gekürzt werden kann. Die Angabe erfolgt in Pixel entweder für Höhe oder "
+"Breite, abhängig von der Ausrichtung des Panels."
+
+#: ../window-title/windowtitle.schemas.in.h:19
+msgid "Use a custom style."
+msgstr "Benutzerdefinierten Stil verwenden."
+
+#: ../window-title/windowtitle.schemas.in.h:20
+msgid ""
+"When enabled, custom font style and color will be used. When disabled, "
+"system theme defaults will be used."
+msgstr ""
+"Wenn aktiviert, wird ein benutzerdefinierter Stil für Schriften und deren "
+"Farben verwendet. Wenn deaktiviert, werden die Voreinstellungen des Systems "
+"angewendet."
+
+#: ../window-title/windowtitle.schemas.in.h:21
+msgid "Show the window action menu on right click."
+msgstr "Zeigt das Aktionsmenü des Fensters mittels Rechtsklick an."
+
+#: ../window-title/windowtitle.schemas.in.h:22
+msgid ""
+"Will cause the window action menu to appear when the title is right-clicked. "
+"This experimental feature is still under development! Warning! In current "
+"feature state you will be unable to access the applet action menu via title-"
+"right click when this option is enabled! You may still do so by right-"
+"clicking the icon if it is not hidden."
+msgstr ""
+"Dadurch wird das Aktionsmenü des Fensters geöffnet, wenn der Titel mit der "
+"rechten Maustaste angeklickt wird. Diese experimentelle Funktion befindet "
+"sich noch in der Entwicklung! Vorsicht! Im gegenwärtigen Zustand werden Sie "
+"das Aktionsmenü des Applets nicht über einen Rechtsklick öffnen können, wenn "
+"diese Option aktiviert ist. Sie können es lediglich per Rechtsklick auf das "
+"Symbol, wenn es nicht verborgen ist."
+
+#: ../window-title/windowtitle.schemas.in.h:23
+msgid "Active title font."
+msgstr "Schrift für aktiven Fenstertitel."
+
+#: ../window-title/windowtitle.schemas.in.h:24
+msgid "Font name and size for the active window state."
+msgstr "Schriftname und -größe für Fenster im aktiven Status."
+
+#: ../window-title/windowtitle.schemas.in.h:25
+msgid "Inactive title font."
+msgstr "Schrift für inaktiven Fenstertitel."
+
+#: ../window-title/windowtitle.schemas.in.h:26
+msgid "Font name and size for the inactive window state."
+msgstr "Schriftname und -größe für Fenster im inaktiven Status."
+
+#: ../window-title/windowtitle.schemas.in.h:27
+msgid "Active title foreground color."
+msgstr "Vordergrundfarbe für aktiven Fenstertitel."
+
+#: ../window-title/windowtitle.schemas.in.h:28
+msgid "Title foreground color in hex format for the active window state."
+msgstr ""
+"Vordergrundfarbe des Titels im hexadezimalen Format für Fenster im aktiven "
+"Status."
+
+#: ../window-title/windowtitle.schemas.in.h:29
+msgid "Inactive title foreground color."
+msgstr "VVordergrundfarbe für inaktiven Fenstertitel."
+
+#: ../window-title/windowtitle.schemas.in.h:30
+msgid "Title foreground color in hex format for the inactive window state."
+msgstr ""
+"Vordergrundfarbe des Titels im hexadezimalen Format für Fenster im inaktiven "
+"Status."
+
+#: ../window-title/windowtitle.ui.h:1
+msgid "Window Title Preferences"
+msgstr "Einstellungen für Fenstertitel"
+
+#: ../window-title/windowtitle.ui.h:2
+msgid "Swap icon/title _order"
+msgstr "Symbol-/Titelan_ordnung wechseln"
+
+#: ../window-title/windowtitle.ui.h:3
+msgid "Expand applet"
+msgstr "Applet erweitern"
+
+#: ../window-title/windowtitle.ui.h:4
+msgid ""
+"DIsabled until GTK+ developers fix the various bugs.\n"
+"You may change it using gconf-editor, but then you also need to set a fixed "
+"size."
+msgstr ""
+"Ist deaktiviert, bis die Entwickler von GTK+ diverse Fehler korrigiert "
+"haben.\n"
+"Sie können es mittels gconf-editor ändern, müssen dann allerdings eine feste "
+"Größe einstellen."
+
+#: ../window-title/windowtitle.ui.h:7
+msgid "Hide _icon"
+msgstr "Symbol _verbergen"
+
+#: ../window-title/windowtitle.ui.h:8
+msgid "Icon"
+msgstr "Symbol"
+
+#: ../window-title/windowtitle.ui.h:9
+msgid "Hide title"
+msgstr "Titel verbergen"
+
+#: ../window-title/windowtitle.ui.h:10
+msgid "Alignment:"
+msgstr "Ausrichtung:"
+
+#: ../window-title/windowtitle.ui.h:11
+msgid ""
+"Set the title alignment.\n"
+"Note: only has effect when \"Expand applet\" is active."
+msgstr ""
+"Legt die Ausrichtung des Titels fest.\n"
+"Achtung: Hat nur einen Effekt, wenn »Applet erweitern« aktiv ist."
+
+#: ../window-title/windowtitle.ui.h:13
+msgid "Custom _style"
+msgstr "Benutzerdefinierter _Stil"
+
+#: ../window-title/windowtitle.ui.h:14
+msgid "Font color:"
+msgstr "Schriftfarbe:"
+
+#: ../window-title/windowtitle.ui.h:15
+msgid "Font style:"
+msgstr "Schriftstil:"
+
+#: ../window-title/windowtitle.ui.h:16
+msgid "Active"
+msgstr "Aktiv"
+
+#: ../window-title/windowtitle.ui.h:17
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: ../window-title/windowtitle.ui.h:21
+msgid "_Hide when no active maximized windows"
+msgstr "_Verbergen, wenn keine Fenster maximiert sind"
+
+#: ../window-title/windowtitle.ui.h:22
+msgid "Show window _action menu on right-click"
+msgstr "Menü für Fenster_aktionen bei Rechtsklick anzeigen"
+
+#: ../window-title/windowtitle.ui.h:23
+msgid ""
+"Will cause the window action menu to appear when the title is right-"
+"clicked.\n"
+"This experimental feature is still under development!\n"
+"Warning! In current feature state you will be unable to access the applet "
+"action menu via title-right click when this option is enabled! You may still "
+"do so by right-clicking the icon if it is not hidden. You may always change "
+"this setting from gconf-editor."
+msgstr ""
+"Dadurch wird das Aktionsmenü des Fensters geöffnet, wenn der Titel mit der "
+"rechten Maustaste angeklickt wird.\n"
+"Diese experimentelle Funktion befindet sich noch in der Entwicklung!\n"
+"Vorsicht! Im gegenwärtigen Zustand werden Sie das Aktionsmenü des Applets "
+"nicht über einen Rechtsklick öffnen können, wenn diese Option aktiviert ist. "
+"Sie können es lediglich per Rechtsklick auf das Symbol, wenn es nicht "
+"verborgen ist. Sie können diese Einstellung immer im gconf-editor ändern."
+
+#~ msgid "Netspeed"
+#~ msgstr "Netzwerkmonitor"
+
+#~ msgid "Timer Applet"
+#~ msgstr "Timer-Applet"
+
+#~ msgid "Trash Applet"
+#~ msgstr "Mülleimer-Applet"
 
 #~ msgid "Close current window."
 #~ msgstr "Aktuelles Fenster schließen."
