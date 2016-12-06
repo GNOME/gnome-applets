@@ -20,7 +20,7 @@
 #include <dbus/dbus-glib-lowlevel.h>
 
 #include "cpufreq-selector.h"
-#include "cpufreq-selector-factory.h"
+#include "cpufreq-selector-libcpufreq.h"
 #include "cpufreq-selector-service.h"
 
 #include "cpufreq-selector-service-glue.h"
@@ -252,7 +252,7 @@ get_selector_for_cpu (CPUFreqSelectorService *service,
 		      guint                   cpu)
 {
 	if (!service->selectors[cpu]) {
-		service->selectors[cpu] = cpufreq_selector_factory_create_selector (cpu);
+		service->selectors[cpu] = cpufreq_selector_libcpufreq_new (cpu);
 		if (!service->selectors[cpu])
 			return NULL;
 		

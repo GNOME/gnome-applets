@@ -29,7 +29,6 @@ cpufreq_selector_SOURCES = \
 	cpufreq-selector.c               cpufreq-selector.h        	\
 	cpufreq-selector-libcpufreq.c    cpufreq-selector-libcpufreq.h	\
 	$(service_files)						\
-	cpufreq-selector-factory.c	 cpufreq-selector-factory.h	\
 	$(BUILT_SOURCES)						\
 	main.c
 

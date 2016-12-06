@@ -28,8 +28,7 @@
 #ifdef HAVE_POLKIT
 #include "cpufreq-selector-service.h"
 #endif
-#include "cpufreq-selector-factory.h"
-
+#include "cpufreq-selector-libcpufreq.h"
 
 static gint    cpu = 0;
 static gchar  *governor = NULL;
@@ -128,7 +127,7 @@ cpufreq_selector_set_values (void)
 	CPUFreqSelector *selector;
 	GError          *error = NULL;
 
-	selector = cpufreq_selector_factory_create_selector (cpu);
+	selector = cpufreq_selector_libcpufreq_new (cpu);
 	if (!selector) {
 		g_printerr ("No cpufreq support\n");
 
