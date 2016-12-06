@@ -33,7 +33,7 @@
 #include "cpufreq-prefs.h"
 #include "cpufreq-popup.h"
 #include "cpufreq-monitor.h"
-#include "cpufreq-monitor-factory.h"
+#include "cpufreq-monitor-libcpufreq.h"
 #include "cpufreq-utils.h"
 
 struct _CPUFreqApplet {
@@ -958,7 +958,7 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                           (gpointer) applet);
 
         /* Monitor */
-        applet->monitor = cpufreq_monitor_factory_create_monitor (
+        applet->monitor = cpufreq_monitor_libcpufreq_new (
                 cpufreq_prefs_get_cpu (applet->prefs));
         cpufreq_monitor_run (applet->monitor);
         g_signal_connect_swapped (G_OBJECT (applet->monitor), "changed",
