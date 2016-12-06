@@ -21,20 +21,13 @@ if CPUFREQ_SELECTOR_SUID
 	chmod 4755 $(DESTDIR)$(bindir)/cpufreq-selector
 endif
 
-
-if HAVE_LIBCPUFREQ
-cpufreq_files=cpufreq-selector-libcpufreq.c        cpufreq-selector-libcpufreq.h
-endif
-
 if HAVE_POLKIT
 service_files=cpufreq-selector-service.c       cpufreq-selector-service.h
 endif
 
 cpufreq_selector_SOURCES = \
 	cpufreq-selector.c               cpufreq-selector.h        	\
-	cpufreq-selector-sysfs.c         cpufreq-selector-sysfs.h  	\
-	cpufreq-selector-procfs.c        cpufreq-selector-procfs.h 	\
-	$(cpufreq_files)					   	\
+	cpufreq-selector-libcpufreq.c    cpufreq-selector-libcpufreq.h	\
 	$(service_files)						\
 	cpufreq-selector-factory.c	 cpufreq-selector-factory.h	\
 	$(BUILT_SOURCES)						\

@@ -476,10 +476,8 @@ AC_ARG_WITH([cpufreq-lib],
 AC_CHECK_HEADER(cpufreq.h, have_libcpufreq=yes, have_libcpufreq=no)
 LIBCPUFREQ_LIBS=
 if test "x$have_libcpufreq" = "xyes"; then
-   AC_DEFINE([HAVE_LIBCPUFREQ], [1], [Have libcpufreq.])
    LIBCPUFREQ_LIBS="-l$with_cpufreq_lib"
 fi
-AM_CONDITIONAL(HAVE_LIBCPUFREQ, test x$have_libcpufreq = xyes)
 AC_SUBST(LIBCPUFREQ_LIBS)
 
 build_cpufreq_applet=no
@@ -494,6 +492,11 @@ if test x$disable_cpufreq = xno; then
 	 build_cpufreq_applet=no
 	 ;;
    esac
+fi
+
+if test "x$have_libcpufreq" = "xno"; then
+  AC_MSG_WARN([*** cpufreq applet will not be built ***])
+  build_cpufreq_applet=no
 fi
 
 AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)

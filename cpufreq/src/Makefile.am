@@ -41,13 +41,8 @@ libcpu_frequency_applet_la_SOURCES = \
 	cpufreq-monitor.h \
 	cpufreq-monitor-factory.c \
 	cpufreq-monitor-factory.h \
-	cpufreq-monitor-procfs.c \
-	cpufreq-monitor-procfs.h \
-	cpufreq-monitor-sysfs.c \
-	cpufreq-monitor-sysfs.h \
-	cpufreq-monitor-cpuinfo.c \
-	cpufreq-monitor-cpuinfo.h \
-	$(cpufreq_files) \
+	cpufreq-monitor-libcpufreq.c \
+	cpufreq-monitor-libcpufreq.h \
 	$(NULL)
 
 libcpu_frequency_applet_la_LDFLAGS = \
@@ -62,14 +57,5 @@ libcpu_frequency_applet_la_LIBADD = \
 	$(LIBCPUFREQ_LIBS) \
 	$(DBUS_LIBS) \
 	$(NULL)
-
-if HAVE_LIBCPUFREQ
-
-cpufreq_files = \
-    cpufreq-monitor-libcpufreq.c \
-    cpufreq-monitor-libcpufreq.h \
-    $(NULL)
-
-endif
 
 -include $(top_srcdir)/git.mk
