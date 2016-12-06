@@ -27,7 +27,6 @@ endif
 
 cpufreq_selector_SOURCES = \
 	cpufreq-selector.c               cpufreq-selector.h        	\
-	cpufreq-selector-libcpufreq.c    cpufreq-selector-libcpufreq.h	\
 	$(service_files)						\
 	$(BUILT_SOURCES)						\
 	main.c

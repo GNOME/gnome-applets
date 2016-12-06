@@ -20,9 +20,7 @@
 #include <dbus/dbus-glib-lowlevel.h>
 
 #include "cpufreq-selector.h"
-#include "cpufreq-selector-libcpufreq.h"
 #include "cpufreq-selector-service.h"
-
 #include "cpufreq-selector-service-glue.h"
 
 #define MAX_CPUS 255
@@ -252,7 +250,7 @@ get_selector_for_cpu (CPUFreqSelectorService *service,
 		      guint                   cpu)
 {
 	if (!service->selectors[cpu]) {
-		service->selectors[cpu] = cpufreq_selector_libcpufreq_new (cpu);
+		service->selectors[cpu] = cpufreq_selector_new (cpu);
 		if (!service->selectors[cpu])
 			return NULL;
 		

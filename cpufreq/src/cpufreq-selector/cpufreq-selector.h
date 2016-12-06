@@ -1,73 +1,46 @@
 /*
- * GNOME CPUFreq Applet
- * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2004 Carlos Garcia Campos
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors : Carlos García Campos <carlosgc@gnome.org>
+ * Authors:
+ *     Alberts Muktupāvels <alberts.muktupavels@gmail.com>
+ *     Carlos García Campos <carlosgc@gnome.org>
  */
 
-#ifndef __CPUFREQ_SELECTOR_H__
-#define __CPUFREQ_SELECTOR_H__
+#ifndef CPUFREQ_SELECTOR_H
+#define CPUFREQ_SELECTOR_H
 
 #include <glib-object.h>
 
-#define CPUFREQ_TYPE_SELECTOR            (cpufreq_selector_get_type ())
-#define CPUFREQ_SELECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_SELECTOR, CPUFreqSelector))
-#define CPUFREQ_SELECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_SELECTOR, CPUFreqSelectorClass))
-#define CPUFREQ_IS_SELECTOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_SELECTOR))
-#define CPUFREQ_IS_SELECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_SELECTOR))
-#define CPUFREQ_SELECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_SELECTOR, CPUFreqSelectorClass))
+G_BEGIN_DECLS
 
-#define CPUFREQ_SELECTOR_ERROR (cpufreq_selector_error_quark ())
+#define CPUFREQ_TYPE_SELECTOR cpufreq_selector_get_type ()
+G_DECLARE_FINAL_TYPE (CPUFreqSelector, cpufreq_selector,
+                      CPUFREQ, SELECTOR, GObject)
 
-enum {
-	SELECTOR_ERROR_INVALID_CPU,
-	SELECTOR_ERROR_INVALID_GOVERNOR,
-	SELECTOR_ERROR_SET_FREQUENCY
-};
+CPUFreqSelector *cpufreq_selector_new            (guint             cpu);
 
-typedef struct _CPUFreqSelector        CPUFreqSelector;
-typedef struct _CPUFreqSelectorClass   CPUFreqSelectorClass;
-typedef struct _CPUFreqSelectorPrivate CPUFreqSelectorPrivate;
+gboolean         cpufreq_selector_set_frequency  (CPUFreqSelector  *selector,
+                                                  guint             frequency,
+                                                  GError          **error);
 
-struct _CPUFreqSelector {
-        GObject parent;
+gboolean         cpufreq_selector_set_governor   (CPUFreqSelector  *selector,
+                                                  const gchar      *governor,
+                                                  GError          **error);
 
-	CPUFreqSelectorPrivate *priv;
-};
+G_END_DECLS
 
-struct _CPUFreqSelectorClass {
-        GObjectClass parent_class;
-
-	gboolean  (* set_frequency) (CPUFreqSelector *selector,
-				     guint            frequency,
-				     GError         **error);
-        gboolean  (* set_governor)  (CPUFreqSelector *selector,
-				     const gchar     *governor,
-				     GError         **error);
-};
-
-
-GType    cpufreq_selector_get_type      (void) G_GNUC_CONST;
-GQuark   cpufreq_selector_error_quark   (void) G_GNUC_CONST;
-
-gboolean cpufreq_selector_set_frequency (CPUFreqSelector *selector,
-					 guint            frequency,
-					 GError         **error);
-gboolean cpufreq_selector_set_governor  (CPUFreqSelector *selector,
-					 const gchar     *governor,
-					 GError         **error);
-
-#endif /* __CPUFREQ_SELECTOR_H__ */
+#endif
