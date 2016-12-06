@@ -1,71 +1,54 @@
 /*
- * GNOME CPUFreq Applet
- * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2004 Carlos García Campos
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors : Carlos García Campos <carlosgc@gnome.org>
+ * Authors:
+ *     Alberts Muktupāvels <alberts.muktupavels@gmail.com>
+ *     Carlos García Campos <carlosgc@gnome.org>
  */
 
-#ifndef __CPUFREQ_MONITOR_H__
-#define __CPUFREQ_MONITOR_H__
+#ifndef CPUFREQ_MONITOR_H
+#define CPUFREQ_MONITOR_H
 
 #include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define CPUFREQ_TYPE_MONITOR            (cpufreq_monitor_get_type ())
-#define CPUFREQ_MONITOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_MONITOR, CPUFreqMonitor))
-#define CPUFREQ_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_MONITOR, CPUFreqMonitorClass))
-#define CPUFREQ_IS_MONITOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_MONITOR))
-#define CPUFREQ_IS_MONITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_MONITOR))
-#define CPUFREQ_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_MONITOR, CPUFreqMonitorClass))
+#define CPUFREQ_TYPE_MONITOR cpufreq_monitor_get_type ()
+G_DECLARE_FINAL_TYPE (CPUFreqMonitor, cpufreq_monitor, CPUFREQ, MONITOR, GObject)
 
-typedef struct _CPUFreqMonitor        CPUFreqMonitor;
-typedef struct _CPUFreqMonitorClass   CPUFreqMonitorClass;
-typedef struct _CPUFreqMonitorPrivate CPUFreqMonitorPrivate;
+CPUFreqMonitor *cpufreq_monitor_new                       (guint           cpu);
 
-struct _CPUFreqMonitor {
-        GObject parent;
+void            cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
 
-        CPUFreqMonitorPrivate *priv;
-};
+GList          *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);
 
-struct _CPUFreqMonitorClass {
-        GObjectClass parent_class;
+GList          *cpufreq_monitor_get_available_governors   (CPUFreqMonitor *monitor);
 
-        gboolean  (* run)                       (CPUFreqMonitor *monitor);
-        GList    *(* get_available_frequencies) (CPUFreqMonitor *monitor);
-        GList    *(* get_available_governors)   (CPUFreqMonitor *monitor);
+guint           cpufreq_monitor_get_cpu                   (CPUFreqMonitor *monitor);
 
-        /*< signals >*/
-        void      (* changed)                   (CPUFreqMonitor *monitor);
-};
+void            cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
+                                                           guint           cpu);
 
-GType        cpufreq_monitor_get_type                  (void) G_GNUC_CONST;
+const gchar    *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
 
-void         cpufreq_monitor_run                       (CPUFreqMonitor *monitor);
-GList       *cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor);
-GList       *cpufreq_monitor_get_available_governors   (CPUFreqMonitor *monitor);
+gint            cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
 
-guint        cpufreq_monitor_get_cpu                   (CPUFreqMonitor *monitor);
-void         cpufreq_monitor_set_cpu                   (CPUFreqMonitor *monitor,
-							guint           cpu);
-const gchar *cpufreq_monitor_get_governor              (CPUFreqMonitor *monitor);
-gint         cpufreq_monitor_get_frequency             (CPUFreqMonitor *monitor);
-gint         cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
+gint            cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
 
 G_END_DECLS
 
-#endif /* __CPUFREQ_MONITOR_H__ */
+#endif

@@ -1,256 +1,208 @@
 /*
- * GNOME CPUFreq Applet
- * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2004 Carlos García Campos
+ * Copyright (C) 2016 Alberts Muktupāvels
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors : Carlos García Campos <carlosgc@gnome.org>
+ * Authors:
+ *     Alberts Muktupāvels <alberts.muktupavels@gmail.com>
+ *     Carlos García Campos <carlosgc@gnome.org>
  */
+
+#include "config.h"
+
+#include <cpufreq.h>
+#include <stdlib.h>
 
 #include "cpufreq-monitor.h"
 
-#define CPUFREQ_MONITOR_GET_PRIVATE(obj) \
-        (G_TYPE_INSTANCE_GET_PRIVATE((obj), CPUFREQ_TYPE_MONITOR, CPUFreqMonitorPrivate))
-
 #define CPUFREQ_MONITOR_INTERVAL 1
 
-/* Properties */
-enum {
-        PROP_0,
-        PROP_CPU,
-        PROP_ONLINE,
-        PROP_FREQUENCY,
-        PROP_MAX_FREQUENCY,
-        PROP_GOVERNOR
+typedef struct cpufreq_policy                CPUFreqPolicy;
+typedef struct cpufreq_available_frequencies CPUFreqFrequencyList;
+typedef struct cpufreq_available_governors   CPUFreqGovernorList;
+
+struct _CPUFreqMonitor
+{
+  GObject   parent;
+
+  guint     cpu;
+  gboolean  online;
+  gint      cur_freq;
+  gint      max_freq;
+  gchar    *governor;
+  GList    *available_freqs;
+  GList    *available_govs;
+  guint     timeout_handler;
+
+  gboolean  changed;
 };
 
-/* Signals */
-enum {
-        SIGNAL_CHANGED,
-        N_SIGNALS
+enum
+{
+  PROP_0,
+  PROP_CPU,
 };
 
-struct _CPUFreqMonitorPrivate {
-        guint    cpu;
-        gboolean online;
-        gint     cur_freq;
-        gint     max_freq;
-        gchar   *governor;
-        GList   *available_freqs;
-        GList   *available_govs;
-        guint    timeout_handler;
-
-        gboolean changed;
+enum
+{
+  SIGNAL_CHANGED,
+  N_SIGNALS
 };
-
-static void   cpufreq_monitor_finalize     (GObject             *object);
-
-static void   cpufreq_monitor_set_property (GObject             *object,
-                                            guint                prop_id,
-                                            const GValue        *value,
-                                            GParamSpec          *spec);
-static void   cpufreq_monitor_get_property (GObject             *object,
-                                            guint                prop_id,
-                                            GValue              *value,
-                                            GParamSpec          *spec);
 
 static guint signals[N_SIGNALS];
 
-G_DEFINE_ABSTRACT_TYPE (CPUFreqMonitor, cpufreq_monitor, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CPUFreqMonitor, cpufreq_monitor, G_TYPE_OBJECT)
 
-static void
-cpufreq_monitor_init (CPUFreqMonitor *monitor)
+static gboolean
+monitor_run (CPUFreqMonitor *monitor)
 {
-        monitor->priv = CPUFREQ_MONITOR_GET_PRIVATE (monitor);
+  CPUFreqPolicy *policy;
+  gint freq;
 
-        monitor->priv->governor = NULL;
-        monitor->priv->available_freqs = NULL;
-        monitor->priv->available_govs = NULL;
-        monitor->priv->timeout_handler = 0;
+  policy = cpufreq_get_policy (monitor->cpu);
 
-        monitor->priv->changed = FALSE;
+  if (!policy)
+    {
+      /* Check whether it failed because cpu is not online. */
+      if (!cpufreq_cpu_exists (monitor->cpu))
+        {
+          monitor->online = FALSE;
+          return TRUE;
+        }
+
+      return FALSE;
+    }
+
+  monitor->online = TRUE;
+
+  freq = cpufreq_get_freq_kernel (monitor->cpu);
+  if (freq != monitor->cur_freq)
+    {
+      monitor->cur_freq = freq;
+      monitor->changed = TRUE;
+    }
+
+  if (monitor->governor)
+    {
+      if (g_ascii_strcasecmp (monitor->governor, policy->governor) != 0)
+        {
+          g_free (monitor->governor);
+
+          monitor->governor = g_strdup (policy->governor);
+          monitor->changed = TRUE;
+        }
+    }
+  else
+    {
+      monitor->governor = g_strdup (policy->governor);
+      monitor->changed = TRUE;
+    }
+
+  return TRUE;
+}
+
+static gboolean
+cpufreq_monitor_run_cb (gpointer user_data)
+{
+  CPUFreqMonitor *monitor;
+  gboolean retval;
+
+  monitor = CPUFREQ_MONITOR (user_data);
+  retval = monitor_run (monitor);
+
+  if (monitor->changed)
+    {
+      g_signal_emit (monitor, signals[SIGNAL_CHANGED], 0);
+      monitor->changed = FALSE;
+    }
+
+  return retval;
+}
+
+static gint
+compare (gconstpointer a,
+         gconstpointer b)
+{
+  gint aa;
+  gint bb;
+
+  aa = atoi ((gchar *) a);
+  bb = atoi ((gchar *) b);
+
+  if (aa == bb)
+    return 0;
+  else if (aa > bb)
+    return -1;
+  else
+    return 1;
 }
 
 static void
-cpufreq_monitor_class_init (CPUFreqMonitorClass *klass)
+cpufreq_monitor_constructed (GObject *object)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+  CPUFreqMonitor *monitor;
+  gulong max_freq;
+  gulong min_freq;
 
-        object_class->set_property = cpufreq_monitor_set_property;
-        object_class->get_property = cpufreq_monitor_get_property;
+  monitor = CPUFREQ_MONITOR (object);
 
-        /* Public virtual methods */
-        klass->run = NULL;
-        klass->get_available_frequencies = NULL;
-        klass->get_available_governors = NULL;
+  G_OBJECT_CLASS (cpufreq_monitor_parent_class)->constructed (object);
 
-        g_type_class_add_private (klass, sizeof (CPUFreqMonitorPrivate));
-        
-        /* Porperties */
-        g_object_class_install_property (object_class,
-                                         PROP_CPU,
-                                         g_param_spec_uint ("cpu",
-                                                            "CPU",
-                                                            "The cpu to monitor",
-                                                            0, 
-                                                            G_MAXUINT,
-                                                            0, 
-                                                            G_PARAM_CONSTRUCT |
-                                                            G_PARAM_READWRITE));
-        g_object_class_install_property (object_class,
-                                         PROP_ONLINE,
-                                         g_param_spec_boolean ("online",
-                                                               "Online",
-                                                               "Whether cpu is online",
-                                                               TRUE,
-                                                               G_PARAM_READWRITE));
-        g_object_class_install_property (object_class,
-                                         PROP_FREQUENCY,
-                                         g_param_spec_int ("frequency",
-                                                           "Frequency",
-                                                           "The current cpu frequency",
-                                                           0, 
-                                                           G_MAXINT,
-                                                           0,
-                                                           G_PARAM_READWRITE));
-        g_object_class_install_property (object_class,
-                                         PROP_MAX_FREQUENCY,
-                                         g_param_spec_int ("max-frequency",
-                                                           "MaxFrequency",
-                                                           "The max cpu frequency",
-                                                           0,
-                                                           G_MAXINT,
-                                                           0,
-                                                           G_PARAM_READWRITE));
-        g_object_class_install_property (object_class,
-                                         PROP_GOVERNOR,
-                                         g_param_spec_string ("governor",
-                                                              "Governor",
-                                                              "The current cpufreq governor",
-                                                              NULL,
-                                                              G_PARAM_READWRITE));
+  if (cpufreq_get_hardware_limits (monitor->cpu, &min_freq, &max_freq) != 0)
+    {
+      g_warning ("Error getting CPUINFO_MAX");
+      max_freq = -1;
+    }
 
-        /* Signals */
-        signals[SIGNAL_CHANGED] =
-                g_signal_new ("changed",
-                              G_TYPE_FROM_CLASS (klass),
-                              G_SIGNAL_RUN_LAST,
-                              G_STRUCT_OFFSET (CPUFreqMonitorClass, changed),
-                              NULL, NULL,
-                              g_cclosure_marshal_VOID__VOID,
-                              G_TYPE_NONE, 0);
-           
-        object_class->finalize = cpufreq_monitor_finalize;
+  monitor->max_freq = max_freq;
 }
 
 static void
 cpufreq_monitor_finalize (GObject *object)
 {
-        CPUFreqMonitor *monitor = CPUFREQ_MONITOR (object);
+  CPUFreqMonitor *monitor;
 
-        monitor->priv->online = FALSE;
-        
-        if (monitor->priv->timeout_handler > 0) {
-                g_source_remove (monitor->priv->timeout_handler);
-                monitor->priv->timeout_handler = 0;
-        }
+  monitor = CPUFREQ_MONITOR (object);
 
-        if (monitor->priv->governor) {
-                g_free (monitor->priv->governor);
-                monitor->priv->governor = NULL;
-        }
+  if (monitor->timeout_handler > 0)
+    {
+      g_source_remove (monitor->timeout_handler);
+      monitor->timeout_handler = 0;
+    }
 
-        if (monitor->priv->available_freqs) {
-                g_list_foreach (monitor->priv->available_freqs,
-                                (GFunc) g_free,
-                                NULL);
-                g_list_free (monitor->priv->available_freqs);
-                monitor->priv->available_freqs = NULL;
-        }
+  if (monitor->governor)
+    {
+      g_free (monitor->governor);
+      monitor->governor = NULL;
+    }
 
-        if (monitor->priv->available_govs) {
-                g_list_foreach (monitor->priv->available_govs,
-                                (GFunc) g_free,
-                                NULL);
-                g_list_free (monitor->priv->available_govs);
-                monitor->priv->available_govs = NULL;
-        }
+  if (monitor->available_freqs)
+    {
+      g_list_foreach (monitor->available_freqs, (GFunc) g_free, NULL);
+      g_list_free (monitor->available_freqs);
+      monitor->available_freqs = NULL;
+    }
 
-        G_OBJECT_CLASS (cpufreq_monitor_parent_class)->finalize (object);
-}
+  if (monitor->available_govs)
+    {
+      g_list_foreach (monitor->available_govs, (GFunc) g_free, NULL);
+      g_list_free (monitor->available_govs);
+      monitor->available_govs = NULL;
+    }
 
-static void
-cpufreq_monitor_set_property (GObject      *object,
-                              guint         prop_id,
-                              const GValue *value,
-                              GParamSpec   *spec)
-{
-        CPUFreqMonitor *monitor;
-
-        monitor = CPUFREQ_MONITOR (object);
-
-        switch (prop_id) {
-        case PROP_CPU: {
-                guint cpu = g_value_get_uint (value);
-
-                if (cpu != monitor->priv->cpu) {
-                        monitor->priv->cpu = cpu;
-                        monitor->priv->changed = TRUE;
-                }
-        }
-                break;
-        case PROP_ONLINE:
-                monitor->priv->online = g_value_get_boolean (value);
-
-                break;
-        case PROP_FREQUENCY: {
-                gint freq = g_value_get_int (value);
-
-                if (freq != monitor->priv->cur_freq) {
-                        monitor->priv->cur_freq = freq;
-                        monitor->priv->changed = TRUE;
-                }
-        }
-                break;
-        case PROP_MAX_FREQUENCY: {
-                gint freq = g_value_get_int (value);
-
-                if (freq != monitor->priv->max_freq) {
-                        monitor->priv->max_freq = freq;
-                        monitor->priv->changed = TRUE;
-                }
-        }
-                break;
-        case PROP_GOVERNOR: {
-                const gchar *gov = g_value_get_string (value);
-
-                if (monitor->priv->governor) {
-                        if (g_ascii_strcasecmp (gov, monitor->priv->governor) != 0) {
-                                g_free (monitor->priv->governor);
-                                monitor->priv->governor = gov ? g_strdup (gov) : NULL;
-                                monitor->priv->changed = TRUE;
-                        }
-                } else {
-                        monitor->priv->governor = gov ? g_strdup (gov) : NULL;
-                        monitor->priv->changed = TRUE;
-                }
-        }
-                break;
-        default:
-                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, spec);
-                break;
-        }
+  G_OBJECT_CLASS (cpufreq_monitor_parent_class)->finalize (object);
 }
 
 static void
@@ -259,150 +211,205 @@ cpufreq_monitor_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *spec)
 {
-        CPUFreqMonitor *monitor;
+  CPUFreqMonitor *monitor;
 
-        monitor = CPUFREQ_MONITOR (object);
+  monitor = CPUFREQ_MONITOR (object);
 
-        switch (prop_id) {
-        case PROP_CPU:
-                g_value_set_uint (value, monitor->priv->cpu);
-                break;
-        case PROP_ONLINE:
-                g_value_set_boolean (value, monitor->priv->online);
-                break;
-        case PROP_FREQUENCY:
-                g_value_set_int (value, monitor->priv->cur_freq);
-                break;
-        case PROP_MAX_FREQUENCY:
-                g_value_set_int (value, monitor->priv->max_freq);
-                break;
-        case PROP_GOVERNOR:
-                g_value_set_string (value, monitor->priv->governor);
-                break;
-        default:
-                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, spec);
-                break;
-        }
+  switch (prop_id)
+    {
+      case PROP_CPU:
+        g_value_set_uint (value, monitor->cpu);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, spec);
+        break;
+    }
 }
 
-static gboolean
-cpufreq_monitor_run_cb (CPUFreqMonitor *monitor)
+static void
+cpufreq_monitor_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *spec)
 {
-        CPUFreqMonitorClass *class;
-        gboolean             retval = FALSE;
+  CPUFreqMonitor *monitor;
 
-        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-        
-        if (class->run)
-                retval = class->run (monitor);
+  monitor = CPUFREQ_MONITOR (object);
 
-        if (monitor->priv->changed) {
-                g_signal_emit (monitor, signals[SIGNAL_CHANGED], 0);
-                monitor->priv->changed = FALSE;
-        }
+  switch (prop_id)
+    {
+      case PROP_CPU:
+        cpufreq_monitor_set_cpu (monitor, g_value_get_uint (value));
+        break;
 
-        return retval;
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, spec);
+        break;
+    }
+}
+
+static void
+cpufreq_monitor_class_init (CPUFreqMonitorClass *monitor_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (monitor_class);
+
+  object_class->constructed = cpufreq_monitor_constructed;
+  object_class->finalize = cpufreq_monitor_finalize;
+  object_class->get_property = cpufreq_monitor_get_property;
+  object_class->set_property = cpufreq_monitor_set_property;
+
+  signals[SIGNAL_CHANGED] =
+    g_signal_new ("changed", G_TYPE_FROM_CLASS (monitor_class),
+                  G_SIGNAL_RUN_LAST, 0, NULL, NULL, NULL, G_TYPE_NONE, 0);
+
+  g_object_class_install_property (object_class, PROP_CPU,
+                                   g_param_spec_uint ("cpu", "", "",
+                                                      0, G_MAXUINT, 0,
+                                                      G_PARAM_CONSTRUCT |
+                                                      G_PARAM_READWRITE));
+}
+
+static void
+cpufreq_monitor_init (CPUFreqMonitor *monitor)
+{
+}
+
+CPUFreqMonitor *
+cpufreq_monitor_new (guint cpu)
+{
+  return g_object_new (CPUFREQ_TYPE_MONITOR, "cpu", cpu, NULL);
 }
 
 void
 cpufreq_monitor_run (CPUFreqMonitor *monitor)
 {
-        g_return_if_fail (CPUFREQ_IS_MONITOR (monitor));
+  g_return_if_fail (CPUFREQ_IS_MONITOR (monitor));
 
-        if (monitor->priv->timeout_handler > 0)
-                return;
+  if (monitor->timeout_handler > 0)
+    return;
 
-        monitor->priv->timeout_handler =
-                g_timeout_add_seconds (CPUFREQ_MONITOR_INTERVAL,
-                               (GSourceFunc) cpufreq_monitor_run_cb,
-                               (gpointer) monitor);
+  monitor->timeout_handler = g_timeout_add_seconds (CPUFREQ_MONITOR_INTERVAL,
+                                                    cpufreq_monitor_run_cb,
+                                                    monitor);
 }
 
 GList *
 cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 {
-        CPUFreqMonitorClass *class;
-        
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
+  CPUFreqFrequencyList *freqs;
+  CPUFreqFrequencyList *freq;
 
-        if (!monitor->priv->online)
-                return NULL;
-        
-        if (monitor->priv->available_freqs)
-                return monitor->priv->available_freqs;
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
-        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-        
-        if (class->get_available_frequencies) {
-                monitor->priv->available_freqs = class->get_available_frequencies (monitor);
+  if (!monitor->online)
+    return NULL;
+
+  if (monitor->available_freqs)
+    return monitor->available_freqs;
+
+  freqs = cpufreq_get_available_frequencies (monitor->cpu);
+
+  if (!freqs)
+    return NULL;
+
+  for (freq = freqs; freq; freq = freq->next)
+    {
+      gchar *frequency;
+
+      frequency = g_strdup_printf ("%lu", freq->frequency);
+
+      if (!g_list_find_custom (monitor->available_freqs, frequency, compare))
+        {
+          monitor->available_freqs = g_list_prepend (monitor->available_freqs,
+                                                     g_strdup (frequency));
         }
 
-        return monitor->priv->available_freqs;
+      g_free (frequency);
+    }
+
+  monitor->available_freqs = g_list_sort (monitor->available_freqs, compare);
+  cpufreq_put_available_frequencies (freqs);
+
+  return monitor->available_freqs;
 }
 
 GList *
 cpufreq_monitor_get_available_governors (CPUFreqMonitor *monitor)
 {
-        CPUFreqMonitorClass *class;
-        
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
+  CPUFreqGovernorList *govs;
+  CPUFreqGovernorList *gov;
 
-        if (!monitor->priv->online)
-                return NULL;
-        
-        if (monitor->priv->available_govs)
-                return monitor->priv->available_govs;
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
-        class = CPUFREQ_MONITOR_GET_CLASS (monitor);
-        
-        if (class->get_available_governors) {
-                monitor->priv->available_govs = class->get_available_governors (monitor);
-        }
+  if (!monitor->online)
+    return NULL;
 
-        return monitor->priv->available_govs;
+  if (monitor->available_govs)
+    return monitor->available_govs;
+
+  govs = cpufreq_get_available_governors (monitor->cpu);
+
+  if (!govs)
+    return NULL;
+
+  for (gov = govs; gov; gov = gov->next)
+    {
+      monitor->available_govs = g_list_prepend (monitor->available_govs,
+                                                g_strdup (gov->governor));
+    }
+
+  cpufreq_put_available_governors (govs);
+
+  return monitor->available_govs;
 }
 
 guint
 cpufreq_monitor_get_cpu (CPUFreqMonitor *monitor)
 {
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), 0);
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), 0);
 
-        return monitor->priv->cpu;
+  return monitor->cpu;
 }
 
 void
-cpufreq_monitor_set_cpu (CPUFreqMonitor *monitor, guint cpu)
+cpufreq_monitor_set_cpu (CPUFreqMonitor *monitor,
+                         guint           cpu)
 {
-        g_return_if_fail (CPUFREQ_IS_MONITOR (monitor));
+  g_return_if_fail (CPUFREQ_IS_MONITOR (monitor));
 
-        g_object_set (G_OBJECT (monitor),
-                      "cpu", cpu, NULL);
-}
-
-gint
-cpufreq_monitor_get_frequency (CPUFreqMonitor *monitor)
-{
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), -1);
-
-        return monitor->priv->cur_freq;
+  if (cpu != monitor->cpu)
+    {
+      monitor->cpu = cpu;
+      monitor->changed = TRUE;
+    }
 }
 
 const gchar *
 cpufreq_monitor_get_governor (CPUFreqMonitor *monitor)
 {
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), NULL);
 
-        return monitor->priv->governor;
+  return monitor->governor;
+}
+
+gint
+cpufreq_monitor_get_frequency (CPUFreqMonitor *monitor)
+{
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), -1);
+
+  return monitor->cur_freq;
 }
 
 gint
 cpufreq_monitor_get_percentage (CPUFreqMonitor *monitor)
 {
-        g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), -1);
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), -1);
 
-        if (monitor->priv->max_freq > 0) {
-                return ((monitor->priv->cur_freq * 100) / monitor->priv->max_freq);
-        }
+  if (monitor->max_freq > 0)
+    return ((monitor->cur_freq * 100) / monitor->max_freq);
 
-        return -1;
+  return -1;
 }

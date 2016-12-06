@@ -39,8 +39,6 @@ libcpu_frequency_applet_la_SOURCES = \
 	cpufreq-popup.h \
 	cpufreq-monitor.c \
 	cpufreq-monitor.h \
-	cpufreq-monitor-libcpufreq.c \
-	cpufreq-monitor-libcpufreq.h \
 	$(NULL)
 
 libcpu_frequency_applet_la_LDFLAGS = \
