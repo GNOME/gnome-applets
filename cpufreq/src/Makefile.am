@@ -21,7 +21,6 @@ libcpu_frequency_applet_la_CPPFLAGS = \
 libcpu_frequency_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
-	$(DBUS_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
@@ -51,7 +50,6 @@ libcpu_frequency_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBGLADE_LIBS) \
 	$(LIBCPUFREQ_LIBS) \
-	$(DBUS_LIBS) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
