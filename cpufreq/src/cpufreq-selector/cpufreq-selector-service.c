@@ -228,7 +228,10 @@ cpufreq_selector_service_register (CPUFreqSelectorService *service,
 		return FALSE;
 	}
 
-	service->authority = polkit_authority_get ();
+	service->authority = polkit_authority_get_sync (NULL, error);
+
+	if (!service->authority)
+	  return FALSE;
 
 	service->system_bus = connection;
 
