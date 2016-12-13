@@ -15,11 +15,9 @@ libgweather_applet_la_CPPFLAGS = \
 	$(NULL)
 
 libgweather_applet_la_CFLAGS = \
-	$(DBUS_CFLAGS) \
 	$(GNOME_APPLETS_CFLAGS) \
-	$(DBUS_CFLAGS) \
-	$(LIBNOTIFY_CFLAGS) \
 	$(LIBGWEATHER_CFLAGS) \
+	$(LIBNOTIFY_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
@@ -46,12 +44,9 @@ libgweather_applet_la_LDFLAGS = \
 	$(NULL)
 
 libgweather_applet_la_LIBADD = \
-	$(DBUS_LIBS) \
-	$(LIBNOTIFY_LIBS) \
 	$(GNOME_APPLETS_LIBS) \
-	$(DBUS_LIBS) \
-	$(GNOME_LIBS2_LIBS) \
 	$(LIBGWEATHER_LIBS) \
+	$(LIBNOTIFY_LIBS) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
