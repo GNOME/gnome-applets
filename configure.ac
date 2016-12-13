@@ -170,40 +170,13 @@ fi
 AC_SUBST(LIBNOTIFY_CFLAGS)
 AC_SUBST(LIBNOTIFY_LIBS)
 
-dnl -- check for glib/gobject (required) --------------------------------------
-PKG_CHECK_MODULES(CPUFREQ_SELECTOR, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED)
-AC_SUBST(CPUFREQ_SELECTOR_CFLAGS)
-AC_SUBST(CPUFREQ_SELECTOR_LIBS)
-
-dnl -- check for dbus (required for cpufreq-selector)
-PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED, HAVE_DBUS=yes, HAVE_DBUS=no)
-
-AC_SUBST(DBUS_CFLAGS)
-AC_SUBST(DBUS_LIBS)
-
-dnl -- check for PolicyKit and PolicyKit-gnome (optional) -----------------------------------------
-POLKIT_CFLAGS=
-POLKIT_LIBS=
-AC_ARG_ENABLE([polkit],
-    AC_HELP_STRING([--enable-polkit], [Enable PolicyKit support @<:@default auto@:>@]),
-    enable_polkit=$enableval,
-    enable_polkit=auto)
-if test "x$enable_polkit" != "xno"; then
-    PKG_CHECK_MODULES(POLKIT, polkit-gobject-1 >= $POLKIT_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED, HAVE_POLKIT=yes, HAVE_POLKIT=no)
-    if test "x$enable_polkit" = "xyes" -a "x$HAVE_POLKIT" = "xno"; then
-        AC_MSG_ERROR([PolicyKit support explicitly requested but dependencies not found])
-    fi
-fi
-dnl - This is only so the printout at the end of configure is correct -
-if test "x$enable_polkit" = "xno"; then
-   HAVE_POLKIT=no
-fi
-if test "x$HAVE_POLKIT" = "xyes"; then
-    AC_DEFINE(HAVE_POLKIT, [1], [PolicyKit available])
-fi
-AM_CONDITIONAL(HAVE_POLKIT, test "x$HAVE_POLKIT" = "xyes")
-AC_SUBST(POLKIT_CFLAGS)
-AC_SUBST(POLKIT_LIBS)
+PKG_CHECK_MODULES([CPUFREQ_SELECTOR], [
+  dbus-1 >= $DBUS_REQUIRED
+  dbus-glib-1 >= $DBUS_GLIB_REQUIRED
+  glib-2.0 >= $GLIB_REQUIRED
+  gobject-2.0 >= $GLIB_REQUIRED
+  polkit-gobject-1 >= $POLKIT_REQUIRED
+])
 
 dnl -- check for libupower-glib (optional) --------------------------------------------
 UPOWER_CFLAGS=
@@ -459,16 +432,6 @@ AC_ARG_ENABLE(frequency-selector,
 	                  build frequency selector [@<:@default: yes@:>@]], enable_selector=$enableval,
 	      enable_selector=yes)
 
-dnl --enable-suid=(yes/no)
-AC_ARG_ENABLE(suid,
-       [  --enable-suid[@<:@=yes/no@:>@]  suid root the frequency selector executable
-                   [@<:@default: yes@:>@]], ,
-       suid=yes)
-
-if test "x$HAVE_POLKIT" = "xyes"; then
-   suid=no
-fi
-
 AC_ARG_WITH([cpufreq-lib],
 	AS_HELP_STRING([--with-cpufreq-lib=lib], [library to use for cpufreq applet @<:@default=cpufreq@:>@]),
 	[with_cpufreq_lib=$withval], [with_cpufreq_lib="cpufreq"])
@@ -501,7 +464,6 @@ fi
 
 AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)
 AM_CONDITIONAL(BUILD_CPUFREQ_SELECTOR, test x$enable_selector = xyes)
-AM_CONDITIONAL(CPUFREQ_SELECTOR_SUID, test x$suid = xyes)
 
 dnl ***************************************************************************
 dnl *** tracker-search-bar applet check                                     ***
@@ -796,10 +758,7 @@ echo "    gucharmap support .............: $have_gucharmap"
 echo ""
 echo "  cpufreq"
 echo "    building selector .............: $enable_selector"
-echo "    using PolicyKit ...............: $HAVE_POLKIT"
-echo "    enabling suid bit .............: $suid"
 echo ""
-echo "  Using DBUS ......................: $HAVE_DBUS"
 echo "  Using UPOWER ....................: $HAVE_UPOWER"
 echo "  Enabling IPv6 ...................: $have_ipv6"
 echo ""

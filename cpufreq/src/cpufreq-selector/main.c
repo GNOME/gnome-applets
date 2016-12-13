@@ -18,16 +18,12 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
 
 #include <glib.h>
 #include <glib-object.h>
 
-#ifdef HAVE_POLKIT
 #include "cpufreq-selector-service.h"
-#endif
 #include "cpufreq-selector.h"
 
 static gint    cpu = 0;
@@ -41,7 +37,6 @@ static const GOptionEntry options[] = {
 	{ NULL }
 };
 
-#ifdef HAVE_POLKIT
 static void
 do_exit (GMainLoop *loop,
 	 GObject   *object)
@@ -119,7 +114,6 @@ cpufreq_selector_set_values_dbus (void)
 
 	g_object_unref (proxy);
 }
-#endif /* HAVE_POLKIT */
 
 static void
 cpufreq_selector_set_values (void)
@@ -160,30 +154,9 @@ cpufreq_selector_set_values (void)
 gint
 main (gint argc, gchar **argv)
 {
-#ifdef HAVE_POLKIT
 	GMainLoop      *loop;
-#endif
-        GOptionContext *context;
+	GOptionContext *context;
 	GError         *error = NULL;
-
-#ifndef HAVE_POLKIT
-	if (geteuid () != 0) {
-		g_printerr ("You must be root\n");
-
-		return 1;
-	}
-	
-	if (argc < 2) {
-		g_printerr ("Missing operand after `cpufreq-selector'\n");
-		g_printerr ("Try `cpufreq-selector --help' for more information.\n");
-
-		return 1;
-	}
-#endif
-	
-	#if !defined(GLIB_VERSION_2_36)
-		g_type_init ();
-	#endif
 
 	context = g_option_context_new ("- CPUFreq Selector");
 	g_option_context_add_main_entries (context, options, NULL);
@@ -200,8 +173,7 @@ main (gint argc, gchar **argv)
 	}
 	
 	g_option_context_free (context);
-	
-#ifdef HAVE_POLKIT
+
 	if (!cpufreq_selector_service_register (SELECTOR_SERVICE, &error)) {
 		if (governor || frequency != 0) {
 			cpufreq_selector_set_values_dbus ();
@@ -225,9 +197,6 @@ main (gint argc, gchar **argv)
 	g_main_loop_run (loop);
 
 	g_main_loop_unref (loop);
-#else /* !HAVE_POLKIT */
-	cpufreq_selector_set_values ();
-#endif /* HAVE_POLKIT */
 
         return 0;
 }

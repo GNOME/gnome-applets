@@ -23,12 +23,10 @@
 #include "cpufreq-selector.h"
 
 struct _CPUFreqSelector {
-	GObject parent;
+	GObject          parent;
 
-#ifdef HAVE_POLKIT
 	GDBusConnection *system_bus;
 	GDBusProxy      *proxy;
-#endif /* HAVE_POLKIT */
 };
 
 struct _CPUFreqSelectorClass {
@@ -42,10 +40,8 @@ cpufreq_selector_finalize (GObject *object)
 {
 	CPUFreqSelector *selector = CPUFREQ_SELECTOR (object);
 
-#ifdef HAVE_POLKIT
 	g_clear_object (&selector->proxy);
 	g_clear_object (&selector->system_bus);
-#endif /* HAVE_POLKIT */
 
 	G_OBJECT_CLASS (cpufreq_selector_parent_class)->finalize (object);
 }
@@ -74,7 +70,6 @@ cpufreq_selector_get_default (void)
 	return selector;
 }
 
-#ifdef HAVE_POLKIT
 typedef enum {
 	FREQUENCY,
 	GOVERNOR
@@ -278,55 +273,3 @@ cpufreq_selector_set_governor_async (CPUFreqSelector *selector,
 
 	selector_set_governor_async (data);
 }
-#else /* !HAVE_POLKIT */
-static void
-cpufreq_selector_run_command (CPUFreqSelector *selector,
-			      const gchar     *args)
-{
-	gchar  *command;
-	gchar  *path;
-	GError *error = NULL;
-
-	path = g_find_program_in_path ("cpufreq-selector");
-
-	if (!path)
-		return;
-
-	command = g_strdup_printf ("%s %s", path, args);
-	g_free (path);
-
-	g_spawn_command_line_async (command, &error);
-	g_free (command);
-
-	if (error) {
-		g_warning ("%s", error->message);
-		g_error_free (error);
-	}
-}
-
-void
-cpufreq_selector_set_frequency_async (CPUFreqSelector *selector,
-				      guint            cpu,
-				      guint            frequency,
-				      guint32          parent)
-{
-	gchar *args;
-
-	args = g_strdup_printf ("-c %u -f %u", cpu, frequency);
-	cpufreq_selector_run_command (selector, args);
-	g_free (args);
-}
-
-void
-cpufreq_selector_set_governor_async (CPUFreqSelector *selector,
-				     guint            cpu,
-				     const gchar     *governor,
-				     guint32          parent)
-{
-	gchar *args;
-
-	args = g_strdup_printf ("-c %u -g %s", cpu, governor);
-	cpufreq_selector_run_command (selector, args);
-	g_free (args);
-}
-#endif /* HAVE_POLKIT */

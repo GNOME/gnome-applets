@@ -8,38 +8,21 @@ cpufreq_selector_CFLAGS = \
 	$(AM_CFLAGS) \
 	$(NULL)
 
-if HAVE_POLKIT
-cpufreq_selector_CFLAGS += \
-	$(DBUS_CFLAGS)		\
-	$(POLKIT_CFLAGS)
-endif
-
 bin_PROGRAMS = cpufreq-selector
 
-install-exec-hook:
-if CPUFREQ_SELECTOR_SUID
-	chmod 4755 $(DESTDIR)$(bindir)/cpufreq-selector
-endif
-
-if HAVE_POLKIT
-service_files=cpufreq-selector-service.c       cpufreq-selector-service.h
-endif
-
 cpufreq_selector_SOURCES = \
-	cpufreq-selector.c               cpufreq-selector.h        	\
-	$(service_files)						\
-	$(BUILT_SOURCES)						\
-	main.c
+	cpufreq-selector.c \
+	cpufreq-selector.h \
+	cpufreq-selector-service.c \
+	cpufreq-selector-service.h \
+	main.c \
+	$(BUILT_SOURCES) \
+	$(NULL)
 
 cpufreq_selector_LDADD = \
-	$(CPUFREQ_SELECTOR_LIBS) 	\
-	$(LIBCPUFREQ_LIBS)
-
-if HAVE_POLKIT
-cpufreq_selector_LDADD += \
-	$(DBUS_LIBS)		\
-	$(POLKIT_LIBS)
-endif
+	$(CPUFREQ_SELECTOR_LIBS) \
+	$(LIBCPUFREQ_LIBS) \
+	$(NULL)
 
 cpufreq_selector_LDFLAGS = \
 	-Wl,-z,now \
@@ -54,7 +37,6 @@ dbus_servicesdir = $(datadir)/dbus-1/system-services
 dbus_confdir = $(sysconfdir)/dbus-1/system.d
 polkitdir = $(datadir)/polkit-1/actions
 
-if HAVE_POLKIT
 BUILT_SOURCES = cpufreq-selector-service-glue.h
 
 cpufreq-selector-service-glue.h: $(srcdir)/cpufreq-selector-service.xml
@@ -69,12 +51,6 @@ dbus_conf_DATA = org.gnome.CPUFreqSelector.conf
 
 @INTLTOOL_POLICY_RULE@
 polkit_DATA = $(polkit_in_files:.policy.in=.policy)
-
-else
-dbus_services_DATA=
-dbus_conf_DATA=
-polkit_DATA=
-endif
 
 EXTRA_DIST = \
 	cpufreq-selector-service.xml	\

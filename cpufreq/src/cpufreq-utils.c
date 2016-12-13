@@ -100,7 +100,6 @@ cpufreq_utils_display_error (const gchar *message,
 	gtk_widget_show (dialog);
 }
 
-#ifdef HAVE_POLKIT
 #define CACHE_VALIDITY_SEC 2
 
 static gboolean
@@ -171,39 +170,6 @@ cpufreq_utils_selector_is_available (void)
 
 	return cache;
 }
-#else /* !HAVE_POLKIT */
-gboolean
-cpufreq_utils_selector_is_available (void)
-{
-	struct stat *info;
-	gchar       *path = NULL;
-
-	path = g_find_program_in_path ("cpufreq-selector");
-	if (!path)
-		return FALSE;
-
-	if (geteuid () == 0) {
-		g_free (path);
-		return TRUE;
-	}
-
-	info = (struct stat *) g_malloc (sizeof (struct stat));
-
-	if ((lstat (path, info)) != -1) {
-		if ((info->st_mode & S_ISUID) && (info->st_uid == 0)) {
-			g_free (info);
-			g_free (path);
-
-			return TRUE;
-		}
-	}
-
-	g_free (info);
-	g_free (path);
-
-	return FALSE;
-}
-#endif /* HAVE_POLKIT_GNOME */
 
 gchar *
 cpufreq_utils_get_frequency_label (guint freq)
