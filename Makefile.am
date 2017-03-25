@@ -51,6 +51,7 @@ always_built_SUBDIRS =  \
 	geyes		\
 	sticky-notes	\
 	trash \
+	window-buttons \
 	windowpicker \
 	$(NULL)
 
@@ -85,6 +86,7 @@ DIST_SUBDIRS = \
 	trash	\
 	cpufreq		\
 	invest-applet	\
+	window-buttons	\
 	windowpicker	\
 	inhibit		\
 	brightness	\

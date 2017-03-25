@@ -25,67 +25,68 @@ EXTRA_DIST = \
 	$(blubuntu_DATA)
 
 default_DATA = default/*.png
-defaultdir = $(datadir)/pixmaps/windowbuttons/themes/default
+defaultdir = $(pkgdatadir)/window-buttons-applet/themes/default
 
 dust_DATA = dust/*.png
-dustdir = $(datadir)/pixmaps/windowbuttons/themes/dust
+dustdir = $(pkgdatadir)/window-buttons-applet/themes/dust
 
 human_DATA = human/*.png
-humandir = $(datadir)/pixmaps/windowbuttons/themes/human
+humandir = $(pkgdatadir)/window-buttons-applet/themes/human
 
 human_thin_DATA = human-thin/*.png
-human_thindir = $(datadir)/pixmaps/windowbuttons/themes/human-thin
+human_thindir = $(pkgdatadir)/window-buttons-applet/themes/human-thin
 
 dust_sand_DATA = dust-sand/*.png
-dust_sanddir = $(datadir)/pixmaps/windowbuttons/themes/dust-sand
+dust_sanddir = $(pkgdatadir)/window-buttons-applet/themes/dust-sand
 
 blaze_DATA = blaze/*.png
-blazedir = $(datadir)/pixmaps/windowbuttons/themes/blaze
+blazedir = $(pkgdatadir)/window-buttons-applet/themes/blaze
 
 blaze_color_DATA = blaze-color/*.png
-blaze_colordir = $(datadir)/pixmaps/windowbuttons/themes/blaze-color
+blaze_colordir = $(pkgdatadir)/window-buttons-applet/themes/blaze-color
 
 antique_DATA = antique/*.png
-antiquedir = $(datadir)/pixmaps/windowbuttons/themes/antique
+antiquedir = $(pkgdatadir)/window-buttons-applet/themes/antique
 
 ambiance_DATA = ambiance/*.png
-ambiancedir = $(datadir)/pixmaps/windowbuttons/themes/ambiance
+ambiancedir = $(pkgdatadir)/window-buttons-applet/themes/ambiance
 
 dust_invert_DATA = dust-invert/*.png
-dust_invertdir = $(datadir)/pixmaps/windowbuttons/themes/dust-invert
+dust_invertdir = $(pkgdatadir)/window-buttons-applet/themes/dust-invert
 
 elementary_DATA = elementary/*.png \
 	elementary/README
-elementarydir = $(datadir)/pixmaps/windowbuttons/themes/elementary
+elementarydir = $(pkgdatadir)/window-buttons-applet/themes/elementary
 
 radiance_DATA = radiance/*.png
-radiancedir = $(datadir)/pixmaps/windowbuttons/themes/radiance
+radiancedir = $(pkgdatadir)/window-buttons-applet/themes/radiance
 
 WoW_DATA = WoW/*.png
-WoWdir = $(datadir)/pixmaps/windowbuttons/themes/WoW
+WoWdir = $(pkgdatadir)/window-buttons-applet/themes/WoW
 
 ambiance_x_studio_DATA = ambiance-x-studio/*.png
-ambiance_x_studiodir = $(datadir)/pixmaps/windowbuttons/themes/ambiance-x-studio
+ambiance_x_studiodir = $(pkgdatadir)/window-buttons-applet/themes/ambiance-x-studio
 
 sorbet_DATA = sorbet/*.png
-sorbetdir = $(datadir)/pixmaps/windowbuttons/themes/sorbet
+sorbetdir = $(pkgdatadir)/window-buttons-applet/themes/sorbet
 
 ambiance_maverick_DATA = ambiance-maverick/*.png
-ambiance_maverickdir = $(datadir)/pixmaps/windowbuttons/themes/ambiance-maverick
+ambiance_maverickdir = $(pkgdatadir)/window-buttons-applet/themes/ambiance-maverick
 
 radiance_maverick_DATA = radiance-maverick/*.png
-radiance_maverickdir = $(datadir)/pixmaps/windowbuttons/themes/radiance-maverick
+radiance_maverickdir = $(pkgdatadir)/window-buttons-applet/themes/radiance-maverick
 
 equinox_glass_DATA = equinox-glass/*.png \
 	equinox-glass/README
-equinox_glassdir = $(datadir)/pixmaps/windowbuttons/themes/equinox-glass
+equinox_glassdir = $(pkgdatadir)/window-buttons-applet/themes/equinox-glass
 
 plano_DATA = plano/*.png
-planodir = $(datadir)/pixmaps/windowbuttons/themes/plano
+planodir = $(pkgdatadir)/window-buttons-applet/themes/plano
 
 new_hope_DATA = new-hope/*.png
-new_hopedir = $(datadir)/pixmaps/windowbuttons/themes/new-hope
+new_hopedir = $(pkgdatadir)/window-buttons-applet/themes/new-hope
 
 blubuntu_DATA = blubuntu/*.png
-blubuntudir = $(datadir)/pixmaps/windowbuttons/themes/blubuntu
+blubuntudir = $(pkgdatadir)/window-buttons-applet/themes/blubuntu
 
+-include $(top_srcdir)/git.mk

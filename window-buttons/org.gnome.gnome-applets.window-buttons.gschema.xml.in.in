@@ -1,0 +1,135 @@
+<schemalist>
+  <schema id="org.gnome.gnome-applets.window-buttons">
+    <key name="btn-focused-normal-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-focused-normal.png'</default>
+    </key>
+    <key name="btn-focused-normal-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-focused-normal.png'</default>
+    </key>
+    <key name="btn-focused-normal-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-focused-normal.png'</default>
+    </key>
+    <key name="btn-focused-normal-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-focused-normal.png'</default>
+    </key>
+    <key name="btn-focused-clicked-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-focused-clicked.png'</default>
+    </key>
+    <key name="btn-focused-clicked-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-focused-clicked.png'</default>
+    </key>
+    <key name="btn-focused-clicked-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-focused-clicked.png'</default>
+    </key>
+    <key name="btn-focused-clicked-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-focused-clicked.png'</default>
+    </key>
+    <key name="btn-focused-hover-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-focused-hover.png'</default>
+    </key>
+    <key name="btn-focused-hover-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-focused-hover.png'</default>
+    </key>
+    <key name="btn-focused-hover-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-focused-hover.png'</default>
+    </key>
+    <key name="btn-focused-hover-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-focused-hover.png'</default>
+    </key>
+    <key name="btn-unfocused-normal-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-unfocused-normal.png'</default>
+    </key>
+    <key name="btn-unfocused-normal-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-unfocused-normal.png'</default>
+    </key>
+    <key name="btn-unfocused-normal-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-unfocused-normal.png'</default>
+    </key>
+    <key name="btn-unfocused-normal-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-unfocused-normal.png'</default>
+    </key>
+    <key name="btn-unfocused-clicked-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-unfocused-clicked.png'</default>
+    </key>
+    <key name="btn-unfocused-clicked-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-unfocused-clicked.png'</default>
+    </key>
+    <key name="btn-unfocused-clicked-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-unfocused-clicked.png'</default>
+    </key>
+    <key name="btn-unfocused-clicked-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-unfocused-clicked.png'</default>
+    </key>
+    <key name="btn-unfocused-hover-close" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/close-unfocused-hover.png'</default>
+    </key>
+    <key name="btn-unfocused-hover-minimize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/minimize-unfocused-hover.png'</default>
+    </key>
+    <key name="btn-unfocused-hover-maximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/maximize-unfocused-normal.png'</default>
+    </key>
+    <key name="btn-unfocused-hover-unmaximize" type="s">
+      <default>'@WB_DATA_DIR@/themes/default/unmaximize-unfocused-hover.png'</default>
+    </key>
+    <key name="use-metacity-layout" type="b">
+      <default>true</default>
+      <summary>Determines whether we use custom or Metacity's button layout</summary>
+      <description>When disabled, this applet's button_layout string will be used to order the buttons.</description>
+    </key>
+    <key name="button-layout" type="s">
+      <default>'minimize,maximize,close'</default>
+      <summary>Layout of buttons.</summary>
+      <description>Essentially a copy from Metacity's button_layout, but we can modify it for custom settings.</description>
+    </key>
+    <key name="theme" type="s">
+      <default>'default'</default>
+      <summary>Button theme</summary>
+      <description>Name of a folder located in windowapplets/themes/ or "custom".</description>
+    </key>
+    <key name="orientation" type="i">
+      <default>0</default>
+      <summary>Button orientation</summary>
+      <description>May be used to set a static button orientation. Setting this value to 1 will ensure the buttons are always displayed horizontally. Setting it to 2 will do the same but vertically. The default setting 0 will set it automatically according to the panel.</description>
+    </key>
+    <key name="button-minimize-hidden" type="b">
+      <default>false</default>
+    </key>
+    <key name="button-maximize-hidden" type="b">
+      <default>false</default>
+    </key>
+    <key name="button-close-hidden" type="b">
+      <default>false</default>
+    </key>
+    <key name="hide-on-unmaximized" type="b">
+      <default>false</default>
+      <summary>Hides buttons when there are no windows present.</summary>
+      <description>When enabled, the buttons will disappear when there are no maximized (or active) windows on the screen.</description>
+    </key>
+    <key name="only-maximized" type="b">
+      <default>true</default>
+      <summary>Only control maximized windows.</summary>
+      <description>When enabled, the window buttons will always control the upper-most maximized window.</description>
+    </key>
+    <key name="reverse-order" type="b">
+      <default>false</default>
+      <summary>Reverse the buttons placement.</summary>
+      <description>When enabled, the window buttons will be placed in reverse order (right to left instead of left to right, or bottom to top instead of top to bottom).</description>
+    </key>
+    <key name="click-effect" type="b">
+      <default>true</default>
+      <summary>Enable click effect.</summary>
+      <description>When enabled, the button will change image to 'clicked' whenever it is clicked.</description>
+    </key>
+    <key name="hover-effect" type="b">
+      <default>true</default>
+      <summary>Enable hover effect.</summary>
+      <description>When enabled, the button will change image to 'hovered' whenever the mouse passes it.</description>
+    </key>
+    <key name="show-tooltips" type="b">
+      <default>false</default>
+      <summary>Show tooltips on buttons.</summary>
+      <description>When enabled, each button will display its own tooltip, describing the function that it represents.</description>
+    </key>
+  </schema>
+</schemalist>
