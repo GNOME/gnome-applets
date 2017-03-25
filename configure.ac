@@ -705,6 +705,10 @@ AC_CONFIG_FILES([
   trash/src/Makefile
   trash/data/Makefile
 
+  window-buttons/Makefile
+  window-buttons/pixmaps/Makefile
+  window-buttons/themes/Makefile
+
   windowpicker/Makefile
   windowpicker/data/Makefile
   windowpicker/src/Makefile
@@ -751,6 +755,7 @@ echo "    sticky-notes ..................: $enable_stickynotes"
 echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
+echo "    window-buttons ................: always"
 echo "    windowpicker ..................: always"
 echo ""
 echo "  charpick"

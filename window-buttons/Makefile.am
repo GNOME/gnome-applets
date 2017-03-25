@@ -1,84 +1,94 @@
-AM_CPPFLAGS = \
-	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	-DPACKAGE_SRC_DIR=\""$(srcdir)"\" \
-	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
-	$(WINDOWBUTTONS_CFLAGS)
+APPLET_LOCATION = $(pkglibdir)/libwindow-buttons-applet.so
 
-AM_CFLAGS =\
-	 -Wall\
-	 -g
+window_buttons_applet_libdir = $(pkglibdir)
+window_buttons_applet_lib_LTLIBRARIES = libwindow-buttons-applet.la
 
-libexec_PROGRAMS = windowbuttons
+libwindow_buttons_applet_la_CPPFLAGS = \
+	-I. \
+	-I$(srcdir) \
+	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
+	-DDATA_DIR=\""$(datadir)"\" \
+	-DWB_DATA_DIR=\""$(pkgdatadir)/window-buttons-applet"\" \
+	$(NULL)
 
-windowbuttons_SOURCES = \
-	windowbuttons.c\
+libwindow_buttons_applet_la_CFLAGS = \
+	$(GNOME_APPLETS_CFLAGS) \
+	$(LIBWNCK_CFLAGS) \
+	$(WARN_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
+
+libwindow_buttons_applet_la_SOURCES = \
+	windowbuttons.c \
 	windowbuttons.h \
 	preferences.c \
 	preferences.h \
 	external.c \
 	external.h \
 	theme.c \
-	theme.h
+	theme.h \
+	$(NULL)
 
-windowbuttons_LDFLAGS = \
-	-Wl,--export-dynamic
+libwindow_buttons_applet_la_LDFLAGS = \
+	-avoid-version \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
-windowbuttons_LDADD = $(WINDOWBUTTONS_LIBS)
+libwindow_buttons_applet_la_LIBADD = \
+	$(GNOME_APPLETS_LIBS) \
+	$(LIBWNCK_LIBS) \
+	$(LIBM) \
+	$(NULL)
 
 # The new applet files (D-Bus???)
-appletdir       = $(datadir)/gnome-panel/4.0/applets
+appletdir       = $(LIBPANEL_APPLET_DIR)
 applet_in_files = org.gnome.panel.WindowButtonsApplet.panel-applet.in
 applet_DATA     = $(applet_in_files:.panel-applet.in=.panel-applet)
 
 $(applet_in_files): $(applet_in_files).in Makefile
 	$(AM_V_GEN)sed \
-	    -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
-	    -e "s|\@DATADIR\@|$(datadir)|" \
+	    -e "s|\@APPLET_LOCATION\@|$(APPLET_LOCATION)|" \
 	    -e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
 	    $< > $@
 
 %.panel-applet: %.panel-applet.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-# The new Service file (D-Bus)
-servicedir       = $(datadir)/dbus-1/services
-service_in_files = org.gnome.panel.applet.WindowButtonsAppletFactory.service.in
-service_DATA     = $(service_in_files:.service.in=.service)
+gsettings_schemas_in_in = org.gnome.gnome-applets.window-buttons.gschema.xml.in.in
 
-org.gnome.panel.applet.WindowButtonsAppletFactory.service: $(service_in_files)
+@INTLTOOL_XML_NOMERGE_RULE@
+
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
 	$(AM_V_GEN)sed \
-	    -e "s|\@LIBEXECDIR\@|$(libexecdir)|" \
+	    -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' \
+	    -e "s|\@PKG_DATADIR\@|$(pkgdatadir)|" \
+	    -e "s|\@WB_DATA_DIR\@|$(pkgdatadir)/window-buttons-applet|" \
 	    $< > $@
 
-# Schemas for GConf
-schemasdir       = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = windowbuttons.schemas.in
-schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
-
-windowbuttons.schemas: $(schemas_in_files)
-	$(AM_V_GEN)sed \
-	    -e "s|\@DATADIR\@|$(datadir)|" \
-	    $< > $@
-
-@INTLTOOL_SCHEMAS_RULE@
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-endif
+@GSETTINGS_RULES@
 
 # UI Builder file (Glade)
-builderdir = $(datadir)/windowbuttons
+builderdir = $(pkgdatadir)/builder
 builder_DATA = windowbuttons.ui
 
 #CLEANFILES = $(service_in_files) $(server_DATA)
-CLEANFILES = $(applet_DATA) $(applet_DATA).in $(service_DATA) $(schemas_DATA)
+CLEANFILES = $(applet_DATA) $(applet_DATA).in \
+	$(gsettings_SCHEMAS_in) \
+	$(gsettings_SCHEMAS) \
+	*.gschema.valid
 
 EXTRA_DIST = \
+	$(gsettings_schemas_in_in) \
 	org.gnome.panel.WindowButtonsApplet.panel-applet.in.in \
-	$(service_in_files) \
 	$(schemas_in_files) \
 	$(builder_DATA)
 
 SUBDIRS = \
 	pixmaps\
 	themes
+
+-include $(top_srcdir)/git.mk

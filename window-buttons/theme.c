@@ -3,7 +3,6 @@
 void loadThemeComboBox(GtkComboBox *, gchar *);
 void loadThemeButtons(GtkWidget ***, GdkPixbuf ***, gchar ***);
 const gchar *getImageCfgKey(gushort, gushort);
-const gchar *getImageCfgKey4(gushort, gushort);
 const gchar* getButtonImageState(int, const gchar*);
 const gchar* getButtonImageState4(int);
 const gchar* getButtonImageName(int);
@@ -47,15 +46,12 @@ const gchar* getButtonImageState4(int state_id) { // old 4-state mode for backwa
 
 /* returns the image key string */
 const gchar *getImageCfgKey(gushort image_state, gushort image_index) {
-	return g_strconcat("btn_", getButtonImageState(image_state,"_"), "_", getButtonImageName(image_index), NULL);
-}
-const gchar *getImageCfgKey4(gushort image_state, gushort image_index) { // old 4-state mode for backwards compatibility
-	return g_strconcat("btn_", getButtonImageState4(image_state), "_", getButtonImageName(image_index), NULL);
+	return g_strconcat("btn-", getButtonImageState(image_state,"-"), "-", getButtonImageName(image_index), NULL);
 }
 
 
-/* Load the themes into a combo Box */ 
-void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {    
+/* Load the themes into a combo Box */
+void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {
 	GtkTreeIter		iter;
 	GtkListStore	*store = gtk_list_store_new( 3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT );
 	// (0=real_name, 1=display_name, 2=id)
@@ -79,19 +75,19 @@ void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {
 		{
 			active = N_THEMES;
 		}
-			
+
 		gtk_list_store_append( store, &iter );
-		gtk_list_store_set( store, &iter, 
+		gtk_list_store_set( store, &iter,
 		    	0, curtheme,
 		        1, fixThemeName(g_strdup(curtheme)),
 				2, 1+N_THEMES++,
 				-1 );
 	}
 	if (active<0) active = N_THEMES;
-	
+
     gtk_list_store_append( store, &iter );
     gtk_list_store_set( store, &iter, 0,"custom", 1,"Custom", 2,0, -1 );
-	
+
 	gtk_combo_box_set_model( combo, GTK_TREE_MODEL(store) );
     g_object_unref( G_OBJECT( store ) );
 
@@ -159,7 +155,7 @@ gchar *fixThemeName(gchar *theme_name) {
 			if (prev == '-') theme_name[i] = g_ascii_toupper(theme_name[i]);
 			prev = theme_name[i];
 		}
-		
+
 		return theme_name;
 	} else if (len == 1) {
 		return g_ascii_strup(theme_name,1);

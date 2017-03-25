@@ -11,12 +11,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Library General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -34,9 +34,7 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <gtk/gtk.h>
 
 #if PLAINTEXT_CONFIG == 1
@@ -52,14 +50,11 @@
 #define APPLET_NAME						"Window Buttons"
 #define APPLET_OAFIID					"WindowButtonsApplet"
 #define APPLET_OAFIID_FACTORY			"WindowButtonsAppletFactory"
-#define PATH_BUILDER 					"/usr/share/gnome-applets/builder"
-#define PATH_MAIN 						"/usr/share"
-#define PATH_THEMES 					PATH_MAIN"/pixmaps/windowbuttons/themes"
-#define PATH_UI_PREFS					PATH_MAIN"/windowbuttons/windowbuttons.ui"
-#define PATH_LOGO						PATH_MAIN"/pixmaps/windowbuttons-applet.png"
+#define PATH_THEMES 					WB_DATA_DIR"/themes"
+#define PATH_UI_PREFS					GTK_BUILDERDIR"/windowbuttons.ui"
+#define PATH_LOGO						DATA_DIR"/pixmaps/windowbuttons-applet.png"
 #define METACITY_XML 					"metacity-theme-1.xml"
 #define THEME_EXTENSION					"png"
-#define GCONF_PREFS 					"/schemas/apps/windowbuttons-applet/prefs"
 #define FILE_CONFIGFILE					".windowbuttons"
 
 /* strings that identify button states and names */
@@ -74,21 +69,22 @@
 #define BTN_NAME_MAXIMIZE				"maximize"
 #define BTN_NAME_UNMAXIMIZE				"unmaximize"
 
-/* Key strings (used by GConf, Plaintext and GtkBuilder .ui file) */
-#define CFG_ONLY_MAXIMIZED			"only_maximized"
-#define CFG_HIDE_ON_UNMAXIMIZED 	"hide_on_unmaximized"
-#define CFG_HIDE_DECORATION			"hide_decoration"
-#define CFG_CLICK_EFFECT			"click_effect"
-#define CFG_HOVER_EFFECT			"hover_effect"
-#define CFG_USE_METACITY_LAYOUT		"use_metacity_layout"
-#define CFG_MINIMIZE_HIDDEN			"button_minimize_hidden"
-#define CFG_UNMAXIMIZE_HIDDEN		"button_maximize_hidden"
-#define CFG_CLOSE_HIDDEN			"button_close_hidden"
-#define CFG_BUTTON_LAYOUT			"button_layout"
-#define CFG_REVERSE_ORDER			"reverse_order"
+/* Key strings (used by GSettings, Plaintext and GtkBuilder .ui file) */
+#define WINDOWBUTTONS_GSCHEMA		"org.gnome.gnome-applets.window-buttons"
+#define CFG_ONLY_MAXIMIZED			"only-maximized"
+#define CFG_HIDE_ON_UNMAXIMIZED 	"hide-on-unmaximized"
+#define CFG_HIDE_DECORATION			"hide-decoration"
+#define CFG_CLICK_EFFECT			"click-effect"
+#define CFG_HOVER_EFFECT			"hover-effect"
+#define CFG_USE_METACITY_LAYOUT		"use-metacity-layout"
+#define CFG_MINIMIZE_HIDDEN			"button-minimize-hidden"
+#define CFG_UNMAXIMIZE_HIDDEN		"button-maximize-hidden"
+#define CFG_CLOSE_HIDDEN			"button-close-hidden"
+#define CFG_BUTTON_LAYOUT			"button-layout"
+#define CFG_REVERSE_ORDER			"reverse-order"
 #define CFG_ORIENTATION				"orientation"
 #define CFG_THEME					"theme"
-#define CFG_SHOW_TOOLTIPS			"show_tooltips"
+#define CFG_SHOW_TOOLTIPS			"show-tooltips"
 
 G_BEGIN_DECLS
 
@@ -126,7 +122,7 @@ typedef enum {
 	WB_BUTTON_MINIMIZE = 0,	// minimize button
 	WB_BUTTON_UMAXIMIZE,	// maximize/unmaximize button
 	WB_BUTTON_CLOSE,		// close button
-	
+
 	WB_BUTTONS				// number of buttons
 } WindowButtonIndices;
 
@@ -167,11 +163,12 @@ typedef struct {
 /* WBApplet definition (inherits from PanelApplet) */
 typedef struct {
     PanelApplet		*applet;			// The actual PanelApplet
-	
+	GSettings *settings;
+
 	/* Widgets */
 	GtkBox      	*box;				// Main container
 	GtkWidget		*window_prefs;		// Preferences window
-	
+
 	/* Variables */
 	WBPreferences	*prefs;				// Main preferences
 	WindowButton	**button;			// Array of buttons
@@ -182,13 +179,13 @@ typedef struct {
 					*rootwindow;		// Root window (desktop)
 	gulong			active_handler,		// activewindow's event handler ID
 					umaxed_handler;		// umaxedwindow's event handler ID
-	
+
 	PanelAppletOrient orient;			// Panel orientation
 	GdkPixbufRotation angle;			// Applet angle
 	GtkPackType		packtype;			// Packaging direction of buttons
-	
+
 	GdkPixbuf		***pixbufs;			// Images in memory
-	
+
 	/* GtkBuilder */
 	GtkBuilder 		*prefbuilder;
 } WBApplet;
@@ -208,16 +205,16 @@ Applet structure:
 
               Panel
                 |
-                | 
+                |
               Applet
                 |
                 |
      _________ Box _________
     |           |           |
-    |           |           | 
+    |           |           |
 EventBox[0] EventBox[1] EventBox[2]
     |           |           |
-    |           |           | 
+    |           |           |
   Image[0]   Image[1]    Image[2]
 
 * note that EventBox/Image pairs (buttons) may be positioned in a different order

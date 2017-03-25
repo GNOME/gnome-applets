@@ -10,5 +10,4 @@ pixmaps_DATA = \
 pixmapsdir = \
 	$(datadir)/pixmaps
 
-## File created by the gnome-build tools
-
+-include $(top_srcdir)/git.mk
