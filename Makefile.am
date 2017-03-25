@@ -53,6 +53,7 @@ always_built_SUBDIRS =  \
 	trash \
 	window-buttons \
 	windowpicker \
+	window-title \
 	$(NULL)
 
 SUBDIRS = \
@@ -88,6 +89,7 @@ DIST_SUBDIRS = \
 	invest-applet	\
 	window-buttons	\
 	windowpicker	\
+	window-title	\
 	inhibit		\
 	brightness	\
 	tracker-search-bar \

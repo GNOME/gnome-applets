@@ -712,6 +712,9 @@ AC_CONFIG_FILES([
   windowpicker/Makefile
   windowpicker/data/Makefile
   windowpicker/src/Makefile
+
+  window-title/Makefile
+  window-title/pixmaps/Makefile
 ])
 
 AC_OUTPUT
@@ -757,6 +760,7 @@ echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
 echo "    window-buttons ................: always"
 echo "    windowpicker ..................: always"
+echo "    window-title ..................: always"
 echo ""
 echo "  charpick"
 echo "    gucharmap support .............: $have_gucharmap"
