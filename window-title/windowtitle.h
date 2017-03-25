@@ -11,12 +11,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Library General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -34,9 +34,7 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
-#include <gconf/gconf-client.h>
 #include <panel-applet.h>
-#include <panel-applet-gconf.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -54,31 +52,29 @@
 #define APPLET_NAME						"Window Title"
 #define APPLET_OAFIID					"WindowTitleApplet"
 #define APPLET_OAFIID_FACTORY			"WindowTitleAppletFactory"
-#define PATH_MAIN						"/usr/share"
-#define PATH_BUILDER 					"/usr/share/gnome-applets/builder"
-#define PATH_UI_PREFS					PATH_MAIN"/windowtitle/windowtitle.ui"
-#define PATH_LOGO						PATH_MAIN"/pixmaps/windowtitle-applet.png"
+#define PATH_UI_PREFS					GTK_BUILDERDIR"/windowtitle.ui"
+#define PATH_LOGO						DATA_DIR"/pixmaps/windowtitle-applet.png"
 #define FILE_CONFIGFILE					".windowtitle"
-#define GCONF_PREFS 					"/schemas/apps/windowtitle-applet/prefs"
 #define ICON_WIDTH						16
 #define ICON_HEIGHT						16
 #define ICON_PADDING					5
 
+#define WINDOWTITLE_GSCHEMA				"org.gnome.gnome-applets.window-title"
 #define CFG_ALIGNMENT					"alignment"
-#define CFG_SWAP_ORDER					"swap_order"
-#define CFG_EXPAND_APPLET				"expand_applet"
-#define CFG_HIDE_ICON					"hide_icon"
-#define CFG_HIDE_TITLE					"hide_title"
-#define CFG_CUSTOM_STYLE				"custom_style"
-#define CFG_TITLE_SIZE					"title_size"
-#define CFG_ONLY_MAXIMIZED				"only_maximized"
-#define CFG_HIDE_ON_UNMAXIMIZED 		"hide_on_unmaximized"
-#define CFG_SHOW_WINDOW_MENU			"show_window_menu"
-#define CFG_SHOW_TOOLTIPS				"show_tooltips"
-#define CFG_TITLE_ACTIVE_FONT			"title_active_font"
-#define CFG_TITLE_ACTIVE_COLOR_FG		"title_active_color_fg"
-#define CFG_TITLE_INACTIVE_FONT			"title_inactive_font"
-#define CFG_TITLE_INACTIVE_COLOR_FG		"title_inactive_color_fg"
+#define CFG_SWAP_ORDER					"swap-order"
+#define CFG_EXPAND_APPLET				"expand-applet"
+#define CFG_HIDE_ICON					"hide-icon"
+#define CFG_HIDE_TITLE					"hide-title"
+#define CFG_CUSTOM_STYLE				"custom-style"
+#define CFG_TITLE_SIZE					"title-size"
+#define CFG_ONLY_MAXIMIZED				"only-maximized"
+#define CFG_HIDE_ON_UNMAXIMIZED 		"hide-on-unmaximized"
+#define CFG_SHOW_WINDOW_MENU			"show-window-menu"
+#define CFG_SHOW_TOOLTIPS				"show-tooltips"
+#define CFG_TITLE_ACTIVE_FONT			"title-active-font"
+#define CFG_TITLE_ACTIVE_COLOR_FG		"title-active-color-fg"
+#define CFG_TITLE_INACTIVE_FONT			"title-inactive-font"
+#define CFG_TITLE_INACTIVE_COLOR_FG		"title-inactive-color-fg"
 
 G_BEGIN_DECLS
 
@@ -111,6 +107,7 @@ typedef struct {
 /* WBApplet definition (inherits from PanelApplet) */
 typedef struct {
     PanelApplet		*applet;				// The actual PanelApplet
+	GSettings *settings;
 
 	/* Widgets */
 	GtkBox      	*box;					// Main container widget
@@ -118,9 +115,9 @@ typedef struct {
 	GtkImage		*icon;					// Icon image widget
 	GtkLabel		*title;					// Title label widget
 	GtkWidget		*window_prefs;			// Preferences window
-	
+
 	/* Variables */
-	WTPreferences	*prefs;					// Main properties 
+	WTPreferences	*prefs;					// Main properties
 	WnckScreen 		*activescreen;			// Active screen
 	WnckWorkspace	*activeworkspace;		// Active workspace
 	WnckWindow		*umaxedwindow,			// Upper-most maximized window
@@ -134,14 +131,14 @@ typedef struct {
 					umaxed_handler_icon;	// umaxedwindow's iconchange event handler ID
 	gboolean		focused;				// [T/F] Window state (focused or unfocused)
 	gchar			*panel_color_fg;		// Foreground color determined by the panel
-	
+
 	GdkPixbufRotation	angle;				// Applet angle
 	PanelAppletOrient	orient;				// Panel orientation
 	gint				size;				// Panel size
 	gint				asize;				// Applet allocation size
 	gint				*size_hints;		// Applet size hints
 	GtkPackType			packtype;			// Packaging direction of buttons
-	
+
 	/* GtkBuilder */
 	GtkBuilder 		*prefbuilder;			// Glade GtkBuilder for the preferences
 } WTApplet;

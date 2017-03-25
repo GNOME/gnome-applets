@@ -8,5 +8,4 @@ pixmapsdir = \
 EXTRA_DIST = \
 	$(pixmaps_DATA)
 
-## File created by the gnome-build tools
-
+-include $(top_srcdir)/git.mk
