@@ -32,6 +32,25 @@ gboolean issetCompizDecoration(void);
 void toggleCompizDecoration(gboolean);
 //void toggleMetacityDecoration(gboolean); //TODO
 
+static gboolean gsettings_schema_exists (const gchar* schema) {
+	GSettingsSchemaSource *schema_source;
+	GSettingsSchema *schema_schema;
+	gboolean schema_exists;
+
+	schema_source = g_settings_schema_source_get_default();
+	schema_schema = g_settings_schema_source_lookup (schema_source, schema, TRUE);
+	schema_exists = (schema_schema != NULL);
+	if (schema_schema)
+		g_settings_schema_unref (schema_schema);
+
+	return schema_exists;
+}
+
+static gboolean decorPluginInstalled (void) {
+	return gsettings_schema_exists(GSETTINGS_COMPIZ_SCHEMA)
+		&& gsettings_schema_exists(GSETTINGS_COMPIZ_DECOR_SCHEMA);
+}
+
 gchar *getMetacityLayout() {
 	GSettings *gs = g_settings_new(GSETTINGS_METACITY_SCHEMA);
 	gchar *retval = g_settings_get_string(gs, CFG_METACITY_BUTTON_LAYOUT);
@@ -71,7 +90,7 @@ gboolean issetCompizDecoration() {
 }
 
 void toggleCompizDecoration(gboolean new_value) {
-	if(!decorPluginInstalled()) return NULL;
+	if(!decorPluginInstalled()) return;
 
 	GSettings *settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
 	gchar *current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
@@ -88,24 +107,4 @@ void toggleCompizDecoration(gboolean new_value) {
 
 	g_free(path);
 	g_object_unref(settings);
-}
-
-// Check if Compiz and decor plugin are installed / schema exists
-gboolean decorPluginInstalled () {
-	return gsettings_schema_exists(GSETTINGS_COMPIZ_SCHEMA)
-		&& gsettings_schema_exists(GSETTINGS_COMPIZ_DECOR_SCHEMA);
-}
-
-gboolean gsettings_schema_exists (const gchar* schema) {
-	GSettingsSchemaSource *schema_source;
-	GSettingsSchema *schema_schema;
-	gboolean schema_exists;
-
-	schema_source = g_settings_schema_source_get_default();
-	schema_schema = g_settings_schema_source_lookup (schema_source, schema, TRUE);
-	schema_exists = (schema_schema != NULL);
-	if (schema_schema)
-		g_settings_schema_unref (schema_schema);
-
-	return schema_exists;
 }
