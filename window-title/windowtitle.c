@@ -743,7 +743,6 @@ static void init_wtapplet (PanelApplet *applet) {
 static gboolean windowtitle_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data) {
 	if (strcmp (iid, APPLET_OAFIID) != 0) return FALSE;
 
-	g_set_application_name (APPLET_NAME); //GLib-WARNING **: g_set_application_name() called multiple times
 	wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
 
 	init_wtapplet (applet);
