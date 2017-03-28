@@ -42,12 +42,10 @@ void rotatePixbufs(WBApplet *);
 void placeButtons(WBApplet *);
 void reloadButtons(WBApplet *);
 void toggleHidden(WBApplet *);
-void savePreferences(WBPreferences *, WBApplet *);
 void loadThemes(GtkComboBox *, gchar *);
 WBPreferences *loadPreferences(WBApplet *);
 //gchar *getButtonLayoutGConf(WBApplet *, gboolean);
 gchar *getMetacityLayout(void);
-const gchar *getCheckBoxCfgKey (gushort);
 GdkPixbuf ***getPixbufs(gchar ***);
 
 //G_DEFINE_TYPE(TN, t_n, T_P) G_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 0, {})
@@ -172,8 +170,9 @@ static WnckWindow *getUpperMaximized (WBApplet *wbapplet) {
 	return returnwindow;
 }
 
-/* Return image ID according to button state */
-gushort getImageState (WBButtonState button_state) {
+static gushort
+getImageState (WBButtonState button_state)
+{
 	if (button_state & WB_BUTTON_STATE_FOCUSED) {
 		if (button_state & WB_BUTTON_STATE_CLICKED) {
 			return WB_IMAGE_FOCUSED_CLICKED;
@@ -497,7 +496,9 @@ static gboolean hover_leave (GtkWidget *widget,
 	return TRUE;
 }
 
-WindowButton **createButtons (WBApplet *wbapplet) {
+static WindowButton **
+createButtons (WBApplet *wbapplet)
+{
 	WindowButton **button = g_new(WindowButton*, WB_BUTTONS);
 	gint i;
 
@@ -617,8 +618,11 @@ void reloadButtons(WBApplet *wbapplet) {
 	}
 }
 
-/* Triggered when a different panel orientation is detected */
-void applet_change_orient (PanelApplet *panelapplet, PanelAppletOrient orient, WBApplet *wbapplet) {
+static void
+applet_change_orient (PanelApplet       *panelapplet,
+                      PanelAppletOrient  orient,
+                      WBApplet          *wbapplet)
+{
 	if (orient != wbapplet->orient) {
 		wbapplet->orient = orient;
 		wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);

@@ -22,14 +22,40 @@
 
 void loadThemeComboBox(GtkComboBox *, gchar *);
 void loadThemeButtons(GtkWidget ***, GdkPixbuf ***, gchar ***);
-const gchar *getImageCfgKey(gushort, gushort);
 const gchar* getButtonImageState(int, const gchar*);
 const gchar* getButtonImageState4(int);
 const gchar* getButtonImageName(int);
 GdkPixbuf ***getPixbufs(gchar ***);
 gchar ***getImages(gchar *);
-gchar *fixThemeName(gchar *);
 
+static gchar *
+fixThemeName (gchar *theme_name)
+{
+  gchar prev;
+  gint len = strlen(theme_name);
+  gint i;
+
+  if (len > 1)
+    {
+      prev = '-';
+
+      for (i = 0; i < len; i++)
+        {
+          if (prev == '-')
+            theme_name[i] = g_ascii_toupper (theme_name[i]);
+
+          prev = theme_name[i];
+        }
+
+      return theme_name;
+    }
+  else if (len == 1)
+    {
+      return g_ascii_strup (theme_name, 1);
+    }
+
+  return NULL;
+}
 
 const gchar* getButtonImageName(int button_id) {
 	switch (button_id) {
@@ -63,12 +89,6 @@ const gchar* getButtonImageState4(int state_id) { // old 4-state mode for backwa
 		default: return BTN_STATE_NORMAL;
 	}
 }
-
-/* returns the image key string */
-const gchar *getImageCfgKey(gushort image_state, gushort image_index) {
-	return g_strconcat("btn-", getButtonImageState(image_state,"-"), "-", getButtonImageName(image_index), NULL);
-}
-
 
 /* Load the themes into a combo Box */
 void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {
@@ -162,24 +182,4 @@ GdkPixbuf ***getPixbufs(gchar ***images) {
 		}
 	}
 	return pixbufs;
-}
-
-gchar *fixThemeName(gchar *theme_name) {
-	gchar prev;
-	gint len = strlen(theme_name);
-	gint i;
-
-	if (len > 1) {
-		prev = '-';
-		for (i=0; i<len; i++) {
-			if (prev == '-') theme_name[i] = g_ascii_toupper(theme_name[i]);
-			prev = theme_name[i];
-		}
-
-		return theme_name;
-	} else if (len == 1) {
-		return g_ascii_strup(theme_name,1);
-	} else {
-		return NULL;
-	}
 }
