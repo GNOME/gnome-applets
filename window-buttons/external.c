@@ -26,7 +26,6 @@
 #include "external.h"
 
 gchar *getMetacityLayout(void);
-gchar *getMetacityTheme(void);
 gboolean issetCompizDecoration(void);
 //gboolean issetMetacityDecoration(void); //TODO
 void toggleCompizDecoration(gboolean);
@@ -54,13 +53,6 @@ static gboolean decorPluginInstalled (void) {
 gchar *getMetacityLayout() {
 	GSettings *gs = g_settings_new(GSETTINGS_METACITY_SCHEMA);
 	gchar *retval = g_settings_get_string(gs, CFG_METACITY_BUTTON_LAYOUT);
-	g_object_unref(gs);
-	return retval;
-}
-
-gchar *getMetacityTheme() {
-	GSettings *gs = g_settings_new(GSETTINGS_METACITY_SCHEMA);
-	gchar *retval = g_settings_get_string(gs, CFG_METACITY_THEME);
 	g_object_unref(gs);
 	return retval;
 }
