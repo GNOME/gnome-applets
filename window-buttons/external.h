@@ -22,7 +22,6 @@
 #include <gio/gio.h>
 
 #define GSETTINGS_METACITY_SCHEMA			"org.gnome.desktop.wm.preferences"
-#define CFG_METACITY_THEME					"theme"
 #define CFG_METACITY_BUTTON_LAYOUT			"button-layout"
 
 #define GSETTINGS_COMPIZ_SCHEMA				"org.compiz"
