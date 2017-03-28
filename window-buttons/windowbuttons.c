@@ -698,7 +698,6 @@ void toggleHidden (WBApplet *wbapplet) {
 static gboolean windowbuttons_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data) {
 	if (g_strcmp0(iid, APPLET_OAFIID) != 0) return FALSE;
 
-	g_set_application_name (APPLET_NAME);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
 	init_wbapplet(applet);
