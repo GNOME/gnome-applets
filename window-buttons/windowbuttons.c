@@ -642,7 +642,7 @@ static void init_wbapplet(PanelApplet *applet) {
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 	wbapplet->rootwindow = getRootWindow(wbapplet->activescreen);
 	wbapplet->prefbuilder = gtk_builder_new();
-	wbapplet->box = GTK_BOX(gtk_hbox_new(FALSE, 0));
+	wbapplet->box = GTK_BOX(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
 	wbapplet->button = createButtons(wbapplet);
 	wbapplet->orient = panel_applet_get_orient(wbapplet->applet);
 	wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);
