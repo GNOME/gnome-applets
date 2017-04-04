@@ -432,10 +432,6 @@ geyes_applet_factory (PanelApplet *applet,
 
 	if (!strcmp (iid, "GeyesApplet"))
 		retval = geyes_applet_fill (applet); 
-   
-	if (retval == FALSE) {
-		exit (-1);
-	}
 
 	return retval;
 }
