@@ -203,6 +203,18 @@ modem_applet_finalize (GObject *object)
 
   if (priv)
     {
+      if (priv->directives_id > 0)
+        {
+          g_source_remove (priv->directives_id);
+          priv->directives_id = 0;
+        }
+
+      if (priv->tooltip_id)
+        {
+          g_source_remove (priv->tooltip_id);
+          priv->tooltip_id = 0;
+        }
+
       shutdown_backend (MODEM_APPLET (object), TRUE, TRUE);
 
       gtk_widget_destroy (priv->auth_dialog);
@@ -550,12 +562,6 @@ shutdown_backend (ModemApplet *applet, gboolean backend_alive, gboolean already_
     {
       g_source_remove (priv->timeout_id);
       priv->timeout_id = 0;
-    }
-
-  if (priv->tooltip_id)
-    {
-      g_source_remove (priv->tooltip_id);
-      priv->tooltip_id = 0;
     }
 
   if (backend_alive)
