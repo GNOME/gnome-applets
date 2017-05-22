@@ -14,10 +14,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-21 12:30+0000\n"
-"PO-Revision-Date: 2016-09-21 15:29+0200\n"
+"POT-Creation-Date: 2017-03-19 10:09+0000\n"
+"PO-Revision-Date: 2017-03-22 16:46+0100\n"
 "Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -60,9 +60,28 @@ msgstr "_Súgó"
 #: ../netspeed/data/netspeed-menu.xml.h:4
 #: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:7
 #: ../tracker-search-bar/src/tracker-search-bar-menu.xml.h:1
-#: ../trash/src/trash-menu.xml.h:4 ../windowpicker/src/wp-menu.xml.h:2
+#: ../trash/src/trash-menu.xml.h:4 ../window-buttons/windowbuttons.c:69
+#: ../windowpicker/src/wp-menu.xml.h:2 ../window-title/windowtitle.c:52
 msgid "_About"
 msgstr "_Névjegy"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:1
+msgid "AccessX Status Applet Factory"
+msgstr "AccessX állapot kisalkalmazás factory"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
+msgid "Keyboard Accessibility Status Applet Factory"
+msgstr "Billentyűzet-akadálymentesítés állapota factory"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
+#: ../accessx-status/src/applet.c:1293
+msgid "Keyboard Accessibility Status"
+msgstr "Billentyűzet-akadálymentesítés állapota"
+
+#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:4
+msgid "Shows the status of keyboard accessibility features"
+msgstr ""
+"A billentyűzet akadálymentesítési szolgáltatásainak állapotát jeleníti meg"
 
 # fixme
 #: ../accessx-status/src/applet.c:138
@@ -73,12 +92,12 @@ msgstr ""
 
 #. "documenters",        documenters,
 #: ../accessx-status/src/applet.c:143 ../battstat/src/battstat_applet.c:1203
-#: ../charpick/src/charpick.c:601 ../command/src/command.c:120
-#: ../cpufreq/src/cpufreq-applet.c:606 ../drivemount/src/drivemount.c:98
+#: ../charpick/src/charpick.c:579 ../command/src/command.c:120
+#: ../cpufreq/src/cpufreq-applet.c:605 ../drivemount/src/drivemount.c:98
 #: ../geyes/src/geyes.c:176 ../gweather/src/gweather-about.c:60
 #: ../invest-applet/invest/invest-applet.c:273 ../mini-commander/src/about.c:53
-#: ../modem-lights/src/modem-applet.c:998 ../multiload/src/main.c:62
-#: ../netspeed/src/netspeed.c:637
+#: ../modem-lights/src/modem-applet.c:996 ../multiload/src/main.c:62
+#: ../netspeed/src/netspeed.c:634
 #: ../sticky-notes/src/stickynotes_applet_callbacks.c:395
 #: ../timer/src/timer-applet.c:286 ../trash/src/trash-applet.c:419
 msgid "translator-credits"
@@ -110,12 +129,12 @@ msgstr ""
 msgid "a"
 msgstr "a"
 
-#: ../accessx-status/src/applet.c:978 ../accessx-status/src/applet.c:1051
-#: ../accessx-status/src/applet.c:1119 ../accessx-status/src/applet.c:1298
+#: ../accessx-status/src/applet.c:978 ../accessx-status/src/applet.c:1117
+#: ../accessx-status/src/applet.c:1296
 msgid "AccessX Status"
 msgstr "AccessX állapota"
 
-#: ../accessx-status/src/applet.c:979 ../accessx-status/src/applet.c:1120
+#: ../accessx-status/src/applet.c:979 ../accessx-status/src/applet.c:1118
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "A billentyűzet állapotát jeleníti meg, ha az akadálymentesítési "
@@ -134,29 +153,190 @@ msgstr "Ismeretlen hiba"
 msgid "Error: %s"
 msgstr "Hiba: %s"
 
-#: ../accessx-status/src/applet.c:1295
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:3
-msgid "Keyboard Accessibility Status"
-msgstr "Billentyűzet-akadálymentesítés állapota"
-
-#: ../accessx-status/src/applet.c:1300
+#: ../accessx-status/src/applet.c:1298
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "A billentyűzet akadálymentesítési szolgáltatásainak jelenlegi állapotát "
 "jeleníti meg"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:1
-msgid "AccessX Status Applet Factory"
-msgstr "AccessX állapot kisalkalmazás factory"
+#: ../battstat/battstat-applet-menu.xml.h:1
+#: ../charpick/charpick-applet-menu.xml.h:1
+#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
+#: ../gweather/gweather-applet-menu.xml.h:3
+#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
+#: ../multiload/multiload-applet-menu.xml.h:2
+#: ../netspeed/data/netspeed-menu.xml.h:2
+#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
+#: ../window-buttons/windowbuttons.c:68 ../windowpicker/src/wp-menu.xml.h:1
+msgid "_Preferences"
+msgstr "_Beállítások"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:2
-msgid "Keyboard Accessibility Status Applet Factory"
-msgstr "Billentyűzet-akadálymentesítés állapota factory"
+#: ../battstat/battstat_applet.ui.h:1
+msgid "Battery Charge Monitor Preferences"
+msgstr "Akkumulátortöltöttség-figyelő beállításai"
 
-#: ../accessx-status/org.gnome.applets.AccessxStatusApplet.panel-applet.in.in.h:4
-msgid "Shows the status of keyboard accessibility features"
+#: ../battstat/battstat_applet.ui.h:2 ../window-buttons/windowbuttons.ui.h:19
+#: ../window-title/windowtitle.ui.h:19
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: ../battstat/battstat_applet.ui.h:3
+msgid "_Compact view"
+msgstr "_Tömör nézet"
+
+#: ../battstat/battstat_applet.ui.h:4
+msgid "(shows single image for status and charge)"
+msgstr "(egyetlen képet jelenít meg az állapothoz és töltéshez)"
+
+#: ../battstat/battstat_applet.ui.h:5
+msgid "_Expanded view"
+msgstr "Bő_vített nézet"
+
+#: ../battstat/battstat_applet.ui.h:6
+msgid "(two images: one for status, one for charge)"
+msgstr "(két kép: egy az állapot, egy a töltés jelzésére)"
+
+# fixme
+#: ../battstat/battstat_applet.ui.h:7
+msgid "_Show time/percentage:"
+msgstr "Az idő/százalék _megjelenítése:"
+
+#: ../battstat/battstat_applet.ui.h:8
+msgid "Show _time remaining"
+msgstr "Hátralévő i_dő megjelenítése"
+
+#: ../battstat/battstat_applet.ui.h:9
+msgid "Show _percentage remaining"
+msgstr "Hátralévő _százalék megjelenítése"
+
+#: ../battstat/battstat_applet.ui.h:10
+msgid "Notifications"
+msgstr "Értesítések"
+
+#. TRANSLATOR: This is the beginning of the sentence
+#: ../battstat/battstat_applet.ui.h:12
+msgid "_Warn when battery charge drops to:"
+msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
+
+#: ../battstat/battstat_applet.ui.h:13
+msgid "_Notify when battery is fully recharged"
+msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
+msgid "Battstat Factory"
+msgstr "Akkumulátortöltöttség-figyelő factory"
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
+#: ../battstat/src/battstat_applet.c:1614
+msgid "Battery Charge Monitor"
+msgstr "Akkumulátortöltöttség-figyelő"
+
+#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
+#: ../battstat/src/battstat_applet.c:1615
+msgid "Monitor a laptop's remaining power"
+msgstr "A laptop maradék töltését figyeli"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:1
+msgid "Red value level"
+msgstr "Piros szín szintje"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
+msgid ""
+"The battery level below which the battery is displayed as red. Also the "
+"value at which the low battery warning is displayed."
 msgstr ""
-"A billentyűzet akadálymentesítési szolgáltatásainak állapotát jeleníti meg"
+"Az az akkumulátorszint, ami alatt az elem narancssárga színnel lesz "
+"megjelenítve. Egyben az az érték, amelynél a „Gyenge akkumulátor” "
+"figyelmeztetés megjelenik."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
+msgid "Warn on low time rather than low percentage"
+msgstr ""
+"Akkor figyelmeztessen, ha kevés idő van hátra, és ne akkor, ha a töltöttség "
+"százalékosan alacsony"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
+msgid ""
+"Use the value defined in red-value as a time remaining to show the warning "
+"dialog rather than a percentage."
+msgstr ""
+"A red-value kulcsban megadott, és nem a százalékos érték használata "
+"hátralévő időként a figyelmeztető ablak megjelenítéséhez."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
+msgid "Low Battery Notification"
+msgstr "Gyenge akkumulátor értesítés"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:6
+msgid "Notify user when the battery is low."
+msgstr "Értesítsen, ha az akkumulátor töltöttsége alacsony."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:7
+msgid "Full Battery Notification"
+msgstr "Teli akkumulátor értesítés"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:8
+msgid "Notify user when the battery is full."
+msgstr "Értesítsen, ha az akkumulátor teljesen fel van töltve."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:9
+msgid "Beep for warnings"
+msgstr "Hangjelzés figyelmeztetéskor"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:10
+msgid "Beep when displaying a warning."
+msgstr "Hangjelzés figyelmeztetés megjelenítésekor."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:11
+msgid "Drain from top"
+msgstr "Fentről lefelé számoljon"
+
+# fixme
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
+msgid ""
+"Show the battery meter draining from the top of the battery. Only "
+"implemented for traditional battery view."
+msgstr ""
+"Az akkumulátor-töltöttségének kijelzése az elem tetejétől csökkenjen. Csak a "
+"hagyományos akkumulátornézetnél van megvalósítva."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
+msgid "Upright (small) battery"
+msgstr "Függőleges (kicsi) akkumulátor"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:14
+msgid "Show the upright, smaller battery on the panel."
+msgstr "A függőleges, kisebb akkumulátor megjelenítése a panelen."
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:15
+msgid "Show the horizontal battery"
+msgstr "A vízszintes akkumulátor megjelenítése"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:16
+msgid "Show the traditional, horizontal battery on the panel."
+msgstr "A hagyományos vízszintes akkumulátor megjelenítése a panelen."
+
+# fixme
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:17
+msgid "Show the time/percent label"
+msgstr "Az idő/százalék címke megjelenítése"
+
+#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
+msgid "0 for no label, 1 for percentage and 2 for time remaining."
+msgstr ""
+"0, ha nincs címke, 1 a százalékos és 2 a hátralévő idő megjelenítéséhez."
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "Akkumulátortöltöttség-figyelő"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery power low"
+msgstr "Az akkumulátor töltöttsége alacsony"
+
+#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery fully re-charged"
+msgstr "Az akkumulátor teljesen feltöltődött"
 
 #: ../battstat/src/battstat_applet.c:62
 msgid "System is running on AC power"
@@ -336,17 +516,6 @@ msgstr "upower háttérprogram engedélyezve."
 msgid "Legacy (non-HAL) backend enabled."
 msgstr "Régi (nem HAL) háttérprogram engedélyezve."
 
-#: ../battstat/src/battstat_applet.c:1563
-#: ../battstat/src/battstat_applet.c:1616
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:2
-msgid "Battery Charge Monitor"
-msgstr "Akkumulátortöltöttség-figyelő"
-
-#: ../battstat/src/battstat_applet.c:1617
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:3
-msgid "Monitor a laptop's remaining power"
-msgstr "A laptop maradék töltését figyeli"
-
 #. TRANSLATOR: this is a selectable item in a drop-down menu to end
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
@@ -363,178 +532,14 @@ msgstr "százalék alá esik"
 msgid "Minutes Remaining"
 msgstr "perc hátralévő idő alá esik"
 
-#: ../battstat/battstat-applet-menu.xml.h:1
-#: ../charpick/charpick-applet-menu.xml.h:1
-#: ../cpufreq/cpufreq-applet-menu.xml.h:1 ../geyes/geyes-applet-menu.xml.h:1
-#: ../gweather/gweather-applet-menu.xml.h:3
-#: ../mini-commander/src/mini-commander-applet-menu.xml.h:1
-#: ../multiload/multiload-applet-menu.xml.h:2
-#: ../netspeed/data/netspeed-menu.xml.h:2
-#: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:5
-#: ../windowpicker/src/wp-menu.xml.h:1
-msgid "_Preferences"
-msgstr "_Beállítások"
-
-#: ../battstat/battstat_applet.ui.h:1
-msgid "Battery Charge Monitor Preferences"
-msgstr "Akkumulátortöltöttség-figyelő beállításai"
-
-#: ../battstat/battstat_applet.ui.h:2
-msgid "Appearance"
-msgstr "Megjelenés"
-
-#: ../battstat/battstat_applet.ui.h:3
-msgid "_Compact view"
-msgstr "_Tömör nézet"
-
-#: ../battstat/battstat_applet.ui.h:4
-msgid "(shows single image for status and charge)"
-msgstr "(egyetlen képet jelenít meg az állapothoz és töltéshez)"
-
-#: ../battstat/battstat_applet.ui.h:5
-msgid "_Expanded view"
-msgstr "Bő_vített nézet"
-
-#: ../battstat/battstat_applet.ui.h:6
-msgid "(two images: one for status, one for charge)"
-msgstr "(két kép: egy az állapot, egy a töltés jelzésére)"
-
-# fixme
-#: ../battstat/battstat_applet.ui.h:7
-msgid "_Show time/percentage:"
-msgstr "Az idő/százalék _megjelenítése:"
-
-#: ../battstat/battstat_applet.ui.h:8
-msgid "Show _time remaining"
-msgstr "Hátralévő i_dő megjelenítése"
-
-#: ../battstat/battstat_applet.ui.h:9
-msgid "Show _percentage remaining"
-msgstr "Hátralévő _százalék megjelenítése"
-
-#: ../battstat/battstat_applet.ui.h:10
-msgid "Notifications"
-msgstr "Értesítések"
-
-#. TRANSLATOR: This is the beginning of the sentence
-#: ../battstat/battstat_applet.ui.h:12
-msgid "_Warn when battery charge drops to:"
-msgstr "F_igyelmeztessen, ha az akkumulátor töltöttsége"
-
-#: ../battstat/battstat_applet.ui.h:13
-msgid "_Notify when battery is fully recharged"
-msgstr "_Figyelmeztessen, ha az akkumulátor teljesen fel van töltve"
-
-#: ../battstat/org.gnome.applets.BattstatApplet.panel-applet.in.in.h:1
-msgid "Battstat Factory"
-msgstr "Akkumulátortöltöttség-figyelő factory"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:1
-msgid "Red value level"
-msgstr "Piros szín szintje"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:2
-msgid ""
-"The battery level below which the battery is displayed as red. Also the "
-"value at which the low battery warning is displayed."
-msgstr ""
-"Az az akkumulátorszint, ami alatt az elem narancssárga színnel lesz "
-"megjelenítve. Egyben az az érték, amelynél a „Gyenge akkumulátor” "
-"figyelmeztetés megjelenik."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:3
-msgid "Warn on low time rather than low percentage"
-msgstr ""
-"Akkor figyelmeztessen, ha kevés idő van hátra, és ne akkor, ha a töltöttség "
-"százalékosan alacsony"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-msgid ""
-"Use the value defined in red-value as a time remaining to show the warning "
-"dialog rather than a percentage."
-msgstr ""
-"A red-value kulcsban megadott, és nem a százalékos érték használata "
-"hátralévő időként a figyelmeztető ablak megjelenítéséhez."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:5
-msgid "Low Battery Notification"
-msgstr "Gyenge akkumulátor értesítés"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:6
-msgid "Notify user when the battery is low."
-msgstr "Értesítsen, ha az akkumulátor töltöttsége alacsony."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:7
-msgid "Full Battery Notification"
-msgstr "Teli akkumulátor értesítés"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:8
-msgid "Notify user when the battery is full."
-msgstr "Értesítsen, ha az akkumulátor teljesen fel van töltve."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:9
-msgid "Beep for warnings"
-msgstr "Hangjelzés figyelmeztetéskor"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:10
-msgid "Beep when displaying a warning."
-msgstr "Hangjelzés figyelmeztetés megjelenítésekor."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:11
-msgid "Drain from top"
-msgstr "Fentről lefelé számoljon"
-
-# fixme
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:12
-msgid ""
-"Show the battery meter draining from the top of the battery. Only "
-"implemented for traditional battery view."
-msgstr ""
-"Az akkumulátor-töltöttségének kijelzése az elem tetejétől csökkenjen. Csak a "
-"hagyományos akkumulátornézetnél van megvalósítva."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:13
-msgid "Upright (small) battery"
-msgstr "Függőleges (kicsi) akkumulátor"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:14
-msgid "Show the upright, smaller battery on the panel."
-msgstr "A függőleges, kisebb akkumulátor megjelenítése a panelen."
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:15
-msgid "Show the horizontal battery"
-msgstr "A vízszintes akkumulátor megjelenítése"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:16
-msgid "Show the traditional, horizontal battery on the panel."
-msgstr "A hagyományos vízszintes akkumulátor megjelenítése a panelen."
-
-# fixme
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:17
-msgid "Show the time/percent label"
-msgstr "Az idő/százalék címke megjelenítése"
-
-#: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:18
-msgid "0 for no label, 1 for percentage and 2 for time remaining."
-msgstr ""
-"0, ha nincs címke, 1 a százalékos és 2 a hátralévő idő megjelenítéséhez."
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:1
-msgid "Battery Status Utility"
-msgstr "Akkumulátortöltöttség-figyelő"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:2
-msgid "Battery power low"
-msgstr "Az akkumulátor töltöttsége alacsony"
-
-#: ../battstat/sounds/battstat_applet.soundlist.in.h:3
-msgid "Battery fully re-charged"
-msgstr "Az akkumulátor teljesen feltöltődött"
-
-#: ../brightness/src/brightness-applet.c:92
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
+#: ../brightness/src/brightness-applet.c:92
 msgid "Brightness Applet"
 msgstr "Fényerőszabályzó"
+
+#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
+msgid "Adjusts Laptop panel brightness"
+msgstr "A noteszgépkijelző fényerejének szabályozása"
 
 #: ../brightness/src/brightness-applet.c:93
 msgid "Adjusts laptop panel brightness."
@@ -601,11 +606,43 @@ msgstr ""
 msgid "Copyright © 2006 Benjamin Canou"
 msgstr "Copyright © 2006 Benjamin Canou"
 
-#: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:2
-msgid "Adjusts Laptop panel brightness"
-msgstr "A noteszgépkijelző fényerejének szabályozása"
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
+msgid "Charpicker Applet Factory"
+msgstr "Karakterválasztó kisalkalmazás Factory"
 
-#: ../charpick/src/charpick.c:425
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
+#: ../charpick/src/charpick.c:691 ../charpick/src/properties.c:426
+msgid "Character Palette"
+msgstr "Karakterpaletta"
+
+#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
+#: ../charpick/src/charpick.c:691
+msgid "Insert characters"
+msgstr "Karakterek beszúrása"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
+msgid "Characters shown on applet startup"
+msgstr "A kisalkalmazás indításakor megjelenített karakterek"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"A felhasználó által a kisalkalmazás utolsó futtatásakor kiválasztott "
+"karakterlánc. Ez a karakterlánc meg lesz jelenítve, ha a felhasználó "
+"elindítja a kisalkalmazást."
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
+#: ../charpick/src/properties.c:353
+msgid "List of available palettes"
+msgstr "Elérhető paletták listája"
+
+#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
+msgid "List of strings containing the available palettes."
+msgstr "Az elérhető palettákat tartalmazó karakterláncok listája."
+
+#: ../charpick/src/charpick.c:403
 msgid "Available palettes"
 msgstr "Elérhető paletták"
 
@@ -613,21 +650,21 @@ msgstr "Elérhető paletták"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: ../charpick/src/charpick.c:472
+#: ../charpick/src/charpick.c:450
 #, c-format
 msgid "Insert \"%s\""
 msgstr "„%s” beszúrása"
 
-#: ../charpick/src/charpick.c:475
+#: ../charpick/src/charpick.c:453
 msgid "Insert special character"
 msgstr "Különleges karakter beszúrása"
 
-#: ../charpick/src/charpick.c:479
+#: ../charpick/src/charpick.c:457
 #, c-format
 msgid "insert special character %s"
 msgstr "%s speciális karakter beszúrása"
 
-#: ../charpick/src/charpick.c:596
+#: ../charpick/src/charpick.c:574
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -635,20 +672,9 @@ msgstr ""
 "GNOME panel-kisalkalmazás azon karakterek kiválasztására, amelyek nincsenek "
 "a billentyűzetén. GNU GPL alatt terjeszthető."
 
-#: ../charpick/src/charpick.c:713 ../charpick/src/charpick.c:728
-#: ../charpick/src/properties.c:426
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:2
-msgid "Character Palette"
-msgstr "Karakterpaletta"
-
-#: ../charpick/src/charpick.c:713
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:3
-msgid "Insert characters"
-msgstr "Karakterek beszúrása"
-
 #: ../charpick/src/properties.c:73
 #: ../invest-applet/invest/invest-preferences.c:324
-#: ../modem-lights/src/modem-applet.c:909 ../trash/src/trash-applet.c:496
+#: ../modem-lights/src/modem-applet.c:907 ../trash/src/trash-applet.c:496
 #: ../trash/src/trash-empty.c:341
 msgid "_Cancel"
 msgstr "_Mégse"
@@ -681,11 +707,6 @@ msgstr "Paletta szerkesztése"
 #: ../charpick/src/properties.c:352
 msgid "Palettes list"
 msgstr "Palettalista"
-
-#: ../charpick/src/properties.c:353
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:3
-msgid "List of available palettes"
-msgstr "Elérhető paletták listája"
 
 #: ../charpick/src/properties.c:431
 msgid "_Palettes:"
@@ -738,57 +759,6 @@ msgstr "Karakterpaletta beállításai"
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: ../charpick/org.gnome.applets.CharpickerApplet.panel-applet.in.in.h:1
-msgid "Charpicker Applet Factory"
-msgstr "Karakterválasztó kisalkalmazás Factory"
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:1
-msgid "Characters shown on applet startup"
-msgstr "A kisalkalmazás indításakor megjelenített karakterek"
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:2
-msgid ""
-"The string that the user had selected when the applet was last used. This "
-"string will be displayed when the user starts the applet."
-msgstr ""
-"A felhasználó által a kisalkalmazás utolsó futtatásakor kiválasztott "
-"karakterlánc. Ez a karakterlánc meg lesz jelenítve, ha a felhasználó "
-"elindítja a kisalkalmazást."
-
-#: ../charpick/org.gnome.gnome-applets.charpick.gschema.xml.in.in.h:4
-msgid "List of strings containing the available palettes."
-msgstr "Az elérhető palettákat tartalmazó karakterláncok listája."
-
-#: ../command/src/command.c:119
-#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
-msgid "Shows the output of a command"
-msgstr "Parancs kimenetének megjelenítése"
-
-#: ../command/src/command.c:140
-msgid "Command Applet Preferences"
-msgstr "Parancssor kisalkalmazás beállításai"
-
-#: ../command/src/command.c:153
-msgid "Command:"
-msgstr "Parancs:"
-
-#: ../command/src/command.c:161
-msgid "Interval (seconds):"
-msgstr "Gyakoriság (másodperc):"
-
-#: ../command/src/command.c:169
-msgid "Maximum width (chars):"
-msgstr "Maximális szélesség (karakter):"
-
-#: ../command/src/command.c:177
-#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
-msgid "Show icon"
-msgstr "Ikon megjelenítése"
-
-#: ../command/src/command.c:326
-msgid "Command Applet"
-msgstr "Parancssor kisalkalmazás"
-
 #: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
 msgid "Command Factory"
 msgstr "Parancssor factory"
@@ -797,6 +767,11 @@ msgstr "Parancssor factory"
 #: ../mini-commander/src/preferences.c:672
 msgid "Command"
 msgstr "Parancs"
+
+#: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:3
+#: ../command/src/command.c:119
+msgid "Shows the output of a command"
+msgstr "Parancs kimenetének megjelenítése"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
 msgid "Command to execute"
@@ -822,9 +797,30 @@ msgstr "A kimenet szélessége"
 msgid "Number of characters to display"
 msgstr "Megjelenítendő karakterek száma"
 
+#: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
+#: ../command/src/command.c:177
+msgid "Show icon"
+msgstr "Ikon megjelenítése"
+
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:8
 msgid "If applet icon is shown or not"
 msgstr "A kisalkalmazás ikonja megjelenik-e"
+
+#: ../command/src/command.c:140
+msgid "Command Applet Preferences"
+msgstr "Parancssor kisalkalmazás beállításai"
+
+#: ../command/src/command.c:153
+msgid "Command:"
+msgstr "Parancs:"
+
+#: ../command/src/command.c:161
+msgid "Interval (seconds):"
+msgstr "Gyakoriság (másodperc):"
+
+#: ../command/src/command.c:169
+msgid "Maximum width (chars):"
+msgstr "Maximális szélesség (karakter):"
 
 #: ../cpufreq/cpufreq-preferences.ui.h:1
 msgid "CPU Frequency Monitor Preferences"
@@ -859,7 +855,7 @@ msgid "Show CPU frequency as _percentage"
 msgstr "A CPU órajelének megjelenítése _százalékosan"
 
 #: ../cpufreq/org.gnome.applets.CPUFreqApplet.panel-applet.in.in.h:1
-#: ../cpufreq/src/cpufreq-applet.c:940 ../cpufreq/src/cpufreq-applet.c:996
+#: ../cpufreq/src/cpufreq-applet.c:990
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU órajelváltozás-figyelő"
 
@@ -906,38 +902,17 @@ msgstr ""
 "A „frequency” érték a CPU órajelének, a „frequency-unit” az órajel és az "
 "egységek, a „percentage” pedig a százalékos arány megjelenítését jelenti."
 
-#: ../cpufreq/src/cpufreq-applet.c:573 ../cpufreq/src/cpufreq-prefs.c:358
+#: ../cpufreq/src/cpufreq-applet.c:572 ../cpufreq/src/cpufreq-prefs.c:358
 msgid "Could not open help document"
 msgstr "A súgódokumentum nem nyitható meg"
 
-#: ../cpufreq/src/cpufreq-applet.c:601
+#: ../cpufreq/src/cpufreq-applet.c:600
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelének változását jelzi."
 
-#: ../cpufreq/src/cpufreq-applet.c:997
+#: ../cpufreq/src/cpufreq-applet.c:991
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ez a kisalkalmazás a CPU jelenlegi órajelét jelzi"
-
-#: ../cpufreq/src/cpufreq-monitor-cpuinfo.c:118
-msgid "Frequency Scaling Unsupported"
-msgstr "Az órajel változtatása nem támogatott"
-
-#. If there is no cpufreq support it shows only the cpu frequency,
-#. * I think is better than do nothing. I have to notify it to the user, because
-#. * he could think that cpufreq is supported but it doesn't work succesfully
-#.
-#: ../cpufreq/src/cpufreq-monitor-factory.c:58
-msgid "CPU frequency scaling unsupported"
-msgstr "A CPU órajelének változtatása nem támogatott"
-
-#: ../cpufreq/src/cpufreq-monitor-factory.c:59
-msgid ""
-"You will not be able to modify the frequency of your machine.  Your machine "
-"may be misconfigured or not have hardware support for CPU frequency scaling."
-msgstr ""
-"Nem lesz képes a gépének órajelét módosítani. Lehetséges, hogy a gépe "
-"hibásan van beállítva vagy nem rendelkezik a CPU órajelének változtatásához "
-"szükséges hardvertámogatással."
 
 #: ../cpufreq/src/cpufreq-prefs.c:493
 msgid "Graphic"
@@ -958,6 +933,23 @@ msgstr "A CPU órajelének módosítása"
 #: ../cpufreq/src/cpufreq-selector/org.gnome.cpufreqselector.policy.in.h:2
 msgid "Privileges are required to change the CPU Frequency scaling."
 msgstr "A CPU órajelének módosításához jogosultság szükséges."
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
+msgid "Drive Mount Applet Factory"
+msgstr "Meghajtócsatoló kisalkalmazás factory"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
+msgid "Factory for drive mount applet"
+msgstr "Factory meghajtócsatoló kisalkalmazás készítéséhez"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
+#: ../drivemount/src/drivemount.c:184
+msgid "Disk Mounter"
+msgstr "Meghajtócsatoló"
+
+#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr "Helyi lemezek vagy eszközök csatolása"
 
 #: ../drivemount/src/drive-button.c:324 ../drivemount/src/drive-button.c:337
 msgid "(mounted)"
@@ -1007,33 +999,28 @@ msgstr "%s _kiadása"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kötetek csatolására és leválasztására használható kisalkalmazás."
 
-#: ../drivemount/src/drivemount.c:154 ../drivemount/src/drivemount.c:188
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:3
-msgid "Disk Mounter"
-msgstr "Meghajtócsatoló"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
+msgid "Geyes Applet Factory"
+msgstr "Geyes kisalkalmazás factory"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:1
-msgid "Drive Mount Applet Factory"
-msgstr "Meghajtócsatoló kisalkalmazás factory"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
+#: ../geyes/src/geyes.c:401 ../geyes/src/geyes.c:403
+msgid "Eyes"
+msgstr "Szemek"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:2
-msgid "Factory for drive mount applet"
-msgstr "Factory meghajtócsatoló kisalkalmazás készítéséhez"
+#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
+msgid "A set of eyeballs for your panel"
+msgstr "Szemgolyók a panelre"
 
-#: ../drivemount/org.gnome.applets.DriveMountApplet.panel-applet.in.in.h:4
-msgid "Mount local disks and devices"
-msgstr "Helyi lemezek vagy eszközök csatolása"
+#: ../geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in.h:1
+msgid "Directory in which the theme is located"
+msgstr "A téma könyvtára"
 
 #: ../geyes/src/geyes.c:171
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "GNOME panelra tehető bolondos szempár, amely követi az egeret."
 
-#: ../geyes/src/geyes.c:371 ../geyes/src/geyes.c:404 ../geyes/src/geyes.c:406
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
-msgid "Eyes"
-msgstr "Szemek"
-
-#: ../geyes/src/geyes.c:407
+#: ../geyes/src/geyes.c:404
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "A szemek az egér irányába néznek"
 
@@ -1057,17 +1044,75 @@ msgstr "Témák"
 msgid "_Select a theme:"
 msgstr "_Téma kiválasztása:"
 
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:1
-msgid "Geyes Applet Factory"
-msgstr "Geyes kisalkalmazás factory"
+#: ../gweather/gweather-applet-menu.xml.h:1
+msgid "_Details"
+msgstr "_Részletek"
 
-#: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:3
-msgid "A set of eyeballs for your panel"
-msgstr "Szemgolyók a panelre"
+#: ../gweather/gweather-applet-menu.xml.h:2
+#: ../gweather/src/gweather-dialog.c:160
+msgid "_Update"
+msgstr "_Frissítés"
 
-#: ../geyes/org.gnome.gnome-applets.geyes.gschema.xml.in.in.h:1
-msgid "Directory in which the theme is located"
-msgstr "A téma könyvtára"
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
+msgid "Gweather Applet Factory"
+msgstr "Időjárás-jelentés kisalkalmazás factory"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Factory az időjárás kisalkalmazás készítéséhez."
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
+msgid "Weather Report"
+msgstr "Időjárás-jelentés"
+
+#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "A jelenlegi és az előrejelzett időjárást figyeli"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
+msgid "Update the data automatically"
+msgstr "Automatikus adatfrissítés"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr ""
+"Eldönti, hogy a kisalkalmazás automatikusan frissítse-e az időjárás-"
+"statisztikáit vagy sem."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
+msgid "Update interval"
+msgstr "Frissítés gyakorisága"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Az automatikus frissítés intervalluma, másodpercben."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
+msgid "Display radar map"
+msgstr "Radarkép megjelenítése"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
+msgid "Fetch a radar map on each update."
+msgstr "Radarkép lehívása minden frissítéskor."
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
+msgid "Show notification"
+msgstr "Értesítés megjelenítése"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
+msgid "Show notifications for critical weather conditions"
+msgstr "Értesítések megjelenítése a kritikus időjárási feltételekhez"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
+msgid "Show detailed forecast"
+msgstr "Részletes előrejelzés megjelenítése"
+
+#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
+msgid "If true, additional details about weather will be downloaded and shown."
+msgstr ""
+"Ha igaz, az időjárás további részletei kerülnek letöltésre és megjelenítésre."
 
 #: ../gweather/src/gweather-about.c:55
 msgid "© 1999-2005 by S. Papadimitriou and others"
@@ -1077,20 +1122,15 @@ msgstr "Copyright © 1999-2005 S. Papadimitriou és mások"
 msgid "A panel application for monitoring local weather conditions."
 msgstr "A helyi időjárási viszonyok jelzésére szolgáló kisalkalmazás."
 
-#: ../gweather/src/gweather-applet.c:336
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:3
-msgid "Weather Report"
-msgstr "Időjárás-jelentés"
-
-#: ../gweather/src/gweather-applet.c:354 ../gweather/src/gweather-applet.c:358
+#: ../gweather/src/gweather-applet.c:351 ../gweather/src/gweather-applet.c:355
 msgid "GNOME Weather"
 msgstr "Időjárás"
 
-#: ../gweather/src/gweather-applet.c:463
+#: ../gweather/src/gweather-applet.c:460
 msgid "Weather Forecast"
 msgstr "Időjárás-előrejelzés"
 
-#: ../gweather/src/gweather-applet.c:475
+#: ../gweather/src/gweather-applet.c:472
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1101,18 +1141,13 @@ msgstr ""
 "Égbolt: %s\n"
 "Hőmérséklet: %s"
 
-#: ../gweather/src/gweather-applet.c:529
+#: ../gweather/src/gweather-applet.c:526
 msgid "Updating..."
 msgstr "Frissítés…"
 
 #: ../gweather/src/gweather-dialog.c:158
 msgid "Details"
 msgstr "Részletek"
-
-#: ../gweather/src/gweather-dialog.c:160
-#: ../gweather/gweather-applet-menu.xml.h:2
-msgid "_Update"
-msgstr "_Frissítés"
 
 #: ../gweather/src/gweather-dialog.c:199
 msgid "City:"
@@ -1381,6 +1416,7 @@ msgstr "Megjelenítés"
 
 #: ../gweather/src/gweather-pref.c:979
 #: ../mini-commander/src/mini-commander.ui.h:12
+#: ../window-title/windowtitle.ui.h:6
 msgid "General"
 msgstr "Általános"
 
@@ -1400,71 +1436,14 @@ msgstr "_Következő találat"
 msgid "Location"
 msgstr "Hely"
 
-#: ../gweather/gweather-applet-menu.xml.h:1
-msgid "_Details"
-msgstr "_Részletek"
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:1
-msgid "Gweather Applet Factory"
-msgstr "Időjárás-jelentés kisalkalmazás factory"
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:2
-msgid "Factory for creating the weather applet."
-msgstr "Factory az időjárás kisalkalmazás készítéséhez."
-
-#: ../gweather/org.gnome.applets.GWeatherApplet.panel-applet.in.in.h:4
-msgid "Monitor the current weather conditions, and forecasts"
-msgstr "A jelenlegi és az előrejelzett időjárást figyeli"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:1
-msgid "Update the data automatically"
-msgstr "Automatikus adatfrissítés"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:2
-msgid ""
-"Determines whether the applet automatically updates its weather statistics "
-"or not."
-msgstr ""
-"Eldönti, hogy a kisalkalmazás automatikusan frissítse-e az időjárás-"
-"statisztikáit vagy sem."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
-msgid "Update interval"
-msgstr "Frissítés gyakorisága"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
-msgid "The interval, in seconds, between automatic updates."
-msgstr "Az automatikus frissítés intervalluma, másodpercben."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
-msgid "Display radar map"
-msgstr "Radarkép megjelenítése"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:6
-msgid "Fetch a radar map on each update."
-msgstr "Radarkép lehívása minden frissítéskor."
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
-msgid "Show notification"
-msgstr "Értesítés megjelenítése"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
-msgid "Show notifications for critical weather conditions"
-msgstr "Értesítések megjelenítése a kritikus időjárási feltételekhez"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:9
-msgid "Show detailed forecast"
-msgstr "Részletes előrejelzés megjelenítése"
-
-#: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:10
-msgid "If true, additional details about weather will be downloaded and shown."
-msgstr ""
-"Ha igaz, az időjárás további részletei kerülnek letöltésre és megjelenítésre."
-
-#: ../inhibit/src/inhibit-applet.c:82
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
+#: ../inhibit/src/inhibit-applet.c:82
 msgid "Inhibit Applet"
 msgstr "Energiagazdálkodás korlátozása"
+
+#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
+msgid "Allows user to inhibit automatic power saving"
+msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását"
 
 #: ../inhibit/src/inhibit-applet.c:83
 msgid "Allows user to inhibit automatic power saving."
@@ -1515,10 +1494,6 @@ msgstr ""
 #: ../inhibit/src/inhibit-applet.c:317
 msgid "Copyright © 2006-2007 Richard Hughes"
 msgstr "Copyright © 2006-2007 Richard Hughes"
-
-#: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:2
-msgid "Allows user to inhibit automatic power saving"
-msgstr "Lehetővé teszi az automatikus energiatakarékosság korlátozását"
 
 #: ../invest-applet/data/financialchart.ui.h:1
 #: ../invest-applet/invest/invest-chart.c:358
@@ -1993,16 +1968,11 @@ msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
 msgid "Command line has been disabled by your system administrator"
 msgstr "A parancssort letiltotta a rendszergazda"
 
-#: ../mini-commander/src/mini-commander_applet.c:363
-#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
-msgid "Command Line"
-msgstr "Parancssor"
-
-#: ../mini-commander/src/mini-commander_applet.c:411
+#: ../mini-commander/src/mini-commander_applet.c:407
 msgid "Mini-Commander applet"
 msgstr "Parancssor kisalkalmazás"
 
-#: ../mini-commander/src/mini-commander_applet.c:412
+#: ../mini-commander/src/mini-commander_applet.c:408
 msgid "This applet adds a command line to the panel"
 msgstr "Ez a kisalkalmazás egy parancssort ad a panelhez"
 
@@ -2084,6 +2054,10 @@ msgstr "_Parancs:"
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:1
 msgid "MiniCommander Applet Factory"
 msgstr "Parancssor kisalkalmazás factory"
+
+#: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:2
+msgid "Command Line"
+msgstr "Parancssor"
 
 #: ../mini-commander/src/org.gnome.applets.MiniCommanderApplet.panel-applet.in.in.h:3
 msgid "Mini-Commander"
@@ -2183,86 +2157,6 @@ msgstr "Nem adhat meg kétszer egy mintát"
 msgid "Pattern"
 msgstr "Minta"
 
-#: ../modem-lights/src/modem-applet.c:159
-#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
-msgid "Modem Monitor"
-msgstr "Modemfigyelő"
-
-#: ../modem-lights/src/modem-applet.c:669
-msgid "Connection active, but could not get connection time"
-msgstr "A kapcsolat aktív, de a kapcsolat ideje nem érhető el"
-
-#: ../modem-lights/src/modem-applet.c:685
-#, c-format
-msgid "Time connected: %.1d:%.2d"
-msgstr "Kapcsolat ideje: %.1d:%.2d"
-
-#: ../modem-lights/src/modem-applet.c:689
-msgid "Not connected"
-msgstr "Nincs kapcsolat"
-
-#: ../modem-lights/src/modem-applet.c:711
-msgid ""
-"To connect to your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Rendszergazdai jogosultság szükséges az internetszolgáltatójához való "
-"kapcsolódáshoz"
-
-#: ../modem-lights/src/modem-applet.c:712
-msgid ""
-"To disconnect from your Internet service provider, you need administrator "
-"privileges"
-msgstr ""
-"Rendszergazdai jogosultság szükséges az internetszolgáltatójától való "
-"lekapcsolódáshoz"
-
-#: ../modem-lights/src/modem-applet.c:787
-msgid "The entered password is invalid"
-msgstr "A megadott jelszó érvénytelen"
-
-#: ../modem-lights/src/modem-applet.c:789
-msgid ""
-"Check that you have typed it correctly and that you haven't activated the "
-"\"caps lock\" key"
-msgstr ""
-"Ellenőrizze, hogy helyesen írta-e be és a Caps Lock billentyű nincs "
-"bekapcsolva"
-
-#: ../modem-lights/src/modem-applet.c:900
-msgid "Do you want to connect?"
-msgstr "Kapcsolódni akar?"
-
-#: ../modem-lights/src/modem-applet.c:901
-msgid "Do you want to disconnect?"
-msgstr "Bontja a kapcsolatot?"
-
-#: ../modem-lights/src/modem-applet.c:910
-msgid "C_onnect"
-msgstr "Kapcs_olódás"
-
-#: ../modem-lights/src/modem-applet.c:910
-msgid "_Disconnect"
-msgstr "_Bontás"
-
-#: ../modem-lights/src/modem-applet.c:969
-msgid "Could not launch network configuration tool"
-msgstr "A hálózatbeállító eszköz nem indítható el"
-
-#: ../modem-lights/src/modem-applet.c:971
-msgid ""
-"Check that it's installed in the correct path and that it has the correct "
-"permissions"
-msgstr ""
-"Ellenőrizze, hogy a megfelelő helyre van-e telepítve és megfelelőek-e a "
-"jogosultságai"
-
-#: ../modem-lights/src/modem-applet.c:995
-msgid "Applet for activating and monitoring a dial-up network connection."
-msgstr ""
-"Betárcsázós hálózati kapcsolat aktiválására és figyelésére használható "
-"kisalkalmazás."
-
 #: ../modem-lights/modem-applet-menu.xml.h:1
 msgid "_Activate"
 msgstr "_Aktiválás"
@@ -2273,6 +2167,7 @@ msgstr "_Deaktiválás"
 
 #: ../modem-lights/modem-applet-menu.xml.h:3
 #: ../sticky-notes/src/sticky-notes-note-menu.xml.h:4
+#: ../window-title/windowtitle.c:51
 msgid "_Properties"
 msgstr "_Tulajdonságok"
 
@@ -2292,9 +2187,233 @@ msgstr "Jelszó:"
 msgid "Connecting with Internet Service Provider"
 msgstr "Kapcsolódás az internetszolgáltatóhoz"
 
+#: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:1
+msgid "Modem Monitor"
+msgstr "Modemfigyelő"
+
 #: ../modem-lights/org.gnome.applets.ModemApplet.panel-applet.in.in.h:2
 msgid "Activate and monitor a dial-up network connection"
 msgstr "Betárcsázós hálózati kapcsolat aktiválása és megfigyelése"
+
+#: ../modem-lights/src/modem-applet.c:667
+msgid "Connection active, but could not get connection time"
+msgstr "A kapcsolat aktív, de a kapcsolat ideje nem érhető el"
+
+#: ../modem-lights/src/modem-applet.c:683
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Kapcsolat ideje: %.1d:%.2d"
+
+#: ../modem-lights/src/modem-applet.c:687
+msgid "Not connected"
+msgstr "Nincs kapcsolat"
+
+#: ../modem-lights/src/modem-applet.c:709
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Rendszergazdai jogosultság szükséges az internetszolgáltatójához való "
+"kapcsolódáshoz"
+
+#: ../modem-lights/src/modem-applet.c:710
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Rendszergazdai jogosultság szükséges az internetszolgáltatójától való "
+"lekapcsolódáshoz"
+
+#: ../modem-lights/src/modem-applet.c:785
+msgid "The entered password is invalid"
+msgstr "A megadott jelszó érvénytelen"
+
+#: ../modem-lights/src/modem-applet.c:787
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr ""
+"Ellenőrizze, hogy helyesen írta-e be és a Caps Lock billentyű nincs "
+"bekapcsolva"
+
+#: ../modem-lights/src/modem-applet.c:898
+msgid "Do you want to connect?"
+msgstr "Kapcsolódni akar?"
+
+#: ../modem-lights/src/modem-applet.c:899
+msgid "Do you want to disconnect?"
+msgstr "Bontja a kapcsolatot?"
+
+#: ../modem-lights/src/modem-applet.c:908
+msgid "C_onnect"
+msgstr "Kapcs_olódás"
+
+#: ../modem-lights/src/modem-applet.c:908
+msgid "_Disconnect"
+msgstr "_Bontás"
+
+#: ../modem-lights/src/modem-applet.c:967
+msgid "Could not launch network configuration tool"
+msgstr "A hálózatbeállító eszköz nem indítható el"
+
+#: ../modem-lights/src/modem-applet.c:969
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr ""
+"Ellenőrizze, hogy a megfelelő helyre van-e telepítve és megfelelőek-e a "
+"jogosultságai"
+
+#: ../modem-lights/src/modem-applet.c:993
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr ""
+"Betárcsázós hálózati kapcsolat aktiválására és figyelésére használható "
+"kisalkalmazás."
+
+#: ../multiload/multiload-applet-menu.xml.h:1
+msgid "_Open System Monitor"
+msgstr "_Rendszerfigyelő megnyitása"
+
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
+msgid "System Monitor"
+msgstr "Rendszerfigyelő"
+
+#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
+msgid "A system load indicator"
+msgstr "Rendszerfigyelő"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:1
+msgid "Enable CPU load graph"
+msgstr "CPU terhelés grafikon engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:2
+msgid "Enable memory load graph"
+msgstr "Memóriaterhelés grafikonjának engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:3
+msgid "Enable network load graph"
+msgstr "Hálózati terhelés grafikonjának engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:4
+msgid "Enable swap load graph"
+msgstr "Swap terhelés grafikonjának engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:5
+msgid "Enable load average graph"
+msgstr "Átlagos terhelés grafikonjának engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:6
+msgid "Enable disk load graph"
+msgstr "Lemezterhelés grafikonjának engedélyezése"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
+msgid "Applet refresh rate in milliseconds"
+msgstr "Kisalkalmazás frissítési gyakorisága ezredmásodpercben"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
+msgid "Graph size"
+msgstr "Grafikon mérete"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Vízszintes panelek esetén, a grafikon szélessége képpontokban. Függőleges "
+"paneleknél ez a grafikon magassága."
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
+msgid "Graph color for user-related CPU activity"
+msgstr ""
+"A felhasználói programokkal kapcsolatos CPU aktivitás grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:11
+msgid "Graph color for system-related CPU activity"
+msgstr "A rendszer működésével kapcsolatos CPU aktivitás grafikonjának színe"
+
+# FIXME nice
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
+msgid "Graph color for nice-related CPU activity"
+msgstr "Nice-szal kapcsolatos CPU aktivitás grafikonjának színe"
+
+# FIXME nice
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
+msgid "Graph color for iowait-related CPU activity"
+msgstr "IO-várakozással kapcsolatos CPU aktivitás grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
+msgid "CPU graph background color"
+msgstr "CPU grafikon háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:15
+msgid "Graph color for user-related memory usage"
+msgstr ""
+"A felhasználói programokkal kapcsolatos memóriahasználat grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:16
+msgid "Graph color for shared memory"
+msgstr "Osztott memória grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:17
+msgid "Graph color for buffer memory"
+msgstr "Puffermemória grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
+msgid "Graph color for cached memory"
+msgstr "Gyorsítótárazott memória grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
+msgid "Memory graph background color"
+msgstr "Memóriagrafikon háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:20
+msgid "Graph color for input network activity"
+msgstr "Bejövő hálózati forgalom grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:21
+msgid "Graph color for output network activity"
+msgstr "Kimenő hálózati forgalom grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:22
+msgid "Graph color for loopback network usage"
+msgstr "Visszacsatolt hálózati forgalom grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:23
+msgid "Network graph background color"
+msgstr "Hálózati grafikon háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:24
+msgid "Graph color for user-related swap usage"
+msgstr ""
+"A felhasználói programokkal kapcsolatos swap használat grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:25
+msgid "Swap graph background color"
+msgstr "Swap grafikon háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:26
+msgid "Graph color for load average"
+msgstr "Átlagos terhelés grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:27
+msgid "Load graph background color"
+msgstr "Terhelésgrafikon háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:28
+msgid "Graph color for disk read"
+msgstr "Lemezolvasás grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:29
+msgid "Graph color for disk write"
+msgstr "Lemezírás grafikonjának színe"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:30
+msgid "Background color for disk load graph"
+msgstr "A lemezterhelés grafikonjának háttérszíne"
+
+#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
+msgid "The desktop description file to execute as the system monitor"
+msgstr "A rendszerfigyelőként végrehajtandó asztali leírásfájl"
 
 #: ../multiload/src/main.c:57
 msgid ""
@@ -2402,11 +2521,6 @@ msgstr "Lapozóterület-használat"
 #: ../multiload/src/main.c:363
 msgid "Disk Load"
 msgstr "Lemezterhelés"
-
-#: ../multiload/src/main.c:473
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:1
-msgid "System Monitor"
-msgstr "Rendszerfigyelő"
 
 #: ../multiload/src/netspeed.c:40
 #, c-format
@@ -2546,147 +2660,6 @@ msgstr "Í_rás"
 msgid "System Monitor Preferences"
 msgstr "Rendszerfigyelő beállításai"
 
-#: ../multiload/multiload-applet-menu.xml.h:1
-msgid "_Open System Monitor"
-msgstr "_Rendszerfigyelő megnyitása"
-
-#: ../multiload/org.gnome.applets.MultiLoadApplet.panel-applet.in.in.h:2
-msgid "A system load indicator"
-msgstr "Rendszerfigyelő"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:1
-msgid "Enable CPU load graph"
-msgstr "CPU terhelés grafikon engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:2
-msgid "Enable memory load graph"
-msgstr "Memóriaterhelés grafikonjának engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:3
-msgid "Enable network load graph"
-msgstr "Hálózati terhelés grafikonjának engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:4
-msgid "Enable swap load graph"
-msgstr "Swap terhelés grafikonjának engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:5
-msgid "Enable load average graph"
-msgstr "Átlagos terhelés grafikonjának engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:6
-msgid "Enable disk load graph"
-msgstr "Lemezterhelés grafikonjának engedélyezése"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:7
-msgid "Applet refresh rate in milliseconds"
-msgstr "Kisalkalmazás frissítési gyakorisága ezredmásodpercben"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:8
-msgid "Graph size"
-msgstr "Grafikon mérete"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:9
-msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical "
-"panels, this is the height of the graphs."
-msgstr ""
-"Vízszintes panelek esetén, a grafikon szélessége képpontokban. Függőleges "
-"paneleknél ez a grafikon magassága."
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:10
-msgid "Graph color for user-related CPU activity"
-msgstr ""
-"A felhasználói programokkal kapcsolatos CPU aktivitás grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:11
-msgid "Graph color for system-related CPU activity"
-msgstr "A rendszer működésével kapcsolatos CPU aktivitás grafikonjának színe"
-
-# FIXME nice
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:12
-msgid "Graph color for nice-related CPU activity"
-msgstr "Nice-szal kapcsolatos CPU aktivitás grafikonjának színe"
-
-# FIXME nice
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-msgid "Graph color for iowait-related CPU activity"
-msgstr "IO-várakozással kapcsolatos CPU aktivitás grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:14
-msgid "CPU graph background color"
-msgstr "CPU grafikon háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:15
-msgid "Graph color for user-related memory usage"
-msgstr ""
-"A felhasználói programokkal kapcsolatos memóriahasználat grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:16
-msgid "Graph color for shared memory"
-msgstr "Osztott memória grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:17
-msgid "Graph color for buffer memory"
-msgstr "Puffermemória grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:18
-msgid "Graph color for cached memory"
-msgstr "Gyorsítótárazott memória grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:19
-msgid "Memory graph background color"
-msgstr "Memóriagrafikon háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:20
-msgid "Graph color for input network activity"
-msgstr "Bejövő hálózati forgalom grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:21
-msgid "Graph color for output network activity"
-msgstr "Kimenő hálózati forgalom grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:22
-msgid "Graph color for loopback network usage"
-msgstr "Visszacsatolt hálózati forgalom grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:23
-msgid "Network graph background color"
-msgstr "Hálózati grafikon háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:24
-msgid "Graph color for user-related swap usage"
-msgstr ""
-"A felhasználói programokkal kapcsolatos swap használat grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:25
-msgid "Swap graph background color"
-msgstr "Swap grafikon háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:26
-msgid "Graph color for load average"
-msgstr "Átlagos terhelés grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:27
-msgid "Load graph background color"
-msgstr "Terhelésgrafikon háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:28
-msgid "Graph color for disk read"
-msgstr "Lemezolvasás grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:29
-msgid "Graph color for disk write"
-msgstr "Lemezírás grafikonjának színe"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:30
-msgid "Background color for disk load graph"
-msgstr "A lemezterhelés grafikonjának háttérszíne"
-
-#: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:31
-msgid "The desktop description file to execute as the system monitor"
-msgstr "A rendszerfigyelőként végrehajtandó asztali leírásfájl"
-
 #: ../netspeed/data/netspeed-menu.xml.h:1
 msgid "Device _Details"
 msgstr "Eszköz _adatai…"
@@ -2759,55 +2732,55 @@ msgstr "Hálózatsebesség kisalkalmazás"
 msgid "Network Monitor"
 msgstr "Hálózatfigyelő"
 
-#: ../netspeed/src/netspeed.c:368
+#: ../netspeed/src/netspeed.c:365
 msgid "b/s"
 msgstr "b/s"
 
-#: ../netspeed/src/netspeed.c:368
+#: ../netspeed/src/netspeed.c:365
 msgid "B/s"
 msgstr "B/s"
 
-#: ../netspeed/src/netspeed.c:370
+#: ../netspeed/src/netspeed.c:367
 msgid "bits"
 msgstr "bit"
 
-#: ../netspeed/src/netspeed.c:370
+#: ../netspeed/src/netspeed.c:367
 msgid "bytes"
 msgstr "bájt"
 
-#: ../netspeed/src/netspeed.c:377
+#: ../netspeed/src/netspeed.c:374
 msgid "kb/s"
 msgstr "kb/s"
 
-#: ../netspeed/src/netspeed.c:377
+#: ../netspeed/src/netspeed.c:374
 msgid "KiB/s"
 msgstr "KiB/s"
 
-#: ../netspeed/src/netspeed.c:379
+#: ../netspeed/src/netspeed.c:376
 msgid "kb"
 msgstr "kb"
 
-#: ../netspeed/src/netspeed.c:379
+#: ../netspeed/src/netspeed.c:376
 msgid "KiB"
 msgstr "KiB"
 
-#: ../netspeed/src/netspeed.c:388
+#: ../netspeed/src/netspeed.c:385
 msgid "Mb/s"
 msgstr "Mb/s"
 
-#: ../netspeed/src/netspeed.c:388
+#: ../netspeed/src/netspeed.c:385
 msgid "MiB/s"
 msgstr "MiB/s"
 
-#: ../netspeed/src/netspeed.c:390
+#: ../netspeed/src/netspeed.c:387
 msgid "Mb"
 msgstr "Mb"
 
-#: ../netspeed/src/netspeed.c:390
+#: ../netspeed/src/netspeed.c:387
 msgid "MiB"
 msgstr "MiB"
 
-#: ../netspeed/src/netspeed.c:634
+#: ../netspeed/src/netspeed.c:631
 msgid ""
 "A little applet that displays some information on the traffic on the "
 "specified network device"
@@ -2815,70 +2788,70 @@ msgstr ""
 "Egy meghatározott hálózati eszközön áthaladó forgalommal kapcsolatos "
 "információkat megjelenítő kisalkalmazás"
 
-#: ../netspeed/src/netspeed.c:639
+#: ../netspeed/src/netspeed.c:636
 msgid "Netspeed Website"
 msgstr "A Hálózatsebesség kisalkalmazás webhelye"
 
-#: ../netspeed/src/netspeed.c:902
+#: ../netspeed/src/netspeed.c:899
 #, c-format
 msgid "Device Details for %s"
 msgstr "%s eszköz adatai"
 
-#: ../netspeed/src/netspeed.c:927
+#: ../netspeed/src/netspeed.c:924
 msgid "_In graph color"
 msgstr "_Bejövő grafikon színe"
 
-#: ../netspeed/src/netspeed.c:928
+#: ../netspeed/src/netspeed.c:925
 msgid "_Out graph color"
 msgstr "_Kimenő grafikon színe"
 
-#: ../netspeed/src/netspeed.c:944
+#: ../netspeed/src/netspeed.c:941
 msgid "Internet Address:"
 msgstr "Internetcím:"
 
-#: ../netspeed/src/netspeed.c:945
+#: ../netspeed/src/netspeed.c:942
 msgid "Netmask:"
 msgstr "Hálózati maszk:"
 
-#: ../netspeed/src/netspeed.c:946
+#: ../netspeed/src/netspeed.c:943
 msgid "Hardware Address:"
 msgstr "Hardvercím:"
 
-#: ../netspeed/src/netspeed.c:947
+#: ../netspeed/src/netspeed.c:944
 msgid "P-t-P Address:"
 msgstr "P-t-P cím:"
 
-#: ../netspeed/src/netspeed.c:948
+#: ../netspeed/src/netspeed.c:945
 msgid "Bytes in:"
 msgstr "Bejövő bájtok:"
 
-#: ../netspeed/src/netspeed.c:949
+#: ../netspeed/src/netspeed.c:946
 msgid "Bytes out:"
 msgstr "Kimenő bájtok:"
 
-#: ../netspeed/src/netspeed.c:951 ../netspeed/src/netspeed.c:952
-#: ../netspeed/src/netspeed.c:953 ../netspeed/src/netspeed.c:954
+#: ../netspeed/src/netspeed.c:948 ../netspeed/src/netspeed.c:949
+#: ../netspeed/src/netspeed.c:950 ../netspeed/src/netspeed.c:951
 msgid "none"
 msgstr "nincs"
 
-#: ../netspeed/src/netspeed.c:993
+#: ../netspeed/src/netspeed.c:990
 msgid "IPv6 Address:"
 msgstr "IPv6 cím:"
 
-#: ../netspeed/src/netspeed.c:1025
+#: ../netspeed/src/netspeed.c:1022
 msgid "Signal Strength:"
 msgstr "Jelerősség:"
 
-#: ../netspeed/src/netspeed.c:1026
+#: ../netspeed/src/netspeed.c:1023
 msgid "ESSID:"
 msgstr "ESSID:"
 
-#: ../netspeed/src/netspeed.c:1076
+#: ../netspeed/src/netspeed.c:1073
 #, c-format
 msgid "%s is down"
 msgstr "%s nem működik"
 
-#: ../netspeed/src/netspeed.c:1081
+#: ../netspeed/src/netspeed.c:1078
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2887,11 +2860,11 @@ msgstr ""
 "%s: %s\n"
 "be: %s ki: %s"
 
-#: ../netspeed/src/netspeed.c:1083 ../netspeed/src/netspeed.c:1092
+#: ../netspeed/src/netspeed.c:1080 ../netspeed/src/netspeed.c:1089
 msgid "has no ip"
 msgstr "nincs IP-je"
 
-#: ../netspeed/src/netspeed.c:1090
+#: ../netspeed/src/netspeed.c:1087
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2900,7 +2873,7 @@ msgstr ""
 "%s: %s\n"
 "össz: %s"
 
-#: ../netspeed/src/netspeed.c:1099
+#: ../netspeed/src/netspeed.c:1096
 #, c-format
 msgid ""
 "\n"
@@ -2911,21 +2884,21 @@ msgstr ""
 "ESSID: %s\n"
 "Erősség: %d %%"
 
-#: ../netspeed/src/netspeed.c:1100
+#: ../netspeed/src/netspeed.c:1097
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: ../netspeed/src/netspeed.c:1165
+#: ../netspeed/src/netspeed.c:1162
 #, c-format
 msgid "Do you want to disconnect %s now?"
 msgstr "Le akarja most választani ezt: %s?"
 
-#: ../netspeed/src/netspeed.c:1167
+#: ../netspeed/src/netspeed.c:1164
 #, c-format
 msgid "Do you want to connect %s now?"
 msgstr "Akarja most csatlakoztatni ezt: %s?"
 
-#: ../netspeed/src/netspeed.c:1190
+#: ../netspeed/src/netspeed.c:1187
 #, c-format
 msgid ""
 "<b>Running command %s failed</b>\n"
@@ -2933,10 +2906,6 @@ msgid ""
 msgstr ""
 "<b>A parancs (%s) futtatása meghiúsult</b>\n"
 "%s"
-
-#: ../netspeed/src/netspeed.c:1457
-msgid "Netspeed"
-msgstr "Hálózatsebesség kisalkalmazás"
 
 #: ../netspeed/src/netspeed.c:1549
 #, c-format
@@ -2976,8 +2945,7 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Ragadós cetlik kisalkalmazás factory"
 
 #: ../sticky-notes/data/org.gnome.applets.StickyNotesApplet.panel-applet.in.in.h:2
-#: ../sticky-notes/src/stickynotes_applet.c:150
-#: ../sticky-notes/src/stickynotes_applet.c:389
+#: ../sticky-notes/src/stickynotes_applet.c:385
 msgid "Sticky Notes"
 msgstr "Ragadós cetlik"
 
@@ -3124,22 +3092,14 @@ msgstr "Kérjen-e megerősítést cetli törlésekor"
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Az üres cetlik automatikus törlése."
 
-#: ../sticky-notes/src/stickynotes.c:594
-msgid "This note is locked."
-msgstr "Ez a cetli zárolva van."
-
-#: ../sticky-notes/src/stickynotes.c:598
-msgid "This note is unlocked."
-msgstr "Ez a cetli nincs zárolva."
-
-#: ../sticky-notes/src/stickynotes_applet.c:548
+#: ../sticky-notes/src/stickynotes_applet.c:544
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "%d cetli"
 msgstr[1] "%d cetli"
 
-#: ../sticky-notes/src/stickynotes_applet.c:549
+#: ../sticky-notes/src/stickynotes_applet.c:545
 msgid "Show sticky notes"
 msgstr "Ragadós cetlik mutatása"
 
@@ -3163,6 +3123,14 @@ msgstr "_Cetlik zárolása"
 #: ../sticky-notes/src/sticky-notes-applet-menu.xml.h:4
 msgid "_Delete Notes"
 msgstr "Cetlik _törlése"
+
+#: ../sticky-notes/src/stickynotes.c:594
+msgid "This note is locked."
+msgstr "Ez a cetli zárolva van."
+
+#: ../sticky-notes/src/stickynotes.c:598
+msgid "This note is unlocked."
+msgstr "Ez a cetli nincs zárolva."
 
 #: ../sticky-notes/src/sticky-notes-delete-all.ui.h:1
 msgid "_Delete All"
@@ -3271,6 +3239,7 @@ msgid "Pick a default sticky note font"
 msgstr "Válassza ki a ragadós cetlik alapértelmezett betűkészletét"
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:18
+#: ../window-buttons/windowbuttons.ui.h:54 ../window-title/windowtitle.ui.h:27
 msgid "Behavior"
 msgstr "Viselkedés"
 
@@ -3417,10 +3386,6 @@ msgstr "Értesítési buborék megjelenítése"
 msgid "Show dialog"
 msgstr "Párbeszédablak megjelenítése"
 
-#: ../timer/src/timer-applet.c:402
-msgid "Timer Applet"
-msgstr "Időzítő kisalkalmazás"
-
 #: ../tracker-search-bar/data/org.gnome.panel.SearchBar.panel-applet.in.in.h:1
 msgid "Tracker Search Bar"
 msgstr "Tracker keresősáv"
@@ -3491,6 +3456,7 @@ msgid "Category"
 msgstr "Kategória"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:1135
+#: ../window-title/windowtitle.ui.h:18
 msgid "Title"
 msgstr "Cím"
 
@@ -3585,10 +3551,6 @@ msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Néhány elem nem helyezhető át a Kukába, akarja ezeket most törölni?"
 
-#: ../trash/src/trash-applet.c:603
-msgid "Trash Applet"
-msgstr "Kuka kisalkalmazás"
-
 #. Translators: the %s in this string should be read as %d.
 #: ../trash/src/trash-empty.c:70
 #, c-format
@@ -3628,6 +3590,349 @@ msgstr "Innen:"
 #: ../trash/src/trash-menu.xml.h:1
 msgid "_Open Trash"
 msgstr "K_uka megnyitása"
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:1
+msgid "Window Buttons applet Factory"
+msgstr "Ablakgombok kisalkalmazás factory"
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:2
+msgid "Window buttons for your GNOME Panel"
+msgstr "Ablakgombok a GNOME panelhez"
+
+#: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:3
+msgid "Window Buttons"
+msgstr "Ablakgombok"
+
+#: ../window-buttons/windowbuttons.c:118
+msgid "Window buttons for your GNOME Panel."
+msgstr "Ablakgombok a GNOME panelhez"
+
+#: ../window-buttons/windowbuttons.c:126 ../window-title/windowtitle.c:104
+msgid "Window Applets on Gnome-Look"
+msgstr "Ablakgombok a GNOME-Look oldalon"
+
+#: ../window-buttons/windowbuttons.c:240 ../window-buttons/windowbuttons.ui.h:3
+msgid "Unmaximize"
+msgstr "Eredeti méret"
+
+#: ../window-buttons/windowbuttons.c:244 ../window-buttons/windowbuttons.ui.h:4
+msgid "Maximize"
+msgstr "Maximalizálás"
+
+#: ../window-buttons/windowbuttons.c:251 ../window-buttons/windowbuttons.ui.h:6
+msgid "Minimize"
+msgstr "Minimalizálás"
+
+#: ../window-buttons/windowbuttons.c:252 ../window-buttons/windowbuttons.ui.h:5
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:1
+msgid "Determines whether we use custom or Metacity's button layout"
+msgstr ""
+"Meghatározza, hogy egy egyedi, vagy a Metacity-féle gombsorrendet használjuk."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:2
+msgid ""
+"When disabled, this applet's button_layout string will be used to order the "
+"buttons."
+msgstr ""
+"Ha letiltott, akkor ezen kisalkalmazás button_layout karakterlánca lesz "
+"használva a gombok sorrendezéséhez."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:3
+msgid "Layout of buttons."
+msgstr "A gombok elrendezése."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:4
+msgid ""
+"Essentially a copy from Metacity's button_layout, but we can modify it for "
+"custom settings."
+msgstr ""
+"Lényegében a Metacity gombsorrendjének másolata, de módosítható az egyéni "
+"beállításhoz."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:5
+msgid "Button theme"
+msgstr "Gombtéma"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:6
+msgid "Name of a folder located in windowapplets/themes/ or \"custom\"."
+msgstr "Egy mappa neve a windowapplets/themes/ helyen, vagy „custom” (egyéni)."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:7
+msgid "Button orientation"
+msgstr "Gomb tájolása"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:8
+msgid ""
+"May be used to set a static button orientation. Setting this value to 1 will "
+"ensure the buttons are always displayed horizontally. Setting it to 2 will "
+"do the same but vertically. The default setting 0 will set it automatically "
+"according to the panel."
+msgstr ""
+"Statikus gomb tájolás megadására használható. Az érték 1-re állítása "
+"biztosítja, hogy a gombok mindig vízszintesen jelenjenek meg. A 2-re állítás "
+"ugyanezt teszi, csak függőlegesen. Az alapértelmezett 0 érték automatikusan "
+"a panelnek megfelelően állítja be."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:9
+msgid "Hides buttons when there are no windows present."
+msgstr "Elrejti a gombokat, ha nincs jelen ablak."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:10
+msgid ""
+"When enabled, the buttons will disappear when there are no maximized (or "
+"active) windows on the screen."
+msgstr ""
+"Ha engedélyezett, akkor a gombok eltűnnek, ha nincs maximalizált (vagy "
+"aktív) ablak a képernyőn."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:11
+#: ../window-title/windowtitle.schemas.in.h:3
+msgid "Only control maximized windows."
+msgstr "Csak a maximalizált ablakok vezérlése."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:12
+msgid ""
+"When enabled, the window buttons will always control the upper-most "
+"maximized window."
+msgstr ""
+"Ha engedélyezett, akkor az ablakgombok mindig a legfelső maximalizált "
+"ablakot fogják vezérelni."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:13
+msgid "Reverse the buttons placement."
+msgstr "A gombok elhelyezésének megfordítása."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:14
+msgid ""
+"When enabled, the window buttons will be placed in reverse order (right to "
+"left instead of left to right, or bottom to top instead of top to bottom)."
+msgstr ""
+"Ha engedélyezett, akkor az ablakgombok fordított sorrendben lesznek "
+"elhelyezve (balról jobbra helyett jobbról balra, vagy fentről lefelé helyett "
+"lentről felfelé)"
+
+#: ../window-buttons/windowbuttons.schemas.in.h:15
+msgid "Enable click effect."
+msgstr "Kattintási hatás engedélyezése."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:16
+msgid ""
+"When enabled, the button will change image to 'clicked' whenever it is "
+"clicked."
+msgstr ""
+"Ha engedélyezett, akkor a gomb képe „kattintottá” változik, ha rákattint."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:17
+msgid "Enable hover effect."
+msgstr "Rámutatási hatás engedélyezése."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:18
+msgid ""
+"When enabled, the button will change image to 'hovered' whenever the mouse "
+"passes it."
+msgstr ""
+"Ha engedélyezett, akkor a gomb képe „rámutatottá” változik, ha fölé viszi az "
+"egeret."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:19
+msgid "Show tooltips on buttons."
+msgstr "Buboréksúgók megjelenítése a gombokon."
+
+#: ../window-buttons/windowbuttons.schemas.in.h:20
+msgid ""
+"When enabled, each button will display its own tooltip, describing the "
+"function that it represents."
+msgstr ""
+"Ha engedélyezett, akkor minden egyes gomb megjeleníti a saját "
+"buboréksúgóját, leírva a funkciót, amit képvisel."
+
+#: ../window-buttons/windowbuttons.ui.h:1
+msgid "Window Buttons Preferences"
+msgstr "Ablakgombok beállításai"
+
+#: ../window-buttons/windowbuttons.ui.h:2
+msgid "Theme:"
+msgstr "Téma:"
+
+#: ../window-buttons/windowbuttons.ui.h:7
+msgid ""
+"Focused\n"
+"Normal"
+msgstr ""
+"Fókuszban lévő\n"
+"Normál"
+
+#: ../window-buttons/windowbuttons.ui.h:9
+msgid ""
+"Focused\n"
+"Clicked"
+msgstr ""
+"Fókuszban lévő\n"
+"Kattintott"
+
+#: ../window-buttons/windowbuttons.ui.h:11
+msgid ""
+"Focused\n"
+"Hover"
+msgstr ""
+"Fókuszban lévő\n"
+"Rámutatott"
+
+#: ../window-buttons/windowbuttons.ui.h:13
+msgid ""
+"Unfocused\n"
+"Normal"
+msgstr ""
+"Nincs fókuszban\n"
+"Normál"
+
+#: ../window-buttons/windowbuttons.ui.h:15
+msgid ""
+"Unfocused\n"
+"Hover"
+msgstr ""
+"Nincs fókuszban\n"
+"Rámutatott"
+
+#: ../window-buttons/windowbuttons.ui.h:17
+msgid ""
+"Unfocused\n"
+"Clicked"
+msgstr ""
+"Nincs fókuszban\n"
+"Kattintott"
+
+#: ../window-buttons/windowbuttons.ui.h:20
+msgid "Use Metacity's button order"
+msgstr "A Metacity gombsorrendjének használata"
+
+#: ../window-buttons/windowbuttons.ui.h:21
+msgid ""
+"When checked, the button order will be the same as on Metacity window "
+"borders."
+msgstr ""
+"Ha bejelölt, akkor a gombsorrend ugyanaz, mint a Metacity ablakkeretein."
+
+#: ../window-buttons/windowbuttons.ui.h:22
+msgid "Custom order:"
+msgstr "Egyéni sorrend:"
+
+#. Translators: minimize, maximize, close should not be translated
+#: ../window-buttons/windowbuttons.ui.h:24
+msgid ""
+"Define your custom order by using the words:\n"
+"minimize, maximize and close\n"
+"Separate them by commas (,).\n"
+"Do NOT use double values!"
+msgstr ""
+"Adja meg az egyéni sorrendet ezen szavak használatával:\n"
+"minimize, maximize és close\n"
+"Vesszőkkel válassza el őket (,).\n"
+"NE használjon ismétlődő értékeket!"
+
+#. Translators: these words should not be translated
+#: ../window-buttons/windowbuttons.ui.h:29
+msgid "minimize,maximize,close"
+msgstr "minimize,maximize,close"
+
+#: ../window-buttons/windowbuttons.ui.h:30
+msgid "Reload"
+msgstr "Újratöltés"
+
+#: ../window-buttons/windowbuttons.ui.h:31
+msgid "Click to reload buttons."
+msgstr "Kattintson a gombok újratöltéséhez."
+
+#: ../window-buttons/windowbuttons.ui.h:32
+msgid "Reverse order"
+msgstr "Fordított sorrend"
+
+#: ../window-buttons/windowbuttons.ui.h:33
+msgid "<b>Button Order</b>"
+msgstr "<b>Gombsorrend</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:34
+msgid "Automatic"
+msgstr "Automatikus"
+
+#: ../window-buttons/windowbuttons.ui.h:35
+msgid "Align buttons with panel orientation."
+msgstr "Gombok igazítása a panel tájolásának megfelelően."
+
+#: ../window-buttons/windowbuttons.ui.h:36
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: ../window-buttons/windowbuttons.ui.h:37
+msgid "Force buttons to always appear horizontal."
+msgstr "A gombok kényszerítése, hogy vízszintesen jelenjenek meg."
+
+#: ../window-buttons/windowbuttons.ui.h:38
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: ../window-buttons/windowbuttons.ui.h:39
+msgid "Force buttons to always appear vertical."
+msgstr "A gombok kényszerítése, hogy függőlegesen jelenjenek meg."
+
+#: ../window-buttons/windowbuttons.ui.h:40
+msgid "<b>Button Orientation</b>"
+msgstr "<b>Gombok tájolása</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:41
+msgid "Minimize Button"
+msgstr "Minimalizálás gomb"
+
+#: ../window-buttons/windowbuttons.ui.h:42
+msgid "Maximize/Unmaximize Button"
+msgstr "Maximalizálás/Eredeti méret gomb"
+
+#: ../window-buttons/windowbuttons.ui.h:43
+msgid "Close Button"
+msgstr "Bezárás gomb"
+
+#: ../window-buttons/windowbuttons.ui.h:44
+msgid "<b>Button Hiding</b>"
+msgstr "<b>Gombok elrejtése</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:45
+msgid "Positioning & Visibility"
+msgstr "Pozicionálás és láthatóság"
+
+#: ../window-buttons/windowbuttons.ui.h:46 ../window-title/windowtitle.ui.h:20
+msgid "Control _maximized windows only"
+msgstr "Csak a _maximalizált ablakok vezérlése"
+
+#: ../window-buttons/windowbuttons.ui.h:47
+msgid "_Hide when no active maximized window"
+msgstr "_Elrejtés, ha nincs aktív maximalizált ablak"
+
+#: ../window-buttons/windowbuttons.ui.h:48
+msgid "Enable _click effect"
+msgstr "_Kattintási hatás engedélyezése"
+
+#: ../window-buttons/windowbuttons.ui.h:49
+msgid "Enable _hover effect"
+msgstr "_Rámutatási hatás engedélyezése"
+
+#: ../window-buttons/windowbuttons.ui.h:50 ../window-title/windowtitle.ui.h:26
+msgid "Show _tooltips"
+msgstr "_Buboréksúgók megjelenítése"
+
+#: ../window-buttons/windowbuttons.ui.h:51
+msgid "<b>Internal</b>"
+msgstr "<b>Belső</b>"
+
+#: ../window-buttons/windowbuttons.ui.h:52
+msgid "Hide Compiz _decorations for maximized windows"
+msgstr "A Compiz _dekorációk elrejtése a maximalizált ablakoknál"
+
+#: ../window-buttons/windowbuttons.ui.h:53
+msgid "<b>External</b>"
+msgstr "<b>Külső</b>"
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
@@ -3675,8 +3980,298 @@ msgstr ""
 msgid "Close window"
 msgstr "Ablak bezárása"
 
-#~ msgid "Close"
-#~ msgstr "Bezárás"
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:1
+msgid "Window Title applet Factory"
+msgstr "Ablakcím kisalkalmazás factory"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:2
+msgid "Factory for Window Title"
+msgstr "Factory az ablakcím kisalkalmazás készítéséhez"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:3
+msgid "Window Title"
+msgstr "Ablakcím"
+
+#: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:4
+msgid "Window title for your GNOME Panel"
+msgstr "Ablakcím a GNOME panelhez"
+
+#: ../window-title/windowtitle.c:96
+msgid "Window title for your GNOME Panel."
+msgstr "Ablakcím a GNOME panelhez"
+
+#: ../window-title/windowtitle.schemas.in.h:1
+msgid "Hides title when there are no windows present."
+msgstr "Elrejti a címet, ha nincs jelen ablak."
+
+#: ../window-title/windowtitle.schemas.in.h:2
+msgid ""
+"When enabled, the title will disappear when there are no maximized (or "
+"active) windows on the screen."
+msgstr ""
+"Ha engedélyezett, akkor a cím eltűnik, ha nincs maximalizált (vagy aktív) "
+"ablak a képernyőn."
+
+#: ../window-title/windowtitle.schemas.in.h:4
+msgid ""
+"When enabled, the window title will always display the upper-most maximized "
+"window's name."
+msgstr ""
+"Ha engedélyezett, akkor a cím mindig a legfelső maximalizált ablak nevét "
+"fogja megjeleníteni."
+
+#: ../window-title/windowtitle.schemas.in.h:5
+msgid "Set the title alignment."
+msgstr "A cím igazításának megadása."
+
+#: ../window-title/windowtitle.schemas.in.h:6
+msgid "Legal values are between 0 and 1."
+msgstr "A helyes értékek 0 és 1 közé esnek."
+
+#: ../window-title/windowtitle.schemas.in.h:7
+msgid "Swap icon and title."
+msgstr "Az ikon és a cím felcserélése."
+
+#: ../window-title/windowtitle.schemas.in.h:8
+msgid ""
+"When enabled, window title will be on the left side and the icon on the "
+"right side."
+msgstr ""
+"Ha engedélyezett, akkor a cím a bal oldalon lesz, az ikon pedig a jobb "
+"oldalon."
+
+#: ../window-title/windowtitle.schemas.in.h:9
+msgid "Expand the applet"
+msgstr "A kisalkalmazás nyújtása"
+
+#: ../window-title/windowtitle.schemas.in.h:10
+msgid "When enabled, the applet will use up all available space in the panel."
+msgstr ""
+"Ha engedélyezett, akkor a kisalkalmazás minden elérhető helyet felhasznál a "
+"panelen."
+
+#: ../window-title/windowtitle.schemas.in.h:11
+msgid "Hide the icon"
+msgstr "Ikon elrejtése"
+
+#: ../window-title/windowtitle.schemas.in.h:12
+msgid "When enabled, the window icon will not be displayed."
+msgstr "Ha engedélyezett, akkor az ablakikon nem lesz megjelenítve."
+
+#: ../window-title/windowtitle.schemas.in.h:13
+msgid "Hide the title"
+msgstr "Cím elrejtése"
+
+#: ../window-title/windowtitle.schemas.in.h:14
+msgid "When enabled, the window title will not be displayed."
+msgstr "Ha engedélyezett, akkor a cím nem lesz megjelenítve."
+
+#: ../window-title/windowtitle.schemas.in.h:15
+msgid "Show tooltips over title and icon"
+msgstr "Buboréksúgó megjelenítése a cím és az ikon felett"
+
+#: ../window-title/windowtitle.schemas.in.h:16
+msgid ""
+"When enabled, a tooltip carrying the name of the currently active window "
+"will be shown."
+msgstr ""
+"Ha engedélyezett, akkor a jelenleg aktív ablak nevét tartalmazó buboréksúgó "
+"lesz megjelenítve."
+
+#: ../window-title/windowtitle.schemas.in.h:17
+msgid "Minimal title size"
+msgstr "Minimális címméret"
+
+#: ../window-title/windowtitle.schemas.in.h:18
+msgid ""
+"This size is used when the applet is not expanded or otherwise to determine "
+"the minimal size the title label can be shrunk to. The value represents the "
+"amount of pixels either in width or height, depending on the panel "
+"orientation."
+msgstr ""
+"Ez a méret kerül használatra, ha a kisalkalmazás nincs kinyújtva, vagy ez "
+"adja meg a legkisebb méretet, ami alá a cím nem zsugorítható. Az érték a "
+"pixelek mennyiségét határozza meg szélességben vagy magasságban, a panel "
+"tájolásától függően."
+
+#: ../window-title/windowtitle.schemas.in.h:19
+msgid "Use a custom style."
+msgstr "Egyéni stílus használata."
+
+#: ../window-title/windowtitle.schemas.in.h:20
+msgid ""
+"When enabled, custom font style and color will be used. When disabled, "
+"system theme defaults will be used."
+msgstr ""
+"Ha engedélyezett, akkor egyéni betűstílus és szín lesz használva. Ha "
+"letiltott, akkor a rendszertéma alapértelmezései lesznek használva."
+
+#: ../window-title/windowtitle.schemas.in.h:21
+msgid "Show the window action menu on right click."
+msgstr "Az ablak műveleti menüjének megjelenítése jobb kattintásra."
+
+#: ../window-title/windowtitle.schemas.in.h:22
+msgid ""
+"Will cause the window action menu to appear when the title is right-clicked. "
+"This experimental feature is still under development! Warning! In current "
+"feature state you will be unable to access the applet action menu via title-"
+"right click when this option is enabled! You may still do so by right-"
+"clicking the icon if it is not hidden."
+msgstr ""
+"Azt okozza, hogy megjelenik az ablak műveleti menüje, ha jobb gombbal "
+"kattint a címre. Ez a kísérleti funkció még fejlesztés alatt van. Figyelem! "
+"A funkció jelenlegi állapotában nem fogja elérni a kisalkalmazás műveleti "
+"menüjét jobb kattintásra, ha a beállítást bekapcsolja. Viszont az ikonra "
+"kattintva jobb gombbal megteheti, ha az nincs elrejtve."
+
+#: ../window-title/windowtitle.schemas.in.h:23
+msgid "Active title font."
+msgstr "Aktív cím betűkészlete."
+
+#: ../window-title/windowtitle.schemas.in.h:24
+msgid "Font name and size for the active window state."
+msgstr "A betűkészlet neve és mérete az aktív ablakállapotnál."
+
+#: ../window-title/windowtitle.schemas.in.h:25
+msgid "Inactive title font."
+msgstr "Inaktív cím betűkészlete."
+
+#: ../window-title/windowtitle.schemas.in.h:26
+msgid "Font name and size for the inactive window state."
+msgstr "A betűkészlet neve és mérete az inaktív ablakállapotnál."
+
+#: ../window-title/windowtitle.schemas.in.h:27
+msgid "Active title foreground color."
+msgstr "Aktív cím előtérszíne."
+
+#: ../window-title/windowtitle.schemas.in.h:28
+msgid "Title foreground color in hex format for the active window state."
+msgstr "A cím előtérszíne hexa formátumban az aktív ablakállapotnál."
+
+#: ../window-title/windowtitle.schemas.in.h:29
+msgid "Inactive title foreground color."
+msgstr "Inaktív cím előtérszíne."
+
+#: ../window-title/windowtitle.schemas.in.h:30
+msgid "Title foreground color in hex format for the inactive window state."
+msgstr "A cím előtérszíne hexa formátumban az inaktív ablakállapotnál."
+
+#: ../window-title/windowtitle.ui.h:1
+msgid "Window Title Preferences"
+msgstr "Ablakcím beállításai"
+
+#: ../window-title/windowtitle.ui.h:2
+msgid "Swap icon/title _order"
+msgstr "Ikon/cím _sorrend felcserélése"
+
+#: ../window-title/windowtitle.ui.h:3
+msgid "Expand applet"
+msgstr "Kisalkalmazás nyújtása"
+
+#: ../window-title/windowtitle.ui.h:4
+msgid ""
+"Disabled until GTK+ developers fix the various bugs.\n"
+"You may change it using gconf-editor, but then you also need to set a fixed "
+"size."
+msgstr ""
+"Letiltva, amíg a GTK+ fejlesztői nem javítanak különböző hibákat.\n"
+"Megváltoztathatja a gconf-editor használatával, de akkor fix méretet kell "
+"megadnia."
+
+#: ../window-title/windowtitle.ui.h:7
+msgid "Hide _icon"
+msgstr "_Ikon elrejtése"
+
+#: ../window-title/windowtitle.ui.h:8
+msgid "Icon"
+msgstr "Ikon"
+
+#: ../window-title/windowtitle.ui.h:9
+msgid "Hide title"
+msgstr "Cím elrejtése"
+
+#: ../window-title/windowtitle.ui.h:10
+msgid "Alignment:"
+msgstr "Igazítás:"
+
+#: ../window-title/windowtitle.ui.h:11
+msgid ""
+"Set the title alignment.\n"
+"Note: only has effect when \"Expand applet\" is active."
+msgstr ""
+"A cím igazításának megadása.\n"
+"Megjegyzés: ez csak akkor fejti ki hatását, ha a „Kisalkalmazás nyújtása” "
+"aktív."
+
+#: ../window-title/windowtitle.ui.h:13
+msgid "Custom _style"
+msgstr "Egyéni _stílus"
+
+#: ../window-title/windowtitle.ui.h:14
+msgid "Font color:"
+msgstr "Betűszín:"
+
+#: ../window-title/windowtitle.ui.h:15
+msgid "Font style:"
+msgstr "Betűstílus:"
+
+#: ../window-title/windowtitle.ui.h:16
+msgid "Active"
+msgstr "Aktív"
+
+#: ../window-title/windowtitle.ui.h:17
+msgid "Inactive"
+msgstr "Inaktív"
+
+#: ../window-title/windowtitle.ui.h:21
+msgid "_Hide when no active maximized windows"
+msgstr "_Elrejtés, ha nincs aktív maximalizált ablak"
+
+#: ../window-title/windowtitle.ui.h:22
+msgid "Show window _action menu on right-click"
+msgstr "Az ablak _műveleti menüjének megjelenítése jobb kattintásra"
+
+#: ../window-title/windowtitle.ui.h:23
+msgid ""
+"Will cause the window action menu to appear when the title is right-"
+"clicked.\n"
+"This experimental feature is still under development!\n"
+"Warning! In current feature state you will be unable to access the applet "
+"action menu via title-right click when this option is enabled! You may still "
+"do so by right-clicking the icon if it is not hidden. You may always change "
+"this setting from gconf-editor."
+msgstr ""
+"Azt okozza, hogy megjelenik az ablak műveleti menüje, ha jobb gombbal "
+"kattint a címre.\n"
+"Ez a kísérleti funkció még fejlesztés alatt van.\n"
+"Figyelem! A funkció jelenlegi állapotában nem fogja elérni a kisalkalmazás "
+"műveleti menüjét jobb kattintásra, ha a beállítást bekapcsolja. Viszont az "
+"ikonra kattintva jobb gombbal megteheti, ha az nincs elrejtve. A gconf-"
+"editorból mindig megváltoztathatja ezt a beállítást."
+
+#~ msgid "Frequency Scaling Unsupported"
+#~ msgstr "Az órajel változtatása nem támogatott"
+
+#~ msgid "CPU frequency scaling unsupported"
+#~ msgstr "A CPU órajelének változtatása nem támogatott"
+
+#~ msgid ""
+#~ "You will not be able to modify the frequency of your machine.  Your "
+#~ "machine may be misconfigured or not have hardware support for CPU "
+#~ "frequency scaling."
+#~ msgstr ""
+#~ "Nem lesz képes a gépének órajelét módosítani. Lehetséges, hogy a gépe "
+#~ "hibásan van beállítva vagy nem rendelkezik a CPU órajelének "
+#~ "változtatásához szükséges hardvertámogatással."
+
+#~ msgid "Netspeed"
+#~ msgstr "Hálózatsebesség kisalkalmazás"
+
+#~ msgid "Timer Applet"
+#~ msgstr "Időzítő kisalkalmazás"
+
+#~ msgid "Trash Applet"
+#~ msgstr "Kuka kisalkalmazás"
 
 #~ msgid "Close current window."
 #~ msgstr "A jelenlegi ablak bezárása."
@@ -3741,9 +4336,6 @@ msgstr "Ablak bezárása"
 
 #~ msgid "Failed to display help: %s"
 #~ msgstr "Nem sikerült megjeleníteni a súgót: %s"
-
-#~ msgid "Volume control for your GNOME Panel."
-#~ msgstr "Hangerőszabályzó a GNOME panelhez."
 
 #~ msgid "Using GStreamer 0.10."
 #~ msgstr "A GStreamer 0.10 használatával."
@@ -3839,9 +4431,6 @@ msgstr "Ablak bezárása"
 
 #~ msgid "Foreground color, green component"
 #~ msgstr "Előtérszín, zöld összetevő"
-
-#~ msgid "The green component of the foreground color."
-#~ msgstr "Az előtérszín zöld összetevője."
 
 #~ msgid "Foreground color, blue component"
 #~ msgstr "Előtérszín, kék összetevő"
