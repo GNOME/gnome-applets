@@ -674,7 +674,7 @@ void stickynotes_remove(StickyNote *note)
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder,
-	                               GRESOURCE "/sticky-notes-delete.ui", NULL);
+	                               GRESOURCE "sticky-notes-delete.ui", NULL);
 
 	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_dialog"));
 
