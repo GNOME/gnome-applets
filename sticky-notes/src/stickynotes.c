@@ -32,7 +32,6 @@
 #define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
-#define XML_PATH	"/.config/gnome-applets/stickynotes"
 #define STICKYNOTES_ICON_SIZE 8
 
 static gboolean save_scheduled = FALSE;
@@ -797,12 +796,20 @@ stickynotes_save_now (void)
 		g_free(body);
 	}
 
-	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
-				XML_PATH);
-		xmlSaveFormatFile(file, doc, 1);
-		g_free(file);
+		const gchar *dir;
+		gchar *path;
+		gchar *file;
+
+		dir = g_get_user_config_dir ();
+		path = g_build_filename (dir, "gnome-applets", "sticky-notes", NULL);
+		file = g_build_filename (path, "sticky-notes.xml", NULL);
+
+		g_mkdir_with_parents (path, 0700);
+		g_free (path);
+
+		xmlSaveFormatFile (file, doc, 1);
+		g_free (file);
 	}
 
 	xmlFreeDoc(doc);
@@ -833,12 +840,24 @@ stickynotes_load (GdkScreen *screen)
 	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
 	GList *new_nodes; /* Lists of xmlNodePtr's */
 	int x, y, w, h;
-	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
+
 	{
-		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
-				XML_PATH);
-		doc = xmlParseFile(file);
-		g_free(file);
+		const gchar *dir;
+		gchar *file;
+
+		dir = g_get_user_config_dir ();
+		file = g_build_filename (dir, "gnome-applets", "sticky-notes",
+		                         "sticky-notes.xml", NULL);
+
+		if (!g_file_test (file, G_FILE_TEST_EXISTS))
+		{
+			g_free (file);
+			file = g_build_filename (dir, "gnome-applets",
+			                         "stickynotes", NULL);
+		}
+
+		doc = xmlParseFile (file);
+		g_free (file);
 	}
 
 	/* If the XML file does not exist, create a blank one */
