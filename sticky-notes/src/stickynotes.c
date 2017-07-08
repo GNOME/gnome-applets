@@ -50,7 +50,6 @@ static void
 setup_note_menu (StickyNote *note)
 {
 	GSimpleActionGroup *action_group;
-	gchar *ui_file;
 	GtkBuilder *builder;
 	GMenu *gmenu;
 	const gchar *resource_name;
