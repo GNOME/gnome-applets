@@ -245,7 +245,7 @@ AC_SUBST(LIBGWEATHER_LIBS)
 AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
  dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
-TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-1.0"
+TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-2.0"
 
 PKG_CHECK_MODULES(TRACKER_SEARCH_BAR, [$TRACKER_SEARCH_BAR_REQUIRED],
                   [have_tracker_search_bar=yes],
