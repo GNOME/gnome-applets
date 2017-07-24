@@ -53,6 +53,8 @@ typedef struct
 
 	gchar *name;
 
+	GtkCssProvider *css;
+
 	gchar *color;			/* Note color */
 	gchar *font_color;		/* Font color */
 	gchar *font;			/* Note font */

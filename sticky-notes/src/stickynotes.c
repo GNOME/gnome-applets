@@ -243,6 +243,11 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	note->name = g_strdup_printf ("sticky-note-%d", id++);
 	gtk_widget_set_name (note->w_window, note->name);
 
+	note->css = gtk_css_provider_new ();
+	gtk_style_context_add_provider_for_screen (screen,
+	                                           GTK_STYLE_PROVIDER (note->css),
+	                                           GTK_STYLE_PROVIDER_PRIORITY_USER + 100);
+
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
 	stickynote_set_color(note, NULL, NULL, TRUE);
@@ -335,6 +340,8 @@ void stickynote_free(StickyNote *note)
 	gtk_widget_destroy(note->w_window);
 
 	g_free (note->name);
+
+	g_clear_object (&note->css);
 
 	g_free(note->color);
 	g_free(note->font_color);
@@ -439,6 +446,262 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	}
 }
 
+static void
+append_background_color (StickyNote *note,
+                         GSettings  *settings,
+                         GString    *string)
+{
+  gchar *color;
+
+  color = NULL;
+
+  if (!note->color || g_settings_get_boolean (settings, KEY_FORCE_DEFAULT))
+    {
+      if (!g_settings_get_boolean (settings, KEY_USE_SYSTEM_COLOR))
+        color = g_settings_get_string (settings, KEY_DEFAULT_COLOR);
+    }
+  else
+    {
+      color = g_strdup (note->color);
+    }
+
+  if (color == NULL)
+    return;
+
+  {
+    GdkRGBA rgba;
+    gchar *tmp;
+
+    gdk_rgba_parse (&rgba, color);
+
+    /* get darker color from the original */
+    rgba.red = rgba.red * 9 / 10;
+    rgba.green = rgba.green * 9 / 10;
+    rgba.blue = rgba.blue * 9 / 10;
+
+    tmp = gdk_rgba_to_string (&rgba);
+
+    g_string_append_printf (string, "#%s,\n", note->name);
+    g_string_append_printf (string, "#%s:backdrop {\n", note->name);
+    g_string_append_printf (string, "\tbackground: %s;\n", tmp);
+    g_string_append (string, "}\n");
+
+    g_free (tmp);
+  }
+
+  g_string_append_printf (string, "#%s textview text {\n", note->name);
+  g_string_append_printf (string, "\tbackground: %s;\n", color);
+  g_string_append (string, "}\n");
+
+  g_free (color);
+}
+
+static void
+append_font_color (StickyNote *note,
+                   GSettings  *settings,
+                   GString    *string)
+{
+  gchar *font_color;
+
+  font_color = NULL;
+
+  if (!note->font_color || g_settings_get_boolean (settings, KEY_FORCE_DEFAULT))
+    {
+      if (!g_settings_get_boolean (settings, KEY_USE_SYSTEM_COLOR))
+        font_color = g_settings_get_string (settings, KEY_DEFAULT_FONT_COLOR);
+    }
+  else
+    {
+      font_color = g_strdup (note->font_color);
+    }
+
+  if (font_color == NULL)
+    return;
+
+  g_string_append_printf (string, "#%s .title,\n", note->name);
+  g_string_append_printf (string, "#%s .title:backdrop,\n", note->name);
+  g_string_append_printf (string, "#%s textview text,\n", note->name);
+  g_string_append_printf (string, "#%s textview text:backdrop {\n", note->name);
+  g_string_append_printf (string, "\tcolor: %s;\n", font_color);
+  g_string_append (string, "}\n");
+
+  g_free (font_color);
+}
+
+static const gchar *
+get_font_style_from_pango (PangoFontDescription *font_desc)
+{
+  PangoStyle style;
+  const gchar *font_style;
+
+  style = pango_font_description_get_style (font_desc);
+
+  switch (style)
+    {
+      case PANGO_STYLE_OBLIQUE:
+        font_style = "oblique";
+        break;
+
+      case PANGO_STYLE_ITALIC:
+        font_style = "italic";
+        break;
+
+      case PANGO_STYLE_NORMAL:
+      default:
+        font_style = "normal";
+        break;
+    }
+
+  return font_style;
+}
+
+static const gchar *
+get_font_weight_from_pango (PangoFontDescription *font_desc)
+{
+  PangoWeight weight;
+  const gchar *font_weight;
+
+  weight = pango_font_description_get_weight (font_desc);
+
+  switch (weight)
+    {
+      case PANGO_WEIGHT_THIN:
+        font_weight = "100";
+        break;
+
+      case PANGO_WEIGHT_ULTRALIGHT:
+        font_weight = "200";
+        break;
+
+      case PANGO_WEIGHT_LIGHT:
+      case PANGO_WEIGHT_SEMILIGHT:
+        font_weight = "300";
+        break;
+
+      case PANGO_WEIGHT_MEDIUM:
+        font_weight = "500";
+        break;
+
+      case PANGO_WEIGHT_SEMIBOLD:
+        font_weight = "600";
+        break;
+
+      case PANGO_WEIGHT_BOLD:
+        font_weight = "700";
+        break;
+
+      case PANGO_WEIGHT_ULTRABOLD:
+        font_weight = "800";
+        break;
+
+      case PANGO_WEIGHT_HEAVY:
+      case PANGO_WEIGHT_ULTRAHEAVY:
+        font_weight = "900";
+        break;
+
+      case PANGO_WEIGHT_NORMAL:
+      case PANGO_WEIGHT_BOOK:
+      default:
+        font_weight = "400";
+        break;
+    }
+
+  return font_weight;
+}
+
+static const gchar *
+get_font_variant_from (PangoFontDescription *font_desc)
+{
+  PangoVariant variant;
+  const gchar *font_variant;
+
+  variant = pango_font_description_get_variant (font_desc);
+
+  switch (variant)
+    {
+      case PANGO_VARIANT_SMALL_CAPS:
+        font_variant = "small-caps";
+        break;
+
+      case PANGO_VARIANT_NORMAL:
+      default:
+        font_variant = "normal";
+        break;
+    }
+
+  return font_variant;
+}
+
+static void
+append_font (StickyNote *note,
+             GSettings  *settings,
+             GString    *string)
+{
+  gchar *font;
+  PangoFontDescription *font_desc;
+  const gchar *font_family;
+  gdouble font_size;
+  const gchar *font_style;
+  const gchar *font_weight;
+  const gchar *font_variant;
+
+  font = NULL;
+
+  if (!note->font || g_settings_get_boolean (settings, KEY_FORCE_DEFAULT))
+    {
+      if (!g_settings_get_boolean (settings, KEY_USE_SYSTEM_FONT))
+        font = g_settings_get_string (settings, KEY_DEFAULT_FONT);
+    }
+  else
+    {
+      font = g_strdup (note->font);
+    }
+
+  if (font == NULL)
+    return;
+
+  font_desc = pango_font_description_from_string (font);
+  g_free (font);
+
+  font_family = pango_font_description_get_family (font_desc);
+  font_size = (gdouble) pango_font_description_get_size (font_desc) / PANGO_SCALE;
+  font_style = get_font_style_from_pango (font_desc);
+  font_weight = get_font_weight_from_pango (font_desc);
+  font_variant = get_font_variant_from (font_desc);
+
+  g_string_append_printf (string, "#%s .title,\n", note->name);
+  g_string_append_printf (string, "#%s .title:backdrop,\n", note->name);
+  g_string_append_printf (string, "#%s textview,\n", note->name);
+  g_string_append_printf (string, "#%s textview:backdrop,\n", note->name);
+  g_string_append_printf (string, "#%s textview text,\n", note->name);
+  g_string_append_printf (string, "#%s textview text:backdrop {\n", note->name);
+  g_string_append_printf (string, "\tfont-family: %s;\n", font_family);
+  g_string_append_printf (string, "\tfont-size: %fpx;\n", font_size);
+  g_string_append_printf (string, "\tfont-style: %s;\n", font_style);
+  g_string_append_printf (string, "\tfont-weight: %s;\n", font_weight);
+  g_string_append_printf (string, "\tfont-variant: %s;\n", font_variant);
+  g_string_append (string, "}\n");
+
+  pango_font_description_free (font_desc);
+}
+
+static void
+update_css (StickyNote *note)
+{
+  GString *string;
+  gchar *css;
+
+  string = g_string_new (NULL);
+
+  append_background_color (note, stickynotes->settings, string);
+  append_font_color (note, stickynotes->settings, string);
+  append_font (note, stickynotes->settings, string);
+
+  css = g_string_free (string, FALSE);
+  gtk_css_provider_load_from_data (note->css, css, -1, NULL);
+  g_free (css);
+}
+
 /* Set the sticky note color */
 void
 stickynote_set_color (StickyNote  *note,
@@ -446,9 +709,6 @@ stickynote_set_color (StickyNote  *note,
 		      const gchar *font_color_str,
 		      gboolean     save)
 {
-	char *color_str_actual, *font_color_str_actual;
-	gboolean force_default, use_system_color;
-
 	if (save) {
 		if (note->color)
 			g_free (note->color);
@@ -470,89 +730,13 @@ stickynote_set_color (StickyNote  *note,
 				note->color != NULL);
 	}
 
-	force_default = g_settings_get_boolean (stickynotes->settings, KEY_FORCE_DEFAULT);
-	use_system_color = g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_COLOR);
-
-	/* If "force_default" is enabled or color_str is NULL,
-	 * then we use the default color instead of color_str. */
-	if (!color_str || force_default)
-	{
-		if (use_system_color)
-			color_str_actual = NULL;
-		else
-			color_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_COLOR);
-	}
-	else
-		color_str_actual = g_strdup (color_str);
-
-	if (!font_color_str || force_default)
-	{
-		if (use_system_color)
-			font_color_str_actual = NULL;
-		else
-			font_color_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR);
-	}
-	else
-		font_color_str_actual = g_strdup (font_color_str);
-
-	/* Do not use custom colors if "use_system_color" is enabled */
-	if (color_str_actual) {
-		/* Custom colors */
-		GdkRGBA colors[4];
-		gint i;
-
-		for (i = 0; i <= 3; i++)
-		{
-			gdk_rgba_parse (&colors[i], color_str_actual);
-
-			colors[i].red = (colors[i].red * (10 - i)) / 10;
-			colors[i].green = (colors[i].green * (10 - i)) / 10;
-			colors[i].blue = (colors[i].blue * (10 - i)) / 10;
-		}
-
-		gtk_widget_override_background_color (note->w_window, GTK_STATE_NORMAL, &colors[0]);
-		gtk_widget_override_background_color (note->w_body, GTK_STATE_NORMAL, &colors[0]);
-		gtk_widget_override_background_color (note->w_lock, GTK_STATE_NORMAL, &colors[0]);
-		gtk_widget_override_background_color (note->w_close, GTK_STATE_NORMAL, &colors[0]);
-		gtk_widget_override_background_color (note->w_resize_se, GTK_STATE_NORMAL, &colors[0]);
-		gtk_widget_override_background_color (note->w_resize_sw, GTK_STATE_NORMAL, &colors[0]);
-	} else {
-		gtk_widget_override_background_color (note->w_window, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_background_color (note->w_body, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_background_color (note->w_lock, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_background_color (note->w_close, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_background_color (note->w_resize_se, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_background_color (note->w_resize_sw, GTK_STATE_NORMAL, NULL);
-	}
-
-	if (font_color_str_actual)
-	{
-		GdkRGBA color;
-
-		gdk_rgba_parse (&color, font_color_str_actual);
-
-		gtk_widget_override_color (note->w_window, GTK_STATE_NORMAL, &color);
-		gtk_widget_override_color (note->w_body, GTK_STATE_NORMAL, &color);
-	}
-	else
-	{
-		gtk_widget_override_color (note->w_window, GTK_STATE_NORMAL, NULL);
-		gtk_widget_override_color (note->w_body, GTK_STATE_NORMAL, NULL);
-	}
-
-	if (color_str_actual)
-		g_free (color_str_actual);
-	if (font_color_str_actual)
-		g_free (font_color_str_actual);
+	update_css (note);
 }
 
 /* Set the sticky note font */
 void
 stickynote_set_font (StickyNote *note, const gchar *font_str, gboolean save)
 {
-	PangoFontDescription *font_desc;
-	gchar *font_str_actual;
-
 	if (save) {
 		g_free (note->font);
 		note->font = font_str ? g_strdup (font_str) : NULL;
@@ -561,28 +745,7 @@ stickynote_set_font (StickyNote *note, const gchar *font_str, gboolean save)
 		gtk_widget_set_sensitive(note->w_font, note->font != NULL);
 	}
 
-	/* If "force_default" is enabled or font_str is NULL,
-	 * then we use the default font instead of font_str. */
-	if (!font_str || g_settings_get_boolean (stickynotes->settings, KEY_FORCE_DEFAULT))
-	{
-		if (g_settings_get_boolean (stickynotes->settings, KEY_USE_SYSTEM_FONT))
-			font_str_actual = NULL;
-		else
-			font_str_actual = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT);
-	}
-	else
-		font_str_actual = g_strdup (font_str);
-
-	/* Do not use custom fonts if "use_system_font" is enabled */
-	font_desc = font_str_actual ?
-		pango_font_description_from_string (font_str_actual): NULL;
-
-	/* Apply the style to the widgets */
-	gtk_widget_override_font (note->w_window, font_desc);
-	gtk_widget_override_font (note->w_body, font_desc);
-
-	g_free (font_str_actual);
-	pango_font_description_free (font_desc);
+	update_css (note);
 }
 
 /* Lock/Unlock a sticky note from editing */
