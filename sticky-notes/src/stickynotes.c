@@ -135,6 +135,7 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 {
 	StickyNote *note;
 	GtkBuilder *builder;
+	static guint id = 0;
 
 	note = g_new (StickyNote, 1);
 
@@ -239,6 +240,9 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	gtk_widget_show(note->w_close);
 	gtk_widget_show(GTK_WIDGET (gtk_builder_get_object (builder, "resize_bar")));
 
+	note->name = g_strdup_printf ("sticky-note-%d", id++);
+	gtk_widget_set_name (note->w_window, note->name);
+
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
 	stickynote_set_color(note, NULL, NULL, TRUE);
@@ -329,6 +333,8 @@ void stickynote_free(StickyNote *note)
 	gtk_widget_destroy(note->w_properties);
 	gtk_widget_destroy(note->w_menu);
 	gtk_widget_destroy(note->w_window);
+
+	g_free (note->name);
 
 	g_free(note->color);
 	g_free(note->font_color);

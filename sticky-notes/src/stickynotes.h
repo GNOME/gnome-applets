@@ -51,6 +51,8 @@ typedef struct
 	GtkImage *img_resize_se;	/* SE resize image */
 	GtkImage *img_resize_sw;	/* SW resize image */
 
+	gchar *name;
+
 	gchar *color;			/* Note color */
 	gchar *font_color;		/* Font color */
 	gchar *font;			/* Note font */
