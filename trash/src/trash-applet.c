@@ -466,12 +466,16 @@ confirm_delete_immediately (GtkWidget *parent_view,
   if (all)
     {
       prompt = _("Cannot move items to trash, do you want to delete them immediately?");
-      detail = g_strdup_printf ("None of the %d selected items can be moved to the Trash", num_files);
+      detail = g_strdub_printf (ngettext ("The selected item cannot be moved to the trash",
+                                          "None of the %d selected items can be moved to the Trash",
+                                          num_files), num_files);
     }
   else
     {
       prompt = _("Cannot move some items to trash, do you want to delete these immediately?");
-      detail = g_strdup_printf ("%d of the selected items cannot be moved to the Trash", num_files);
+      detail = g_strdub_printf (ngettext ("The selected item cannot be moved to the Trash",
+                                          "%d of the selected items cannot be moved to the Trash",
+                                          num_files) , num_files);
     }
 
   str = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
