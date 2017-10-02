@@ -10,10 +10,17 @@ $(applet_in_files): $(applet_in_files).in Makefile
 	-e "s|\@VERSION\@|$(PACKAGE_VERSION)|" \
 	$< > $@
 
-gsettings_file = org.gnome.gnome-applets.window-picker-applet.gschema.xml
-gsettings_SCHEMAS = $(gsettings_file)
+gsettings_schemas_in_in = \
+	org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in \
+	$(NULL)
 
 @INTLTOOL_XML_NOMERGE_RULE@
+
+gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
+gsettings_schemas = $(gsettings_schemas_in:.xml.in=.xml)
+
+%.gschema.xml.in: %.gschema.xml.in.in Makefile
+	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
 
 $(gsettings_file).in: $(gsettings_file).in.in
 	sed \
@@ -26,12 +33,13 @@ $(gsettings_file).in: $(gsettings_file).in.in
 
 EXTRA_DIST = \
 	org.gnome.applets.WindowPicker.panel-applet.in.in \
-	$(gsettings_file).in.in
+	$(gsettings_schemas_in_in) \
+	$(NULL)
 
 CLEANFILES = $(applet_DATA) \
 	$(applet_DATA).in \
-	$(gsettings_file).in \
-	$(gsettings_file) \
+	$(gsettings_schemas_in) \
+	$(gsettings_schemas) \
 	*.gschema.valid
 
 -include $(top_srcdir)/git.mk
