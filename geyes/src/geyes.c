@@ -239,9 +239,7 @@ setup_eyes (EyesApplet *eyes_applet)
 			gtk_widget_set_halign (eyes_applet->eyes[i], GTK_ALIGN_CENTER);
 			gtk_widget_set_valign (eyes_applet->eyes[i], GTK_ALIGN_CENTER);
 		}
-		
-                gtk_widget_realize (eyes_applet->eyes[i]);
-		
+
 		eyes_applet->pointer_last_x[i] = G_MAXINT;
 		eyes_applet->pointer_last_y[i] = G_MAXINT;
 		
