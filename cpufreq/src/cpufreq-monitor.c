@@ -65,6 +65,10 @@ static guint signals[N_SIGNALS];
 
 G_DEFINE_TYPE (CPUFreqMonitor, cpufreq_monitor, G_TYPE_OBJECT)
 
+#ifdef HAVE_IS_CPU_ONLINE
+extern int cpupower_is_cpu_online (unsigned int cpu);
+#endif
+
 static gboolean
 monitor_run (CPUFreqMonitor *monitor)
 {
@@ -76,7 +80,11 @@ monitor_run (CPUFreqMonitor *monitor)
   if (!policy)
     {
       /* Check whether it failed because cpu is not online. */
+#ifdef HAVE_IS_CPU_ONLINE
+      if (cpupower_is_cpu_online (monitor->cpu) != 1)
+#else
       if (!cpufreq_cpu_exists (monitor->cpu))
+#endif
         {
           monitor->online = FALSE;
           return TRUE;
