@@ -43,7 +43,6 @@
 #define NEVER_SENSITIVE		"never_sensitive"
 
 struct _GWeatherPrefPrivate {
-	GtkWidget *basic_detailed_btn;
 	GtkWidget *basic_temp_combo;
 	GtkWidget *basic_speed_combo;
 	GtkWidget *basic_dist_combo;
