@@ -329,7 +329,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GAction *action;
     gchar          *ui_path;
     AtkObject      *atk_obj;
-    GWeatherForecastType type;
     GNetworkMonitor*monitor;
 
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
@@ -376,10 +375,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     g_object_unref (action_group);
 
-    type = g_settings_get_boolean (gw_applet->applet_settings, "detailed") ?
-                                   GWEATHER_FORECAST_ZONE : GWEATHER_FORECAST_STATE;
-
-    gw_applet->gweather_info = gweather_info_new(NULL, type);
+    gw_applet->gweather_info = gweather_info_new (NULL);
     g_signal_connect (gw_applet->gweather_info, "updated",
                       G_CALLBACK (update_finish), gw_applet);
 
