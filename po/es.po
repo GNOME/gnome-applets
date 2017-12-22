@@ -25,8 +25,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-28 21:24+0000\n"
-"PO-Revision-Date: 2017-11-17 09:56+0100\n"
+"POT-Creation-Date: 2017-12-07 14:12+0000\n"
+"PO-Revision-Date: 2017-12-22 10:01+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -481,7 +481,7 @@ msgid "N/A"
 msgstr "N/D"
 
 #: ../battstat/src/battstat_applet.c:1143 ../drivemount/src/drivemount.c:126
-#: ../geyes/src/geyes.c:332 ../geyes/src/themes.c:231
+#: ../geyes/src/geyes.c:330 ../geyes/src/themes.c:231
 #: ../gweather/src/gweather-applet.c:72 ../gweather/src/gweather-pref.c:677
 #: ../mini-commander/src/preferences.c:259
 #: ../sticky-notes/src/stickynotes_applet_callbacks.c:362
@@ -580,11 +580,6 @@ msgstr ""
 
 #: ../brightness/src/brightness-applet.c:655
 #: ../inhibit/src/inhibit-applet.c:303
-#| msgid ""
-#| "You should have received a copy of the GNU General Public License\n"
-#| "along with this program; if not, write to the Free Software\n"
-#| "Foundation, Inc, 51 Franklin Street, Fifth Floor, Boston, MA\n"
-#| "02110-1301, USA."
 msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program; if not, write to the Free Software\n"
@@ -669,7 +664,7 @@ msgstr ""
 
 #: ../charpick/src/properties.c:73
 #: ../invest-applet/invest/invest-preferences.c:324
-#: ../modem-lights/src/modem-applet.c:913 ../trash/src/trash-applet.c:496
+#: ../modem-lights/src/modem-applet.c:913 ../trash/src/trash-applet.c:500
 #: ../trash/src/trash-empty.c:341
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -731,7 +726,7 @@ msgstr "Botón «Editar»"
 msgid "Click to edit the selected palette"
 msgstr "Pulse para editar la paleta seleccionada"
 
-#: ../charpick/src/properties.c:458 ../trash/src/trash-applet.c:498
+#: ../charpick/src/properties.c:458 ../trash/src/trash-applet.c:502
 msgid "_Delete"
 msgstr "_Eliminar"
 
@@ -1005,7 +1000,7 @@ msgid "Geyes Applet Factory"
 msgstr "Fábrica de la miniaplicación Geyes"
 
 #: ../geyes/org.gnome.applets.GeyesApplet.panel-applet.in.in.h:2
-#: ../geyes/src/geyes.c:401 ../geyes/src/geyes.c:403
+#: ../geyes/src/geyes.c:399 ../geyes/src/geyes.c:401
 msgid "Eyes"
 msgstr "Ojos"
 
@@ -1022,7 +1017,7 @@ msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr ""
 "Un juego de ojos para el panel de GNOME. Siguen el movimiento del ratón."
 
-#: ../geyes/src/geyes.c:404
+#: ../geyes/src/geyes.c:402
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Los ojos miran en la dirección del puntero del ratón"
 
@@ -1873,7 +1868,6 @@ msgstr "Comisión"
 #.
 #: ../invest-applet/invest/invest-quotes.c:179
 #, c-format
-#| msgid "Average change: %s"
 msgid "Average change: %+.2f%%"
 msgstr "Cambio promedio: %+.2f%%"
 
@@ -1885,10 +1879,10 @@ msgstr "Cambio promedio: %+.2f%%"
 #. * is the percentage of the change, formatted using user's locale.
 #.
 #: ../invest-applet/invest/invest-quotes.c:202
-#, fuzzy, c-format
+#, c-format
 #| msgid "Positions balance: %s %s (%s)"
 msgid "Positions balance: %'+.2f %s (%'+.2f%%)"
-msgstr "Balance de las posiciones: %s %s (%s)"
+msgstr "Balance de las posiciones: %'+.2f %s (%'+.2f%%)"
 
 #: ../invest-applet/invest/invest-quotes.c:209
 #, c-format
@@ -3134,11 +3128,11 @@ msgstr "B_loquear las notas"
 msgid "_Delete Notes"
 msgstr "_Borrar las notas"
 
-#: ../sticky-notes/src/stickynotes.c:596
+#: ../sticky-notes/src/stickynotes.c:765
 msgid "This note is locked."
 msgstr "Esta nota está bloqueada."
 
-#: ../sticky-notes/src/stickynotes.c:600
+#: ../sticky-notes/src/stickynotes.c:769
 msgid "This note is unlocked."
 msgstr "Esta nota está desbloqueada."
 
@@ -3354,14 +3348,13 @@ msgid "Duration of timer in seconds"
 msgstr "Duración del temporizador, en milisegundos"
 
 #: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:4
-#, fuzzy
 #| msgid "Show notifications for critical weather conditions"
 msgid "Show notification popup when timer finish"
-msgstr "Mostrar notificaciones para condiciones meteorológicas críticas"
+msgstr "Mostrar una notificación emergente cuando el temporizador finalice"
 
 #: ../timer/src/org.gnome.gnome-applets.timer.gschema.xml.in.in.h:5
 msgid "Show dialog window when timer finish"
-msgstr ""
+msgstr "Mostrar ventana de diálogo cuando el temporizador finalice"
 
 #: ../timer/src/timer-applet.c:158
 msgid "Finished"
@@ -3369,7 +3362,7 @@ msgstr "Terminado"
 
 #: ../timer/src/timer-applet.c:165 ../timer/src/timer-applet.c:177
 msgid "Timer finished!"
-msgstr ""
+msgstr "Temporizador terminado."
 
 #: ../timer/src/timer-applet.c:321
 msgid "Timer Applet Preferences"
@@ -3489,7 +3482,6 @@ msgstr ""
 "Tracker"
 
 #: ../tracker-search-bar/src/tracker-search-bar.ui.h:3
-#, fuzzy
 #| msgid ""
 #| "Tracker is free software; you can redistribute it and/or modify it under "
 #| "the terms of the GNU General Public License as published by the Free "
@@ -3519,19 +3511,21 @@ msgid ""
 "Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA  02110-1301, USA."
 msgstr ""
-"Tracker es software libre, usted puede redistribuirlo y/o modificarlo en los "
-"términos de la Licencia pública general de GNU publicada por la Fundación "
-"Software Libre, en su versión 2 o cualquier versión posterior (a su "
-"criterio).\n"
+"Tracker es software libre libre, puede redistribuirlo y/o modificarlo\n"
+"bajo los términos de la Licencia Pública General de GNU tal como\n"
+"la publica la Free Software Foundation, tanto en su versión 2 de la\n"
+"Licencia como (a su elección) cualquier versión posterior.\n"
 "\n"
-"Tracker se distribuye con la esperanza de que le sea útil, pero con ninguna "
-"garantía de ello, ni siquiera la garantía implícita de comercialización o "
-"adecuación para un propósito particular. Vea la Licencia pública general de "
-"GNU para más información.\n"
+"Tracker se distribuye con la esperanza de que se sea útil,pero\n"
+"SIN NINGUNA GARANTÍA; sin incluso la garantía implícita de\n"
+"MERCANTILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR.\n"
+"Consulte la Licencia Pública General de GNU para obtener más detalles.\n"
 "\n"
-"Debe haber recibido una copia de la Licencia pública general GNU junto con "
-"Tracker; si no, puede escribir a la Fundación Software Libre, 51 Franklin "
-"Street,Fifth Floor, Boston, MA 02110-1301, USA."
+"Debería haber recibido una copia de la Licencia Pública General de GNU\n"
+"junto con este programa. Si no es así, escriba a la Free Software "
+"Foundation,\n"
+"Inc51 Franklin Street , Fifth Floor, Boston,\n"
+"MA 02110-1301, USA."
 
 #: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -3579,12 +3573,27 @@ msgstr ""
 "No se pueden mover los elementos a la papelera, ¿quiere borrarlos "
 "inmediatamente?"
 
-#: ../trash/src/trash-applet.c:473
+#: ../trash/src/trash-applet.c:469
+#, c-format
+msgid "The selected item cannot be moved to the trash"
+msgid_plural "None of the %d selected items can be moved to the Trash"
+msgstr[0] "No se puede mover el elemento seleccionado a la papelera"
+msgstr[1] ""
+"No se puede mover ninguno de los %d elementos seleccionados a la papelera"
+
+#: ../trash/src/trash-applet.c:475
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar estos "
 "inmediatamente?"
+
+#: ../trash/src/trash-applet.c:476
+#, c-format
+msgid "The selected item cannot be moved to the Trash"
+msgid_plural "%d of the selected items cannot be moved to the Trash"
+msgstr[0] "No se puede mover el elemento seleccionado a la papelera"
+msgstr[1] "No se pueden mover %d de los elementos seleccionados a la papelera"
 
 #. Translators: the %s in this string should be read as %d.
 #: ../trash/src/trash-empty.c:70
@@ -3638,7 +3647,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:3
 msgid "Layout of buttons."
-msgstr ""
+msgstr "Distribución de los botones."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:4
 msgid ""
@@ -3655,7 +3664,6 @@ msgid "Name of a folder located in windowapplets/themes/ or \"custom\"."
 msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:7
-#| msgid "Auto Completion"
 msgid "Button orientation"
 msgstr "Orientación del botón"
 
@@ -3680,7 +3688,7 @@ msgstr ""
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:11
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:3
 msgid "Only control maximized windows."
-msgstr ""
+msgstr "Controlar sólo ventanas maximizadas."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:12
 msgid ""
@@ -3690,7 +3698,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:13
 msgid "Reverse the buttons placement."
-msgstr ""
+msgstr "Invertir el orden de los botones."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:14
 msgid ""
@@ -3700,7 +3708,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:15
 msgid "Enable click effect."
-msgstr ""
+msgstr "Activar efecto al pulsar."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:16
 msgid ""
@@ -3710,7 +3718,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:17
 msgid "Enable hover effect."
-msgstr ""
+msgstr "Activar efecto al pasar por encima."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:18
 msgid ""
@@ -3720,7 +3728,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:19
 msgid "Show tooltips on buttons."
-msgstr ""
+msgstr "Mostrar consejos en los botones."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:20
 msgid ""
@@ -3729,23 +3737,19 @@ msgid ""
 msgstr ""
 
 #: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:1
-#, fuzzy
 #| msgid "Drive Mount Applet Factory"
 msgid "Window Buttons applet Factory"
-msgstr "Fábrica de la miniaplicación montador de discos"
+msgstr "Fábrica de la miniaplicación botones de la ventana"
 
 #: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:2
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window buttons for your GNOME Panel"
 msgstr "Botones de la ventana para su panel de GNOME"
 
 #: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:3
-#| msgid "Window Task Button"
 msgid "Window Buttons"
 msgstr "Botones de la ventana"
 
 #: ../window-buttons/windowbuttons.c:118
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window buttons for your GNOME Panel."
 msgstr "Botones de la ventana para su panel de GNOME."
 
@@ -3760,7 +3764,6 @@ msgstr "Desmaximizar"
 
 #: ../window-buttons/windowbuttons.c:245
 #: ../window-buttons/windowbuttons.ui.h:4
-#| msgid "Maximum"
 msgid "Maximize"
 msgstr "Maximizar"
 
@@ -3775,12 +3778,10 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: ../window-buttons/windowbuttons.ui.h:1
-#| msgid "Sticky Notes Preferences"
 msgid "Window Buttons Preferences"
 msgstr "Preferencias de los botones de la ventana"
 
 #: ../window-buttons/windowbuttons.ui.h:2
-#| msgid "Themes"
 msgid "Theme:"
 msgstr "Tema:"
 
@@ -3789,40 +3790,52 @@ msgid ""
 "Focused\n"
 "Normal"
 msgstr ""
+"Con foco\n"
+"Normal"
 
 #: ../window-buttons/windowbuttons.ui.h:9
 msgid ""
 "Focused\n"
 "Clicked"
 msgstr ""
+"Con foco\n"
+"Pulsado"
 
 #: ../window-buttons/windowbuttons.ui.h:11
 msgid ""
 "Focused\n"
 "Hover"
 msgstr ""
+"Con foco\n"
+"Por encima"
 
 #: ../window-buttons/windowbuttons.ui.h:13
 msgid ""
 "Unfocused\n"
 "Normal"
 msgstr ""
+"Sin foco\n"
+"Normal"
 
 #: ../window-buttons/windowbuttons.ui.h:15
 msgid ""
 "Unfocused\n"
 "Hover"
 msgstr ""
+"Sin foco\n"
+"Por encima"
 
 #: ../window-buttons/windowbuttons.ui.h:17
 msgid ""
 "Unfocused\n"
 "Clicked"
 msgstr ""
+"Sin foco\n"
+"Pulsada"
 
 #: ../window-buttons/windowbuttons.ui.h:20
 msgid "Use Metacity's button order"
-msgstr ""
+msgstr "Usar el orden de botones de Metacity"
 
 #: ../window-buttons/windowbuttons.ui.h:21
 msgid ""
@@ -3854,7 +3867,7 @@ msgstr "Recargar"
 
 #: ../window-buttons/windowbuttons.ui.h:31
 msgid "Click to reload buttons."
-msgstr ""
+msgstr "Pulse para recargar los botones."
 
 #: ../window-buttons/windowbuttons.ui.h:32
 msgid "Reverse order"
@@ -3862,7 +3875,7 @@ msgstr "Orden inverso"
 
 #: ../window-buttons/windowbuttons.ui.h:33
 msgid "<b>Button Order</b>"
-msgstr ""
+msgstr "<b>Orden de los botones</b>"
 
 #: ../window-buttons/windowbuttons.ui.h:34
 msgid "Automatic"
@@ -3901,7 +3914,6 @@ msgid "Maximize/Unmaximize Button"
 msgstr "Botón «Maximizar/Desmaximizar»"
 
 #: ../window-buttons/windowbuttons.ui.h:43
-#| msgid "Delete button"
 msgid "Close Button"
 msgstr "Botón «Cerrar»"
 
@@ -3930,33 +3942,74 @@ msgid "Enable _hover effect"
 msgstr ""
 
 #: ../window-buttons/windowbuttons.ui.h:50 ../window-title/windowtitle.ui.h:26
-#| msgid "Show bits"
 msgid "Show _tooltips"
 msgstr "Mostrar _consejos"
 
 #: ../window-buttons/windowbuttons.ui.h:51
-#, fuzzy
 #| msgid "<b>Appearance</b>"
 msgid "<b>Internal</b>"
-msgstr "<b>Apariencia</b>"
+msgstr "<b>Interno</b>"
 
 #: ../window-buttons/windowbuttons.ui.h:52
 msgid "Hide Compiz _decorations for maximized windows"
 msgstr ""
 
 #: ../window-buttons/windowbuttons.ui.h:53
-#, fuzzy
 #| msgid "<b>Appearance</b>"
 msgid "<b>External</b>"
-msgstr "<b>Apariencia</b>"
+msgstr "<b>Externo</b>"
+
+#: ../windowpicker/data/org.gnome.applets.WindowPicker.panel-applet.in.in.h:1
+#: ../windowpicker/src/wp-about-dialog.c:97
+msgid "Window Picker"
+msgstr "Selector de ventanas"
+
+#: ../windowpicker/data/org.gnome.applets.WindowPicker.panel-applet.in.in.h:2
+#, fuzzy
+#| msgid "Factory for Window Title"
+msgid "Factory for the window picker applet"
+msgstr "Fábrica para el título de la ventana"
+
+#: ../windowpicker/data/org.gnome.applets.WindowPicker.panel-applet.in.in.h:3
+msgid "Switch between open windows"
+msgstr ""
+
+#: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:1
+#, fuzzy
+#| msgid "Show windows from all workspaces"
+msgid "Show windows from all workspaces."
+msgstr "Mostrar las ventanas de todos los espacios de trabajo"
+
+#: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:2
+msgid ""
+"Show the home title and logout button in the window title if no window is "
+"selected and active (maximized)"
+msgstr ""
+
+#: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:3
+#, fuzzy
+#| msgid ""
+#| "Show the application title and close icon\n"
+#| "for the active window"
+msgid "Show the application title when an application is active and maximized"
+msgstr ""
+"Mostrar el título de la aplicación y cerrar\n"
+"el icono para la ventana activa"
+
+#: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:4
+msgid ""
+"All icons except the current active window icon are greyed out. Disable to "
+"have colored icons for all windows"
+msgstr ""
+
+#: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:5
+msgid ""
+"Whether the task list will expand automatically and use all available space."
+msgstr ""
 
 #: ../windowpicker/src/task-item.c:812
 msgid "Window Task Button"
 msgstr "Botón de la ventana de tareas"
-
-#: ../windowpicker/src/wp-about-dialog.c:97
-msgid "Window Picker"
-msgstr "Selector de ventanas"
 
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:3
 msgid "Show windows from all workspaces"
@@ -4031,7 +4084,6 @@ msgid ""
 msgstr ""
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:9
-#| msgid "Width of the applet"
 msgid "Expand the applet"
 msgstr "Expandir la miniaplicación"
 
@@ -4129,10 +4181,9 @@ msgstr ""
 "el icono para la ventana activa"
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:27
-#, fuzzy
 #| msgid "Foreground color"
 msgid "Active title foreground color."
-msgstr "Color de primer plano"
+msgstr "Color de primer plano del título activo."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:28
 msgid "Title foreground color in hex format for the active window state."
@@ -4155,27 +4206,22 @@ msgid "Window Title applet Factory"
 msgstr "Fábrica de la miniaplicación GWeather"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:2
-#| msgid "Factory for drive mount applet"
 msgid "Factory for Window Title"
 msgstr "Fábrica para el título de la ventana"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:3
-#| msgid "Window Picker"
 msgid "Window Title"
 msgstr "Título de la ventana"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:4
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window title for your GNOME Panel"
 msgstr "Título de la ventana para su panel de GNOME."
 
 #: ../window-title/windowtitle.c:105
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window title for your GNOME Panel."
 msgstr "Título de la ventana para su panel de GNOME."
 
 #: ../window-title/windowtitle.ui.h:1
-#| msgid "Command Line Preferences"
 msgid "Window Title Preferences"
 msgstr "Preferencias del título de la ventana"
 
@@ -4184,7 +4230,6 @@ msgid "Swap icon/title _order"
 msgstr ""
 
 #: ../window-title/windowtitle.ui.h:3
-#| msgid "Command Applet"
 msgid "Expand applet"
 msgstr "Expandir miniaplicación"
 
@@ -4222,28 +4267,24 @@ msgid "Custom _style"
 msgstr "E_stilo personalizado"
 
 #: ../window-title/windowtitle.ui.h:14
-#| msgid "Font C_olor:"
 msgid "Font color:"
 msgstr "Color de la tipografía:"
 
 #: ../window-title/windowtitle.ui.h:15
-#| msgid "Fonts"
 msgid "Font style:"
 msgstr "Estilo de la tipografía:"
 
 #: ../window-title/windowtitle.ui.h:16
-#| msgid "_Activate"
 msgid "Active"
 msgstr "Activa"
 
 #: ../window-title/windowtitle.ui.h:17
-#| msgid "_Deactivate"
 msgid "Inactive"
 msgstr "Inactiva"
 
 #: ../window-title/windowtitle.ui.h:21
 msgid "_Hide when no active maximized windows"
-msgstr ""
+msgstr "_Ocultar cuando no haya ventanas activas maximizadas."
 
 #: ../window-title/windowtitle.ui.h:22
 msgid "Show window _action menu on right-click"
