@@ -375,7 +375,12 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     g_object_unref (action_group);
 
+#if GWEATHER_CHECK_VERSION (3, 27, 2)
     gw_applet->gweather_info = gweather_info_new (NULL);
+#else
+    gw_applet->gweather_info = gweather_info_new (priv->loc, GWEATHER_FORECAST_LIST);
+#endif
+
     g_signal_connect (gw_applet->gweather_info, "updated",
                       G_CALLBACK (update_finish), gw_applet);
 
