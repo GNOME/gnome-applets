@@ -518,6 +518,48 @@ static PangoFontDescription *get_system_monospace_font (void)
     return desc;
 }
 
+static gchar *
+get_forecast (GWeatherInfo *info)
+{
+  GSList *forecast;
+  GString *buffer;
+  GSList *l;
+
+  forecast = gweather_info_get_forecast_list (info);
+  if (!forecast)
+    return NULL;
+
+  buffer = g_string_new ("");
+
+  for (l = forecast; l != NULL; l = l->next)
+    {
+      GWeatherInfo *forecast_info;
+      gchar *date;
+      gchar *summary;
+      gchar *temp;
+
+      forecast_info = l->data;
+
+      date = gweather_info_get_update (forecast_info);
+      summary = gweather_info_get_conditions (forecast_info);
+      temp = gweather_info_get_temp_summary (forecast_info);
+
+      if (g_str_equal (summary, "-"))
+        {
+          g_free (summary);
+          summary = gweather_info_get_sky (forecast_info);
+        }
+
+      g_string_append_printf (buffer, " * %s: %s, %s\n", date, summary, temp);
+
+      g_free (date);
+      g_free (summary);
+      g_free (temp);
+    }
+
+  return g_string_free (buffer, FALSE);
+}
+
 void gweather_dialog_update (GWeatherDialog *dialog)
 {
     GWeatherDialogPrivate *priv;
@@ -562,14 +604,16 @@ void gweather_dialog_update (GWeatherDialog *dialog)
     }
 	
     buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (priv->forecast_text));
-    forecast = g_strdup(gweather_info_get_forecast(gw_applet->gweather_info));
-    if (forecast) {
+    forecast = get_forecast (gw_applet->gweather_info);
+
+    if (forecast && *forecast != '\0') {
       forecast = g_strstrip(replace_multiple_new_lines(forecast));
       gtk_text_buffer_set_text(buffer, forecast, -1);
-      g_free(forecast);
     } else {
       gtk_text_buffer_set_text(buffer, _("Forecast not currently available for this location."), -1);
     }
+
+    g_free (forecast);
 
     /* Update radar map */
     if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map")) {
