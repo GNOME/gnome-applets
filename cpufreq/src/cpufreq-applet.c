@@ -64,7 +64,7 @@ struct _CPUFreqApplet {
 	gint              max_perc_width;
 	gint              max_unit_width;
 
-	gboolean          need_refresh;
+        guint             refresh_id;
 
         CPUFreqPrefs     *prefs;
         CPUFreqPopup     *popup;
@@ -173,8 +173,6 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 
 	applet->show_mode = CPUFREQ_MODE_BOTH;
 	applet->show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
-	
-	applet->need_refresh = TRUE;
 
         panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
 
@@ -239,6 +237,11 @@ cpufreq_applet_dispose (GObject *widget)
 
         applet = CPUFREQ_APPLET (widget);
 
+        if (applet->refresh_id != 0) {
+                g_source_remove (applet->refresh_id);
+                applet->refresh_id = 0;
+        }
+
         if (applet->monitor) {
                 g_object_unref (G_OBJECT (applet->monitor));
                 applet->monitor = NULL;
@@ -264,6 +267,29 @@ cpufreq_applet_dispose (GObject *widget)
         G_OBJECT_CLASS (cpufreq_applet_parent_class)->dispose (widget);
 }
 
+static gboolean
+refresh_cb (gpointer user_data)
+{
+        CPUFreqApplet *applet;
+
+        applet = CPUFREQ_APPLET (user_data);
+
+        cpufreq_applet_refresh (applet);
+        applet->refresh_id = 0;
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+queue_refresh (CPUFreqApplet *applet)
+{
+        if (applet->refresh_id != 0)
+                return;
+
+        applet->refresh_id = g_idle_add (refresh_cb, applet);
+        g_source_set_name_by_id (applet->refresh_id, "[cpufreq] refresh_cb");
+}
+
 static void
 cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 {
@@ -287,7 +313,7 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 
         if (size != applet->size) {
                 applet->size = size;
-                cpufreq_applet_refresh (applet);
+                queue_refresh (applet);
         }
 }
 
@@ -556,7 +582,7 @@ cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
 
         if (size != applet->size) {
                 applet->size = size;
-                cpufreq_applet_refresh (applet);
+                queue_refresh (applet);
         }
 }
 
@@ -651,14 +677,6 @@ cpufreq_applet_pixmap_set_image (CPUFreqApplet *applet, gint perc)
         gtk_image_set_from_pixbuf (GTK_IMAGE (applet->icon), applet->pixbufs[image]);
 }
 
-static gboolean
-refresh_cb (CPUFreqApplet *applet)
-{
-	cpufreq_applet_refresh (applet);
-	
-	return FALSE;
-}
-
 static void
 cpufreq_applet_update_visibility (CPUFreqApplet *applet)
 {
@@ -739,7 +757,7 @@ cpufreq_applet_update_visibility (CPUFreqApplet *applet)
         }
 
         if (changed)
-		g_idle_add ((GSourceFunc)refresh_cb, applet);
+                queue_refresh (applet);
 
         if (need_update)
                 cpufreq_applet_update (applet, applet->monitor);
@@ -809,11 +827,7 @@ cpufreq_applet_update (CPUFreqApplet *applet, CPUFreqMonitor *monitor)
 		g_free (text_tip);
 	}
 
-        /* Call refresh only the first time */
-        if (applet->need_refresh) {
-                cpufreq_applet_refresh (applet);
-		applet->need_refresh = FALSE;
-        }
+        queue_refresh (applet);
 }
 
 static gint
