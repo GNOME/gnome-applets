@@ -47,7 +47,6 @@ always_built_SUBDIRS =  \
 	command		\
 	drivemount	\
 	inhibit		\
-	invest-applet	\
 	geyes		\
 	sticky-notes	\
 	trash \
@@ -86,7 +85,6 @@ DIST_SUBDIRS = \
 	sticky-notes	\
 	trash	\
 	cpufreq		\
-	invest-applet	\
 	window-buttons	\
 	windowpicker	\
 	window-title	\

@@ -657,12 +657,6 @@ AC_CONFIG_FILES([
   gweather/help/Makefile
   gweather/src/Makefile
 
-  invest-applet/data/art/Makefile
-  invest-applet/data/Makefile
-  invest-applet/help/Makefile
-  invest-applet/invest/Makefile
-  invest-applet/Makefile
-
   mini-commander/help/Makefile
   mini-commander/Makefile
   mini-commander/src/Makefile
@@ -757,7 +751,6 @@ echo "    drivemount ....................: always"
 echo "    geyes .........................: always"
 echo "    gweather ......................: $build_libgweather_applets"
 echo "    inhibit .......................: always"
-echo "    invest-applet .................: always"
 echo "    mini-commander ................: $enable_mini_commander"
 echo "    modem-lights ..................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
