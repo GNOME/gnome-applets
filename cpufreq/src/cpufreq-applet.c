@@ -51,12 +51,13 @@ struct _CPUFreqApplet {
         PanelAppletOrient orient;
         gint              size;
 
+        GtkWidget        *container;
+        GtkWidget        *box;
+        GtkWidget        *icon;
+        GtkWidget        *labels_box;
         GtkWidget        *label;
         GtkWidget        *unit_label;
-        GtkWidget        *icon;
-        GtkWidget        *box;
-	GtkWidget        *labels_box;
-        GtkWidget        *container;
+
         GdkPixbuf        *pixbufs[5];
 
 	gint              max_label_width;
@@ -170,11 +171,6 @@ cpufreq_applet_init (CPUFreqApplet *applet)
         applet->popup = NULL;
         applet->monitor = NULL;
 
-        applet->label = gtk_label_new (NULL);
-        applet->unit_label = gtk_label_new (NULL);
-        applet->icon = gtk_image_new ();
-        applet->box = NULL;
-
 	applet->show_mode = CPUFREQ_MODE_BOTH;
 	applet->show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
 	
@@ -197,6 +193,25 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 
 	gtk_container_add (GTK_CONTAINER (applet), applet->container);
 	gtk_widget_show (applet->container);
+
+        applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+        gtk_container_add (GTK_CONTAINER (applet->container), applet->box);
+        gtk_widget_show (applet->box);
+
+        applet->icon = gtk_image_new ();
+        gtk_box_pack_start (GTK_BOX (applet->box), applet->icon, FALSE, FALSE, 0);
+
+        applet->labels_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+        gtk_box_pack_start (GTK_BOX (applet->box), applet->labels_box, FALSE, FALSE, 0);
+        gtk_widget_show (applet->labels_box);
+
+        applet->label = gtk_label_new (NULL);
+        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->label,
+                            FALSE, FALSE, 0);
+
+        applet->unit_label = gtk_label_new (NULL);
+        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->unit_label,
+                            FALSE, FALSE, 0);
 }
 
 static void
@@ -837,7 +852,6 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
         gint      unit_label_size, pixmap_size;
         gint      size_step = 12;
 	gboolean  horizontal;
-        gboolean  do_unref = FALSE;
 
         panel_size = applet->size - 1; /* 1 pixel margin */
 
@@ -860,52 +874,34 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
         pixmap_size = cpufreq_applet_get_widget_size (applet, applet->icon);
         total_size += pixmap_size;
 
-        if (applet->box) {
-                do_unref = TRUE;
-                g_object_ref (applet->icon);
-                gtk_container_remove (GTK_CONTAINER (applet->box), applet->icon);
-		if (applet->labels_box) {
-                        g_object_ref (applet->label);
-                        gtk_container_remove (GTK_CONTAINER (applet->labels_box), applet->label);
-                        g_object_ref (applet->unit_label);
-                        gtk_container_remove (GTK_CONTAINER (applet->labels_box), applet->unit_label);
-                }
-                gtk_widget_destroy (applet->box);
-        }
-
-	if (horizontal) {
-		applet->labels_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-		if ((label_size + pixmap_size) <= panel_size)
-			applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-		else
-			applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-	} else {
-                if (total_size <= panel_size) {
-                        applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-                } else if ((label_size + unit_label_size) <= (panel_size - size_step)) {
-                        applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+        if (horizontal) {
+                if ((label_size + pixmap_size) <= panel_size) {
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->box),
+                                                        GTK_ORIENTATION_VERTICAL);
                 } else {
-                        applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-                        applet->labels_box  = gtk_box_new (GTK_ORIENTATION_VERTICAL, 2);
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->box),
+                                                        GTK_ORIENTATION_HORIZONTAL);
                 }
-	}
 
-        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->label, FALSE, FALSE, 0);
-        gtk_box_pack_start (GTK_BOX (applet->labels_box), applet->unit_label, FALSE, FALSE, 0);
-        gtk_box_pack_start (GTK_BOX (applet->box), applet->icon, FALSE, FALSE, 0);
-        
-        gtk_box_pack_start (GTK_BOX (applet->box), applet->labels_box, FALSE, FALSE, 0);
-        gtk_widget_show (applet->labels_box);
-           
-        gtk_container_add (GTK_CONTAINER (applet->container), applet->box);
-        gtk_widget_show (applet->box);
-
-        if (do_unref) {
-                g_object_unref (applet->label);
-                g_object_unref (applet->unit_label);
-                g_object_unref (applet->icon);
+                gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->labels_box),
+                                                GTK_ORIENTATION_HORIZONTAL);
+        } else {
+                if (total_size <= panel_size) {
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->box),
+                                                        GTK_ORIENTATION_HORIZONTAL);
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->labels_box),
+                                                        GTK_ORIENTATION_HORIZONTAL);
+                } else if ((label_size + unit_label_size) <= (panel_size - size_step)) {
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->box),
+                                                        GTK_ORIENTATION_VERTICAL);
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->labels_box),
+                                                        GTK_ORIENTATION_HORIZONTAL);
+                } else {
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->box),
+                                                        GTK_ORIENTATION_VERTICAL);
+                        gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->labels_box),
+                                                        GTK_ORIENTATION_VERTICAL);
+                }
         }
 }
 
