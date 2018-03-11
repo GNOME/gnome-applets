@@ -318,6 +318,22 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 }
 
 static gint
+get_text_width (const gchar *text)
+{
+        gint width;
+        GtkWidget *label;
+
+        width = 0;
+        label = gtk_label_new (text);
+
+        gtk_widget_show (label);
+        gtk_widget_get_preferred_width (label, &width, NULL);
+        gtk_widget_destroy (label);
+
+        return width;
+}
+
+static gint
 cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 {
 	GList *available_freqs;
@@ -331,8 +347,6 @@ cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 
 	available_freqs = cpufreq_monitor_get_available_frequencies (applet->monitor);
 	while (available_freqs) {
-		GtkWidget     *label;
-                gint           label_width;
 		const gchar   *text;
 		gchar         *freq_text;
 		gint           freq;
@@ -341,13 +355,9 @@ cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 		freq = atoi (text);
 
 		freq_text = cpufreq_utils_get_frequency_label (freq);
-		label = gtk_label_new (freq_text);
-                gtk_widget_get_preferred_width (label, &label_width, NULL);
 
-		width = MAX (width, label_width);
-
+		width = MAX (width, get_text_width (freq_text));
 		g_free (freq_text);
-		gtk_widget_destroy (label);
 
 		available_freqs = g_list_next (available_freqs);
 	}
@@ -360,16 +370,10 @@ cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 static gint
 cpufreq_applet_get_max_perc_width (CPUFreqApplet *applet)
 {
-	GtkWidget *label;
-        gint       width;
-
 	if (applet->max_perc_width > 0)
 		return applet->max_perc_width;
 
-	label = gtk_label_new ("100%");
-        gtk_widget_get_preferred_width (label, &width, NULL);
-	applet->max_perc_width = width;
-	gtk_widget_destroy (label);
+	applet->max_perc_width = get_text_width ("100%");
 
 	return applet->max_perc_width;
 }
@@ -377,19 +381,14 @@ cpufreq_applet_get_max_perc_width (CPUFreqApplet *applet)
 static gint
 cpufreq_applet_get_max_unit_width (CPUFreqApplet *applet)
 {
-	GtkWidget     *label;
-	gint           w1, w2;
+	gint w1;
+	gint w2;
 
 	if (applet->max_unit_width > 0)
 		return applet->max_unit_width;
 
-	label = gtk_label_new ("GHz");
-        gtk_widget_get_preferred_width (label, &w1, NULL);
-
-	gtk_label_set_text (GTK_LABEL (label), "MHz");
-        gtk_widget_get_preferred_width (label, &w2, NULL);
-
-	gtk_widget_destroy (label);
+	w1 = get_text_width ("GHz");
+	w2 = get_text_width ("MHz");
 
 	applet->max_unit_width = MAX (w1, w2);
 
