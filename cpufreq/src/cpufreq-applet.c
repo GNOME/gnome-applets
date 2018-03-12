@@ -167,6 +167,19 @@ cpufreq_applet_show_text_mode_get_type (void)
 }
 
 static void
+cpufreq_applet_style_updated (GtkWidget *widget)
+{
+        CPUFreqApplet *applet;
+
+        applet = CPUFREQ_APPLET (widget);
+        GTK_WIDGET_CLASS (cpufreq_applet_parent_class)->style_updated (widget);
+
+        applet->max_label_width = 0;
+        applet->max_perc_width = 0;
+        applet->max_unit_width = 0;
+}
+
+static void
 cpufreq_applet_init (CPUFreqApplet *applet)
 {
         applet->prefs = NULL;
@@ -222,9 +235,10 @@ cpufreq_applet_class_init (CPUFreqAppletClass *klass)
         GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
 
         gobject_class->dispose = cpufreq_applet_dispose;
-           
+
         widget_class->size_allocate = cpufreq_applet_size_allocate;
-	widget_class->get_preferred_width = cpufreq_applet_get_preferred_width;
+        widget_class->style_updated = cpufreq_applet_style_updated;
+        widget_class->get_preferred_width = cpufreq_applet_get_preferred_width;
         widget_class->button_press_event = cpufreq_applet_button_press;
         widget_class->key_press_event = cpufreq_applet_key_press;
            
