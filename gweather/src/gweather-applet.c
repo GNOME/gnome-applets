@@ -47,6 +47,24 @@
 
 static void update_finish (GWeatherInfo *info, gpointer data);
 
+static GWeatherLocation*
+get_default_location (GWeatherApplet *gw_applet)
+{
+    GWeatherLocation *world;
+    GWeatherLocation *location;
+    const gchar *station_code;
+    GVariant *default_loc;
+
+    default_loc = g_settings_get_value (gw_applet->lib_settings, "default-location");
+    g_variant_get (default_loc, "(&s&sm(dd))", NULL, &station_code, NULL, NULL, NULL);
+
+    world = gweather_location_get_world ();
+    location = gweather_location_find_by_station_code (world, station_code);
+    g_variant_unref (default_loc);
+
+    return location;
+}
+
 static void about_cb (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
@@ -376,9 +394,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     g_object_unref (action_group);
 
 #if GWEATHER_CHECK_VERSION (3, 27, 2)
-    gw_applet->gweather_info = gweather_info_new (NULL);
+    gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet));
 #else
-    gw_applet->gweather_info = gweather_info_new (NULL, GWEATHER_FORECAST_LIST);
+    gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet),
+                                                  GWEATHER_FORECAST_LIST);
 #endif
 
     g_signal_connect (gw_applet->gweather_info, "updated",
@@ -510,18 +529,6 @@ gint suncalc_timeout_cb (gpointer data)
     return 0;  /* Do not repeat timeout (will be re-set by update_finish) */
 }
 
-static GWeatherLocation*
-get_default_location (GWeatherApplet *gw_applet)
-{
-    const gchar *station_code;
-    GVariant *default_loc;
-
-    default_loc = g_settings_get_value (gw_applet->lib_settings, "default-location");
-    g_variant_get (default_loc, "(&s&sm(dd))", NULL, &station_code, NULL, NULL, NULL);
-
-	return gweather_location_find_by_station_code (gweather_location_get_world (), station_code);
-}
-
 void gweather_update (GWeatherApplet *gw_applet)
 {
     gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
@@ -529,4 +536,3 @@ void gweather_update (GWeatherApplet *gw_applet)
     gweather_info_set_location (gw_applet->gweather_info, get_default_location (gw_applet));
     gweather_info_update (gw_applet->gweather_info);
 }
-
