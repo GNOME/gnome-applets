@@ -410,12 +410,16 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                       G_CALLBACK (network_changed), gw_applet);
 }
 
-gint timeout_cb (gpointer data)
+gboolean
+timeout_cb (gpointer data)
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-	
+
+    gw_applet->timeout_tag = 0;
     gweather_update(gw_applet);
-    return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
+
+    /* Do not repeat timeout (will be re-set by gweather_update) */
+    return G_SOURCE_REMOVE;
 }
 
 static void
@@ -522,11 +526,17 @@ update_finish (GWeatherInfo *info, gpointer data)
     }
 }
 
-gint suncalc_timeout_cb (gpointer data)
+gboolean
+suncalc_timeout_cb (gpointer data)
 {
-    GWeatherInfo *info = ((GWeatherApplet *)data)->gweather_info;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
+    GWeatherInfo *info = gw_applet->gweather_info;
+
+    gw_applet->suncalc_timeout_tag = 0;
     update_finish(info, data);
-    return 0;  /* Do not repeat timeout (will be re-set by update_finish) */
+
+    /* Do not repeat timeout (will be re-set by update_finish) */
+    return G_SOURCE_REMOVE;
 }
 
 void gweather_update (GWeatherApplet *gw_applet)

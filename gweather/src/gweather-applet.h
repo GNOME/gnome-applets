@@ -24,10 +24,10 @@
 
 G_BEGIN_DECLS
 
-extern void gweather_applet_create(GWeatherApplet *gw_applet);
-extern gint timeout_cb (gpointer data);
-extern gint suncalc_timeout_cb (gpointer data);
-extern void gweather_update (GWeatherApplet *applet);
+void gweather_applet_create(GWeatherApplet *gw_applet);
+gboolean timeout_cb (gpointer data);
+gboolean suncalc_timeout_cb (gpointer data);
+void gweather_update (GWeatherApplet *applet);
 
 G_END_DECLS
 
