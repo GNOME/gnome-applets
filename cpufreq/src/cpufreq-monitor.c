@@ -421,3 +421,19 @@ cpufreq_monitor_get_percentage (CPUFreqMonitor *monitor)
 
   return -1;
 }
+
+gboolean
+cpufreq_monitor_get_hardware_limits (CPUFreqMonitor *monitor,
+                                     gulong         *min,
+                                     gulong         *max)
+{
+  g_return_val_if_fail (CPUFREQ_IS_MONITOR (monitor), FALSE);
+
+  if (!monitor->online)
+    return FALSE;
+
+  if (cpufreq_get_hardware_limits (monitor->cpu, min, max) != 0)
+    return FALSE;
+
+  return TRUE;
+}

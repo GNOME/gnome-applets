@@ -49,6 +49,10 @@ gint            cpufreq_monitor_get_frequency             (CPUFreqMonitor *monit
 
 gint            cpufreq_monitor_get_percentage            (CPUFreqMonitor *monitor);
 
+gboolean        cpufreq_monitor_get_hardware_limits       (CPUFreqMonitor *monitor,
+                                                           gulong         *min,
+                                                           gulong         *max);
+
 G_END_DECLS
 
 #endif
