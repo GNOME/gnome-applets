@@ -159,7 +159,5 @@ gweather_xml_load_locations (void)
 	store = NULL;
     }
 
-    gweather_location_unref (world);
-
     return (GtkTreeModel *)store;
 }
