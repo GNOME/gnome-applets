@@ -400,6 +400,9 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                                                   GWEATHER_FORECAST_LIST);
 #endif
 
+    gweather_info_set_enabled_providers (gw_applet->gweather_info,
+                                         GWEATHER_PROVIDER_ALL);
+
     g_signal_connect (gw_applet->gweather_info, "updated",
                       G_CALLBACK (update_finish), gw_applet);
 
