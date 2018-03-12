@@ -352,8 +352,10 @@ get_text_width (const gchar *text)
 static gint
 cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 {
-	GList *available_freqs;
-	gint   width = 0;
+	gulong min;
+	gulong max;
+	gulong freq;
+	gint width;
 	
 	if (applet->max_label_width > 0)
 		return applet->max_label_width;
@@ -361,21 +363,17 @@ cpufreq_applet_get_max_label_width (CPUFreqApplet *applet)
 	if (!CPUFREQ_IS_MONITOR (applet->monitor))
 		return 0;
 
-	available_freqs = cpufreq_monitor_get_available_frequencies (applet->monitor);
-	while (available_freqs) {
-		const gchar   *text;
-		gchar         *freq_text;
-		gint           freq;
+	if (!cpufreq_monitor_get_hardware_limits (applet->monitor, &min, &max))
+		return 0;
 
-		text = (const gchar *) available_freqs->data;
-		freq = atoi (text);
+	width = 0;
+	for (freq = min; freq <= max; freq += 10000) {
+		gchar *freq_text;
 
 		freq_text = cpufreq_utils_get_frequency_label (freq);
 
 		width = MAX (width, get_text_width (freq_text));
 		g_free (freq_text);
-
-		available_freqs = g_list_next (available_freqs);
 	}
 
 	applet->max_label_width = width;
