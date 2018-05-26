@@ -1,6 +1,7 @@
 /* From wmload.c, v0.9.2, licensed under the GPL. */
 #include <config.h>
 #include <sys/types.h>
+#include <sys/statvfs.h>
 #include <math.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -125,6 +126,10 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 		    || strcmp(mountentries[i].type, "nfs") == 0
 		    || strcmp(mountentries[i].type, "cifs") == 0)
 			continue;
+
+		struct statvfs statresult;
+		if (statvfs (mountentries[i].mountdir, &statresult))
+		     continue;
 
 		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
 		read += fsusage.read; write += fsusage.write;
