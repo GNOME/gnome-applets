@@ -126,6 +126,10 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 		    || strcmp(mountentries[i].type, "cifs") == 0)
 			continue;
 
+		// ignore mount points starting with "/run"
+		if (strncmp(mountentries[i].mountdir, "/run", 4) == 0)
+			continue;
+
 		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
 		read += fsusage.read; write += fsusage.write;
 	}
