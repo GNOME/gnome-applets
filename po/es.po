@@ -25,8 +25,8 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "applets&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-22 09:06+0000\n"
-"PO-Revision-Date: 2018-01-24 16:48+0100\n"
+"POT-Creation-Date: 2018-01-28 20:21+0000\n"
+"PO-Revision-Date: 2018-06-12 16:09+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -750,7 +750,6 @@ msgid "_Close"
 msgstr "_Cerrar"
 
 #: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
-#| msgid "MiniCommander Applet Factory"
 msgid "Command Factory"
 msgstr "Fábrica de la miniaplicación Comando"
 
@@ -3628,6 +3627,8 @@ msgid ""
 "When disabled, this applet's button_layout string will be used to order the "
 "buttons."
 msgstr ""
+"Cuando no está activa la cadena de «button_layout» de esta miniaplicación se "
+"usará para ordenar los botones."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:3
 msgid "Layout of buttons."
@@ -3638,6 +3639,8 @@ msgid ""
 "Essentially a copy from Metacity's button_layout, but we can modify it for "
 "custom settings."
 msgstr ""
+"Básicamente una copia de «button_layout» de Metacity, pero que se puede "
+"modificar con configuración personalizada."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:5
 msgid "Button theme"
@@ -3658,6 +3661,10 @@ msgid ""
 "do the same but vertically. The default setting 0 will set it automatically "
 "according to the panel."
 msgstr ""
+"Se puede usar para establecer la orientación estática de un botón. "
+"Establecer este valor a 1 asegurará que el botón se muestra siempre en "
+"horizontal. Establecerlo a 2 hará lo mismo en vertical. El valor "
+"predeterminado 0 lo establecerá automáticamente de acuerdo con el panel."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:9
 msgid "Hides buttons when there are no windows present."
@@ -3838,6 +3845,8 @@ msgid ""
 "When checked, the button order will be the same as on Metacity window "
 "borders."
 msgstr ""
+"Cuando se activa el orden de los botones será el mismo que en los bordes de "
+"ventanas de Metacity."
 
 #: ../window-buttons/windowbuttons.ui.h:22
 msgid "Custom order:"
@@ -3963,7 +3972,6 @@ msgid "Window Picker"
 msgstr "Selector de ventanas"
 
 #: ../windowpicker/data/org.gnome.applets.WindowPicker.panel-applet.in.in.h:2
-#| msgid "Factory for Window Title"
 msgid "Factory for the window picker applet"
 msgstr "Fábrica para la miniaplicación de selección de ventanas"
 
@@ -3972,7 +3980,6 @@ msgid "Switch between open windows"
 msgstr "Cambie entre las ventanas abiertas"
 
 #: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:1
-#| msgid "Show windows from all workspaces"
 msgid "Show windows from all workspaces."
 msgstr "Mostrar las ventanas de todos los espacios de trabajo."
 
@@ -3981,11 +3988,11 @@ msgid ""
 "Show the home title and logout button in the window title if no window is "
 "selected and active (maximized)"
 msgstr ""
+"Mostrar el título de la carpeta personal y el botón de cierre de sesión en "
+"el título de la ventana si no se selecciona y activa ninguna ventana "
+"(maximizada)"
 
 #: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:3
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for the active window"
 msgid "Show the application title when an application is active and maximized"
 msgstr "Mostrar el título de la aplicación cuando está activa y maximizada"
 
@@ -4135,6 +4142,10 @@ msgid ""
 "amount of pixels either in width or height, depending on the panel "
 "orientation."
 msgstr ""
+"Este tamaño se usa cuando la miniaplicación no está expandida o para "
+"determinar el tamaño mínimo al que el título de la etiqueta se puede "
+"ajustar. El valor representa la cantidad de píxeles de anchura o de altura, "
+"dependiendo de la orientación del panel."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:19
 msgid "Use a custom style."
@@ -4162,15 +4173,18 @@ msgid ""
 "right click when this option is enabled! You may still do so by right-"
 "clicking the icon if it is not hidden."
 msgstr ""
+"Esto hará que el menú de acción de la ventana aparezca cuando se pulsa con "
+"el botón derecho sobre el título de la ventana. Esta característica "
+"experimental todavía esta en desarrollo, úsela con cuidado. En el estado "
+"actual no podrá acceder al menú de acción de la miniaplicación pulsando con "
+"el botón derecho sobre el título de la ventana cuando la active. Todavía "
+"podrá hacerlo pulsando con el botón derecho sobre el icono si no está oculto."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:23
 msgid "Active title font."
 msgstr "Tipografía del título activo."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:24
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for the active window"
 msgid "Font name and size for the active window state."
 msgstr "Nombre de la tipografía y tamaño para el estado de la ventana activa."
 
@@ -4179,9 +4193,6 @@ msgid "Inactive title font."
 msgstr "Tipografía del título inactivo."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:26
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for the active window"
 msgid "Font name and size for the inactive window state."
 msgstr ""
 "Nombre de la tipografía y tamaño para el estado de la ventana inactiva."
@@ -4197,7 +4208,6 @@ msgstr ""
 "ventana activa."
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:29
-#| msgid "The green component of the foreground color."
 msgid "Inactive title foreground color."
 msgstr "Color de primer plano del título inactivo."
 
@@ -4206,7 +4216,6 @@ msgid "Title foreground color in hex format for the inactive window state."
 msgstr "Color del primer plano del"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:1
-#| msgid "Gweather Applet Factory"
 msgid "Window Title applet Factory"
 msgstr "Fábrica de la miniaplicación Título de la ventana"
 
