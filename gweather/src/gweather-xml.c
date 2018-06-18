@@ -62,7 +62,6 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 
     switch (gweather_location_get_level (gloc)) {
     case GWEATHER_LOCATION_WORLD:
-    case GWEATHER_LOCATION_ADM2:
 	self = parent;
 	break;
 
