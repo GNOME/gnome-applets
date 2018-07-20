@@ -47,8 +47,11 @@ struct _GWeatherDialog
   GtkWidget      *cond_sunrise;
   GtkWidget      *cond_sunset;
   GtkWidget      *cond_image;
-  GtkWidget      *forecast_text;
   GtkWidget      *radar_image;
+
+  GtkWidget      *forecast_text;
+  GSettings      *monospace_settings;
+  GtkCssProvider *css_provider;
 };
 
 enum
@@ -115,6 +118,66 @@ replace_multiple_new_lines (gchar *s)
 		}
 	}
 	return prev_s;
+}
+
+static GString *
+font_description_to_textview_css (PangoFontDescription *font_desc)
+{
+  GString *css;
+
+  css = g_string_new ("textview {");
+
+  g_string_append_printf (css, "font-family: %s;",
+                          pango_font_description_get_family (font_desc));
+
+  g_string_append_printf (css, "font-weight: %d;",
+                          pango_font_description_get_weight (font_desc));
+
+  if (pango_font_description_get_style (font_desc) == PANGO_STYLE_NORMAL)
+    g_string_append (css, "font-style: normal;");
+  else if (pango_font_description_get_style (font_desc) == PANGO_STYLE_OBLIQUE)
+    g_string_append (css, "font-style: oblique;");
+  else if (pango_font_description_get_style (font_desc) == PANGO_STYLE_ITALIC)
+    g_string_append (css, "font-style: italic;");
+
+  g_string_append_printf (css, "font-size: %d%s;",
+                          pango_font_description_get_size (font_desc) / PANGO_SCALE,
+                          pango_font_description_get_size_is_absolute (font_desc) ? "px" : "pt");
+
+  g_string_append (css, "}");
+
+  return css;
+}
+
+static void
+update_forecast_font (GWeatherDialog *dialog)
+{
+  gchar *font_name;
+  PangoFontDescription *font_desc;
+  GString *css;
+
+  font_name = g_settings_get_string (dialog->monospace_settings,
+                                     MONOSPACE_FONT_KEY);
+
+  font_desc = pango_font_description_from_string (font_name);
+  g_free (font_name);
+
+  if (font_desc == NULL)
+    return;
+
+  css = font_description_to_textview_css (font_desc);
+  pango_font_description_free (font_desc);
+
+  gtk_css_provider_load_from_data (dialog->css_provider, css->str, css->len, NULL);
+  g_string_free (css, TRUE);
+}
+
+static void
+monospace_font_name_changed_cb (GSettings      *settings,
+                                const gchar    *key,
+                                GWeatherDialog *dialog)
+{
+  update_forecast_font (dialog);
 }
 
 static void
@@ -396,6 +459,16 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_widget_show (scrolled_window);
   gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
 
+  dialog->monospace_settings = g_settings_new (MONOSPACE_GSCHEMA);
+  dialog->css_provider = gtk_css_provider_new ();
+
+  g_signal_connect (dialog->monospace_settings, "changed::" MONOSPACE_FONT_KEY,
+                    G_CALLBACK (monospace_font_name_changed_cb), dialog);
+
+  gtk_style_context_add_provider (gtk_widget_get_style_context (dialog->forecast_text),
+                                  GTK_STYLE_PROVIDER (dialog->css_provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+
   gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
 
   forecast_note_lbl = gtk_label_new (_("Forecast"));
@@ -448,20 +521,6 @@ gweather_dialog_create (GWeatherDialog *dialog)
   }
 
   g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (response_cb), NULL);
-}
-
-static PangoFontDescription *get_system_monospace_font (void)
-{
-    PangoFontDescription *desc = NULL;
-    GSettings *settings = g_settings_new (MONOSPACE_GSCHEMA);
-    char *name = g_settings_get_string (settings, MONOSPACE_FONT_KEY);
-
-    desc = pango_font_description_from_string (name);
-
-    g_free (name);
-    g_object_unref (settings);
-
-    return desc;
 }
 
 static gchar *
@@ -519,6 +578,19 @@ gweather_dialog_constructed (GObject *object)
 }
 
 static void
+gweather_dialog_dispose (GObject *object)
+{
+  GWeatherDialog *dialog;
+
+  dialog = GWEATHER_DIALOG (object);
+
+  g_clear_object (&dialog->monospace_settings);
+  g_clear_object (&dialog->css_provider);
+
+  G_OBJECT_CLASS (gweather_dialog_parent_class)->dispose (object);
+}
+
+static void
 gweather_dialog_get_property (GObject    *object,
                               guint       property_id,
                               GValue     *value,
@@ -563,6 +635,13 @@ gweather_dialog_set_property (GObject      *object,
 }
 
 static void
+gweather_dialog_style_updated (GtkWidget *widget)
+{
+  GTK_WIDGET_CLASS (gweather_dialog_parent_class)->style_updated (widget);
+  update_forecast_font (GWEATHER_DIALOG (widget));
+}
+
+static void
 gweather_dialog_init (GWeatherDialog *dialog)
 {
 }
@@ -571,12 +650,17 @@ static void
 gweather_dialog_class_init (GWeatherDialogClass *dialog_class)
 {
   GObjectClass *object_class;
+  GtkWidgetClass *widget_class;
 
   object_class = G_OBJECT_CLASS (dialog_class);
+  widget_class = GTK_WIDGET_CLASS (dialog_class);
 
   object_class->constructed = gweather_dialog_constructed;
+  object_class->dispose = gweather_dialog_dispose;
   object_class->get_property = gweather_dialog_get_property;
   object_class->set_property = gweather_dialog_set_property;
+
+  widget_class->style_updated = gweather_dialog_style_updated;
 
   /* This becomes an OBJECT property when GWeatherApplet is redone */
   dialog_properties[PROP_GWEATHER_APPLET] =
@@ -602,7 +686,6 @@ gweather_dialog_update (GWeatherDialog *dialog)
   GWeatherInfo *weather_info;
   const gchar *icon_name;
   gchar *text;
-  PangoFontDescription *font_desc;
   GtkTextBuffer *buffer;
   gchar *forecast;
 
@@ -671,13 +754,6 @@ gweather_dialog_update (GWeatherDialog *dialog)
   g_free (text);
 
   /* Update forecast */
-  font_desc = get_system_monospace_font ();
-  if (font_desc)
-    {
-      gtk_widget_modify_font (dialog->forecast_text, font_desc);
-      pango_font_description_free (font_desc);
-    }
-
   buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (dialog->forecast_text));
   forecast = get_forecast (weather_info);
 
