@@ -51,6 +51,8 @@ struct _GWeatherApplet
   GtkWidget         *pref_dialog;
 
   GtkWidget         *details_dialog;
+
+  GtkWidget         *about_dialog;
 };
 
 void gweather_applet_create(GWeatherApplet *gw_applet);
