@@ -91,35 +91,6 @@ link_cb (GtkButton *button,
 		    NULL);
 }
 
-static gchar*
-replace_multiple_new_lines (gchar *s) 
-{
-	gchar *prev_s = s;
-	gint count = 0;
-	gint i;
-	
-	if (s == NULL) {
-		return s;
-	}
-
-	for (;*s != '\0';s++) {
-	
-		count = 0;
-		
-		if (*s == '\n') {
-			s++;
-			while (*s == '\n' || *s == ' ') {
-				count++;
-				s++;
-			}
-		}
-		for (i = count; i > 1; i--) {
-			*(s - i) = ' ';
-		}
-	}
-	return prev_s;
-}
-
 static GString *
 font_description_to_textview_css (PangoFontDescription *font_desc)
 {
@@ -759,7 +730,6 @@ gweather_dialog_update (GWeatherDialog *dialog)
 
   if (forecast && *forecast != '\0')
     {
-      forecast = g_strstrip (replace_multiple_new_lines (forecast));
       gtk_text_buffer_set_text (buffer, forecast, -1);
     }
   else
