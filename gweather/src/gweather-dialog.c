@@ -125,7 +125,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   GtkWidget *weather_vbox;
   GtkWidget *weather_notebook;
   GtkWidget *cond_hbox;
-  GtkWidget *cond_table;
+  GtkWidget *cond_grid;
   GtkWidget *cond_location_lbl;
   GtkWidget *cond_update_lbl;
   GtkWidget *cond_temp_lbl;
@@ -189,230 +189,178 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_container_add (GTK_CONTAINER (weather_notebook), cond_hbox);
   gtk_container_set_border_width (GTK_CONTAINER (cond_hbox), 4);
 
-  cond_table = gtk_table_new (13, 2, FALSE);
-  gtk_widget_show (cond_table);
-  gtk_box_pack_start (GTK_BOX (cond_hbox), cond_table, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (cond_table), 12);
-  gtk_table_set_row_spacings (GTK_TABLE (cond_table), 6);
-  gtk_table_set_col_spacings (GTK_TABLE (cond_table), 12);
+  cond_grid = gtk_grid_new ();
+  gtk_widget_show (cond_grid);
+  gtk_box_pack_start (GTK_BOX (cond_hbox), cond_grid, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (cond_grid), 12);
+  gtk_grid_set_row_spacing (GTK_GRID (cond_grid), 6);
+  gtk_grid_set_column_spacing (GTK_GRID (cond_grid), 12);
 
   cond_location_lbl = gtk_label_new (_("City:"));
   gtk_widget_show (cond_location_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_location_lbl, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_location_lbl, 0, 0, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_location_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_location_lbl), 0.0);
 
   cond_update_lbl = gtk_label_new (_("Last update:"));
   gtk_widget_show (cond_update_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_update_lbl, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_update_lbl, 0, 1, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_update_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_update_lbl), 0.0);
 
   cond_cond_lbl = gtk_label_new (_("Conditions:"));
   gtk_widget_show (cond_cond_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_cond_lbl, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_cond_lbl, 0, 2, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_cond_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_cond_lbl), 0.0);
 
   cond_sky_lbl = gtk_label_new (_("Sky:"));
   gtk_widget_show (cond_sky_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_sky_lbl, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_sky_lbl, 0, 3, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_sky_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_sky_lbl), 0.0);
 
   cond_temp_lbl = gtk_label_new (_("Temperature:"));
   gtk_widget_show (cond_temp_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_temp_lbl, 0, 1, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_temp_lbl, 0, 4, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_temp_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_temp_lbl), 0.0);
 
   cond_apparent_lbl = gtk_label_new (_("Feels like:"));
   gtk_widget_show (cond_apparent_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_apparent_lbl, 0, 1, 5, 6,
-		    (GtkAttachOptions) (GTK_FILL),
-		    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_apparent_lbl, 0, 5, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_apparent_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_apparent_lbl), 0.0);
   
   cond_dew_lbl = gtk_label_new (_("Dew point:"));
   gtk_widget_show (cond_dew_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_dew_lbl, 0, 1, 6, 7,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_dew_lbl, 0, 6, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_dew_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_dew_lbl), 0.0);
 
   cond_humidity_lbl = gtk_label_new (_("Relative humidity:"));
   gtk_widget_show (cond_humidity_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_humidity_lbl, 0, 1, 7, 8,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_humidity_lbl, 0, 7, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_humidity_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_humidity_lbl), 0.0);
 
   cond_wind_lbl = gtk_label_new (_("Wind:"));
   gtk_widget_show (cond_wind_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_wind_lbl, 0, 1, 8, 9,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_wind_lbl, 0, 8, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_wind_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_wind_lbl), 0.0);
 
   cond_pressure_lbl = gtk_label_new (_("Pressure:"));
   gtk_widget_show (cond_pressure_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_pressure_lbl, 0, 1, 9, 10,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_pressure_lbl, 0, 9, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_pressure_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_pressure_lbl), 0.0);
 
   cond_vis_lbl = gtk_label_new (_("Visibility:"));
   gtk_widget_show (cond_vis_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_vis_lbl, 0, 1, 10, 11,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_vis_lbl, 0, 10, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_vis_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_vis_lbl), 0.0);
 
   cond_sunrise_lbl = gtk_label_new (_("Sunrise:"));
   gtk_widget_show (cond_sunrise_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_sunrise_lbl, 0, 1, 11, 12,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_sunrise_lbl, 0, 11, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_sunrise_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_sunrise_lbl), 0.0);
 
   cond_sunset_lbl = gtk_label_new (_("Sunset:"));
   gtk_widget_show (cond_sunset_lbl);
-  gtk_table_attach (GTK_TABLE (cond_table), cond_sunset_lbl, 0, 1, 12, 13,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), cond_sunset_lbl, 0, 12, 1, 1);
   gtk_label_set_justify (GTK_LABEL (cond_sunset_lbl), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (cond_sunset_lbl), 0.0);
 
   priv->cond_location = gtk_label_new ("");
   gtk_widget_show (priv->cond_location);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_location, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_location, 1, 0, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_location), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_location), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_location), 0.0);
 
   priv->cond_update = gtk_label_new ("");
   gtk_widget_show (priv->cond_update);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_update, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_update, 1, 1, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_update), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_update), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_update), 0.0);
 
   priv->cond_cond = gtk_label_new ("");
   gtk_widget_show (priv->cond_cond);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_cond, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_cond, 1, 2, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_cond), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_cond), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_cond), 0.0);
 
   priv->cond_sky = gtk_label_new ("");
   gtk_widget_show (priv->cond_sky);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_sky, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_sky, 1, 3, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sky), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sky), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_sky), 0.0);
 
   priv->cond_temp = gtk_label_new ("");
   gtk_widget_show (priv->cond_temp);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_temp, 1, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_temp, 1, 4, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_temp), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_temp), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_temp), 0.0);
 
   priv->cond_apparent = gtk_label_new ("");
   gtk_widget_show (priv->cond_apparent);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_apparent, 1, 2, 5, 6,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_apparent, 1, 5, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_apparent), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_apparent), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_apparent), 0.0);
 
   priv->cond_dew = gtk_label_new ("");
   gtk_widget_show (priv->cond_dew);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_dew, 1, 2, 6, 7,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_dew, 1, 6, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_dew), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_dew), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_dew), 0.0);
 
   priv->cond_humidity = gtk_label_new ("");
   gtk_widget_show (priv->cond_humidity);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_humidity, 1, 2, 7, 8,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_humidity, 1, 7, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_humidity), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_humidity), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_humidity), 0.0);
 
   priv->cond_wind = gtk_label_new ("");
   gtk_widget_show (priv->cond_wind);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_wind, 1, 2, 8, 9,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_wind, 1, 8, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_wind), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_wind), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_wind), 0.0);
 
   priv->cond_pressure = gtk_label_new ("");
   gtk_widget_show (priv->cond_pressure);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_pressure, 1, 2, 9, 10,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_pressure, 1, 9, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_pressure), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_pressure), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_pressure), 0.0);
 
   priv->cond_vis = gtk_label_new ("");
   gtk_widget_show (priv->cond_vis);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_vis, 1, 2, 10, 11,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_vis, 1, 10, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_vis), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_vis), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_vis), 0.0);
 
   priv->cond_sunrise = gtk_label_new ("");
   gtk_widget_show (priv->cond_sunrise);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_sunrise, 1, 2, 11, 12,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_sunrise, 1, 11, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sunrise), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sunrise), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_sunrise), 0.0);
 
   priv->cond_sunset = gtk_label_new ("");
   gtk_widget_show (priv->cond_sunset);
-  gtk_table_attach (GTK_TABLE (cond_table), priv->cond_sunset, 1, 2, 12, 13,
-                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+  gtk_grid_attach (GTK_GRID (cond_grid), priv->cond_sunset, 1, 12, 1, 1);
   gtk_label_set_selectable (GTK_LABEL (priv->cond_sunset), TRUE);
   gtk_label_set_justify (GTK_LABEL (priv->cond_sunset), GTK_JUSTIFY_LEFT);
   gtk_label_set_xalign (GTK_LABEL (priv->cond_sunset), 0.0);
