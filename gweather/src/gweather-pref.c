@@ -722,11 +722,10 @@ gweather_pref_create (GWeatherPref *pref)
     GtkWidget *pres_combo;
     GtkWidget *dist_label;
     GtkWidget *dist_combo;
-    GtkWidget *unit_table;	
+    GtkWidget *unit_grid;
     GtkWidget *pref_find_label;
     GtkWidget *pref_find_hbox;
     GtkWidget *image;
-
 
     g_object_set (pref, "destroy-with-parent", TRUE, NULL);
     gtk_window_set_title (GTK_WINDOW (pref), _("Weather Preferences"));
@@ -770,117 +769,111 @@ gweather_pref_create (GWeatherPref *pref)
    * Units settings page.
    */
 
-    /* Temperature Unit */
-    temp_label = gtk_label_new_with_mnemonic (_("_Temperature unit:"));
-    gtk_label_set_use_markup (GTK_LABEL (temp_label), TRUE);
-    gtk_label_set_justify (GTK_LABEL (temp_label), GTK_JUSTIFY_LEFT);
-    gtk_label_set_xalign (GTK_LABEL (temp_label), 0.0);
-    gtk_widget_show (temp_label);
+  /* Temperature Unit */
+  temp_label = gtk_label_new_with_mnemonic (_("_Temperature unit:"));
+  gtk_label_set_use_markup (GTK_LABEL (temp_label), TRUE);
+  gtk_label_set_justify (GTK_LABEL (temp_label), GTK_JUSTIFY_LEFT);
+  gtk_label_set_xalign (GTK_LABEL (temp_label), 0.0);
+  gtk_widget_show (temp_label);
 
-    temp_combo = gtk_combo_box_text_new ();
-	pref->priv->basic_temp_combo = temp_combo;
-    gtk_label_set_mnemonic_widget (GTK_LABEL (temp_label), temp_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Default"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Kelvin"));
-    /* TRANSLATORS: Celsius is sometimes referred Centigrade */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Celsius"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Fahrenheit"));
-	gtk_widget_show (temp_combo);
-	
-    /* Speed Unit */
-    speed_label = gtk_label_new_with_mnemonic (_("_Wind speed unit:"));
-    gtk_label_set_use_markup (GTK_LABEL (speed_label), TRUE);
-    gtk_label_set_justify (GTK_LABEL (speed_label), GTK_JUSTIFY_LEFT);
-    gtk_label_set_xalign (GTK_LABEL (speed_label), 0.0);
-    gtk_widget_show (speed_label);
+  temp_combo = gtk_combo_box_text_new ();
+  pref->priv->basic_temp_combo = temp_combo;
+  gtk_label_set_mnemonic_widget (GTK_LABEL (temp_label), temp_combo);
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Default"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Kelvin"));
+  /* TRANSLATORS: Celsius is sometimes referred Centigrade */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Celsius"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (temp_combo), _("Fahrenheit"));
+  gtk_widget_set_hexpand (temp_combo, TRUE);
+  gtk_widget_show (temp_combo);
 
-    speed_combo = gtk_combo_box_text_new ();
-    pref->priv->basic_speed_combo = speed_combo;
-    gtk_label_set_mnemonic_widget (GTK_LABEL (speed_label), speed_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("Default"));
-    /* TRANSLATOR: The wind speed unit "meters per second" */    
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("m/s"));
-    /* TRANSLATOR: The wind speed unit "kilometers per hour" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("km/h"));
-    /* TRANSLATOR: The wind speed unit "miles per hour" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("mph"));
-    /* TRANSLATOR: The wind speed unit "knots" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("knots"));
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo),
-		    _("Beaufort scale"));
-	gtk_widget_show (speed_combo);
+  /* Speed Unit */
+  speed_label = gtk_label_new_with_mnemonic (_("_Wind speed unit:"));
+  gtk_label_set_use_markup (GTK_LABEL (speed_label), TRUE);
+  gtk_label_set_justify (GTK_LABEL (speed_label), GTK_JUSTIFY_LEFT);
+  gtk_label_set_xalign (GTK_LABEL (speed_label), 0.0);
+  gtk_widget_show (speed_label);
 
-    /* Pressure Unit */
-    pres_label = gtk_label_new_with_mnemonic (_("_Pressure unit:"));
-    gtk_label_set_use_markup (GTK_LABEL (pres_label), TRUE);
-    gtk_label_set_justify (GTK_LABEL (pres_label), GTK_JUSTIFY_LEFT);
-    gtk_label_set_xalign (GTK_LABEL (pres_label), 0.0);
-    gtk_widget_show (pres_label);
+  speed_combo = gtk_combo_box_text_new ();
+  pref->priv->basic_speed_combo = speed_combo;
+  gtk_label_set_mnemonic_widget (GTK_LABEL (speed_label), speed_combo);
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("Default"));
+  /* TRANSLATOR: The wind speed unit "meters per second" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("m/s"));
+  /* TRANSLATOR: The wind speed unit "kilometers per hour" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("km/h"));
+  /* TRANSLATOR: The wind speed unit "miles per hour" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("mph"));
+  /* TRANSLATOR: The wind speed unit "knots" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("knots"));
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (speed_combo), _("Beaufort scale"));
+  gtk_widget_set_hexpand (speed_combo, TRUE);
+  gtk_widget_show (speed_combo);
 
-    pres_combo = gtk_combo_box_text_new ();
-	pref->priv->basic_pres_combo = pres_combo;
-    gtk_label_set_mnemonic_widget (GTK_LABEL (pres_label), pres_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("Default"));
-    /* TRANSLATOR: The pressure unit "kiloPascals" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("kPa"));
-    /* TRANSLATOR: The pressure unit "hectoPascals" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("hPa"));
-    /* TRANSLATOR: The pressure unit "millibars" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("mb"));
-    /* TRANSLATOR: The pressure unit "millibars of mercury" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("mmHg"));
-    /* TRANSLATOR: The pressure unit "inches of mercury" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("inHg"));
-    /* TRANSLATOR: The pressure unit "atmospheres" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("atm"));
-    gtk_widget_show (pres_combo);
+  /* Pressure Unit */
+  pres_label = gtk_label_new_with_mnemonic (_("_Pressure unit:"));
+  gtk_label_set_use_markup (GTK_LABEL (pres_label), TRUE);
+  gtk_label_set_justify (GTK_LABEL (pres_label), GTK_JUSTIFY_LEFT);
+  gtk_label_set_xalign (GTK_LABEL (pres_label), 0.0);
+  gtk_widget_show (pres_label);
 
-    /* Distance Unit */
-    dist_label = gtk_label_new_with_mnemonic (_("_Visibility unit:"));
-    gtk_label_set_use_markup (GTK_LABEL (dist_label), TRUE);
-    gtk_label_set_justify (GTK_LABEL (dist_label), GTK_JUSTIFY_LEFT);
-    gtk_label_set_xalign (GTK_LABEL (dist_label), 0.0);
-    gtk_widget_show (dist_label);
+  pres_combo = gtk_combo_box_text_new ();
+  pref->priv->basic_pres_combo = pres_combo;
+  gtk_label_set_mnemonic_widget (GTK_LABEL (pres_label), pres_combo);
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("Default"));
+  /* TRANSLATOR: The pressure unit "kiloPascals" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("kPa"));
+  /* TRANSLATOR: The pressure unit "hectoPascals" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("hPa"));
+  /* TRANSLATOR: The pressure unit "millibars" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("mb"));
+  /* TRANSLATOR: The pressure unit "millibars of mercury" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("mmHg"));
+  /* TRANSLATOR: The pressure unit "inches of mercury" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("inHg"));
+  /* TRANSLATOR: The pressure unit "atmospheres" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (pres_combo), _("atm"));
+  gtk_widget_set_hexpand (pres_combo, TRUE);
+  gtk_widget_show (pres_combo);
 
-    dist_combo = gtk_combo_box_text_new ();
-	pref->priv->basic_dist_combo = dist_combo;
-    gtk_label_set_mnemonic_widget (GTK_LABEL (dist_label), dist_combo);
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("Default"));
-    /* TRANSLATOR: The distance unit "meters" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("meters"));
-    /* TRANSLATOR: The distance unit "kilometers" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("km"));
-    /* TRANSLATOR: The distance unit "miles" */
-    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("miles"));
-	gtk_widget_show (dist_combo);
+  /* Distance Unit */
+  dist_label = gtk_label_new_with_mnemonic (_("_Visibility unit:"));
+  gtk_label_set_use_markup (GTK_LABEL (dist_label), TRUE);
+  gtk_label_set_justify (GTK_LABEL (dist_label), GTK_JUSTIFY_LEFT);
+  gtk_label_set_xalign (GTK_LABEL (dist_label), 0.0);
+  gtk_widget_show (dist_label);
 
-	unit_table = gtk_table_new(5, 2, FALSE);
-	gtk_table_set_row_spacings(GTK_TABLE(unit_table), 6);
-	gtk_table_set_col_spacings(GTK_TABLE(unit_table), 12);
-	gtk_table_attach(GTK_TABLE(unit_table), temp_label, 0, 1, 0, 1,
-	                 (GtkAttachOptions) (GTK_FILL),
-	                 (GtkAttachOptions) (0), 0, 0);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), temp_combo,  1, 2, 0, 1);
-	gtk_table_attach(GTK_TABLE(unit_table), speed_label, 0, 1, 1, 2,
-	                 (GtkAttachOptions) (GTK_FILL),
-	                 (GtkAttachOptions) (0), 0, 0);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), speed_combo, 1, 2, 1, 2);
-	gtk_table_attach(GTK_TABLE(unit_table), pres_label, 0, 1, 2, 3,
-	                 (GtkAttachOptions) (GTK_FILL),
-	                 (GtkAttachOptions) (0), 0, 0);	
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), pres_combo,  1, 2, 2, 3);
-	gtk_table_attach(GTK_TABLE(unit_table), dist_label, 0, 1, 3, 4,
-	                 (GtkAttachOptions) (GTK_FILL),
-	                 (GtkAttachOptions) (0), 0, 0);	
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), dist_combo,  1, 2, 3, 4);
-	gtk_widget_show(unit_table);
-	
+  dist_combo = gtk_combo_box_text_new ();
+  pref->priv->basic_dist_combo = dist_combo;
+  gtk_label_set_mnemonic_widget (GTK_LABEL (dist_label), dist_combo);
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("Default"));
+  /* TRANSLATOR: The distance unit "meters" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("meters"));
+  /* TRANSLATOR: The distance unit "kilometers" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("km"));
+  /* TRANSLATOR: The distance unit "miles" */
+  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (dist_combo), _("miles"));
+  gtk_widget_set_hexpand (dist_combo, TRUE);
+  gtk_widget_show (dist_combo);
+
+  unit_grid = gtk_grid_new ();
+  gtk_grid_set_row_spacing (GTK_GRID (unit_grid), 6);
+  gtk_grid_set_column_spacing (GTK_GRID (unit_grid), 12);
+  gtk_grid_attach (GTK_GRID (unit_grid), temp_label, 0, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), temp_combo,  1, 0, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), speed_label, 0, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), speed_combo, 1, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), pres_label, 0, 2, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), pres_combo,  1, 2, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), dist_label, 0, 3, 1, 1);
+  gtk_grid_attach (GTK_GRID (unit_grid), dist_combo,  1, 3, 1, 1);
+  gtk_widget_show (unit_grid);
+
 	g_signal_connect (temp_combo, "changed", G_CALLBACK (temp_combo_changed_cb), pref);
 	g_signal_connect (speed_combo, "changed", G_CALLBACK (speed_combo_changed_cb), pref);
 	g_signal_connect (dist_combo, "changed", G_CALLBACK (dist_combo_changed_cb), pref);
 	g_signal_connect (pres_combo, "changed", G_CALLBACK (pres_combo_changed_cb), pref);
 
-	
 #ifdef RADARMAP
     pref->priv->basic_radar_btn = gtk_check_button_new_with_mnemonic (_("Enable _radar map"));
     gtk_widget_show (pref->priv->basic_radar_btn);
@@ -961,7 +954,7 @@ gweather_pref_create (GWeatherPref *pref)
 
     vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 
-	gtk_box_pack_start (GTK_BOX (vbox), unit_table, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), unit_grid, TRUE, TRUE, 0);
 
 #ifdef RADARMAP
     gtk_box_pack_start (GTK_BOX (vbox), pref->priv->basic_radar_btn, TRUE, TRUE, 0);
