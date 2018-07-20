@@ -23,9 +23,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
 #include "gweather-applet.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"

@@ -18,11 +18,7 @@
 #ifndef __GWEATHER_PREF_H_
 #define __GWEATHER_PREF_H_
 
-#include <gtk/gtk.h>
-
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
+#include "gweather-applet.h"
 
 G_BEGIN_DECLS
 
@@ -45,7 +41,6 @@ struct _GWeatherPref
 	GWeatherPrefPrivate *priv;
 };
 
-
 struct _GWeatherPrefClass
 {
 	GtkDialogClass parent_class;
@@ -54,11 +49,8 @@ struct _GWeatherPrefClass
 GType		 gweather_pref_get_type	(void);
 GtkWidget	*gweather_pref_new	(GWeatherApplet *applet);
 
-
 void set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
-
 
 G_END_DECLS
 
 #endif /* __GWEATHER_PREF_H */
-

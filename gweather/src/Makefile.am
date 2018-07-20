@@ -23,7 +23,6 @@ libgweather_applet_la_CFLAGS = \
 	$(NULL)
 
 libgweather_applet_la_SOURCES = \
-	gweather.h \
 	gweather-about.c \
 	gweather-about.h \
 	gweather-pref.c \

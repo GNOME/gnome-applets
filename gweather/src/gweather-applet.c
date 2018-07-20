@@ -35,9 +35,6 @@
 #include <libnotify/notification.h>
 #endif
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
 #include "gweather-about.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"

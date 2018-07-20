@@ -21,13 +21,9 @@
 #include <panel-applet.h>
 #include <gio/gio.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
-
 
 static gboolean
 gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)

@@ -29,13 +29,10 @@
 #include <ctype.h>
 #include <locale.h>
 
-#include <panel-applet.h>
-
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 #include <libgweather/gweather.h>
 
 #include "gweather-xml.h"
-#include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-applet.h"
 #include "gweather-dialog.h"

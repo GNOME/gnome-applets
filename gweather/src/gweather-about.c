@@ -23,11 +23,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
 #include "gweather-about.h"
-
 
 void gweather_about_run (GWeatherApplet *gw_applet)
 {

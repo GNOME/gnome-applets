@@ -18,11 +18,7 @@
 #ifndef __GWEATHER_DIALOG_H_
 #define __GWEATHER_DIALOG_H_
 
-#include <gtk/gtk.h>
-
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
+#include "gweather-applet.h"
 
 G_BEGIN_DECLS
 

@@ -18,9 +18,7 @@
 #ifndef __GWEATHER_ABOUT_H_
 #define __GWEATHER_ABOUT_H_
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
-
-#include "gweather.h"
+#include "gweather-applet.h"
 
 G_BEGIN_DECLS
 
@@ -29,4 +27,3 @@ extern void gweather_about_run (GWeatherApplet *gw_applet);
 G_END_DECLS
 
 #endif /* __GWEATHER_ABOUT_H_ */
-
