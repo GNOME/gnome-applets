@@ -118,6 +118,8 @@ monitor_run (CPUFreqMonitor *monitor)
       monitor->changed = TRUE;
     }
 
+  cpufreq_put_policy (policy);
+
   return TRUE;
 }
 
