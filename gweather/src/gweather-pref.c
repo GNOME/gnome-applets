@@ -405,9 +405,11 @@ auto_update_toggled (GtkToggleButton *button, GWeatherPref *pref)
 static void temp_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->priv->applet;
+    gchar *temp_summary;
 
-    gtk_label_set_text(GTK_LABEL(gw_applet->label), 
-                       gweather_info_get_temp_summary(gw_applet->gweather_info));
+    temp_summary = gweather_info_get_temp_summary (gw_applet->gweather_info);
+    gtk_label_set_text (GTK_LABEL (gw_applet->label), temp_summary);
+    g_free (temp_summary);
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));

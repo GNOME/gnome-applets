@@ -199,9 +199,8 @@ static void place_widgets (GWeatherApplet *gw_applet)
     int total_size = 0;
     gboolean horizontal = FALSE;
     int panel_size = gw_applet->size;
-    const gchar *temp;   
     const gchar *icon_name;
-	
+
     switch (gw_applet->orient) {
 	case PANEL_APPLET_ORIENT_LEFT:
 	case PANEL_APPLET_ORIENT_RIGHT:
@@ -233,12 +232,18 @@ static void place_widgets (GWeatherApplet *gw_applet)
     /* Create the temperature label */
     gw_applet->label = gtk_label_new("--");
     panel_applet_add_text_class (gw_applet->applet, gw_applet->label);
-    
+
     /* Update temperature text */
-    if (gw_applet->gweather_info)
-        temp = gweather_info_get_temp_summary(gw_applet->gweather_info);
-    if (temp) 
-        gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
+    if (gw_applet->gweather_info) {
+        gchar *temp;
+
+        temp = gweather_info_get_temp_summary (gw_applet->gweather_info);
+
+        if (temp) {
+            gtk_label_set_text (GTK_LABEL (gw_applet->label), temp);
+            g_free (temp);
+        }
+    }
 
     /* Check the label size to determine box layout */
     gtk_widget_show (gw_applet->label);
@@ -479,7 +484,6 @@ update_finish (GWeatherInfo *info, gpointer data)
 #ifdef HAVE_LIBNOTIFY
     char *message, *detail;
 #endif
-    char *s;
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
     gint nxtSunEvent;
     const gchar *icon_name;
@@ -503,18 +507,21 @@ update_finish (GWeatherInfo *info, gpointer data)
     if ((TRUE == gweather_info_is_valid (info)) ||
 	     (gw_fault_counter >= MAX_CONSECUTIVE_FAULTS))
     {
+	    gchar *text;
+
 	    gw_fault_counter = 0;
+
             icon_name = gweather_info_get_icon_name (gw_applet->gweather_info);
             gtk_image_set_from_icon_name (GTK_IMAGE(gw_applet->image), 
                                           icon_name, GTK_ICON_SIZE_BUTTON);
-	      
-	    gtk_label_set_text (GTK_LABEL (gw_applet->label), 
-				gweather_info_get_temp_summary(
-					gw_applet->gweather_info));
-	    
-	    s = gweather_info_get_weather_summary (gw_applet->gweather_info);
-	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet->applet), s);
-	    g_free (s);
+
+	    text = gweather_info_get_temp_summary (gw_applet->gweather_info);
+	    gtk_label_set_text (GTK_LABEL (gw_applet->label), text);
+	    g_free (text);
+
+	    text = gweather_info_get_weather_summary (gw_applet->gweather_info);
+	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet->applet), text);
+	    g_free (text);
 
 	    /* Update dialog -- if one is present */
 	    if (gw_applet->details_dialog) {
@@ -537,6 +544,13 @@ update_finish (GWeatherInfo *info, gpointer data)
 		    {
 			 GError *error = NULL;
                          const char *icon;
+                         gchar *location_name;
+                         gchar *sky;
+                         gchar *temp_summary;
+
+                         location_name = gweather_info_get_location_name (info);
+                         sky = gweather_info_get_sky (info);
+                         temp_summary = gweather_info_get_temp_summary (info);
 			 
 	           	 /* Show notification */
 	           	 message = g_strdup_printf ("%s: %s",
@@ -544,9 +558,13 @@ update_finish (GWeatherInfo *info, gpointer data)
 					 gweather_info_get_sky (info));
 	           	 detail = g_strdup_printf (
 					 _("City: %s\nSky: %s\nTemperature: %s"),
-					 gweather_info_get_location_name (info),
-					 gweather_info_get_sky (info),
-					 gweather_info_get_temp_summary (info));
+					 location_name,
+					 sky,
+					 temp_summary);
+
+                         g_free (location_name);
+                         g_free (sky);
+                         g_free (temp_summary);
 
 			 icon = gweather_info_get_icon_name (gw_applet->gweather_info);
 			 if (icon == NULL)
