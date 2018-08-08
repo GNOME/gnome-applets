@@ -18,6 +18,7 @@ libgweather_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGWEATHER_CFLAGS) \
 	$(LIBNOTIFY_CFLAGS) \
+	$(XML2_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
@@ -44,6 +45,7 @@ libgweather_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBGWEATHER_LIBS) \
 	$(LIBNOTIFY_LIBS) \
+	$(XML2_LIBS) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk
