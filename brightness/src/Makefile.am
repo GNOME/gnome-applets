@@ -17,6 +17,7 @@ libbrightness_applet_la_CPPFLAGS = \
 
 libbrightness_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
+	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
@@ -34,6 +35,7 @@ libbrightness_applet_la_LDFLAGS = \
 
 libbrightness_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
+	$(GIO_UNIX_LIBS) \
 	$(NULL)
 
 BUILT_SOURCES = \
