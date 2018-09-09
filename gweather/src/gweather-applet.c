@@ -445,12 +445,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     g_object_unref (action_group);
 
-#if GWEATHER_CHECK_VERSION (3, 27, 2)
     gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet));
-#else
-    gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet),
-                                                  GWEATHER_FORECAST_LIST);
-#endif
 
     gweather_info_set_enabled_providers (gw_applet->gweather_info,
                                          GWEATHER_PROVIDER_ALL);
