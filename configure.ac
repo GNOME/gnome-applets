@@ -3,7 +3,7 @@ dnl Define version info
 dnl **************************************************************************
 
 m4_define([ga_major_version], [3])
-m4_define([ga_minor_version], [28])
+m4_define([ga_minor_version], [30])
 m4_define([ga_micro_version], [0])
 m4_define([ga_version], [ga_major_version.ga_minor_version.ga_micro_version])
 
@@ -71,7 +71,7 @@ DBUS_REQUIRED=1.1.2
 DBUS_GLIB_REQUIRED=0.74
 ADWAITA_ICON_THEME_REQUIRED=3.14.0
 LIBXML_REQUIRED=2.5.0
-GWEATHER_REQUIRED=3.18.0
+GWEATHER_REQUIRED=3.28.0
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.97
 dnl ***************************************************************************
