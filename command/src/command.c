@@ -22,9 +22,8 @@
  *      Stefano Karapetsas <stefano@karapetsas.com>
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "ga-command.h"
 
 #include <glib.h>
 #include <glib/gi18n.h>
