@@ -139,17 +139,6 @@ AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
-dnl -- check for gnome-settings-daemon (optional) -----------------------------
-PKG_CHECK_MODULES(GNOME_SETTINGS_DAEMON, gnome-settings-daemon,
-	HAVE_GNOME_SETTINGS_DAEMON=yes, HAVE_GNOME_SETTINGS_DAEMON=no)
-
-if test "x$HAVE_GNOME_SETTINGS_DAEMON" = "xno"; then
-	AC_MSG_WARN([gnome-settings-daemon DBUS API is required to build modem-applet.])
-fi
-
-AC_SUBST(GNOME_SETTINGS_DAEMON_CFLAGS)
-AC_SUBST(GNOME_SETTINGS_DAEMON_LIBS)
-
 dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
@@ -391,29 +380,6 @@ if test "x$APPLET_ACCESSX" = "xtrue"; then
   AC_MSG_WARN([*** keyboard accessibility status applet will not be built ***])
 fi
 CPPFLAGS=$savecppflags
-
-dnl ***************************************************************************
-dnl *** modemlights applet check                                            ***
-dnl ***************************************************************************
-
-SU_TOOL=
-HAVE_LIBUTIL=
-
-AC_PATH_PROG(SU_TOOL, su)
-AC_CHECK_LIB(util, forkpty, HAVE_LIBUTIL=true, HAVE_LIBUTIL=false)
-
-if test "x$HAVE_LIBUTIL" = "xtrue" -a "x$HAVE_GNOME_SETTINGS_DAEMON" = "xyes"; then
-  MODEMLIGHTS_LIBS=" -lutil"
-  AC_SUBST(MODEMLIGHTS_LIBS)
-  AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
-  AC_DEFINE_UNQUOTED(SU_PATH, "${SU_TOOL}", [su executable path])
-  BUILD_MODEM_LIGHTS=yes
-else
-  AC_MSG_WARN([*** modemlights applet will not be built ***])
-  BUILD_MODEM_LIGHTS=no
-fi
-
-AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$BUILD_MODEM_LIGHTS" = "xyes")
 
 dnl ***************************************************************************
 dnl *** cpufreq applet check                                                ***
@@ -661,9 +627,6 @@ AC_CONFIG_FILES([
   mini-commander/Makefile
   mini-commander/src/Makefile
 
-  modem-lights/Makefile
-  modem-lights/src/Makefile
-
   multiload/Makefile
   multiload/help/Makefile
   multiload/src/Makefile
@@ -752,7 +715,6 @@ echo "    geyes .........................: always"
 echo "    gweather ......................: $build_libgweather_applets"
 echo "    inhibit .......................: always"
 echo "    mini-commander ................: $enable_mini_commander"
-echo "    modem-lights ..................: $BUILD_MODEM_LIGHTS"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
 echo "    sticky-notes ..................: $enable_stickynotes"
