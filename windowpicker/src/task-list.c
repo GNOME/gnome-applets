@@ -23,6 +23,7 @@
 
 #include <libwnck/libwnck.h>
 #include <panel-applet.h>
+#include <X11/Xlib.h>
 
 struct _TaskListPrivate {
     WnckScreen *screen;
@@ -32,6 +33,15 @@ struct _TaskListPrivate {
 G_DEFINE_TYPE_WITH_PRIVATE (TaskList, task_list, GTK_TYPE_BOX);
 
 static GSList *task_lists;
+static gboolean has_filter;
+guint size_update_event_source;
+
+static gboolean
+on_monitors_changed (gpointer user_data);
+
+static GdkFilterReturn window_filter_function (GdkXEvent *gdk_xevent,
+                                               GdkEvent *event,
+                                               gpointer user_data);
 
 static TaskList *
 get_task_list_for_monitor (TaskList *task_list,
@@ -61,11 +71,8 @@ static void on_task_item_closed (
     TaskItem *item,
     TaskList *list)
 {
-    gtk_container_remove (
-        GTK_CONTAINER (list),
-        GTK_WIDGET (item)
-    );
-    gtk_widget_destroy (GTK_WIDGET (item));
+    gtk_container_remove (GTK_CONTAINER (list),
+                          GTK_WIDGET (item));
 }
 
 static gint
@@ -238,6 +245,9 @@ task_list_class_init(TaskListClass *class) {
 
     obj_class->dispose = task_list_dispose;
     obj_class->finalize = task_list_finalize;
+
+    task_lists = NULL;
+    has_filter = FALSE;
 }
 
 static void task_list_init (TaskList *list) {
@@ -276,6 +286,16 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
     g_signal_connect (taskList->priv->screen, "window-opened",
             G_CALLBACK (on_window_opened), taskList);
 
+    if (!has_filter)
+      {
+        has_filter = TRUE;
+
+        gdk_window_add_filter (gtk_widget_get_window (GTK_WIDGET (taskList)),
+                               window_filter_function,
+                               taskList);
+      }
+
+
     GList *windows = wnck_screen_get_windows (taskList->priv->screen);
     while (windows != NULL) {
         on_window_opened (taskList->priv->screen, windows->data, taskList);
@@ -295,4 +315,89 @@ task_list_get_monitor (TaskList *list)
 
     return gdk_screen_get_monitor_at_window (gdk_screen,
                                              gdk_window);
+}
+
+static void
+remove_task_item (GtkWidget *item, gpointer list)
+{
+  g_return_if_fail (TASK_IS_LIST (list));
+
+  gtk_container_remove (GTK_CONTAINER (list), item);
+}
+
+static gboolean
+on_monitors_changed (gpointer user_data)
+{
+  GList *current_list = task_lists;
+
+  while (current_list != NULL)
+    {
+      TaskList *list = current_list->data;
+      GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (list));
+      gint list_monitor;
+
+      g_signal_handlers_block_by_func (list->priv->screen,
+                                       on_window_opened,
+                                       list);
+
+      list_monitor = gdk_screen_get_monitor_at_window (gdk_screen_get_default (),
+                                                       window);
+
+      if (task_list_get_monitor (list) == list_monitor)
+        {
+          gtk_container_foreach (GTK_CONTAINER (list), remove_task_item, list);
+        }
+
+      GList *windows = wnck_screen_get_windows (list->priv->screen);
+
+      while (windows != NULL)
+        {
+          on_window_opened (list->priv->screen, windows->data, list);
+          windows = windows->next;
+        }
+
+      g_signal_handlers_unblock_by_func (list->priv->screen,
+                                         on_window_opened,
+                                         NULL);
+
+     current_list = current_list->next;
+    }
+
+  size_update_event_source = 0;
+
+  return G_SOURCE_REMOVE;
+}
+
+static GdkFilterReturn window_filter_function (GdkXEvent *gdk_xevent,
+                                               GdkEvent *event,
+                                               gpointer user_data)
+{
+  XEvent *xevent = (XEvent *) gdk_xevent;
+
+  switch (xevent->type)
+    {
+      case PropertyNotify:
+        {
+          XPropertyEvent *propertyEvent;
+
+          propertyEvent = xevent;
+
+          const Atom WORKAREA_ATOM = XInternAtom (propertyEvent->display,
+                                                  "_NET_WORKAREA", True);
+
+          if (propertyEvent->atom != WORKAREA_ATOM)
+            return GDK_FILTER_CONTINUE;
+
+          if (size_update_event_source != 0)
+            return GDK_FILTER_CONTINUE;
+
+          size_update_event_source = g_idle_add (on_monitors_changed,
+                                                 user_data);
+
+          break;
+        }
+      default:break;
+    }
+
+  return GDK_FILTER_CONTINUE;
 }
