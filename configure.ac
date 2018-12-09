@@ -129,6 +129,9 @@ fi
 AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
 AC_SUBST(LIBPANEL_APPLET_DIR)
 
+dnl -- check for X11 (required) -----------------------------------------------
+PKG_CHECK_MODULES([X11], [x11])
+
 dnl -- check for libgtop (optional) -------------------------------------------
 build_gtop_applets=false
 PKG_CHECK_MODULES(GTOP_APPLETS,

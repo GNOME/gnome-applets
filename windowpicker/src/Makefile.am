@@ -13,6 +13,7 @@ libwindow_picker_applet_la_CFLAGS = \
 	-I$(top_srcdir) \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
+	$(X11_CFLAGS) \
 	$(GCC_FLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
@@ -27,6 +28,7 @@ libwindow_picker_applet_la_LDFLAGS = \
 libwindow_picker_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
 	$(LIBWNCK_LIBS) \
+	$(X11_LIBS) \
 	$(LIBM) \
 	$(NULL)
 
