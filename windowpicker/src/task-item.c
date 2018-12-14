@@ -43,7 +43,7 @@ struct _TaskItemPrivate {
     GTimeVal     urgent_time;
     guint        blink_timer;
     gboolean     mouse_over;
-    gint         monitor;
+    GdkMonitor  *monitor;
     WpApplet    *windowPickerApplet;
 };
 
@@ -488,22 +488,24 @@ on_window_type_changed (WnckWindow *window,
       }
 }
 
-static gint
+static GdkMonitor *
 get_window_monitor (WnckWindow *window)
 {
     gint x;
     gint y;
     gint w;
     gint h;
-    gint window_monitor;
-    GdkScreen *gdk_screen;
+    GdkMonitor *window_monitor;
+    GdkDisplay *gdk_display;
 
     wnck_window_get_geometry (window, &x, &y, &w, &h);
 
-    gdk_screen = gdk_screen_get_default ();
-    window_monitor = gdk_screen_get_monitor_at_point (gdk_screen,
-                                                      x + w / 2,
-                                                      y + h / 2);
+    gdk_display = gdk_display_get_default ();
+
+
+    window_monitor = gdk_display_get_monitor_at_point (gdk_display,
+                                                       x + w / 2,
+                                                       y + h / 2);
     return window_monitor;
 }
 
@@ -511,8 +513,8 @@ static void
 on_window_geometry_changed (WnckWindow *window,
                             TaskItem   *item)
 {
-    gint old_monitor;
-    gint window_monitor;
+    GdkMonitor *old_monitor;
+    GdkMonitor *window_monitor;
 
     window_monitor = get_window_monitor (window);
 
@@ -855,7 +857,7 @@ static void task_item_class_init (TaskItemClass *klass) {
 
     task_item_signals [TASK_ITEM_MONITOR_CHANGED] =
         g_signal_new ("monitor-changed", TASK_TYPE_ITEM, G_SIGNAL_RUN_LAST,
-                      0, NULL, NULL, NULL, G_TYPE_NONE, 1, G_TYPE_INT);
+                      0, NULL, NULL, NULL, G_TYPE_NONE, 1, GDK_TYPE_MONITOR);
 }
 
 static void task_item_init (TaskItem *item) {
@@ -967,7 +969,8 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     return item;
 }
 
-gint task_item_get_monitor (TaskItem *item)
+GdkMonitor *
+task_item_get_monitor (TaskItem *item)
 {
     return item->priv->monitor;
 }
