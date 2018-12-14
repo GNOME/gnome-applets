@@ -48,9 +48,11 @@ struct _TaskItemClass {
     void (* itemclosed) (TaskItem *item);
 };
 
-GType task_item_get_type (void) G_GNUC_CONST;
-GtkWidget * task_item_new (WpApplet *windowPickerApplet, WnckWindow *window);
+GType       task_item_get_type    (void) G_GNUC_CONST;
 
-gint        task_item_get_monitor (TaskItem *item);
+GtkWidget  *task_item_new         (WpApplet   *windowPickerApplet,
+                                   WnckWindow *window);
+
+GdkMonitor *task_item_get_monitor (TaskItem *item);
 
 #endif /* _TASK_ITEM_H_ */
