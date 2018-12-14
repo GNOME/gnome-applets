@@ -55,9 +55,9 @@ struct _TaskListClass {
     GtkBoxClass parent_class;
 };
 
-GType      task_list_get_type            (void) G_GNUC_CONST;
+GType       task_list_get_type    (void) G_GNUC_CONST;
 
-GtkWidget *task_list_new                 (WpApplet *applet);
-gint       task_list_get_monitor         (TaskList *list);
+GtkWidget  *task_list_new         (WpApplet *applet);
+GdkMonitor *task_list_get_monitor (TaskList *list);
 
 #endif /* _TASK_LIST_H_ */
