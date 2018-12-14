@@ -37,10 +37,10 @@ static GSList *task_lists;
 
 static TaskList *
 get_task_list_for_monitor (TaskList *task_list,
-                           gint      monitor)
+                           GdkMonitor *monitor)
 {
     GSList *list;
-    gint list_monitor;
+    GdkMonitor *list_monitor;
 
     list = task_lists;
 
@@ -67,19 +67,19 @@ static void on_task_item_closed (
                           GTK_WIDGET (item));
 }
 
-static gint
+static GdkMonitor *
 window_get_monitor (WnckWindow *window)
 {
-    GdkScreen *gdk_screen;
+    GdkDisplay *gdk_display;
     gint x, y, w, h;
 
-    gdk_screen = gdk_screen_get_default ();
+    gdk_display = gdk_display_get_default ();
 
     wnck_window_get_geometry (window, &x, &y, &w, &h);
 
-    return gdk_screen_get_monitor_at_point (gdk_screen,
-                                            x + w / 2,
-                                            y + h / 2);
+    return gdk_display_get_monitor_at_point (gdk_display,
+                                             x + w / 2,
+                                             y + h / 2);
 }
 
 static void
@@ -87,8 +87,8 @@ on_task_item_monitor_changed_cb (TaskItem *item,
                                  gint      old_monitor,
                                  TaskList *current_list)
 {
-    gint monitor;
-    gint list_monitor;
+    GdkMonitor *monitor;
+    GdkMonitor *list_monitor;
     TaskList *list;
 
     monitor = task_item_get_monitor (item);
@@ -122,8 +122,8 @@ static void create_task_item (TaskList   *taskList,
                               WnckWindow *window)
 {
     GtkWidget *item;
-    gint list_monitor;
-    gint window_monitor;
+    GdkMonitor *list_monitor;
+    GdkMonitor *window_monitor;
     guint num;
 
     num = g_slist_length (task_lists);
@@ -224,13 +224,13 @@ on_monitors_changed (gpointer user_data)
 {
   TaskList *list;
   GdkWindow *window;
-  gint list_monitor;
+  GdkMonitor *list_monitor;
 
   list = user_data;
   window = gtk_widget_get_window (GTK_WIDGET (list));
 
-  list_monitor = gdk_screen_get_monitor_at_window (gdk_screen_get_default (),
-                                                   window);
+  list_monitor = gdk_display_get_monitor_at_window (gdk_display_get_default (),
+                                                    window);
 
   if (task_list_get_monitor (list) == list_monitor)
     gtk_container_foreach (GTK_CONTAINER (list), remove_task_item, list);
@@ -367,15 +367,13 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
     return (GtkWidget *) taskList;
 }
 
-gint
+GdkMonitor *
 task_list_get_monitor (TaskList *list)
 {
-    GdkScreen *gdk_screen;
     GdkWindow *gdk_window;
 
     gdk_window = gtk_widget_get_window (GTK_WIDGET (list));
-    gdk_screen = gtk_widget_get_screen (GTK_WIDGET (list));
 
-    return gdk_screen_get_monitor_at_window (gdk_screen,
-                                             gdk_window);
+    return gdk_display_get_monitor_at_window (gdk_display_get_default (),
+                                              gdk_window);
 }
