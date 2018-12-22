@@ -180,23 +180,6 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
   return TRUE;
 }
 
-/* This is a hack around the fact that gtk+ doesn't
- * propogate button presses on button2/3.
- */
-static gboolean
-button_press_hack (GtkWidget      *widget,
-		   GdkEventButton *event,
-		   GtkWidget      *applet)
-{
-    if (event->button == 3 || event->button == 2) {
-	gtk_propagate_event (applet, (GdkEvent *) event);
-
-	return TRUE;
-    }
-
-    return FALSE;
-}
-
 static gint
 key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
@@ -426,10 +409,6 @@ build_table(charpick_data *p_curr_data)
     g_signal_connect (G_OBJECT (button), "clicked",
                               G_CALLBACK (chooser_button_clicked),
 			      p_curr_data);
-    g_signal_connect (G_OBJECT (button), "button_press_event",
-                               G_CALLBACK (button_press_hack),
-			       p_curr_data->applet);
-  
   }
   
   charlist = g_strdup (p_curr_data->charlist);
@@ -474,8 +453,6 @@ build_table(charpick_data *p_curr_data)
     g_signal_connect (G_OBJECT (toggle_button[i]), "toggled",
 		      G_CALLBACK (toggle_button_toggled_cb),
                         p_curr_data);
-    g_signal_connect (G_OBJECT (toggle_button[i]), "button_press_event", 
-                      G_CALLBACK (button_press_hack), p_curr_data->applet);
   }
   
   if (p_curr_data->panel_vertical) {
