@@ -150,10 +150,8 @@ static gint
 toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
 {
   charpick_data *curr_data = data;
-  gint button_index;
   gboolean toggled;
-   
-  button_index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "index")); 
+
   toggled = gtk_toggle_button_get_active (button); 
 
   if (toggled)
@@ -174,7 +172,6 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
     gtk_selection_owner_set (curr_data->applet,
 	  		     GDK_SELECTION_CLIPBOARD,
                              GDK_CURRENT_TIME); 
-    curr_data->last_index = button_index;
   }	
 	     
   return TRUE;
@@ -244,7 +241,6 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     p_curr_data->charlist = g_ucs4_to_utf8 (code, -1, NULL, NULL, NULL);
   else
     p_curr_data->charlist = "hello";
-  p_curr_data->last_index = NO_LAST_INDEX;
   p_curr_data->last_toggle_button = NULL;
   build_table(p_curr_data);
 #endif
@@ -492,9 +488,7 @@ build_table(charpick_data *p_curr_data)
   gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
   gtk_widget_show_all (p_curr_data->box);
 
-  p_curr_data->last_index = NO_LAST_INDEX;
   p_curr_data->last_toggle_button = NULL;
-  
 }
 
 static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
@@ -683,7 +677,6 @@ charpicker_applet_fill (PanelApplet *applet)
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
    
   curr_data = g_new0 (charpick_data, 1);
-  curr_data->last_index = NO_LAST_INDEX;
   curr_data->applet = GTK_WIDGET (applet);
   curr_data->about_dialog = NULL;
   curr_data->add_edit_dialog = NULL;

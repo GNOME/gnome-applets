@@ -5,8 +5,6 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 
-#define NO_LAST_INDEX -1
-
 #define CHARPICK_SCHEMA  "org.gnome.gnome-applets.charpick"
 #define KEY_CURRENT_LIST "current-list"
 #define KEY_CHARTABLE    "chartable"
@@ -17,7 +15,6 @@ struct _charpick_data {
   GList *chartable;
   gchar * charlist;  
   gunichar selected_unichar;
-  gint last_index;
   GtkWidget *box;
   GtkWidget *frame;
   GtkWidget *applet;
