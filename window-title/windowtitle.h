@@ -49,7 +49,6 @@
 #define APPLET_OAFIID					"WindowTitleApplet"
 #define APPLET_OAFIID_FACTORY			"WindowTitleAppletFactory"
 #define PATH_UI_PREFS					GTK_BUILDERDIR"/windowtitle.ui"
-#define PATH_LOGO						DATA_DIR"/pixmaps/windowtitle-applet.png"
 #define FILE_CONFIGFILE					".windowtitle"
 #define ICON_WIDTH						16
 #define ICON_HEIGHT						16
