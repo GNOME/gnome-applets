@@ -172,8 +172,6 @@ static void about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_
 		NULL
 	};
 
-	GdkPixbuf *logo = gdk_pixbuf_new_from_file (PATH_LOGO, NULL);
-
 	gtk_show_about_dialog (NULL,
 		"version",	VERSION,
 		"comments",	N_("Window buttons for your GNOME Panel."),
@@ -182,7 +180,7 @@ static void about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_
 	    "artists",	artists,
 		"documenters",	documenters,
 		"translator-credits", ("translator-credits"),
-		"logo",		logo,
+		"logo-icon-name",	"windowbuttons-applet",
 	    "website",	"http://www.gnome-look.org/content/show.php?content=103732",
    		"website-label", N_("Window Applets on Gnome-Look"),
 		NULL);

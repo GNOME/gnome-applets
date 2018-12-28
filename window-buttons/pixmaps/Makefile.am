@@ -1,13 +1,11 @@
 
-EXTRA_DIST = \
-	$(pixmaps_DATA)\
-	$(other_files_DATA) \
-	$(pixmaps_DATA)
-
 pixmaps_DATA = \
-	windowbuttons-applet.png 
+	windowbuttons-applet.png
 
 pixmapsdir = \
-	$(datadir)/pixmaps
+	$(datadir)/icons/hicolor/96x96/apps
+
+EXTRA_DIST = \
+	$(pixmaps_DATA)
 
 -include $(top_srcdir)/git.mk
