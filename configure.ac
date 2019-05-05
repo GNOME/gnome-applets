@@ -410,6 +410,11 @@ AS_IF([test "x$disable_cpufreq" = "xno"], [
           AC_DEFINE([HAVE_IS_CPU_ONLINE], 1,
                     [Define to 1 if cpupower_is_cpu_online() is available])
           cpufreq_lib="cpupower"
+
+          AC_CHECK_LIB([cpupower], [cpufreq_get_frequencies], [
+            AC_DEFINE([HAVE_GET_FREQUENCIES], 1,
+                      [Define to 1 if cpufreq_get_frequencies() is available])
+          ])
         ], [
           AC_CHECK_LIB([cpupower], [cpufreq_cpu_exists], [
             cpufreq_lib="cpupower"
