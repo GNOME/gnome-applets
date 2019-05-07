@@ -37,13 +37,14 @@ typedef enum
 #define CPUFREQ_SELECTOR_ERROR cpufreq_selector_error_quark ()
 
 #ifdef HAVE_GET_FREQUENCIES
-typedef struct cpufreq_frequencies cpufreq_available_frequencies;
+typedef struct cpufreq_frequencies CPUFreqFrequencyList;
 #define cpufreq_get_available_frequencies(cpu) cpufreq_get_frequencies ("available", cpu)
 #define cpufreq_put_available_frequencies(first) cpufreq_put_frequencies (first)
+#else
+typedef struct cpufreq_available_frequences CPUFreqFrequencyList;
 #endif
 
 typedef struct cpufreq_policy                CPUFreqPolicy;
-typedef struct cpufreq_available_frequencies CPUFreqFrequencyList;
 typedef struct cpufreq_available_governors   CPUFreqGovernorList;
 
 struct _CPUFreqSelector
