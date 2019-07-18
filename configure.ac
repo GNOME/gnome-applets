@@ -358,7 +358,7 @@ dnl ***************************************************************************
 dnl *** Mini-Commander specific checks                                      ***
 dnl ***************************************************************************
 AC_ARG_ENABLE(mini-commander, [  --enable-mini-commander build mini-commander
-                          [@<:@default: no, transparent upgrade to deskbar-applet@:>@]], enable_mini_commander="yes", enable_mini_commander="no")
+                          [@<:@default: no, transparent upgrade to deskbar-applet@:>@]],, enable_mini_commander="no")
 AM_CONDITIONAL(BUILD_MINICOMMANDER_APPLET, test "x$enable_mini_commander" = "xyes")
 
 dnl ***************************************************************************
