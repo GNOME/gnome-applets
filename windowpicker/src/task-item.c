@@ -577,48 +577,8 @@ static void on_screen_window_closed (
 }
 
 static void
-disconnect_screen (TaskItem *item)
-{
-    WnckScreen *screen;
-
-    screen = item->priv->screen;
-
-    g_signal_handlers_disconnect_by_func (screen, on_screen_window_closed,
-                                          item);
-    g_signal_handlers_disconnect_by_func (screen,
-                                          on_screen_active_window_changed,
-                                          item);
-    g_signal_handlers_disconnect_by_func (screen,
-                                          on_screen_active_workspace_changed,
-                                          item);
-    g_signal_handlers_disconnect_by_func (screen,
-                                          on_screen_active_viewport_changed,
-                                          item);
-}
-
-static void
-disconnect_window (TaskItem *item)
-{
-    WnckWindow *window;
-
-    window = item->priv->window;
-
-    g_signal_handlers_disconnect_by_func (window, on_window_workspace_changed,
-                                          item);
-    g_signal_handlers_disconnect_by_func (window, on_window_state_changed,
-                                          item);
-    g_signal_handlers_disconnect_by_func (window, on_window_icon_changed, item);
-    g_signal_handlers_disconnect_by_func (window, on_window_type_changed, item);
-    g_signal_handlers_disconnect_by_func (window, on_window_geometry_changed,
-                                          item);
-}
-
-static void
 task_item_close (TaskItem   *item)
 {
-    disconnect_window (item);
-    disconnect_screen (item);
-
     g_signal_emit (G_OBJECT (item),
                    task_item_signals[TASK_ITEM_CLOSED_SIGNAL], 0);
 }
@@ -820,9 +780,6 @@ task_item_dispose (GObject *object)
 {
     TaskItem *task_item = TASK_ITEM (object);
 
-    disconnect_window (task_item);
-    disconnect_screen (task_item);
-
     G_OBJECT_CLASS (task_item_parent_class)->dispose (object);
 }
 
@@ -931,24 +888,25 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
         G_CALLBACK (on_drag_get_data), item);
 
     /* Other signals */
-    g_signal_connect (screen, "viewports-changed",
-        G_CALLBACK (on_screen_active_viewport_changed), item);
-    g_signal_connect (screen, "active-window-changed",
-        G_CALLBACK (on_screen_active_window_changed), item);
-    g_signal_connect (screen, "active-workspace-changed",
-        G_CALLBACK (on_screen_active_workspace_changed), item);
-    g_signal_connect (screen, "window-closed",
-        G_CALLBACK (on_screen_window_closed), item);
-    g_signal_connect (window, "workspace-changed",
-        G_CALLBACK (on_window_workspace_changed), item);
-    g_signal_connect (window, "state-changed",
-        G_CALLBACK (on_window_state_changed), item);
-    g_signal_connect (window, "icon-changed",
-        G_CALLBACK (on_window_icon_changed), item);
-    g_signal_connect (window, "type-changed",
-        G_CALLBACK (on_window_type_changed), item);
-    g_signal_connect (window, "geometry-changed",
-        G_CALLBACK (on_window_geometry_changed), item);
+    g_signal_connect_object (screen, "viewports-changed",
+        G_CALLBACK (on_screen_active_viewport_changed), item, 0);
+    g_signal_connect_object (screen, "active-window-changed",
+        G_CALLBACK (on_screen_active_window_changed), item, 0);
+    g_signal_connect_object (screen, "active-workspace-changed",
+        G_CALLBACK (on_screen_active_workspace_changed), item, 0);
+    g_signal_connect_object (screen, "window-closed",
+        G_CALLBACK (on_screen_window_closed), item, 0);
+    g_signal_connect_object (window, "workspace-changed",
+        G_CALLBACK (on_window_workspace_changed), item, 0);
+    g_signal_connect_object (window, "state-changed",
+        G_CALLBACK (on_window_state_changed), item, 0);
+    g_signal_connect_object (window, "icon-changed",
+        G_CALLBACK (on_window_icon_changed), item, 0);
+    g_signal_connect_object (window, "type-changed",
+        G_CALLBACK (on_window_type_changed), item, 0);
+    g_signal_connect_object (window, "geometry-changed",
+        G_CALLBACK (on_window_geometry_changed), item, 0);
+
     g_signal_connect(item, "draw",
         G_CALLBACK(task_item_draw), windowPickerApplet);
     g_signal_connect (item, "button-release-event",
