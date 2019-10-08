@@ -22,40 +22,12 @@
 
 #include "wp-applet.h"
 
-#include <glib.h>
+#include <glib-object.h>
 #include <gtk/gtk.h>
 
 #define TASK_TYPE_LIST (task_list_get_type ())
 
-#define TASK_LIST(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj),\
-    TASK_TYPE_LIST, TaskList))
-
-#define TASK_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass),\
-    TASK_TYPE_LIST, TaskListClass))
-
-#define TASK_IS_LIST(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj),\
-    TASK_TYPE_LIST))
-
-#define TASK_IS_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),\
-    TASK_TYPE_LIST))
-
-#define TASK_LIST_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj),\
-    TASK_TYPE_LIST, TaskListClass))
-
-typedef struct _TaskList        TaskList;
-typedef struct _TaskListClass   TaskListClass;
-typedef struct _TaskListPrivate TaskListPrivate;
-
-struct _TaskList {
-    GtkBox           parent;
-    TaskListPrivate *priv;
-};
-
-struct _TaskListClass {
-    GtkBoxClass parent_class;
-};
-
-GType       task_list_get_type    (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (TaskList, task_list, TASK, LIST, GtkBox)
 
 GtkWidget  *task_list_new         (WpApplet *applet);
 GdkMonitor *task_list_get_monitor (TaskList *list);
