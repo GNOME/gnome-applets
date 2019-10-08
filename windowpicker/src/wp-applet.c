@@ -296,18 +296,8 @@ wp_applet_dispose (GObject *object)
   applet = WP_APPLET (object);
 
   g_clear_object (&applet->settings);
-
-  if (applet->about_dialog != NULL)
-    {
-      gtk_widget_destroy (applet->about_dialog);
-      applet->about_dialog = NULL;
-    }
-
-  if (applet->preferences_dialog != NULL)
-    {
-      gtk_widget_destroy (applet->preferences_dialog);
-      applet->preferences_dialog = NULL;
-    }
+  g_clear_pointer (&applet->about_dialog, gtk_widget_destroy);
+  g_clear_pointer (&applet->preferences_dialog, gtk_widget_destory);
 
   G_OBJECT_CLASS (wp_applet_parent_class)->dispose (object);
 }
