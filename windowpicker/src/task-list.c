@@ -36,6 +36,32 @@ G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_BOX)
 
 static GSList *task_lists;
 
+static GtkOrientation
+get_applet_orientation (WpApplet *applet)
+{
+  PanelAppletOrient panel_orientation;
+  GtkOrientation orientation;
+
+  panel_orientation = panel_applet_get_orient(PANEL_APPLET(applet));
+
+  switch(panel_orientation)
+  {
+    case PANEL_APPLET_ORIENT_UP:
+    case PANEL_APPLET_ORIENT_DOWN:
+      orientation = GTK_ORIENTATION_HORIZONTAL;
+      break;
+    case PANEL_APPLET_ORIENT_LEFT:
+    case PANEL_APPLET_ORIENT_RIGHT:
+      orientation = GTK_ORIENTATION_VERTICAL;
+      break;
+    default:
+      orientation = GTK_ORIENTATION_HORIZONTAL;
+      break;
+  }
+
+  return orientation;
+}
+
 static TaskList *
 get_task_list_for_monitor (TaskList   *task_list,
                            GdkMonitor *monitor)
@@ -326,20 +352,10 @@ static void task_list_init (TaskList *list) {
 }
 
 GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
-    PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(windowPickerApplet));
+
     GtkOrientation orientation;
-    switch(panel_orientation) {
-        case PANEL_APPLET_ORIENT_UP:
-        case PANEL_APPLET_ORIENT_DOWN:
-            orientation = GTK_ORIENTATION_HORIZONTAL;
-            break;
-        case PANEL_APPLET_ORIENT_LEFT:
-        case PANEL_APPLET_ORIENT_RIGHT:
-            orientation = GTK_ORIENTATION_VERTICAL;
-            break;
-        default:
-            orientation = GTK_ORIENTATION_HORIZONTAL;
-    }
+
+    orientation = get_applet_orientation (windowPickerApplet);
 
     TaskList* taskList = g_object_new (TASK_TYPE_LIST,
                                        "orientation", orientation,
