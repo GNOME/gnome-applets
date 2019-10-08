@@ -148,12 +148,12 @@ static void create_task_item (TaskList   *taskList,
       {
         gtk_container_add (GTK_CONTAINER (taskList), item);
 
-        g_signal_connect (TASK_ITEM (item), "task-item-closed",
-                          G_CALLBACK (on_task_item_closed), taskList);
+        g_signal_connect_object (TASK_ITEM (item), "task-item-closed",
+                                 G_CALLBACK (on_task_item_closed), taskList, 0);
 
-        g_signal_connect (TASK_ITEM (item), "monitor-changed",
-                          G_CALLBACK (on_task_item_monitor_changed_cb),
-                          taskList);
+        g_signal_connect_object (TASK_ITEM (item), "monitor-changed",
+                                 G_CALLBACK (on_task_item_monitor_changed_cb),
+                                 taskList, 0);
       }
 }
 
@@ -179,8 +179,8 @@ static void on_window_opened (WnckScreen *screen,
     g_return_if_fail (taskList != NULL);
     WnckWindowType type = wnck_window_get_window_type (window);
 
-    g_signal_connect (window, "type-changed", G_CALLBACK (type_changed),
-                      taskList);
+    g_signal_connect_object (window, "type-changed", G_CALLBACK (type_changed),
+                             taskList, 0);
 
     if (type == WNCK_WINDOW_DESKTOP
         || type == WNCK_WINDOW_DOCK
@@ -294,7 +294,6 @@ static void
 task_list_dispose (GObject *object)
 {
     TaskList *task_list = TASK_LIST (object);
-    g_signal_handlers_disconnect_by_func (task_list->screen, on_window_opened, task_list);
 
     G_OBJECT_CLASS (task_list_parent_class)->dispose (object);
 }
@@ -343,10 +342,11 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     taskList->windowPickerApplet = windowPickerApplet;
 
-    g_signal_connect(PANEL_APPLET(windowPickerApplet), "change-orient",
-                     G_CALLBACK(on_task_list_orient_changed), taskList);
-    g_signal_connect (taskList->screen, "window-opened",
-            G_CALLBACK (on_window_opened), taskList);
+    g_signal_connect_object (windowPickerApplet, "change-orient",
+                             G_CALLBACK(on_task_list_orient_changed), taskList, 0);
+
+    g_signal_connect_object (taskList->screen, "window-opened",
+                             G_CALLBACK (on_window_opened), taskList, 0);
 
     gdk_window_add_filter (gtk_widget_get_window (GTK_WIDGET (taskList)),
                            window_filter_function,
