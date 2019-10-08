@@ -39,6 +39,9 @@ static GSList *task_lists;
 static GtkOrientation
 get_applet_orientation (WpApplet *applet);
 
+static gboolean
+window_is_special (WnckWindow *window);
+
 static TaskList *
 get_task_list_for_monitor (TaskList   *task_list,
                            GdkMonitor *monitor)
@@ -161,12 +164,8 @@ static void type_changed (WnckWindow *window,
                           gpointer user_data)
 {
     TaskList *taskList = TASK_LIST (user_data);
-    WnckWindowType type = wnck_window_get_window_type (window);
 
-    if (!(type == WNCK_WINDOW_DESKTOP
-          || type == WNCK_WINDOW_DOCK
-          || type == WNCK_WINDOW_SPLASHSCREEN
-          || type == WNCK_WINDOW_MENU))
+    if (!window_is_special (window))
       {
         create_task_item (taskList, window);
       }
@@ -177,15 +176,11 @@ static void on_window_opened (WnckScreen *screen,
     TaskList *taskList)
 {
     g_return_if_fail (taskList != NULL);
-    WnckWindowType type = wnck_window_get_window_type (window);
 
     g_signal_connect_object (window, "type-changed", G_CALLBACK (type_changed),
                              taskList, 0);
 
-    if (type == WNCK_WINDOW_DESKTOP
-        || type == WNCK_WINDOW_DOCK
-        || type == WNCK_WINDOW_SPLASHSCREEN
-        || type == WNCK_WINDOW_MENU)
+    if (window_is_special (window))
     {
         return;
     }
@@ -396,4 +391,15 @@ get_applet_orientation (WpApplet *applet)
     }
 
   return orientation;
+}
+
+static gboolean
+window_is_special (WnckWindow *window)
+{
+  WnckWindowType type = wnck_window_get_window_type (window);
+
+  return type == WNCK_WINDOW_DESKTOP
+         || type == WNCK_WINDOW_DOCK
+         || type == WNCK_WINDOW_SPLASHSCREEN
+         || type == WNCK_WINDOW_MENU;
 }
