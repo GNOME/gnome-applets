@@ -25,27 +25,24 @@
 #include <glib/gi18n.h>
 #include <cairo/cairo.h>
 
-G_DEFINE_TYPE (TaskItem, task_item, GTK_TYPE_EVENT_BOX);
+struct _TaskItem {
+  GtkEventBox parent;
+  WnckWindow   *window;
+  WnckScreen   *screen;
+  GdkPixbuf    *pixbuf;
+  GdkRectangle area;
+  GTimeVal     urgent_time;
+  guint        blink_timer;
+  gboolean     mouse_over;
+  GdkMonitor  *monitor;
+  WpApplet    *windowPickerApplet;
+};
 
-#define TASK_ITEM_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj),\
-  TASK_TYPE_ITEM, \
-  TaskItemPrivate))
+G_DEFINE_TYPE (TaskItem, task_item, GTK_TYPE_EVENT_BOX)
 
 #define DEFAULT_TASK_ITEM_HEIGHT 26
 //make the TaskItem two pixles wider to allow for space of the border
 #define DEFAULT_TASK_ITEM_WIDTH 28 + 2
-
-struct _TaskItemPrivate {
-    WnckWindow   *window;
-    WnckScreen   *screen;
-    GdkPixbuf    *pixbuf;
-    GdkRectangle area;
-    GTimeVal     urgent_time;
-    guint        blink_timer;
-    gboolean     mouse_over;
-    GdkMonitor  *monitor;
-    WpApplet    *windowPickerApplet;
-};
 
 enum {
     TASK_ITEM_CLOSED_SIGNAL,
@@ -88,7 +85,7 @@ static void update_hints (TaskItem *item) {
     WnckWindow *window;
     gint x, y, x1, y1;
     widget = GTK_WIDGET (item);
-    window = item->priv->window;
+    window = item->window;
     /* Skip problems */
     if (!WNCK_IS_WINDOW (window)) return;
     if (!GTK_IS_WIDGET (widget)) return;
@@ -126,12 +123,10 @@ static gboolean on_task_item_button_released (
     WnckWindow *window;
     WnckScreen *screen;
     WnckWorkspace *workspace;
-    TaskItemPrivate *priv;
     g_return_val_if_fail (TASK_IS_ITEM(item), TRUE);
-    priv = item->priv;
-    window = priv->window;
+    window = item->window;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), TRUE);
-    screen = priv->screen;
+    screen = item->screen;
     workspace = wnck_window_get_workspace (window);
     /* If we are in a drag and drop action, then we are not activating
      * the window which received a click
@@ -159,15 +154,14 @@ static void task_item_set_visibility (TaskItem *item) {
     WnckWindow *window;
     WnckWorkspace *workspace;
     g_return_if_fail (TASK_IS_ITEM (item));
-    TaskItemPrivate *priv = item->priv;
-    if (!WNCK_IS_WINDOW (priv->window)) {
+    if (!WNCK_IS_WINDOW (item->window)) {
         gtk_widget_hide (GTK_WIDGET (item));
         return;
     }
-    window = priv->window;
-    screen = priv->screen;
+    window = item->window;
+    screen = item->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = wp_applet_get_show_all_windows (priv->windowPickerApplet);
+    gboolean show_all = wp_applet_get_show_all_windows (item->windowPickerApplet);
     gboolean show_window = FALSE;
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
@@ -228,7 +222,7 @@ static GdkPixbuf *task_item_sized_pixbuf_for_window (
         }
     }
     if (!pbuf) {
-        pbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->priv->window));
+        pbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
     }
     gint width = gdk_pixbuf_get_width (pbuf);
     gint height = gdk_pixbuf_get_height (pbuf);
@@ -252,18 +246,17 @@ static gboolean task_item_draw (
     g_return_val_if_fail (widget != NULL, FALSE);
     g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
     TaskItem *item = TASK_ITEM (widget);
-    TaskItemPrivate *priv = item->priv;
-    g_return_val_if_fail (WNCK_IS_WINDOW (priv->window), FALSE);
+    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
     cr = gdk_cairo_create (gtk_widget_get_window(widget));
     GdkRectangle area;
     GdkPixbuf *pbuf;
-    area = priv->area;
-    pbuf = priv->pixbuf;
+    area = item->area;
+    pbuf = item->pixbuf;
     gint size = MIN (area.height, area.width) - 8;
-    gboolean active = wnck_window_is_active (priv->window);
+    gboolean active = wnck_window_is_active (item->window);
     /* load the GSettings key for gray icons */
-    gboolean icons_greyscale = wp_applet_get_icons_greyscale (priv->windowPickerApplet);
-    gboolean attention = wnck_window_or_transient_needs_attention (priv->window);
+    gboolean icons_greyscale = wp_applet_get_icons_greyscale (item->windowPickerApplet);
+    gboolean attention = wnck_window_or_transient_needs_attention (item->window);
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&
         gdk_pixbuf_get_height (pbuf) != size)
@@ -277,7 +270,7 @@ static gboolean task_item_draw (
         cairo_rectangle (cr, area.x + 1, area.y + 1, area.width - 2, area.height - 2);
         cairo_set_source_rgba (cr, .8, .8, .8, .2);
         cairo_fill_preserve (cr);
-        if(priv->mouse_over) {
+        if(item->mouse_over) {
             cairo_set_source_rgba (cr, .9, .9, 1, 0.45);
             cairo_stroke (cr);
         } else {
@@ -285,7 +278,7 @@ static gboolean task_item_draw (
             cairo_set_source_rgba (cr, .8, .8, .8, .4);
             cairo_stroke (cr);
         }
-    } else if(priv->mouse_over) {
+    } else if(item->mouse_over) {
         int glow_x, glow_y;
         cairo_pattern_t *glow_pattern;
         glow_x = area.width / 2;
@@ -300,9 +293,9 @@ static gboolean task_item_draw (
         cairo_paint (cr);
     }
     if (!pbuf) {
-        pbuf = priv->pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
+        pbuf = item->pixbuf = task_item_sized_pixbuf_for_window (item, item->window, size);
     }
-    if (active || priv->mouse_over || attention || !icons_greyscale) {
+    if (active || item->mouse_over || attention || !icons_greyscale) {
         gdk_cairo_set_source_pixbuf (
             cr,
             pbuf,
@@ -334,15 +327,15 @@ static gboolean task_item_draw (
             (area.y + (area.height - gdk_pixbuf_get_height (desat)) / 2));
         g_object_unref (desat);
     }
-    if (!priv->mouse_over && attention) { /* urgent */
+    if (!item->mouse_over && attention) { /* urgent */
         GTimeVal current_time;
         g_get_current_time (&current_time);
         gdouble ms = (
-            current_time.tv_sec - priv->urgent_time.tv_sec) * 1000 +
-            (current_time.tv_usec - priv->urgent_time.tv_usec) / 1000;
+            current_time.tv_sec - item->urgent_time.tv_sec) * 1000 +
+            (current_time.tv_usec - item->urgent_time.tv_usec) / 1000;
         gdouble alpha = .66 + (cos (3.15 * ms / 600) / 3);
         cairo_paint_with_alpha (cr, alpha);
-    } else if (priv->mouse_over || active || !icons_greyscale) { /* focused */
+    } else if (item->mouse_over || active || !icons_greyscale) { /* focused */
         cairo_paint (cr);
     } else { /* not focused */
         cairo_paint_with_alpha (cr, .65);
@@ -357,14 +350,12 @@ static void on_size_allocate (
     TaskItem      *item)
 {
     g_return_if_fail (TASK_IS_ITEM (item));
-    TaskItemPrivate *priv;
     if (allocation->width != allocation->height + 6)
         gtk_widget_set_size_request (widget, allocation->height + 6, -1);
-    priv = item->priv;
-    priv->area.x = allocation->x;
-    priv->area.y = allocation->y;
-    priv->area.width = allocation->width;
-    priv->area.height = allocation->height;
+    item->area.x = allocation->x;
+    item->area.y = allocation->y;
+    item->area.width = allocation->width;
+    item->area.height = allocation->height;
     update_hints (item);
 }
 
@@ -375,7 +366,7 @@ static gboolean on_button_pressed (
 {
     WnckWindow *window;
     g_return_val_if_fail (TASK_IS_ITEM (item), FALSE);
-    window = item->priv->window;
+    window = item->window;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
     if (event->button == 3) {
         GtkWidget *menu = wnck_action_menu_new (window);
@@ -395,7 +386,7 @@ static gboolean on_query_tooltip (
     GtkTooltip *tooltip,
     TaskItem *item)
 {
-    WnckWindow *window = item->priv->window;
+    WnckWindow *window = item->window;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
     gtk_tooltip_set_text (tooltip, wnck_window_get_name(window));
     gtk_tooltip_set_icon (tooltip, wnck_window_get_icon (window));
@@ -408,7 +399,7 @@ static gboolean on_enter_notify (
     TaskItem *item)
 {
     g_return_val_if_fail (TASK_IS_ITEM (item), FALSE);
-    item->priv->mouse_over = TRUE;
+    item->mouse_over = TRUE;
     gtk_widget_queue_draw (widget);
     return FALSE;
 }
@@ -419,7 +410,7 @@ static gboolean on_leave_notify (
     TaskItem *item)
 {
     g_return_val_if_fail (TASK_IS_ITEM (item), FALSE);
-    item->priv->mouse_over = FALSE;
+    item->mouse_over = FALSE;
     gtk_widget_queue_draw (widget);
     return FALSE;
 }
@@ -427,10 +418,10 @@ static gboolean on_leave_notify (
 static gboolean on_blink (TaskItem *item) {
     g_return_val_if_fail (TASK_IS_ITEM (item), FALSE);
     gtk_widget_queue_draw (GTK_WIDGET (item));
-    if (wnck_window_or_transient_needs_attention (item->priv->window)) {
+    if (wnck_window_or_transient_needs_attention (item->window)) {
         return TRUE;
     } else {
-        item->priv->blink_timer = 0;
+        item->blink_timer = 0;
         return FALSE;
     }
 }
@@ -443,10 +434,9 @@ static void on_window_state_changed (
 {
     g_return_if_fail (WNCK_IS_WINDOW (window));
     g_return_if_fail (TASK_IS_ITEM (taskItem));
-    TaskItemPrivate *priv = taskItem->priv;
-    if (new_state & WNCK_WINDOW_STATE_URGENT && !priv->blink_timer) {
-        priv->blink_timer = g_timeout_add (30, (GSourceFunc)on_blink, taskItem);
-        g_get_current_time (&priv->urgent_time);
+    if (new_state & WNCK_WINDOW_STATE_URGENT && !taskItem->blink_timer) {
+      taskItem->blink_timer = g_timeout_add (30, (GSourceFunc) on_blink, taskItem);
+        g_get_current_time (&taskItem->urgent_time);
     }
     task_item_set_visibility (taskItem);
 }
@@ -460,10 +450,9 @@ static void on_window_workspace_changed (
 
 static void on_window_icon_changed (WnckWindow *window, TaskItem *item) {
     g_return_if_fail (TASK_IS_ITEM (item));
-    TaskItemPrivate *priv = item->priv;
-    if (GDK_IS_PIXBUF (priv->pixbuf)) {
-        g_object_unref (priv->pixbuf);
-        priv->pixbuf = NULL;
+    if (GDK_IS_PIXBUF (item->pixbuf)) {
+        g_object_unref (item->pixbuf);
+        item->pixbuf = NULL;
     }
     gtk_widget_queue_draw (GTK_WIDGET (item));
 }
@@ -474,7 +463,7 @@ on_window_type_changed (WnckWindow *window,
 {
     WnckWindowType type;
 
-    if (item->priv->window != window)
+    if (item->window != window)
         return;
 
     type = wnck_window_get_window_type (window);
@@ -517,10 +506,10 @@ on_window_geometry_changed (WnckWindow *window,
 
     window_monitor = get_window_monitor (window);
 
-    old_monitor = item->priv->monitor;
+    old_monitor = item->monitor;
     if (old_monitor != window_monitor)
       {
-        item->priv->monitor = window_monitor;
+        item->monitor = window_monitor;
 
         g_signal_emit (item, task_item_signals[TASK_ITEM_MONITOR_CHANGED], 0,
                        old_monitor);
@@ -534,8 +523,7 @@ static void on_screen_active_window_changed (
 {
     g_return_if_fail (TASK_IS_ITEM (item));
     WnckWindow *window;
-    TaskItemPrivate *priv = item->priv;
-    window = priv->window;
+    window = item->window;
     g_return_if_fail (WNCK_IS_WINDOW (window));
     if ((WNCK_IS_WINDOW (old_window) && window == old_window) ||
         window == wnck_screen_get_active_window (screen))
@@ -569,9 +557,8 @@ static void on_screen_window_closed (
     TaskItem     *item)
 {
     g_return_if_fail (TASK_IS_ITEM(item));
-    TaskItemPrivate *priv = item->priv;
-    g_return_if_fail (WNCK_IS_WINDOW (priv->window));
-    if (priv->window == window) {
+    g_return_if_fail (WNCK_IS_WINDOW (item->window));
+    if (item->window == window) {
         task_item_close (item);
     }
 }
@@ -585,16 +572,16 @@ task_item_close (TaskItem   *item)
 
 static gboolean activate_window (GtkWidget *widget) {
     gint active;
-    TaskItemPrivate *priv;
+    TaskItem *item;
     g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
     g_return_val_if_fail (TASK_IS_ITEM(widget), FALSE);
-    priv = TASK_ITEM (widget)->priv;
-    g_return_val_if_fail (WNCK_IS_WINDOW (priv->window), FALSE);
+    item = TASK_ITEM (widget);
+    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
     active = GPOINTER_TO_INT (
         g_object_get_data (G_OBJECT (widget), "drag-true")
     );
     if (active) {
-        WnckWindow *window = priv->window;
+        WnckWindow *window = item->window;
         if (WNCK_IS_WINDOW (window))
             wnck_window_activate (window, time (NULL));
     }
@@ -653,10 +640,9 @@ static gboolean on_drag_motion (
  */
 static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer user_data) {
     TaskItem *item = TASK_ITEM (widget);
-    TaskItemPrivate *priv = item->priv;
-    GdkRectangle area = priv->area;
+    GdkRectangle area = item->area;
     gint size = MIN (area.height, area.width);
-    GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, priv->window, size);
+    GdkPixbuf *pixbuf = task_item_sized_pixbuf_for_window (item, item->window, size);
     gtk_drag_source_set_icon_pixbuf(widget, pixbuf);
     g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (1));
 }
@@ -722,14 +708,14 @@ static void on_drag_received_data (
         gint active;
         switch (target_type) {
             case TARGET_WIDGET_DRAGGED: {
-                GtkWidget *taskList = wp_applet_get_tasks(item->priv->windowPickerApplet);
+                GtkWidget *taskList = wp_applet_get_tasks(item->windowPickerApplet);
                 gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
                 GtkWidget *taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = grid_get_pos(wp_applet_get_tasks(item->priv->windowPickerApplet), widget);
+                gint target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
@@ -760,14 +746,12 @@ on_drag_failed (GtkWidget      *widget,
 }
 
 static void task_item_setup_atk (TaskItem *item) {
-    TaskItemPrivate *priv;
     GtkWidget *widget;
     AtkObject *atk;
     WnckWindow *window;
     g_return_if_fail (TASK_IS_ITEM (item));
     widget = GTK_WIDGET (item);
-    priv = item->priv;
-    window = priv->window;
+    window = item->window;
     g_return_if_fail (WNCK_IS_WINDOW (window));
     atk = gtk_widget_get_accessible (widget);
     atk_object_set_name (atk, _("Window Task Button"));
@@ -784,14 +768,14 @@ task_item_dispose (GObject *object)
 }
 
 static void task_item_finalize (GObject *object) {
-    TaskItemPrivate *priv = TASK_ITEM (object)->priv;
-    if (priv->blink_timer) {
-        g_source_remove (priv->blink_timer);
+    TaskItem *item = TASK_ITEM (object);
+
+    if (item->blink_timer) {
+        g_source_remove (item->blink_timer);
     }
 
-    if (GDK_IS_PIXBUF (priv->pixbuf)) {
-        g_object_unref (priv->pixbuf);
-    }
+    g_clear_object (&task_item->pixbuf);
+
     G_OBJECT_CLASS (task_item_parent_class)->finalize (object);
 }
 
@@ -802,12 +786,11 @@ static void task_item_class_init (TaskItemClass *klass) {
     obj_class->finalize = task_item_finalize;
     widget_class->get_preferred_width = task_item_get_preferred_width;
     widget_class->get_preferred_height = task_item_get_preferred_height;
-    g_type_class_add_private (obj_class, sizeof (TaskItemPrivate));
     task_item_signals [TASK_ITEM_CLOSED_SIGNAL] =
     g_signal_new ("task-item-closed",
         G_TYPE_FROM_CLASS (klass),
         G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-        G_STRUCT_OFFSET (TaskItemClass, itemclosed),
+        0,
         NULL, NULL,
         g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
@@ -817,14 +800,12 @@ static void task_item_class_init (TaskItemClass *klass) {
 }
 
 static void task_item_init (TaskItem *item) {
-    TaskItemPrivate *priv = item->priv = TASK_ITEM_GET_PRIVATE (item);
-    priv->blink_timer = 0;
+    item->blink_timer = 0;
 }
 
 GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     TaskItem *taskItem;
-    TaskItemPrivate *priv;
     WnckScreen *screen;
     GtkWidget *item = g_object_new (
         TASK_TYPE_ITEM,
@@ -837,12 +818,11 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     gtk_widget_add_events (item, GDK_ALL_EVENTS_MASK);
     gtk_container_set_border_width (GTK_CONTAINER (item), 0);
     taskItem = TASK_ITEM (item);
-    priv = taskItem->priv;
-    priv->window = window;
+    taskItem->window = window;
     screen = wnck_window_get_screen (window);
-    priv->screen = screen;
-    priv->windowPickerApplet = windowPickerApplet;
-    priv->monitor = get_window_monitor (window);
+    taskItem->screen = screen;
+    taskItem->windowPickerApplet = windowPickerApplet;
+    taskItem->monitor = get_window_monitor (window);
 
     /** Drag and Drop code
      * This item can be both the target and the source of a drag and drop
@@ -929,5 +909,5 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
 GdkMonitor *
 task_item_get_monitor (TaskItem *item)
 {
-    return item->priv->monitor;
+    return item->monitor;
 }
