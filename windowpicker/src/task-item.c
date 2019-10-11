@@ -61,18 +61,18 @@ enum {
 };
 
 static const GtkTargetEntry drop_types[] = {
-    { "STRING", 0, 0 },
-    { "text/plain", 0, 0},
-    { "text/uri-list", 0, 0},
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop target
-    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "STRING", 0, 0 },
+    { (gchar *) "text/plain", 0, 0},
+    { (gchar *) "text/uri-list", 0, 0},
+    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop target
+    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
 
 static const GtkTargetEntry drag_types[] = {
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop source
-    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop source
+    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
