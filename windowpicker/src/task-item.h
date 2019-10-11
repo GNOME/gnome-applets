@@ -27,28 +27,8 @@
 #include <gtk/gtk.h>
 #include <libwnck/libwnck.h>
 
-#define TASK_TYPE_ITEM            (task_item_get_type ())
-#define TASK_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TASK_TYPE_ITEM, TaskItem))
-#define TASK_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  TASK_TYPE_ITEM, TaskItemClass))
-#define TASK_IS_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TASK_TYPE_ITEM))
-#define TASK_IS_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  TASK_TYPE_ITEM))
-#define TASK_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  TASK_TYPE_ITEM, TaskItemClass))
-
-typedef struct _TaskItem        TaskItem;
-typedef struct _TaskItemClass   TaskItemClass;
-typedef struct _TaskItemPrivate TaskItemPrivate;
-
-struct _TaskItem {
-    GtkEventBox     parent;
-    TaskItemPrivate *priv;
-};
-
-struct _TaskItemClass {
-    GtkEventBoxClass   parent_class;
-    void (* itemclosed) (TaskItem *item);
-};
-
-GType       task_item_get_type    (void) G_GNUC_CONST;
+#define TASK_TYPE_ITEM (task_item_get_type ())
+G_DECLARE_FINAL_TYPE (TaskItem, task_item, TASK, ITEM, GtkEventBox)
 
 GtkWidget  *task_item_new         (WpApplet   *windowPickerApplet,
                                    WnckWindow *window);
