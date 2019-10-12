@@ -339,14 +339,6 @@ window_filter_function (GdkXEvent *gdk_xevent,
 }
 
 static void
-task_list_dispose (GObject *object)
-{
-    TaskList *task_list = TASK_LIST (object);
-
-    G_OBJECT_CLASS (task_list_parent_class)->dispose (object);
-}
-
-static void
 task_list_finalize (GObject *object)
 {
     TaskList *taskList;
@@ -366,7 +358,6 @@ static void
 task_list_class_init(TaskListClass *class) {
     GObjectClass *obj_class = G_OBJECT_CLASS (class);
 
-    obj_class->dispose = task_list_dispose;
     obj_class->finalize = task_list_finalize;
 }
 
