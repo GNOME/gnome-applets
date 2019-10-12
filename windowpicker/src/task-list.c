@@ -370,12 +370,13 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     GtkOrientation orientation;
     GList *windows;
+    TaskList* taskList;
 
     orientation = get_applet_orientation (windowPickerApplet);
 
-    TaskList* taskList = g_object_new (TASK_TYPE_LIST,
-                                       "orientation", orientation,
-                                       NULL
+    taskList = g_object_new (TASK_TYPE_LIST,
+                             "orientation", orientation,
+                             NULL
     );
 
     task_lists = g_slist_append (task_lists, taskList);
