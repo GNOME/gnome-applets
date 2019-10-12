@@ -25,15 +25,53 @@
 #include <panel-applet.h>
 #include <X11/Xlib.h>
 
-struct _TaskListPrivate {
+struct _TaskList {
+    GtkBox parent;
     WnckScreen *screen;
     WpApplet *windowPickerApplet;
     guint size_update_event_source;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (TaskList, task_list, GTK_TYPE_BOX);
+G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_BOX)
 
 static GSList *task_lists;
+
+static GtkOrientation
+get_applet_orientation (WpApplet *applet)
+{
+  PanelAppletOrient panel_orientation;
+  GtkOrientation orientation;
+
+  panel_orientation = panel_applet_get_orient(PANEL_APPLET(applet));
+
+  switch(panel_orientation)
+  {
+    case PANEL_APPLET_ORIENT_UP:
+    case PANEL_APPLET_ORIENT_DOWN:
+      orientation = GTK_ORIENTATION_HORIZONTAL;
+      break;
+    case PANEL_APPLET_ORIENT_LEFT:
+    case PANEL_APPLET_ORIENT_RIGHT:
+      orientation = GTK_ORIENTATION_VERTICAL;
+      break;
+    default:
+      orientation = GTK_ORIENTATION_HORIZONTAL;
+      break;
+  }
+
+  return orientation;
+}
+
+static gboolean
+window_is_special (WnckWindow *window)
+{
+  WnckWindowType type = wnck_window_get_window_type (window);
+
+  return type == WNCK_WINDOW_DESKTOP
+         || type == WNCK_WINDOW_DOCK
+         || type == WNCK_WINDOW_SPLASHSCREEN
+         || type == WNCK_WINDOW_MENU;
+}
 
 static TaskList *
 get_task_list_for_monitor (TaskList   *task_list,
@@ -137,19 +175,19 @@ static void create_task_item (TaskList   *taskList,
             return;
       }
 
-    item = task_item_new (taskList->priv->windowPickerApplet,
+    item = task_item_new (taskList->windowPickerApplet,
                           window);
 
     if (item)
       {
         gtk_container_add (GTK_CONTAINER (taskList), item);
 
-        g_signal_connect (TASK_ITEM (item), "task-item-closed",
-                          G_CALLBACK (on_task_item_closed), taskList);
+        g_signal_connect_object (TASK_ITEM (item), "task-item-closed",
+                                 G_CALLBACK (on_task_item_closed), taskList, 0);
 
-        g_signal_connect (TASK_ITEM (item), "monitor-changed",
-                          G_CALLBACK (on_task_item_monitor_changed_cb),
-                          taskList);
+        g_signal_connect_object (TASK_ITEM (item), "monitor-changed",
+                                 G_CALLBACK (on_task_item_monitor_changed_cb),
+                                 taskList, 0);
       }
 }
 
@@ -157,36 +195,11 @@ static void type_changed (WnckWindow *window,
                           gpointer user_data)
 {
     TaskList *taskList = TASK_LIST (user_data);
-    WnckWindowType type = wnck_window_get_window_type (window);
 
-    if (!(type == WNCK_WINDOW_DESKTOP
-          || type == WNCK_WINDOW_DOCK
-          || type == WNCK_WINDOW_SPLASHSCREEN
-          || type == WNCK_WINDOW_MENU))
+    if (!window_is_special (window))
       {
         create_task_item (taskList, window);
       }
-}
-
-static void on_window_opened (WnckScreen *screen,
-    WnckWindow *window,
-    TaskList *taskList)
-{
-    g_return_if_fail (taskList != NULL);
-    WnckWindowType type = wnck_window_get_window_type (window);
-
-    g_signal_connect (window, "type-changed", G_CALLBACK (type_changed),
-                      taskList);
-
-    if (type == WNCK_WINDOW_DESKTOP
-        || type == WNCK_WINDOW_DOCK
-        || type == WNCK_WINDOW_SPLASHSCREEN
-        || type == WNCK_WINDOW_MENU)
-    {
-        return;
-    }
-
-    create_task_item (taskList, window);
 }
 
 static void on_task_list_orient_changed(PanelApplet *applet,
@@ -219,14 +232,12 @@ remove_task_item (GtkWidget *item,
   gtk_container_remove (GTK_CONTAINER (list), item);
 }
 
-static gboolean
-on_monitors_changed (gpointer user_data)
+static void
+clear_windows (TaskList *list)
 {
-  TaskList *list;
   GdkWindow *window;
   GdkMonitor *list_monitor;
 
-  list = user_data;
   window = gtk_widget_get_window (GTK_WIDGET (list));
 
   list_monitor = gdk_display_get_monitor_at_window (gdk_display_get_default (),
@@ -234,16 +245,57 @@ on_monitors_changed (gpointer user_data)
 
   if (task_list_get_monitor (list) == list_monitor)
     gtk_container_foreach (GTK_CONTAINER (list), remove_task_item, list);
+}
 
-  GList *windows = wnck_screen_get_windows (list->priv->screen);
+static void
+add_window (TaskList *list, WnckWindow *window)
+{
+  g_signal_connect_object (window, "type-changed", G_CALLBACK (type_changed),
+                           list, 0);
 
+  if (window_is_special (window))
+  {
+    return;
+  }
+
+  create_task_item (list, window);
+}
+
+static void
+add_windows (TaskList *list,
+             GList    *windows)
+{
   while (windows != NULL)
-    {
-      on_window_opened (list->priv->screen, windows->data, list);
-      windows = windows->next;
-    }
+  {
+    add_window (list, windows->data);
 
-  list->priv->size_update_event_source = 0;
+    windows = windows->next;
+  }
+}
+
+static void
+on_window_opened (WnckScreen *screen,
+                  WnckWindow *window,
+                  TaskList   *taskList)
+{
+  add_window (taskList, window);
+}
+
+static gboolean
+on_monitors_changed (gpointer user_data)
+{
+  TaskList *list;
+  GList *windows;
+
+  list = TASK_LIST (user_data);
+
+  clear_windows (list);
+
+  windows = wnck_screen_get_windows (list->screen);
+
+  add_windows (list, windows);
+
+  list->size_update_event_source = 0;
 
   return G_SOURCE_REMOVE;
 }
@@ -272,11 +324,11 @@ window_filter_function (GdkXEvent *gdk_xevent,
           if (propertyEvent->atom != WORKAREA_ATOM)
             return GDK_FILTER_CONTINUE;
 
-          if (list->priv->size_update_event_source != 0)
+          if (list->size_update_event_source != 0)
             return GDK_FILTER_CONTINUE;
 
-          list->priv->size_update_event_source = g_idle_add (on_monitors_changed,
-                                                             user_data);
+          list->size_update_event_source = g_idle_add (on_monitors_changed,
+                                                       user_data);
 
           break;
         }
@@ -290,7 +342,6 @@ static void
 task_list_dispose (GObject *object)
 {
     TaskList *task_list = TASK_LIST (object);
-    g_signal_handlers_disconnect_by_func (task_list->priv->screen, on_window_opened, task_list);
 
     G_OBJECT_CLASS (task_list_parent_class)->dispose (object);
 }
@@ -320,26 +371,16 @@ task_list_class_init(TaskListClass *class) {
 }
 
 static void task_list_init (TaskList *list) {
-    list->priv = task_list_get_instance_private (list);
-    list->priv->screen = wnck_screen_get_default ();
+    list->screen = wnck_screen_get_default ();
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
 }
 
 GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
-    PanelAppletOrient panel_orientation = panel_applet_get_orient(PANEL_APPLET(windowPickerApplet));
+
     GtkOrientation orientation;
-    switch(panel_orientation) {
-        case PANEL_APPLET_ORIENT_UP:
-        case PANEL_APPLET_ORIENT_DOWN:
-            orientation = GTK_ORIENTATION_HORIZONTAL;
-            break;
-        case PANEL_APPLET_ORIENT_LEFT:
-        case PANEL_APPLET_ORIENT_RIGHT:
-            orientation = GTK_ORIENTATION_VERTICAL;
-            break;
-        default:
-            orientation = GTK_ORIENTATION_HORIZONTAL;
-    }
+    GList *windows;
+
+    orientation = get_applet_orientation (windowPickerApplet);
 
     TaskList* taskList = g_object_new (TASK_TYPE_LIST,
                                        "orientation", orientation,
@@ -348,22 +389,22 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     task_lists = g_slist_append (task_lists, taskList);
 
-    taskList->priv->windowPickerApplet = windowPickerApplet;
+    taskList->windowPickerApplet = windowPickerApplet;
 
-    g_signal_connect(PANEL_APPLET(windowPickerApplet), "change-orient",
-                     G_CALLBACK(on_task_list_orient_changed), taskList);
-    g_signal_connect (taskList->priv->screen, "window-opened",
-            G_CALLBACK (on_window_opened), taskList);
+    g_signal_connect_object (windowPickerApplet, "change-orient",
+                             G_CALLBACK (on_task_list_orient_changed), taskList, 0);
+
+    g_signal_connect_object (taskList->screen, "window-opened",
+                             G_CALLBACK (on_window_opened), taskList, 0);
 
     gdk_window_add_filter (gtk_widget_get_window (GTK_WIDGET (taskList)),
                            window_filter_function,
                            taskList);
 
-    GList *windows = wnck_screen_get_windows (taskList->priv->screen);
-    while (windows != NULL) {
-        on_window_opened (taskList->priv->screen, windows->data, taskList);
-        windows = windows->next;
-    }
+    windows = wnck_screen_get_windows (taskList->screen);
+
+    add_windows (taskList, windows);
+
     return (GtkWidget *) taskList;
 }
 
