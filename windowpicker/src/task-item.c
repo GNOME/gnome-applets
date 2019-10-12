@@ -528,10 +528,9 @@ static void on_screen_active_window_changed (
     WnckWindow    *old_window,
     TaskItem      *item)
 {
-    g_return_if_fail (TASK_IS_ITEM (item));
     WnckWindow *window;
     window = item->window;
-    g_return_if_fail (WNCK_IS_WINDOW (window));
+
     if ((WNCK_IS_WINDOW (old_window) && window == old_window) ||
         window == wnck_screen_get_active_window (screen))
     {
