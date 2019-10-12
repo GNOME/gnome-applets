@@ -207,7 +207,10 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
                                    WnckWindow *window,
                                    gint size)
 {
-    GdkPixbuf *pbuf = NULL;
+    GdkPixbuf *pixbuf;
+    gint width, height;
+
+    pixbuf = NULL;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     if (wnck_window_has_icon_name (window)) {
         const gchar *icon_name = wnck_window_get_icon_name (window);
@@ -219,22 +222,26 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
                 GTK_ICON_LOOKUP_FORCE_SIZE,
                 NULL
             );
-            pbuf = gdk_pixbuf_copy (internal);
+            pixbuf = gdk_pixbuf_copy (internal);
             g_object_unref (internal);
         }
     }
-    if (!pbuf) {
-        pbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
-    }
-    gint width = gdk_pixbuf_get_width (pbuf);
-    gint height = gdk_pixbuf_get_height (pbuf);
+    if (!pixbuf)
+      {
+        pixbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
+      }
+
+    width = gdk_pixbuf_get_width (pixbuf);
+    height = gdk_pixbuf_get_height (pixbuf);
+
     if (MAX (width, height) != size) {
         gdouble scale = (gdouble) size / (gdouble) MAX (width, height);
-        GdkPixbuf *tmp = pbuf;
-        pbuf = gdk_pixbuf_scale_simple (tmp, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
+        GdkPixbuf *tmp = pixbuf;
+        pixbuf = gdk_pixbuf_scale_simple (tmp, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
         g_object_unref (tmp);
     }
-    return pbuf;
+
+    return pixbuf;
 }
 
 /* Callback to draw the icon, this function is responsible to draw the different states of the icon
