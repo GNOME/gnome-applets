@@ -155,6 +155,9 @@ task_item_set_visibility (TaskItem *item)
     WnckScreen *screen;
     WnckWindow *window;
     WnckWorkspace *workspace;
+    gboolean show_all;
+    gboolean show_window;
+
     g_return_if_fail (TASK_IS_ITEM (item));
     if (!WNCK_IS_WINDOW (item->window)) {
         gtk_widget_hide (GTK_WIDGET (item));
@@ -163,8 +166,9 @@ task_item_set_visibility (TaskItem *item)
     window = item->window;
     screen = item->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = wp_applet_get_show_all_windows (item->windowPickerApplet);
-    gboolean show_window = FALSE;
+    show_all = wp_applet_get_show_all_windows (item->windowPickerApplet);
+    show_window = FALSE;
+
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
             if (wnck_workspace_is_virtual (workspace)) {
