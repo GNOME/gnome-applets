@@ -202,10 +202,10 @@ task_item_get_preferred_height (GtkWidget *widget,
     *minimal_height = *natural_height = requisition.height;
 }
 
-static GdkPixbuf *task_item_sized_pixbuf_for_window (
-    TaskItem   *item,
-    WnckWindow *window,
-    gint size)
+static GdkPixbuf *
+task_item_sized_pixbuf_for_window (TaskItem   *item,
+                                   WnckWindow *window,
+                                   gint size)
 {
     GdkPixbuf *pbuf = NULL;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
