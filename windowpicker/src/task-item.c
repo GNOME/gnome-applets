@@ -149,7 +149,9 @@ static gboolean on_task_item_button_released (
     return TRUE;
 }
 
-static void task_item_set_visibility (TaskItem *item) {
+static void
+task_item_set_visibility (TaskItem *item)
+{
     WnckScreen *screen;
     WnckWindow *window;
     WnckWorkspace *workspace;
