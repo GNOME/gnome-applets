@@ -832,8 +832,8 @@ static void task_item_init (TaskItem *item) {
 }
 
 GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
-    g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     TaskItem *taskItem;
+    g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     WnckScreen *screen;
     GtkWidget *item = g_object_new (
         TASK_TYPE_ITEM,
