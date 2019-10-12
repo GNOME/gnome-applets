@@ -208,6 +208,7 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
                                    gint size)
 {
     GdkPixbuf *pixbuf;
+    GdkPixbuf *unscaled_pixbuf;
     gint width, height;
 
     pixbuf = NULL;
@@ -236,9 +237,9 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
 
     if (MAX (width, height) != size) {
         gdouble scale = (gdouble) size / (gdouble) MAX (width, height);
-        GdkPixbuf *tmp = pixbuf;
-        pixbuf = gdk_pixbuf_scale_simple (tmp, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
-        g_object_unref (tmp);
+        unscaled_pixbuf = pixbuf;
+        pixbuf = gdk_pixbuf_scale_simple (unscaled_pixbuf, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
+        g_object_unref (unscaled_pixbuf);
     }
 
     return pixbuf;
