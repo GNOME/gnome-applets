@@ -213,24 +213,30 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
 {
     GdkPixbuf *pixbuf;
     GdkPixbuf *unscaled_pixbuf;
+    GdkPixbuf *internal;
     gint width, height;
+    const gchar *icon_name;
+    GtkIconTheme *icon_theme;
+    gdouble scale;
 
     pixbuf = NULL;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-    if (wnck_window_has_icon_name (window)) {
-        const gchar *icon_name = wnck_window_get_icon_name (window);
-        GtkIconTheme *icon_theme = gtk_icon_theme_get_default ();
-        if (gtk_icon_theme_has_icon (icon_theme, icon_name)) {
-            GdkPixbuf *internal = gtk_icon_theme_load_icon (icon_theme,
-                icon_name,
-                size,
-                GTK_ICON_LOOKUP_FORCE_SIZE,
-                NULL
-            );
+
+    if (wnck_window_has_icon_name (window))
+      {
+        icon_name = wnck_window_get_icon_name (window);
+        icon_theme = gtk_icon_theme_get_default ();
+
+        if (gtk_icon_theme_has_icon (icon_theme, icon_name))
+          {
+            internal = gtk_icon_theme_load_icon (icon_theme, icon_name, size,
+                                                 GTK_ICON_LOOKUP_FORCE_SIZE,
+                                                 NULL);
             pixbuf = gdk_pixbuf_copy (internal);
             g_object_unref (internal);
-        }
-    }
+          }
+      }
+
     if (!pixbuf)
       {
         pixbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
@@ -239,12 +245,13 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
     width = gdk_pixbuf_get_width (pixbuf);
     height = gdk_pixbuf_get_height (pixbuf);
 
-    if (MAX (width, height) != size) {
-        gdouble scale = (gdouble) size / (gdouble) MAX (width, height);
+    if (MAX (width, height) != size)
+      {
+        scale = (gdouble) size / (gdouble) MAX (width, height);
         unscaled_pixbuf = pixbuf;
         pixbuf = gdk_pixbuf_scale_simple (unscaled_pixbuf, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
         g_object_unref (unscaled_pixbuf);
-    }
+      }
 
     return pixbuf;
 }
