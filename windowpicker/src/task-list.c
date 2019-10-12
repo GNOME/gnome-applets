@@ -315,11 +315,12 @@ window_filter_function (GdkXEvent *gdk_xevent,
       case PropertyNotify:
         {
           XPropertyEvent *propertyEvent;
+          Atom WORKAREA_ATOM;
 
           propertyEvent = (XPropertyEvent *) xevent;
 
-          const Atom WORKAREA_ATOM = XInternAtom (propertyEvent->display,
-                                                  "_NET_WORKAREA", True);
+          WORKAREA_ATOM = XInternAtom (propertyEvent->display,
+                                       "_NET_WORKAREA", True);
 
           if (propertyEvent->atom != WORKAREA_ATOM)
             return GDK_FILTER_CONTINUE;
