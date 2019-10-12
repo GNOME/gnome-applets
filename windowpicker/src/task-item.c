@@ -267,20 +267,27 @@ static gboolean task_item_draw (
     cairo_t *cr,
     WpApplet* windowPickerApplet)
 {
-    g_return_val_if_fail (widget != NULL, FALSE);
-    g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
-    TaskItem *item = TASK_ITEM (widget);
-    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
-    cr = gdk_cairo_create (gtk_widget_get_window(widget));
+    TaskItem *item;
     GdkRectangle area;
     GdkPixbuf *pbuf;
+    gint size;
+    gboolean active;
+    gboolean icons_greyscale;
+    gboolean attention;
+
+    g_return_val_if_fail (widget != NULL, FALSE);
+    g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
+    item = TASK_ITEM (widget);
+    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
     area = item->area;
     pbuf = item->pixbuf;
-    gint size = MIN (area.height, area.width) - 8;
-    gboolean active = wnck_window_is_active (item->window);
+    size = MIN (area.height, area.width) - 8;
+    active = wnck_window_is_active (item->window);
     /* load the GSettings key for gray icons */
-    gboolean icons_greyscale = wp_applet_get_icons_greyscale (item->windowPickerApplet);
-    gboolean attention = wnck_window_or_transient_needs_attention (item->window);
+    icons_greyscale = wp_applet_get_icons_greyscale (item->windowPickerApplet);
+    attention = wnck_window_or_transient_needs_attention (item->window);
+
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&
         gdk_pixbuf_get_height (pbuf) != size)
@@ -353,11 +360,14 @@ static gboolean task_item_draw (
     }
     if (!item->mouse_over && attention) { /* urgent */
         GTimeVal current_time;
+        gdouble ms;
+        gdouble alpha;
+
         g_get_current_time (&current_time);
-        gdouble ms = (
+        ms = (
             current_time.tv_sec - item->urgent_time.tv_sec) * 1000 +
             (current_time.tv_usec - item->urgent_time.tv_usec) / 1000;
-        gdouble alpha = .66 + (cos (3.15 * ms / 600) / 3);
+        alpha = .66 + (cos (3.15 * ms / 600) / 3);
         cairo_paint_with_alpha (cr, alpha);
     } else if (item->mouse_over || active || !icons_greyscale) { /* focused */
         cairo_paint (cr);
