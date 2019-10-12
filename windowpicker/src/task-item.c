@@ -735,11 +735,12 @@ static void on_drag_received_data (
         gint active;
         switch (target_type) {
             case TARGET_WIDGET_DRAGGED: {
+                GtkWidget *taskItem;
                 GtkWidget *taskList = wp_applet_get_tasks(item->windowPickerApplet);
                 gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
-                GtkWidget *taskItem = GTK_WIDGET(*data);
+                taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
                 gint target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
