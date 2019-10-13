@@ -48,7 +48,6 @@
 #define APPLET_OAFIID_FACTORY			"WindowButtonsAppletFactory"
 #define PATH_THEMES 					WB_DATA_DIR"/themes"
 #define PATH_UI_PREFS					GTK_BUILDERDIR"/windowbuttons.ui"
-#define PATH_LOGO						DATA_DIR"/pixmaps/windowbuttons-applet.png"
 #define METACITY_XML 					"metacity-theme-1.xml"
 #define THEME_EXTENSION					"png"
 #define FILE_CONFIGFILE					".windowbuttons"
