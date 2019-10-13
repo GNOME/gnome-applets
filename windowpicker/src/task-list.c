@@ -29,7 +29,7 @@ struct _TaskList {
     GtkBox parent;
     WnckScreen *screen;
     WpApplet *windowPickerApplet;
-    guint size_update_event_source;
+    guint init_windows_event_source;
 };
 
 G_DEFINE_TYPE (TaskList, task_list, GTK_TYPE_BOX)
@@ -262,9 +262,12 @@ add_window (TaskList *list, WnckWindow *window)
 }
 
 static void
-add_windows (TaskList *list,
-             GList    *windows)
+add_windows (TaskList *list)
 {
+  GList *windows;
+
+  windows = wnck_screen_get_windows (list->screen);
+
   while (windows != NULL)
   {
     add_window (list, windows->data);
@@ -282,20 +285,17 @@ on_window_opened (WnckScreen *screen,
 }
 
 static gboolean
-on_monitors_changed (gpointer user_data)
+init_windows (gpointer user_data)
 {
   TaskList *list;
-  GList *windows;
 
   list = TASK_LIST (user_data);
 
   clear_windows (list);
 
-  windows = wnck_screen_get_windows (list->screen);
+  add_windows (list);
 
-  add_windows (list, windows);
-
-  list->size_update_event_source = 0;
+  list->init_windows_event_source = 0;
 
   return G_SOURCE_REMOVE;
 }
@@ -324,11 +324,11 @@ window_filter_function (GdkXEvent *gdk_xevent,
           if (propertyEvent->atom != WORKAREA_ATOM)
             return GDK_FILTER_CONTINUE;
 
-          if (list->size_update_event_source != 0)
+          if (list->init_windows_event_source != 0)
             return GDK_FILTER_CONTINUE;
 
-          list->size_update_event_source = g_idle_add (on_monitors_changed,
-                                                       user_data);
+          list->init_windows_event_source = g_idle_add (init_windows,
+                                                        user_data);
 
           break;
         }
@@ -378,7 +378,6 @@ static void task_list_init (TaskList *list) {
 GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     GtkOrientation orientation;
-    GList *windows;
 
     orientation = get_applet_orientation (windowPickerApplet);
 
@@ -401,9 +400,7 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
                            window_filter_function,
                            taskList);
 
-    windows = wnck_screen_get_windows (taskList->screen);
-
-    add_windows (taskList, windows);
+    taskList->init_windows_event_source = g_idle_add (init_windows, taskList);
 
     return (GtkWidget *) taskList;
 }
