@@ -739,14 +739,18 @@ static void on_drag_received_data (
         switch (target_type) {
             case TARGET_WIDGET_DRAGGED: {
                 GtkWidget *taskItem;
-                GtkWidget *taskList = wp_applet_get_tasks(item->windowPickerApplet);
-                gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
+                GtkWidget *taskList;
+                gint target_position;
+                gpointer *data;
+
+                taskList = wp_applet_get_tasks(item->windowPickerApplet);
+                data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
                 taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
+                target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
