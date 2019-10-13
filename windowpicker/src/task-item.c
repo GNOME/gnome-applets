@@ -677,13 +677,13 @@ static void on_drag_begin(GtkWidget *widget, GdkDragContext *context, gpointer u
     g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (1));
 }
 
-static void on_drag_get_data(
-    GtkWidget *widget,
-    GdkDragContext *context,
-    GtkSelectionData *selection_data,
-    guint target_type,
-    guint time,
-    gpointer user_data)
+static void
+on_drag_get_data (GtkWidget        *widget,
+                  GdkDragContext   *context,
+                  GtkSelectionData *selection_data,
+                  guint             target_type,
+                  guint             time,
+                  gpointer          user_data)
 {
     switch(target_type) {
         case TARGET_WIDGET_DRAGGED:
