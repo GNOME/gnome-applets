@@ -223,6 +223,11 @@ wp_applet_load (PanelApplet *panel_applet)
   g_settings_bind (applet->settings, KEY_ICONS_GREYSCALE,
                    applet, KEY_ICONS_GREYSCALE, G_SETTINGS_BIND_GET);
 
+  wp_applet_setup_list (applet);
+  wp_applet_setup_title (applet);
+
+  wp_applet_setup_menu (panel_applet);
+
   gtk_widget_show_all (GTK_WIDGET (applet));
 }
 
@@ -434,11 +439,6 @@ wp_applet_init (WpApplet *applet)
 
   applet->container = gtk_box_new (orientation, CONTAINER_SPACING);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
-
-  wp_applet_setup_list (applet);
-  wp_applet_setup_title (applet);
-
-  wp_applet_setup_menu (panel_applet);
 }
 
 GtkWidget *

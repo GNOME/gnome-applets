@@ -61,18 +61,18 @@ enum {
 };
 
 static const GtkTargetEntry drop_types[] = {
-    { "STRING", 0, 0 },
-    { "text/plain", 0, 0},
-    { "text/uri-list", 0, 0},
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop target
-    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "STRING", 0, 0 },
+    { (gchar *) "text/plain", 0, 0},
+    { (gchar *) "text/uri-list", 0, 0},
+    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop target
+    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
 
 static const GtkTargetEntry drag_types[] = {
-    { "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED}, //drag and drop source
-    { "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop source
+    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
 };
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
@@ -149,10 +149,15 @@ static gboolean on_task_item_button_released (
     return TRUE;
 }
 
-static void task_item_set_visibility (TaskItem *item) {
+static void
+task_item_set_visibility (TaskItem *item)
+{
     WnckScreen *screen;
     WnckWindow *window;
     WnckWorkspace *workspace;
+    gboolean show_all;
+    gboolean show_window;
+
     g_return_if_fail (TASK_IS_ITEM (item));
     if (!WNCK_IS_WINDOW (item->window)) {
         gtk_widget_hide (GTK_WIDGET (item));
@@ -161,8 +166,9 @@ static void task_item_set_visibility (TaskItem *item) {
     window = item->window;
     screen = item->screen;
     workspace = wnck_screen_get_active_workspace (screen);
-    gboolean show_all = wp_applet_get_show_all_windows (item->windowPickerApplet);
-    gboolean show_window = FALSE;
+    show_all = wp_applet_get_show_all_windows (item->windowPickerApplet);
+    show_window = FALSE;
+
     if (!wnck_window_is_skip_tasklist (window)) {
         if(workspace != NULL) { //this can happen sometimes
             if (wnck_workspace_is_virtual (workspace)) {
@@ -200,39 +206,57 @@ task_item_get_preferred_height (GtkWidget *widget,
     *minimal_height = *natural_height = requisition.height;
 }
 
-static GdkPixbuf *task_item_sized_pixbuf_for_window (
-    TaskItem   *item,
-    WnckWindow *window,
-    gint size)
+static GdkPixbuf *
+task_item_sized_pixbuf_for_window (TaskItem   *item,
+                                   WnckWindow *window,
+                                   gint        size)
 {
-    GdkPixbuf *pbuf = NULL;
+    GdkPixbuf *pixbuf;
+    gint width, height;
+
+    pixbuf = NULL;
     g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-    if (wnck_window_has_icon_name (window)) {
-        const gchar *icon_name = wnck_window_get_icon_name (window);
-        GtkIconTheme *icon_theme = gtk_icon_theme_get_default ();
-        if (gtk_icon_theme_has_icon (icon_theme, icon_name)) {
-            GdkPixbuf *internal = gtk_icon_theme_load_icon (icon_theme,
-                icon_name,
-                size,
-                GTK_ICON_LOOKUP_FORCE_SIZE,
-                NULL
-            );
-            pbuf = gdk_pixbuf_copy (internal);
+
+    if (wnck_window_has_icon_name (window))
+      {
+        const gchar *icon_name;
+        GtkIconTheme *icon_theme;
+
+        icon_name = wnck_window_get_icon_name (window);
+        icon_theme = gtk_icon_theme_get_default ();
+
+        if (gtk_icon_theme_has_icon (icon_theme, icon_name))
+          {
+            GdkPixbuf *internal;
+
+            internal = gtk_icon_theme_load_icon (icon_theme, icon_name, size,
+                                                 GTK_ICON_LOOKUP_FORCE_SIZE,
+                                                 NULL);
+            pixbuf = gdk_pixbuf_copy (internal);
             g_object_unref (internal);
-        }
-    }
-    if (!pbuf) {
-        pbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
-    }
-    gint width = gdk_pixbuf_get_width (pbuf);
-    gint height = gdk_pixbuf_get_height (pbuf);
-    if (MAX (width, height) != size) {
-        gdouble scale = (gdouble) size / (gdouble) MAX (width, height);
-        GdkPixbuf *tmp = pbuf;
-        pbuf = gdk_pixbuf_scale_simple (tmp, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
-        g_object_unref (tmp);
-    }
-    return pbuf;
+          }
+      }
+
+    if (!pixbuf)
+      {
+        pixbuf = gdk_pixbuf_copy (wnck_window_get_icon (item->window));
+      }
+
+    width = gdk_pixbuf_get_width (pixbuf);
+    height = gdk_pixbuf_get_height (pixbuf);
+
+    if (MAX (width, height) != size)
+      {
+        GdkPixbuf *unscaled_pixbuf;
+        gdouble scale;
+
+        scale = (gdouble) size / (gdouble) MAX (width, height);
+        unscaled_pixbuf = pixbuf;
+        pixbuf = gdk_pixbuf_scale_simple (unscaled_pixbuf, (gint) (width * scale), (gint) (height * scale), GDK_INTERP_HYPER);
+        g_object_unref (unscaled_pixbuf);
+      }
+
+    return pixbuf;
 }
 
 /* Callback to draw the icon, this function is responsible to draw the different states of the icon
@@ -243,20 +267,27 @@ static gboolean task_item_draw (
     cairo_t *cr,
     WpApplet* windowPickerApplet)
 {
-    g_return_val_if_fail (widget != NULL, FALSE);
-    g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
-    TaskItem *item = TASK_ITEM (widget);
-    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
-    cr = gdk_cairo_create (gtk_widget_get_window(widget));
+    TaskItem *item;
     GdkRectangle area;
     GdkPixbuf *pbuf;
+    gint size;
+    gboolean active;
+    gboolean icons_greyscale;
+    gboolean attention;
+
+    g_return_val_if_fail (widget != NULL, FALSE);
+    g_return_val_if_fail (TASK_IS_ITEM (widget), FALSE);
+    item = TASK_ITEM (widget);
+    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
+    cr = gdk_cairo_create (gtk_widget_get_window(widget));
     area = item->area;
     pbuf = item->pixbuf;
-    gint size = MIN (area.height, area.width) - 8;
-    gboolean active = wnck_window_is_active (item->window);
+    size = MIN (area.height, area.width) - 8;
+    active = wnck_window_is_active (item->window);
     /* load the GSettings key for gray icons */
-    gboolean icons_greyscale = wp_applet_get_icons_greyscale (item->windowPickerApplet);
-    gboolean attention = wnck_window_or_transient_needs_attention (item->window);
+    icons_greyscale = wp_applet_get_icons_greyscale (item->windowPickerApplet);
+    attention = wnck_window_or_transient_needs_attention (item->window);
+
     if (GDK_IS_PIXBUF (pbuf) &&
         gdk_pixbuf_get_width (pbuf) != size &&
         gdk_pixbuf_get_height (pbuf) != size)
@@ -329,11 +360,14 @@ static gboolean task_item_draw (
     }
     if (!item->mouse_over && attention) { /* urgent */
         GTimeVal current_time;
+        gdouble ms;
+        gdouble alpha;
+
         g_get_current_time (&current_time);
-        gdouble ms = (
+        ms = (
             current_time.tv_sec - item->urgent_time.tv_sec) * 1000 +
             (current_time.tv_usec - item->urgent_time.tv_usec) / 1000;
-        gdouble alpha = .66 + (cos (3.15 * ms / 600) / 3);
+        alpha = .66 + (cos (3.15 * ms / 600) / 3);
         cairo_paint_with_alpha (cr, alpha);
     } else if (item->mouse_over || active || !icons_greyscale) { /* focused */
         cairo_paint (cr);
@@ -518,10 +552,9 @@ static void on_screen_active_window_changed (
     WnckWindow    *old_window,
     TaskItem      *item)
 {
-    g_return_if_fail (TASK_IS_ITEM (item));
     WnckWindow *window;
     window = item->window;
-    g_return_if_fail (WNCK_IS_WINDOW (window));
+
     if ((WNCK_IS_WINDOW (old_window) && window == old_window) ||
         window == wnck_screen_get_active_window (screen))
     {
@@ -705,14 +738,19 @@ static void on_drag_received_data (
         gint active;
         switch (target_type) {
             case TARGET_WIDGET_DRAGGED: {
-                GtkWidget *taskList = wp_applet_get_tasks(item->windowPickerApplet);
-                gpointer *data = (gpointer *) gtk_selection_data_get_data(selection_data);
+                GtkWidget *taskItem;
+                GtkWidget *taskList;
+                gint target_position;
+                gpointer *data;
+
+                taskList = wp_applet_get_tasks(item->windowPickerApplet);
+                data = (gpointer *) gtk_selection_data_get_data(selection_data);
                 g_assert(GTK_IS_WIDGET(*data));
 
-                GtkWidget *taskItem = GTK_WIDGET(*data);
+                taskItem = GTK_WIDGET(*data);
                 g_assert(TASK_IS_ITEM(taskItem));
                 if(taskItem == widget) break; //source and target are identical
-                gint target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
+                target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
                 g_object_ref(taskItem);
                 gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
                 g_object_unref(taskItem);
@@ -756,16 +794,10 @@ static void task_item_setup_atk (TaskItem *item) {
     atk_object_set_role (atk, ATK_ROLE_PUSH_BUTTON);
 }
 
-static void
-task_item_dispose (GObject *object)
-{
-    TaskItem *task_item = TASK_ITEM (object);
-
-    G_OBJECT_CLASS (task_item_parent_class)->dispose (object);
-}
-
 static void task_item_finalize (GObject *object) {
-    TaskItem *item = TASK_ITEM (object);
+    TaskItem *item;
+
+    item = TASK_ITEM (object);
 
     if (item->blink_timer) {
         g_source_remove (item->blink_timer);
@@ -779,8 +811,9 @@ static void task_item_finalize (GObject *object) {
 static void task_item_class_init (TaskItemClass *klass) {
     GObjectClass *obj_class      = G_OBJECT_CLASS (klass);
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-    obj_class->dispose = task_item_dispose;
+
     obj_class->finalize = task_item_finalize;
+
     widget_class->get_preferred_width = task_item_get_preferred_width;
     widget_class->get_preferred_height = task_item_get_preferred_height;
     task_item_signals [TASK_ITEM_CLOSED_SIGNAL] =
@@ -801,10 +834,13 @@ static void task_item_init (TaskItem *item) {
 }
 
 GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
-    g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
     TaskItem *taskItem;
     WnckScreen *screen;
-    GtkWidget *item = g_object_new (
+    GtkWidget *item;
+
+    g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+    item = g_object_new (
         TASK_TYPE_ITEM,
         "has-tooltip", TRUE,
         "visible-window", FALSE,
