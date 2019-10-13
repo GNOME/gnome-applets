@@ -795,7 +795,9 @@ static void task_item_setup_atk (TaskItem *item) {
 }
 
 static void task_item_finalize (GObject *object) {
-    TaskItem *item = TASK_ITEM (object);
+    TaskItem *item;
+
+    item = TASK_ITEM (object);
 
     if (item->blink_timer) {
         g_source_remove (item->blink_timer);
