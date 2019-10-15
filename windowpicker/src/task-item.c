@@ -56,23 +56,21 @@ static guint task_item_signals[LAST_SIGNAL] = { 0 };
 /* D&D stuff */
 
 enum {
-    TARGET_WIDGET_DRAGGED, /* if this item is dragged */
-    TARGET_ITEM_DRAGGED
+  TARGET_STRING_DRAGGED,
+  TARGET_TASK_ITEM_DRAGGED /* if this item is dragged */
 };
 
 static const GtkTargetEntry drop_types[] = {
-    { (gchar *) "STRING", 0, 0 },
-    { (gchar *) "text/plain", 0, 0},
-    { (gchar *) "text/uri-list", 0, 0},
-    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop target
-    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "STRING", 0, TARGET_STRING_DRAGGED },
+    { (gchar *) "text/plain", 0, TARGET_STRING_DRAGGED },
+    { (gchar *) "text/uri-list", 0, TARGET_STRING_DRAGGED },
+    { (gchar *) "task-item", GTK_TARGET_OTHER_WIDGET | GTK_TARGET_SAME_APP, TARGET_TASK_ITEM_DRAGGED } // drag and drop target
 };
 
 static const gint n_drop_types = G_N_ELEMENTS(drop_types);
 
 static const GtkTargetEntry drag_types[] = {
-    { (gchar *) "widget", GTK_TARGET_OTHER_WIDGET, TARGET_WIDGET_DRAGGED }, //drag and drop source
-    { (gchar *) "item", GTK_TARGET_SAME_WIDGET, TARGET_ITEM_DRAGGED }
+    { (gchar *) "task-item", GTK_TARGET_OTHER_WIDGET | GTK_TARGET_SAME_APP, TARGET_TASK_ITEM_DRAGGED } // drag and drop source
 };
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
@@ -630,36 +628,73 @@ static void on_drag_leave (
     g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (0));
 }
 
-/* Emitted when a drag is over the destination */
-static gboolean on_drag_motion (
-    GtkWidget      *item,
-    GdkDragContext *context,
-    gint            x,
-    gint            y,
-    guint           time)
+static gboolean
+find_drop_type_by_name (char *source_name)
 {
-    GdkAtom         target_type = NULL;
+  for (gulong i = 0; i < G_N_ELEMENTS (drop_types); i++)
+    {
+      gchar * target_name;
 
-    if (gdk_drag_context_list_targets(context)) {
-        /* Choose the best target type */
-        target_type = GDK_POINTER_TO_ATOM (
-            g_list_nth_data (
-                gdk_drag_context_list_targets(context),
-                    TARGET_WIDGET_DRAGGED
-            )
-        );
-        g_assert(target_type != NULL);
+      target_name = drop_types[i].target;
 
-        gtk_drag_get_data (
-            item,         // will receive 'drag-data-received' signal
-            context,        // represents the current state of the DnD
-            target_type,    // the target type we want
-            time            // time stamp
-        );
-    } else {
-        g_warning("Drag ended without target");
+      if (g_strcmp0 (source_name, target_name) == 0)
+        return TRUE;
     }
-    return FALSE;
+
+  return FALSE;
+}
+
+/* Emitted when a drag is over the destination */
+static gboolean
+on_drag_motion (GtkWidget      *item,
+                GdkDragContext *context,
+                gint            x,
+                gint            y,
+                guint           time)
+{
+    GdkAtom target;
+    GList *targets;
+    GList *current;
+
+    target = NULL;
+    targets = gdk_drag_context_list_targets (context);
+
+    if (targets == NULL)
+      {
+        g_warning("Drag ended without target");
+        return FALSE;
+      }
+
+    current = targets;
+
+    while (current != NULL)
+      {
+        char *name;
+        gboolean found;
+
+        found = FALSE;
+
+        /* Choose the best target type */
+        target = GDK_POINTER_TO_ATOM (current->data);
+        name = gdk_atom_name (target);
+
+        found = find_drop_type_by_name (name);
+        g_free (name);
+
+        if (found)
+          break;
+
+        current = g_list_next (current);
+      }
+
+    g_assert (target != NULL);
+
+    gtk_drag_get_data (item,    // will receive 'drag-data-received' signal
+                       context, // represents the current state of the DnD
+                       target,  // the target type we want
+                       time);   // time stamp
+
+  return FALSE;
 }
 
 
@@ -685,20 +720,20 @@ on_drag_get_data (GtkWidget        *widget,
                   guint             time,
                   gpointer          user_data)
 {
-    switch(target_type) {
-        case TARGET_WIDGET_DRAGGED:
-            g_assert(user_data != NULL && TASK_IS_ITEM(user_data));
-            gtk_selection_data_set(
-                selection_data,
-                gtk_selection_data_get_target (selection_data),
-                8,
-                (guchar*) &user_data,
-                sizeof(gpointer*)
-            );
-            break;
-        default:
-            g_assert_not_reached ();
-    }
+    TaskItem *item;
+
+    g_assert (user_data != NULL && TASK_IS_ITEM (user_data));
+
+    item = TASK_ITEM (user_data);
+
+    if (target_type != TARGET_TASK_ITEM_DRAGGED)
+      g_assert_not_reached ();
+
+    gtk_selection_data_set (selection_data,
+                            gtk_selection_data_get_target (selection_data),
+                            8,
+                            (guchar*) &item,
+                            sizeof (TaskItem*));
 }
 
 static void on_drag_end (
@@ -737,7 +772,7 @@ static void on_drag_received_data (
     if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
         gint active;
         switch (target_type) {
-            case TARGET_WIDGET_DRAGGED: {
+            case TARGET_TASK_ITEM_DRAGGED: {
                 GtkWidget *taskItem;
                 GtkWidget *taskList;
                 gint target_position;
