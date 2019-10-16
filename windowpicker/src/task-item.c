@@ -599,33 +599,50 @@ task_item_close (TaskItem   *item)
 }
 
 static gboolean activate_window (GtkWidget *widget) {
-    gint active;
     TaskItem *item;
-    g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+    GtkWidget *parent;
+    WnckWindow *window;
+    guint time;
+
     g_return_val_if_fail (TASK_IS_ITEM(widget), FALSE);
     item = TASK_ITEM (widget);
-    g_return_val_if_fail (WNCK_IS_WINDOW (item->window), FALSE);
-    active = GPOINTER_TO_INT (
-        g_object_get_data (G_OBJECT (widget), "drag-true")
-    );
-    if (active) {
-        WnckWindow *window = item->window;
-        if (WNCK_IS_WINDOW (window))
-            wnck_window_activate (window, time (NULL));
-    }
-    g_object_set_data (
-        G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
+    parent = gtk_widget_get_parent (widget);
+
+    time = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (parent), "event-time"));
+
+    window = item->window;
+    if (WNCK_IS_WINDOW (window))
+        wnck_window_activate (window, time);
+
+    g_object_set_data (G_OBJECT (parent), "event-source", GINT_TO_POINTER (0));
+
     return FALSE;
 }
 
 /* Emitted when a drag leaves the destination */
 static void on_drag_leave (
-    GtkWidget *item,
+    GtkWidget *widget,
     GdkDragContext *context,
     guint time,
     gpointer user_data)
 {
-    g_object_set_data (G_OBJECT (item), "drag-true", GINT_TO_POINTER (0));
+  GtkWidget *parent;
+
+  parent = gtk_widget_get_parent (widget);
+  g_object_set_data (G_OBJECT (parent), "active-widget", NULL);
+
+  g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
+}
+
+static gboolean
+on_drag_drop (GtkWidget      *widget,
+              GdkDragContext *context,
+              gint            x,
+              gint            y,
+              guint           time,
+              gpointer        user_data)
+{
+  return FALSE;
 }
 
 static gboolean
@@ -655,15 +672,31 @@ on_drag_motion (GtkWidget      *item,
     GdkAtom target;
     GList *targets;
     GList *current;
+    GtkWidget *parent;
+    GtkWidget *active_widget;
+    guint event_source;
+
+    parent = gtk_widget_get_parent (item);
+    active_widget = g_object_get_data (G_OBJECT (parent), "active-widget");
+
+    if (active_widget == item)
+      return FALSE;
+
+    event_source = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (parent), "event-source"));
+
+    if (event_source > 0)
+      {
+        g_source_remove (event_source);
+        g_object_set_data (G_OBJECT (parent), "event-source", GINT_TO_POINTER (0));
+      }
+
+    g_object_set_data (G_OBJECT (parent), "active-widget", item);
 
     target = NULL;
     targets = gdk_drag_context_list_targets (context);
 
     if (targets == NULL)
-      {
-        g_warning("Drag ended without target");
-        return FALSE;
-      }
+      return FALSE;
 
     current = targets;
 
@@ -671,8 +704,6 @@ on_drag_motion (GtkWidget      *item,
       {
         char *name;
         gboolean found;
-
-        found = FALSE;
 
         /* Choose the best target type */
         target = GDK_POINTER_TO_ATOM (current->data);
@@ -694,7 +725,7 @@ on_drag_motion (GtkWidget      *item,
                        target,  // the target type we want
                        time);   // time stamp
 
-  return FALSE;
+    return TRUE;
 }
 
 
@@ -736,12 +767,26 @@ on_drag_get_data (GtkWidget        *widget,
                             sizeof (TaskItem*));
 }
 
-static void on_drag_end (
-    GtkWidget *widget,
-    GdkDragContext *drag_context,
-    gpointer user_data)
+static void
+on_drag_end (GtkWidget      *drag_source,
+             GdkDragContext *drag_context,
+             gpointer        user_data)
 {
-    g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
+  GtkWidget *parent;
+  guint event_source;
+
+  parent = gtk_widget_get_parent (drag_source);
+
+  g_object_set_data (G_OBJECT (parent), "active-widget", NULL);
+  event_source = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (parent), "event-source"));
+
+  if (event_source != 0)
+  {
+    g_source_remove (event_source);
+    g_object_set_data (G_OBJECT (parent), "event-source", GINT_TO_POINTER (0));
+  }
+
+  g_object_set_data (G_OBJECT (drag_source), "drag-true", GINT_TO_POINTER (0));
 }
 
 static gint
@@ -770,7 +815,7 @@ grid_get_pos (GtkWidget *grid,
 }
 
 static void on_drag_received_data (
-    GtkWidget *widget, //target of the d&d action
+    GtkWidget *drag_target, //target of the d&d action
     GdkDragContext *context,
     gint x,
     gint y,
@@ -779,45 +824,71 @@ static void on_drag_received_data (
     guint time,
     TaskItem *item)
 {
-    if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0)) {
-        gint active;
-        switch (target_type) {
-            case TARGET_TASK_ITEM_DRAGGED: {
-                GtkWidget *taskItem;
-                GtkWidget *taskList;
-                gint target_position;
-                gpointer *data;
-
-                taskList = wp_applet_get_tasks(item->windowPickerApplet);
-                data = (gpointer *) gtk_selection_data_get_data(selection_data);
-                g_assert(GTK_IS_WIDGET(*data));
-
-                taskItem = GTK_WIDGET(*data);
-                g_assert(TASK_IS_ITEM(taskItem));
-                if(taskItem == widget) break; //source and target are identical
-                target_position = grid_get_pos(wp_applet_get_tasks(item->windowPickerApplet), widget);
-                g_object_ref(taskItem);
-                gtk_box_reorder_child(GTK_BOX(taskList), taskItem, target_position);
-                g_object_unref(taskItem);
-                break;
-            }
-            default:
-                active = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "drag-true"));
-                if (!active) {
-                    g_object_set_data (
-                        G_OBJECT (widget), "drag-true", GINT_TO_POINTER (1)
-                    );
-                    g_timeout_add (1000, (GSourceFunc)activate_window, widget);
-                }
-        }
+  if (selection_data == NULL || gtk_selection_data_get_length (selection_data) < 0)
+    {
+      gdk_drag_status (context, 0, time);
+      return;
     }
+
+  if (target_type == TARGET_TASK_ITEM_DRAGGED)
+    {
+      GtkWidget *drag_source;
+      GtkWidget *taskList;
+      GtkWidget *parent;
+      gint target_position;
+      gpointer *data;
+
+      parent = gtk_widget_get_parent (drag_target);
+      taskList = wp_applet_get_tasks (item->windowPickerApplet);
+      data = (gpointer *) gtk_selection_data_get_data (selection_data);
+
+      drag_source = GTK_WIDGET (*data);
+      g_assert (TASK_IS_ITEM (drag_source));
+
+      if (drag_source == drag_target)
+        {
+          gdk_drag_status (context, 0, time);
+          return; //source and target are identical
+        }
+
+      target_position = grid_get_pos (taskList, drag_target);
+
+      g_object_ref (drag_source);
+      gtk_box_reorder_child (GTK_BOX (taskList), drag_source, target_position);
+      g_object_unref (drag_source);
+
+      // we swapped the source and the target, so the drag_target is no longer part of the drag action
+      g_object_set_data (G_OBJECT (drag_target), "drag-true",
+                         GINT_TO_POINTER (0));
+
+      // we swapped the source and the target, so the drag_source is the new active widget
+      g_object_set_data (G_OBJECT (parent), "active-widget", drag_source);
+    }
+  else
+    {
+      GtkWidget *parent;
+      guint event_source;
+
+      parent = gtk_widget_get_parent (drag_target);
+      event_source = g_timeout_add (1000,
+                                    (GSourceFunc) activate_window,
+                                    drag_target);
+
+      g_object_set_data (G_OBJECT (parent), "event-source",
+                         GINT_TO_POINTER (event_source));
+
+      g_object_set_data (G_OBJECT (parent), "event-time",
+                         GINT_TO_POINTER (time));
+    }
+
+  gdk_drag_status (context, GDK_ACTION_COPY, time);
 }
 
 /* Returning true here, causes the failed-animation not to be shown. Without this the icon of the dnd operation
  * will jump back to where the dnd operation started.
  **/
 static gboolean
-on_drag_failed (GtkWidget      *widget,
+on_drag_failed (GtkWidget      *drag_source,
                 GdkDragContext *context,
                 GtkDragResult   result,
                 TaskItem       *taskItem)
@@ -911,7 +982,7 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     //target (destination)
     gtk_drag_dest_set (
         item,
-        GTK_DEST_DEFAULT_HIGHLIGHT,
+        GTK_DEST_DEFAULT_MOTION,
         drop_types, n_drop_types,
         GDK_ACTION_COPY
     );
@@ -932,6 +1003,8 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
         G_CALLBACK (on_drag_motion), item);
     g_signal_connect (item, "drag-leave",
         G_CALLBACK (on_drag_leave), item);
+    g_signal_connect (item, "drag-drop",
+        G_CALLBACK (on_drag_drop), item);
     g_signal_connect (item, "drag_data_received",
         G_CALLBACK(on_drag_received_data), item);
     /* a 'drag-drop' signal is not needed, instead we rely on the drag-failed signal to end a drag operation. */
