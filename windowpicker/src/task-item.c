@@ -744,18 +744,28 @@ static void on_drag_end (
     g_object_set_data (G_OBJECT (widget), "drag-true", GINT_TO_POINTER (0));
 }
 
-static gint grid_get_pos (GtkWidget *grid, GtkWidget *item) {
-    GtkContainer *container = GTK_CONTAINER (grid);
-    GList *items = gtk_container_get_children (container);
+static gint
+grid_get_pos (GtkWidget *grid,
+              GtkWidget *item)
+{
+  GtkContainer *container;
+  GList *items;
 
-    while (items) {
-        if (items->data == item) {
-	        gint pos;
-	        gtk_container_child_get (container, item, "position", &pos, NULL);
-	        return pos;
-	    }
+  container = GTK_CONTAINER (grid);
+  items = gtk_container_get_children (container);
+
+    while (items)
+      {
+        if (items->data == item)
+          {
+            gint pos;
+            gtk_container_child_get (container, item, "position", &pos, NULL);
+            return pos;
+          }
+
         items = items->next;
-    }
+      }
+
     return -1;
 }
 
