@@ -85,25 +85,14 @@ battstat_upower_initialise (void (*callback) (void))
   if( (upc = up_client_new() ) == NULL )
     goto error_out;
 
-#if UP_CHECK_VERSION(0, 99, 0)
-  devices = up_client_get_devices(upc);
+  devices = up_client_get_devices2(upc);
   if (!devices) {
     goto error_shutdownclient;
   }
   g_ptr_array_unref(devices);
-#else
-  if (! up_client_enumerate_devices_sync( upc, NULL, NULL ) ) {
-    goto error_shutdownclient;
-  }
-#endif
 
   g_signal_connect_after( upc, "device-added", device_cb, NULL );
-#if UP_CHECK_VERSION(0, 99, 0)
   g_signal_connect_after( upc, "device-removed", device_removed_cb, NULL );
-#else
-  g_signal_connect_after( upc, "device-changed", device_cb, NULL );
-  g_signal_connect_after( upc, "device-removed", device_cb, NULL );
-#endif
 
   return NULL;
 
@@ -143,7 +132,7 @@ void
 battstat_upower_get_battery_info( BatteryStatus *status )
 {
 
-  GPtrArray *devices = up_client_get_devices( upc );
+  GPtrArray *devices = up_client_get_devices2( upc );
 
   /* The calculation to get overall percentage power remaining is as follows:
    *
