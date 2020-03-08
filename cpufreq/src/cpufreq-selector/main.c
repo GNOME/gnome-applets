@@ -1,205 +1,47 @@
 /*
- * GNOME CPUFreq Applet
- * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2004 Carlos Garcia Campos
+ * Copyright (C) 2020 Alberts Muktupāvels
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
- *
- * Authors : Carlos García Campos <carlosgc@gnome.org>
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "config.h"
 
-#include <glib.h>
-#include <glib-object.h>
-
 #include "cpufreq-selector-service.h"
-#include "cpufreq-selector.h"
-
-static gint    cpu = 0;
-static gchar  *governor = NULL;
-static gulong  frequency = 0;
-
-static const GOptionEntry options[] = {
-	{ "cpu",       'c', 0, G_OPTION_ARG_INT,    &cpu,       "CPU Number",       NULL },
-	{ "governor",  'g', 0, G_OPTION_ARG_STRING, &governor,  "Governor",         NULL },
-	{ "frequency", 'f', 0, G_OPTION_ARG_INT,    &frequency, "Frequency in KHz", NULL },
-	{ NULL }
-};
 
 static void
-do_exit (GMainLoop *loop,
-	 GObject   *object)
+quit_cb (CPUFreqSelectorService *self,
+         GMainLoop              *loop)
 {
-	if (g_main_loop_is_running (loop))
-		g_main_loop_quit (loop);
+  if (g_main_loop_is_running (loop))
+    g_main_loop_quit (loop);
 }
 
-static void
-cpufreq_selector_set_values_dbus (void)
+int
+main (void)
 {
-	DBusGConnection *connection;
-	DBusGProxy      *proxy;
-	gboolean         res;
-	GError          *error = NULL;
+  GMainLoop *loop;
+  CPUFreqSelectorService *service;
 
-	connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
-	if (!connection) {
-		g_printerr ("Couldn't connect to system bus: %s\n",
-			    error->message);
-		g_error_free (error);
+  loop = g_main_loop_new (NULL, FALSE);
+  service = cpufreq_selector_service_new ();
 
-		return;
-	}
+  g_signal_connect (service, "quit", G_CALLBACK (quit_cb), loop);
 
-	proxy = dbus_g_proxy_new_for_name (connection,
-					   "org.gnome.CPUFreqSelector",
-					   "/org/gnome/cpufreq_selector/selector",
-					   "org.gnome.CPUFreqSelector");
-	if (!proxy) {
-		g_printerr ("Could not construct proxy object\n");
+  g_main_loop_run (loop);
 
-		return;
-	}
+  g_main_loop_unref (loop);
 
-	if (governor) {
-		res = dbus_g_proxy_call (proxy, "SetGovernor", &error,
-					 G_TYPE_UINT, cpu,
-					 G_TYPE_STRING, governor,
-					 G_TYPE_INVALID,
-					 G_TYPE_INVALID);
-		if (!res) {
-			if (error) {
-				g_printerr ("Error calling SetGovernor: %s\n", error->message);
-				g_error_free (error);
-			} else {
-				g_printerr ("Error calling SetGovernor\n");
-			}
-			
-			g_object_unref (proxy);
-			
-			return;
-		}
-	}
-
-	if (frequency != 0) {
-		res = dbus_g_proxy_call (proxy, "SetFrequency", &error,
-					 G_TYPE_UINT, cpu,
-					 G_TYPE_UINT, frequency,
-					 G_TYPE_INVALID,
-					 G_TYPE_INVALID);
-		if (!res) {
-			if (error) {
-				g_printerr ("Error calling SetFrequency: %s\n", error->message);
-				g_error_free (error);
-			} else {
-				g_printerr ("Error calling SetFrequency\n");
-			}
-			
-			g_object_unref (proxy);
-			
-			return;
-		}
-	}
-
-	g_object_unref (proxy);
-}
-
-static void
-cpufreq_selector_set_values (void)
-{
-	CPUFreqSelector *selector;
-	GError          *error = NULL;
-
-	selector = cpufreq_selector_new (cpu);
-	if (!selector) {
-		g_printerr ("No cpufreq support\n");
-
-		return;
-	}
-
-	if (governor) {
-		cpufreq_selector_set_governor (selector, governor, &error);
-
-		if (error) {
-			g_printerr ("%s\n", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-
-	if (frequency != 0) {
-		cpufreq_selector_set_frequency (selector, frequency, &error);
-
-		if (error) {
-			g_printerr ("%s\n", error->message);
-			g_error_free (error);
-			error = NULL;
-		}
-	}
-
-	g_object_unref (selector);
-}
-
-gint
-main (gint argc, gchar **argv)
-{
-	GMainLoop      *loop;
-	GOptionContext *context;
-	GError         *error = NULL;
-	CPUFreqSelectorService *selector_service;
-
-	context = g_option_context_new ("- CPUFreq Selector");
-	g_option_context_add_main_entries (context, options, NULL);
-	
-	if (!g_option_context_parse (context, &argc, &argv, &error)) {
-		if (error) {
-			g_printerr ("%s\n", error->message);
-			g_error_free (error);
-		} 
-
-		g_option_context_free (context);
-		
-		return 1;
-	}
-	
-	g_option_context_free (context);
-
-	selector_service = g_object_new (CPUFREQ_TYPE_SELECTOR_SERVICE, NULL);
-
-	if (!cpufreq_selector_service_register (selector_service, &error)) {
-		if (governor || frequency != 0) {
-			cpufreq_selector_set_values_dbus ();
-
-			return 0;
-		}
-
-		g_printerr ("%s\n", error->message);
-		g_error_free (error);
-
-		return 1;
-	}
-
-	cpufreq_selector_set_values ();
-
-	loop = g_main_loop_new (NULL, FALSE);
-	g_object_weak_ref (G_OBJECT (selector_service),
-			   (GWeakNotify) do_exit,
-			   loop);
-		
-	g_main_loop_run (loop);
-
-	g_main_loop_unref (loop);
-
-        return 0;
+  return 0;
 }

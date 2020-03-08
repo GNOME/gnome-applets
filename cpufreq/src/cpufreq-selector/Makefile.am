@@ -37,12 +37,16 @@ dbus_servicesdir = $(datadir)/dbus-1/system-services
 dbus_confdir = $(sysconfdir)/dbus-1/system.d
 polkitdir = $(datadir)/polkit-1/actions
 
-BUILT_SOURCES = cpufreq-selector-service-glue.h
+cpufreq-selector-gen.h:
+cpufreq-selector-gen.c: ../org.gnome.CPUFreqSelector.xml
+	$(AM_V_GEN) $(GDBUS_CODEGEN) --c-namespace CPUFreq \
+		--generate-c-code cpufreq-selector-gen \
+		$(srcdir)/../org.gnome.CPUFreqSelector.xml
 
-cpufreq-selector-service-glue.h: $(srcdir)/cpufreq-selector-service.xml
-	dbus-binding-tool --prefix=cpufreq_selector_service --mode=glib-server	\
-	                  --output=cpufreq-selector-service-glue.h		\
-	                  $(srcdir)/cpufreq-selector-service.xml
+BUILT_SOURCES = \
+	cpufreq-selector-gen.c \
+	cpufreq-selector-gen.h \
+	$(NULL)
 
 dbus_services_DATA = $(dbus_services_in_files:.service.in=.service)
 $(dbus_services_DATA): $(dbus_services_in_files)
@@ -53,7 +57,6 @@ dbus_conf_DATA = org.gnome.CPUFreqSelector.conf
 polkit_DATA = $(polkit_in_files:.policy.in=.policy)
 
 EXTRA_DIST = \
-	cpufreq-selector-service.xml	\
 	$(dbus_services_in_files)	\
 	org.gnome.CPUFreqSelector.conf	\
 	$(polkit_in_files)

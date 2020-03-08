@@ -1,484 +1,452 @@
 /*
- * GNOME CPUFreq Applet
- * Copyright (C) 2008 Carlos Garcia Campos <carlosgc@gnome.org>
+ * Copyright (C) 2008 Carlos Garcia Campos
+ * Copyright (C) 2020 Alberts Muktupāvels
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public
- *  License as published by the Free Software Foundation; either
- *  version 2 of the License, or (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+#include "cpufreq-selector-service.h"
+
 #include <polkit/polkit.h>
-#include <dbus/dbus-glib-lowlevel.h>
 
 #include "cpufreq-selector.h"
-#include "cpufreq-selector-service.h"
-#include "cpufreq-selector-service-glue.h"
+#include "cpufreq-selector-gen.h"
 
-#define MAX_CPUS 255
+struct _CPUFreqSelectorService
+{
+  GObject             parent;
 
-struct _CPUFreqSelectorService {
-        GObject parent;
+  PolkitAuthority    *authority;
 
-	CPUFreqSelector *selectors[MAX_CPUS];
-	gint             selectors_max;
+  CPUFreqSelectorGen *selector;
+  guint               bus_name_id;
 
-	DBusGConnection *system_bus;
-	
-	/* PolicyKit */
-	PolkitAuthority   *authority;
+  guint               quit_timeout_id;
 
-	guint              timer_id;
+  GHashTable         *selectors;
 };
 
-struct _CPUFreqSelectorServiceClass {
-        GObjectClass parent_class;
+enum
+{
+  SIGNAL_QUIT,
+
+  LAST_SIGNAL
 };
+
+static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (CPUFreqSelectorService, cpufreq_selector_service, G_TYPE_OBJECT)
 
-#define BUS_NAME "org.gnome.CPUFreqSelector"
-
-GType
-cpufreq_selector_service_error_get_type (void)
-{
-	static GType etype = 0;
-
-	if (G_UNLIKELY (etype == 0)) {
-		static const GEnumValue values[] = {
-			{ SERVICE_ERROR_GENERAL,            "SERVICE_ERROR_GENERAL",            "GeneralError" },
-			{ SERVICE_ERROR_DBUS,               "SERVICE_ERROR_DBUS",               "DBUSError" },
-			{ SERVICE_ERROR_ALREADY_REGISTERED, "SERVICE_ERROR_ALREADY_REGISTERED", "AlreadyRegistered" },
-			{ SERVICE_ERROR_NOT_AUTHORIZED,     "SERVICE_ERROR_NOT_AUTHORIZED",     "NotAuthorized"},
-			{ 0, NULL, NULL}
-		};
-		
-		etype = g_enum_register_static ("CPUFreqSelectorServiceError", values);
-	}
-
-	return etype;
-}
-
-GQuark
-cpufreq_selector_service_error_quark (void)
-{
-	static GQuark error_quark = 0;
-
-	if (G_UNLIKELY (error_quark == 0))
-		error_quark =
-			g_quark_from_static_string ("cpufreq-selector-service-error-quark");
-	
-	return error_quark;
-}
-
-static void
-cpufreq_selector_service_finalize (GObject *object)
-{
-	CPUFreqSelectorService *service = CPUFREQ_SELECTOR_SERVICE (object);
-	gint i;
-
-	service->system_bus = NULL;
-
-	if (service->timer_id != 0) {
-		g_source_remove (service->timer_id);
-		service->timer_id = 0;
-	}
-
-	if (service->selectors_max >= 0) {
-		for (i = 0; i < service->selectors_max; i++) {
-			if (service->selectors[i]) {
-				g_object_unref (service->selectors[i]);
-				service->selectors[i] = NULL;
-			}
-		}
-
-		service->selectors_max = -1;
-	}
-
-	if (service->authority) {
-		g_object_unref (service->authority);
-		service->authority = NULL;
-	}
-
-	G_OBJECT_CLASS (cpufreq_selector_service_parent_class)->finalize (object);
-}
-
-static void
-cpufreq_selector_service_class_init (CPUFreqSelectorServiceClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	object_class->finalize = cpufreq_selector_service_finalize;
-}
-
-static void
-cpufreq_selector_service_init (CPUFreqSelectorService *service)
-{
-	service->selectors_max = -1;
-}
-
 static gboolean
-service_shutdown (gpointer user_data)
+quit_timeout_cb (gpointer user_data)
 {
-	CPUFreqSelectorService *service;
+  CPUFreqSelectorService *self;
 
-	service = CPUFREQ_SELECTOR_SERVICE (user_data);
-	service->timer_id = 0;
+	self = CPUFREQ_SELECTOR_SERVICE (user_data);
+	self->quit_timeout_id = 0;
 
-	g_object_unref (service);
+  g_signal_emit (self, signals[SIGNAL_QUIT], 0);
 
-	return G_SOURCE_REMOVE;
+  return G_SOURCE_REMOVE;
 }
 
 static void
-reset_killtimer (CPUFreqSelectorService *service)
+reset_quit_timeout (CPUFreqSelectorService *self)
 {
-	if (service->timer_id != 0)
-		g_source_remove (service->timer_id);
+  if (self->quit_timeout_id != 0)
+    g_source_remove (self->quit_timeout_id);
 
-	service->timer_id = g_timeout_add_seconds (30, service_shutdown, service);
-}
+  self->quit_timeout_id = g_timeout_add_seconds (30, quit_timeout_cb, self);
 
-gboolean
-cpufreq_selector_service_register (CPUFreqSelectorService *service,
-				   GError                **error)
-{
-	DBusGConnection *connection;
-	DBusGProxy      *bus_proxy;
-	gboolean         res;
-	guint            result;
-	GError          *err = NULL;
-
-	if (service->system_bus) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_ALREADY_REGISTERED,
-			     "Service %s already registered", BUS_NAME);
-		return FALSE;
-	}
-
-	connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &err);
-	if (!connection) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_DBUS,
-			     "Couldn't connect to system bus: %s",
-			     err->message);
-		g_error_free (err);
-
-		return FALSE;
-	}
-
-	bus_proxy = dbus_g_proxy_new_for_name (connection,
-					       DBUS_SERVICE_DBUS,
-					       DBUS_PATH_DBUS,
-					       DBUS_INTERFACE_DBUS);
-	if (!bus_proxy) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_DBUS,
-			     "Could not construct bus_proxy object");
-		return FALSE;
-	}
-
-	res = dbus_g_proxy_call (bus_proxy,
-				 "RequestName",
-				 &err,
-				 G_TYPE_STRING, BUS_NAME,
-				 G_TYPE_UINT, DBUS_NAME_FLAG_DO_NOT_QUEUE,
-				 G_TYPE_INVALID,
-				 G_TYPE_UINT, &result,
-				 G_TYPE_INVALID);
-	g_object_unref (bus_proxy);
-	
-	if (!res) {
-		if (err) {
-			g_set_error (error,
-				     CPUFREQ_SELECTOR_SERVICE_ERROR,
-				     SERVICE_ERROR_DBUS,
-				     "Failed to acquire %s: %s",
-				     BUS_NAME, err->message);
-			g_error_free (err);
-		} else {
-			g_set_error (error,
-				     CPUFREQ_SELECTOR_SERVICE_ERROR,
-				     SERVICE_ERROR_DBUS,
-				     "Failed to acquire %s", BUS_NAME);
-		}
-
-		return FALSE;
-	}
-
-	if (result == DBUS_REQUEST_NAME_REPLY_EXISTS) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_ALREADY_REGISTERED,
-			     "Service %s already registered", BUS_NAME);
-		return FALSE;
-	}
-
-	service->authority = polkit_authority_get_sync (NULL, error);
-
-	if (!service->authority)
-	  return FALSE;
-
-	service->system_bus = connection;
-
-	dbus_g_object_type_install_info (CPUFREQ_TYPE_SELECTOR_SERVICE,
-					 &dbus_glib_cpufreq_selector_service_object_info);
-	dbus_g_connection_register_g_object (connection,
-					     "/org/gnome/cpufreq_selector/selector",
-					     G_OBJECT (service));
-	dbus_g_error_domain_register (CPUFREQ_SELECTOR_SERVICE_ERROR, NULL,
-				      CPUFREQ_TYPE_SELECTOR_SERVICE_ERROR);
-
-	reset_killtimer (service);
-
-	return TRUE;
+  g_source_set_name_by_id (self->quit_timeout_id,
+                           "[gnome-applets] quit_timeout_cb");
 }
 
 static CPUFreqSelector *
-get_selector_for_cpu (CPUFreqSelectorService *service,
-		      guint                   cpu)
+get_selector_for_cpu (CPUFreqSelectorService *self,
+                      guint                   cpu)
 {
-	if (!service->selectors[cpu]) {
-		service->selectors[cpu] = cpufreq_selector_new (cpu);
-		if (!service->selectors[cpu])
-			return NULL;
-		
-		if (service->selectors_max < cpu)
-			service->selectors_max = cpu;
-	}
-	
-	return service->selectors[cpu];
+  CPUFreqSelector *selector;
+
+  selector = g_hash_table_lookup (self->selectors, GUINT_TO_POINTER (cpu));
+
+  if (selector == NULL)
+    {
+      selector = cpufreq_selector_new (cpu);
+
+      g_hash_table_insert (self->selectors, GUINT_TO_POINTER (cpu), selector);
+    }
+
+  return selector;
 }
 
-/* PolicyKit */
 static gboolean
-cpufreq_selector_service_check_policy (CPUFreqSelectorService *service,
-				       DBusGMethodInvocation  *context,
-				       GError                **error)
+service_check_policy (CPUFreqSelectorService  *self,
+                      GDBusMethodInvocation   *invocation,
+                      GError                 **error)
 {
-	PolkitSubject             *subject;
-	PolkitAuthorizationResult *result;
-	gchar                     *sender;
-	gboolean                   ret;
+  const char *sender;
+  PolkitSubject *subject;
+  PolkitAuthorizationResult *result;
+  gboolean is_authorized;
 
-	sender = dbus_g_method_get_sender (context);
-	subject = polkit_system_bus_name_new (sender);
-	g_free (sender);
+  sender = g_dbus_method_invocation_get_sender (invocation);
+  subject = polkit_system_bus_name_new (sender);
 
-	result = polkit_authority_check_authorization_sync (service->authority,
-                                                            subject,
-                                                            "org.gnome.cpufreqselector",
-                                                            NULL,
-                                                            POLKIT_CHECK_AUTHORIZATION_FLAGS_ALLOW_USER_INTERACTION,
-                                                            NULL, error);
-        g_object_unref (subject);
+  result = polkit_authority_check_authorization_sync (self->authority,
+                                                      subject,
+                                                      "org.gnome.cpufreqselector",
+                                                      NULL,
+                                                      POLKIT_CHECK_AUTHORIZATION_FLAGS_ALLOW_USER_INTERACTION,
+                                                      NULL,
+                                                      error);
 
-        if (*error) {
-		g_warning ("Check policy: %s", (*error)->message);
-		g_object_unref (result);
+  g_object_unref (subject);
 
-		return FALSE;
-	}
+  if (*error != NULL)
+    {
+      g_warning ("Check policy: %s", (*error)->message);
+      g_object_unref (result);
 
-	ret = polkit_authorization_result_get_is_authorized (result);
-	if (!ret) {
-		g_set_error (error,
-			     CPUFREQ_SELECTOR_SERVICE_ERROR,
-			     SERVICE_ERROR_NOT_AUTHORIZED,
-			     "Caller is not authorized");
-	}
+      return FALSE;
+    }
 
-	g_object_unref (result);
+  is_authorized = polkit_authorization_result_get_is_authorized (result);
+  g_object_unref (result);
 
-	return ret;
+  if (!is_authorized)
+    {
+      g_set_error (error,
+                   G_DBUS_ERROR,
+                   G_DBUS_ERROR_ACCESS_DENIED,
+                   "Caller is not authorized");
+    }
+
+  return is_authorized;
 }
 
-/* D-BUS interface */
-gboolean
-cpufreq_selector_service_set_frequency (CPUFreqSelectorService *service,
-					guint                   cpu,
-					guint                   frequency,
-					DBusGMethodInvocation  *context)
+static gboolean
+handle_can_set_cb (CPUFreqSelectorGen    *object,
+                   GDBusMethodInvocation *invocation,
+                   gpointer               user_data)
 {
-	CPUFreqSelector *selector;
-	GError          *error = NULL;
+  CPUFreqSelectorService *self;
+  const char *sender;
+  PolkitSubject *subject;
+  GError *error;
+  PolkitAuthorizationResult *result;
+  gboolean can_set;
 
-	reset_killtimer (service);
+  self = CPUFREQ_SELECTOR_SERVICE (user_data);
 
-	if (!cpufreq_selector_service_check_policy (service, context, &error)) {
-		dbus_g_method_return_error (context, error);
-		g_error_free (error);
+  reset_quit_timeout (self);
 
-		return FALSE;
-	}
+  sender = g_dbus_method_invocation_get_sender (invocation);
+  subject = polkit_system_bus_name_new (sender);
 
-	if (cpu > MAX_CPUS) {
-		GError *err;
-		
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting frequency on cpu %d: Invalid cpu",
-				   cpu);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
+  error = NULL;
+  result = polkit_authority_check_authorization_sync (self->authority,
+                                                      subject,
+                                                      "org.gnome.cpufreqselector",
+                                                      NULL,
+                                                      0,
+                                                      NULL,
+                                                      &error);
 
-		return FALSE;
-	}
+  g_object_unref (subject);
 
-	selector = get_selector_for_cpu (service, cpu);
-	if (!selector) {
-		GError *err;
+  if (error != NULL)
+    {
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting frequency on cpu %d: No cpufreq support",
-				   cpu);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
+      return FALSE;
+    }
 
-		return FALSE;
-	}
+  can_set = FALSE;
+  if (polkit_authorization_result_get_is_authorized (result) ||
+      polkit_authorization_result_get_is_challenge (result))
+    can_set = TRUE;
 
-	cpufreq_selector_set_frequency (selector, frequency, &error);
-	if (error) {
-		GError *err;
+  g_object_unref (result);
 
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting frequency %d on cpu %d: %s",
-				   frequency, cpu, error->message);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
-		g_error_free (error);
+  cpufreq_selector_gen_complete_can_set (object, invocation, can_set);
 
-		return FALSE;
-	}
-	
-	dbus_g_method_return (context);
-	
-	return TRUE;
+  return TRUE;
 }
 
-gboolean
-cpufreq_selector_service_set_governor (CPUFreqSelectorService *service,
-				       guint                   cpu,
-				       const gchar            *governor,
-				       DBusGMethodInvocation  *context)
+static gboolean
+handle_set_frequency_cb (CPUFreqSelectorGen    *object,
+                         GDBusMethodInvocation *invocation,
+                         guint                  cpu,
+                         guint                  frequency,
+                         gpointer               user_data)
 {
-	CPUFreqSelector *selector;
-	GError          *error = NULL;
+  CPUFreqSelectorService *self;
+  GError *error;
+  CPUFreqSelector *selector;
 
-	reset_killtimer (service);
+  self = CPUFREQ_SELECTOR_SERVICE (user_data);
 
-	if (!cpufreq_selector_service_check_policy (service, context, &error)) {
-		dbus_g_method_return_error (context, error);
-		g_error_free (error);
+  reset_quit_timeout (self);
 
-		return FALSE;
-	}
-	
-	if (cpu > MAX_CPUS) {
-		GError *err;
+  error = NULL;
+  if (!service_check_policy (self, invocation, &error))
+    {
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting governor on cpu %d: Invalid cpu",
-				   cpu);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
+      return FALSE;
+    }
 
-		return FALSE;
-	}
+  selector = get_selector_for_cpu (self, cpu);
 
-	selector = get_selector_for_cpu (service, cpu);
-	if (!selector) {
-		GError *err;
+  if (selector == NULL)
+    {
+      error = g_error_new (G_DBUS_ERROR,
+                           G_DBUS_ERROR_FAILED,
+                           "Error setting frequency on cpu %d: No cpufreq support",
+                           cpu);
 
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting governor on cpu %d: No cpufreq support",
-				   cpu);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-		return FALSE;
-	}
+      return FALSE;
+    }
 
-	cpufreq_selector_set_governor (selector, governor, &error);
-	if (error) {
-		GError *err;
+  cpufreq_selector_set_frequency (selector, frequency, &error);
 
-		err = g_error_new (CPUFREQ_SELECTOR_SERVICE_ERROR,
-				   SERVICE_ERROR_DBUS,
-				   "Error setting governor %s on cpu %d: %s",
-				   governor, cpu, error->message);
-		dbus_g_method_return_error (context, err);
-		g_error_free (err);
-		g_error_free (error);
+  if (error != NULL)
+    {
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-		return FALSE;
-	}
+      return FALSE;
+    }
 
-	dbus_g_method_return (context);
-	
-	return TRUE;
+  cpufreq_selector_gen_complete_set_frequency (object, invocation);
+
+  return TRUE;
 }
 
-
-gboolean
-cpufreq_selector_service_can_set (CPUFreqSelectorService *service,
-				  DBusGMethodInvocation  *context)
+static gboolean
+handle_set_governor_cb (CPUFreqSelectorGen    *object,
+                        GDBusMethodInvocation *invocation,
+                        guint                  cpu,
+                        const gchar           *governor,
+                        gpointer               user_data)
 {
-	PolkitSubject             *subject;
-	PolkitAuthorizationResult *result;
-	gchar                     *sender;
-	gboolean                   ret;
-        GError                    *error = NULL;
+  CPUFreqSelectorService *self;
+  GError *error;
+  CPUFreqSelector *selector;
 
-	reset_killtimer (service);
+  self = CPUFREQ_SELECTOR_SERVICE (user_data);
 
-	sender = dbus_g_method_get_sender (context);
-	subject = polkit_system_bus_name_new (sender);
-	g_free (sender);
+  reset_quit_timeout (self);
 
-	result = polkit_authority_check_authorization_sync (service->authority,
-                                                            subject,
-                                                            "org.gnome.cpufreqselector",
-                                                            NULL,
-                                                            0,
-                                                            NULL,
-							    &error);
-        g_object_unref (subject);
+  error = NULL;
+  if (!service_check_policy (self, invocation, &error))
+    {
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-	if (error) {
-		dbus_g_method_return_error (context, error);
-		g_error_free (error);
+      return FALSE;
+    }
 
-		return FALSE;
-	}
+  selector = get_selector_for_cpu (self, cpu);
 
-        if (polkit_authorization_result_get_is_authorized (result)) {
-		ret = TRUE;
-	} else if (polkit_authorization_result_get_is_challenge (result)) {
-		ret = TRUE;
-	} else {
-		ret = FALSE;
-	}
+  if (selector == NULL)
+    {
+      error = g_error_new (G_DBUS_ERROR,
+                           G_DBUS_ERROR_FAILED,
+                           "Error setting governor on cpu %d: No cpufreq support",
+                           cpu);
 
-	g_object_unref (result);
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
 
-        dbus_g_method_return (context, ret);
+      return FALSE;
+    }
 
-	return TRUE;
+  cpufreq_selector_set_governor (selector, governor, &error);
+
+  if (error != NULL)
+    {
+      g_dbus_method_invocation_return_gerror (invocation, error);
+      g_error_free (error);
+
+      return FALSE;
+    }
+
+  cpufreq_selector_gen_complete_set_governor (object, invocation);
+
+  return TRUE;
+}
+
+static void
+bus_acquired_cb (GDBusConnection *connection,
+                 const char      *name,
+                 gpointer         user_data)
+{
+  CPUFreqSelectorService *self;
+  GDBusInterfaceSkeleton *skeleton;
+  GError *error;
+  gboolean exported;
+
+  self = CPUFREQ_SELECTOR_SERVICE (user_data);
+  skeleton = G_DBUS_INTERFACE_SKELETON (self->selector);
+
+  error = NULL;
+  exported = g_dbus_interface_skeleton_export (skeleton,
+                                               connection,
+                                               "/org/gnome/cpufreq_selector/selector",
+                                               &error);
+
+  if (!exported)
+    {
+      g_warning ("Failed to export interface: %s", error->message);
+      g_error_free (error);
+
+      return;
+    }
+
+  g_signal_connect (self->selector,
+                    "handle-can-set",
+                    G_CALLBACK (handle_can_set_cb),
+                    self);
+
+  g_signal_connect (self->selector,
+                    "handle-set-frequency",
+                    G_CALLBACK (handle_set_frequency_cb),
+                    self);
+
+  g_signal_connect (self->selector,
+                    "handle-set-governor",
+                    G_CALLBACK (handle_set_governor_cb),
+                    self);
+}
+
+static void
+name_acquired_cb (GDBusConnection *connection,
+                  const char      *name,
+                  gpointer         user_data)
+{
+}
+
+static void
+name_lost_cb (GDBusConnection *connection,
+              const char      *name,
+              gpointer         user_data)
+{
+}
+
+static void
+cpufreq_selector_service_dispose (GObject *object)
+{
+  CPUFreqSelectorService *self;
+
+  self = CPUFREQ_SELECTOR_SERVICE (object);
+
+  if (self->bus_name_id != 0)
+    {
+      g_bus_unown_name (self->bus_name_id);
+      self->bus_name_id = 0;
+    }
+
+  if (self->selector)
+    {
+      GDBusInterfaceSkeleton *skeleton;
+
+      skeleton = G_DBUS_INTERFACE_SKELETON (self->selector);
+
+      g_dbus_interface_skeleton_unexport (skeleton);
+      g_clear_object (&self->selector);
+    }
+
+  if (self->quit_timeout_id != 0)
+    {
+      g_source_remove (self->quit_timeout_id);
+      self->quit_timeout_id = 0;
+    }
+
+  g_clear_object (&self->authority);
+
+  g_clear_pointer (&self->selectors, g_hash_table_destroy);
+
+  G_OBJECT_CLASS (cpufreq_selector_service_parent_class)->dispose (object);
+}
+
+static void
+install_signals (void)
+{
+  signals[SIGNAL_QUIT] =
+    g_signal_new ("quit",
+                  CPUFREQ_TYPE_SELECTOR_SERVICE,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL,
+                  NULL,
+                  NULL,
+                  G_TYPE_NONE,
+                  0);
+}
+
+static void
+cpufreq_selector_service_class_init (CPUFreqSelectorServiceClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->dispose = cpufreq_selector_service_dispose;
+
+  install_signals ();
+}
+
+static void
+cpufreq_selector_service_init (CPUFreqSelectorService *self)
+{
+  GError *error;
+
+  error = NULL;
+  self->authority = polkit_authority_get_sync (NULL, &error);
+
+  if (error != NULL)
+    {
+      g_printerr ("%s\n", error->message);
+      g_error_free (error);
+      return;
+    }
+
+  self->selector = cpufreq_selector_gen_skeleton_new ();
+  self->bus_name_id = g_bus_own_name (G_BUS_TYPE_SYSTEM,
+                                      "org.gnome.CPUFreqSelector",
+                                      G_BUS_NAME_OWNER_FLAGS_NONE,
+                                      bus_acquired_cb,
+                                      name_acquired_cb,
+                                      name_lost_cb,
+                                      self,
+                                      NULL);
+
+  self->selectors = g_hash_table_new_full (NULL, NULL, NULL, g_object_unref);
+
+  reset_quit_timeout (self);
+}
+
+CPUFreqSelectorService *
+cpufreq_selector_service_new (void)
+{
+  return g_object_new (CPUFREQ_TYPE_SELECTOR_SERVICE, NULL);
 }
