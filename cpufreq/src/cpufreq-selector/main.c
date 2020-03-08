@@ -157,6 +157,7 @@ main (gint argc, gchar **argv)
 	GMainLoop      *loop;
 	GOptionContext *context;
 	GError         *error = NULL;
+	CPUFreqSelectorService *selector_service;
 
 	context = g_option_context_new ("- CPUFreq Selector");
 	g_option_context_add_main_entries (context, options, NULL);
@@ -174,7 +175,9 @@ main (gint argc, gchar **argv)
 	
 	g_option_context_free (context);
 
-	if (!cpufreq_selector_service_register (SELECTOR_SERVICE, &error)) {
+	selector_service = g_object_new (CPUFREQ_TYPE_SELECTOR_SERVICE, NULL);
+
+	if (!cpufreq_selector_service_register (selector_service, &error)) {
 		if (governor || frequency != 0) {
 			cpufreq_selector_set_values_dbus ();
 
@@ -190,7 +193,7 @@ main (gint argc, gchar **argv)
 	cpufreq_selector_set_values ();
 
 	loop = g_main_loop_new (NULL, FALSE);
-	g_object_weak_ref (G_OBJECT (SELECTOR_SERVICE),
+	g_object_weak_ref (G_OBJECT (selector_service),
 			   (GWeakNotify) do_exit,
 			   loop);
 		

@@ -35,6 +35,8 @@ struct _CPUFreqSelectorService {
 	
 	/* PolicyKit */
 	PolkitAuthority   *authority;
+
+	guint              timer_id;
 };
 
 struct _CPUFreqSelectorServiceClass {
@@ -84,7 +86,12 @@ cpufreq_selector_service_finalize (GObject *object)
 	gint i;
 
 	service->system_bus = NULL;
-	
+
+	if (service->timer_id != 0) {
+		g_source_remove (service->timer_id);
+		service->timer_id = 0;
+	}
+
 	if (service->selectors_max >= 0) {
 		for (i = 0; i < service->selectors_max; i++) {
 			if (service->selectors[i]) {
@@ -118,36 +125,26 @@ cpufreq_selector_service_init (CPUFreqSelectorService *service)
 	service->selectors_max = -1;
 }
 
-CPUFreqSelectorService *
-cpufreq_selector_service_get_instance (void)
-{
-	static CPUFreqSelectorService *service = NULL;
-
-	if (!service)
-		service = CPUFREQ_SELECTOR_SERVICE (g_object_new (CPUFREQ_TYPE_SELECTOR_SERVICE, NULL));
-
-	return service;
-}
-
 static gboolean
 service_shutdown (gpointer user_data)
 {
-	g_object_unref (SELECTOR_SERVICE);
+	CPUFreqSelectorService *service;
 
-	return FALSE;
+	service = CPUFREQ_SELECTOR_SERVICE (user_data);
+	service->timer_id = 0;
+
+	g_object_unref (service);
+
+	return G_SOURCE_REMOVE;
 }
 
 static void
-reset_killtimer (void)
+reset_killtimer (CPUFreqSelectorService *service)
 {
-	static guint timer_id = 0;
+	if (service->timer_id != 0)
+		g_source_remove (service->timer_id);
 
-	if (timer_id > 0)
-		g_source_remove (timer_id);
-
-	timer_id = g_timeout_add_seconds (30,
-					  (GSourceFunc) service_shutdown,
-					  NULL);
+	service->timer_id = g_timeout_add_seconds (30, service_shutdown, service);
 }
 
 gboolean
@@ -243,7 +240,7 @@ cpufreq_selector_service_register (CPUFreqSelectorService *service,
 	dbus_g_error_domain_register (CPUFREQ_SELECTOR_SERVICE_ERROR, NULL,
 				      CPUFREQ_TYPE_SELECTOR_SERVICE_ERROR);
 
-	reset_killtimer ();
+	reset_killtimer (service);
 
 	return TRUE;
 }
@@ -317,7 +314,7 @@ cpufreq_selector_service_set_frequency (CPUFreqSelectorService *service,
 	CPUFreqSelector *selector;
 	GError          *error = NULL;
 
-	reset_killtimer ();
+	reset_killtimer (service);
 
 	if (!cpufreq_selector_service_check_policy (service, context, &error)) {
 		dbus_g_method_return_error (context, error);
@@ -382,7 +379,7 @@ cpufreq_selector_service_set_governor (CPUFreqSelectorService *service,
 	CPUFreqSelector *selector;
 	GError          *error = NULL;
 
-	reset_killtimer ();
+	reset_killtimer (service);
 
 	if (!cpufreq_selector_service_check_policy (service, context, &error)) {
 		dbus_g_method_return_error (context, error);
@@ -449,7 +446,7 @@ cpufreq_selector_service_can_set (CPUFreqSelectorService *service,
 	gboolean                   ret;
         GError                    *error = NULL;
 
-	reset_killtimer ();
+	reset_killtimer (service);
 
 	sender = dbus_g_method_get_sender (context);
 	subject = polkit_system_bus_name_new (sender);
