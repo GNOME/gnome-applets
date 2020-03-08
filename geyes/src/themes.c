@@ -160,7 +160,8 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         eyes_applet->eye_width = gdk_pixbuf_get_width (eyes_applet->eye_image);
         eyes_applet->pupil_height = gdk_pixbuf_get_height (eyes_applet->pupil_image);
         eyes_applet->pupil_width = gdk_pixbuf_get_width (eyes_applet->pupil_image);
-        
+
+        fclose (theme_file);
         g_free (file_name);
    
 	return TRUE;
