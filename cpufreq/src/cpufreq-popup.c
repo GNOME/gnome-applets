@@ -26,10 +26,12 @@
 #include <string.h>
 
 #include "cpufreq-popup.h"
-#include "cpufreq-selector.h"
+#include "cpufreq-selector-gen.h"
 #include "cpufreq-utils.h"
 
 struct _CPUFreqPopupPrivate {
+	CPUFreqSelectorGen  *selector;
+
 	GtkUIManager        *ui_manager;
 	GSList              *radio_group;
 	
@@ -44,7 +46,6 @@ struct _CPUFreqPopupPrivate {
 	gboolean             show_freqs;
 
 	CPUFreqMonitor      *monitor;
-	GtkWidget           *parent;
 };
 
 #define CPUFREQ_POPUP_GET_PRIVATE(object) \
@@ -69,9 +70,59 @@ static const gchar *ui_popup =
 #define GOVS_PLACEHOLDER_PATH "/CPUFreqSelectorPopup/GovsItemsGroup"
 
 static void
+set_frequency_cb (GObject      *source,
+                  GAsyncResult *result,
+                  gpointer      user_data)
+{
+	GError *error;
+
+	error = NULL;
+	cpufreq_selector_gen_call_set_frequency_finish (CPUFREQ_SELECTOR_GEN (source),
+	                                                result, &error);
+
+	if (error != NULL) {
+		g_warning ("%s", error->message);
+		g_error_free (error);
+	}
+}
+
+static void
+set_governor_cb (GObject      *source,
+                 GAsyncResult *result,
+                 gpointer      user_data)
+{
+	GError *error;
+
+	error = NULL;
+	cpufreq_selector_gen_call_set_governor_finish (CPUFREQ_SELECTOR_GEN (source),
+	                                               result,
+	                                               &error);
+
+	if (error != NULL) {
+		g_warning ("%s", error->message);
+		g_error_free (error);
+	}
+}
+
+static void
 cpufreq_popup_init (CPUFreqPopup *popup)
 {
+	GError *error;
+
 	popup->priv = CPUFREQ_POPUP_GET_PRIVATE (popup);
+
+	error = NULL;
+	popup->priv->selector = cpufreq_selector_gen_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+	                                                                     G_DBUS_PROXY_FLAGS_NONE,
+	                                                                     "org.gnome.CPUFreqSelector",
+	                                                                     "/org/gnome/cpufreq_selector/selector",
+	                                                                     NULL,
+	                                                                     &error);
+
+	if (error != NULL) {
+		g_warning ("%s", error->message);
+		g_error_free (error);
+	}
 
 	popup->priv->ui_manager = gtk_ui_manager_new ();
 	popup->priv->radio_group = NULL;
@@ -106,6 +157,8 @@ static void
 cpufreq_popup_finalize (GObject *object)
 {
 	CPUFreqPopup *popup = CPUFREQ_POPUP (object);
+
+	g_clear_object (&popup->priv->selector);
 
 	if (popup->priv->ui_manager) {
 		g_object_unref (popup->priv->ui_manager);
@@ -167,61 +220,56 @@ cpufreq_popup_set_monitor (CPUFreqPopup   *popup,
 	popup->priv->monitor = g_object_ref (monitor);
 }
 
-void
-cpufreq_popup_set_parent (CPUFreqPopup *popup,
-			  GtkWidget    *parent)
-{
-	g_return_if_fail (CPUFREQ_IS_POPUP (popup));
-	g_return_if_fail (GTK_IS_WIDGET (parent));
-
-	popup->priv->parent = parent;
-}
-
 static void
 cpufreq_popup_frequencies_menu_activate (GtkAction    *action,
 					 CPUFreqPopup *popup)
 {
-	CPUFreqSelector *selector;
 	const gchar     *name;
 	guint            cpu;
 	guint            freq;
-	guint32          parent;
 
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
 
-	selector = cpufreq_selector_get_default ();
+	if (popup->priv->selector == NULL)
+		return;
 
 	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 	name = gtk_action_get_name (action);
 	freq = (guint) atoi (name + strlen ("Frequency"));
-	parent = GDK_WINDOW_XID (gtk_widget_get_window (popup->priv->parent));
-	
 
-	cpufreq_selector_set_frequency_async (selector, cpu, freq, parent);
+	cpufreq_selector_gen_call_set_frequency (popup->priv->selector,
+	                                         cpu,
+	                                         freq,
+	                                         NULL,
+	                                         set_frequency_cb,
+	                                         popup);
 }
 
 static void
 cpufreq_popup_governors_menu_activate (GtkAction    *action,
 				       CPUFreqPopup *popup)
 {
-	CPUFreqSelector *selector;
 	const gchar     *name;
 	guint            cpu;
 	const gchar     *governor;
-	guint32          parent;
 
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
 
-	selector = cpufreq_selector_get_default ();
+	if (popup->priv->selector == NULL)
+		return;
 	
 	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
 	name = gtk_action_get_name (action);
 	governor = name + strlen ("Governor");
-	parent = GDK_WINDOW_XID (gtk_widget_get_window (popup->priv->parent));
 
-	cpufreq_selector_set_governor_async (selector, cpu, governor, parent);
+	cpufreq_selector_gen_call_set_governor (popup->priv->selector,
+	                                        cpu,
+	                                        governor,
+	                                        NULL,
+	                                        set_governor_cb,
+	                                        popup);
 }
 
 static void

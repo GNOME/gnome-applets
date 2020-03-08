@@ -79,6 +79,7 @@ dnl ***************************************************************************
 IT_PROG_INTLTOOL([0.35.0])
 PKG_PROG_PKG_CONFIG([0.19])
 
+AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen])
 AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources], [no])
 if test x$GLIB_COMPILE_RESOURCES = xno; then
   AC_MSG_ERROR([Could not find a glib-compile-resources in your PATH])
