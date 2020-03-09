@@ -24,7 +24,6 @@
 #include <glib-object.h>
 
 #include "cpufreq-monitor.h"
-#include "cpufreq-prefs.h"
 
 G_BEGIN_DECLS
 
@@ -52,8 +51,6 @@ struct _CPUFreqPopupClass {
 GType         cpufreq_popup_get_type        (void) G_GNUC_CONST;
 CPUFreqPopup *cpufreq_popup_new             (void);
 
-void          cpufreq_popup_set_preferences (CPUFreqPopup   *popup,
-					     CPUFreqPrefs   *prefs);
 void          cpufreq_popup_set_monitor     (CPUFreqPopup   *popup,
 					     CPUFreqMonitor *monitor);
 GtkWidget    *cpufreq_popup_get_menu        (CPUFreqPopup   *popup);

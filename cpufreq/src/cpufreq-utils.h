@@ -32,11 +32,6 @@ void     cpufreq_utils_display_error         (const gchar *message,
 gboolean cpufreq_utils_selector_is_available (void);
 gchar   *cpufreq_utils_get_frequency_label   (guint        freq);
 gchar   *cpufreq_utils_get_frequency_unit    (guint        freq);
-gboolean cpufreq_utils_governor_is_automatic (const gchar *governor);
-gboolean cpufreq_file_get_contents           (const gchar *filename,
-					      gchar      **contents,
-					      gsize       *length,
-					      GError     **error);
 
 G_END_DECLS
 
