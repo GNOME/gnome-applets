@@ -30,3 +30,7 @@ typedef struct {
 	WBApplet *wbapplet;
 	gushort button_id;
 } CheckBoxData;
+
+void wb_applet_properties_cb (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);

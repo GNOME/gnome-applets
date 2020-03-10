@@ -515,7 +515,11 @@ properties_close (GtkButton *object,
   wbapplet->window_prefs = NULL;
 }
 
-void properties_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+void
+wb_applet_properties_cb (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
+{
 	WBApplet *wbapplet;
 	GtkWidget		***btn;
 	ImageOpenData 	***iod;

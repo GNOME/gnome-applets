@@ -19,6 +19,7 @@
  */
 
 #include "windowbuttons.h"
+#include "preferences.h"
 
 /* Prototypes */
 //static void applet_change_background (PanelApplet *, PanelAppletBackgroundType, GdkColor *, GdkPixmap *);
@@ -30,7 +31,6 @@ static void viewports_changed (WnckScreen *, WBApplet *);
 static void window_closed (WnckScreen *, WnckWindow *, WBApplet *);
 static void window_opened (WnckScreen *, WnckWindow *, WBApplet *);
 static void about_cb ( GSimpleAction *, GVariant *, gpointer );
-void properties_cb ( GSimpleAction *, GVariant *, gpointer );
 static gboolean hover_enter (GtkWidget *, GdkEventCrossing *, WBApplet *);
 static gboolean hover_leave (GtkWidget *, GdkEventCrossing *, WBApplet *);
 static gboolean button_press (GtkWidget *, GdkEventButton *, WBApplet *);
@@ -65,7 +65,7 @@ static const gchar windowbuttons_menu_items [] =
 	"</section>";
 
 static const GActionEntry windowbuttons_menu_actions [] = {
-	{ "preferences", properties_cb,  NULL, NULL, NULL },
+	{ "preferences", wb_applet_properties_cb,  NULL, NULL, NULL },
 	{ "about",       about_cb, NULL, NULL, NULL }
 };
 
@@ -252,7 +252,9 @@ getImageState (WBButtonState button_state)
 }
 
 /* Updates the images according to preferences and the umaxed window situation */
-void updateImages (WBApplet *wbapplet) {
+static void
+updateImages (WBApplet *wbapplet)
+{
 	WnckWindow *controlledwindow;
 	gint i;
 
