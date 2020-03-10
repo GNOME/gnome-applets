@@ -334,7 +334,9 @@ updateTitle (WTApplet *wtapplet)
 }
 
 /* Expand/unexpand applet according to preferences */
-void toggleExpand(WTApplet *wtapplet) {
+static void
+toggleExpand (WTApplet *wtapplet)
+{
 	if (wtapplet->prefs->expand_applet) {
 		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR);
 	} else {
