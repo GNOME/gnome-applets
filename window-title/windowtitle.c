@@ -263,11 +263,11 @@ void updateTitle(WTApplet *wtapplet) {
 /* Expand/unexpand applet according to preferences */
 void toggleExpand(WTApplet *wtapplet) {
 	if (wtapplet->prefs->expand_applet) {
-		panel_applet_set_flags (wtapplet->applet, PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR);
+		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR);
 	} else {
 		// We must have a handle due to bug https://bugzilla.gnome.org/show_bug.cgi?id=556355
-		// panel_applet_set_flags (wtapplet->applet, PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR | PANEL_APPLET_HAS_HANDLE);
-		panel_applet_set_flags (wtapplet->applet, PANEL_APPLET_EXPAND_MINOR);
+		// panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR | PANEL_APPLET_HAS_HANDLE);
+		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR);
 	}
 	reloadWidgets(wtapplet);
 	setAlignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
@@ -293,8 +293,8 @@ void toggleHidden (WTApplet *wtapplet) {
 		gtk_widget_show_all(GTK_WIDGET(wtapplet->eb_title));
 	if (!gtk_widget_get_visible(GTK_WIDGET(wtapplet->box)))
 		gtk_widget_show_all(GTK_WIDGET(wtapplet->box));
-	if (!gtk_widget_get_visible(GTK_WIDGET(wtapplet->applet)))
-		gtk_widget_show_all(GTK_WIDGET(wtapplet->applet));
+	if (!gtk_widget_get_visible(GTK_WIDGET(wtapplet)))
+		gtk_widget_show_all(GTK_WIDGET(wtapplet));
 }
 
 /* Called when panel background is changed */
@@ -666,9 +666,10 @@ void setAlignment (WTApplet *wtapplet, gdouble alignment) {
 
 /* Do the actual applet initialization */
 static void init_wtapplet (PanelApplet *applet) {
-	WTApplet *wtapplet = g_new0 (WTApplet, 1);
+	WTApplet *wtapplet;
 
-	wtapplet->applet = applet;
+	wtapplet = WT_APPLET (applet);
+
 	wtapplet->settings = panel_applet_settings_new (applet, WINDOWTITLE_GSCHEMA);
 	wtapplet->prefs = loadPreferences(wtapplet);
 	wtapplet->activescreen = wnck_screen_get_default();
@@ -683,7 +684,7 @@ static void init_wtapplet (PanelApplet *applet) {
 	wtapplet->title = GTK_LABEL(gtk_label_new(NULL));
 	wtapplet->eb_icon = GTK_EVENT_BOX(gtk_event_box_new());
 	wtapplet->eb_title = GTK_EVENT_BOX(gtk_event_box_new());
-	wtapplet->orient = panel_applet_get_orient(wtapplet->applet);
+	wtapplet->orient = panel_applet_get_orient(applet);
 	wtapplet->size_hints = g_new(gint,2);
 
 	// Widgets to eventboxes, eventboxes to box
@@ -699,7 +700,7 @@ static void init_wtapplet (PanelApplet *applet) {
 	placeWidgets(wtapplet);
 
 	// Add box to applet
-	gtk_container_add (GTK_CONTAINER(wtapplet->applet), GTK_WIDGET(wtapplet->box));
+	gtk_container_add (GTK_CONTAINER(wtapplet), GTK_WIDGET(wtapplet->box));
 
 	// Set event handling (icon & title clicks)
 	g_signal_connect(G_OBJECT (wtapplet->eb_icon), "button-press-event", G_CALLBACK (icon_clicked), wtapplet);
@@ -713,11 +714,11 @@ static void init_wtapplet (PanelApplet *applet) {
 	g_signal_connect(wtapplet->activescreen, "window-opened", G_CALLBACK (window_opened), wtapplet);
 
 	// g_signal_connect(G_OBJECT (wtapplet->title), "size-request", G_CALLBACK (applet_title_size_request), wtapplet);
-	g_signal_connect(G_OBJECT (wtapplet->applet), "size-allocate", G_CALLBACK (applet_size_allocate), wtapplet);
+	g_signal_connect(G_OBJECT (wtapplet), "size-allocate", G_CALLBACK (applet_size_allocate), wtapplet);
 
-	g_signal_connect(G_OBJECT (wtapplet->applet), "change-background", G_CALLBACK (applet_change_background), wtapplet);
-	g_signal_connect(G_OBJECT (wtapplet->applet), "change-orient", G_CALLBACK (applet_change_orient), wtapplet);
-	g_signal_connect(G_OBJECT (wtapplet->applet), "change-size", G_CALLBACK (applet_change_pixel_size), wtapplet);
+	g_signal_connect(G_OBJECT (wtapplet), "change-background", G_CALLBACK (applet_change_background), wtapplet);
+	g_signal_connect(G_OBJECT (wtapplet), "change-orient", G_CALLBACK (applet_change_orient), wtapplet);
+	g_signal_connect(G_OBJECT (wtapplet), "change-size", G_CALLBACK (applet_change_pixel_size), wtapplet);
 
 	// Track active window changes
 	wtapplet->active_handler_state =
@@ -732,7 +733,7 @@ static void init_wtapplet (PanelApplet *applet) {
 	GSimpleActionGroup *action_group = g_simple_action_group_new ();
 	g_action_map_add_action_entries (G_ACTION_MAP (action_group), windowtitle_menu_actions, G_N_ELEMENTS (windowtitle_menu_actions), wtapplet);
 	panel_applet_setup_menu (applet, windowtitle_menu_items, action_group, GETTEXT_PACKAGE);
-	gtk_widget_insert_action_group (GTK_WIDGET (wtapplet->applet), "windowtitle", G_ACTION_GROUP (action_group));
+	gtk_widget_insert_action_group (GTK_WIDGET (wtapplet), "windowtitle", G_ACTION_GROUP (action_group));
 
 	toggleExpand  (wtapplet);
 	toggleHidden  (wtapplet);	// Properly hide or show stuff
@@ -751,6 +752,6 @@ static gboolean windowtitle_applet_factory (PanelApplet *applet, const gchar *ii
 }
 
 PANEL_APPLET_IN_PROCESS_FACTORY (APPLET_OAFIID_FACTORY,
-                                  PANEL_TYPE_APPLET,
-                                  (PanelAppletFactoryCallback) windowtitle_applet_factory,
-                                  NULL)
+                                 WT_TYPE_APPLET,
+                                 windowtitle_applet_factory,
+                                 NULL)
