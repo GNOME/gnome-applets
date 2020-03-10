@@ -120,7 +120,6 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
         static const gchar *authors [] = {
 		"Calum Benson <calum.benson@sun.com>",
 		"Bill Haneman <bill.haneman@sun.com>",
