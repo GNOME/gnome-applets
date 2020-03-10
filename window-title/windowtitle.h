@@ -132,7 +132,6 @@ typedef struct {
 					umaxed_handler_name,	// umaxedwindow's manechange event handler ID
 					umaxed_handler_icon;	// umaxedwindow's iconchange event handler ID
 	gboolean		focused;				// [T/F] Window state (focused or unfocused)
-	gchar			*panel_color_fg;		// Foreground color determined by the panel
 
 	GdkPixbufRotation	angle;				// Applet angle
 	PanelAppletOrient	orient;				// Panel orientation

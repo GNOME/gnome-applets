@@ -250,7 +250,8 @@ static void
 updateTitle (WTApplet *wtapplet)
 {
 	WnckWindow *controlledwindow;
-	gchar *title_text, *title_color, *title_font;
+	const char *title_text, *title_color, *title_font;
+	GString *markup;
 	GdkPixbuf *icon_pixbuf;
 
 	if (wtapplet->prefs->only_maximized) {
@@ -275,7 +276,7 @@ updateTitle (WTApplet *wtapplet)
 		}
 	} else {
 		icon_pixbuf = wnck_window_get_icon(controlledwindow); // This only returns a pointer - it SHOULDN'T be unrefed!
-		title_text = (gchar*)wnck_window_get_name(controlledwindow);
+		title_text = wnck_window_get_name(controlledwindow);
 	}
 
 	// TODO: we need the default font to somehow be the same in both modes
@@ -294,7 +295,7 @@ updateTitle (WTApplet *wtapplet)
 		// automatic (non-custom) style
 		if (controlledwindow == wtapplet->activewindow) {
 			// window focused
-			title_color = wtapplet->panel_color_fg;
+			title_color = "";
 			title_font = "";
 		} else {
 			// window unfocused
@@ -309,10 +310,19 @@ updateTitle (WTApplet *wtapplet)
 		gtk_widget_set_tooltip_text (GTK_WIDGET(wtapplet->title), title_text);
 	}
 
-	title_text = g_markup_printf_escaped("<span font=\"%s\" color=\"%s\">%s</span>", title_font, title_color, title_text);
+	markup = g_string_new ("<span");
+
+	if (title_font != NULL && *title_font != '\0')
+		g_string_append_printf (markup, " font=\"%s\"", title_font);
+
+	if (title_color != NULL && *title_color != '\0')
+		g_string_append_printf (markup, " color=\"%s\"", title_color);
+
+	g_string_append_printf (markup, ">%s</span>", title_text);
+
 	// Apply markup to label widget
-	gtk_label_set_markup(GTK_LABEL(wtapplet->title), title_text);
-	g_free(title_text);
+	gtk_label_set_markup(GTK_LABEL(wtapplet->title), markup->str);
+	g_string_free (markup, TRUE);
 
 	if (icon_pixbuf == NULL) {
 		gtk_image_clear(wtapplet->icon);
