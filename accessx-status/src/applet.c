@@ -354,7 +354,9 @@ timer_reset_slowkeys_image (gpointer user_data)
 	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
 	g_object_unref (pixbuf);
 
-	return FALSE;
+	_sk_timeout = 0;
+
+	return G_SOURCE_REMOVE;
 }
 
 static gboolean
@@ -368,7 +370,9 @@ timer_reset_bouncekeys_image (gpointer user_data)
 	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
 	g_object_unref (pixbuf);
 
-	return FALSE;
+	_bk_timeout = 0;
+
+	return G_SOURCE_REMOVE;
 }
 
 static GdkPixbuf *
