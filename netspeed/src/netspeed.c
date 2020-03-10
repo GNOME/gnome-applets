@@ -128,16 +128,6 @@ G_DEFINE_TYPE (NetspeedApplet, netspeed_applet, PANEL_TYPE_APPLET)
 static void
 update_tooltip(NetspeedApplet* applet);
 
-/* Adds a Pango markup "size" to a bytestring
- */
-static void
-add_markup_size(char **string, int size)
-{
-	char *tmp = *string;
-	*string = g_strdup_printf("<span size=\"%d\">%s</span>", size * 1000, tmp);
-	g_free(tmp);
-}
-
 /* Adds a Pango markup "foreground" to a bytestring
  */
 static void
@@ -637,33 +627,6 @@ about_cb (GSimpleAction *action,
 			       "logo-icon-name", LOGO_ICON,
 			       NULL);
 	
-}
-
-/* Called when the showsum checkbutton is toggled...
- */
-static void
-showsum_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
-{
-	applet->show_sum = gtk_toggle_button_get_active(togglebutton);
-	applet_change_size_or_orient (PANEL_APPLET (applet), -1, applet);
-	change_icons(applet);
-}
-
-/* Called when the showbits checkbutton is toggled...
- */
-static void
-showbits_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
-{
-	applet->show_bits = gtk_toggle_button_get_active(togglebutton);
-}
-
-/* Called when the changeicon checkbutton is toggled...
- */
-static void
-changeicon_change_cb(GtkToggleButton *togglebutton, NetspeedApplet *applet)
-{
-	applet->change_icon = gtk_toggle_button_get_active(togglebutton);
-	change_icons(applet);
 }
 
 static void
