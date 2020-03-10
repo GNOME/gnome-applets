@@ -41,8 +41,8 @@ static GtkIconSize icon_size_spec;
 
 typedef struct
 {
-	char        *stock_id;
-	char        *name;
+	const char *stock_id;
+	const char *name;
 	GtkStateType state;
 	gboolean     wildcarded;
 } AppletStockIcon;
@@ -103,7 +103,7 @@ static ModifierStruct modifiers [] = {
 
 typedef struct {
 	unsigned int mask;
-	gchar       *stock_id;
+	const char *stock_id;
 } ButtonIconStruct;
 
 static ButtonIconStruct button_icons [] = {
@@ -372,12 +372,12 @@ timer_reset_bouncekeys_image (gpointer user_data)
 }
 
 static GdkPixbuf *
-accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet, 
-					GtkWidget *widget,
-					GdkPixbuf *base, 
-					GdkColor  *fg,
-					GdkColor  *bg,
-					gchar *glyphstring)
+accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
+                                        GtkWidget           *widget,
+                                        GdkPixbuf           *base,
+                                        GdkColor            *fg,
+                                        GdkColor            *bg,
+                                        const char          *glyphstring)
 {
 	GdkPixbuf *glyph_pixbuf;
 	cairo_surface_t *surface;
@@ -422,7 +422,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 	GdkPixbuf *ret_pixbuf;
 	GdkWindow *window;
 	gboolean is_idle = TRUE;
-	gchar *stock_id = SLOWKEYS_IDLE_ICON;
+	const char *stock_id = SLOWKEYS_IDLE_ICON;
 	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
 	GdkColor bg = style->bg[GTK_STATE_NORMAL];
 
@@ -462,7 +462,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 	if (!is_idle) {
 		GdkPixbuf *glyph_pixbuf, *tmp_pixbuf;
 		GdkColor  fg;
-		gchar * glyphstring = N_("a");
+		const char * glyphstring = N_("a");
 		tmp_pixbuf = ret_pixbuf;
 		ret_pixbuf = gdk_pixbuf_copy (tmp_pixbuf);
 		g_object_unref (tmp_pixbuf);
@@ -502,8 +502,8 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 	GdkColor   fg, bg;
 	GdkPixbuf *icon_base = NULL, *tmp_pixbuf;
 	/* Note to translators: the first letter of the alphabet, not the indefinite article */
-	gchar     *glyphstring = N_("a");
-	gchar *stock_id = ACCESSX_BASE_ICON;
+	const char *glyphstring = N_("a");
+	const char *stock_id = ACCESSX_BASE_ICON;
 
 	g_assert (sapplet->applet);
 	style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
@@ -556,7 +556,7 @@ static GdkPixbuf *
 accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNotifyEvent *event)
 {
 	GdkPixbuf  *mouse_pixbuf = NULL, *button_pixbuf, *dot_pixbuf, *tmp_pixbuf;
-	gchar *which_dot = MOUSEKEYS_DOT_LEFT;
+	const char *which_dot = MOUSEKEYS_DOT_LEFT;
 	tmp_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
 					       MOUSEKEYS_BASE_ICON,
 					       icon_size_spec, 
@@ -891,7 +891,7 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 	gtk_icon_factory_add_default (factory);
        
         while (i <  G_N_ELEMENTS (stock_icons)) {
-		gchar *set_name = stock_icons[i].stock_id;
+		const char *set_name = stock_icons[i].stock_id;
                 icon_set = gtk_icon_set_new ();
 		do {
 			char *filename;
