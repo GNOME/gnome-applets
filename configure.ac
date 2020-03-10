@@ -644,11 +644,11 @@ AC_CONFIG_FILES([
   netspeed/icons/16x16/Makefile
   netspeed/icons/16x16/apps/Makefile
   netspeed/icons/16x16/devices/Makefile
+  netspeed/icons/16x16/status/Makefile
   netspeed/icons/22x22/Makefile
   netspeed/icons/22x22/apps/Makefile
   netspeed/icons/24x24/Makefile
   netspeed/icons/24x24/apps/Makefile
-  netspeed/icons/24x24/status/Makefile
   netspeed/icons/32x32/Makefile
   netspeed/icons/32x32/apps/Makefile
   netspeed/icons/48x48/Makefile
