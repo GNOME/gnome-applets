@@ -109,6 +109,30 @@ wt_applet_dispose (GObject *object)
       self->window_opened_id = 0;
     }
 
+  if (self->activewindow != NULL)
+    {
+      if (self->active_handler_state != 0)
+        {
+          g_signal_handler_disconnect (self->activewindow,
+                                       self->active_handler_state);
+          self->active_handler_state = 0;
+        }
+
+      if (self->active_handler_name != 0)
+        {
+          g_signal_handler_disconnect (self->activewindow,
+                                       self->active_handler_name);
+          self->active_handler_name = 0;
+        }
+
+      if (self->active_handler_icon != 0)
+        {
+          g_signal_handler_disconnect (self->activewindow,
+                                       self->active_handler_icon);
+          self->active_handler_icon = 0;
+        }
+    }
+
   G_OBJECT_CLASS (wt_applet_parent_class)->dispose (object);
 }
 
