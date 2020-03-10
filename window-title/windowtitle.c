@@ -69,8 +69,59 @@ WTApplet* wt_applet_new (void) {
         return g_object_new (WT_TYPE_APPLET, NULL);
 }
 
-static void wt_applet_class_init (WTAppletClass *klass) {
-	// Not required
+static void
+wt_applet_dispose (GObject *object)
+{
+  WTApplet *self;
+
+  self = WT_APPLET (object);
+
+  if (self->active_window_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->active_window_changed_id);
+      self->active_window_changed_id = 0;
+    }
+
+  if (self->viewports_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->viewports_changed_id);
+      self->viewports_changed_id = 0;
+    }
+
+  if (self->active_workspace_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->active_workspace_changed_id);
+      self->active_workspace_changed_id = 0;
+    }
+
+  if (self->window_closed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->window_closed_id);
+      self->window_closed_id = 0;
+    }
+
+  if (self->window_opened_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->window_opened_id);
+      self->window_opened_id = 0;
+    }
+
+  G_OBJECT_CLASS (wt_applet_parent_class)->dispose (object);
+}
+
+static void
+wt_applet_class_init (WTAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->dispose = wt_applet_dispose;
 }
 
 static void wt_applet_init(WTApplet *wtapplet) {
@@ -707,11 +758,26 @@ static void init_wtapplet (PanelApplet *applet) {
 	g_signal_connect(G_OBJECT (wtapplet->eb_title), "button-press-event", G_CALLBACK (title_clicked), wtapplet);
 
 	// Global window tracking
-	g_signal_connect(wtapplet->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), wtapplet); // <-- this thing is crashing with compiz !!!
-	g_signal_connect(wtapplet->activescreen, "viewports-changed", G_CALLBACK (viewports_changed), wtapplet);
-	g_signal_connect(wtapplet->activescreen, "active-workspace-changed", G_CALLBACK (active_workspace_changed), wtapplet);
-	g_signal_connect(wtapplet->activescreen, "window-closed", G_CALLBACK (window_closed), wtapplet);
-	g_signal_connect(wtapplet->activescreen, "window-opened", G_CALLBACK (window_opened), wtapplet);
+	wtapplet->active_window_changed_id = g_signal_connect (wtapplet->activescreen,
+	                                                       "active-window-changed",
+	                                                       G_CALLBACK (active_window_changed),
+	                                                       wtapplet); // <-- this thing is crashing with compiz !!!
+	wtapplet->viewports_changed_id = g_signal_connect (wtapplet->activescreen,
+	                                                   "viewports-changed",
+	                                                   G_CALLBACK (viewports_changed),
+	                                                   wtapplet);
+	wtapplet->active_workspace_changed_id = g_signal_connect (wtapplet->activescreen,
+	                                                          "active-workspace-changed",
+	                                                          G_CALLBACK (active_workspace_changed),
+	                                                          wtapplet);
+	wtapplet->window_closed_id = g_signal_connect (wtapplet->activescreen,
+	                                               "window-closed",
+	                                               G_CALLBACK (window_closed),
+	                                               wtapplet);
+	wtapplet->window_opened_id = g_signal_connect (wtapplet->activescreen,
+	                                               "window-opened",
+	                                               G_CALLBACK (window_opened),
+	                                               wtapplet);
 
 	// g_signal_connect(G_OBJECT (wtapplet->title), "size-request", G_CALLBACK (applet_title_size_request), wtapplet);
 	g_signal_connect(G_OBJECT (wtapplet), "size-allocate", G_CALLBACK (applet_size_allocate), wtapplet);
