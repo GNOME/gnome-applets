@@ -49,28 +49,13 @@ cpufreq_utils_get_n_cpus (void)
 	} while (g_file_test (file, G_FILE_TEST_EXISTS));
 	g_free (file);
 
-	if (mcpu >= 0) {
-		n_cpus = (guint)mcpu;
-		return mcpu;
-	}
-
-	mcpu = -1;
-	file = NULL;
-	do {
-		if (file)
-			g_free (file);
-		mcpu ++;
-		file = g_strdup_printf ("/proc/sys/cpu/%d", mcpu);
-	} while (g_file_test (file, G_FILE_TEST_EXISTS));
-	g_free (file);
-
-	if (mcpu >= 0) {
+	if (mcpu > 0) {
 		n_cpus = (guint)mcpu;
 		return mcpu;
 	}
 
 	n_cpus = 1;
-	
+
 	return 1;
 }
 
