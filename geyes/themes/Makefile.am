@@ -1,36 +1,54 @@
-#SUBDIRS = Default Default-tiny Bizarre Bloodshot Horrid
+NULL =
 
-Defaultdir = $(pkgdatadir)/geyes/Default
-Default_DATA = Default/config                          \
-               Default/Default-eye.png                 \
-	       Default/Default-pupil.png               
+bizarredir = $(pkgdatadir)/geyes/Bizarre
+bizarre_DATA = \
+	Bizarre/config \
+	Bizarre/Bizarre-eye.png \
+	Bizarre/Bizarre-pupil.png \
+	$(NULL)
 
-Tangodir = $(pkgdatadir)/geyes/Tango
-Tango_DATA = Tango/config		\
-	     Tango/tango-eye.png	\
-	     Tango/tango-pupil.png
+bloodshotdir = $(pkgdatadir)/geyes/Bloodshot
+bloodshot_DATA = \
+	Bloodshot/config \
+	Bloodshot/Bloodshot-eye.png \
+	Bloodshot/Bloodshot-pupil.png \
+	$(NULL)
 
-Default_tinydir = $(pkgdatadir)/geyes/Default-tiny
-Default_tiny_DATA = Default-tiny/config                     \
-                    Default-tiny/Default-tiny-eye.png       \
-	            Default-tiny/Default-tiny-pupil.png 
+defaultdir = $(pkgdatadir)/geyes/Default
+default_DATA = \
+	Default/config \
+	Default/Default-eye.png \
+	Default/Default-pupil.png \
+	$(NULL)
 
-Bizarredir = $(pkgdatadir)/geyes/Bizarre
-Bizarre_DATA = Bizarre/config                          \
-               Bizarre/Bizarre-eye.png                 \
-	       Bizarre/Bizarre-pupil.png
+default_tinydir = $(pkgdatadir)/geyes/Default-tiny
+default_tiny_DATA = \
+	Default-tiny/config \
+	Default-tiny/Default-tiny-eye.png \
+	Default-tiny/Default-tiny-pupil.png \
+	$(NULL)
 
-Bloodshotdir = $(pkgdatadir)/geyes/Bloodshot
-Bloodshot_DATA = Bloodshot/config                        \
-                 Bloodshot/Bloodshot-eye.png             \
-	         Bloodshot/Bloodshot-pupil.png           
+horriddir = $(pkgdatadir)/geyes/Horrid
+horrid_DATA = \
+	Horrid/config \
+	Horrid/horrid_eye.png \
+	Horrid/horrid_pupil.png \
+	$(NULL)
 
-Horriddir = $(pkgdatadir)/geyes/Horrid
-Horrid_DATA = Horrid/config                           \
-              Horrid/horrid_eye.png                   \
-	      Horrid/horrid_pupil.png
+tangodir = $(pkgdatadir)/geyes/Tango
+tango_DATA = \
+	Tango/config \
+	Tango/tango-eye.png \
+	Tango/tango-pupil.png \
+	$(NULL)
 
-EXTRA_DIST = $(Default_DATA) $(Default_tiny_DATA) $(Bizarre_DATA) $(Bloodshot_DATA) \
-             $(Horrid_DATA) $(Tango_DATA)
+EXTRA_DIST = \
+	$(bizarre_DATA) \
+	$(bloodshot_DATA) \
+	$(default_DATA) \
+	$(default_tiny_DATA) \
+	$(horrid_DATA) \
+	$(tango_DATA) \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk
