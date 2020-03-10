@@ -85,10 +85,6 @@ static void     cpufreq_applet_about_cb          (GSimpleAction *action,
                                                   GVariant      *parameter,
                                                   gpointer       user_data);
 
-static void     cpufreq_applet_pixmap_set_image  (CPUFreqApplet      *applet,
-                                                  gint                perc);
-
-static void     cpufreq_applet_setup             (CPUFreqApplet      *applet);
 static void     cpufreq_applet_update            (CPUFreqApplet      *applet,
                                                   CPUFreqMonitor     *monitor);
 static void     cpufreq_applet_refresh           (CPUFreqApplet      *applet);
@@ -105,9 +101,6 @@ static void   cpufreq_applet_get_preferred_width (GtkWidget          *widget,
                                                   gint               *natural_width);
 static void     cpufreq_applet_change_orient     (PanelApplet        *pa,
                                                   PanelAppletOrient   orient);
-static gboolean cpufreq_applet_factory           (CPUFreqApplet      *applet,
-                                                  const gchar        *iid,
-                                                  gpointer            gdata);
 
 static const gchar *const cpufreq_icons[] = {
         CPUFREQ_PIXMAPS_DIR "/cpufreq-25.png",
