@@ -158,7 +158,7 @@ typedef struct {
 
 /* WBApplet definition (inherits from PanelApplet) */
 typedef struct {
-    PanelApplet		*applet;			// The actual PanelApplet
+    PanelApplet parent;
 	GSettings *settings;
 
 	/* Widgets */

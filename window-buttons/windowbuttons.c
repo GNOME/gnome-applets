@@ -633,10 +633,11 @@ applet_change_orient (PanelApplet       *panelapplet,
 
 /* Do the actual applet initialization */
 static void init_wbapplet(PanelApplet *applet) {
-	WBApplet *wbapplet = g_new0 (WBApplet, 1);
+	WBApplet *wbapplet;
 	GSimpleActionGroup *action_group;
 
-	wbapplet->applet = applet;
+	wbapplet = WB_APPLET (applet);
+
 	wbapplet->settings = panel_applet_settings_new (applet, WINDOWBUTTONS_GSCHEMA);
 	wbapplet->prefs = loadPreferences(wbapplet);
 	wbapplet->activescreen = wnck_screen_get_default();
@@ -648,14 +649,14 @@ static void init_wbapplet(PanelApplet *applet) {
 	wbapplet->prefbuilder = gtk_builder_new();
 	wbapplet->box = GTK_BOX(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
 	wbapplet->button = createButtons(wbapplet);
-	wbapplet->orient = panel_applet_get_orient(wbapplet->applet);
+	wbapplet->orient = panel_applet_get_orient(applet);
 	wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);
 
 	// Rotate & place buttons
 	placeButtons(wbapplet);
 
 	// Add box to applet
-	gtk_container_add (GTK_CONTAINER(wbapplet->applet), GTK_WIDGET(wbapplet->box));
+	gtk_container_add (GTK_CONTAINER(wbapplet), GTK_WIDGET(wbapplet->box));
 
 	// Global window tracking
 	g_signal_connect(wbapplet->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), wbapplet);
@@ -664,8 +665,8 @@ static void init_wbapplet(PanelApplet *applet) {
 	g_signal_connect(wbapplet->activescreen, "window-closed", G_CALLBACK (window_closed), wbapplet);
 	g_signal_connect(wbapplet->activescreen, "window-opened", G_CALLBACK (window_opened), wbapplet);
 
-//	g_signal_connect(G_OBJECT (wbapplet->applet), "change-background", G_CALLBACK (applet_change_background), wbapplet);
-	g_signal_connect(G_OBJECT (wbapplet->applet), "change-orient", G_CALLBACK (applet_change_orient), wbapplet);
+//	g_signal_connect(G_OBJECT (wbapplet), "change-background", G_CALLBACK (applet_change_background), wbapplet);
+	g_signal_connect(G_OBJECT (wbapplet), "change-orient", G_CALLBACK (applet_change_orient), wbapplet);
 
 	// ???: Is this still necessary?
 	wbapplet->active_handler =
@@ -675,7 +676,7 @@ static void init_wbapplet(PanelApplet *applet) {
 	action_group = g_simple_action_group_new ();
 	g_action_map_add_action_entries (G_ACTION_MAP (action_group), windowbuttons_menu_actions, G_N_ELEMENTS (windowbuttons_menu_actions), wbapplet);
 	panel_applet_setup_menu (applet, windowbuttons_menu_items, action_group, GETTEXT_PACKAGE);
-	gtk_widget_insert_action_group (GTK_WIDGET (wbapplet->applet), "windowbuttons", G_ACTION_GROUP (action_group));
+	gtk_widget_insert_action_group (GTK_WIDGET (wbapplet), "windowbuttons", G_ACTION_GROUP (action_group));
 
 	toggleHidden (wbapplet);	// Properly hide or show stuff
 	updateImages (wbapplet);
@@ -694,8 +695,8 @@ void toggleHidden (WBApplet *wbapplet) {
 
 	if (!gtk_widget_get_visible(GTK_WIDGET(wbapplet->box)))
 		gtk_widget_show_all(GTK_WIDGET(wbapplet->box));
-	if (!gtk_widget_get_visible(GTK_WIDGET(wbapplet->applet)))
-		gtk_widget_show_all(GTK_WIDGET(wbapplet->applet));
+	if (!gtk_widget_get_visible(GTK_WIDGET(wbapplet)))
+		gtk_widget_show_all(GTK_WIDGET(wbapplet));
 }
 
 // Initial function that creates the applet
@@ -710,6 +711,6 @@ static gboolean windowbuttons_applet_factory (PanelApplet *applet, const gchar *
 }
 
 PANEL_APPLET_IN_PROCESS_FACTORY (APPLET_OAFIID_FACTORY,
-                                  PANEL_TYPE_APPLET,
-                                  (PanelAppletFactoryCallback) windowbuttons_applet_factory,
-                                  NULL)
+                                 WB_TYPE_APPLET,
+                                 windowbuttons_applet_factory,
+                                 NULL)
