@@ -19,3 +19,7 @@
  */
 
 #include "windowtitle.h"
+
+void wt_applet_properties_cb (GSimpleAction *action,
+                              GVariant      *parameter,
+                              gpointer       user_data);

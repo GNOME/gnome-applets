@@ -19,6 +19,7 @@
  */
 
 #include "windowtitle.h"
+#include "preferences.h"
 
 /* Prototypes */
 static void applet_change_orient (PanelApplet *, PanelAppletOrient, WTApplet *);
@@ -35,8 +36,6 @@ static void about_cb ( GSimpleAction *, GVariant *, gpointer );
 static WnckWindow *getRootWindow (WnckScreen *);
 static WnckWindow *getUpperMaximized (WTApplet *);
 //const gchar *getCheckBoxGConfKey (gushort);
-//void properties_cb (BonoboUIComponent *, WTApplet *, const char *);
-void properties_cb ( GSimpleAction *, GVariant *, gpointer );
 void setAlignment(WTApplet *, gdouble);
 void placeWidgets (WTApplet *);
 void reloadWidgets (WTApplet *);
@@ -48,7 +47,7 @@ WTPreferences *loadPreferences(WTApplet *);
 G_DEFINE_TYPE (WTApplet, wt_applet, PANEL_TYPE_APPLET);
 
 static GActionEntry windowtitle_menu_actions [] = {
-	{ "preferences", properties_cb,  NULL, NULL, NULL },
+	{ "preferences", wt_applet_properties_cb,  NULL, NULL, NULL },
 	{ "about",       about_cb, NULL, NULL, NULL }
 };
 
@@ -225,7 +224,9 @@ static WnckWindow *getUpperMaximized (WTApplet *wtapplet) {
 
 // Updates the images according to preferences and the window situation
 // Warning! This function is called very often, so it should only do the most necessary things!
-void updateTitle(WTApplet *wtapplet) {
+static void
+updateTitle (WTApplet *wtapplet)
+{
 	WnckWindow *controlledwindow;
 	gchar *title_text, *title_color, *title_font;
 	GdkPixbuf *icon_pixbuf;

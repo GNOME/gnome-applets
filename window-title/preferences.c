@@ -172,43 +172,64 @@ void cb_hide_on_unmaximized(GtkButton *button, WTApplet *wtapplet) {
 	updateTitle(wtapplet);
 }
 
-void cb_hide_icon(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_hide_icon (GtkButton *button,
+              WTApplet  *wtapplet)
+{
 	wtapplet->prefs->hide_icon = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
 	toggleHidden (wtapplet);
 }
 
-void cb_hide_title(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_hide_title (GtkButton *button,
+               WTApplet  *wtapplet)
+{
 	wtapplet->prefs->hide_title = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
 	toggleHidden(wtapplet);
 }
 
-void cb_swap_order(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_swap_order (GtkButton *button,
+               WTApplet  *wtapplet)
+{
 	wtapplet->prefs->swap_order = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
 	reloadWidgets(wtapplet);
 }
 
-void cb_expand_applet(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_expand_applet (GtkButton *button,
+                  WTApplet  *wtapplet)
+{
 	wtapplet->prefs->expand_applet = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
 	toggleExpand(wtapplet);
 }
 
-void cb_show_window_menu(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_show_window_menu (GtkButton *button,
+                     WTApplet  *wtapplet)
+{
 	wtapplet->prefs->show_window_menu = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
 }
 
-void cb_show_tooltips(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_show_tooltips (GtkButton *button,
+                  WTApplet  *wtapplet)
+{
 	wtapplet->prefs->show_tooltips = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	gtk_widget_set_has_tooltip (GTK_WIDGET(wtapplet->icon), wtapplet->prefs->show_tooltips);
 	gtk_widget_set_has_tooltip (GTK_WIDGET(wtapplet->title), wtapplet->prefs->show_tooltips);
 	savePreferences(wtapplet->prefs, wtapplet);
 }
 
-void cb_custom_style(GtkButton *button, WTApplet *wtapplet) {
+static void
+cb_custom_style (GtkButton *button,
+                 WTApplet  *wtapplet)
+{
 	GtkTable *parent = GTK_TABLE(gtk_builder_get_object(wtapplet->prefbuilder, "table_custom_style"));
 	gtk_widget_set_sensitive(GTK_WIDGET(parent), gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button)));
 	wtapplet->prefs->custom_style = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
@@ -262,7 +283,11 @@ static void cb_color_inactive_fg_set(GtkColorButton *widget, gpointer user_data)
 
 
 /* The Preferences Dialog */
-void properties_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data) {
+void
+wt_applet_properties_cb (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
+{
 	WTApplet *wtapplet;
 	GdkColor btn_color_color;
 
