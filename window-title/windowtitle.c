@@ -21,7 +21,6 @@
 #include "windowtitle.h"
 
 /* Prototypes */
-//static void applet_change_background (PanelApplet *, PanelAppletBackgroundType, GdkColor *, GdkPixmap *);
 static void applet_change_orient (PanelApplet *, PanelAppletOrient, WTApplet *);
 static void active_workspace_changed (WnckScreen *, WnckWorkspace *, WTApplet *);
 static void active_window_changed (WnckScreen *, WnckWindow *, WTApplet *);
@@ -348,35 +347,6 @@ void toggleHidden (WTApplet *wtapplet) {
 		gtk_widget_show_all(GTK_WIDGET(wtapplet));
 }
 
-/* Called when panel background is changed */
-static void applet_change_background (PanelApplet		*applet,
-				     				 cairo_pattern_t	*pattern,
-									 WTApplet			*wtapplet)
-{
-	if (wtapplet->panel_color_fg)
-		g_free(wtapplet->panel_color_fg);
-
-	// Look up the default text color in the theme, use a default if it's not defined
-	// This way is deprecated
-	GdkColor color;
-	GtkStyle *style = gtk_widget_get_style(GTK_WIDGET(applet));
-	if (!gtk_style_lookup_color(style, "dark_fg_color", &color))	// check if dark_fg_color is set otherwise...
-		if (!gtk_style_lookup_color(style, "fg_color", &color))		// ... check if fg_color is set otherwise...
-			gdk_color_parse("#808080", &color);						// ... set universally acceptable color #808080
-	wtapplet->panel_color_fg = gdk_color_to_string(&color);
-
-	/*
-	GdkRGBA rgba;
-	GtkStyleContext *stylecontext = gtk_widget_get_style_context(GTK_WIDGET(applet));
-	if (!gtk_style_context_lookup_color(stylecontext, "dark_fg_color", &rgba))
-		if (!gtk_style_context_lookup_color(stylecontext, "fg_color", &rgba))
-			gdk_rgba_parse(&rgba, "#808080");
-	wtapplet->panel_color_fg = gdk_rgba_to_string(&rgba); // This does not produce the right syntax (gtk_label_set_markup fails)
-	*/
-
-	updateTitle(wtapplet); // We need to redraw the title using the new colors
-}
-
 /* Triggered when a different panel orientation is detected */
 static void applet_change_orient (PanelApplet *panelapplet,
                                   PanelAppletOrient orient,
@@ -388,19 +358,6 @@ static void applet_change_orient (PanelApplet *panelapplet,
 		reloadWidgets(wtapplet);
 		updateTitle(wtapplet);
 	}
-}
-
-/* (Supposedly) tiggered when panel size changes */
-static void applet_change_pixel_size (PanelApplet	*applet,
-									  gint			size,
-									  WTApplet		*wtapplet)
-{
-	if (wtapplet->size == size)
-		return;
-
-	wtapplet->size = size;
-
-	updateTitle(wtapplet);
 }
 
 /*
@@ -781,10 +738,7 @@ static void init_wtapplet (PanelApplet *applet) {
 
 	// g_signal_connect(G_OBJECT (wtapplet->title), "size-request", G_CALLBACK (applet_title_size_request), wtapplet);
 	g_signal_connect(G_OBJECT (wtapplet), "size-allocate", G_CALLBACK (applet_size_allocate), wtapplet);
-
-	g_signal_connect(G_OBJECT (wtapplet), "change-background", G_CALLBACK (applet_change_background), wtapplet);
 	g_signal_connect(G_OBJECT (wtapplet), "change-orient", G_CALLBACK (applet_change_orient), wtapplet);
-	g_signal_connect(G_OBJECT (wtapplet), "change-size", G_CALLBACK (applet_change_pixel_size), wtapplet);
 
 	// Track active window changes
 	wtapplet->active_handler_state =

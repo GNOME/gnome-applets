@@ -137,7 +137,6 @@ typedef struct {
 
 	GdkPixbufRotation	angle;				// Applet angle
 	PanelAppletOrient	orient;				// Panel orientation
-	gint				size;				// Panel size
 	gint				asize;				// Applet allocation size
 	gint				*size_hints;		// Applet size hints
 	GtkPackType			packtype;			// Packaging direction of buttons
