@@ -73,8 +73,59 @@ WBApplet* wb_applet_new (void) {
         return g_object_new (WB_TYPE_APPLET, NULL);
 }
 
-static void wb_applet_class_init (WBAppletClass *klass) {
-	// Called before wb_applet_init()
+static void
+wb_applet_dispose (GObject *object)
+{
+  WBApplet *self;
+
+  self = WB_APPLET (object);
+
+  if (self->active_window_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->active_window_changed_id);
+      self->active_window_changed_id = 0;
+    }
+
+  if (self->viewports_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->viewports_changed_id);
+      self->viewports_changed_id = 0;
+    }
+
+  if (self->active_workspace_changed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->active_workspace_changed_id);
+      self->active_workspace_changed_id = 0;
+    }
+
+  if (self->window_closed_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->window_closed_id);
+      self->window_closed_id = 0;
+    }
+
+  if (self->window_opened_id != 0)
+    {
+      g_signal_handler_disconnect (self->activescreen,
+                                   self->window_opened_id);
+      self->window_opened_id = 0;
+    }
+
+  G_OBJECT_CLASS (wb_applet_parent_class)->dispose (object);
+}
+
+static void
+wb_applet_class_init (WBAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->dispose = wb_applet_dispose;
 }
 
 static void wb_applet_init(WBApplet *wbapplet) {
@@ -659,11 +710,27 @@ static void init_wbapplet(PanelApplet *applet) {
 	gtk_container_add (GTK_CONTAINER(wbapplet), GTK_WIDGET(wbapplet->box));
 
 	// Global window tracking
-	g_signal_connect(wbapplet->activescreen, "active-window-changed", G_CALLBACK (active_window_changed), wbapplet);
-	g_signal_connect(wbapplet->activescreen, "viewports-changed", G_CALLBACK (viewports_changed), wbapplet);
-	g_signal_connect(wbapplet->activescreen, "active-workspace-changed", G_CALLBACK (active_workspace_changed), wbapplet);
-	g_signal_connect(wbapplet->activescreen, "window-closed", G_CALLBACK (window_closed), wbapplet);
-	g_signal_connect(wbapplet->activescreen, "window-opened", G_CALLBACK (window_opened), wbapplet);
+	// Global window tracking
+	wbapplet->active_window_changed_id = g_signal_connect (wbapplet->activescreen,
+	                                                       "active-window-changed",
+	                                                       G_CALLBACK (active_window_changed),
+	                                                       wbapplet);
+	wbapplet->viewports_changed_id = g_signal_connect (wbapplet->activescreen,
+	                                                   "viewports-changed",
+	                                                   G_CALLBACK (viewports_changed),
+	                                                   wbapplet);
+	wbapplet->active_workspace_changed_id = g_signal_connect (wbapplet->activescreen,
+	                                                          "active-workspace-changed",
+	                                                          G_CALLBACK (active_workspace_changed),
+	                                                          wbapplet);
+	wbapplet->window_closed_id = g_signal_connect (wbapplet->activescreen,
+	                                               "window-closed",
+	                                               G_CALLBACK (window_closed),
+	                                               wbapplet);
+	wbapplet->window_opened_id = g_signal_connect (wbapplet->activescreen,
+	                                               "window-opened",
+	                                               G_CALLBACK (window_opened),
+	                                               wbapplet);
 
 //	g_signal_connect(G_OBJECT (wbapplet), "change-background", G_CALLBACK (applet_change_background), wbapplet);
 	g_signal_connect(G_OBJECT (wbapplet), "change-orient", G_CALLBACK (applet_change_orient), wbapplet);

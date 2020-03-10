@@ -169,6 +169,13 @@ typedef struct {
 	WBPreferences	*prefs;				// Main preferences
 	WindowButton	**button;			// Array of buttons
 	WnckScreen 		*activescreen;		// Active screen
+
+	gulong active_window_changed_id;
+	gulong viewports_changed_id;
+	gulong active_workspace_changed_id;
+	gulong window_closed_id;
+	gulong window_opened_id;
+
 	WnckWorkspace	*activeworkspace;	// Active workspace
 	WnckWindow		*umaxedwindow,		// Upper-most maximized window
 					*activewindow,		// Active window
