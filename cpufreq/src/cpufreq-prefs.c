@@ -434,6 +434,9 @@ cpufreq_prefs_dialog_update (CPUFreqPrefs *prefs)
 					      TRUE);
 
 		break;
+	default:
+		g_assert_not_reached ();
+		break;
 	}
 }
 

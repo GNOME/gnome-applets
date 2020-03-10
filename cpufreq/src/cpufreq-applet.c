@@ -199,6 +199,9 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 	case PANEL_APPLET_ORIENT_DOWN:
 		gtk_widget_set_halign (applet->box, GTK_ALIGN_START);
 		break;
+	default:
+		g_assert_not_reached ();
+		break;
 	}
 
         applet->icon = gtk_image_new ();
@@ -314,6 +317,9 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
         case PANEL_APPLET_ORIENT_UP:
         case PANEL_APPLET_ORIENT_DOWN:
                 size = allocation->height;
+                break;
+        default:
+                g_assert_not_reached ();
                 break;
         }
 
@@ -723,6 +729,9 @@ cpufreq_applet_update_visibility (CPUFreqApplet *applet)
                 case CPUFREQ_MODE_TEXT_FREQUENCY_UNIT:
                         show_freq = TRUE;
                         show_unit = TRUE;
+                        break;
+                default:
+                        g_assert_not_reached ();
                         break;
                 }
         } else {
