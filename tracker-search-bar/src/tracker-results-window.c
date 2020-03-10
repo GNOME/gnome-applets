@@ -1161,15 +1161,13 @@ model_add (TrackerResultsWindow *window,
 {
 	TrackerResultsWindowPrivate *priv;
 	GtkTreeIter iter;
-	GdkPixbuf *pixbuf;
 
 	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-	pixbuf = NULL;
 
 	gtk_list_store_append (GTK_LIST_STORE (priv->store), &iter);
 	gtk_list_store_set (GTK_LIST_STORE (priv->store), &iter,
 	                    COL_CATEGORY_ID, category,
-	                    COL_IMAGE, pixbuf ? pixbuf : NULL,
+	                    COL_IMAGE, NULL,
 	                    COL_URN, urn,
 	                    COL_TITLE, title,
 	                    COL_TOOLTIP, tooltip,
