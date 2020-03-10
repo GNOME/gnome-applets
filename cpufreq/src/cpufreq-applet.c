@@ -465,58 +465,12 @@ cpufreq_applet_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-cpufreq_applet_popup_position_menu (GtkMenu  *menu,
-                                    int      *x,
-                                    int      *y,
-                                    gboolean *push_in,
-                                    gpointer  gdata)
-{
-        GtkWidget      *widget;
-        GtkRequisition  requisition;
-        GtkAllocation   allocation;
-        gint            menu_xpos;
-        gint            menu_ypos;
-
-        widget = GTK_WIDGET (gdata);
-
-        gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition, NULL);
-
-        gdk_window_get_origin (gtk_widget_get_window (widget), &menu_xpos, &menu_ypos);
-
-	gtk_widget_get_allocation (widget, &allocation);
-
-        menu_xpos += allocation.x;
-        menu_ypos += allocation.y;
-
-        switch (panel_applet_get_orient (PANEL_APPLET (widget))) {
-        case PANEL_APPLET_ORIENT_DOWN:
-        case PANEL_APPLET_ORIENT_UP:
-                if (menu_ypos > gdk_screen_get_height (gtk_widget_get_screen (widget)) / 2)
-                        menu_ypos -= requisition.height;
-                else
-                        menu_ypos += allocation.height;
-                break;
-        case PANEL_APPLET_ORIENT_RIGHT:
-        case PANEL_APPLET_ORIENT_LEFT:
-                if (menu_xpos > gdk_screen_get_width (gtk_widget_get_screen (widget)) / 2)
-                        menu_xpos -= requisition.width;
-                else
-                        menu_xpos += allocation.width;
-                break;
-        default:
-                g_assert_not_reached ();
-        }
-
-        *x = menu_xpos;
-        *y = menu_ypos;
-        *push_in = TRUE;
-}
-
-static void
 cpufreq_applet_menu_popup (CPUFreqApplet *applet,
-                           guint32        time)
+                           GdkEvent      *event)
 {
         GtkWidget *menu;
+        GdkGravity widget_anchor;
+        GdkGravity menu_anchor;
 
         if (!cpufreq_utils_selector_is_available ())
                 return;
@@ -531,10 +485,27 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
         if (!menu)
                 return;
 
-        gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-                        cpufreq_applet_popup_position_menu,
-                        (gpointer) applet,
-                        1, time);
+        if (applet->orient == PANEL_APPLET_ORIENT_DOWN) {
+                widget_anchor = GDK_GRAVITY_SOUTH_WEST;
+                menu_anchor = GDK_GRAVITY_NORTH_WEST;
+        } else if (applet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+                widget_anchor = GDK_GRAVITY_NORTH_EAST;
+                menu_anchor = GDK_GRAVITY_NORTH_WEST;
+        } else if (applet->orient == PANEL_APPLET_ORIENT_LEFT) {
+                widget_anchor = GDK_GRAVITY_NORTH_WEST;
+                menu_anchor = GDK_GRAVITY_NORTH_EAST;
+        } else if (applet->orient == PANEL_APPLET_ORIENT_UP) {
+                widget_anchor = GDK_GRAVITY_NORTH_WEST;
+                menu_anchor = GDK_GRAVITY_SOUTH_WEST;
+        } else {
+                g_assert_not_reached ();
+        }
+
+        gtk_menu_popup_at_widget (GTK_MENU (menu),
+                                  GTK_WIDGET (applet),
+                                  widget_anchor,
+                                  menu_anchor,
+                                  event);
 }
 
 static gboolean
@@ -550,7 +521,7 @@ cpufreq_applet_button_press (GtkWidget *widget, GdkEventButton *event)
         if (event->button == 1 &&
             event->type != GDK_2BUTTON_PRESS &&
             event->type != GDK_3BUTTON_PRESS) {
-                cpufreq_applet_menu_popup (applet, event->time);
+                cpufreq_applet_menu_popup (applet, (GdkEvent *) event);
                 
                 return TRUE;
         }
@@ -572,7 +543,7 @@ cpufreq_applet_key_press (GtkWidget *widget, GdkEventKey *event)
         case GDK_KEY_Return:
         case GDK_KEY_space:
         case GDK_KEY_KP_Space:
-                cpufreq_applet_menu_popup (applet, event->time);
+                cpufreq_applet_menu_popup (applet, (GdkEvent *) event);
 
                 return TRUE;
         default:
