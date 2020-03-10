@@ -932,60 +932,6 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 	sapplet->icon_factory = factory;
 }
 
-static void
-accessx_status_applet_reparent_widget (GtkWidget *widget, GtkContainer *container) 
-{
-	if (widget) {
-		if (gtk_widget_get_parent (widget)) {
-			g_object_ref (G_OBJECT (widget));
-			gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (widget)), widget);
-		}
-		gtk_container_add (container, widget);
-	}
-}
-
-static void
-accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, GtkWidget *stickyfoo) 
-{
-        AtkObject *atko;
-
-	accessx_status_applet_reparent_widget (sapplet->shift_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->ctrl_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->alt_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->meta_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->hyper_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->super_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->alt_graph_indicator, GTK_CONTAINER (stickyfoo));
-	accessx_status_applet_reparent_widget (sapplet->idlefoo, GTK_CONTAINER (box));
-	accessx_status_applet_reparent_widget (sapplet->mousefoo, GTK_CONTAINER (box));
-	accessx_status_applet_reparent_widget (stickyfoo, GTK_CONTAINER (box));
-	accessx_status_applet_reparent_widget (sapplet->slowfoo, GTK_CONTAINER (box));
-	accessx_status_applet_reparent_widget (sapplet->bouncefoo, GTK_CONTAINER (box));
-
-	if (sapplet->stickyfoo) {
-		gtk_widget_destroy (sapplet->stickyfoo); 
-	}
-
-	if (sapplet->box) {
-		gtk_container_remove (GTK_CONTAINER (sapplet->applet), sapplet->box);
-	}
-
-	gtk_container_add (GTK_CONTAINER (sapplet->applet), box);
-	sapplet->stickyfoo = stickyfoo;
-	sapplet->box = box;
-
-	atko = gtk_widget_get_accessible (sapplet->box);
-	atk_object_set_name (atko, _("AccessX Status"));
-	atk_object_set_description (atko, _("Shows keyboard status when accessibility features are used."));
-
-	gtk_widget_show (sapplet->box);
-	gtk_widget_show (GTK_WIDGET (sapplet->applet));
-
-	if (gtk_widget_get_realized (sapplet->box) &&
-            sapplet->initialized)
-		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
-}
-
 static void 
 disable_applet (AccessxStatusApplet* sapplet)
 {
@@ -1044,13 +990,11 @@ static AccessxStatusApplet *
 create_applet (PanelApplet *applet)
 {
 	AccessxStatusApplet *sapplet = g_new0 (AccessxStatusApplet, 1);
-	GtkWidget           *box, *stickyfoo;
 	AtkObject           *atko;
 	GdkPixbuf	    *pixbuf;
 
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
-	sapplet->box = NULL;
 	sapplet->initialized = False; /* there must be a better way */
 	sapplet->error_type = ACCESSX_STATUS_ERROR_NONE;
 	sapplet->applet = applet;
@@ -1058,19 +1002,18 @@ create_applet (PanelApplet *applet)
 	sapplet->orient = panel_applet_get_orient (applet);
 	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || 
 	    sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
-		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-		stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+		sapplet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+		sapplet->stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	}
 	else {
-		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-		stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		sapplet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		sapplet->stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
-	gtk_box_set_homogeneous (GTK_BOX (stickyfoo), TRUE);
 
 	sapplet->size = 24;
 	icon_size_spec = GTK_ICON_SIZE_LARGE_TOOLBAR;       
 
-	accessx_applet_add_stock_icons (sapplet, box);
+	accessx_applet_add_stock_icons (sapplet, sapplet->box);
 	pixbuf = accessx_status_applet_mousekeys_image (sapplet, NULL);
 	sapplet->mousefoo = gtk_image_new_from_pixbuf (pixbuf);
 	g_object_unref (pixbuf);
@@ -1112,10 +1055,39 @@ create_applet (PanelApplet *applet)
 	sapplet->idlefoo = gtk_image_new_from_stock (ACCESSX_APPLET, icon_size_spec);
 	gtk_widget_show (sapplet->slowfoo);
 
-	accessx_status_applet_layout_box (sapplet, box, stickyfoo);
+	gtk_container_add (GTK_CONTAINER (sapplet->applet), sapplet->box);
+	gtk_widget_show (sapplet->box);
+
+	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->idlefoo);
+	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->mousefoo);
+	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->stickyfoo);
+	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->slowfoo);
+	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->bouncefoo);
+
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->shift_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->ctrl_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->alt_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->meta_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->hyper_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->super_indicator);
+	gtk_container_add (GTK_CONTAINER (sapplet->stickyfoo), sapplet->alt_graph_indicator);
+
+	gtk_box_set_homogeneous (GTK_BOX (sapplet->stickyfoo), TRUE);
+	gtk_widget_show (sapplet->stickyfoo);
+
+	gtk_widget_show (GTK_WIDGET (sapplet->applet));
+
+	if (gtk_widget_get_realized (sapplet->box) && sapplet->initialized)
+		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
+
 	atko = gtk_widget_get_accessible (GTK_WIDGET (sapplet->applet));
 	atk_object_set_name (atko, _("AccessX Status"));
 	atk_object_set_description (atko, _("Shows keyboard status when accessibility features are used."));
+
+	atko = gtk_widget_get_accessible (sapplet->box);
+	atk_object_set_name (atko, _("AccessX Status"));
+	atk_object_set_description (atko, _("Shows keyboard status when accessibility features are used."));
+
 	return sapplet;
 }
 
@@ -1137,21 +1109,25 @@ static void
 accessx_status_applet_reorient (GtkWidget *widget, PanelAppletOrient o, gpointer user_data)
 {
 	AccessxStatusApplet *sapplet = user_data;
-	GtkWidget           *box, *stickyfoo;
 
 	sapplet->orient = o;
 
 	if (o == PANEL_APPLET_ORIENT_LEFT || 
 	    o == PANEL_APPLET_ORIENT_RIGHT) {
-		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-		stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->box),
+		                                GTK_ORIENTATION_VERTICAL);
+		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->stickyfoo),
+		                                GTK_ORIENTATION_VERTICAL);
 	}
 	else {
-		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-		stickyfoo = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->box),
+		                                                GTK_ORIENTATION_HORIZONTAL);
+		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->stickyfoo),
+		                                                GTK_ORIENTATION_HORIZONTAL);
 	}
-	gtk_box_set_homogeneous (GTK_BOX (stickyfoo), TRUE);
-	accessx_status_applet_layout_box (sapplet, box, stickyfoo);
+
+	if (gtk_widget_get_realized (sapplet->box) && sapplet->initialized)
+		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 }
 
 static void
