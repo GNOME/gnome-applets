@@ -596,13 +596,12 @@ cpufreq_applet_help_cb (GSimpleAction *action,
                         GVariant      *parameter,
                         gpointer       user_data)
 {
-	CPUFreqApplet *applet = (CPUFreqApplet *) user_data;
         GError *error = NULL;
            
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
-			"help:cpufreq-applet",
-			gtk_get_current_event_time (),
-			&error);
+	gtk_show_uri_on_window (NULL,
+	                        "help:cpufreq-applet",
+	                        gtk_get_current_event_time (),
+	                        &error);
 
         if (error) {
                 cpufreq_utils_display_error (_("Could not open help document"),
