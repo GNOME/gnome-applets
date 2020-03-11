@@ -150,5 +150,8 @@ typedef struct {
 GType wt_applet_get_type (void);
 WTApplet* wt_applet_new (void);
 
+void wt_applet_update_title (WTApplet *wtapplet);
+void wt_applet_toggle_expand (WTApplet *wtapplet);
+
 G_END_DECLS
 #endif

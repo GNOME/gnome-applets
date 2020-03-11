@@ -24,10 +24,8 @@
 void cb_only_maximized (GtkButton *, WTApplet *);
 void cb_click_effect (GtkButton *, WTApplet *);
 void cb_hide_on_unmaximized (GtkButton *, WTApplet *);
-void updateTitle(WTApplet *);
 void reloadWidgets(WTApplet *);
 void toggleHidden(WTApplet *);
-void toggleExpand(WTApplet *);
 void setAlignment(WTApplet *, gdouble);
 void properties_close (GtkButton *, WTApplet *);
 void savePreferences(WTPreferences *, WTApplet *);
@@ -169,7 +167,7 @@ void cb_only_maximized(GtkButton *button, WTApplet *wtapplet) {
 void cb_hide_on_unmaximized(GtkButton *button, WTApplet *wtapplet) {
 	wtapplet->prefs->hide_on_unmaximized = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 static void
@@ -205,7 +203,7 @@ cb_expand_applet (GtkButton *button,
 {
 	wtapplet->prefs->expand_applet = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
-	toggleExpand(wtapplet);
+	wt_applet_toggle_expand(wtapplet);
 }
 
 static void
@@ -234,7 +232,7 @@ cb_custom_style (GtkButton *button,
 	gtk_widget_set_sensitive(GTK_WIDGET(parent), gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button)));
 	wtapplet->prefs->custom_style = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 static void cb_alignment_changed(GtkRange *range, WTApplet *wtapplet)
@@ -249,7 +247,7 @@ static void cb_font_active_set(GtkFontButton *widget, WTApplet *wtapplet)
 	//we need to copy the new font string, because we lose the pointer after prefs close
 	wtapplet->prefs->title_active_font = g_strdup(gtk_font_button_get_font_name(widget));
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 static void cb_font_inactive_set(GtkFontButton *widget, WTApplet *wtapplet)
@@ -257,7 +255,7 @@ static void cb_font_inactive_set(GtkFontButton *widget, WTApplet *wtapplet)
 	//we need to copy the new font string, because we lose the pointer after prefs close
 	wtapplet->prefs->title_inactive_font = g_strdup(gtk_font_button_get_font_name(widget));
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 static void cb_color_active_fg_set(GtkColorButton *widget, WTApplet *wtapplet)
@@ -267,7 +265,7 @@ static void cb_color_active_fg_set(GtkColorButton *widget, WTApplet *wtapplet)
 	gtk_color_button_get_color(widget, &color);
 	wtapplet->prefs->title_active_color = gdk_color_to_string(&color);
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 static void cb_color_inactive_fg_set(GtkColorButton *widget, gpointer user_data)
@@ -278,7 +276,7 @@ static void cb_color_inactive_fg_set(GtkColorButton *widget, gpointer user_data)
 	gtk_color_button_get_color(widget, &color);
 	wtapplet->prefs->title_inactive_color = gdk_color_to_string(&color);
 	savePreferences(wtapplet->prefs, wtapplet);
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 

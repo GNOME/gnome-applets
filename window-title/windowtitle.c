@@ -246,8 +246,8 @@ static WnckWindow *getUpperMaximized (WTApplet *wtapplet) {
 
 // Updates the images according to preferences and the window situation
 // Warning! This function is called very often, so it should only do the most necessary things!
-static void
-updateTitle (WTApplet *wtapplet)
+void
+wt_applet_update_title (WTApplet *wtapplet)
 {
 	WnckWindow *controlledwindow;
 	const char *title_text, *title_color, *title_font;
@@ -344,8 +344,8 @@ updateTitle (WTApplet *wtapplet)
 }
 
 /* Expand/unexpand applet according to preferences */
-static void
-toggleExpand (WTApplet *wtapplet)
+void
+wt_applet_toggle_expand (WTApplet *wtapplet)
 {
 	if (wtapplet->prefs->expand_applet) {
 		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR);
@@ -391,7 +391,7 @@ static void applet_change_orient (PanelApplet *panelapplet,
 		wtapplet->orient = orient;
 
 		reloadWidgets(wtapplet);
-		updateTitle(wtapplet);
+		wt_applet_update_title(wtapplet);
 	}
 }
 
@@ -447,7 +447,7 @@ static void window_opened (WnckScreen *screen,
 
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when a window has been closed */
@@ -458,7 +458,7 @@ static void window_closed (WnckScreen *screen,
 
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 
-	updateTitle(wtapplet); // required when closing window in the background
+	wt_applet_update_title(wtapplet); // required when closing window in the background
 }
 
 /* Triggers when a new active window is selected */
@@ -487,7 +487,7 @@ static void active_window_changed (WnckScreen *screen,
 
 		wtapplet->focused = TRUE;
 
-		updateTitle(wtapplet);
+		wt_applet_update_title(wtapplet);
 	}
 }
 
@@ -508,12 +508,12 @@ static void active_window_state_changed (WnckWindow *window,
 		}
 	}
 
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when activewindow's name changes */
 static void active_window_nameicon_changed (WnckWindow *window, WTApplet *wtapplet) {
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when umaxedwindow's state changes */
@@ -525,12 +525,12 @@ static void umaxed_window_state_changed (WnckWindow *window,
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 	wtapplet->rootwindow = getRootWindow(wtapplet->activescreen);
 
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when umaxedwindow's name OR ICON changes */
 static void umaxed_window_nameicon_changed(WnckWindow *window, WTApplet *wtapplet) {
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when user changes viewports (Compiz) */
@@ -543,7 +543,7 @@ static void viewports_changed (WnckScreen *screen,
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 
 	// active_window_changed will do it too, but this one will be sooner
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 }
 
 /* Triggers when.... ? not sure... (Metacity?) */
@@ -557,7 +557,7 @@ static void active_workspace_changed (WnckScreen *screen,
 	// wtapplet->rootwindow = getRootWindow(wtapplet->activescreen); //?
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 
-	updateTitle(wtapplet);
+	wt_applet_update_title(wtapplet);
 	*/
 }
 
@@ -790,9 +790,9 @@ static void init_wtapplet (PanelApplet *applet) {
 	panel_applet_setup_menu (applet, windowtitle_menu_items, action_group, GETTEXT_PACKAGE);
 	gtk_widget_insert_action_group (GTK_WIDGET (wtapplet), "windowtitle", G_ACTION_GROUP (action_group));
 
-	toggleExpand  (wtapplet);
+	wt_applet_toggle_expand (wtapplet);
 	toggleHidden  (wtapplet);	// Properly hide or show stuff
-	updateTitle   (wtapplet);
+	wt_applet_update_title (wtapplet);
 }
 
 // Initial function that draws the applet
