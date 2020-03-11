@@ -199,6 +199,8 @@ typedef struct {
 GType wb_applet_get_type (void);
 WBApplet* wb_applet_new (void);
 
+void wb_applet_update_images (WBApplet *wbapplet);
+
 G_END_DECLS
 #endif
 

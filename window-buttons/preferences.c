@@ -20,7 +20,6 @@
 
 #include "preferences.h"
 
-void updateImages(WBApplet *);
 void loadThemeComboBox(GtkComboBox *, gchar *);
 void loadThemeButtons(GtkWidget ***, GdkPixbuf ***, gchar ***);
 void toggleCompizDecoration(gboolean);
@@ -341,7 +340,7 @@ select_new_image (GtkButton *object,
 
 		wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images); // reload pixbufs from files
 		loadThemeButtons(getImageButtons(wbapplet->prefbuilder), wbapplet->pixbufs, wbapplet->prefs->images); // set pref button images from pixbufs
-		updateImages(wbapplet);	// reload images
+		wb_applet_update_images(wbapplet); // reload images
 
 		savePreferences(wbapplet->prefs, wbapplet);
 	}
@@ -386,7 +385,7 @@ cb_hide_on_unmaximized (GtkButton *button,
                         WBApplet  *wbapplet)
 {
 	wbapplet->prefs->hide_on_unmaximized = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 	savePreferences(wbapplet->prefs, wbapplet);
 }
 
@@ -421,7 +420,7 @@ cb_btn_hidden (GtkButton *button,
 		wbapplet->prefs->button_hidden[cbd->button_id] = 1;
 	}
 
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 	savePreferences(wbapplet->prefs, wbapplet);
 }
 
@@ -478,7 +477,7 @@ cb_theme_changed (GtkComboBox *combo,
 	wbp->images = getImages(g_strconcat(PATH_THEMES,"/",wbp->theme,"/",NULL)); // rebuild image paths
 	wbapplet->pixbufs = getPixbufs(wbp->images); // reload pixbufs from files
 	loadThemeButtons(getImageButtons(wbapplet->prefbuilder), wbapplet->pixbufs, wbp->images); // set pref button images from pixbufs
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 
 	savePreferences(wbp, wbapplet);
 }
@@ -502,7 +501,7 @@ cb_orientation (GtkRadioButton *style,
 		wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images); // reload pixbufs before rotating!
 		reloadButtons(wbapplet); // reload and rotate buttons
 		loadThemeButtons(getImageButtons(wbapplet->prefbuilder), wbapplet->pixbufs, wbapplet->prefs->images); // set pref button images from pixbufs
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 		savePreferences(wbapplet->prefs, wbapplet);
 	}
 }

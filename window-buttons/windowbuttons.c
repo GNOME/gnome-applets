@@ -252,8 +252,8 @@ getImageState (WBButtonState button_state)
 }
 
 /* Updates the images according to preferences and the umaxed window situation */
-static void
-updateImages (WBApplet *wbapplet)
+void
+wb_applet_update_images (WBApplet *wbapplet)
 {
 	WnckWindow *controlledwindow;
 	gint i;
@@ -323,7 +323,7 @@ static void window_opened (WnckScreen *screen,
 
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 
-	//updateImages(wbapplet); // not required(?)
+	//wb_applet_update_images(wbapplet); // not required(?)
 }
 
 /* Triggers when a window has been closed */
@@ -334,7 +334,7 @@ static void window_closed (WnckScreen *screen,
 
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 
-	updateImages(wbapplet); //required to hide buttons when last window is closed
+	wb_applet_update_images(wbapplet); //required to hide buttons when last window is closed
 }
 
 /* Triggers when a new active window is selected */
@@ -368,7 +368,7 @@ static void active_window_changed (WnckScreen *screen,
 			}
 		}
 
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 	}
 }
 
@@ -394,7 +394,7 @@ static void active_window_state_changed (WnckWindow *window,
 		}
 	}
 
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 }
 
 /* Triggers when umaxedwindow's state changes */
@@ -406,7 +406,7 @@ static void umaxed_window_state_changed (WnckWindow *window,
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 	wbapplet->rootwindow = getRootWindow(wbapplet->activescreen);
 
-	updateImages(wbapplet); // need to hide buttons after click if desktop is below
+	wb_applet_update_images(wbapplet); // need to hide buttons after click if desktop is below
 }
 
 /* Triggers when user changes viewports on Compiz */
@@ -420,7 +420,7 @@ static void viewports_changed (WnckScreen *screen,
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 
 	// active_window_changed should do this too, because this one will be too sooner
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 }
 
 /* Triggers when user changes workspace on Metacity (?) */
@@ -435,7 +435,7 @@ static void active_workspace_changed (WnckScreen *screen,
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 	*/
 
-	//updateImages(wbapplet);
+	//wb_applet_update_images(wbapplet);
 }
 
 /* Called when we release the click on a button */
@@ -487,7 +487,7 @@ static gboolean button_release (GtkWidget *event_box, GdkEventButton *event, WBA
 		}
 	}
 
-	updateImages(wbapplet);
+	wb_applet_update_images(wbapplet);
 
 	return TRUE;
 }
@@ -509,7 +509,7 @@ static gboolean button_press (GtkWidget *event_box,
 			}
 		}
 
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 	}
 
 	return TRUE;
@@ -530,7 +530,7 @@ static gboolean hover_enter (GtkWidget *widget,
 			}
 		}
 
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 	}
 
 	return TRUE;
@@ -551,7 +551,7 @@ static gboolean hover_leave (GtkWidget *widget,
 			}
 		}
 
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 	}
 
 	return TRUE;
@@ -688,7 +688,7 @@ applet_change_orient (PanelApplet       *panelapplet,
 		wbapplet->orient = orient;
 		wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);
 		reloadButtons(wbapplet);
-		updateImages(wbapplet);
+		wb_applet_update_images(wbapplet);
 	}
 }
 
@@ -756,7 +756,7 @@ static void init_wbapplet(PanelApplet *applet) {
 	gtk_widget_insert_action_group (GTK_WIDGET (wbapplet), "windowbuttons", G_ACTION_GROUP (action_group));
 
 	toggleHidden (wbapplet);	// Properly hide or show stuff
-	updateImages (wbapplet);
+	wb_applet_update_images (wbapplet);
 }
 
 /* We need this because things have to be hidden after we 'show' the applet */
