@@ -37,8 +37,6 @@
 #include "gweather-applet.h"
 #include "gweather-dialog.h"
 
-#define NEVER_SENSITIVE		"never_sensitive"
-
 struct _GWeatherPrefPrivate {
 	GtkWidget *basic_temp_combo;
 	GtkWidget *basic_speed_combo;
