@@ -595,15 +595,13 @@ find_next_clicked (GtkButton *button, GWeatherPref *pref)
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
 
-	if (gtk_tree_selection_count_selected_rows (selection) >= 1) {
-		gtk_tree_selection_get_selected (selection, &model, &iter);
+	if (gtk_tree_selection_get_selected (selection, &model, &iter)) {
 		/* Select next or select parent */
 		if (!gtk_tree_model_iter_next (model, &iter)) {
 			iter_parent = iter;
 			if (!gtk_tree_model_iter_parent (model, &iter, &iter_parent) || !gtk_tree_model_iter_next (model, &iter))
 				gtk_tree_model_get_iter_first (model, &iter);
 		}
-
 	} else {
 		gtk_tree_model_get_iter_first (model, &iter);
 	}
