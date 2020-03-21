@@ -207,6 +207,11 @@ wp_applet_load (PanelApplet *panel_applet)
 
   applet = WP_APPLET (panel_applet);
 
+  wp_applet_setup_list (applet);
+  wp_applet_setup_title (applet);
+
+  wp_applet_setup_menu (panel_applet);
+
   applet->settings = panel_applet_settings_new (panel_applet, SETTINGS_SCHEMA);
 
   g_settings_bind (applet->settings, KEY_SHOW_ALL_WINDOWS,
@@ -222,11 +227,6 @@ wp_applet_load (PanelApplet *panel_applet)
 
   g_settings_bind (applet->settings, KEY_ICONS_GREYSCALE,
                    applet, KEY_ICONS_GREYSCALE, G_SETTINGS_BIND_GET);
-
-  wp_applet_setup_list (applet);
-  wp_applet_setup_title (applet);
-
-  wp_applet_setup_menu (panel_applet);
 
   gtk_widget_show_all (GTK_WIDGET (applet));
 }
