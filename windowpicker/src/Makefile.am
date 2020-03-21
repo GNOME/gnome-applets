@@ -1,17 +1,17 @@
 NULL =
 
-window_picker_libdir=${pkglibdir}
+window_picker_libdir=$(GNOME_PANEL_MODULES_DIR)
 window_picker_lib_LTLIBRARIES=libwindow-picker-applet.la
 
 libwindow_picker_applet_la_CFLAGS = \
 	-D_GNU_SOURCE \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.window-picker\" \
 	-DG_LOG_USE_STRUCTURED=1 \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
+	-DLOCALEDIR=\""$(localedir)"\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \
 	-I$(top_builddir) \
 	-I$(top_srcdir) \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
 	$(X11_CFLAGS) \
 	$(GCC_FLAGS) \
@@ -26,7 +26,7 @@ libwindow_picker_applet_la_LDFLAGS = \
 	$(NULL)
 
 libwindow_picker_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(LIBWNCK_LIBS) \
 	$(X11_LIBS) \
 	$(LIBM) \
@@ -37,6 +37,7 @@ libwindow_picker_applet_la_SOURCES = \
 	wp-about-dialog.h \
 	wp-applet.c \
 	wp-applet.h \
+	wp-module.c \
 	wp-preferences-dialog.c \
 	wp-preferences-dialog.h \
 	task-item.c \

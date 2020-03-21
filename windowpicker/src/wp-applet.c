@@ -43,7 +43,7 @@
 
 struct _WpApplet
 {
-  PanelApplet  parent;
+  GpApplet     parent;
 
   GSettings   *settings;
 
@@ -68,7 +68,7 @@ enum
 
 static GParamSpec *properties[LAST_PROP] = { NULL };
 
-G_DEFINE_TYPE (WpApplet, wp_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE (WpApplet, wp_applet, GP_TYPE_APPLET)
 
 static void
 wp_about_dialog_response_cb (GtkDialog *dialog,
@@ -146,28 +146,18 @@ display_prefs_dialog (GSimpleAction *action,
 
 static const GActionEntry menu_actions[] = {
   { "preferences", display_prefs_dialog },
-  { "about",       display_about_dialog }
+  { "about",       display_about_dialog },
+  { NULL }
 };
 
 static void
-wp_applet_setup_menu (PanelApplet *applet)
+wp_applet_setup_menu (GpApplet *applet)
 {
-  GSimpleActionGroup *action_group;
   const gchar *resource_name;
 
-  action_group = g_simple_action_group_new ();
   resource_name = GRESOURCE "wp-menu.xml";
 
-  g_action_map_add_action_entries (G_ACTION_MAP (action_group), menu_actions,
-                                   G_N_ELEMENTS (menu_actions), applet);
-
-  panel_applet_setup_menu_from_resource (applet, resource_name, action_group,
-                                         GETTEXT_PACKAGE);
-
-  gtk_widget_insert_action_group (GTK_WIDGET (applet), "window-picker-applet",
-                                  G_ACTION_GROUP (action_group));
-
-  g_object_unref (action_group);
+  gp_applet_setup_menu_from_resource (applet, resource_name, menu_actions);
 }
 
 static void
@@ -182,9 +172,9 @@ wp_applet_setup_list (WpApplet *applet)
 static void
 wp_applet_setup_title (WpApplet *applet)
 {
-  PanelApplet *panel_applet;
+  GpApplet *panel_applet;
 
-  panel_applet = PANEL_APPLET (applet);
+  panel_applet = GP_APPLET (applet);
 
   applet->title = wp_task_title_new (TITLE_BUTTON_SPACE);
 
@@ -192,7 +182,7 @@ wp_applet_setup_title (WpApplet *applet)
                           applet->title, "orientation",
                           G_BINDING_DEFAULT);
 
-  g_object_bind_property (panel_applet, "orient",
+  g_object_bind_property (panel_applet, "orientation",
                           applet->title, "orient",
                           G_BINDING_DEFAULT);
 
@@ -201,18 +191,22 @@ wp_applet_setup_title (WpApplet *applet)
 }
 
 static void
-wp_applet_load (PanelApplet *panel_applet)
+wp_applet_contructed (GObject *object)
 {
   WpApplet *applet;
+  GpApplet *gp_applet;
 
-  applet = WP_APPLET (panel_applet);
+  G_OBJECT_CLASS (wp_applet_parent_class)->constructed (object);
+
+  applet = WP_APPLET (object);
+  gp_applet = GP_APPLET (object);
 
   wp_applet_setup_list (applet);
   wp_applet_setup_title (applet);
 
-  wp_applet_setup_menu (panel_applet);
+  wp_applet_setup_menu (gp_applet);
 
-  applet->settings = panel_applet_settings_new (panel_applet, SETTINGS_SCHEMA);
+  applet->settings = gp_applet_settings_new (gp_applet, SETTINGS_SCHEMA);
 
   g_settings_bind (applet->settings, KEY_SHOW_ALL_WINDOWS,
                    applet, KEY_SHOW_ALL_WINDOWS, G_SETTINGS_BIND_GET);
@@ -231,33 +225,12 @@ wp_applet_load (PanelApplet *panel_applet)
   gtk_widget_show_all (GTK_WIDGET (applet));
 }
 
-static gboolean
-wp_applet_factory (PanelApplet *applet,
-                   const gchar *iid,
-                   gpointer     data)
-{
-  static gboolean client_type_registered = FALSE;
-
-  if (client_type_registered == FALSE)
-    {
-      wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
-      client_type_registered = TRUE;
-    }
-
-  if (g_strcmp0 (iid, "WindowPicker") != 0)
-    return FALSE;
-
-  wp_applet_load (applet);
-
-  return TRUE;
-}
-
 static void
 wp_applet_size_allocate (GtkWidget     *widget,
                          GtkAllocation *allocation)
 {
   WpApplet *applet;
-  PanelApplet *panel_applet;
+  GpApplet *panel_applet;
   GtkOrientation orientation;
   gint size_hints[2];
   gint size;
@@ -265,9 +238,9 @@ wp_applet_size_allocate (GtkWidget     *widget,
   GTK_WIDGET_CLASS (wp_applet_parent_class)->size_allocate (widget, allocation);
 
   applet = WP_APPLET (widget);
-  panel_applet = PANEL_APPLET (widget);
+  panel_applet = GP_APPLET (widget);
 
-  orientation = panel_applet_get_gtk_orientation (panel_applet);
+  orientation = gp_applet_get_orientation (panel_applet);
 
   if (orientation == GTK_ORIENTATION_HORIZONTAL)
     gtk_widget_get_preferred_width (applet->tasks, NULL, &size);
@@ -290,7 +263,7 @@ wp_applet_size_allocate (GtkWidget     *widget,
       size_hints[0] += size;
     }
 
-  panel_applet_set_size_hints (panel_applet, size_hints, 2, 0);
+  gp_applet_set_size_hints (panel_applet, size_hints, 2, 0);
 }
 
 static void
@@ -360,14 +333,13 @@ wp_applet_get_property (GObject    *object,
 }
 
 static void
-wp_applet_change_orient (PanelApplet       *panel_applet,
-                         PanelAppletOrient  orient)
+wp_applet_placement_changed (GpApplet        *panel_applet,
+                             GtkOrientation   orientation,
+                             GtkPositionType  position)
 {
   WpApplet *applet;
-  GtkOrientation orientation;
 
   applet = WP_APPLET (panel_applet);
-  orientation = panel_applet_get_gtk_orientation (panel_applet);
 
   gtk_orientable_set_orientation (GTK_ORIENTABLE (applet->container),
                                   orientation);
@@ -391,19 +363,20 @@ wp_applet_class_init (WpAppletClass *applet_class)
 {
   GObjectClass *object_class;
   GtkWidgetClass *widget_class;
-  PanelAppletClass *panel_applet_class;
+  GpAppletClass *panel_applet_class;
 
   object_class = G_OBJECT_CLASS (applet_class);
   widget_class = GTK_WIDGET_CLASS (applet_class);
-  panel_applet_class = PANEL_APPLET_CLASS (applet_class);
+  panel_applet_class = GP_APPLET_CLASS (applet_class);
 
   widget_class->size_allocate = wp_applet_size_allocate;
 
   object_class->dispose = wp_applet_dispose;
   object_class->set_property = wp_applet_set_property;
   object_class->get_property = wp_applet_get_property;
+  object_class->constructed = wp_applet_contructed;
 
-  panel_applet_class->change_orient = wp_applet_change_orient;
+  panel_applet_class->placement_changed = wp_applet_placement_changed;
 
   properties[PROP_SHOW_ALL_WINDOWS] =
     g_param_spec_boolean ("show-all-windows",
@@ -425,17 +398,17 @@ wp_applet_class_init (WpAppletClass *applet_class)
 static void
 wp_applet_init (WpApplet *applet)
 {
-  PanelApplet *panel_applet;
-  PanelAppletFlags flags;
+  GpApplet *panel_applet;
+  GpAppletFlags flags;
   GtkOrientation orientation;
 
-  panel_applet = PANEL_APPLET (applet);
+  panel_applet = GP_APPLET (applet);
 
-  flags = PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_HAS_HANDLE |
-          PANEL_APPLET_EXPAND_MAJOR;
-  orientation = panel_applet_get_gtk_orientation (panel_applet);
+  flags = GP_APPLET_FLAGS_EXPAND_MINOR | GP_APPLET_FLAGS_HAS_HANDLE |
+          GP_APPLET_FLAGS_EXPAND_MAJOR;
+  orientation = gp_applet_get_orientation (panel_applet);
 
-  panel_applet_set_flags (panel_applet, flags);
+  gp_applet_set_flags (panel_applet, flags);
 
   applet->container = gtk_box_new (orientation, CONTAINER_SPACING);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
@@ -458,6 +431,3 @@ wp_applet_get_icons_greyscale (WpApplet *applet)
 {
   return applet->icons_greyscale;
 }
-
-PANEL_APPLET_IN_PROCESS_FACTORY ("WindowPickerFactory", WP_TYPE_APPLET,
-                                 wp_applet_factory, NULL);

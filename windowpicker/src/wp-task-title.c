@@ -26,7 +26,7 @@
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 #include <libwnck/libwnck.h>
-#include <panel-applet.h>
+#include <libgnome-panel/gp-applet.h>
 
 #include "wp-task-title.h"
 
@@ -43,7 +43,7 @@ struct _WpTaskTitle
 
   gboolean           show_application_title;
   gboolean           show_home_title;
-  PanelAppletOrient  applet_orient;
+  GtkOrientation     orientation;
 
   WnckWindow        *active_window;
   GDBusProxy        *session_proxy;
@@ -342,8 +342,7 @@ update_label_rotation (WpTaskTitle *title)
 {
   gdouble angle;
 
-  if (title->applet_orient == PANEL_APPLET_ORIENT_RIGHT ||
-      title->applet_orient == PANEL_APPLET_ORIENT_LEFT)
+  if (title->orientation == GTK_ORIENTATION_VERTICAL)
     angle = 270;
   else
     angle = 0;
@@ -378,7 +377,7 @@ wp_task_title_set_property (GObject      *object,
   WpTaskTitle *title;
   gboolean show_application_title;
   gboolean show_home_title;
-  PanelAppletOrient orient;
+  GtkOrientation orientation;
 
   title = WP_TASK_TITLE (object);
 
@@ -405,11 +404,11 @@ wp_task_title_set_property (GObject      *object,
         break;
 
       case PROP_APPLET_ORIENT:
-        orient = (PanelAppletOrient) g_value_get_uint (value);
+        orientation = g_value_get_enum (value);
 
-        if (title->applet_orient != orient)
+        if (title->orientation != orientation)
           {
-            title->applet_orient = orient;
+            title->orientation = orientation;
             update_label_rotation (title);
           }
         break;
@@ -459,12 +458,11 @@ wp_task_title_class_init (WpTaskTitleClass *title_class)
                           G_PARAM_WRITABLE);
 
   properties[PROP_APPLET_ORIENT] =
-    g_param_spec_uint ("orient",
+    g_param_spec_enum ("orient",
                        "Orient",
                        "Panel Applet Orientation",
-                       PANEL_APPLET_ORIENT_FIRST,
-                       PANEL_APPLET_ORIENT_LAST,
-                       PANEL_APPLET_ORIENT_UP,
+                       GTK_TYPE_ORIENTATION,
+                       GTK_ORIENTATION_HORIZONTAL,
                        G_PARAM_WRITABLE);
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);

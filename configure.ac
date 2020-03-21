@@ -63,6 +63,7 @@ GTK_REQUIRED=3.20.0
 GLIB_REQUIRED=2.44.0
 GIO_REQUIRED=2.26.0
 LIBPANEL_REQUIRED=3.24.1
+LIBGNOME_PANEL_REQUIRED=3.36.0
 LIBGTOP_REQUIRED=2.11.92
 LIBWNCK_REQUIRED=3.14.1
 LIBNOTIFY_REQUIRED=0.7
@@ -111,6 +112,12 @@ PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 
 dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanel-applet >= $LIBPANEL_REQUIRED)
+
+dnl -- check for libgnome-panel (required) ------------------------------------
+PKG_CHECK_MODULES([GNOME_PANEL], [libgnome-panel >= $LIBGNOME_PANEL_REQUIRED])
+
+GNOME_PANEL_MODULES_DIR=`$PKG_CONFIG --variable=modulesdir libgnome-panel`
+AC_SUBST([GNOME_PANEL_MODULES_DIR], [$GNOME_PANEL_MODULES_DIR])
 
 AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
 if test "$LIBPANEL_APPLET_DIR" == ""; then
@@ -680,6 +687,9 @@ echo "  exec_prefix .....................: ${exec_prefix}"
 echo "  libdir ..........................: ${libdir}"
 echo "  libexecdir ......................: ${libexecdir}"
 echo "  sysconfdir ......................: ${sysconfdir}"
+echo ""
+echo "  libgnome-panel"
+echo "    modulesdir ....................: ${GNOME_PANEL_MODULES_DIR}"
 echo ""
 echo "  Applets"
 echo "    accessx-status ................: $HAVE_XKB"
