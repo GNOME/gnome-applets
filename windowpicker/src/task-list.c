@@ -48,11 +48,11 @@ window_is_special (WnckWindow *window)
 }
 
 static TaskList *
-get_task_list_for_monitor (TaskList   *task_list,
-                           GdkMonitor *monitor)
+get_task_list_for_monitor (GdkMonitor *monitor)
 {
     GSList *list;
     GdkMonitor *list_monitor;
+    TaskList *task_list;
 
     list = task_lists;
 
@@ -108,7 +108,7 @@ on_task_item_monitor_changed_cb (TaskItem *item,
 
     if (monitor != list_monitor)
       {
-        list = get_task_list_for_monitor (current_list, monitor);
+        list = get_task_list_for_monitor (monitor);
 
         g_object_ref (item);
         gtk_container_remove (GTK_CONTAINER (current_list), GTK_WIDGET (item));
