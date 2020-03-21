@@ -103,22 +103,14 @@ PKG_CHECK_MODULES(ICON_THEME, adwaita-icon-theme >= $ADWAITA_ICON_THEME_REQUIRED
 
 dnl -- check for gio (required) ------------------------------------------
 PKG_CHECK_MODULES(GIO, gio-2.0 >= $GIO_REQUIRED)
-AC_SUBST(GIO_CFLAGS)
-AC_SUBST(GIO_LIBS)
 
 PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= $GIO_REQUIRED)
-AC_SUBST(GIO_UNIX_CFLAGS)
-AC_SUBST(GIO_UNIX_LIBS)
 
 dnl -- Check for GTK+ 3.0 (required) ------------------------------------------
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
-AC_SUBST(GTK_FLAGS)
-AC_SUBST(GTK_LIBS)
 
 dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanel-applet >= $LIBPANEL_REQUIRED)
-AC_SUBST(GNOME_APPLETS_CFLAGS)
-AC_SUBST(GNOME_APPLETS_LIBS)
 
 AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
 if test "$LIBPANEL_APPLET_DIR" == ""; then
@@ -137,16 +129,11 @@ PKG_CHECK_MODULES(GTOP_APPLETS,
                  [libgtop-2.0 >= $LIBGTOP_REQUIRED],
                  build_gtop_applets=true,
 		 AC_MSG_WARN([libgtop not found. Not building gtop applets.]))
-AC_SUBST(GTOP_APPLETS_CFLAGS)
-AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
 dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
-
-AC_SUBST(LIBWNCK_CFLAGS)
-AC_SUBST(LIBWNCK_LIBS)
 
 dnl -- check for libnotify (optional) -----------------------------------------
 LIBNOTIFY_CFLAGS=
@@ -157,9 +144,6 @@ PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED,
 if test "x$HAVE_LIBNOTIFY" = "xyes"; then
 	AC_DEFINE(HAVE_LIBNOTIFY, 1, [libnotify available])
 fi
-
-AC_SUBST(LIBNOTIFY_CFLAGS)
-AC_SUBST(LIBNOTIFY_LIBS)
 
 PKG_CHECK_MODULES([CPUFREQ_SELECTOR], [
   gio-unix-2.0 >= $GIO_REQUIRED)
@@ -184,10 +168,6 @@ if test "x$with_upower" != xno; then
 else
 	AC_MSG_WARN(["upower support disabled"])
 fi
-
-AC_SUBST(UPOWER_CFLAGS)
-AC_SUBST(UPOWER_LIBS)
-AC_SUBST(LIBM)
 
 dnl -- check for wirelesstools (optional) -------------------------------------
 
@@ -217,21 +197,15 @@ if test "$have_gucharmap" = "yes"; then
 else
   AC_MSG_WARN([*** 'charpick' applet will not be built with gucharmap support ***])
 fi
-AC_SUBST(GUCHARMAP_CFLAGS)
-AC_SUBST(GUCHARMAP_LIBS)
 
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
-AC_SUBST(XML2_CFLAGS)
-AC_SUBST(XML2_LIBS)
 
  dnl -- check for libgweather (required for gweather applet) ------------------
 build_libgweather_applets=false
 PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED,
 	          build_libgweather_applets=true,
 		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
-AC_SUBST(LIBGWEATHER_CFLAGS)
-AC_SUBST(LIBGWEATHER_LIBS)
 AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
 
  dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
@@ -240,8 +214,6 @@ TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-2.0"
 PKG_CHECK_MODULES(TRACKER_SEARCH_BAR, [$TRACKER_SEARCH_BAR_REQUIRED],
                   [have_tracker_search_bar=yes],
                   [have_tracker_search_bar=no])
-AC_SUBST(TRACKER_SEARCH_BAR_CFLAGS)
-AC_SUBST(TRACKER_SEARCH_BAR_LIBS)
 
 dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
