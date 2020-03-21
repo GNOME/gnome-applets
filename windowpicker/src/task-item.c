@@ -77,40 +77,39 @@ static const gint n_drag_types = G_N_ELEMENTS(drag_types);
 
 static void task_item_close (TaskItem *item);
 
-static void update_hints (TaskItem *item) {
-    GtkWidget *parent, *widget;
-    GtkAllocation allocation_parent, allocation_widget;
+static void
+update_hints (TaskItem *item)
+{
+    GtkWidget *toplevel;
+    GtkAllocation item_allocation, toplevel_allocation;
     WnckWindow *window;
-    gint x, y, x1, y1;
-    widget = GTK_WIDGET (item);
+    gint x, y, toplevel_x, toplevel_y;
+
     window = item->window;
+
     /* Skip problems */
     if (!WNCK_IS_WINDOW (window)) return;
-    if (!GTK_IS_WIDGET (widget)) return;
+
     /* Skip invisible windows */
-    if (!gtk_widget_get_visible (widget)) return;
-    x = y = 0;
-    /* Recursively compute the button's coordinates */
-    for (parent = widget; parent; parent = gtk_widget_get_parent(parent)) {
-        if (gtk_widget_get_parent(parent)) {
-            gtk_widget_get_allocation(parent, &allocation_parent);
-            x += allocation_parent.x;
-            y += allocation_parent.y;
-        } else {
-            x1 = y1 = 0;
-            if (GDK_IS_WINDOW (gtk_widget_get_window(parent)))
-                gdk_window_get_origin (gtk_widget_get_window(parent), &x1, &y1);
-            x += x1; y += y1;
-            break;
-        }
-    }
+    if (!gtk_widget_get_visible (GTK_WIDGET (item))) return;
+
+    toplevel = gtk_widget_get_toplevel (GTK_WIDGET (item));
+
+    if (!gtk_widget_translate_coordinates (GTK_WIDGET (item), toplevel, 0, 0, &x, &y))
+        return;
+
+    if (!gtk_widget_get_window (toplevel))
+        return;
+
+    gdk_window_get_origin (gtk_widget_get_window (toplevel), &toplevel_x, &toplevel_y);
+
     /* Set the minimize hint for the window */
-    gtk_widget_get_allocation(widget, &allocation_widget);
-    wnck_window_set_icon_geometry (
-        window, x, y,
-        allocation_widget.width,
-        allocation_widget.height
-    );
+    gtk_widget_get_allocation (GTK_WIDGET (item), &item_allocation);
+
+    wnck_window_set_icon_geometry (window,
+                                   toplevel_x + x, toplevel_y + y,
+                                   item_allocation.width,
+                                   item_allocation.height);
 }
 
 static gboolean on_task_item_button_released (
