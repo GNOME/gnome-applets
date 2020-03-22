@@ -57,7 +57,7 @@ LT_INIT([dlopen disable-static])
 LT_LIB_M
 
 dnl ***************************************************************************
-dnl *** Minimum library versions for GNOME-APPLETS                          ***
+dnl *** Minimum library versions for GNOME Applets                          ***
 dnl ***************************************************************************
 GTK_REQUIRED=3.20.0
 GLIB_REQUIRED=2.44.0
