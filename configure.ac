@@ -659,9 +659,9 @@ AC_CONFIG_FILES([
   window-buttons/pixmaps/Makefile
   window-buttons/themes/Makefile
 
-  windowpicker/Makefile
-  windowpicker/data/Makefile
-  windowpicker/src/Makefile
+  window-picker/Makefile
+  window-picker/data/Makefile
+  window-picker/src/Makefile
 
   window-title/Makefile
   window-title/pixmaps/Makefile
@@ -710,7 +710,7 @@ echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
 echo "    window-buttons ................: always"
-echo "    windowpicker ..................: always"
+echo "    window-picker .................: always"
 echo "    window-title ..................: always"
 echo ""
 echo "  charpick"
