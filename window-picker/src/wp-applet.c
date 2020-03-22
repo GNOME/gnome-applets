@@ -243,9 +243,9 @@ wp_applet_size_allocate (GtkWidget     *widget,
   orientation = gp_applet_get_orientation (panel_applet);
 
   if (orientation == GTK_ORIENTATION_HORIZONTAL)
-    gtk_widget_get_preferred_width (applet->tasks, NULL, &size);
+    gtk_widget_get_preferred_width_for_height (applet->tasks, allocation->height, NULL, &size);
   else
-    gtk_widget_get_preferred_height (applet->tasks, NULL, &size);
+    gtk_widget_get_preferred_height_for_width (applet->tasks, allocation->width, NULL, &size);
 
   size_hints[0] = size;
   size_hints[1] = 0;
