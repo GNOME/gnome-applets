@@ -227,10 +227,6 @@ settings_interval_changed (GSettings *settings, gchar *key, CommandApplet *comma
 
     interval = g_settings_get_int (command_applet->settings, INTERVAL_KEY);
 
-    /* minimum interval */
-    if (interval < 1)
-        interval = 1;
-
     command_applet->interval = interval;
 
     /* stop current timer */
