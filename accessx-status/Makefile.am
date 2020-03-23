@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = help pixmaps src
+SUBDIRS = pixmaps src
 
 APPLET_LOCATION = $(pkglibdir)/libaccessx-status-applet.so
 

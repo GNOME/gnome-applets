@@ -50,6 +50,7 @@ always_built_SUBDIRS =  \
 	$(NULL)
 
 SUBDIRS = \
+	help \
 	po			\
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
@@ -64,6 +65,7 @@ SUBDIRS = \
 	$(NULL)
 
 DIST_SUBDIRS = \
+	help \
 	po		\
 	drivemount	\
 	charpick	\

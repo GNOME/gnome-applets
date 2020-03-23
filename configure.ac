@@ -525,15 +525,27 @@ dnl **************************************************************************
 AC_CONFIG_FILES([
   Makefile
 
+  help/Makefile
+  help/accessx-status/Makefile
+  help/battstat/Makefile
+  help/charpick/Makefile
+  help/cpufreq/Makefile
+  help/drivemount/Makefile
+  help/geyes/Makefile
+  help/gweather/Makefile
+  help/mini-commander/Makefile
+  help/multiload/Makefile
+  help/netspeed/Makefile
+  help/sticky-notes/Makefile
+  help/trash/Makefile
+
   po/Makefile.in
 
-  accessx-status/help/Makefile
   accessx-status/Makefile
   accessx-status/pixmaps/Makefile
   accessx-status/src/Makefile
 
   battstat/Makefile
-  battstat/help/Makefile
   battstat/sounds/Makefile
   battstat/src/Makefile
   battstat/src/apmlib/Makefile
@@ -561,20 +573,17 @@ AC_CONFIG_FILES([
   brightness/src/Makefile
 
   charpick/Makefile
-  charpick/help/Makefile
   charpick/src/Makefile
 
   command/Makefile
   command/src/Makefile
 
-  cpufreq/help/Makefile
   cpufreq/Makefile
   cpufreq/pixmaps/Makefile
   cpufreq/src/cpufreq-selector/Makefile
   cpufreq/src/Makefile
 
   drivemount/Makefile
-  drivemount/help/Makefile
   drivemount/src/Makefile
 
   inhibit/Makefile
@@ -600,24 +609,19 @@ AC_CONFIG_FILES([
   inhibit/src/Makefile
 
   geyes/Makefile
-  geyes/help/Makefile
   geyes/src/Makefile
   geyes/themes/Makefile
 
   gweather/Makefile
-  gweather/help/Makefile
   gweather/src/Makefile
 
-  mini-commander/help/Makefile
   mini-commander/Makefile
   mini-commander/src/Makefile
 
   multiload/Makefile
-  multiload/help/Makefile
   multiload/src/Makefile
 
   netspeed/data/Makefile
-  netspeed/help/Makefile
   netspeed/icons/Makefile
   netspeed/icons/16x16/Makefile
   netspeed/icons/16x16/apps/Makefile
@@ -639,7 +643,6 @@ AC_CONFIG_FILES([
   sticky-notes/Makefile
   sticky-notes/data/Makefile
   sticky-notes/src/Makefile
-  sticky-notes/help/Makefile
   sticky-notes/pixmaps/Makefile
 
   timer/Makefile
@@ -650,7 +653,6 @@ AC_CONFIG_FILES([
   tracker-search-bar/src/Makefile
   tracker-search-bar/data/Makefile
 
-  trash/help/Makefile
   trash/Makefile
   trash/src/Makefile
   trash/data/Makefile

@@ -5,7 +5,7 @@ builder_DATA = battstat_applet.ui
 
 ACPIINC= @ACPIINC@
 
-SUBDIRS = help sounds src
+SUBDIRS = sounds src
 
 gsettings_schemas_in_in = \
 	org.gnome.gnome-applets.battstat.gschema.xml.in.in

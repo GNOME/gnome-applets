@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = help src
+SUBDIRS = src
 
 uidir = $(pkgdatadir)/ui
 ui_DATA = gweather-applet-menu.xml

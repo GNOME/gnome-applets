@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = help src
+SUBDIRS = src
 
 APPLET_LOCATION=$(pkglibdir)/libmultiload-applet.so
 

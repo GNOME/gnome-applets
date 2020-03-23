@@ -1,3 +1,3 @@
-SUBDIRS = data help icons src
+SUBDIRS = data icons src
 
 -include $(top_srcdir)/git.mk

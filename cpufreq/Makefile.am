@@ -1,4 +1,4 @@
-SUBDIRS = help pixmaps src
+SUBDIRS = pixmaps src
 
 gsettings_schemas_in_in = \
 	org.gnome.gnome-applets.cpufreq.gschema.xml.in.in

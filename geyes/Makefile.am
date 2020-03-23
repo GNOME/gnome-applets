@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = help themes src
+SUBDIRS = themes src
 
 APPLET_LOCATION = $(pkglibdir)/libgeyes-applet.so
 

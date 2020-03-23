@@ -1,3 +1,3 @@
-SUBDIRS = data help pixmaps src
+SUBDIRS = data pixmaps src
 
 -include $(top_srcdir)/git.mk
