@@ -20,6 +20,8 @@ libcommand_applet_la_CFLAGS = \
 
 libcommand_applet_la_SOURCES = \
 	command.c \
+	ga-command.c \
+	ga-command.h \
 	$(NULL)
 
 libcommand_applet_la_LDFLAGS = \

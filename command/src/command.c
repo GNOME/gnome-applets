@@ -22,9 +22,8 @@
  *      Stefano Karapetsas <stefano@karapetsas.com>
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "ga-command.h"
 
 #include <glib.h>
 #include <glib/gi18n.h>
@@ -51,24 +50,21 @@
 
 typedef struct
 {
-    PanelApplet       *applet;
+  PanelApplet *applet;
 
-    GSettings         *settings;
+  GSettings   *settings;
 
-    GtkLabel          *label;
-    GtkImage          *image;
-    GtkBox            *box;
+  GtkLabel    *label;
+  GtkImage    *image;
+  GtkBox      *box;
 
-    gchar             *command;
-    guint              interval;
-    guint              width;
+  guint        width;
 
-    guint              timeout_id;
+  GaCommand   *command;
 } CommandApplet;
 
 static void command_about_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
 static void command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
-static gboolean command_execute (CommandApplet *command_applet);
 
 static const GActionEntry applet_menu_actions [] = {
     {"preferences", command_settings_callback, NULL, NULL, NULL},
@@ -91,17 +87,7 @@ command_applet_destroy (PanelApplet *applet_widget, CommandApplet *command_apple
 {
     g_assert (command_applet);
 
-    if (command_applet->timeout_id != 0)
-    {
-        g_source_remove (command_applet->timeout_id);
-        command_applet->timeout_id = 0;
-    }
-
-    if (command_applet->command != NULL)
-    {
-        g_free (command_applet->command);
-        command_applet->command = NULL;
-    }
+    g_clear_object (&command_applet->command);
 
     g_object_unref (command_applet->settings);
 }
@@ -190,127 +176,152 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     gtk_widget_show_all (GTK_WIDGET (dialog));
 }
 
+static void
+output_cb (GaCommand     *command,
+           const char    *output,
+           CommandApplet *self)
+{
+  if (output == NULL || *output == '\0')
+    {
+      gtk_label_set_text (self->label, ERROR_OUTPUT);
+      return;
+    }
+
+  if (g_str_has_prefix (output, "[Command]"))
+    {
+      GKeyFile *file;
+
+      file = g_key_file_new ();
+
+      if (g_key_file_load_from_data (file, output, -1, G_KEY_FILE_NONE, NULL))
+        {
+          char *markup;
+          char *icon;
+
+          markup = g_key_file_get_string (file,
+                                          GK_COMMAND_GROUP,
+                                          GK_COMMAND_OUTPUT,
+                                          NULL);
+          icon = g_key_file_get_string (file,
+                                        GK_COMMAND_GROUP,
+                                        GK_COMMAND_ICON,
+                                        NULL);
+
+          if (markup)
+            {
+              gtk_label_set_use_markup (self->label, TRUE);
+              gtk_label_set_markup (self->label, markup);
+            }
+
+          if (icon)
+            gtk_image_set_from_icon_name (self->image, icon, 24);
+
+          g_free (markup);
+          g_free (icon);
+        }
+      else
+        {
+          gtk_label_set_text (self->label, ERROR_OUTPUT);
+        }
+
+      g_key_file_free (file);
+    }
+  else
+    {
+      char *tmp;
+
+      if (strlen (output) > self->width)
+        {
+          GString *strip_output;
+
+          strip_output = g_string_new_len (output, self->width);
+          tmp = g_string_free (strip_output, FALSE);
+        }
+      else
+        {
+          tmp = g_strdup (output);
+        }
+
+      if (g_str_has_suffix (tmp, "\n"))
+        tmp[strlen (tmp) - 1] = 0;
+
+      gtk_label_set_text (self->label, tmp);
+      g_free (tmp);
+    }
+}
+
+static void
+error_cb (GaCommand     *command,
+          GError        *error,
+          CommandApplet *self)
+{
+  gtk_label_set_text (self->label, ERROR_OUTPUT);
+}
+
+static void
+create_command (CommandApplet *self)
+{
+  char *command;
+  unsigned int interval;
+  GError *error;
+
+  command = g_settings_get_string (self->settings, COMMAND_KEY);
+  interval = g_settings_get_uint (self->settings, INTERVAL_KEY);
+  error = NULL;
+
+  g_clear_object (&self->command);
+  self->command = ga_command_new (command, interval, &error);
+
+  gtk_widget_set_tooltip_text (GTK_WIDGET (self->label), command);
+  g_free (command);
+
+  if (error != NULL)
+    {
+      gtk_label_set_text (self->label, ERROR_OUTPUT);
+
+      g_warning ("%s", error->message);
+      g_error_free (error);
+      return;
+    }
+
+  g_signal_connect (self->command, "output", G_CALLBACK (output_cb), self);
+  g_signal_connect (self->command, "error", G_CALLBACK (error_cb), self);
+
+  ga_command_start (self->command);
+}
+
 /* GSettings signal callbacks */
 static void
-settings_command_changed (GSettings *settings, gchar *key, CommandApplet *command_applet)
+settings_command_changed (GSettings     *settings,
+                          const char    *key,
+                          CommandApplet *self)
 {
-    gchar *command;
-
-    command = g_settings_get_string (command_applet->settings, COMMAND_KEY);
-
-    if (command_applet->command)
-        g_free (command_applet->command);
-
-    if (command != NULL && command[0] != 0)
-        command_applet->command = command;
-    else
-        command_applet->command = g_strdup ("");
+  create_command (self);
 }
 
 static void
-settings_width_changed (GSettings *settings, gchar *key, CommandApplet *command_applet)
+settings_width_changed (GSettings     *settings,
+                        const char    *key,
+                        CommandApplet *self)
 {
-    guint width;
+  self->width = g_settings_get_uint (self->settings, WIDTH_KEY);
 
-    width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
+  if (self->command == NULL)
+    return;
 
-    command_applet->width = width;
-
-    /* execute command to start new timer */
-    command_execute (command_applet);
+  ga_command_restart (self->command);
 }
 
 static void
-settings_interval_changed (GSettings *settings, gchar *key, CommandApplet *command_applet)
+settings_interval_changed (GSettings     *settings,
+                           const char    *key,
+                           CommandApplet *self)
 {
-    guint interval;
+  if (self->command == NULL)
+    return;
 
-    interval = g_settings_get_uint (command_applet->settings, INTERVAL_KEY);
-
-    command_applet->interval = interval;
-
-    /* stop current timer */
-    if (command_applet->timeout_id != 0)
-    {
-        g_source_remove (command_applet->timeout_id);
-        command_applet->timeout_id = 0;
-    }
-
-    /* execute command to start new timer */
-    command_execute (command_applet);
-}
-
-static gboolean
-command_execute (CommandApplet *command_applet)
-{
-    GError *error = NULL;
-    gchar *output = NULL;
-    gint ret = 0;
-
-    if (g_spawn_command_line_sync (command_applet->command, &output, NULL, &ret, &error))
-    {
-        gtk_widget_set_tooltip_text (GTK_WIDGET (command_applet->label), command_applet->command);
-
-        if ((output != NULL) && (output[0] != 0))
-        {
-            /* check if output is a custom GKeyFile */
-            if (g_str_has_prefix (output, "[Command]"))
-            {
-                GKeyFile *file = g_key_file_new ();
-                if (g_key_file_load_from_data (file, output, -1, G_KEY_FILE_NONE, NULL))
-                {
-                    gchar *goutput = g_key_file_get_string (file, GK_COMMAND_GROUP, GK_COMMAND_OUTPUT, NULL);
-                    gchar *icon = g_key_file_get_string (file, GK_COMMAND_GROUP, GK_COMMAND_ICON, NULL);
-
-                    if (goutput)
-                    {
-                        gtk_label_set_use_markup (command_applet->label, TRUE);
-                        gtk_label_set_markup (command_applet->label, goutput);
-                    }
-                    if (icon)
-                        gtk_image_set_from_icon_name (command_applet->image, icon, 24);
-
-                    g_free (goutput);
-                    g_free (icon);
-                }
-                else
-                    gtk_label_set_text (command_applet->label, ERROR_OUTPUT);
-                g_key_file_free (file);
-            }
-            else
-            {
-                /* check output length */
-                if (strlen(output) > command_applet->width)
-                {
-                    GString *strip_output;
-                    strip_output = g_string_new_len (output, command_applet->width);
-                    g_free (output);
-                    output = strip_output->str;
-                    g_string_free (strip_output, FALSE);
-                }
-                /* remove last char if it is '\n' to avoid aligment problems */
-                if (g_str_has_suffix (output, "\n"))
-                {
-                    output[strlen(output) - 1] = 0;
-                }
-
-                gtk_label_set_text (command_applet->label, output);
-            }
-        }
-        else
-            gtk_label_set_text (command_applet->label, ERROR_OUTPUT);
-    }
-    else
-        gtk_label_set_text (command_applet->label, ERROR_OUTPUT);
-
-    g_free (output);
-
-    /* start timer for next execution */
-    command_applet->timeout_id = g_timeout_add_seconds (command_applet->interval,
-                                                        (GSourceFunc) command_execute,
-                                                        command_applet);
-
-    return FALSE;
+  ga_command_set_interval (self->command,
+                           g_settings_get_uint (self->settings, INTERVAL_KEY));
 }
 
 static gboolean
@@ -325,14 +336,11 @@ command_applet_fill (PanelApplet* applet)
     command_applet->applet = applet;
     command_applet->settings = panel_applet_settings_new (applet, COMMAND_SCHEMA);
 
-    command_applet->interval = g_settings_get_uint (command_applet->settings, INTERVAL_KEY);
-    command_applet->command = g_settings_get_string (command_applet->settings, COMMAND_KEY);
     command_applet->width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
 
     command_applet->box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     command_applet->image = GTK_IMAGE (gtk_image_new_from_icon_name (APPLET_ICON, 24));
     command_applet->label = GTK_LABEL (gtk_label_new (ERROR_OUTPUT));
-    command_applet->timeout_id = 0;
 
     /* we add the Gtk label into the applet */
     gtk_box_pack_start (command_applet->box,
@@ -379,7 +387,7 @@ command_applet_fill (PanelApplet* applet)
     gtk_widget_insert_action_group (GTK_WIDGET (applet), "command", G_ACTION_GROUP (action_group));
 
     /* first command execution */
-    command_execute (command_applet);
+    create_command (command_applet);
 
     return TRUE;
 }
