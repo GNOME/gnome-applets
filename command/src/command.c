@@ -60,8 +60,8 @@ typedef struct
     GtkBox            *box;
 
     gchar             *command;
-    gint               interval;
-    gint               width;
+    guint              interval;
+    guint              width;
 
     guint              timeout_id;
 } CommandApplet;
@@ -210,9 +210,9 @@ settings_command_changed (GSettings *settings, gchar *key, CommandApplet *comman
 static void
 settings_width_changed (GSettings *settings, gchar *key, CommandApplet *command_applet)
 {
-    gint width;
+    guint width;
 
-    width = g_settings_get_int (command_applet->settings, WIDTH_KEY);
+    width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
 
     command_applet->width = width;
 
@@ -223,9 +223,9 @@ settings_width_changed (GSettings *settings, gchar *key, CommandApplet *command_
 static void
 settings_interval_changed (GSettings *settings, gchar *key, CommandApplet *command_applet)
 {
-    gint interval;
+    guint interval;
 
-    interval = g_settings_get_int (command_applet->settings, INTERVAL_KEY);
+    interval = g_settings_get_uint (command_applet->settings, INTERVAL_KEY);
 
     command_applet->interval = interval;
 
@@ -325,9 +325,9 @@ command_applet_fill (PanelApplet* applet)
     command_applet->applet = applet;
     command_applet->settings = panel_applet_settings_new (applet, COMMAND_SCHEMA);
 
-    command_applet->interval = g_settings_get_int (command_applet->settings, INTERVAL_KEY);
+    command_applet->interval = g_settings_get_uint (command_applet->settings, INTERVAL_KEY);
     command_applet->command = g_settings_get_string (command_applet->settings, COMMAND_KEY);
-    command_applet->width = g_settings_get_int (command_applet->settings, WIDTH_KEY);
+    command_applet->width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
 
     command_applet->box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
     command_applet->image = GTK_IMAGE (gtk_image_new_from_icon_name (APPLET_ICON, 24));
