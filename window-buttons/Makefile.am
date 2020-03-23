@@ -88,7 +88,6 @@ EXTRA_DIST = \
 	$(builder_DATA)
 
 SUBDIRS = \
-	pixmaps\
 	themes
 
 -include $(top_srcdir)/git.mk

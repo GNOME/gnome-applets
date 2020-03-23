@@ -79,8 +79,4 @@ EXTRA_DIST = \
 	$(schemas_in_files) \
 	$(builder_DATA)
 
-
-SUBDIRS = \
-	pixmaps
-
 -include $(top_srcdir)/git.mk

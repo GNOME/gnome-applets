@@ -10,6 +10,7 @@ libnet_speed_applet_la_CPPFLAGS = \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DNETSPEED_MENU_UI_DIR=\""$(uidir)"\" \
+	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-I$(top_srcdir) \
 	-I$(includedir) \
 	$(NULL)

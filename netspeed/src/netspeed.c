@@ -1211,6 +1211,9 @@ static void
 netspeed_applet_init (NetspeedApplet *netspeed)
 {
 	netspeed->size = 24;
+
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
+	                                   PKG_DATA_DIR G_DIR_SEPARATOR_S "icons");
 }
 
 static void

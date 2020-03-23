@@ -1,3 +1,3 @@
-SUBDIRS = data src
+SUBDIRS = apps
 
 -include $(top_srcdir)/git.mk

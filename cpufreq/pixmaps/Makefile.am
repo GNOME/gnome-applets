@@ -1,3 +1,4 @@
+NULL =
 
 cpufreq_pixmapdir = $(pkgdatadir)/cpufreq-applet/pixmaps
 cpufreq_pixmap_DATA =		\
@@ -7,58 +8,8 @@ cpufreq_pixmap_DATA =		\
 	cpufreq-25.png          \
 	cpufreq-na.png
 
-icons = \
-	gnome-cpu-frequency-applet.16.png \
-	gnome-cpu-frequency-applet.22.png \
-	gnome-cpu-frequency-applet.24.png \
-	gnome-cpu-frequency-applet.32.png \
-	gnome-cpu-frequency-applet.svg
-
 EXTRA_DIST = \
 	$(cpufreq_pixmap_DATA) \
-	$(icons)
-
-gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
-
-uninstall-local:
-	for icon in $(icons); do \
-		SIZE=`echo $$icon | cut -d. -f2`; \
-		FILE=`echo $$icon | cut -d. -f1,3`; \
-		if [ "$$SIZE" = "svg" ]; then \
-			SIZE="scalable"; \
-			FILE="$$FILE.svg"; \
-		else \
-			SIZE="$${SIZE}x$${SIZE}"; \
-		fi; \
-		rm -f $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
-	done
-	@-if test -z "$(DESTDIR)"; then \
-		echo "Updating Gtk icon cache."; \
-		$(gtk_update_icon_cache); \
-	else \
-		echo "*** Icon cache not updated. After install, run this:"; \
-		echo "***   $(gtk_update_icon_cache)"; \
-	fi
-
-install-data-local:
-	for icon in $(icons); do \
-		SIZE=`echo $$icon | cut -d. -f2`; \
-		FILE=`echo $$icon | cut -d. -f1,3`; \
-		if [ "$$SIZE" = "svg" ]; then \
-			SIZE="scalable"; \
-			FILE="$$FILE.svg"; \
-		else \
-			SIZE="$${SIZE}x$${SIZE}"; \
-		fi; \
-		mkdir -p $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/; \
-		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/icons/hicolor/$$SIZE/apps/$$FILE; \
-	done
-	@-if test -z "$(DESTDIR)"; then \
-		echo "Updating Gtk icon cache."; \
-		$(gtk_update_icon_cache); \
-	else \
-		echo "*** Icon cache not updated. After install, run this:"; \
-		echo "***   $(gtk_update_icon_cache)"; \
-	fi
+	$(NULL)
 
 -include $(top_srcdir)/git.mk

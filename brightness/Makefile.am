@@ -1,6 +1,6 @@
 NULL =
 
-SUBDIRS = icons src
+SUBDIRS = src
 
 APPLET_LOCATION = $(pkglibdir)/libbrightness-applet.so
 

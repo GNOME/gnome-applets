@@ -525,6 +525,32 @@ dnl **************************************************************************
 AC_CONFIG_FILES([
   Makefile
 
+  data/Makefile
+  data/icons/Makefile
+  data/icons/16x16/Makefile
+  data/icons/16x16/apps/Makefile
+  data/icons/16x16/devices/Makefile
+  data/icons/16x16/status/Makefile
+  data/icons/22x22/Makefile
+  data/icons/22x22/apps/Makefile
+  data/icons/22x22/status/Makefile
+  data/icons/24x24/Makefile
+  data/icons/24x24/apps/Makefile
+  data/icons/24x24/status/Makefile
+  data/icons/32x32/Makefile
+  data/icons/32x32/apps/Makefile
+  data/icons/32x32/status/Makefile
+  data/icons/48x48/Makefile
+  data/icons/48x48/apps/Makefile
+  data/icons/48x48/status/Makefile
+  data/icons/72x72/Makefile
+  data/icons/72x72/apps/Makefile
+  data/icons/96x96/Makefile
+  data/icons/96x96/apps/Makefile
+  data/icons/scalable/Makefile
+  data/icons/scalable/apps/Makefile
+  data/icons/scalable/status/Makefile
+
   help/Makefile
   help/accessx-status/Makefile
   help/battstat/Makefile
@@ -551,25 +577,6 @@ AC_CONFIG_FILES([
   battstat/src/apmlib/Makefile
 
   brightness/Makefile
-  brightness/icons/Makefile
-  brightness/icons/16x16/Makefile
-  brightness/icons/16x16/apps/Makefile
-  brightness/icons/16x16/status/Makefile
-  brightness/icons/22x22/Makefile
-  brightness/icons/22x22/apps/Makefile
-  brightness/icons/22x22/status/Makefile
-  brightness/icons/24x24/Makefile
-  brightness/icons/24x24/apps/Makefile
-  brightness/icons/24x24/status/Makefile
-  brightness/icons/32x32/Makefile
-  brightness/icons/32x32/apps/Makefile
-  brightness/icons/32x32/status/Makefile
-  brightness/icons/48x48/Makefile
-  brightness/icons/48x48/apps/Makefile
-  brightness/icons/48x48/status/Makefile
-  brightness/icons/scalable/Makefile
-  brightness/icons/scalable/apps/Makefile
-  brightness/icons/scalable/status/Makefile
   brightness/src/Makefile
 
   charpick/Makefile
@@ -587,25 +594,6 @@ AC_CONFIG_FILES([
   drivemount/src/Makefile
 
   inhibit/Makefile
-  inhibit/icons/Makefile
-  inhibit/icons/16x16/Makefile
-  inhibit/icons/16x16/apps/Makefile
-  inhibit/icons/16x16/status/Makefile
-  inhibit/icons/22x22/Makefile
-  inhibit/icons/22x22/apps/Makefile
-  inhibit/icons/22x22/status/Makefile
-  inhibit/icons/24x24/Makefile
-  inhibit/icons/24x24/apps/Makefile
-  inhibit/icons/24x24/status/Makefile
-  inhibit/icons/32x32/Makefile
-  inhibit/icons/32x32/apps/Makefile
-  inhibit/icons/32x32/status/Makefile
-  inhibit/icons/48x48/Makefile
-  inhibit/icons/48x48/apps/Makefile
-  inhibit/icons/48x48/status/Makefile
-  inhibit/icons/scalable/Makefile
-  inhibit/icons/scalable/apps/Makefile
-  inhibit/icons/scalable/status/Makefile
   inhibit/src/Makefile
 
   geyes/Makefile
@@ -622,21 +610,6 @@ AC_CONFIG_FILES([
   multiload/src/Makefile
 
   netspeed/data/Makefile
-  netspeed/icons/Makefile
-  netspeed/icons/16x16/Makefile
-  netspeed/icons/16x16/apps/Makefile
-  netspeed/icons/16x16/devices/Makefile
-  netspeed/icons/16x16/status/Makefile
-  netspeed/icons/22x22/Makefile
-  netspeed/icons/22x22/apps/Makefile
-  netspeed/icons/24x24/Makefile
-  netspeed/icons/24x24/apps/Makefile
-  netspeed/icons/32x32/Makefile
-  netspeed/icons/32x32/apps/Makefile
-  netspeed/icons/48x48/Makefile
-  netspeed/icons/48x48/apps/Makefile
-  netspeed/icons/scalable/Makefile
-  netspeed/icons/scalable/apps/Makefile
   netspeed/src/Makefile
   netspeed/Makefile
 
@@ -658,7 +631,6 @@ AC_CONFIG_FILES([
   trash/data/Makefile
 
   window-buttons/Makefile
-  window-buttons/pixmaps/Makefile
   window-buttons/themes/Makefile
 
   window-picker/Makefile
@@ -666,7 +638,6 @@ AC_CONFIG_FILES([
   window-picker/src/Makefile
 
   window-title/Makefile
-  window-title/pixmaps/Makefile
 ])
 
 AC_OUTPUT

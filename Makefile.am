@@ -50,6 +50,7 @@ always_built_SUBDIRS =  \
 	$(NULL)
 
 SUBDIRS = \
+	data \
 	help \
 	po			\
 	$(always_built_SUBDIRS)	\
@@ -65,6 +66,7 @@ SUBDIRS = \
 	$(NULL)
 
 DIST_SUBDIRS = \
+	data \
 	help \
 	po		\
 	drivemount	\
