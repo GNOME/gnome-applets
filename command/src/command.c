@@ -139,7 +139,7 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
 
     dialog = GTK_DIALOG (gtk_dialog_new_with_buttons(_("Command Applet Preferences"),
                                                      NULL,
-                                                     GTK_DIALOG_MODAL,
+                                                     0,
                                                      _("_Close"),
                                                      GTK_RESPONSE_CLOSE,
                                                      NULL));
