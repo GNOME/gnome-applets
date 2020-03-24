@@ -110,12 +110,6 @@ PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 dnl -- check for libpanelapplet (required) ------------------------------------
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanel-applet >= $LIBPANEL_REQUIRED)
 
-dnl -- check for libgnome-panel (required) ------------------------------------
-PKG_CHECK_MODULES([GNOME_PANEL], [libgnome-panel >= $LIBGNOME_PANEL_REQUIRED])
-
-GNOME_PANEL_MODULES_DIR=`$PKG_CONFIG --variable=modulesdir libgnome-panel`
-AC_SUBST([GNOME_PANEL_MODULES_DIR], [$GNOME_PANEL_MODULES_DIR])
-
 AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
 if test "$LIBPANEL_APPLET_DIR" == ""; then
 	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanel-applet`
@@ -123,6 +117,12 @@ fi
 
 AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
 AC_SUBST(LIBPANEL_APPLET_DIR)
+
+dnl -- check for libgnome-panel (required) ------------------------------------
+PKG_CHECK_MODULES([GNOME_PANEL], [libgnome-panel >= $LIBGNOME_PANEL_REQUIRED])
+
+GNOME_PANEL_MODULES_DIR=`$PKG_CONFIG --variable=modulesdir libgnome-panel`
+AC_SUBST([GNOME_PANEL_MODULES_DIR], [$GNOME_PANEL_MODULES_DIR])
 
 dnl -- check for X11 (required) -----------------------------------------------
 PKG_CHECK_MODULES([X11], [x11])
