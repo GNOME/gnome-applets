@@ -223,16 +223,6 @@ if test x"$XSLTPROC" = xno; then
   AC_MSG_ERROR([xsltproc executable not found in your path - should be installed with libxslt])
 fi
 
-dnl -- jw ---------------------------------------------------------------------
-AC_PATH_PROG(JW, jw, no)
-if test x$JW = xno; then
-  HAVE_JW="no"
-else
-  HAVE_JW="yes"
-fi
-AM_CONDITIONAL(HAVE_JW, test "x$HAVE_JW" = "xyes")
-AC_SUBST(HAVE_JW)
-
 dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
