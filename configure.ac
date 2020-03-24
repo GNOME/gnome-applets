@@ -385,22 +385,6 @@ fi
 
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
-dnl ***************************************************************************
-dnl *** Check for presence of tm.tm_gmtoff on the system                    ***
-dnl ***************************************************************************
-AC_CHECK_MEMBER([struct tm.tm_gmtoff],[struct_tm_tm_gmtoff=true],[struct_tm_tm_gmtoff=false],[#include <time.h>])
-case $struct_tm_tm_gmtoff in
-        true)
-                AC_DEFINE_UNQUOTED(HAVE_TM_TM_GMOFF, 1, Have the tm.tm_gmtoff member.)
-                ;;
-        *)
-                AC_CHECK_DECL(timezone,AC_DEFINE(HAVE_TIMEZONE,1,Have timezone),,
-[
-#include <time.h>
-])
-                ;;
-esac
-
 dnl **************************************************************************
 dnl Process .in files
 dnl **************************************************************************
