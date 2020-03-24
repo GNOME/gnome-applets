@@ -92,9 +92,6 @@ AC_PATH_XTRA
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
 AC_SUBST(X_LIBS)
 
-dnl Check for non-portable headers
-AC_CHECK_HEADERS([pty.h values.h])
-
 dnl ***************************************************************************
 dnl *** Use pkg-config to check for dependancies                            ***
 dnl ***************************************************************************
