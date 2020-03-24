@@ -386,28 +386,6 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
-dnl *** Check if IPv6 is available                                          ***
-dnl ***************************************************************************
-AC_MSG_CHECKING([whether to enable ipv6])
-AC_ARG_ENABLE(ipv6, [  --enable-ipv6 enable IPv6 extensions], ,enable_ipv6=yes)
-if test $enable_ipv6 = yes; then
-
-  dnl Code for checking presence of AF_INET6 on the system.
-  AC_TRY_COMPILE([
-    #include <sys/types.h>
-    #include <sys/socket.h>], [
-    socket(AF_INET6, SOCK_STREAM, 0)
-    ],
-    have_ipv6=yes,
-    have_ipv6=no
-  )
-  AC_MSG_RESULT($have_ipv6)
-  if test $have_ipv6 = yes; then
-      AC_DEFINE(ENABLE_IPV6, 1, [Define if system is IPv6 enabled])
-  fi
-fi
-
-dnl ***************************************************************************
 dnl *** Check for getaddrinfo                                               ***
 dnl ***************************************************************************
 have_getaddrinfo=no
@@ -627,5 +605,4 @@ echo "  cpufreq"
 echo "    building selector .............: $enable_selector"
 echo ""
 echo "  Using UPOWER ....................: $HAVE_UPOWER"
-echo "  Enabling IPv6 ...................: $have_ipv6"
 echo ""
