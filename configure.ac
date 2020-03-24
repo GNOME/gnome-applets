@@ -386,21 +386,6 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
-dnl *** Check for getaddrinfo                                               ***
-dnl ***************************************************************************
-have_getaddrinfo=no
-AC_CHECK_FUNC(getaddrinfo, have_getaddrinfo=yes)
-if test $have_getaddrinfo != yes; then
-  # getaddrinfo is not in the default libraries.  See if it's in some other.
-  for lib in bsd socket inet; do
-    AC_CHECK_LIB($lib, getaddrinfo, [LIBS="$LIBS -l$lib";have_getaddrinfo=yes; break])
-  done
-fi
-if test $have_getaddrinfo = yes; then
-  AC_DEFINE(HAVE_GETADDRINFO, 1, [Define if getaddrinfo() exists on the system])
-fi
-
-dnl ***************************************************************************
 dnl *** Check for presence of tm.tm_gmtoff on the system                    ***
 dnl ***************************************************************************
 AC_CHECK_MEMBER([struct tm.tm_gmtoff],[struct_tm_tm_gmtoff=true],[struct_tm_tm_gmtoff=false],[#include <time.h>])
