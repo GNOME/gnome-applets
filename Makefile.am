@@ -1,10 +1,5 @@
 NULL =
 
-gtop_applets = multiload netspeed
-if BUILD_GTOP_APPLETS
-gtop_SUBDIRS = $(gtop_applets)
-endif
-
 if BUILD_BATTSTAT_APPLET
 battstat_SUBDIR = battstat
 endif
@@ -34,6 +29,8 @@ always_built_SUBDIRS =  \
 	geyes		\
 	gweather \
 	mini-commander \
+	multiload \
+	netspeed \
 	sticky-notes	\
 	trash \
 	window-buttons \
@@ -46,7 +43,6 @@ SUBDIRS = \
 	help \
 	po			\
 	$(always_built_SUBDIRS)	\
-	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\

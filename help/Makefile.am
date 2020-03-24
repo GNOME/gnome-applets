@@ -6,6 +6,8 @@ SUBDIRS = \
 	geyes \
 	gweather \
 	mini-commander \
+	multiload \
+	netspeed \
 	sticky-notes \
 	trash \
 	$(NULL)
@@ -25,13 +27,6 @@ endif
 if BUILD_CPUFREQ_APPLET
 SUBDIRS += \
 	cpufreq \
-	$(NULL)
-endif
-
-if BUILD_GTOP_APPLETS
-SUBDIRS += \
-	multiload \
-	netspeed \
 	$(NULL)
 endif
 

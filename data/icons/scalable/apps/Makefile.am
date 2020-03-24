@@ -9,17 +9,12 @@ icons_DATA = \
 	gnome-brightness-applet.svg \
 	gnome-inhibit-applet.svg \
 	gnome-sticky-notes-applet.svg \
+	netspeed-applet.svg \
 	$(NULL)
 
 if BUILD_CPUFREQ_APPLET
 icons_DATA += \
 	gnome-cpu-frequency-applet.svg \
-	$(NULL)
-endif
-
-if BUILD_GTOP_APPLETS
-icons_DATA += \
-	netspeed-applet.svg \
 	$(NULL)
 endif
 

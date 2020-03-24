@@ -6,15 +6,10 @@ context = devices
 
 iconsdir = $(themedir)/$(size)/$(context)
 icons_DATA = \
-	$(NULL)
-
-if BUILD_GTOP_APPLETS
-icons_DATA += \
 	netspeed-loopback.png \
 	netspeed-plip.png \
 	netspeed-ppp.png \
 	$(NULL)
-endif
 
 EXTRA_DIST = \
 	$(icons_DATA) \

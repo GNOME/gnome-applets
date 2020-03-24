@@ -130,13 +130,8 @@ AC_SUBST(LIBPANEL_APPLET_DIR)
 dnl -- check for X11 (required) -----------------------------------------------
 PKG_CHECK_MODULES([X11], [x11])
 
-dnl -- check for libgtop (optional) -------------------------------------------
-build_gtop_applets=false
-PKG_CHECK_MODULES(GTOP_APPLETS,
-                 [libgtop-2.0 >= $LIBGTOP_REQUIRED],
-                 build_gtop_applets=true,
-		 AC_MSG_WARN([libgtop not found. Not building gtop applets.]))
-AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
+dnl -- check for libgtop (required) -------------------------------------------
+PKG_CHECK_MODULES(GTOP_APPLETS, [libgtop-2.0 >= $LIBGTOP_REQUIRED])
 
 dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
@@ -657,8 +652,8 @@ echo "    geyes .........................: always"
 echo "    gweather ......................: always"
 echo "    inhibit .......................: always"
 echo "    mini-commander ................: always"
-echo "    multiload .....................: $build_gtop_applets"
-echo "    netspeed ......................: $build_gtop_applets"
+echo "    multiload .....................: always"
+echo "    netspeed ......................: always"
 echo "    sticky-notes ..................: always"
 echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
