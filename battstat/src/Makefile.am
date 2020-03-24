@@ -24,7 +24,6 @@ battery_status_applet_libdir = $(pkglibdir)
 battery_status_applet_lib_LTLIBRARIES = libbattery-status-applet.la
 
 libbattery_status_applet_la_CPPFLAGS = \
-	-DG_LOG_DOMAIN=\"battstat_applet\" \
 	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\" \
 	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
