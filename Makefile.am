@@ -16,10 +16,6 @@ if HAVE_TRACKER_SEARCH_BAR
 tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
-if BUILD_TIMER
-timer_SUBDIR = timer
-endif
-
 always_built_SUBDIRS =  \
 	charpick	\
 	brightness	\
@@ -32,6 +28,7 @@ always_built_SUBDIRS =  \
 	multiload \
 	netspeed \
 	sticky-notes	\
+	timer \
 	trash \
 	window-buttons \
 	window-picker \

@@ -30,10 +30,7 @@
 
 #include <gdk/gdkkeysyms.h>
 
-#ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
-#include <libnotify/notification.h>
-#endif
 
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
@@ -476,9 +473,7 @@ static void
 update_finish (GWeatherInfo *info, gpointer data)
 {
     static int gw_fault_counter = 0;
-#ifdef HAVE_LIBNOTIFY
     char *message, *detail;
-#endif
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
     gint nxtSunEvent;
     const gchar *icon_name;
@@ -526,7 +521,6 @@ update_finish (GWeatherInfo *info, gpointer data)
 	    /* update applet */
 	    place_widgets(gw_applet);
 
-#ifdef HAVE_LIBNOTIFY
 	    if (g_settings_get_boolean (gw_applet->applet_settings, "show-notifications"))
 	    {
 		    NotifyNotification *n;
@@ -578,7 +572,6 @@ update_finish (GWeatherInfo *info, gpointer data)
 		   	 g_free (detail);
 		    }
 	    }
-#endif
     }
     else
     {

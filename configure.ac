@@ -137,15 +137,8 @@ dnl -- check for libwnck (required) -------------------------------------------
 PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
 
-dnl -- check for libnotify (optional) -----------------------------------------
-LIBNOTIFY_CFLAGS=
-LIBNOTIFY_LIBS=
-PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED,
-		  HAVE_LIBNOTIFY="yes", HAVE_LIBNOTIFY="no")
-
-if test "x$HAVE_LIBNOTIFY" = "xyes"; then
-	AC_DEFINE(HAVE_LIBNOTIFY, 1, [libnotify available])
-fi
+dnl -- check for libnotify (required) -----------------------------------------
+PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED)
 
 PKG_CHECK_MODULES([CPUFREQ_SELECTOR], [
   gio-unix-2.0 >= $GIO_REQUIRED)
@@ -422,12 +415,6 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl ***************************************************************************
-dnl *** timer applet specific checks                                        ***
-dnl ***************************************************************************
-
-AM_CONDITIONAL(BUILD_TIMER, test "x$HAVE_LIBNOTIFY" = "xyes")
-
-dnl ***************************************************************************
 dnl *** Check if IPv6 is available                                          ***
 dnl ***************************************************************************
 AC_MSG_CHECKING([whether to enable ipv6])
@@ -655,7 +642,7 @@ echo "    mini-commander ................: always"
 echo "    multiload .....................: always"
 echo "    netspeed ......................: always"
 echo "    sticky-notes ..................: always"
-echo "    timer .........................: $HAVE_LIBNOTIFY"
+echo "    timer .........................: always"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"
 echo "    window-buttons ................: always"

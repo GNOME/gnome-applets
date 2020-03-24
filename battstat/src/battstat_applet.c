@@ -38,9 +38,7 @@
 
 #include <panel-applet.h>
 
-#ifdef HAVE_LIBNOTIFY
 #include <libnotify/notify.h>
-#endif
 
 #include "battstat.h"
 #include "pixmaps.h"
@@ -374,7 +372,6 @@ get_remaining (BatteryStatus *info)
 static gboolean
 battery_full_notify (GtkWidget *applet)
 {
-#ifdef HAVE_LIBNOTIFY
 	GError *error = NULL;
 	GdkPixbuf *icon;
 	gboolean result;
@@ -406,9 +403,6 @@ battery_full_notify (GtkWidget *applet)
 	g_object_unref (G_OBJECT (n));
 
 	return result;
-#else
-	return FALSE;
-#endif
 }
 
 /* Show a dialog notifying the user that their battery is done charging.
