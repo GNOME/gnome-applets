@@ -332,14 +332,6 @@ AM_CONDITIONAL(NEED_LIBAPM, test "x$NEED_LIBAPM" = "xyes")
 AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
 
 dnl ***************************************************************************
-dnl *** Stickynotes specific checks                                         ***
-dnl ***************************************************************************
-# AC_ARG_ENABLE(stickynotes, [  --enable-stickynotes build stickynotes
-#                           [@<:@default: no, transparent upgrade to Tomboy@:>@]], enable_stickynotes="yes", enable_stickynotes="no")
-enable_stickynotes="yes"
-AM_CONDITIONAL(BUILD_STICKYNOTES_APPLET, test "x$enable_stickynotes" = "xyes")
-
-dnl ***************************************************************************
 dnl *** keyboard accessibility status applet check                          ***
 dnl ***************************************************************************
 
@@ -671,7 +663,7 @@ echo "    inhibit .......................: always"
 echo "    mini-commander ................: always"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
-echo "    sticky-notes ..................: $enable_stickynotes"
+echo "    sticky-notes ..................: always"
 echo "    timer .........................: $HAVE_LIBNOTIFY"
 echo "    tracker-search-bar ............: $have_tracker_search_bar"
 echo "    trash .........................: always"

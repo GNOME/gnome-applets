@@ -1,7 +1,5 @@
 NULL =
 
-if BUILD_STICKYNOTES_APPLET
-
 stickynotes_applet_libdir = $(pkglibdir)
 stickynotes_applet_lib_LTLIBRARIES = libsticky-notes-applet.la
 
@@ -79,8 +77,6 @@ CLEANFILES = \
 	sticky-notes-resources.c \
 	sticky-notes-resources.h \
 	$(NULL)
-
-endif
 
 EXTRA_DIST = \
 	$(gsettings_schemas_in_in) \
