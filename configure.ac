@@ -335,6 +335,9 @@ AC_CONFIG_FILES([
   data/icons/scalable/status/Makefile
   data/schemas/Makefile
 
+  gnome-applets/Makefile
+  gnome-applets/timer/Makefile
+
   help/Makefile
   help/accessx-status/Makefile
   help/battstat/Makefile
@@ -400,10 +403,6 @@ AC_CONFIG_FILES([
   sticky-notes/data/Makefile
   sticky-notes/src/Makefile
   sticky-notes/pixmaps/Makefile
-
-  timer/Makefile
-  timer/data/Makefile
-  timer/src/Makefile
 
   tracker-search-bar/Makefile
   tracker-search-bar/src/Makefile

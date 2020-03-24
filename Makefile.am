@@ -25,7 +25,6 @@ always_built_SUBDIRS =  \
 	multiload \
 	netspeed \
 	sticky-notes	\
-	timer \
 	trash \
 	window-buttons \
 	window-picker \
@@ -34,6 +33,7 @@ always_built_SUBDIRS =  \
 
 SUBDIRS = \
 	data \
+	gnome-applets \
 	help \
 	po			\
 	$(always_built_SUBDIRS)	\
@@ -41,11 +41,11 @@ SUBDIRS = \
 	$(accessx_status_SUBDIR)\
 	$(cpufreq_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \
-	$(timer_SUBDIR) \
 	$(NULL)
 
 DIST_SUBDIRS = \
 	data \
+	gnome-applets \
 	help \
 	po		\
 	drivemount	\
@@ -67,7 +67,6 @@ DIST_SUBDIRS = \
 	brightness	\
 	tracker-search-bar \
 	command		\
-	timer	\
 	$(NULL)
 
 EXTRA_DIST = \

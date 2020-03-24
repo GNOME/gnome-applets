@@ -1,0 +1,36 @@
+NULL =
+
+SUBDIRS = \
+	timer \
+	$(NULL)
+
+gnome_applets_libdir = $(GNOME_PANEL_MODULES_DIR)
+gnome_applets_lib_LTLIBRARIES = org.gnome.gnome-applets.la
+
+org_gnome_gnome_applets_la_CPPFLAGS = \
+	-DG_LOG_DOMAIN=\""org.gnome.gnome-applets"\" \
+	-DG_LOG_USE_STRUCTURED=1 \
+	-DLOCALE_DIR=\"$(localedir)\" \
+	$(AM_CPPFLAGS) \
+	$(NULL)
+
+org_gnome_gnome_applets_la_CFLAGS = \
+	$(GNOME_PANEL_CFLAGS) \
+	$(AM_CFLAGS) \
+	$(NULL)
+
+org_gnome_gnome_applets_la_SOURCES = \
+	ga-module.c \
+	$(NULL)
+
+org_gnome_gnome_applets_la_LIBADD = \
+	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
+	$(GNOME_PANEL_LIBS) \
+	$(NULL)
+
+org_gnome_gnome_applets_la_LDFLAGS = \
+	-module -avoid-version \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
+-include $(top_srcdir)/git.mk

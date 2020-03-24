@@ -1,5 +1,4 @@
-/* timerapplet.c:
- *
+/*
  * Copyright (C) 2014 Stefano Karapetsas
  *
  * This file is part of GNOME Applets.
@@ -22,18 +21,16 @@
  *      Stefano Karapetsas <stefano@karapetsas.com>
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "timer-applet.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
 #include <libnotify/notify.h>
-
-#include <panel-applet.h>
+#include <libgnome-panel/gp-utils.h>
 
 /* Applet constants */
 #define APPLET_ICON  "gnome-panel-clock"
@@ -46,13 +43,12 @@
 #define SHOW_NOTIFICATION_KEY   "show-notification"
 #define SHOW_DIALOG_KEY         "show-dialog"
 
-typedef struct
+struct _TimerApplet
 {
-    PanelApplet        *applet;
+    GpApplet            parent;
 
     GSettings          *settings;
 
-    GSimpleActionGroup *action_group;
     GtkLabel           *label;
     GtkImage           *image;
     GtkImage           *pause_image;
@@ -67,7 +63,9 @@ typedef struct
     gint                elapsed;
 
     guint               timeout_id;
-} TimerApplet;
+};
+
+G_DEFINE_TYPE (TimerApplet, timer_applet, GP_TYPE_APPLET)
 
 static void timer_start_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
 static void timer_pause_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
@@ -81,9 +79,12 @@ static const GActionEntry applet_menu_actions [] = {
     {"stop", timer_stop_callback, NULL, NULL, NULL},
     {"preferences", timer_preferences_callback, NULL, NULL, NULL},
     {"about", timer_about_callback, NULL, NULL, NULL},
+    {NULL}
 };
 
-static const char *ui = "<section>\
+static const char *ui = "<interface>\
+      <menu id=\"timer-menu\">\
+      <section>\
       <item>\
         <attribute name=\"label\" translatable=\"yes\">_Start timer</attribute>\
         <attribute name=\"action\">timer.start</attribute>\
@@ -104,23 +105,9 @@ static const char *ui = "<section>\
         <attribute name=\"label\" translatable=\"yes\">_About</attribute>\
         <attribute name=\"action\">timer.about</attribute>\
       </item>\
-    </section>";
-
-static void
-timer_applet_destroy (PanelApplet *applet_widget, TimerApplet *applet)
-{
-    g_assert (applet);
-
-    if (applet->timeout_id != 0)
-    {
-        g_source_remove(applet->timeout_id);
-        applet->timeout_id = 0;
-    }
-
-    g_object_unref (applet->settings);
-
-    notify_uninit ();
-}
+    </section>\
+    </menu>\
+    </interface>";
 
 /* timer management */
 static gboolean
@@ -212,10 +199,10 @@ timer_callback (TimerApplet *applet)
     }
 
     /* update actions sensitiveness */
-    g_simple_action_set_enabled (G_SIMPLE_ACTION (g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "start")), !applet->active || applet->pause);
-    g_simple_action_set_enabled (G_SIMPLE_ACTION (g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "pause")), applet->active && !applet->pause);
-    g_simple_action_set_enabled (G_SIMPLE_ACTION (g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "stop")), applet->active);
-    g_simple_action_set_enabled (G_SIMPLE_ACTION (g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "preferences")), !applet->active && !applet->pause);
+    g_simple_action_set_enabled (G_SIMPLE_ACTION (gp_applet_menu_lookup_action (GP_APPLET (applet), "start")), !applet->active || applet->pause);
+    g_simple_action_set_enabled (G_SIMPLE_ACTION (gp_applet_menu_lookup_action (GP_APPLET (applet), "pause")), applet->active && !applet->pause);
+    g_simple_action_set_enabled (G_SIMPLE_ACTION (gp_applet_menu_lookup_action (GP_APPLET (applet), "stop")), applet->active);
+    g_simple_action_set_enabled (G_SIMPLE_ACTION (gp_applet_menu_lookup_action (GP_APPLET (applet), "preferences")), !applet->active && !applet->pause);
 
     g_free (name);
 
@@ -394,19 +381,10 @@ timer_settings_changed (GSettings *settings, gchar *key, TimerApplet *applet)
     timer_callback (applet);
 }
 
-static gboolean
-timer_applet_fill (PanelApplet* applet_widget)
+static void
+timer_applet_fill (TimerApplet *applet)
 {
-    TimerApplet *applet;
-
-    if (!notify_is_initted ())
-        notify_init ("timer-applet");
-
-    panel_applet_set_flags (applet_widget, PANEL_APPLET_EXPAND_MINOR);
-
-    applet = g_malloc0(sizeof(TimerApplet));
-    applet->applet = applet_widget;
-    applet->settings = panel_applet_settings_new (applet_widget,TIMER_SCHEMA);
+    applet->settings = gp_applet_settings_new (GP_APPLET (applet), TIMER_SCHEMA);
     applet->timeout_id = 0;
     applet->active = FALSE;
     applet->pause = FALSE;
@@ -416,7 +394,7 @@ timer_applet_fill (PanelApplet* applet_widget)
     applet->pause_image = GTK_IMAGE (gtk_image_new_from_icon_name ("media-playback-pause", GTK_ICON_SIZE_BUTTON));
     applet->label = GTK_LABEL (gtk_label_new (""));
 
-    panel_applet_add_text_class (applet_widget, GTK_WIDGET (applet->label));
+    gp_add_text_color_class (GTK_WIDGET (applet->label));
 
     /* we add the Gtk label into the applet */
     gtk_box_pack_start (applet->box,
@@ -429,21 +407,14 @@ timer_applet_fill (PanelApplet* applet_widget)
                         GTK_WIDGET (applet->label),
                         TRUE, TRUE, 3);
 
-    gtk_container_add (GTK_CONTAINER (applet_widget),
+    gtk_container_add (GTK_CONTAINER (applet),
                        GTK_WIDGET (applet->box));
 
-    gtk_widget_show_all (GTK_WIDGET (applet->applet));
+    gtk_widget_show_all (GTK_WIDGET (applet));
     gtk_widget_hide (GTK_WIDGET (applet->pause_image));
 
-    g_signal_connect(G_OBJECT (applet->applet), "destroy",
-                     G_CALLBACK (timer_applet_destroy),
-                     applet);
-
     /* set up context menu */
-    applet->action_group = g_simple_action_group_new ();
-    g_action_map_add_action_entries (G_ACTION_MAP (applet->action_group), applet_menu_actions, G_N_ELEMENTS(applet_menu_actions), applet);
-    panel_applet_setup_menu (applet->applet, ui, applet->action_group, GETTEXT_PACKAGE);
-    gtk_widget_insert_action_group (GTK_WIDGET (applet->applet), "timer", G_ACTION_GROUP (applet->action_group));
+    gp_applet_setup_menu (GP_APPLET (applet), ui, applet_menu_actions);
 
     /* execute callback to set actions sensitiveness */
     timer_callback (applet);
@@ -451,24 +422,55 @@ timer_applet_fill (PanelApplet* applet_widget)
     /* GSettings callback */
     g_signal_connect (G_OBJECT (applet->settings), "changed",
                       G_CALLBACK (timer_settings_changed), applet);
-
-    return TRUE;
 }
 
-/* this function, called by gnome-panel, will create the applet */
-static gboolean
-timer_factory (PanelApplet* applet, const char* iid, gpointer data)
+static void
+timer_applet_constructed (GObject *object)
 {
-    gboolean retval = FALSE;
-
-    if (!g_strcmp0 (iid, "TimerApplet"))
-        retval = timer_applet_fill (applet);
-
-    return retval;
+  G_OBJECT_CLASS (timer_applet_parent_class)->constructed (object);
+  timer_applet_fill (TIMER_APPLET (object));
 }
 
-/* needed by gnome-panel applet library */
-PANEL_APPLET_IN_PROCESS_FACTORY("TimerAppletFactory",
-                                PANEL_TYPE_APPLET,
-                                timer_factory,
-                                NULL)
+static void
+timer_applet_finalize (GObject *object)
+{
+  TimerApplet *self;
+
+  self = TIMER_APPLET (object);
+
+  if (self->timeout_id != 0)
+    {
+      g_source_remove (self->timeout_id);
+      self->timeout_id = 0;
+    }
+
+  g_object_unref (self->settings);
+
+  notify_uninit ();
+
+  G_OBJECT_CLASS (timer_applet_parent_class)->finalize (object);
+}
+
+static void
+timer_applet_class_init (TimerAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = timer_applet_constructed;
+  object_class->finalize = timer_applet_finalize;
+}
+
+static void
+timer_applet_init (TimerApplet *self)
+{
+  GpApplet *applet;
+
+  applet = GP_APPLET (self);
+
+  if (!notify_is_initted ())
+    notify_init ("timer-applet");
+
+  gp_applet_set_flags (applet, GP_APPLET_FLAGS_EXPAND_MINOR);
+}
