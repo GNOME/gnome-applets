@@ -5,12 +5,6 @@ if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
 
-libgweather_applets = \
-	gweather
-if BUILD_LIBGWEATHER_APPLETS
-libgweather_SUBDIRS = $(libgweather_applets)
-endif
-
 if BUILD_BATTSTAT_APPLET
 battstat_SUBDIR = battstat
 endif
@@ -38,6 +32,7 @@ always_built_SUBDIRS =  \
 	drivemount	\
 	inhibit		\
 	geyes		\
+	gweather \
 	mini-commander \
 	sticky-notes	\
 	trash \
@@ -52,7 +47,6 @@ SUBDIRS = \
 	po			\
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
-	$(libgweather_SUBDIRS)	\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\

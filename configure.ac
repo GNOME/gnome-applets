@@ -208,12 +208,8 @@ fi
 dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 
- dnl -- check for libgweather (required for gweather applet) ------------------
-build_libgweather_applets=false
-PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED,
-	          build_libgweather_applets=true,
-		  AC_MSG_WARN([libgweather not found. Not building the weather applet.]))
-AM_CONDITIONAL(BUILD_LIBGWEATHER_APPLETS, $build_libgweather_applets)
+ dnl -- check for libgweather (required) ------------------
+PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED)
 
  dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
 TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-2.0"
@@ -658,7 +654,7 @@ echo "    command .......................: always"
 echo "    cpufreq .......................: $build_cpufreq_applet"
 echo "    drivemount ....................: always"
 echo "    geyes .........................: always"
-echo "    gweather ......................: $build_libgweather_applets"
+echo "    gweather ......................: always"
 echo "    inhibit .......................: always"
 echo "    mini-commander ................: always"
 echo "    multiload .....................: $build_gtop_applets"

@@ -4,6 +4,7 @@ SUBDIRS = \
 	charpick \
 	drivemount \
 	geyes \
+	gweather \
 	mini-commander \
 	sticky-notes \
 	trash \
@@ -24,12 +25,6 @@ endif
 if BUILD_CPUFREQ_APPLET
 SUBDIRS += \
 	cpufreq \
-	$(NULL)
-endif
-
-if BUILD_LIBGWEATHER_APPLETS
-SUBDIRS += \
-	gweather \
 	$(NULL)
 endif
 
