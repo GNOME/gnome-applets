@@ -59,21 +59,6 @@ BITMAPS = 			\
 	browser-mini.xpm	\
 	history-mini.xpm
 
-desktop_iconsdir = $(datadir)/icons/hicolor/48x48/apps
-desktop_icons_DATA = gnome-mini-commander.png
-
-gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
-install-data-hook: update-icon-cache
-uninstall-hook: update-icon-cache
-update-icon-cache:
-	@-if test -z "$(DESTDIR)"; then \
-		echo "Updating Gtk icon cache."; \
-		$(gtk_update_icon_cache); \
-	else \
-		echo "*** Icon cache not updated.  After (un)install, run this:"; \
-		echo "***   $(gtk_update_icon_cache)"; \
-	fi
-
 APPLET_LOCATION=$(pkglibdir)/libmini-commander-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
@@ -96,7 +81,6 @@ ui_DATA = mini-commander-applet-menu.xml
 EXTRA_DIST =								\
 	org.gnome.applets.MiniCommanderApplet.panel-applet.in.in	\
 	$(service_in_files)						\
-	$(desktop_icons_DATA)						\
 	$(BITMAPS)							\
 	$(ui_DATA)							\
 	$(builder_DATA)

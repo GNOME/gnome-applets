@@ -8,6 +8,7 @@ iconsdir = $(themedir)/$(size)/$(context)
 icons_DATA = \
 	gnome-brightness-applet.png \
 	gnome-inhibit-applet.png \
+	gnome-mini-commander.png \
 	netspeed-applet.png \
 	$(NULL)
 
