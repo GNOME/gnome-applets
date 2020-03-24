@@ -228,12 +228,6 @@ AM_GLIB_GNU_GETTEXT
 
 YELP_HELP_INIT
 
-case "$host" in
-	sparc-*-solaris*)	gkb_type_sun=true;;
-	*)			gkb_type_sun=false;;
-esac
-AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
-
 dnl ***************************************************************************
 dnl *** battstat specific checks                                            ***
 dnl ***************************************************************************
