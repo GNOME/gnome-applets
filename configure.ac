@@ -333,6 +333,7 @@ AC_CONFIG_FILES([
   data/icons/scalable/Makefile
   data/icons/scalable/apps/Makefile
   data/icons/scalable/status/Makefile
+  data/schemas/Makefile
 
   help/Makefile
   help/accessx-status/Makefile
@@ -416,7 +417,6 @@ AC_CONFIG_FILES([
   window-buttons/themes/Makefile
 
   window-picker/Makefile
-  window-picker/data/Makefile
   window-picker/src/Makefile
 
   window-title/Makefile

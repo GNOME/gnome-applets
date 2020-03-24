@@ -1,21 +1,5 @@
 SUBDIRS = pixmaps src
 
-gsettings_schemas_in_in = \
-	org.gnome.gnome-applets.cpufreq.gschema.xml.in.in
-
-@INTLTOOL_XML_NOMERGE_RULE@
-
-gsettings_ENUM_NAMESPACE = org.gnome.gnome-applets.cpufreq
-gsettings_ENUM_FILES = $(top_srcdir)/cpufreq/src/cpufreq-applet.h
-
-gsettings_schemas_in = $(gsettings_schemas_in_in:.xml.in.in=.xml.in)
-gsettings_SCHEMAS = $(gsettings_schemas_in:.xml.in=.xml)
-
-%.gschema.xml.in: %.gschema.xml.in.in Makefile
-	$(AM_V_GEN) $(SED) -e 's^\@GETTEXT_PACKAGE\@^$(GETTEXT_PACKAGE)^g' < $< > $@
-
-@GSETTINGS_RULES@
-
 APPLET_LOCATION = $(pkglibdir)/libcpu-frequency-applet.so
 
 appletdir       = $(LIBPANEL_APPLET_DIR)
@@ -37,10 +21,6 @@ uidir = $(pkgdatadir)/ui
 ui_DATA = cpufreq-applet-menu.xml
 
 CLEANFILES = \
-	$(gsettings__enum_file) \
-	$(gsettings_SCHEMAS_in) \
-	$(gsettings_SCHEMAS) \
-	*.gschema.valid	\
              $(applet_DATA)			\
              $(applet_DATA).in			\
              $(service_DATA)			\
@@ -48,13 +28,9 @@ CLEANFILES = \
 	     *.gladep
 
 EXTRA_DIST = \
-	$(gsettings_schemas_in_in) \
              org.gnome.applets.CPUFreqApplet.panel-applet.in.in	\
              $(service_in_files)				\
 	     $(builder_DATA)                 			\
 	     $(ui_DATA)
-	     
-					
-
 
 -include $(top_srcdir)/git.mk
