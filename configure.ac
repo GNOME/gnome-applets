@@ -206,18 +206,6 @@ dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
 
 dnl ***************************************************************************
-dnl *** find paths to installed binaries                                    ***
-dnl ***************************************************************************
-
-dnl -- gdk-pixbuf-csource -----------------------------------------------------
-AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
-
-if test x"$GDK_PIXBUF_CSOURCE" = xno; then
-  AC_MSG_ERROR([gdk-pixbuf-csource executable not found in your path - should be installed with GTK])
-fi
-AC_SUBST(GDK_PIXBUF_CSOURCE)
-
-dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
 
