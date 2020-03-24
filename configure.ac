@@ -143,22 +143,8 @@ PKG_CHECK_MODULES([CPUFREQ_SELECTOR], [
   polkit-gobject-1 >= $POLKIT_REQUIRED
 ])
 
-dnl -- check for libupower-glib (optional) --------------------------------------------
-UPOWER_CFLAGS=
-UPOWER_LIBS=
-AC_ARG_WITH(upower,[  --without-upower           build without upower support])
-
-if test "x$with_upower" != xno; then
-	PKG_CHECK_MODULES(UPOWER, upower-glib >= $UPOWER_REQUIRED,
-		  HAVE_UPOWER="yes",
-		  HAVE_UPOWER="no")
-
-	if test "x$HAVE_UPOWER" = "xyes"; then
-		AC_DEFINE(HAVE_UPOWER, 1, [UPOWER available])
-	fi
-else
-	AC_MSG_WARN(["upower support disabled"])
-fi
+dnl -- check for libupower-glib (required) --------------------------------------------
+PKG_CHECK_MODULES(UPOWER, upower-glib >= $UPOWER_REQUIRED)
 
 dnl -- check for wirelesstools (optional) -------------------------------------
 
@@ -215,64 +201,6 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
 AM_GLIB_GNU_GETTEXT
 
 YELP_HELP_INIT
-
-dnl ***************************************************************************
-dnl *** battstat specific checks                                            ***
-dnl ***************************************************************************
-
-dnl --disable-battstat=(yes|no)
-AC_ARG_ENABLE(battstat,
-	      [  --disable-battstat=[@<:@no/yes@:>@]
-                          don't build battery monitor applet [@<:@default: no@:>@]],,
-	      disable_battstat=no)
-
-HAVE_LIBAPM=no
-NEED_LIBAPM=no
-ACPIINC=
-build_battstat_applet=no
-
-if test x$disable_battstat = xno; then
-   build_battstat_applet=yes
-   AC_CHECK_HEADERS([err.h sys/sysctl.h])
-   case "${host}" in
-       powerpc-*-linux*)
-           NEED_LIBAPM=yes
-           AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
-	   ;;
-       # list of supported OS cores that use libapm
-       *-*-linux*)
-	   NEED_LIBAPM=yes
-	   AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
-	   ;;
-       # list of supported OS cores that do not use libapm
-       i386-*-freebsd*|*-*-netbsd*|*-*-openbsd*|*-*kfreebsd*-gnu)
-          if [ -n "${OS_SYS}" ]; then
-	       ACPIINC="-I${OS_SYS}"
-	   else
-	       ACPIINC="-I/usr/src/sys"
-	   fi
-
-	   savecppflags=$CPPFLAGS
-	   CPPFLAGS="$CPPFLAGS $ACPIINC"
-	   AC_CHECK_HEADER(dev/acpica/acpiio.h, have_acpiio=true, have_acpiio=false)
-	   if test $have_acpiio = true; then
-	     AC_DEFINE(HAVE_ACPIIO, 1, [Define if acpiio.h exists on the system])
-	   fi
-
-	   ;;
-       *)
-	   echo "warning: ${host} is not supported by battstat_applet, not building" >&2
-	   build_battstat_applet=no
-	   ;;
-    esac
-fi
-
-AC_SUBST(HAVE_LIBAPM)
-AC_SUBST(NEED_LIBAPM)
-AC_SUBST(ACPIINC)
-AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
-AM_CONDITIONAL(NEED_LIBAPM, test "x$NEED_LIBAPM" = "xyes")
-AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
 
 dnl ***************************************************************************
 dnl *** keyboard accessibility status applet check                          ***
@@ -429,7 +357,6 @@ AC_CONFIG_FILES([
   battstat/Makefile
   battstat/sounds/Makefile
   battstat/src/Makefile
-  battstat/src/apmlib/Makefile
 
   brightness/Makefile
   brightness/src/Makefile
@@ -521,7 +448,7 @@ echo "    modulesdir ....................: ${GNOME_PANEL_MODULES_DIR}"
 echo ""
 echo "  Applets"
 echo "    accessx-status ................: $HAVE_XKB"
-echo "    batstat .......................: $build_battstat_applet"
+echo "    batstat .......................: always"
 echo "    brightness ....................: always"
 echo "    charpick ......................: always"
 echo "    command .......................: always"
@@ -546,6 +473,4 @@ echo "    gucharmap support .............: $have_gucharmap"
 echo ""
 echo "  cpufreq"
 echo "    building selector .............: $enable_selector"
-echo ""
-echo "  Using UPOWER ....................: $HAVE_UPOWER"
 echo ""

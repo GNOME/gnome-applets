@@ -1,9 +1,5 @@
 NULL =
 
-if BUILD_BATTSTAT_APPLET
-battstat_SUBDIR = battstat
-endif
-
 if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
@@ -18,6 +14,7 @@ endif
 
 always_built_SUBDIRS =  \
 	charpick	\
+	battstat \
 	brightness	\
 	command		\
 	drivemount	\
@@ -41,7 +38,6 @@ SUBDIRS = \
 	po			\
 	$(always_built_SUBDIRS)	\
 	$(vfs_SUBDIRS)		\
-	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
 	$(cpufreq_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \

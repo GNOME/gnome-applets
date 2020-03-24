@@ -22,8 +22,6 @@
 
 #include <config.h>
 
-#ifdef HAVE_UPOWER
-
 #include <upower.h>
 #include <math.h>
 
@@ -303,5 +301,3 @@ battstat_upower_get_battery_info( BatteryStatus *status )
   
   g_ptr_array_unref( devices );
 }
-
-#endif /* HAVE_UPOWER */

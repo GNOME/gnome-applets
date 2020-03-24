@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	battstat \
 	charpick \
 	drivemount \
 	geyes \
@@ -15,12 +16,6 @@ SUBDIRS = \
 if APPLET_ACCESSX
 SUBDIRS += \
 	accessx-status \
-	$(NULL)
-endif
-
-if BUILD_BATTSTAT_APPLET
-SUBDIRS += \
-	battstat \
 	$(NULL)
 endif
 

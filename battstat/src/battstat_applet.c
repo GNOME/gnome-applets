@@ -272,7 +272,7 @@ static_global_initialisation (ProgressData *battstat)
     return NULL;
 
   initialise_global_pixmaps();
-  err = power_management_initialise (status_change_callback);
+  err = battstat_upower_initialise (status_change_callback);
 
   return err;
 }
@@ -288,7 +288,7 @@ static_global_teardown (ProgressData *battstat)
 
   /* instances == 0 */
 
-  power_management_cleanup();
+  battstat_upower_cleanup();
 }
 
 /* Pop up an error dialog on the same screen as 'applet' saying 'msg'.
@@ -950,7 +950,7 @@ check_for_updates( gpointer data )
 
   if (DEBUG) g_print("check_for_updates()\n");
 
-  if( (err = power_management_getinfo( &info )) )
+  if( (err = battstat_upower_get_battery_info( &info )) )
     battstat_error_dialog( battstat->applet, err );
 
   if (!event_driven)
@@ -1181,9 +1181,7 @@ about_cb (GSimpleAction *action,
 
   char *comments = g_strdup_printf ("%s\n\n%s",
 		  _("This utility shows the status of your laptop battery."),
-		  power_management_using_upower () ?
-		  	/* true */ _("upower backend enabled.") :
-			/* false */ _("Legacy (non-HAL) backend enabled.")
+		  _("upower backend enabled.")
 		  );
 
   gtk_show_about_dialog( NULL,

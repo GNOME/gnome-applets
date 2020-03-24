@@ -3,8 +3,6 @@ NULL =
 builderdir = $(pkgdatadir)/builder
 builder_DATA = battstat_applet.ui
 
-ACPIINC= @ACPIINC@
-
 SUBDIRS = sounds src
 
 gsettings_schemas_in_in = \
