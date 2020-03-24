@@ -22,7 +22,6 @@ uidir = $(pkgdatadir)/ui
 ui_DATA = geyes-applet-menu.xml
 
 EXTRA_DIST = \
-	     README.themes					\
 	     org.gnome.applets.GeyesApplet.panel-applet.in.in 	\
              $(service_in_files)				\
 	     $(ui_DATA)
