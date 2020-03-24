@@ -217,12 +217,6 @@ if test x"$GDK_PIXBUF_CSOURCE" = xno; then
 fi
 AC_SUBST(GDK_PIXBUF_CSOURCE)
 
-dnl -- xsltproc ---------------------------------------------------------------
-AC_PATH_PROG(XSLTPROC, xsltproc, no)
-if test x"$XSLTPROC" = xno; then
-  AC_MSG_ERROR([xsltproc executable not found in your path - should be installed with libxslt])
-fi
-
 dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
