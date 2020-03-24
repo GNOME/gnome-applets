@@ -23,7 +23,7 @@
 #ifndef _battstat_upower_h_
 #define _battstat_upower_h_
 
-char *battstat_upower_initialise (void (*) (void));
+const char *battstat_upower_initialise (void (*) (void));
 void battstat_upower_cleanup (void);
 
 #include "battstat.h"
