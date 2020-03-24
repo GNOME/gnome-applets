@@ -44,7 +44,7 @@ build-ubuntu:
                       xsltproc
                       yelp-tools
   script:
-    - ./autogen.sh --disable-Werror --enable-mini-commander
+    - ./autogen.sh --disable-Werror
     - make
     - make distcheck
 
@@ -93,7 +93,7 @@ coverity:
       --data "token=$COVERITY_TOKEN&project=gnome-applets"
       --output /tmp/coverity_tool.tgz
     - tar zxf /tmp/coverity_tool.tgz
-    - CC=clang ./autogen.sh --disable-Werror --enable-mini-commander
+    - CC=clang ./autogen.sh --disable-Werror
     - ./cov-analysis-linux64-*/bin/cov-build --dir cov-int make
     - tar czf cov-int.tar.gz cov-int
     - curl --form token=$COVERITY_TOKEN

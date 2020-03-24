@@ -332,13 +332,6 @@ AM_CONDITIONAL(NEED_LIBAPM, test "x$NEED_LIBAPM" = "xyes")
 AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
 
 dnl ***************************************************************************
-dnl *** Mini-Commander specific checks                                      ***
-dnl ***************************************************************************
-AC_ARG_ENABLE(mini-commander, [  --enable-mini-commander build mini-commander
-                          [@<:@default: no, transparent upgrade to deskbar-applet@:>@]],, enable_mini_commander="no")
-AM_CONDITIONAL(BUILD_MINICOMMANDER_APPLET, test "x$enable_mini_commander" = "xyes")
-
-dnl ***************************************************************************
 dnl *** Stickynotes specific checks                                         ***
 dnl ***************************************************************************
 # AC_ARG_ENABLE(stickynotes, [  --enable-stickynotes build stickynotes
@@ -675,7 +668,7 @@ echo "    drivemount ....................: always"
 echo "    geyes .........................: always"
 echo "    gweather ......................: $build_libgweather_applets"
 echo "    inhibit .......................: always"
-echo "    mini-commander ................: $enable_mini_commander"
+echo "    mini-commander ................: always"
 echo "    multiload .....................: $build_gtop_applets"
 echo "    netspeed ......................: $build_gtop_applets"
 echo "    sticky-notes ..................: $enable_stickynotes"

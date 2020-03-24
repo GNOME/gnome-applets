@@ -4,6 +4,7 @@ SUBDIRS = \
 	charpick \
 	drivemount \
 	geyes \
+	mini-commander \
 	sticky-notes \
 	trash \
 	$(NULL)
@@ -29,12 +30,6 @@ endif
 if BUILD_LIBGWEATHER_APPLETS
 SUBDIRS += \
 	gweather \
-	$(NULL)
-endif
-
-if BUILD_MINICOMMANDER_APPLET
-SUBDIRS += \
-	mini-commander \
 	$(NULL)
 endif
 

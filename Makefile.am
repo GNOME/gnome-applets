@@ -23,10 +23,6 @@ if BUILD_CPUFREQ_APPLET
 cpufreq_SUBDIR = cpufreq
 endif
 
-if BUILD_MINICOMMANDER_APPLET
-minicommander_applet_SUBDIR = mini-commander
-endif
-
 if HAVE_TRACKER_SEARCH_BAR
 tracker_search_bar_SUBDIR = tracker-search-bar
 endif
@@ -42,6 +38,7 @@ always_built_SUBDIRS =  \
 	drivemount	\
 	inhibit		\
 	geyes		\
+	mini-commander \
 	sticky-notes	\
 	trash \
 	window-buttons \
@@ -60,7 +57,6 @@ SUBDIRS = \
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
 	$(cpufreq_SUBDIR) \
-	$(minicommander_applet_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \
 	$(timer_SUBDIR) \
 	$(NULL)
@@ -95,9 +91,9 @@ EXTRA_DIST = \
 	COPYING-DOCS \
 	$(NULL)
 
-AM_DISTCHECK_CONFIGURE_FLAGS =	\
+AM_DISTCHECK_CONFIGURE_FLAGS = \
 	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets' \
-	--enable-mini-commander
+	$(NULL)
 
 MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
