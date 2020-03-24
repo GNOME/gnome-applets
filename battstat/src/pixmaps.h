@@ -18,7 +18,7 @@
  */
 
 /* XPM */
-static char * battery_y_gray_xpm[] = {
+static const char * battery_y_gray_xpm[] = {
 "16 40 34 1",
 " 	c None",
 ".	c #000000",
@@ -96,7 +96,7 @@ static char * battery_y_gray_xpm[] = {
 "    ........    "};
 
 /* XPM */
-static char * ac_small_xpm[] = {
+static const char * ac_small_xpm[] = {
 "12 20 88 1",
 " 	c None",
 ".	c #515337",
@@ -208,7 +208,7 @@ static char * ac_small_xpm[] = {
 " TUVW       "};
 
 /* XPM */
-static char * battery_small_xpm[] = {
+static const char * battery_small_xpm[] = {
 "12 20 97 2",
 "  	c None",
 ". 	c #33312F",
@@ -330,7 +330,7 @@ static char * battery_small_xpm[] = {
 
 
 /* XPM */
-static char * battery_small_meter_xpm[] = {
+static const char * battery_small_meter_xpm[] = {
 "12 20 72 1",
 " 	c None",
 ".	c #33312F",
@@ -426,7 +426,7 @@ static char * battery_small_meter_xpm[] = {
 "            "};
 
 /* XPM */
-static char * charge_small_xpm[] = {
+static const char * charge_small_xpm[] = {
 "12 20 106 2",
 "  	c None",
 ". 	c #515337",
@@ -555,7 +555,7 @@ static char * charge_small_xpm[] = {
 "@.#.$.%.&.*.=.          ",
 "  -.;.>.,.              "};
 /* XPM */
-static char * warning_small_xpm[] = {
+static const char * warning_small_xpm[] = {
 "6 12 7 1",
 " 	c None",
 ".	c #000000",
@@ -577,7 +577,7 @@ static char * warning_small_xpm[] = {
 " .@%. ",
 "  ..  "};
 /* XPM */
-static char * battery_gray_xpm[] = {
+static const char * battery_gray_xpm[] = {
 "41 16 34 1",
 " 	c None",
 ".	c #000000",
