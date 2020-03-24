@@ -217,9 +217,6 @@ if test x"$GDK_PIXBUF_CSOURCE" = xno; then
 fi
 AC_SUBST(GDK_PIXBUF_CSOURCE)
 
-dnl -- glib-genmarshal --------------------------------------------------------
-AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
-
 dnl -- xsltproc ---------------------------------------------------------------
 AC_PATH_PROG(XSLTPROC, xsltproc, no)
 if test x"$XSLTPROC" = xno; then
