@@ -28,6 +28,7 @@ struct _charpick_data {
   GtkWidget *add_edit_dialog;
   GtkWidget *add_edit_entry;
   GSettings *settings;
+  guint rebuild_id;
 };
 
 
