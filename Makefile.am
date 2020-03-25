@@ -27,7 +27,6 @@ always_built_SUBDIRS =  \
 	sticky-notes	\
 	trash \
 	window-buttons \
-	window-picker \
 	window-title \
 	$(NULL)
 
@@ -61,7 +60,6 @@ DIST_SUBDIRS = \
 	trash	\
 	cpufreq		\
 	window-buttons	\
-	window-picker	\
 	window-title	\
 	inhibit		\
 	brightness	\

@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2020 Alberts Muktupāvels
+ * Copyright (C) 2020 Sebastian Geiger
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +22,7 @@
 #include <libgnome-panel/gp-module.h>
 
 #include "timer/timer-applet.h"
+#include "window-picker/wp-applet.h"
 
 static GpAppletInfo *
 ga_get_applet_info (const char *id)
@@ -38,6 +40,13 @@ ga_get_applet_info (const char *id)
       description = _("Start a timer and receive a notification when it is finished");
       icon_name = "gnome-panel-clock";
     }
+  else if (g_strcmp0 (id, "window-picker") == 0)
+    {
+      type_func = wp_applet_get_type;
+      name = _("Window Picker");
+      description = _("Shows a list of icons for the open windows.");
+      icon_name = "preferences-system-windows";
+    }
   else
     {
       g_assert_not_reached ();
@@ -54,6 +63,9 @@ ga_get_applet_id_from_iid (const char *iid)
 {
   if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
+  else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
+           g_strcmp0 (iid, "org.gnome.gnome-applets.window-picker::window-picker") == 0)
+    return "window-picker";
 
   return NULL;
 }
@@ -72,6 +84,7 @@ gp_module_load (GpModule *module)
 
   gp_module_set_applet_ids (module,
                             "timer",
+                            "window-picker",
                             NULL);
 
   gp_module_set_get_applet_info (module, ga_get_applet_info);

@@ -2,6 +2,7 @@ NULL =
 
 SUBDIRS = \
 	timer \
+	window-picker \
 	$(NULL)
 
 gnome_applets_libdir = $(GNOME_PANEL_MODULES_DIR)
@@ -25,6 +26,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 
 org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
+	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \
 	$(GNOME_PANEL_LIBS) \
 	$(NULL)
 
