@@ -166,11 +166,11 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
     unichar = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "unichar"));
     curr_data->selected_unichar = unichar;
     /* set this? widget as the selection owner */
-    gtk_selection_owner_set (curr_data->applet,
-	  		     GDK_SELECTION_PRIMARY,
+    gtk_selection_owner_set (curr_data->invisible,
+                             GDK_SELECTION_PRIMARY,
                              GDK_CURRENT_TIME); 
-    gtk_selection_owner_set (curr_data->applet,
-	  		     GDK_SELECTION_CLIPBOARD,
+    gtk_selection_owner_set (curr_data->invisible,
+                             GDK_SELECTION_CLIPBOARD,
                              GDK_CURRENT_TIME); 
   }	
 	     
@@ -619,8 +619,9 @@ applet_destroy (GtkWidget *widget, gpointer data)
     gtk_widget_destroy (curr_data->menu);
   if (curr_data->settings)
     g_object_unref (curr_data->settings);
+  if (curr_data->invisible)
+    gtk_widget_destroy (curr_data->invisible);
   g_free (curr_data);
-  
 }
 
 void 
@@ -696,6 +697,7 @@ charpicker_applet_fill (PanelApplet *applet)
 {
   PanelAppletOrient orientation;
   charpick_data *curr_data;
+  GdkScreen *screen;
   GdkAtom utf8_atom;
   GList *list;
   gchar *string;
@@ -741,22 +743,27 @@ charpicker_applet_fill (PanelApplet *applet)
   g_signal_connect (G_OBJECT (curr_data->applet), "key_press_event",
 		             G_CALLBACK (key_press_event), curr_data);
 
+  screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+  curr_data->invisible = gtk_invisible_new_for_screen (screen);
+
   utf8_atom = gdk_atom_intern ("UTF8_STRING", FALSE);
-  gtk_selection_add_target (curr_data->applet, 
-			    GDK_SELECTION_PRIMARY,
+  gtk_selection_add_target (curr_data->invisible,
+                            GDK_SELECTION_PRIMARY,
                             utf8_atom,
-			    0);
-  gtk_selection_add_target (curr_data->applet, 
-			    GDK_SELECTION_CLIPBOARD,
+                            0);
+  gtk_selection_add_target (curr_data->invisible,
+                            GDK_SELECTION_CLIPBOARD,
                             utf8_atom,
-			    0);
-  g_signal_connect (G_OBJECT (curr_data->applet), "selection_get",
-		      G_CALLBACK (charpick_selection_handler),
-		      curr_data);
-  g_signal_connect (G_OBJECT (curr_data->applet), "selection_clear_event",
-		      G_CALLBACK (selection_clear_cb),
-		      curr_data);
- 
+                            0);
+  g_signal_connect (curr_data->invisible,
+                    "selection_get",
+                    G_CALLBACK (charpick_selection_handler),
+                    curr_data);
+  g_signal_connect (curr_data->invisible,
+                    "selection_clear_event",
+                    G_CALLBACK (selection_clear_cb),
+                    curr_data);
+
   make_applet_accessible (GTK_WIDGET (applet));
 
   /* session save signal */ 
