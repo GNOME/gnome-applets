@@ -463,26 +463,33 @@ static gboolean button_release (GtkWidget *event_box, GdkEventButton *event, WBA
 	imgh = gdk_pixbuf_get_height(imgpb);
 
 	if (!(event->x<0 || event->y<0 || event->x>imgw || event->y>imgh)) {
+		WnckWindowActions actions;
+
 		if (wbapplet->prefs->only_maximized) {
 			controlledwindow = wbapplet->umaxedwindow;
 		} else {
 			controlledwindow = wbapplet->activewindow;
 		}
 
+		actions = wnck_window_get_actions (controlledwindow);
+
 		switch (i) {
 			case WB_BUTTON_MINIMIZE:
-				wnck_window_minimize(controlledwindow);
+				if ((actions & WNCK_WINDOW_ACTION_MINIMIZE) == WNCK_WINDOW_ACTION_MINIMIZE)
+					wnck_window_minimize (controlledwindow);
 				break;
 			case WB_BUTTON_UMAXIMIZE:
-				if (wnck_window_is_maximized(controlledwindow)) {
+				if (wnck_window_is_maximized (controlledwindow) &&
+				    (actions & WNCK_WINDOW_ACTION_UNMAXIMIZE) == WNCK_WINDOW_ACTION_UNMAXIMIZE) {
 					wnck_window_unmaximize(controlledwindow);
 					wnck_window_activate(controlledwindow, gtk_get_current_event_time()); // make unmaximized window active
-				} else {
+				} else if ((actions & WNCK_WINDOW_ACTION_MAXIMIZE) == WNCK_WINDOW_ACTION_MAXIMIZE) {
 					wnck_window_maximize(controlledwindow);
 				}
 				break;
 			case WB_BUTTON_CLOSE:
-				wnck_window_close(controlledwindow, GDK_CURRENT_TIME);
+				if ((actions & WNCK_WINDOW_ACTION_CLOSE) == WNCK_WINDOW_ACTION_CLOSE)
+					wnck_window_close (controlledwindow, GDK_CURRENT_TIME);
 				break;
 		}
 	}
