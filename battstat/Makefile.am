@@ -3,7 +3,7 @@ NULL =
 builderdir = $(pkgdatadir)/builder
 builder_DATA = battstat_applet.ui
 
-SUBDIRS = sounds src
+SUBDIRS = src
 
 APPLET_LOCATION = $(pkglibdir)/libbattery-status-applet.so
 

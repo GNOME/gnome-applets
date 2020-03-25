@@ -1001,10 +1001,6 @@ check_for_updates( gpointer data )
       if(battstat->beep)
         gdk_beep();
     }
-#if 0
-    /* FIXME: gnome-applets doesn't depend on libgnome anymore */
-    gnome_triggers_do ("", NULL, "battstat_applet", "LowBattery", NULL);
-#endif
   }
 
   if( battstat->last_charging &&
@@ -1016,11 +1012,6 @@ check_for_updates( gpointer data )
       info.percent > 99)
   {
     /* Inform that battery now fully charged */
-#if 0
-    /* FIXME: gnome-applets doesn't depend on libgnome anymore */
-    gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
-#endif
-
     if(battstat->fullbattnot)
     {
       battery_full_dialog (battstat->applet);

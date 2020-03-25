@@ -360,7 +360,6 @@ AC_CONFIG_FILES([
   accessx-status/src/Makefile
 
   battstat/Makefile
-  battstat/sounds/Makefile
   battstat/src/Makefile
 
   brightness/Makefile
