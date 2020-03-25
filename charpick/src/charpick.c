@@ -491,6 +491,29 @@ build_table(charpick_data *p_curr_data)
   p_curr_data->last_toggle_button = NULL;
 }
 
+static gboolean
+rebuild_cb (gpointer user_data)
+{
+  charpick_data *curr_data;
+
+  curr_data = user_data;
+  curr_data->rebuild_id = 0;
+
+  build_table (curr_data);
+
+  return G_SOURCE_REMOVE;
+}
+
+static void
+queue_rebuild (charpick_data *curr_data)
+{
+  if (curr_data->rebuild_id != 0)
+    return;
+
+  curr_data->rebuild_id = g_idle_add (rebuild_cb, curr_data);
+  g_source_set_name_by_id (curr_data->rebuild_id, "[charpick] rebuild_cb");
+}
+
 static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
 {
   charpick_data *curr_data = data;
@@ -504,7 +527,7 @@ static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation,
     curr_data->panel_size = allocation->height;
   }
 
-  build_table (curr_data);
+  queue_rebuild (curr_data);
   return;
 }
 
@@ -579,7 +602,13 @@ applet_destroy (GtkWidget *widget, gpointer data)
   charpick_data *curr_data = data;
 
   g_return_if_fail (curr_data);
-   
+
+  if (curr_data->rebuild_id != 0)
+    {
+      g_source_remove (curr_data->rebuild_id);
+      curr_data->rebuild_id = 0;
+    }
+
   if (curr_data->about_dialog)
     gtk_widget_destroy (curr_data->about_dialog);   
   if (curr_data->propwindow)
@@ -681,7 +710,8 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->about_dialog = NULL;
   curr_data->add_edit_dialog = NULL;
   curr_data->settings = panel_applet_settings_new (applet, CHARPICK_SCHEMA);
- 
+  curr_data->rebuild_id = 0;
+
   get_chartable (curr_data);
   
   string = g_settings_get_string (curr_data->settings, KEY_CURRENT_LIST);
