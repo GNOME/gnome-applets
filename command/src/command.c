@@ -214,7 +214,11 @@ output_cb (GaCommand     *command,
             }
 
           if (icon)
-            gtk_image_set_from_icon_name (self->image, icon, 24);
+            {
+              gtk_image_set_from_icon_name (self->image,
+                                            icon,
+                                            GTK_ICON_SIZE_LARGE_TOOLBAR);
+            }
 
           g_free (markup);
           g_free (icon);
@@ -339,7 +343,7 @@ command_applet_fill (PanelApplet* applet)
     command_applet->width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
 
     command_applet->box = GTK_BOX (gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-    command_applet->image = GTK_IMAGE (gtk_image_new_from_icon_name (APPLET_ICON, 24));
+    command_applet->image = GTK_IMAGE (gtk_image_new_from_icon_name (APPLET_ICON, GTK_ICON_SIZE_LARGE_TOOLBAR));
     command_applet->label = GTK_LABEL (gtk_label_new (ERROR_OUTPUT));
 
     /* we add the Gtk label into the applet */
