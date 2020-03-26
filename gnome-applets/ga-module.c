@@ -22,6 +22,7 @@
 #include <libgnome-panel/gp-module.h>
 
 #include "timer/timer-applet.h"
+#include "trash/trash-applet.h"
 #include "window-picker/wp-applet.h"
 
 static GpAppletInfo *
@@ -39,6 +40,13 @@ ga_get_applet_info (const char *id)
       name = _("Timer");
       description = _("Start a timer and receive a notification when it is finished");
       icon_name = "gnome-panel-clock";
+    }
+  else if (g_strcmp0 (id, "trash") == 0)
+    {
+      type_func = trash_applet_get_type;
+      name = _("Trash");
+      description = _("Go to Trash");
+      icon_name = "user-trash-full";
     }
   else if (g_strcmp0 (id, "window-picker") == 0)
     {
@@ -66,6 +74,8 @@ ga_get_applet_id_from_iid (const char *iid)
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
            g_strcmp0 (iid, "org.gnome.gnome-applets.window-picker::window-picker") == 0)
     return "window-picker";
+  else if (g_strcmp0 (iid, "TrashAppletFactory::TrashApplet") == 0)
+    return "trash";
 
   return NULL;
 }
@@ -84,6 +94,7 @@ gp_module_load (GpModule *module)
 
   gp_module_set_applet_ids (module,
                             "timer",
+                            "trash",
                             "window-picker",
                             NULL);
 

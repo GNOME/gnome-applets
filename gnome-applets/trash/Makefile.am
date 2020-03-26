@@ -1,10 +1,8 @@
 NULL =
 
-trash_libdir=${pkglibdir}
-trash_lib_LTLIBRARIES=libtrash-applet.la
+noinst_LTLIBRARIES = libtrash-applet.la
 
 libtrash_applet_la_CPPFLAGS = \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.trash\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-I$(top_builddir) \
@@ -12,20 +10,19 @@ libtrash_applet_la_CPPFLAGS = \
 	$(NULL)
 
 libtrash_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
 libtrash_applet_la_LDFLAGS = \
-	-module -avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libtrash_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(GIO_LIBS) \
 	$(X_LIBS) \
 	$(NULL)

@@ -337,6 +337,7 @@ AC_CONFIG_FILES([
 
   gnome-applets/Makefile
   gnome-applets/timer/Makefile
+  gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
 
   help/Makefile
@@ -407,10 +408,6 @@ AC_CONFIG_FILES([
   tracker-search-bar/Makefile
   tracker-search-bar/src/Makefile
   tracker-search-bar/data/Makefile
-
-  trash/Makefile
-  trash/src/Makefile
-  trash/data/Makefile
 
   window-buttons/Makefile
   window-buttons/themes/Makefile

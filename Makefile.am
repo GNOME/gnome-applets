@@ -25,7 +25,6 @@ always_built_SUBDIRS =  \
 	multiload \
 	netspeed \
 	sticky-notes	\
-	trash \
 	window-buttons \
 	window-title \
 	$(NULL)
@@ -57,7 +56,6 @@ DIST_SUBDIRS = \
 	gweather 	\
 	accessx-status	\
 	sticky-notes	\
-	trash	\
 	cpufreq		\
 	window-buttons	\
 	window-title	\
