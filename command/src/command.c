@@ -272,7 +272,11 @@ command_execute (CommandApplet *command_applet)
                         gtk_label_set_markup (command_applet->label, goutput);
                     }
                     if (icon)
-                        gtk_image_set_from_icon_name (command_applet->image, icon, 24);
+                    {
+                        gtk_image_set_from_icon_name (command_applet->image,
+                                                      icon,
+                                                      GTK_ICON_SIZE_LARGE_TOOLBAR);
+                    }
 
                     g_free (goutput);
                     g_free (icon);
