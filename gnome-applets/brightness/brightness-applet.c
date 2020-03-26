@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
- *
+/*
  * Brightness Applet
  * Copyright (C) 2006 Benjamin Canou <bookeldor@gmail.com>
  * Copyright (C) 2007 Richard Hughes <richard@hughsie.com>
@@ -21,14 +20,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "brightness-applet.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <panel-applet.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
@@ -36,15 +33,9 @@
 
 #include "dbus-brightness.h"
 
-#define GPM_TYPE_BRIGHTNESS_APPLET		(gpm_brightness_applet_get_type ())
-#define GPM_BRIGHTNESS_APPLET(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_BRIGHTNESS_APPLET, GpmBrightnessApplet))
-#define GPM_BRIGHTNESS_APPLET_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_BRIGHTNESS_APPLET, GpmBrightnessAppletClass))
-#define GPM_IS_BRIGHTNESS_APPLET(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_BRIGHTNESS_APPLET))
-#define GPM_IS_BRIGHTNESS_APPLET_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_BRIGHTNESS_APPLET))
-#define GPM_BRIGHTNESS_APPLET_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_BRIGHTNESS_APPLET, GpmBrightnessAppletClass))
-
-typedef struct{
-	PanelApplet parent;
+struct _GpmBrightnessApplet
+{
+	GpApplet parent;
 	/* applet state */
 	gboolean popped; /* the popup is shown */
 	/* the popup and its widgets */
@@ -55,44 +46,21 @@ typedef struct{
 	DBusSettingsDaemonPowerScreen *proxy;
 	guint bus_watch_id;
 	gint level;
-} GpmBrightnessApplet;
-
-typedef struct{
-	PanelAppletClass	parent_class;
-} GpmBrightnessAppletClass;
-
-GType                gpm_brightness_applet_get_type  (void);
+};
 
 #define GSD_DBUS_SERVICE	"org.gnome.SettingsDaemon.Power"
 #define GSD_DBUS_PATH_POWER	"/org/gnome/SettingsDaemon/Power"
 
-G_DEFINE_TYPE (GpmBrightnessApplet, gpm_brightness_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE (GpmBrightnessApplet, gpm_brightness_applet, GP_TYPE_APPLET)
 
-static void      gpm_applet_update_icon           (GpmBrightnessApplet *applet);
-static void      gpm_applet_size_allocate_cb      (GtkWidget *widget, GdkRectangle *allocation);
-static gboolean  gpm_applet_destroy_popup_cb      (GpmBrightnessApplet *applet);
 static void      gpm_applet_update_tooltip        (GpmBrightnessApplet *applet);
-static void      gpm_applet_update_popup_level    (GpmBrightnessApplet *applet);
-static gboolean  gpm_applet_plus_cb               (GtkWidget *w, GpmBrightnessApplet *applet);
-static gboolean  gpm_applet_minus_cb              (GtkWidget *w, GpmBrightnessApplet *applet);
-static gboolean  gpm_applet_key_press_cb          (GtkWidget *popup, GdkEventKey *event, GpmBrightnessApplet *applet);
-static gboolean  gpm_applet_scroll_cb             (GpmBrightnessApplet *applet, GdkEventScroll *event);
-static gboolean  gpm_applet_slide_cb              (GtkWidget *w, GpmBrightnessApplet *applet);
-static void      gpm_applet_create_popup          (GpmBrightnessApplet *applet);
-static gboolean  gpm_applet_popup_cb              (GpmBrightnessApplet *applet, GdkEventButton *event);
-static void      gpm_applet_dialog_about_cb       (GSimpleAction *action, GVariant *parameter, gpointer data);
-static void      gpm_applet_destroy_cb            (GtkWidget *widget);
 
-#define GPM_BRIGHTNESS_APPLET_ID		"BrightnessApplet"
-#define GPM_BRIGHTNESS_APPLET_FACTORY_ID	"BrightnessAppletFactory"
 #define GPM_BRIGHTNESS_APPLET_ICON		"gnome-brightness-applet"
 #define GPM_BRIGHTNESS_APPLET_ICON_BRIGHTNESS	"gpm-brightness-lcd"
 #define GPM_BRIGHTNESS_APPLET_ICON_DISABLED	"gpm-brightness-lcd-disabled"
 #define GPM_BRIGHTNESS_APPLET_ICON_INVALID	"gpm-brightness-lcd-invalid"
 #define GPM_BRIGHTNESS_APPLET_NAME		_("Brightness Applet")
 #define GPM_BRIGHTNESS_APPLET_DESC		_("Adjusts laptop panel brightness.")
-#define PANEL_APPLET_VERTICAL(p)					\
-	 (((p) == PANEL_APPLET_ORIENT_LEFT) || ((p) == PANEL_APPLET_ORIENT_RIGHT))
 
 /**
  * gpm_applet_get_brightness:
@@ -149,14 +117,12 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
 	GpmBrightnessApplet *applet = GPM_BRIGHTNESS_APPLET (widget);
 	int               size = NULL;
 
-	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
-		case PANEL_APPLET_ORIENT_LEFT:
-		case PANEL_APPLET_ORIENT_RIGHT:
+	switch (gp_applet_get_orientation (GP_APPLET (applet))) {
+		case GTK_ORIENTATION_VERTICAL:
 			size = allocation->width;
 			break;
 
-		case PANEL_APPLET_ORIENT_UP:
-		case PANEL_APPLET_ORIENT_DOWN:
+		case GTK_ORIENTATION_HORIZONTAL:
 			size = allocation->height;
 			break;
 	}
@@ -183,7 +149,7 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
  *
  * destroys the popup (called if orientation has changed)
  **/
-static gboolean
+static void
 gpm_applet_destroy_popup_cb (GpmBrightnessApplet *applet)
 {
 	if (applet->popup != NULL) {
@@ -192,7 +158,15 @@ gpm_applet_destroy_popup_cb (GpmBrightnessApplet *applet)
 		applet->popped = FALSE;
 		gpm_applet_update_tooltip (applet);
 	}
-	return TRUE;
+}
+
+static void
+placement_changed_cb (GpApplet            *applet,
+                      GtkOrientation       orientation,
+                      GtkPositionType      position,
+                      GpmBrightnessApplet *self)
+{
+  gpm_applet_destroy_popup_cb (self);
 }
 
 /**
@@ -464,12 +438,12 @@ static void
 gpm_applet_create_popup (GpmBrightnessApplet *applet)
 {
 	static GtkWidget *box, *frame;
-	gint orientation = panel_applet_get_orient (PANEL_APPLET (PANEL_APPLET (applet)));
+	GtkOrientation orientation = gp_applet_get_orientation (GP_APPLET (applet));
 
 	gpm_applet_destroy_popup_cb (applet);
 
 	/* slider */
-	if (PANEL_APPLET_VERTICAL(orientation)) {
+	if (orientation == GTK_ORIENTATION_VERTICAL) {
 		applet->slider = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
 		gtk_widget_set_size_request (applet->slider, 100, -1);
 	} else {
@@ -494,7 +468,7 @@ gpm_applet_create_popup (GpmBrightnessApplet *applet)
 	g_signal_connect (G_OBJECT(applet->btn_plus), "pressed", G_CALLBACK(gpm_applet_plus_cb), applet);
 
 	/* box */
-	if (PANEL_APPLET_VERTICAL(orientation)) {
+	if (orientation == GTK_ORIENTATION_VERTICAL) {
 		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
 	} else {
 		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 1);
@@ -531,7 +505,8 @@ static gboolean
 gpm_applet_popup_cb (GpmBrightnessApplet *applet, GdkEventButton *event)
 {
 	GtkAllocation allocation, popup_allocation;
-	gint orientation, x, y;
+	GtkPositionType position;
+	gint x, y;
 	GdkWindow *window;
 	GdkDisplay *display;
 	GdkDeviceManager *device_manager;
@@ -570,29 +545,29 @@ gpm_applet_popup_cb (GpmBrightnessApplet *applet, GdkEventButton *event)
 	gtk_widget_show_all (applet->popup);
 
 	/* retrieve geometry parameters and move window appropriately */
-	orientation = panel_applet_get_orient (PANEL_APPLET (PANEL_APPLET (applet)));
+	position = gp_applet_get_position (GP_APPLET (applet));
 	gdk_window_get_origin (gtk_widget_get_window (GTK_WIDGET(applet)), &x, &y);
 
 	gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
 	gtk_widget_get_allocation (GTK_WIDGET (applet->popup), &popup_allocation);
-	switch (orientation) {
-	case PANEL_APPLET_ORIENT_DOWN:
+	switch (position) {
+	case GTK_POS_TOP:
 		x += allocation.x + allocation.width/2;
 		y += allocation.y + allocation.height;
 		x -= popup_allocation.width/2;
 		break;
-	case PANEL_APPLET_ORIENT_UP:
+	case GTK_POS_BOTTOM:
 		x += allocation.x + allocation.width/2;
 		y += allocation.y;
 		x -= popup_allocation.width/2;
 		y -= popup_allocation.height;
 		break;
-	case PANEL_APPLET_ORIENT_RIGHT:
+	case GTK_POS_LEFT:
 		y += allocation.y + allocation.height/2;
 		x += allocation.x + allocation.width;
 		y -= popup_allocation.height/2;
 		break;
-	case PANEL_APPLET_ORIENT_LEFT:
+	case GTK_POS_RIGHT:
 		y += allocation.y + allocation.height/2;
 		x += allocation.x;
 		x -= popup_allocation.width;
@@ -681,6 +656,12 @@ gpm_applet_dialog_about_cb (GSimpleAction *action, GVariant *parameter, gpointer
 	g_free (license_trans);
 	g_object_unref (logo);
 }
+
+static const GActionEntry menu_actions [] =
+{
+	{ "about", gpm_applet_dialog_about_cb, NULL, NULL, NULL },
+	{ NULL }
+};
 
 /**
  * gpm_applet_destroy_cb:
@@ -790,6 +771,8 @@ gpm_brightness_applet_name_vanished_cb (GDBusConnection *connection, const gchar
 static void
 gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 {
+	gchar *ui_path;
+
 	/* initialize fields */
 	applet->popped = FALSE;
 	applet->popup = NULL;
@@ -811,10 +794,15 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 				  applet, NULL);
 
 	/* prepare */
-	panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
+	gp_applet_set_flags (GP_APPLET (applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 	gtk_widget_set_events (GTK_WIDGET (applet), GDK_SCROLL_MASK);
 	applet->image = gtk_image_new();
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
+
+	/* menu */
+	ui_path = g_build_filename (BRIGHTNESS_MENU_UI_DIR, "brightness-applet-menu.xml", NULL);
+	gp_applet_setup_menu_from_file (GP_APPLET (applet), ui_path, menu_actions);
+	g_free (ui_path);
 
 	/* show */
 	gtk_widget_show_all (GTK_WIDGET(applet));
@@ -826,8 +814,8 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 	g_signal_connect (G_OBJECT(applet), "scroll-event",
 			  G_CALLBACK(gpm_applet_scroll_cb), NULL);
 
-	g_signal_connect (G_OBJECT(applet), "change-orient",
-			  G_CALLBACK(gpm_applet_destroy_popup_cb), NULL);
+	g_signal_connect (G_OBJECT(applet), "placement-changed",
+			  G_CALLBACK(placement_changed_cb), applet);
 
 	g_signal_connect (G_OBJECT(applet), "size-allocate",
 			  G_CALLBACK(gpm_applet_size_allocate_cb), NULL);
@@ -835,50 +823,3 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 	g_signal_connect (G_OBJECT(applet), "destroy",
 			  G_CALLBACK(gpm_applet_destroy_cb), NULL);
 }
-
-/**
- * gpm_applet_cb:
- * @_applet: GpmBrightnessApplet instance created by the applet factory
- * @iid: Applet id
- *
- * the function called by libpanel-applet factory after creation
- **/
-static gboolean
-gpm_applet_cb (PanelApplet *_applet, const gchar *iid, gpointer data)
-{
-	GpmBrightnessApplet *applet = GPM_BRIGHTNESS_APPLET(_applet);
-	GSimpleActionGroup *action_group;
-	gchar *ui_path;
-
-	static const GActionEntry menu_actions [] = {
-		{ "about", gpm_applet_dialog_about_cb, NULL, NULL, NULL },
-	};
-
-	if (strcmp (iid, GPM_BRIGHTNESS_APPLET_ID) != 0) {
-		return FALSE;
-	}
-
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-					 menu_actions,
-					 G_N_ELEMENTS (menu_actions),
-					 applet);
-	ui_path = g_build_filename (BRIGHTNESS_MENU_UI_DIR, "brightness-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (PANEL_APPLET (applet), ui_path, action_group, GETTEXT_PACKAGE);
-	g_free (ui_path);
-
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "brightness",
-					G_ACTION_GROUP (action_group));
-
-	g_object_unref (action_group);
-
-	return TRUE;
-}
-
-/**
- * this generates a main with a applet factory
- **/
-PANEL_APPLET_IN_PROCESS_FACTORY (GPM_BRIGHTNESS_APPLET_FACTORY_ID,
-                                 GPM_TYPE_BRIGHTNESS_APPLET,
-                                 gpm_applet_cb,
-                                 NULL);

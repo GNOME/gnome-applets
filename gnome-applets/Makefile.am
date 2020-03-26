@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	brightness \
 	timer \
 	trash \
 	window-picker \
@@ -26,6 +27,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 	$(NULL)
 
 org_gnome_gnome_applets_la_LIBADD = \
+	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \

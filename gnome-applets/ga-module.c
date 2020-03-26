@@ -21,6 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include <libgnome-panel/gp-module.h>
 
+#include "brightness/brightness-applet.h"
 #include "timer/timer-applet.h"
 #include "trash/trash-applet.h"
 #include "window-picker/wp-applet.h"
@@ -34,7 +35,14 @@ ga_get_applet_info (const char *id)
   const char *icon_name;
   GpAppletInfo *info;
 
-  if (g_strcmp0 (id, "timer") == 0)
+  if (g_strcmp0 (id, "brightness") == 0)
+    {
+      type_func = gpm_brightness_applet_get_type;
+      name = _("Brightness Applet");
+      description = _("Adjusts Laptop panel brightness");
+      icon_name = "gnome-brightness-applet";
+    }
+  else if (g_strcmp0 (id, "timer") == 0)
     {
       type_func = timer_applet_get_type;
       name = _("Timer");
@@ -69,7 +77,9 @@ ga_get_applet_info (const char *id)
 static const char *
 ga_get_applet_id_from_iid (const char *iid)
 {
-  if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
+  if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
+    return "brightness";
+  else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
            g_strcmp0 (iid, "org.gnome.gnome-applets.window-picker::window-picker") == 0)
@@ -93,6 +103,7 @@ gp_module_load (GpModule *module)
   gp_module_set_version (module, PACKAGE_VERSION);
 
   gp_module_set_applet_ids (module,
+                            "brightness",
                             "timer",
                             "trash",
                             "window-picker",

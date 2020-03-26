@@ -336,6 +336,7 @@ AC_CONFIG_FILES([
   data/schemas/Makefile
 
   gnome-applets/Makefile
+  gnome-applets/brightness/Makefile
   gnome-applets/timer/Makefile
   gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
@@ -362,9 +363,6 @@ AC_CONFIG_FILES([
 
   battstat/Makefile
   battstat/src/Makefile
-
-  brightness/Makefile
-  brightness/src/Makefile
 
   charpick/Makefile
   charpick/src/Makefile

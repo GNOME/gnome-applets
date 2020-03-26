@@ -15,7 +15,6 @@ endif
 always_built_SUBDIRS =  \
 	charpick	\
 	battstat \
-	brightness	\
 	command		\
 	drivemount	\
 	inhibit		\
@@ -60,7 +59,6 @@ DIST_SUBDIRS = \
 	window-buttons	\
 	window-title	\
 	inhibit		\
-	brightness	\
 	tracker-search-bar \
 	command		\
 	$(NULL)
