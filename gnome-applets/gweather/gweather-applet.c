@@ -26,10 +26,9 @@
 #include <arpa/nameser.h>
 #include <resolv.h>
 
-#include <panel-applet.h>
-
 #include <gdk/gdkkeysyms.h>
 
+#include <libgnome-panel/gp-utils.h>
 #include <libnotify/notify.h>
 
 #include "gweather-pref.h"
@@ -37,6 +36,8 @@
 #include "gweather-applet.h"
 
 #define MAX_CONSECUTIVE_FAULTS (3)
+
+G_DEFINE_TYPE (GWeatherApplet, gweather_applet, GP_TYPE_APPLET)
 
 static void update_finish (GWeatherInfo *info, gpointer data);
 
@@ -124,7 +125,7 @@ static void help_cb (GSimpleAction *action,
 	GWeatherApplet *gw_applet = (GWeatherApplet *) user_data;
     GError *error = NULL;
 
-    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (gw_applet)),
 		"help:gweather",
 		gtk_get_current_event_time (),
 		&error);
@@ -134,7 +135,7 @@ static void help_cb (GSimpleAction *action,
 						    _("There was an error displaying help: %s"), error->message);
 	g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-	gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+	gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (gw_applet)));
 	gtk_widget_show (dialog);
         g_error_free (error);
         error = NULL;
@@ -187,7 +188,8 @@ static const GActionEntry weather_applet_menu_actions [] = {
 	{ "update",      update_cb,  NULL, NULL, NULL },
 	{ "preferences", pref_cb,    NULL, NULL, NULL },
 	{ "help",        help_cb,    NULL, NULL, NULL },
-	{ "about",       about_cb,   NULL, NULL, NULL }
+	{ "about",       about_cb,   NULL, NULL, NULL },
+	{ NULL }
 };
 
 static void place_widgets (GWeatherApplet *gw_applet)
@@ -198,13 +200,11 @@ static void place_widgets (GWeatherApplet *gw_applet)
     int panel_size = gw_applet->size;
     const gchar *icon_name;
 
-    switch (gw_applet->orient) {
-	case PANEL_APPLET_ORIENT_LEFT:
-	case PANEL_APPLET_ORIENT_RIGHT:
+    switch (gp_applet_get_orientation (GP_APPLET (gw_applet))) {
+	case GTK_ORIENTATION_VERTICAL:
 	    horizontal = FALSE;
 	    break;
-	case PANEL_APPLET_ORIENT_UP:
-	case PANEL_APPLET_ORIENT_DOWN:
+	case GTK_ORIENTATION_HORIZONTAL:
 	    horizontal = TRUE;
 	    break;
     }
@@ -228,7 +228,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
 
     /* Create the temperature label */
     gw_applet->label = gtk_label_new("--");
-    panel_applet_add_text_class (gw_applet->applet, gw_applet->label);
+    gp_add_text_color_class (gw_applet->label);
 
     /* Update temperature text */
     if (gw_applet->gweather_info) {
@@ -268,23 +268,24 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, TRUE, TRUE, 0);
 
-    gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
+    gtk_widget_show_all (GTK_WIDGET (gw_applet));
 }
 
-static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data)
+static void
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      GWeatherApplet  *self)
 {
-    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-	
-    gw_applet->orient = o;
-    place_widgets(gw_applet);
-    return;
+  place_widgets(self);
 }
 
-static void size_allocate_cb(PanelApplet *w, GtkAllocation *allocation, gpointer data)
+static void
+size_allocate_cb (GtkWidget      *widget,
+                  GtkAllocation  *allocation,
+                  GWeatherApplet *gw_applet)
 {
-    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-	
-    if ((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+    if (gp_applet_get_orientation (GP_APPLET (gw_applet)) == GTK_ORIENTATION_VERTICAL) {
       if (gw_applet->size == allocation->width)
 	return;
       gw_applet->size = allocation->width;
@@ -392,55 +393,42 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    GSimpleActionGroup *action_group;
     GAction *action;
     gchar          *ui_path;
     AtkObject      *atk_obj;
     GNetworkMonitor*monitor;
 
-    panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
+    gp_applet_set_flags (GP_APPLET (gw_applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 
     gw_applet->container = gtk_alignment_new (0.5, 0.5, 0, 0);
-    gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->container);
+    gtk_container_add (GTK_CONTAINER (gw_applet), gw_applet->container);
 
-    g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
-                       G_CALLBACK(change_orient_cb), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "size_allocate",
+    g_signal_connect (gw_applet, "placement-changed",
+                       G_CALLBACK(placement_changed_cb), gw_applet);
+    g_signal_connect (gw_applet, "size_allocate",
                        G_CALLBACK(size_allocate_cb), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
+    g_signal_connect (gw_applet, "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "button_press_event",
+    g_signal_connect (gw_applet, "button_press_event",
                        G_CALLBACK(clicked_cb), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",           
+    g_signal_connect (gw_applet, "key_press_event",           
 			G_CALLBACK(key_press_cb), gw_applet);
                      
-    gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet), _("GNOME Weather"));
+    gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet), _("GNOME Weather"));
 
-    atk_obj = gtk_widget_get_accessible (GTK_WIDGET (gw_applet->applet));
+    atk_obj = gtk_widget_get_accessible (GTK_WIDGET (gw_applet));
     if (GTK_IS_ACCESSIBLE (atk_obj))
 	   atk_object_set_name (atk_obj, _("GNOME Weather"));
 
-    gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
-
-    action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 weather_applet_menu_actions,
-	                                 G_N_ELEMENTS (weather_applet_menu_actions),
-	                                 gw_applet);
     ui_path = g_build_filename (GWEATHER_MENU_UI_DIR, "gweather-applet-menu.xml", NULL);
-    panel_applet_setup_menu_from_file (gw_applet->applet,
-				       ui_path, action_group,
-				       GETTEXT_PACKAGE);
+    gp_applet_setup_menu_from_file (GP_APPLET (gw_applet),
+                                    ui_path,
+                                    weather_applet_menu_actions);
     g_free (ui_path);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (gw_applet->applet), "gweather",
-	                                G_ACTION_GROUP (action_group));
-
-    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-	g_object_bind_property (gw_applet->applet, "locked-down", action, "enabled",
+    action = gp_applet_menu_lookup_action (GP_APPLET (gw_applet), "preferences");
+	g_object_bind_property (gw_applet, "locked-down", action, "enabled",
 				G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
-
-    g_object_unref (action_group);
 
     gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet));
 
@@ -510,7 +498,7 @@ update_finish (GWeatherInfo *info, gpointer data)
 	    g_free (text);
 
 	    text = gweather_info_get_weather_summary (gw_applet->gweather_info);
-	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet->applet), text);
+	    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet), text);
 	    g_free (text);
 
 	    /* Update dialog -- if one is present */
@@ -597,8 +585,40 @@ suncalc_timeout_cb (gpointer data)
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
-    gtk_widget_set_tooltip_text (GTK_WIDGET(gw_applet->applet),  _("Updating..."));
+    gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet),  _("Updating..."));
 
     gweather_info_set_location (gw_applet->gweather_info, get_default_location (gw_applet));
     gweather_info_update (gw_applet->gweather_info);
+}
+
+static void
+gweather_applet_constructed (GObject *object)
+{
+  GWeatherApplet *self;
+
+  self = GWEATHER_APPLET (object);
+
+  G_OBJECT_CLASS (gweather_applet_parent_class)->constructed (object);
+
+  self->lib_settings = g_settings_new ("org.gnome.GWeather");
+  self->applet_settings = gp_applet_settings_new (GP_APPLET (self),
+                                                  "org.gnome.gnome-applets.gweather");
+
+  gweather_applet_create (self);
+  gweather_update (self);
+}
+
+static void
+gweather_applet_class_init (GWeatherAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = gweather_applet_constructed;
+}
+
+static void
+gweather_applet_init (GWeatherApplet *self)
+{
 }

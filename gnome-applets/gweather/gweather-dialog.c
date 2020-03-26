@@ -204,7 +204,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
       gtk_window_set_default_size (GTK_WINDOW (dialog), 590, 340);
 
   gtk_window_set_screen (GTK_WINDOW (dialog),
-			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+			 gtk_widget_get_screen (GTK_WIDGET (gw_applet)));
 
   /* Must come after load geometry, otherwise it will get reset. */
   gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);

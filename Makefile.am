@@ -19,7 +19,6 @@ always_built_SUBDIRS =  \
 	drivemount	\
 	inhibit		\
 	geyes		\
-	gweather \
 	mini-commander \
 	multiload \
 	netspeed \
@@ -52,7 +51,6 @@ DIST_SUBDIRS = \
 	battstat	\
 	multiload	\
 	netspeed	\
-	gweather 	\
 	accessx-status	\
 	sticky-notes	\
 	cpufreq		\

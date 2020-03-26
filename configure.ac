@@ -337,6 +337,7 @@ AC_CONFIG_FILES([
 
   gnome-applets/Makefile
   gnome-applets/brightness/Makefile
+  gnome-applets/gweather/Makefile
   gnome-applets/timer/Makefile
   gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
@@ -384,9 +385,6 @@ AC_CONFIG_FILES([
   geyes/Makefile
   geyes/src/Makefile
   geyes/themes/Makefile
-
-  gweather/Makefile
-  gweather/src/Makefile
 
   mini-commander/Makefile
   mini-commander/src/Makefile

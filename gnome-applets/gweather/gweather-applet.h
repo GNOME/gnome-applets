@@ -19,20 +19,21 @@
 #ifndef __GWEATHER_APPLET_H_
 #define __GWEATHER_APPLET_H_
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
 #define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 #include <libgweather/gweather.h>
 
-#include <panel-applet.h>
+#include <libgnome-panel/gp-applet.h>
 
 G_BEGIN_DECLS
 
-typedef struct _GWeatherApplet GWeatherApplet;
+#define GWEATHER_TYPE_APPLET (gweather_applet_get_type ())
+G_DECLARE_FINAL_TYPE (GWeatherApplet, gweather_applet, GWEATHER, APPLET, GpApplet)
 
 struct _GWeatherApplet
 {
-  PanelApplet       *applet;
+  GpApplet           parent;
   GWeatherInfo      *gweather_info;
 
   GSettings         *lib_settings;
@@ -43,7 +44,6 @@ struct _GWeatherApplet
   GtkWidget         *label;
   GtkWidget         *image;
 
-  PanelAppletOrient  orient;
   gint               size;
   gint               timeout_tag;
   gint               suncalc_timeout_tag;

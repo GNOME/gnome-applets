@@ -2,6 +2,7 @@ NULL =
 
 SUBDIRS = \
 	brightness \
+	gweather \
 	timer \
 	trash \
 	window-picker \
@@ -19,6 +20,7 @@ org_gnome_gnome_applets_la_CPPFLAGS = \
 
 org_gnome_gnome_applets_la_CFLAGS = \
 	$(GNOME_PANEL_CFLAGS) \
+	$(LIBGWEATHER_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
@@ -28,6 +30,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 
 org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
+	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \

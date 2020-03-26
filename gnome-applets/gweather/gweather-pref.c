@@ -735,7 +735,7 @@ gweather_pref_create (GWeatherPref *pref)
     gtk_container_set_border_width (GTK_CONTAINER (pref), 5);
     gtk_window_set_resizable (GTK_WINDOW (pref), TRUE);
     gtk_window_set_screen (GTK_WINDOW (pref),
-			   gtk_widget_get_screen (GTK_WIDGET (pref->priv->applet->applet)));
+			   gtk_widget_get_screen (GTK_WIDGET (pref->priv->applet)));
 
     pref_vbox = gtk_dialog_get_content_area (GTK_DIALOG (pref));
     gtk_box_set_spacing (GTK_BOX (pref_vbox), 2);
