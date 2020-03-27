@@ -122,7 +122,6 @@ window_get_monitor (WnckWindow *window)
 
 static void
 on_task_item_monitor_changed_cb (TaskItem *item,
-                                 gint      old_monitor,
                                  TaskList *current_list)
 {
     GdkMonitor *monitor;
