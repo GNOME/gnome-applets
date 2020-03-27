@@ -594,8 +594,7 @@ on_window_geometry_changed (WnckWindow *window,
       {
         item->monitor = window_monitor;
 
-        g_signal_emit (item, task_item_signals[TASK_ITEM_MONITOR_CHANGED], 0,
-                       old_monitor);
+        g_signal_emit (item, task_item_signals[TASK_ITEM_MONITOR_CHANGED], 0);
       }
 }
 
@@ -1000,7 +999,7 @@ static void task_item_class_init (TaskItemClass *klass) {
 
     task_item_signals [TASK_ITEM_MONITOR_CHANGED] =
         g_signal_new ("monitor-changed", TASK_TYPE_ITEM, G_SIGNAL_RUN_LAST,
-                      0, NULL, NULL, NULL, G_TYPE_NONE, 1, GDK_TYPE_MONITOR);
+                      0, NULL, NULL, NULL, G_TYPE_NONE, 0);
 }
 
 static void task_item_init (TaskItem *item) {
