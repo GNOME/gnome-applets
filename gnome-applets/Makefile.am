@@ -2,6 +2,7 @@ NULL =
 
 SUBDIRS = \
 	brightness \
+	command \
 	gweather \
 	timer \
 	trash \
@@ -30,6 +31,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 
 org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
+	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \

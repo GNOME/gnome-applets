@@ -1,5 +1,4 @@
-/* command.c:
- *
+/*
  * Copyright (C) 2013-2014 Stefano Karapetsas
  *
  * This file is part of GNOME Applets.
@@ -23,14 +22,15 @@
  */
 
 #include "config.h"
-#include "ga-command.h"
+#include "command-applet.h"
 
 #include <glib.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
+#include <libgnome-panel/gp-utils.h>
 
-#include <panel-applet.h>
+#include "ga-command.h"
 
 /* Applet constants */
 #define APPLET_ICON    "utilities-terminal"
@@ -48,9 +48,9 @@
 #define GK_COMMAND_OUTPUT  "Output"
 #define GK_COMMAND_ICON    "Icon"
 
-typedef struct
+struct _CommandApplet
 {
-  PanelApplet *applet;
+  GpApplet     parent;
 
   GSettings   *settings;
 
@@ -61,7 +61,9 @@ typedef struct
   guint        width;
 
   GaCommand   *command;
-} CommandApplet;
+};
+
+G_DEFINE_TYPE (CommandApplet, command_applet, GP_TYPE_APPLET)
 
 static void command_about_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
 static void command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer data);
@@ -69,9 +71,12 @@ static void command_settings_callback (GSimpleAction *action, GVariant *paramete
 static const GActionEntry applet_menu_actions [] = {
     {"preferences", command_settings_callback, NULL, NULL, NULL},
     {"about", command_about_callback, NULL, NULL, NULL},
+    {NULL}
 };
 
-static const char *ui = "<section>\
+static const char *ui = "<interface>\
+    <menu id=\"command-menu\">\
+    <section>\
       <item>\
         <attribute name=\"label\" translatable=\"yes\">_Preferences</attribute>\
         <attribute name=\"action\">command.preferences</attribute>\
@@ -80,17 +85,9 @@ static const char *ui = "<section>\
         <attribute name=\"label\" translatable=\"yes\">_About</attribute>\
         <attribute name=\"action\">command.about</attribute>\
       </item>\
-    </section>";
-
-static void
-command_applet_destroy (PanelApplet *applet_widget, CommandApplet *command_applet)
-{
-    g_assert (command_applet);
-
-    g_clear_object (&command_applet->command);
-
-    g_object_unref (command_applet->settings);
-}
+    </section>\
+    </menu>\
+    </interface>";
 
 /* Show the about dialog */
 static void
@@ -328,17 +325,11 @@ settings_interval_changed (GSettings     *settings,
                            g_settings_get_uint (self->settings, INTERVAL_KEY));
 }
 
-static gboolean
-command_applet_fill (PanelApplet* applet)
+static void
+command_applet_fill (CommandApplet *command_applet)
 {
-    CommandApplet *command_applet;
-    GSimpleActionGroup *action_group;
-
-    panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-
-    command_applet = g_malloc0(sizeof(CommandApplet));
-    command_applet->applet = applet;
-    command_applet->settings = panel_applet_settings_new (applet, COMMAND_SCHEMA);
+    command_applet->settings = gp_applet_settings_new (GP_APPLET (command_applet),
+                                                       COMMAND_SCHEMA);
 
     command_applet->width = g_settings_get_uint (command_applet->settings, WIDTH_KEY);
 
@@ -354,16 +345,12 @@ command_applet_fill (PanelApplet* applet)
                         GTK_WIDGET (command_applet->label),
                         TRUE, TRUE, 0);
 
-    panel_applet_add_text_class (command_applet->applet, GTK_WIDGET (command_applet->label));
+    gp_add_text_color_class (GTK_WIDGET (command_applet->label));
 
-    gtk_container_add (GTK_CONTAINER (applet),
+    gtk_container_add (GTK_CONTAINER (command_applet),
                        GTK_WIDGET (command_applet->box));
 
-    gtk_widget_show_all (GTK_WIDGET (command_applet->applet));
-
-    g_signal_connect(G_OBJECT (command_applet->applet), "destroy",
-                     G_CALLBACK (command_applet_destroy),
-                     command_applet);
+    gtk_widget_show_all (GTK_WIDGET (command_applet));
 
     /* GSettings signals */
     g_signal_connect(command_applet->settings,
@@ -385,31 +372,45 @@ command_applet_fill (PanelApplet* applet)
                      G_SETTINGS_BIND_DEFAULT);
 
     /* set up context menu */
-    action_group = g_simple_action_group_new ();
-    g_action_map_add_action_entries (G_ACTION_MAP (action_group), applet_menu_actions, G_N_ELEMENTS(applet_menu_actions), command_applet);
-    panel_applet_setup_menu (applet, ui, action_group, GETTEXT_PACKAGE);
-    gtk_widget_insert_action_group (GTK_WIDGET (applet), "command", G_ACTION_GROUP (action_group));
+    gp_applet_setup_menu (GP_APPLET (command_applet), ui, applet_menu_actions);
 
     /* first command execution */
     create_command (command_applet);
-
-    return TRUE;
 }
 
-/* this function, called by gnome-panel, will create the applet */
-static gboolean
-command_factory (PanelApplet* applet, const char* iid, gpointer data)
+static void
+command_applet_constructed (GObject *object)
 {
-    gboolean retval = FALSE;
-
-    if (!g_strcmp0 (iid, "CommandApplet"))
-        retval = command_applet_fill (applet);
-
-    return retval;
+  G_OBJECT_CLASS (command_applet_parent_class)->constructed (object);
+  command_applet_fill (COMMAND_APPLET (object));
 }
 
-/* needed by gnome-panel applet library */
-PANEL_APPLET_IN_PROCESS_FACTORY("CommandAppletFactory",
-                                PANEL_TYPE_APPLET,
-                                command_factory,
-                                NULL)
+static void
+command_applet_dispose (GObject *object)
+{
+  CommandApplet *self;
+
+  self = COMMAND_APPLET (object);
+
+  g_clear_object (&self->settings);
+  g_clear_object (&self->command);
+
+  G_OBJECT_CLASS (command_applet_parent_class)->dispose (object);
+}
+
+static void
+command_applet_class_init (CommandAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = command_applet_constructed;
+  object_class->dispose = command_applet_dispose;
+}
+
+static void
+command_applet_init (CommandApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}

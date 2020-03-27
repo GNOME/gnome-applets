@@ -15,7 +15,6 @@ endif
 always_built_SUBDIRS =  \
 	charpick	\
 	battstat \
-	command		\
 	drivemount	\
 	inhibit		\
 	geyes		\
@@ -58,7 +57,6 @@ DIST_SUBDIRS = \
 	window-title	\
 	inhibit		\
 	tracker-search-bar \
-	command		\
 	$(NULL)
 
 EXTRA_DIST = \

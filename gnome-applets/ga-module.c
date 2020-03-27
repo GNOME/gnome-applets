@@ -22,6 +22,7 @@
 #include <libgnome-panel/gp-module.h>
 
 #include "brightness/brightness-applet.h"
+#include "command/command-applet.h"
 #include "gweather/gweather-applet.h"
 #include "timer/timer-applet.h"
 #include "trash/trash-applet.h"
@@ -42,6 +43,13 @@ ga_get_applet_info (const char *id)
       name = _("Brightness Applet");
       description = _("Adjusts Laptop panel brightness");
       icon_name = "gnome-brightness-applet";
+    }
+  else if (g_strcmp0 (id, "command") == 0)
+    {
+      type_func = command_applet_get_type;
+      name = _("Command");
+      description = _("Shows the output of a command");
+      icon_name = "utilities-terminal";
     }
   else if (g_strcmp0 (id, "gweather") == 0)
     {
@@ -87,6 +95,8 @@ ga_get_applet_id_from_iid (const char *iid)
 {
   if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
     return "brightness";
+  else if (g_strcmp0 (iid, "CommandAppletFactory::CommandApplet") == 0)
+    return "command";
   else if (g_strcmp0 (iid, "GWeatherAppletFactory::GWeatherApplet") == 0)
     return "gweather";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
@@ -114,6 +124,7 @@ gp_module_load (GpModule *module)
 
   gp_module_set_applet_ids (module,
                             "brightness",
+                            "command",
                             "gweather",
                             "timer",
                             "trash",

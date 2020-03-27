@@ -337,6 +337,7 @@ AC_CONFIG_FILES([
 
   gnome-applets/Makefile
   gnome-applets/brightness/Makefile
+  gnome-applets/command/Makefile
   gnome-applets/gweather/Makefile
   gnome-applets/timer/Makefile
   gnome-applets/trash/Makefile
@@ -367,9 +368,6 @@ AC_CONFIG_FILES([
 
   charpick/Makefile
   charpick/src/Makefile
-
-  command/Makefile
-  command/src/Makefile
 
   cpufreq/Makefile
   cpufreq/pixmaps/Makefile
