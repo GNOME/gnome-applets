@@ -337,10 +337,11 @@ get_text_width (const gchar *text)
 
         width = 0;
         label = gtk_label_new (text);
+        g_object_ref_sink (label);
 
         gtk_widget_show (label);
         gtk_widget_get_preferred_width (label, &width, NULL);
-        gtk_widget_destroy (label);
+        g_object_unref (label);
 
         return width;
 }
