@@ -581,6 +581,21 @@ get_window_monitor (WnckWindow *window)
 }
 
 static void
+set_monitor (TaskItem   *item,
+             GdkMonitor *monitor)
+{
+  if (item->monitor)
+    g_object_remove_weak_pointer (G_OBJECT (item->monitor),
+                                  (gpointer *) &item->monitor);
+
+  item->monitor = monitor;
+
+  if (item->monitor)
+    g_object_add_weak_pointer (G_OBJECT (item->monitor),
+                               (gpointer *) &item->monitor);
+}
+
+static void
 on_window_geometry_changed (WnckWindow *window,
                             TaskItem   *item)
 {
@@ -590,9 +605,10 @@ on_window_geometry_changed (WnckWindow *window,
     window_monitor = get_window_monitor (window);
 
     old_monitor = item->monitor;
+
     if (old_monitor != window_monitor)
       {
-        item->monitor = window_monitor;
+        set_monitor (item, window_monitor);
 
         g_signal_emit (item, task_item_signals[TASK_ITEM_MONITOR_CHANGED], 0);
       }
@@ -1027,7 +1043,8 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     screen = wnck_window_get_screen (window);
     taskItem->screen = screen;
     taskItem->windowPickerApplet = windowPickerApplet;
-    taskItem->monitor = get_window_monitor (window);
+
+    set_monitor (taskItem, get_window_monitor (window));
 
     g_signal_connect_object (windowPickerApplet,
                              "placement-changed",
