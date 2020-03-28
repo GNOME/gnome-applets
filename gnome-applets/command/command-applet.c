@@ -74,21 +74,6 @@ static const GActionEntry applet_menu_actions [] = {
     {NULL}
 };
 
-static const char *ui = "<interface>\
-    <menu id=\"command-menu\">\
-    <section>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_Preferences</attribute>\
-        <attribute name=\"action\">command.preferences</attribute>\
-      </item>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_About</attribute>\
-        <attribute name=\"action\">command.about</attribute>\
-      </item>\
-    </section>\
-    </menu>\
-    </interface>";
-
 /* Show the about dialog */
 static void
 command_about_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
@@ -328,6 +313,8 @@ settings_interval_changed (GSettings     *settings,
 static void
 command_applet_fill (CommandApplet *command_applet)
 {
+    const char *menu_resource;
+
     command_applet->settings = gp_applet_settings_new (GP_APPLET (command_applet),
                                                        COMMAND_SCHEMA);
 
@@ -372,7 +359,10 @@ command_applet_fill (CommandApplet *command_applet)
                      G_SETTINGS_BIND_DEFAULT);
 
     /* set up context menu */
-    gp_applet_setup_menu (GP_APPLET (command_applet), ui, applet_menu_actions);
+    menu_resource = GRESOURCE_PREFIX "/ui/command-applet-menu.xml";
+    gp_applet_setup_menu_from_resource (GP_APPLET (command_applet),
+                                        menu_resource,
+                                        applet_menu_actions);
 
     /* first command execution */
     create_command (command_applet);

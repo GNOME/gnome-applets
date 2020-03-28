@@ -394,7 +394,7 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
     GAction *action;
-    gchar          *ui_path;
+    const char *menu_resource;
     AtkObject      *atk_obj;
     GNetworkMonitor*monitor;
 
@@ -420,11 +420,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     if (GTK_IS_ACCESSIBLE (atk_obj))
 	   atk_object_set_name (atk_obj, _("GNOME Weather"));
 
-    ui_path = g_build_filename (GWEATHER_MENU_UI_DIR, "gweather-applet-menu.xml", NULL);
-    gp_applet_setup_menu_from_file (GP_APPLET (gw_applet),
-                                    ui_path,
-                                    weather_applet_menu_actions);
-    g_free (ui_path);
+    menu_resource = GRESOURCE_PREFIX "/ui/gweather-applet-menu.xml";
+    gp_applet_setup_menu_from_resource (GP_APPLET (gw_applet),
+                                        menu_resource,
+                                        weather_applet_menu_actions);
 
     action = gp_applet_menu_lookup_action (GP_APPLET (gw_applet), "preferences");
 	g_object_bind_property (gw_applet, "locked-down", action, "enabled",

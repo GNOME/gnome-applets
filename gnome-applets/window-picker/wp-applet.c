@@ -37,7 +37,6 @@
 #include "wp-task-title.h"
 
 #define SETTINGS_SCHEMA "org.gnome.gnome-applets.window-picker-applet"
-#define GRESOURCE "/org/gnome/gnome-applets/window-picker/"
 #define TITLE_BUTTON_SPACE 6
 #define CONTAINER_SPACING 10
 
@@ -155,7 +154,7 @@ wp_applet_setup_menu (GpApplet *applet)
 {
   const gchar *resource_name;
 
-  resource_name = GRESOURCE "wp-menu.xml";
+  resource_name = GRESOURCE_PREFIX "/ui/wp-menu.xml";
 
   gp_applet_setup_menu_from_resource (applet, resource_name, menu_actions);
 }

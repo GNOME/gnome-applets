@@ -1,14 +1,8 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
-ui_DATA = brightness-applet-menu.xml
-
 noinst_LTLIBRARIES = libbrightness-applet.la
 
 libbrightness_applet_la_CPPFLAGS = \
-	-I. \
-	-I$(srcdir) \
-	-DBRIGHTNESS_MENU_UI_DIR=\""$(uidir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.brightness\" \
 	-DG_LOG_USE_STRUCTURED=1 \
@@ -56,7 +50,6 @@ CLEANFILES = \
 
 EXTRA_DIST = \
 	org.gnome.SettingsDaemon.Power.Screen.xml \
-	$(ui_DATA) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

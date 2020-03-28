@@ -3,9 +3,6 @@ NULL =
 noinst_LTLIBRARIES = libcommand-applet.la
 
 libcommand_applet_la_CPPFLAGS = \
-	-I. \
-	-I$(srcdir) \
-	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.command\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

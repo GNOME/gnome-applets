@@ -27,8 +27,6 @@
 
 #include "wp-about-dialog.h"
 
-#define GRESOURCE "/org/gnome/gnome-applets/window-picker/"
-
 struct _WpAboutDialog
 {
   GtkAboutDialog  parent;
@@ -52,7 +50,7 @@ wp_about_dialog_constructed (GObject *object)
   G_OBJECT_CLASS (wp_about_dialog_parent_class)->constructed (object);
 
   dialog = WP_ABOUT_DIALOG (object);
-  resource = GRESOURCE "wp-about-logo.png";
+  resource = GRESOURCE_PREFIX "/icons/wp-about-logo.png";
 
   dialog->logo = gdk_pixbuf_new_from_resource (resource, NULL);
 

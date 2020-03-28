@@ -1,14 +1,8 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
-ui_DATA = gweather-applet-menu.xml
-
 noinst_LTLIBRARIES = libgweather-applet.la
 
 libgweather_applet_la_CPPFLAGS = \
-	-I$(srcdir) \
-	-I$(top_srcdir) \
-	-DGWEATHER_MENU_UI_DIR=\""$(uidir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.gweather\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
@@ -43,10 +37,6 @@ libgweather_applet_la_LIBADD = \
 	$(LIBGWEATHER_LIBS) \
 	$(LIBNOTIFY_LIBS) \
 	$(XML2_LIBS) \
-	$(NULL)
-
-EXTRA_DIST = \
-	$(ui_DATA) \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

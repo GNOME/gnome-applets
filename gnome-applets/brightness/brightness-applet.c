@@ -771,7 +771,7 @@ gpm_brightness_applet_name_vanished_cb (GDBusConnection *connection, const gchar
 static void
 gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 {
-	gchar *ui_path;
+	const char *menu_resource;
 
 	/* initialize fields */
 	applet->popped = FALSE;
@@ -800,9 +800,8 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
 
 	/* menu */
-	ui_path = g_build_filename (BRIGHTNESS_MENU_UI_DIR, "brightness-applet-menu.xml", NULL);
-	gp_applet_setup_menu_from_file (GP_APPLET (applet), ui_path, menu_actions);
-	g_free (ui_path);
+	menu_resource = GRESOURCE_PREFIX "/ui/brightness-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (applet), menu_resource, menu_actions);
 
 	/* show */
 	gtk_widget_show_all (GTK_WIDGET(applet));

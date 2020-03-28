@@ -82,33 +82,6 @@ static const GActionEntry applet_menu_actions [] = {
     {NULL}
 };
 
-static const char *ui = "<interface>\
-      <menu id=\"timer-menu\">\
-      <section>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_Start timer</attribute>\
-        <attribute name=\"action\">timer.start</attribute>\
-      </item>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_P_ause timer</attribute>\
-        <attribute name=\"action\">timer.pause</attribute>\
-      </item>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">S_top timer</attribute>\
-        <attribute name=\"action\">timer.stop</attribute>\
-      </item>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_Preferences</attribute>\
-        <attribute name=\"action\">timer.preferences</attribute>\
-      </item>\
-      <item>\
-        <attribute name=\"label\" translatable=\"yes\">_About</attribute>\
-        <attribute name=\"action\">timer.about</attribute>\
-      </item>\
-    </section>\
-    </menu>\
-    </interface>";
-
 /* timer management */
 static gboolean
 timer_callback (TimerApplet *applet)
@@ -384,6 +357,8 @@ timer_settings_changed (GSettings *settings, gchar *key, TimerApplet *applet)
 static void
 timer_applet_fill (TimerApplet *applet)
 {
+    const char *menu_resource;
+
     applet->settings = gp_applet_settings_new (GP_APPLET (applet), TIMER_SCHEMA);
     applet->timeout_id = 0;
     applet->active = FALSE;
@@ -414,7 +389,10 @@ timer_applet_fill (TimerApplet *applet)
     gtk_widget_hide (GTK_WIDGET (applet->pause_image));
 
     /* set up context menu */
-    gp_applet_setup_menu (GP_APPLET (applet), ui, applet_menu_actions);
+    menu_resource = GRESOURCE_PREFIX "/ui/timer-applet-menu.xml";
+    gp_applet_setup_menu_from_resource (GP_APPLET (applet),
+                                        menu_resource,
+                                        applet_menu_actions);
 
     /* execute callback to set actions sensitiveness */
     timer_callback (applet);

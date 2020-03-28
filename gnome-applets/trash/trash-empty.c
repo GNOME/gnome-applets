@@ -237,7 +237,7 @@ trash_empty_start (GtkWidget *parent)
 
   builder = gtk_builder_new ();
 
-  resource_name = "/org/gnome/gnome-applets/trash/trash-empty.ui";
+  resource_name = GRESOURCE_PREFIX "/ui/trash-empty.ui";
 
   gtk_builder_add_from_resource (builder, resource_name, NULL);
 

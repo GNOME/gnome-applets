@@ -39,28 +39,8 @@ libwindow_picker_applet_la_SOURCES = \
 	task-item.h \
 	task-list.c \
 	task-list.h \
-	wp-resources.c \
-	wp-resources.h \
 	wp-task-title.c \
 	wp-task-title.h \
-	$(NULL)
-
-wp-resources.c: wp-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wp-resources.gresource.xml)
-	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name wp $<
-
-wp-resources.h: wp-resources.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wp-resources.gresource.xml)
-	$(AM_V_GEN)$(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name wp $<
-
-EXTRA_DIST = \
-	wp-about-logo.png \
-	wp-menu.xml \
-	wp-preferences-dialog.ui \
-	wp-resources.gresource.xml \
-	$(NULL)
-
-CLEANFILES = \
-	wp-resources.c \
-	wp-resources.h \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

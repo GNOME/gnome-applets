@@ -302,6 +302,14 @@ fi
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl **************************************************************************
+dnl GResource
+dnl **************************************************************************
+
+GRESOURCE_PREFIX="/org/gnome/gnome-applets"
+AC_DEFINE_UNQUOTED([GRESOURCE_PREFIX], "$GRESOURCE_PREFIX", [GResource prefix])
+AC_SUBST([GRESOURCE_PREFIX])
+
+dnl **************************************************************************
 dnl Process .in files
 dnl **************************************************************************
 

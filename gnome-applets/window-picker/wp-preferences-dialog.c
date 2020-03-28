@@ -25,8 +25,6 @@
 
 #include "wp-preferences-dialog.h"
 
-#define GRESOURCE "/org/gnome/gnome-applets/window-picker/"
-
 struct _WpPreferencesDialog
 {
   GtkDialog  parent;
@@ -133,7 +131,7 @@ wp_preferences_dialog_class_init (WpPreferencesDialogClass *dialog_class)
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
-  resource_name = GRESOURCE "wp-preferences-dialog.ui";
+  resource_name = GRESOURCE_PREFIX "/ui/wp-preferences-dialog.ui";
   gtk_widget_class_set_template_from_resource (widget_class, resource_name);
 
   gtk_widget_class_bind_template_child (widget_class, WpPreferencesDialog,
