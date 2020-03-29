@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	battstat \
 	brightness \
 	command \
 	gweather \
@@ -31,6 +32,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 	$(NULL)
 
 org_gnome_gnome_applets_la_LIBADD = \
+	$(top_builddir)/gnome-applets/battstat/libbattery-status-applet.la \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
 	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
@@ -50,6 +52,8 @@ icon_files = \
 	$(NULL)
 
 ui_files = \
+	battstat/battstat-applet.ui \
+	battstat/battstat-applet-menu.xml \
 	brightness/brightness-applet-menu.xml \
 	command/command-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \

@@ -21,6 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include <libgnome-panel/gp-module.h>
 
+#include "battstat/battstat-applet.h"
 #include "brightness/brightness-applet.h"
 #include "command/command-applet.h"
 #include "gweather/gweather-applet.h"
@@ -37,7 +38,14 @@ ga_get_applet_info (const char *id)
   const char *icon_name;
   GpAppletInfo *info;
 
-  if (g_strcmp0 (id, "brightness") == 0)
+  if (g_strcmp0 (id, "battstat") == 0)
+    {
+      type_func = battstat_applet_get_type;
+      name = _("Battery Charge Monitor");
+      description = _("Monitor a laptop's remaining power");
+      icon_name = "battery";
+    }
+  else if (g_strcmp0 (id, "brightness") == 0)
     {
       type_func = gpm_brightness_applet_get_type;
       name = _("Brightness Applet");
@@ -93,7 +101,9 @@ ga_get_applet_info (const char *id)
 static const char *
 ga_get_applet_id_from_iid (const char *iid)
 {
-  if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
+  if (g_strcmp0 (iid, "BattstatAppletFactory::BattstatApplet") == 0)
+    return "battstat";
+  else if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
     return "brightness";
   else if (g_strcmp0 (iid, "CommandAppletFactory::CommandApplet") == 0)
     return "command";
@@ -123,6 +133,7 @@ gp_module_load (GpModule *module)
   gp_module_set_version (module, PACKAGE_VERSION);
 
   gp_module_set_applet_ids (module,
+                            "battstat",
                             "brightness",
                             "command",
                             "gweather",

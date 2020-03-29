@@ -14,7 +14,6 @@ endif
 
 always_built_SUBDIRS =  \
 	charpick	\
-	battstat \
 	drivemount	\
 	inhibit		\
 	geyes		\
@@ -47,7 +46,6 @@ DIST_SUBDIRS = \
 	charpick	\
 	geyes		\
 	mini-commander	\
-	battstat	\
 	multiload	\
 	netspeed	\
 	accessx-status	\

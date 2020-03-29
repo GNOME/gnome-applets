@@ -20,13 +20,7 @@
 #ifndef _battstat_h_
 #define _battstat_h_
 
-#include <glib.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
-#include <panel-applet.h>
-
-#define DEBUG 0
+#include "battstat-applet.h"
 
 #define PROGLEN 33.0
 
@@ -92,8 +86,10 @@ typedef struct
   LayoutLocation battery;
 } LayoutConfiguration;
 
-typedef struct _ProgressData {
-  GtkWidget *applet;
+typedef struct _BattstatApplet
+{
+  GpApplet parent;
+
   GSettings *settings;
 
   /* these are used by properties.c */
@@ -131,7 +127,7 @@ typedef struct _ProgressData {
   GtkWidget *percent;
 
   /* dialog boxes that might be displayed */
-  GtkDialog *prop_win;
+  GtkWidget *prop_win;
   GtkWidget *battery_low_dialog;
 
   /* text label inside the low battery dialog */
@@ -142,9 +138,6 @@ typedef struct _ProgressData {
 
   /* should the battery meter be drawn horizontally? */
   gboolean horizont;
-
-  /* on a vertical or horizontal panel? (up/down/left/right) */
-  PanelAppletOrient orienttype;
 
   /* the current layout of the visual elements inside the table */
   LayoutConfiguration layout;

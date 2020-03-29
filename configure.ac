@@ -344,6 +344,7 @@ AC_CONFIG_FILES([
   data/schemas/Makefile
 
   gnome-applets/Makefile
+  gnome-applets/battstat/Makefile
   gnome-applets/brightness/Makefile
   gnome-applets/command/Makefile
   gnome-applets/gweather/Makefile
@@ -370,9 +371,6 @@ AC_CONFIG_FILES([
   accessx-status/Makefile
   accessx-status/pixmaps/Makefile
   accessx-status/src/Makefile
-
-  battstat/Makefile
-  battstat/src/Makefile
 
   charpick/Makefile
   charpick/src/Makefile

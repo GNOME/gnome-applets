@@ -1,4 +1,4 @@
-/* battstat        A GNOME battery meter for laptops. 
+/*
  * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
  * Copyright (C) 2002 Free Software Foundation
  *
@@ -14,13 +14,10 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
- *
- $Id$
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include "config.h"
+#include "battstat-applet.h"
 
 #include <stdio.h>
 
@@ -34,18 +31,17 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-#include <panel-applet.h>
-
+#include <libgnome-panel/gp-utils.h>
 #include <libnotify/notify.h>
 
 #include "battstat.h"
+#include "battstat-upower.h"
 #include "pixmaps.h"
 
-#ifndef gettext_noop
-#define gettext_noop(String) (String)
-#endif
+G_DEFINE_TYPE (BattstatApplet, battstat_applet, GP_TYPE_APPLET)
 
 static gboolean check_for_updates (gpointer data);
 static void about_cb( GSimpleAction *, GVariant *, gpointer );
@@ -54,7 +50,8 @@ static void help_cb( GSimpleAction *, GVariant *, gpointer );
 static const GActionEntry battstat_menu_actions [] = {
 	{ "preferences", prop_cb,  NULL, NULL, NULL },
 	{ "help",        help_cb,  NULL, NULL, NULL },
-	{ "about",       about_cb, NULL, NULL, NULL }
+	{ "about",       about_cb, NULL, NULL, NULL },
+	{ NULL }
 };
 
 #define AC_POWER_STRING _("System is running on AC power")
@@ -654,7 +651,7 @@ update_tooltip( ProgressData *battstat, BatteryStatus *info )
                                  _("Battery status unknown"));
   }
 
-  gtk_widget_set_tooltip_text (battstat->applet, tiptext);
+  gtk_widget_set_tooltip_text (GTK_WIDGET (battstat), tiptext);
   g_free (tiptext);
 }
 
@@ -946,12 +943,8 @@ check_for_updates( gpointer data )
 {
   ProgressData *battstat = data;
   BatteryStatus info;
-  const char *err;
 
-  if (DEBUG) g_print("check_for_updates()\n");
-
-  if( (err = battstat_upower_get_battery_info( &info )) )
-    battstat_error_dialog( battstat->applet, err );
+  battstat_upower_get_battery_info (&info);
 
   if (!event_driven)
   {
@@ -1014,7 +1007,7 @@ check_for_updates( gpointer data )
     /* Inform that battery now fully charged */
     if(battstat->fullbattnot)
     {
-      battery_full_dialog (battstat->applet);
+      battery_full_dialog (GTK_WIDGET (battstat));
  
       if (battstat->beep)
         gdk_beep();
@@ -1070,36 +1063,6 @@ check_for_updates( gpointer data )
   return TRUE;
 }
 
-/* Gets called when the user removes the applet from the panel.  Clean up
-   all instance-specific data and call the global teardown function to
-   decrease our applet count (and possibly perform global cleanup)
- */
-static void
-destroy_applet( GtkWidget *widget, ProgressData *battstat )
-{
-  if (DEBUG) g_print("destroy_applet()\n");
-
-  if (battstat->prop_win)
-    gtk_widget_destroy (GTK_WIDGET (battstat->prop_win));
-
-  if( battstat->battery_low_dialog )
-    battery_low_dialog_destroy( battstat );
-
-  if (battstat->timeout_id)
-    g_source_remove (battstat->timeout_id);
-
-  if (battstat->settings)
-    g_object_unref (battstat->settings);
-
-  g_object_unref( G_OBJECT(battstat->status) );
-  g_object_unref( G_OBJECT(battstat->percent) );
-  g_object_unref( G_OBJECT(battstat->battery) );
-
-  g_free( battstat );
-
-  static_global_teardown (battstat);
-}
-
 /* Common function invoked by the 'Help' context menu item and the 'Help'
  * button in the preferences dialog.
  */
@@ -1114,7 +1077,7 @@ battstat_show_help( ProgressData *battstat, const char *section )
   else
     uri = g_strdup ("help:battstat");
 
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (battstat->applet)),
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (battstat)),
                 uri,
                 gtk_get_current_event_time (),
                 &error);
@@ -1127,7 +1090,7 @@ battstat_show_help( ProgressData *battstat, const char *section )
 
     message = g_strdup_printf( _("There was an error displaying help: %s"),
                                error->message );
-    battstat_error_dialog( battstat->applet, message );
+    battstat_error_dialog (GTK_WIDGET (battstat), message);
     g_error_free( error );
     g_free( message );
   }
@@ -1195,51 +1158,38 @@ about_cb (GSimpleAction *action,
  * another panel).
  */
 static void
-setup_text_orientation( ProgressData *battstat )
+setup_text_orientation (ProgressData    *battstat,
+                        GtkPositionType  position)
 {
-  if( battstat->orienttype == PANEL_APPLET_ORIENT_RIGHT )
+  if (position == GTK_POS_LEFT)
     gtk_label_set_angle( GTK_LABEL( battstat->percent ), 90 );
-  else if( battstat->orienttype == PANEL_APPLET_ORIENT_LEFT )
+  else if (position == GTK_POS_RIGHT)
     gtk_label_set_angle( GTK_LABEL( battstat->percent ), 270 );
   else
     gtk_label_set_angle( GTK_LABEL( battstat->percent ), 0 );
 }
 
-
-/* This signal is delivered by the panel when the orientation of the applet
-   has changed.  This is either because the applet has just been created,
-   has just been moved to a new panel or the panel that the applet was on
-   has changed orientation.
-*/
 static void
-change_orient (PanelApplet       *applet,
-	       PanelAppletOrient  orient,
-	       ProgressData      *battstat)
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      BattstatApplet  *self)
 {
-  if (DEBUG) g_print("change_orient()\n");
-
-  /* Ignore the update if we already know. */
-  if( orient != battstat->orienttype )
-  {
-    battstat->orienttype = orient;
-
-    /* The applet changing orientation very likely involves the layout
-       being changed to better fit the new shape of the panel.
-    */
-    setup_text_orientation( battstat );
-    reconfigure_layout( battstat );
-  }
+  /* The applet changing orientation very likely involves the layout
+   * being changed to better fit the new shape of the panel.
+   */
+  setup_text_orientation (self, position);
+  reconfigure_layout (self);
 }
 
 /* This is delivered when our size has changed.  This happens when the applet
    is just created or if the size of the panel has changed.
 */
 static void
-size_allocate( PanelApplet *applet, GtkAllocation *allocation,
-               ProgressData *battstat)
+size_allocate (GtkWidget     *widget,
+               GtkAllocation *allocation,
+               ProgressData  *battstat)
 {
-  if (DEBUG) g_print("applet_change_pixel_size()\n");
-
   /* Ignore the update if we already know. */
   if( battstat->width == allocation->width &&
       battstat->height == allocation->height )
@@ -1257,10 +1207,6 @@ size_allocate( PanelApplet *applet, GtkAllocation *allocation,
 static void
 load_preferences(ProgressData *battstat)
 {
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-
-  if (DEBUG) g_print("load_preferences()\n");
-  
   battstat->red_val = g_settings_get_int (battstat->settings, KEY_RED_VALUE);
   battstat->red_val = CLAMP (battstat->red_val, 0, 100);
   battstat->red_value_is_time = g_settings_get_boolean (battstat->settings, KEY_RED_VALUE_IS_TIME);
@@ -1348,10 +1294,9 @@ reconfigure_layout( ProgressData *battstat )
   int needwidth;
 
   /* Decide if we are doing to do 'square' mode. */
-  switch( battstat->orienttype )
+  switch (gp_applet_get_orientation (GP_APPLET (battstat)))
   {
-    case PANEL_APPLET_ORIENT_UP:
-    case PANEL_APPLET_ORIENT_DOWN:
+    case GTK_ORIENTATION_HORIZONTAL:
       up_down_order = TRUE;
 
       /* Need to be at least 46px tall to do square mode on a horiz. panel */
@@ -1359,8 +1304,7 @@ reconfigure_layout( ProgressData *battstat )
         do_square = TRUE;
       break;
 
-    case PANEL_APPLET_ORIENT_LEFT:
-    case PANEL_APPLET_ORIENT_RIGHT:
+    case GTK_ORIENTATION_VERTICAL:
       /* We need 64px to fix the text beside anything. */
       if( battstat->showtext )
         needwidth = 64;
@@ -1450,7 +1394,7 @@ reconfigure_layout( ProgressData *battstat )
     table_layout_attach( GTK_TABLE(battstat->table),
                          c.text, battstat->percent );
 
-    gtk_widget_show_all( battstat->applet );
+    gtk_widget_show_all (GTK_WIDGET (battstat));
   }
 
   /* If we are showing the battery meter and we weren't showing it before or
@@ -1478,15 +1422,13 @@ reconfigure_layout( ProgressData *battstat )
 static gint
 create_layout(ProgressData *battstat)
 {
-  if (DEBUG) g_print("create_layout()\n");
-
   /* Allocate the four widgets that we need. */
   battstat->table = gtk_table_new( 3, 3, FALSE );
   battstat->percent = gtk_label_new( "" );
   battstat->status = gtk_image_new();
   battstat->battery = gtk_image_new();
 
-  panel_applet_add_text_class (PANEL_APPLET (battstat->applet), battstat->percent);
+  gp_add_text_color_class (battstat->percent);
 
   /* When you first get a pointer to a newly created GtkWidget it has one
      'floating' reference.  When you first add this widget to a container
@@ -1496,12 +1438,9 @@ create_layout(ProgressData *battstat)
      reference to each widget.  This adds a real reference to each widget
      and "sinks" the floating reference.
   */
-  g_object_ref( battstat->status );
-  g_object_ref( battstat->percent );
-  g_object_ref( battstat->battery );
-  g_object_ref_sink( G_OBJECT( battstat->status ) );
-  g_object_ref_sink( G_OBJECT( battstat->percent ) );
-  g_object_ref_sink( G_OBJECT( battstat->battery ) );
+  g_object_ref_sink (battstat->status);
+  g_object_ref_sink (battstat->percent);
+  g_object_ref_sink (battstat->battery);
 
   /* Let reconfigure_layout know that the table is currently empty. */
   battstat->layout.status = LAYOUT_NONE;
@@ -1509,21 +1448,17 @@ create_layout(ProgressData *battstat)
   battstat->layout.battery = LAYOUT_NONE;
 
   /* Put the table directly inside the applet and show everything. */
-  gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->table);
-  gtk_widget_show_all (battstat->applet);
+  gtk_container_add (GTK_CONTAINER (battstat), battstat->table);
+  gtk_widget_show_all (GTK_WIDGET (battstat));
 
   /* Attach all sorts of signals to the applet. */
-  g_signal_connect(G_OBJECT(battstat->applet),
-                   "destroy",
-                   G_CALLBACK(destroy_applet),
-                   battstat);
 
-  g_signal_connect (battstat->applet,
-		    "change_orient",
-		    G_CALLBACK(change_orient),
-		    battstat);
+  g_signal_connect (battstat,
+                    "placement-changed",
+                    G_CALLBACK(placement_changed_cb),
+                    battstat);
 
-  g_signal_connect (battstat->applet,
+  g_signal_connect (battstat,
 		    "size_allocate",
    		    G_CALLBACK (size_allocate),
 		    battstat);
@@ -1531,33 +1466,24 @@ create_layout(ProgressData *battstat)
   return FALSE;
 }
 
-/* Called by the factory to fill in the fields for the applet.
- */
-static gboolean
-battstat_applet_fill (PanelApplet *applet)
+static void
+battstat_applet_fill (BattstatApplet *self)
 {
   ProgressData *battstat;
   AtkObject *atk_widget;
-  GSimpleActionGroup *action_group;
   GAction *action;
-  gchar *ui_path;
+  const char *menu_resource;
   const char *err;
 
-  if (DEBUG) g_print("main()\n");
-
-  panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-  
-  battstat = g_new0 (ProgressData, 1);
+  battstat = (ProgressData *) self;
 
   /* Some starting values... */
-  battstat->applet = GTK_WIDGET (applet);
-  battstat->settings = panel_applet_settings_new (applet, BATTSTAT_GSCHEMA);
+  battstat->settings = gp_applet_settings_new (GP_APPLET (self), BATTSTAT_GSCHEMA);
   battstat->refresh_label = TRUE;
   battstat->last_batt_life = 1000;
   battstat->last_acline_status = 1000;
   battstat->last_pixmap_index = 1000;
   battstat->last_charging = 1000;
-  battstat->orienttype = panel_applet_get_orient (applet);
   battstat->horizont = TRUE;
   battstat->battery_low_dialog = NULL;
   battstat->battery_low_label = NULL;
@@ -1570,56 +1496,79 @@ battstat_applet_fill (PanelApplet *applet)
 
   load_preferences (battstat);
   create_layout (battstat);
-  setup_text_orientation( battstat );
+  setup_text_orientation (battstat, gp_applet_get_position (GP_APPLET (self)));
 
-  action_group = g_simple_action_group_new ();
-  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-				battstat_menu_actions,
-				G_N_ELEMENTS (battstat_menu_actions),
-				battstat);
-  ui_path = g_build_filename (BATTSTAT_MENU_UI_DIR, "battstat-applet-menu.xml", NULL);
-  panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet),
-				     ui_path, action_group,
-				     GETTEXT_PACKAGE);
-  g_free (ui_path);
+  menu_resource = GRESOURCE_PREFIX "/ui/battstat-applet-menu.xml";
+  gp_applet_setup_menu_from_resource (GP_APPLET (self),
+                                      menu_resource,
+                                      battstat_menu_actions);
 
-  gtk_widget_insert_action_group (GTK_WIDGET (applet), "battstat",
-	                              G_ACTION_GROUP (action_group));
-
-  action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-  g_object_bind_property (applet, "locked-down", action, "enabled",
+  action = gp_applet_menu_lookup_action (GP_APPLET (self), "preferences");
+  g_object_bind_property (self, "locked-down", action, "enabled",
                           G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-  g_object_unref (action_group);
-
-  atk_widget = gtk_widget_get_accessible (battstat->applet);
+  atk_widget = gtk_widget_get_accessible (GTK_WIDGET (self));
   if (GTK_IS_ACCESSIBLE (atk_widget)) {
 	  atk_object_set_name (atk_widget, _("Battery Charge Monitor"));
 	  atk_object_set_description(atk_widget, _("Monitor a laptop's remaining power"));
   }
 
   if ((err = static_global_initialisation (battstat)))
-    battstat_error_dialog (GTK_WIDGET (applet), err);
-
-  return TRUE;
+    battstat_error_dialog (GTK_WIDGET (self), err);
 }
 
-/* Boilerplate... */
-static gboolean
-battstat_applet_factory (PanelApplet *applet,
-			 const gchar          *iid,
-			 gpointer              data)
+static void
+battstat_applet_constructed (GObject *object)
 {
-  gboolean retval = FALSE;
-
-  if (!strcmp (iid, "BattstatApplet"))
-    retval = battstat_applet_fill (applet);
-  
-  return retval;
+  G_OBJECT_CLASS (battstat_applet_parent_class)->constructed (object);
+  battstat_applet_fill (BATTSTAT_APPLET (object));
 }
 
+static void
+battstat_applet_dispose (GObject *object)
+{
+  BattstatApplet *self;
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("BattstatAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 battstat_applet_factory,
-                                 NULL)
+  self = BATTSTAT_APPLET (object);
+
+  g_clear_pointer (&self->prop_win, gtk_widget_destroy);
+
+  if (self->battery_low_dialog != NULL)
+    {
+      battery_low_dialog_destroy (self);
+      self->battery_low_dialog = NULL;
+    }
+
+  if (self->timeout_id != 0)
+    {
+      g_source_remove (self->timeout_id);
+      self->timeout_id = 0;
+    }
+
+  g_clear_object (&self->settings);
+
+  g_clear_object (&self->status);
+  g_clear_object (&self->percent);
+  g_clear_object (&self->battery);
+
+  static_global_teardown (self);
+
+  G_OBJECT_CLASS (battstat_applet_parent_class)->dispose (object);
+}
+
+static void
+battstat_applet_class_init (BattstatAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = battstat_applet_constructed;
+  object_class->dispose = battstat_applet_dispose;
+}
+
+static void
+battstat_applet_init (BattstatApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}

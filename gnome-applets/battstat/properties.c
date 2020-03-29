@@ -1,5 +1,4 @@
-/* -*- Mode: C; tab-width: 2; indent-tabs-mode: t; c-basic-offset: 2 -*- */
-/* battstat        A GNOME battery meter for laptops. 
+/*
  * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -14,13 +13,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
- *
- $Id$
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include "config.h"
 
 #include <stdio.h>
 
@@ -39,15 +34,10 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-#include <panel-applet.h>
-
 #include "battstat.h"
-
-#ifndef gettext_noop
-#define gettext_noop(String) (String)
-#endif
 
 #define NEVER_SENSITIVE		"never_sensitive"
 
@@ -109,7 +99,6 @@ static void
 radio_traditional_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
   gboolean toggled;
   
   toggled = gtk_toggle_button_get_active (button);
@@ -129,7 +118,6 @@ static void
 radio_ubuntu_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
   gboolean toggled;
   
   toggled = gtk_toggle_button_get_active (button);
@@ -149,8 +137,7 @@ static void
 show_text_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  
+
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->radio_text_2))
    && gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->check_text)))
 	  battstat->showtext = APPLET_SHOW_PERCENT;
@@ -178,8 +165,7 @@ static void
 lowbatt_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  
+
   battstat->lowbattnotification = gtk_toggle_button_get_active (button);
   g_settings_set_boolean (battstat->settings, KEY_LOW_BATTERY_NOTIFICATION, battstat->lowbattnotification);  
 
@@ -190,8 +176,7 @@ static void
 full_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  
+
   battstat->fullbattnot = gtk_toggle_button_get_active (button);
   g_settings_set_boolean (battstat->settings, KEY_FULL_BATTERY_NOTIFICATION, battstat->fullbattnot);  
 }
@@ -221,22 +206,19 @@ prop_cb (GSimpleAction *action,
 
   battstat = (ProgressData *) user_data;
 
-  if (DEBUG) g_print("prop_cb()\n");
-
    if (battstat->prop_win) { 
      gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
-			    gtk_widget_get_screen (battstat->applet));
+			    gtk_widget_get_screen (GTK_WIDGET (battstat)));
      gtk_window_present (GTK_WINDOW (battstat->prop_win));
      return;
    } 
 
-  builder = gtk_builder_new ();
-  gtk_builder_add_from_file (builder, GTK_BUILDERDIR"/battstat_applet.ui", NULL);
+  builder = gtk_builder_new_from_resource (GRESOURCE_PREFIX "/ui/battstat-applet.ui");
 
   battstat->prop_win = GTK_DIALOG (gtk_builder_get_object (builder, 
   				   "battstat_properties"));
   gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
-			 gtk_widget_get_screen (battstat->applet));
+			 gtk_widget_get_screen (GTK_WIDGET (battstat)));
 
   g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event",
 		  G_CALLBACK (gtk_true), NULL);
