@@ -106,36 +106,6 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 	}
 }
 
-static void
-icon_theme_changed (GtkIconTheme *icon_theme,
-                    gpointer      user_data)
-{
-	gtk_icon_theme_append_search_path (icon_theme,
-	                                   PKG_DATA_DIR G_DIR_SEPARATOR_S "icons");
-}
-
-static void
-stickynotes_applet_init_icons (void)
-{
-	GtkIconTheme *icon_theme;
-
-	icon_theme = gtk_icon_theme_get_default ();
-	icon_theme_changed (icon_theme, NULL);
-
-	g_signal_connect (gtk_icon_theme_get_default (), "changed",
-	                  G_CALLBACK (icon_theme_changed), NULL);
-}
-
-static void
-stickynotes_destroy (GtkWidget *widget,
-                     gpointer   user_dta)
-{
-	g_signal_handlers_disconnect_by_func (gtk_icon_theme_get_default (),
-	                                      icon_theme_changed, NULL);
-}
-
-
-
 /* Create and initalize global sticky notes instance */
 void
 stickynotes_applet_init (PanelApplet *panel_applet)
@@ -146,6 +116,9 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes->applets = NULL;
 	stickynotes->settings = panel_applet_settings_new (panel_applet, STICKYNOTES_SCHEMA);
 	stickynotes->last_timeout_data = 0;
+
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
+	                                   PKG_DATA_DIR G_DIR_SEPARATOR_S "icons");
 
 	stickynotes->icon_normal = gtk_icon_theme_load_icon (
 			gtk_icon_theme_get_default (),
@@ -163,7 +136,6 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 			stickynotes->icon_normal, 30);
 	stickynotes->visible = TRUE;
 
-	stickynotes_applet_init_icons();
 	stickynotes_applet_init_prefs();
 
 	g_signal_connect (stickynotes->settings, "changed",
@@ -378,8 +350,6 @@ stickynotes_applet_new (PanelApplet *panel_applet)
 			G_CALLBACK(applet_change_orient_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "destroy",
 			G_CALLBACK(applet_destroy_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "destroy",
-			G_CALLBACK(stickynotes_destroy), NULL);
 
 	atk_obj = gtk_widget_get_accessible (applet->w_applet);
 	atk_object_set_name (atk_obj, _("Sticky Notes"));
