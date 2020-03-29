@@ -104,7 +104,7 @@ struct _NetspeedApplet
 
 	GtkWidget      *inbytes_text;
 	GtkWidget      *outbytes_text;
-	GtkDialog      *details;
+	GtkWidget      *details;
 	GtkWidget      *preferences;
 	GtkDrawingArea *drawingarea;
 	
@@ -822,9 +822,8 @@ info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 		return;
 	}
 
-	gtk_widget_destroy(GTK_WIDGET(applet->details));
+	g_clear_pointer (&applet->details, gtk_widget_destroy);
 
-	applet->details = NULL;
 	applet->inbytes_text = NULL;
 	applet->outbytes_text = NULL;
 	applet->drawingarea = NULL;
@@ -1019,7 +1018,7 @@ details_cb (GSimpleAction *action,
 
         dialog_vbox = gtk_dialog_get_content_area (GTK_DIALOG (applet->details));
 	gtk_container_add(GTK_CONTAINER(dialog_vbox), box);
-	gtk_widget_show_all(GTK_WIDGET(applet->details));
+	gtk_widget_show_all (applet->details);
 }	
 
 static void
@@ -1092,6 +1091,9 @@ netspeed_applet_finalize (GObject *object)
 	}
 
 	g_clear_object (&netspeed->settings);
+
+	g_clear_pointer (&netspeed->details, gtk_widget_destroy);
+	g_clear_pointer (&netspeed->preferences, gtk_widget_destroy);
 
 	g_free (netspeed->up_cmd);
 	g_free (netspeed->down_cmd);
