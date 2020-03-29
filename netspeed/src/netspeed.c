@@ -1411,8 +1411,7 @@ netspeed_applet_factory (PanelApplet *applet,
 	NetspeedApplet *netspeed;
 	int i;
 	GtkWidget *spacer, *spacer_box;
-	GtkActionGroup *action_group;
-	
+
 	if (strcmp (iid, "NetspeedApplet"))
 		return FALSE;
 
