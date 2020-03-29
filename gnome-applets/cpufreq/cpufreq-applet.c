@@ -1,5 +1,4 @@
 /*
- * GNOME CPUFreq Applet 
  * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
  *
  *  This library is free software; you can redistribute it and/or
@@ -18,18 +17,15 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
+#include "cpufreq-applet.h"
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
-#include <panel-applet.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "cpufreq-applet.h"
 #include "cpufreq-prefs.h"
 #include "cpufreq-popup.h"
 #include "cpufreq-monitor.h"
@@ -38,7 +34,7 @@
 #define SPACING 2
 
 struct _CPUFreqApplet {
-        PanelApplet       base;
+        GpApplet       parent;
 
         /* Visibility */
 	CPUFreqShowMode   show_mode;
@@ -50,7 +46,6 @@ struct _CPUFreqApplet {
 
         CPUFreqMonitor   *monitor;
 
-        PanelAppletOrient orient;
         gint              size;
 
         GtkWidget        *box;
@@ -71,9 +66,9 @@ struct _CPUFreqApplet {
         CPUFreqPopup     *popup;
 };
 
-struct _CPUFreqAppletClass {
-        PanelAppletClass parent_class;
-};
+static void     queue_refresh                    (CPUFreqApplet *applet);
+
+static void     cpufreq_applet_setup             (CPUFreqApplet *applet);
 
 static void     cpufreq_applet_preferences_cb    (GSimpleAction *action,
                                                   GVariant      *parameter,
@@ -99,25 +94,24 @@ static void     cpufreq_applet_size_allocate     (GtkWidget          *widget,
 static void   cpufreq_applet_get_preferred_width (GtkWidget          *widget,
                                                   gint               *minimum_width,
                                                   gint               *natural_width);
-static void     cpufreq_applet_change_orient     (PanelApplet        *pa,
-                                                  PanelAppletOrient   orient);
 
 static const gchar *const cpufreq_icons[] = {
-        CPUFREQ_PIXMAPS_DIR "/cpufreq-25.png",
-        CPUFREQ_PIXMAPS_DIR "/cpufreq-50.png",
-        CPUFREQ_PIXMAPS_DIR "/cpufreq-75.png",
-        CPUFREQ_PIXMAPS_DIR "/cpufreq-100.png",
-        CPUFREQ_PIXMAPS_DIR "/cpufreq-na.png",
+        GRESOURCE_PREFIX "/icons/cpufreq-25.png",
+        GRESOURCE_PREFIX "/icons/cpufreq-50.png",
+        GRESOURCE_PREFIX "/icons/cpufreq-75.png",
+        GRESOURCE_PREFIX "/icons/cpufreq-100.png",
+        GRESOURCE_PREFIX "/icons/cpufreq-na.png",
         NULL
 };
 
 static const GActionEntry cpufreq_applet_menu_actions [] = {
 	{ "preferences", cpufreq_applet_preferences_cb, NULL, NULL, NULL },
 	{ "help",        cpufreq_applet_help_cb,        NULL, NULL, NULL },
-	{ "about",       cpufreq_applet_about_cb,       NULL, NULL, NULL }
+	{ "about",       cpufreq_applet_about_cb,       NULL, NULL, NULL },
+	{ NULL }
 };
 
-G_DEFINE_TYPE (CPUFreqApplet, cpufreq_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE (CPUFreqApplet, cpufreq_applet, GP_TYPE_APPLET)
 
 /* Enum Types */
 GType
@@ -181,28 +175,18 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 	applet->show_mode = CPUFREQ_MODE_BOTH;
 	applet->show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
 
-        panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
-
-        applet->orient = panel_applet_get_orient (PANEL_APPLET (applet));
+        gp_applet_set_flags (GP_APPLET (applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 
         applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, SPACING);
         gtk_container_add (GTK_CONTAINER (applet), applet->box);
         gtk_widget_set_valign (applet->box, GTK_ALIGN_CENTER);
         gtk_widget_show (applet->box);
 
-	switch (applet->orient) {
-	case PANEL_APPLET_ORIENT_LEFT:
-	case PANEL_APPLET_ORIENT_RIGHT:
-		gtk_widget_set_halign (applet->box, GTK_ALIGN_CENTER);
-		break;
-	case PANEL_APPLET_ORIENT_UP:
-	case PANEL_APPLET_ORIENT_DOWN:
-		gtk_widget_set_halign (applet->box, GTK_ALIGN_START);
-		break;
-	default:
-		g_assert_not_reached ();
-		break;
-	}
+        if (gp_applet_get_orientation (GP_APPLET (applet)) == GTK_ORIENTATION_VERTICAL) {
+                gtk_widget_set_halign (applet->box, GTK_ALIGN_CENTER);
+        } else {
+                gtk_widget_set_halign (applet->box, GTK_ALIGN_START);
+        }
 
         applet->icon = gtk_image_new ();
         gtk_box_pack_start (GTK_BOX (applet->box), applet->icon, FALSE, FALSE, 0);
@@ -221,21 +205,64 @@ cpufreq_applet_init (CPUFreqApplet *applet)
 }
 
 static void
-cpufreq_applet_class_init (CPUFreqAppletClass *klass)
+cpufreq_applet_constructed (GObject *object)
 {
-        PanelAppletClass *applet_class = PANEL_APPLET_CLASS (klass);
-        GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
-        GtkWidgetClass   *widget_class = GTK_WIDGET_CLASS (klass);
+  G_OBJECT_CLASS (cpufreq_applet_parent_class)->constructed (object);
+  cpufreq_applet_setup (CPUFREQ_APPLET (object));
+}
 
-        gobject_class->dispose = cpufreq_applet_dispose;
+static void
+cpufreq_applet_placement_changed (GpApplet        *applet,
+                                  GtkOrientation   orientation,
+                                  GtkPositionType  position)
+{
+  CPUFreqApplet *self;
+  GtkAllocation allocation;
+  gint size;
 
-        widget_class->size_allocate = cpufreq_applet_size_allocate;
-        widget_class->style_updated = cpufreq_applet_style_updated;
-        widget_class->get_preferred_width = cpufreq_applet_get_preferred_width;
-        widget_class->button_press_event = cpufreq_applet_button_press;
-        widget_class->key_press_event = cpufreq_applet_key_press;
+  self = CPUFREQ_APPLET (applet);
+
+  gtk_widget_get_allocation (GTK_WIDGET (self), &allocation);
+
+  if (orientation == GTK_ORIENTATION_VERTICAL)
+    {
+      size = allocation.width;
+      gtk_widget_set_halign (self->box, GTK_ALIGN_CENTER);
+    }
+  else
+    {
+      size = allocation.height;
+      gtk_widget_set_halign (self->box, GTK_ALIGN_START);
+    }
+
+  if (self->size != size)
+    {
+      self->size = size;
+      queue_refresh (self);
+    }
+}
+
+static void
+cpufreq_applet_class_init (CPUFreqAppletClass *self_class)
+{
+  GObjectClass *object_class;
+  GtkWidgetClass *widget_class;
+  GpAppletClass *applet_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+  widget_class = GTK_WIDGET_CLASS (self_class);
+  applet_class = GP_APPLET_CLASS (self_class);
+
+  object_class->constructed = cpufreq_applet_constructed;
+  object_class->dispose = cpufreq_applet_dispose;
+
+  widget_class->size_allocate = cpufreq_applet_size_allocate;
+  widget_class->style_updated = cpufreq_applet_style_updated;
+  widget_class->get_preferred_width = cpufreq_applet_get_preferred_width;
+  widget_class->button_press_event = cpufreq_applet_button_press;
+  widget_class->key_press_event = cpufreq_applet_key_press;
            
-        applet_class->change_orient = cpufreq_applet_change_orient;
+  applet_class->placement_changed = cpufreq_applet_placement_changed;
 }
 
 static void
@@ -309,13 +336,11 @@ cpufreq_applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
 
 	GTK_WIDGET_CLASS (cpufreq_applet_parent_class)->size_allocate (widget, allocation);
 
-        switch (applet->orient) {
-        case PANEL_APPLET_ORIENT_LEFT:
-        case PANEL_APPLET_ORIENT_RIGHT:
+        switch (gp_applet_get_orientation (GP_APPLET (applet))) {
+        case GTK_ORIENTATION_VERTICAL:
                 size = allocation->width;
                 break;
-        case PANEL_APPLET_ORIENT_UP:
-        case PANEL_APPLET_ORIENT_DOWN:
+        case GTK_ORIENTATION_HORIZONTAL:
                 size = allocation->height;
                 break;
         default:
@@ -422,8 +447,7 @@ cpufreq_applet_get_preferred_width (GtkWidget *widget,
                                                                              minimum_width,
                                                                              natural_width);
 
-        if (applet->orient == PANEL_APPLET_ORIENT_LEFT ||
-            applet->orient == PANEL_APPLET_ORIENT_RIGHT)
+        if (gp_applet_get_orientation (GP_APPLET (applet)) == GTK_ORIENTATION_VERTICAL)
                 return;
 
         icon_width = 0;
@@ -470,6 +494,7 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
                            GdkEvent      *event)
 {
         GtkWidget *menu;
+        GtkPositionType position;
         GdkGravity widget_anchor;
         GdkGravity menu_anchor;
 
@@ -486,16 +511,18 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
         if (!menu)
                 return;
 
-        if (applet->orient == PANEL_APPLET_ORIENT_DOWN) {
+        position = gp_applet_get_position (GP_APPLET (applet));
+
+        if (position == GTK_POS_TOP) {
                 widget_anchor = GDK_GRAVITY_SOUTH_WEST;
                 menu_anchor = GDK_GRAVITY_NORTH_WEST;
-        } else if (applet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+        } else if (position == GTK_POS_LEFT) {
                 widget_anchor = GDK_GRAVITY_NORTH_EAST;
                 menu_anchor = GDK_GRAVITY_NORTH_WEST;
-        } else if (applet->orient == PANEL_APPLET_ORIENT_LEFT) {
+        } else if (position == GTK_POS_RIGHT) {
                 widget_anchor = GDK_GRAVITY_NORTH_WEST;
                 menu_anchor = GDK_GRAVITY_NORTH_EAST;
-        } else if (applet->orient == PANEL_APPLET_ORIENT_UP) {
+        } else if (position == GTK_POS_BOTTOM) {
                 widget_anchor = GDK_GRAVITY_NORTH_WEST;
                 menu_anchor = GDK_GRAVITY_SOUTH_WEST;
         } else {
@@ -552,34 +579,6 @@ cpufreq_applet_key_press (GtkWidget *widget, GdkEventKey *event)
         }
 
         return FALSE;
-}
-
-static void
-cpufreq_applet_change_orient (PanelApplet *pa, PanelAppletOrient orient)
-{
-        CPUFreqApplet *applet;
-        GtkAllocation  allocation;
-        gint           size;
-
-        applet = CPUFREQ_APPLET (pa);
-
-        applet->orient = orient;
-
-        gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
-
-        if ((orient == PANEL_APPLET_ORIENT_LEFT) ||
-            (orient == PANEL_APPLET_ORIENT_RIGHT)) {
-                size = allocation.width;
-                gtk_widget_set_halign (applet->box, GTK_ALIGN_CENTER);
-        } else {
-                size = allocation.height;
-                gtk_widget_set_halign (applet->box, GTK_ALIGN_START);
-        }
-
-        if (size != applet->size) {
-                applet->size = size;
-                queue_refresh (applet);
-        }
 }
 
 static void
@@ -665,8 +664,11 @@ cpufreq_applet_pixmap_set_image (CPUFreqApplet *applet, gint perc)
                 image = 4;
 
         if (applet->pixbufs[image] == NULL) {
-                applet->pixbufs[image] = gdk_pixbuf_new_from_file_at_size (cpufreq_icons[image],
-                                                                           24, 24, NULL);
+                applet->pixbufs[image] = gdk_pixbuf_new_from_resource_at_scale (cpufreq_icons[image],
+                                                                                24,
+                                                                                24,
+                                                                                TRUE,
+                                                                                NULL);
         }
 
         gtk_image_set_from_pixbuf (GTK_IMAGE (applet->icon), applet->pixbufs[image]);
@@ -837,16 +839,14 @@ cpufreq_applet_get_widget_size (CPUFreqApplet *applet,
 
         if (!gtk_widget_get_visible (widget))
                 return 0;
-	
+
         gtk_widget_get_preferred_size (widget, &req, NULL);
-        
-        switch (applet->orient) {
-        case PANEL_APPLET_ORIENT_LEFT:
-        case PANEL_APPLET_ORIENT_RIGHT:
+
+        switch (gp_applet_get_orientation (GP_APPLET (applet))) {
+        case GTK_ORIENTATION_VERTICAL:
                 size = req.width;
                 break;
-        case PANEL_APPLET_ORIENT_UP:
-        case PANEL_APPLET_ORIENT_DOWN:
+        case GTK_ORIENTATION_HORIZONTAL:
                 size = req.height;
                 break;
         default:
@@ -866,9 +866,8 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
 
         panel_size = applet->size - 1; /* 1 pixel margin */
 
-	horizontal = (applet->orient == PANEL_APPLET_ORIENT_UP ||
-		      applet->orient == PANEL_APPLET_ORIENT_DOWN);
-	
+	horizontal = (gp_applet_get_orientation (GP_APPLET (applet)) == GTK_ORIENTATION_HORIZONTAL);
+
         /* We want a fixed label size, the biggest */
 	if (horizontal)
 		label_size = cpufreq_applet_get_widget_size (applet, applet->label);
@@ -951,17 +950,12 @@ cpufreq_applet_prefs_show_mode_changed (CPUFreqPrefs  *prefs,
 static void
 cpufreq_applet_setup (CPUFreqApplet *applet)
 {
-	GSimpleActionGroup *action_group;
+	const char *menu_resource;
 	GAction *action;
-	gchar          *ui_path;
 	AtkObject      *atk_obj;
 	GSettings *settings;
 
-        /* Preferences */
-        if (applet->prefs)
-                g_object_unref (applet->prefs);
-
-        settings = panel_applet_settings_new (PANEL_APPLET (applet), "org.gnome.gnome-applets.cpufreq");
+        settings = gp_applet_settings_new (GP_APPLET (applet), "org.gnome.gnome-applets.cpufreq");
         applet->prefs = cpufreq_prefs_new (settings);
 
 	g_signal_connect (G_OBJECT (applet->prefs),
@@ -985,25 +979,14 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                                   (gpointer) applet);
            
         /* Setup the menus */
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-				      cpufreq_applet_menu_actions,
-				      G_N_ELEMENTS (cpufreq_applet_menu_actions),
-				      applet);
-	ui_path = g_build_filename (CPUFREQ_MENU_UI_DIR, "cpufreq-applet-menu.xml", NULL);
-        panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
-					   ui_path, action_group,
-					   GETTEXT_PACKAGE);
-	g_free (ui_path);
+        menu_resource = GRESOURCE_PREFIX "/ui/cpufreq-applet-menu.xml";
+        gp_applet_setup_menu_from_resource (GP_APPLET (applet),
+                                            menu_resource,
+                                            cpufreq_applet_menu_actions);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "cpufreq",
-	                                G_ACTION_GROUP (action_group));
-
-    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+        action = gp_applet_menu_lookup_action (GP_APPLET (applet), "preferences");
 	g_object_bind_property (applet, "locked-down", action, "enabled",
                           G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
-
-	g_object_unref (action_group);
 
         atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
 
@@ -1016,22 +999,3 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 
 	gtk_widget_show (GTK_WIDGET (applet));
 }
-
-static gboolean
-cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
-{
-        gboolean retval = FALSE;
-
-        if (!strcmp (iid, "CPUFreqApplet")) {
-                cpufreq_applet_setup (applet);
-                
-                retval = TRUE;
-        }
-
-        return retval;
-}
-
-PANEL_APPLET_IN_PROCESS_FACTORY ("CPUFreqAppletFactory",
-                                 CPUFREQ_TYPE_APPLET,
-                                 (PanelAppletFactoryCallback) cpufreq_applet_factory,
-                                 NULL)

@@ -4,6 +4,7 @@ SUBDIRS = \
 	battstat \
 	brightness \
 	command \
+	cpufreq \
 	gweather \
 	netspeed \
 	timer \
@@ -44,9 +45,28 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(GNOME_PANEL_LIBS) \
 	$(NULL)
 
+if BUILD_CPUFREQ_APPLET
+org_gnome_gnome_applets_la_LIBADD += \
+	$(top_builddir)/gnome-applets/cpufreq/libcpu-frequency-applet.la \
+	$(NULL)
+endif
+
 org_gnome_gnome_applets_la_LDFLAGS = \
 	-module -avoid-version \
 	$(AM_LDFLAGS) \
+	$(NULL)
+
+cpufreq_icon_files = \
+	cpufreq/icons/cpufreq-100.png \
+	cpufreq/icons/cpufreq-75.png \
+	cpufreq/icons/cpufreq-50.png \
+	cpufreq/icons/cpufreq-25.png \
+	cpufreq/icons/cpufreq-na.png \
+	$(NULL)
+
+cpufreq_ui_files = \
+	cpufreq/cpufreq-applet-menu.xml \
+	cpufreq/cpufreq-preferences.ui \
 	$(NULL)
 
 icon_files = \
@@ -66,6 +86,16 @@ ui_files = \
 	window-picker/wp-menu.xml \
 	window-picker/wp-preferences-dialog.ui \
 	$(NULL)
+
+if BUILD_CPUFREQ_APPLET
+icon_files += \
+	$(cpufreq_icon_files)  \
+	$(NULL)
+
+ui_files += \
+	$(cpufreq_ui_files) \
+	$(NULL)
+endif
 
 gnome-applets.gresource.xml: Makefile
 	$(AM_V_GEN) echo '<?xml version="1.0" encoding="UTF-8"?>' > $@; \
@@ -114,5 +144,12 @@ EXTRA_DIST = \
 	$(icon_files) \
 	$(ui_files) \
 	$(NULL)
+
+if !BUILD_CPUFREQ_APPLET
+EXTRA_DIST += \
+	$(cpufreq_icon_files) \
+	$(cpufreq_ui_files) \
+	$(NULL)
+endif
 
 -include $(top_srcdir)/git.mk

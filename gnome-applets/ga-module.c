@@ -24,6 +24,9 @@
 #include "battstat/battstat-applet.h"
 #include "brightness/brightness-applet.h"
 #include "command/command-applet.h"
+#ifdef BUILD_CPUFREQ_APPLET
+#include "cpufreq/cpufreq-applet.h"
+#endif
 #include "gweather/gweather-applet.h"
 #include "netspeed/netspeed-applet.h"
 #include "timer/timer-applet.h"
@@ -60,6 +63,15 @@ ga_get_applet_info (const char *id)
       description = _("Shows the output of a command");
       icon_name = "utilities-terminal";
     }
+#ifdef BUILD_CPUFREQ_APPLET
+  else if (g_strcmp0 (id, "cpufreq") == 0)
+    {
+      type_func = cpufreq_applet_get_type;
+      name = _("CPU Frequency Scaling Monitor");
+      description = _("Monitor the CPU Frequency Scaling");
+      icon_name = "gnome-cpu-frequency-applet";
+    }
+#endif
   else if (g_strcmp0 (id, "gweather") == 0)
     {
       type_func = gweather_applet_get_type;
@@ -115,6 +127,10 @@ ga_get_applet_id_from_iid (const char *iid)
     return "brightness";
   else if (g_strcmp0 (iid, "CommandAppletFactory::CommandApplet") == 0)
     return "command";
+#ifdef BUILD_CPUFREQ_APPLET
+  else if (g_strcmp0 (iid, "CPUFreqAppletFactory::CPUFreqApplet") == 0)
+    return "cpufreq";
+#endif
   else if (g_strcmp0 (iid, "GWeatherAppletFactory::GWeatherApplet") == 0)
     return "gweather";
   else if (g_strcmp0 (iid, "NetspeedAppletFactory::NetspeedApplet") == 0)
@@ -146,6 +162,9 @@ gp_module_load (GpModule *module)
                             "battstat",
                             "brightness",
                             "command",
+#ifdef BUILD_CPUFREQ_APPLET
+                            "cpufreq",
+#endif
                             "gweather",
                             "netspeed",
                             "timer",

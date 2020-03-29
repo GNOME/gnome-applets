@@ -1,14 +1,17 @@
 NULL =
 
-cpufreqselectordir = $(bindir)
+dbus_services_in_files = org.gnome.CPUFreqSelector.service.in
+dbus_conf_files = org.gnome.CPUFreqSelector.conf
+polkit_in_files = org.gnome.cpufreqselector.policy.in
+
+if BUILD_CPUFREQ_SELECTOR
+bin_PROGRAMS = cpufreq-selector
 
 cpufreq_selector_CFLAGS = \
 	$(CPUFREQ_SELECTOR_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
-
-bin_PROGRAMS = cpufreq-selector
 
 cpufreq_selector_SOURCES = \
 	cpufreq-selector.c \
@@ -30,12 +33,19 @@ cpufreq_selector_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
-dbus_services_in_files = org.gnome.CPUFreqSelector.service.in
-polkit_in_files = org.gnome.cpufreqselector.policy.in
-
 dbus_servicesdir = $(datadir)/dbus-1/system-services
+dbus_services_DATA = $(dbus_services_in_files:.service.in=.service)
+
+$(dbus_services_DATA): $(dbus_services_in_files)
+	sed -e "s|\@BINDIR\@|$(DESTDIR)$(bindir)|" $< > $@
+
 dbus_confdir = $(sysconfdir)/dbus-1/system.d
+dbus_conf_DATA = $(dbus_conf_files)
+
 polkitdir = $(datadir)/polkit-1/actions
+polkit_DATA = $(polkit_in_files:.policy.in=.policy)
+
+@INTLTOOL_POLICY_RULE@
 
 cpufreq-selector-gen.h:
 cpufreq-selector-gen.c: ../org.gnome.CPUFreqSelector.xml
@@ -48,22 +58,17 @@ BUILT_SOURCES = \
 	cpufreq-selector-gen.h \
 	$(NULL)
 
-dbus_services_DATA = $(dbus_services_in_files:.service.in=.service)
-$(dbus_services_DATA): $(dbus_services_in_files)
-	sed -e "s|\@BINDIR\@|$(DESTDIR)$(bindir)|" $< > $@
-dbus_conf_DATA = org.gnome.CPUFreqSelector.conf
-
-@INTLTOOL_POLICY_RULE@
-polkit_DATA = $(polkit_in_files:.policy.in=.policy)
+CLEANFILES = \
+	$(BUILT_SOURCES) \
+	$(dbus_services_DATA) \
+	$(polkit_DATA) \
+	$(NULL)
+endif
 
 EXTRA_DIST = \
-	$(dbus_services_in_files)	\
-	org.gnome.CPUFreqSelector.conf	\
-	$(polkit_in_files)
-
-CLEANFILES = \
-	$(BUILT_SOURCES)	\
-	$(dbus_services_DATA)	\
-	$(polkit_DATA)
+	$(dbus_services_in_files) \
+	$(dbus_conf_files) \
+	$(polkit_in_files) \
+	$(NULL)
 
 -include $(top_srcdir)/git.mk

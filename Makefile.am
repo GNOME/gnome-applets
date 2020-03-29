@@ -4,10 +4,6 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
-if BUILD_CPUFREQ_APPLET
-cpufreq_SUBDIR = cpufreq
-endif
-
 if HAVE_TRACKER_SEARCH_BAR
 tracker_search_bar_SUBDIR = tracker-search-bar
 endif
@@ -32,7 +28,6 @@ SUBDIRS = \
 	$(always_built_SUBDIRS)	\
 	$(vfs_SUBDIRS)		\
 	$(accessx_status_SUBDIR)\
-	$(cpufreq_SUBDIR) \
 	$(tracker_search_bar_SUBDIR) \
 	$(NULL)
 
@@ -48,7 +43,6 @@ DIST_SUBDIRS = \
 	multiload	\
 	accessx-status	\
 	sticky-notes	\
-	cpufreq		\
 	window-buttons	\
 	window-title	\
 	inhibit		\

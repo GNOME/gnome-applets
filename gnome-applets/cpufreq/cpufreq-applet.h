@@ -21,22 +21,15 @@
 #ifndef CPUFREQ_APPLET_H
 #define CPUFREQ_APPLET_H
 
-#include <glib-object.h>
+#include <libgnome-panel/gp-applet.h>
 
 G_BEGIN_DECLS
 
-#define CPUFREQ_TYPE_APPLET            (cpufreq_applet_get_type ())
-#define CPUFREQ_APPLET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_APPLET, CPUFreqApplet))
-#define CPUFREQ_APPLET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_APPLET, CPUFreqAppletClass))
-#define CPUFREQ_IS_APPLET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_APPLET))
-#define CPUFREQ_IS_APPLET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_APPLET))
-#define CPUFREQ_APPLET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_APPLET, CPUFreqAppletClass))
+#define CPUFREQ_TYPE_APPLET (cpufreq_applet_get_type ())
+G_DECLARE_FINAL_TYPE (CPUFreqApplet, cpufreq_applet, CPUFREQ, APPLET, GpApplet)
 
 #define CPUFREQ_TYPE_SHOW_MODE      (cpufreq_applet_show_mode_get_type ())
 #define CPUFREQ_TYPE_SHOW_TEXT_MODE (cpufreq_applet_show_text_mode_get_type ())
-
-typedef struct _CPUFreqApplet      CPUFreqApplet;
-typedef struct _CPUFreqAppletClass CPUFreqAppletClass;
 
 typedef enum {
         CPUFREQ_MODE_GRAPHIC,
@@ -49,8 +42,6 @@ typedef enum {
         CPUFREQ_MODE_TEXT_FREQUENCY_UNIT,
         CPUFREQ_MODE_TEXT_PERCENTAGE
 } CPUFreqShowTextMode;
-
-GType    cpufreq_applet_get_type                (void) G_GNUC_CONST;
 
 GType    cpufreq_applet_show_mode_get_type      (void) G_GNUC_CONST;
 GType    cpufreq_applet_show_text_mode_get_type (void) G_GNUC_CONST;

@@ -277,6 +277,10 @@ AS_IF([test "x$disable_cpufreq" = "xno"], [
   esac
 ], [build_cpufreq_applet=no])
 
+AS_IF([test "x$build_cpufreq_applet" = "xyes"], [
+  AC_DEFINE([BUILD_CPUFREQ_APPLET], [1], [Define to 1 if building cpufreq applet])
+])
+
 AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)
 AM_CONDITIONAL(BUILD_CPUFREQ_SELECTOR, test x$enable_selector = xyes)
 
@@ -347,6 +351,8 @@ AC_CONFIG_FILES([
   gnome-applets/battstat/Makefile
   gnome-applets/brightness/Makefile
   gnome-applets/command/Makefile
+  gnome-applets/cpufreq/Makefile
+  gnome-applets/cpufreq/cpufreq-selector/Makefile
   gnome-applets/gweather/Makefile
   gnome-applets/netspeed/Makefile
   gnome-applets/timer/Makefile
@@ -375,11 +381,6 @@ AC_CONFIG_FILES([
 
   charpick/Makefile
   charpick/src/Makefile
-
-  cpufreq/Makefile
-  cpufreq/pixmaps/Makefile
-  cpufreq/src/cpufreq-selector/Makefile
-  cpufreq/src/Makefile
 
   drivemount/Makefile
   drivemount/src/Makefile

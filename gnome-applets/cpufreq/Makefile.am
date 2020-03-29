@@ -1,27 +1,18 @@
 NULL =
 
-if BUILD_CPUFREQ_SELECTOR
-selector_SUBDIR = cpufreq-selector
-endif
+SUBDIRS = cpufreq-selector
 
-SUBDIRS = $(selector_SUBDIR)
-
-cpu_frequency_applet_libdir = $(pkglibdir)
-cpu_frequency_applet_lib_LTLIBRARIES = libcpu-frequency-applet.la
+if BUILD_CPUFREQ_APPLET
+noinst_LTLIBRARIES = libcpu-frequency-applet.la
 
 libcpu_frequency_applet_la_CPPFLAGS = \
-	-DCPUFREQ_MENU_UI_DIR=\""$(pkgdatadir)/ui"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	-DCPUFREQ_PIXMAPS_DIR=\""$(pkgdatadir)/cpufreq-applet/pixmaps"\" \
-	-DGTK_BUILDERDIR=\""$(pkgdatadir)/builder"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.cpu-frequency\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libcpu_frequency_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
-	$(LIBGLADE_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
@@ -41,15 +32,13 @@ libcpu_frequency_applet_la_SOURCES = \
 	$(NULL)
 
 libcpu_frequency_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libcpu_frequency_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(GIO_UNIX_LIBS) \
-	$(LIBGLADE_LIBS) \
 	$(LIBCPUFREQ_LIBS) \
 	$(NULL)
 
@@ -64,12 +53,13 @@ BUILT_SOURCES = \
 	cpufreq-selector-gen.h \
 	$(NULL)
 
-EXTRA_DIST = \
-	org.gnome.CPUFreqSelector.xml \
-	$(NULL)
-
 CLEANFILES = \
 	$(BUILT_SOURCES) \
+	$(NULL)
+endif
+
+EXTRA_DIST = \
+	org.gnome.CPUFreqSelector.xml \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

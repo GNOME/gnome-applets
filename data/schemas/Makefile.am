@@ -25,7 +25,7 @@ gsettings_schemas_in_in += \
 	org.gnome.gnome-applets.cpufreq.gschema.xml.in.in \
 	$(NULL)
 gsettings_ENUM_FILES += \
-	$(top_srcdir)/cpufreq/src/cpufreq-applet.h \
+	$(top_srcdir)/gnome-applets/cpufreq/cpufreq-applet.h \
 	$(NULL)
 endif
 
