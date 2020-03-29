@@ -348,6 +348,7 @@ AC_CONFIG_FILES([
   gnome-applets/brightness/Makefile
   gnome-applets/command/Makefile
   gnome-applets/gweather/Makefile
+  gnome-applets/netspeed/Makefile
   gnome-applets/timer/Makefile
   gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
@@ -395,10 +396,6 @@ AC_CONFIG_FILES([
 
   multiload/Makefile
   multiload/src/Makefile
-
-  netspeed/data/Makefile
-  netspeed/src/Makefile
-  netspeed/Makefile
 
   sticky-notes/Makefile
   sticky-notes/data/Makefile

@@ -5,6 +5,7 @@ SUBDIRS = \
 	brightness \
 	command \
 	gweather \
+	netspeed \
 	timer \
 	trash \
 	window-picker \
@@ -36,6 +37,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
 	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
+	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \
@@ -57,6 +59,7 @@ ui_files = \
 	brightness/brightness-applet-menu.xml \
 	command/command-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \
+	netspeed/netspeed-menu.xml \
 	timer/timer-applet-menu.xml \
 	trash/trash-empty.ui \
 	trash/trash-menu.xml \

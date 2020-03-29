@@ -1,6 +1,4 @@
-/*  netspeed.c
- *  vim:ts=4:sw=4:noexpandtab:cindent
- *
+/*
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -18,17 +16,17 @@
  *  Netspeed Applet was writen by Jörgen Scheibengruber <mfcn@gmx.de>
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif 
+#include "netspeed-applet.h"
 
 #include <math.h>
+#include <libgnome-panel/gp-utils.h>
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
+
 #include "backend.h"
 #include "label.h"
 #include "preferences.h"
-#include "netspeed.h"
 
  /* Icons for the interfaces */
 static const char* const dev_type_icon[DEV_UNKNOWN + 1] = {
@@ -67,7 +65,7 @@ static const char LOGO_ICON[] = "netspeed-applet";
  */
 struct _NetspeedApplet
 {
-	PanelApplet     parent;
+	GpApplet        parent;
 
 	gint            size;
 
@@ -123,10 +121,13 @@ struct _NetspeedApplet
 	GSettings      *settings;
 };
 
-G_DEFINE_TYPE (NetspeedApplet, netspeed_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE (NetspeedApplet, netspeed_applet, GP_TYPE_APPLET)
 
 static void
 update_tooltip(NetspeedApplet* applet);
+
+static void
+netspeed_applet_setup (GpApplet *applet);
 
 /* Adds a Pango markup "foreground" to a bytestring
  */
@@ -143,17 +144,16 @@ add_markup_fgcolor(char **string, const char *color)
  * or just the sum
  */
 static void
-applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApplet *applet)
+applet_change_size_or_orient (NetspeedApplet *applet,
+                              GtkOrientation  orientation)
 {
 	int size;
-	PanelAppletOrient orient;
 	gboolean labels_dont_shrink;
 
 	g_assert(applet);
 
 	size = applet->size;
-	orient = panel_applet_get_orient(applet_widget);
-	
+
 	g_object_ref(applet->pix_box);
 	g_object_ref(applet->in_pix);
 	g_object_ref(applet->in_label);
@@ -179,8 +179,8 @@ applet_change_size_or_orient(PanelApplet *applet_widget, int arg1, NetspeedApple
 		gtk_container_remove(GTK_CONTAINER(applet->box), applet->pix_box);
 		gtk_widget_destroy(applet->box);
 	}
-		
-	if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT) {
+
+	if (orientation == GTK_ORIENTATION_VERTICAL) {
 		applet->box = gtk_vbox_new(FALSE, 0);
 		if (size > 64) {
 			applet->sum_box = gtk_hbox_new(FALSE, 2);
@@ -1071,8 +1071,16 @@ static const GActionEntry menu_actions [] = {
 	{ "details",     details_cb,     NULL, NULL, NULL },
 	{ "preferences", preferences_cb, NULL, NULL, NULL },
 	{ "help",        help_cb,        NULL, NULL, NULL },
-	{ "about",       about_cb,       NULL, NULL, NULL }
+	{ "about",       about_cb,       NULL, NULL, NULL },
+	{ NULL }
 };
+
+static void
+netspeed_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (netspeed_applet_parent_class)->constructed (object);
+  netspeed_applet_setup (GP_APPLET (object));
+}
 
 static void
 netspeed_applet_finalize (GObject *object)
@@ -1202,6 +1210,7 @@ netspeed_applet_class_init (NetspeedAppletClass *netspeed_class)
 	object_class = G_OBJECT_CLASS (netspeed_class);
 	widget_class = GTK_WIDGET_CLASS (netspeed_class);
 
+	object_class->constructed = netspeed_applet_constructed;
 	object_class->finalize = netspeed_applet_finalize;
 
 	widget_class->button_press_event = netspeed_applet_button_press_event;
@@ -1219,35 +1228,18 @@ netspeed_applet_init (NetspeedApplet *netspeed)
 }
 
 static void
-setup_menu (PanelApplet *applet)
+setup_menu (GpApplet *applet)
 {
-	NetspeedApplet *netspeed;
-	GSimpleActionGroup *action_group;
+	const char *menu_resource;
 	GAction *action;
-	gchar *ui_path;
 
-	netspeed = NETSPEED_APPLET (applet);
+	menu_resource = GRESOURCE_PREFIX "/ui/netspeed-menu.xml";
+	gp_applet_setup_menu_from_resource (applet, menu_resource, menu_actions);
 
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 menu_actions,
-	                                 G_N_ELEMENTS (menu_actions),
-	                                 netspeed);
-	ui_path = g_build_filename (NETSPEED_MENU_UI_DIR, "netspeed-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (applet,
-	                                   ui_path, action_group,
-	                                   GETTEXT_PACKAGE);
-	g_free (ui_path);
-
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "netspeed",
-	                                G_ACTION_GROUP (action_group));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
+	action = gp_applet_menu_lookup_action (applet, "preferences");
 	g_object_bind_property (applet, "locked-down",
 	                        action, "enabled",
 	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
-
-	g_object_unref (action_group);
 }
 
 static void
@@ -1330,8 +1322,10 @@ netspeed_applet_settings_changed (GSettings   *settings,
                                   gpointer     user_data)
 {
 	NetspeedApplet *netspeed;
+	GtkOrientation orientation;
 
 	netspeed = NETSPEED_APPLET (user_data);
+	orientation = gp_applet_get_orientation (GP_APPLET (netspeed));
 
 	if (key == NULL || g_strcmp0 (key, "refresh-time") == 0) {
 		netspeed->refresh_time = g_settings_get_int (netspeed->settings, "refresh-time");
@@ -1374,7 +1368,7 @@ netspeed_applet_settings_changed (GSettings   *settings,
 		out_color_changed (netspeed);
 
 	if (key != NULL) {
-		applet_change_size_or_orient (PANEL_APPLET (netspeed), -1, netspeed);
+		applet_change_size_or_orient (netspeed, orientation);
 		update_applet (netspeed);
 	}
 }
@@ -1385,14 +1379,14 @@ netspeed_applet_size_allocate (GtkWidget     *widget,
                                gpointer       user_data)
 {
 	NetspeedApplet *netspeed;
-	PanelAppletOrient orient;
+	GtkOrientation orientation;
 	gint old_size;
 
 	netspeed = NETSPEED_APPLET (user_data);
-	orient = panel_applet_get_orient (PANEL_APPLET (netspeed));
+	orientation = gp_applet_get_orientation (GP_APPLET (netspeed));
 	old_size = netspeed->size;
 
-	if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN)
+	if (orientation == GTK_ORIENTATION_HORIZONTAL)
 		netspeed->size = allocation->height;
 	else
 		netspeed->size = allocation->width;
@@ -1400,20 +1394,24 @@ netspeed_applet_size_allocate (GtkWidget     *widget,
 	if (old_size == netspeed->size)
 		return;
 
-	applet_change_size_or_orient (PANEL_APPLET (netspeed), -1, netspeed);
+	applet_change_size_or_orient (netspeed, orientation);
 }
 
-static gboolean
-netspeed_applet_factory (PanelApplet *applet,
-                         const gchar *iid,
-                         gpointer     data)
+static void
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      NetspeedApplet  *self)
+{
+	applet_change_size_or_orient (self, orientation);
+}
+
+static void
+netspeed_applet_setup (GpApplet *applet)
 {
 	NetspeedApplet *netspeed;
 	int i;
 	GtkWidget *spacer, *spacer_box;
-
-	if (strcmp (iid, "NetspeedApplet"))
-		return FALSE;
 
 	netspeed = NETSPEED_APPLET (applet);
 
@@ -1430,7 +1428,7 @@ netspeed_applet_factory (PanelApplet *applet,
 		netspeed->out_graph[i] = -1;
 	}	
 
-	netspeed->settings = panel_applet_settings_new (applet, "org.gnome.gnome-applets.netspeed");
+	netspeed->settings = gp_applet_settings_new (applet, "org.gnome.gnome-applets.netspeed");
 
 	g_signal_connect (netspeed->settings, "changed",
 	                  G_CALLBACK (netspeed_applet_settings_changed),
@@ -1441,9 +1439,9 @@ netspeed_applet_factory (PanelApplet *applet,
 	netspeed->out_label = netspeed_label_new ();
 	netspeed->sum_label = netspeed_label_new ();
 
-	panel_applet_add_text_class (applet, netspeed->in_label);
-	panel_applet_add_text_class (applet, netspeed->out_label);
-	panel_applet_add_text_class (applet, netspeed->sum_label);
+	gp_add_text_color_class (netspeed->in_label);
+	gp_add_text_color_class (netspeed->out_label);
+	gp_add_text_color_class (netspeed->sum_label);
 
 	netspeed->in_pix = gtk_image_new ();
 	netspeed->out_pix = gtk_image_new ();
@@ -1463,11 +1461,11 @@ netspeed_applet_factory (PanelApplet *applet,
 
 	init_quality_pixbufs (netspeed);
 
-	applet_change_size_or_orient (applet, -1, netspeed);
+	applet_change_size_or_orient (netspeed, gp_applet_get_orientation (applet));
 	gtk_widget_show_all (GTK_WIDGET (applet));
 	update_applet (netspeed);
 
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+	gp_applet_set_flags (applet, GP_APPLET_FLAGS_EXPAND_MINOR);
 
 	netspeed_applet_setup_timeout (netspeed);
 
@@ -1479,13 +1477,11 @@ netspeed_applet_factory (PanelApplet *applet,
 	                  G_CALLBACK (icon_theme_changed_cb),
 	                  netspeed);
 
-	g_signal_connect (applet, "change_orient",
-	                  G_CALLBACK (applet_change_size_or_orient),
+	g_signal_connect (applet, "placement-changed",
+	                  G_CALLBACK(placement_changed_cb),
 	                  netspeed);
 
 	setup_menu (applet);
-
-	return TRUE;
 }
 
 void
@@ -1560,8 +1556,3 @@ netspeed_applet_get_auto_device_name (void)
 
 	return g_strdup ("lo");
 }
-
-PANEL_APPLET_IN_PROCESS_FACTORY ("NetspeedAppletFactory",
-                                 NETSPEED_TYPE_APPLET,
-                                 netspeed_applet_factory,
-                                 NULL)

@@ -1,22 +1,17 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
-
-netspeed_applet_libdir = $(pkglibdir)
-netspeed_applet_lib_LTLIBRARIES = libnet-speed-applet.la
+noinst_LTLIBRARIES = libnet-speed-applet.la
 
 libnet_speed_applet_la_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.net-speed\" \
 	-DG_LOG_USE_STRUCTURED=1 \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
-	-DNETSPEED_MENU_UI_DIR=\""$(uidir)"\" \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-I$(top_srcdir) \
 	-I$(includedir) \
 	$(NULL)
 
 libnet_speed_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(GTOP_APPLETS_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
@@ -27,20 +22,19 @@ libnet_speed_applet_la_SOURCES = \
 	backend.c \
 	label.h \
 	label.c \
-	netspeed.h \
-	netspeed.c \
+	netspeed-applet.c \
+	netspeed-applet.h \
 	preferences.h \
 	preferences.c \
 	$(NULL)
 
 libnet_speed_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libnet_speed_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(GTOP_APPLETS_LIBS) \
 	$(IWLIB) \
 	$(NULL)

@@ -25,6 +25,7 @@
 #include "brightness/brightness-applet.h"
 #include "command/command-applet.h"
 #include "gweather/gweather-applet.h"
+#include "netspeed/netspeed-applet.h"
 #include "timer/timer-applet.h"
 #include "trash/trash-applet.h"
 #include "window-picker/wp-applet.h"
@@ -65,6 +66,13 @@ ga_get_applet_info (const char *id)
       name = _("Weather Report");
       description = _("Monitor the current weather conditions, and forecasts");
       icon_name = "weather-storm";
+    }
+  else if (g_strcmp0 (id, "netspeed") == 0)
+    {
+      type_func = netspeed_applet_get_type;
+      name = _("Network Monitor");
+      description = _("Netspeed Applet");
+      icon_name = "netspeed-applet";
     }
   else if (g_strcmp0 (id, "timer") == 0)
     {
@@ -109,6 +117,8 @@ ga_get_applet_id_from_iid (const char *iid)
     return "command";
   else if (g_strcmp0 (iid, "GWeatherAppletFactory::GWeatherApplet") == 0)
     return "gweather";
+  else if (g_strcmp0 (iid, "NetspeedAppletFactory::NetspeedApplet") == 0)
+    return "netspeed";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
@@ -137,6 +147,7 @@ gp_module_load (GpModule *module)
                             "brightness",
                             "command",
                             "gweather",
+                            "netspeed",
                             "timer",
                             "trash",
                             "window-picker",

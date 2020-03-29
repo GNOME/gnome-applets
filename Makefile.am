@@ -19,7 +19,6 @@ always_built_SUBDIRS =  \
 	geyes		\
 	mini-commander \
 	multiload \
-	netspeed \
 	sticky-notes	\
 	window-buttons \
 	window-title \
@@ -47,7 +46,6 @@ DIST_SUBDIRS = \
 	geyes		\
 	mini-commander	\
 	multiload	\
-	netspeed	\
 	accessx-status	\
 	sticky-notes	\
 	cpufreq		\

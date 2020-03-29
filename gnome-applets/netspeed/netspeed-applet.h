@@ -18,17 +18,22 @@
  *     Alberts Muktupāvels <alberts.muktupavels@gmail.com>
  */
 
-#ifndef NETSPEED_PREFERENCES_H
-#define NETSPEED_PREFERENCES_H
+#ifndef NETSPEED_APPLET_H
+#define NETSPEED_APPLET_H
 
-#include <gtk/gtk.h>
-#include "netspeed.h"
+#include <libgnome-panel/gp-applet.h>
 
-#define NETSPEED_TYPE_PREFERENCES netspeed_preferences_get_type ()
-G_DECLARE_FINAL_TYPE (NetspeedPreferences, netspeed_preferences,
-                      NETSPEED, PREFERENCES,
-                      GtkDialog)
+#define NETSPEED_TYPE_APPLET netspeed_applet_get_type ()
+G_DECLARE_FINAL_TYPE (NetspeedApplet, netspeed_applet,
+                      NETSPEED, APPLET,
+                      GpApplet)
 
-GtkWidget *netspeed_preferences_new (NetspeedApplet *netspeed);
+void         netspeed_applet_display_help            (NetspeedApplet *netspeed,
+                                                      const gchar    *section);
+
+GSettings   *netspeed_applet_get_settings            (NetspeedApplet *netspeed);
+
+const gchar *netspeed_applet_get_current_device_name (NetspeedApplet *netspeed);
+gchar       *netspeed_applet_get_auto_device_name    (void);
 
 #endif
