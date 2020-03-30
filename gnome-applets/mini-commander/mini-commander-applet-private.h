@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>,
  *               2002 Sun Microsystems
  *
@@ -23,17 +22,12 @@
 #ifndef __MC_APPLET_H__
 #define __MC_APPLET_H__
 
-#include <glib.h>
-#include <glib/gi18n.h>
+#include "mini-commander-applet.h"
+
+typedef struct _MiniCommanderApplet MCData;
+#include "preferences.h"
 
 G_BEGIN_DECLS
-
-#include <gtk/gtk.h>
-#include <panel-applet.h>
-
-typedef struct _MCData MCData;
-
-#include "preferences.h"
 
 /* Constants */
 #define MC_NUM_LISTENERS                12
@@ -41,8 +35,9 @@ typedef struct _MCData MCData;
 #define MC_MAX_COMMAND_LENGTH           505
 #define MC_MAX_NUM_MACRO_PARAMETERS     100
 
-struct _MCData {
-    PanelApplet   *applet;
+struct _MiniCommanderApplet
+{
+    GpApplet       parent;
 
     GSettings     *global_settings;
     GSettings     *settings;
@@ -59,14 +54,14 @@ struct _MCData {
     MCPrefsDialog  prefs_dialog;
 
     gboolean       error;
-    PanelAppletOrient orient;
+    GtkOrientation orient;
 };
 
 void mc_applet_draw (MCData *mc);
 
-void set_atk_name_description (GtkWidget *widget,
-			       const char *name,
-			       const char *description);
+void mc_set_atk_name_description (GtkWidget  *widget,
+                                  const char *name,
+                                  const char *description);
 
 G_END_DECLS
 

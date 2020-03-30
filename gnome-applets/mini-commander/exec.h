@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -24,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#include "mini-commander_applet.h"
+#include "mini-commander-applet-private.h"
 
 void mc_exec_command (MCData     *mc,
 		      const char *cmd);

@@ -1,5 +1,4 @@
- /*
- * Mini-Commander Applet
+/*
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>,
  *               2002 Sun Microsystems
  *
@@ -20,19 +19,19 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "mini-commander-applet.h"
+
 #include <string.h>
 #include <stdlib.h>
 
 #include <gdk/gdkkeysyms.h>
-
-
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-#include <panel-applet.h>
-#include "mini-commander_applet.h"
+#include "mini-commander-applet-private.h"
 #include "preferences.h"
-#include "command_line.h"
+#include "command-line.h"
 #include "about.h"
 #include "help.h"
 #include "gsettings.h"
@@ -45,13 +44,16 @@
 
 #define COMMANDLINE_DEFAULT_ICON_SIZE 6
 
+G_DEFINE_TYPE (MiniCommanderApplet, mini_commander_applet, GP_TYPE_APPLET)
+
 static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
 
 static const GActionEntry mini_commander_menu_actions [] = {
 	{ "preferences", mc_show_preferences, NULL, NULL, NULL },
 	{ "help",        show_help,           NULL, NULL, NULL },
-	{ "about",       about_box,           NULL, NULL, NULL }
+	{ "about",       about_box,           NULL, NULL, NULL },
+	{ NULL }
 };
 
 typedef struct {
@@ -108,9 +110,9 @@ command_line_init_stock_icons (void)
 }
 
 void
-set_atk_name_description (GtkWidget  *widget,
-			  const char *name,
-			  const char *description)
+mc_set_atk_name_description (GtkWidget  *widget,
+                             const char *name,
+                             const char *description)
 {
     AtkObject *aobj;
 
@@ -131,7 +133,7 @@ button_press_hack (GtkWidget      *widget,
 		   MCData         *mc)
 {
     if (event->button == 3 || event->button == 2) {
-	gtk_propagate_event (GTK_WIDGET (mc->applet), (GdkEvent *) event);
+	gtk_propagate_event (GTK_WIDGET (mc), (GdkEvent *) event);
 	return TRUE;
     }
 
@@ -195,7 +197,7 @@ mc_applet_draw (MCData *mc)
         gtk_widget_destroy (mc->applet_box);
     }
 
-    if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < 36) )
+    if ( (mc->orient == GTK_ORIENTATION_VERTICAL) && (prefs.panel_size_x < 36) )
       mc->applet_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     else
       mc->applet_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
@@ -210,7 +212,7 @@ mc_applet_draw (MCData *mc)
     }
 
     /* hbox for message label and buttons */
-    if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT))
+    if (mc->orient == GTK_ORIENTATION_VERTICAL)
       if (prefs.panel_size_x < 36)
 	hbox_buttons = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
       else
@@ -237,9 +239,9 @@ mc_applet_draw (MCData *mc)
     gtk_widget_set_tooltip_text (button, _("Browser"));
     gtk_box_pack_start (GTK_BOX (hbox_buttons), button, TRUE, TRUE, 0);
 
-    set_atk_name_description (button,
-			      _("Browser"),
-			      _("Click this button to start the browser"));
+    mc_set_atk_name_description (button,
+                                 _("Browser"),
+                                 _("Click this button to start the browser"));
 
     /* add history button */
     button = gtk_button_new ();
@@ -255,67 +257,34 @@ mc_applet_draw (MCData *mc)
     gtk_widget_set_tooltip_text (button, _("History"));
     gtk_box_pack_end (GTK_BOX (hbox_buttons), button, TRUE, TRUE, 0);
 
-    set_atk_name_description (button,
-			      _("History"),
-			      _("Click this button for the list of previous commands"));
+    mc_set_atk_name_description (button,
+                                 _("History"),
+                                 _("Click this button for the list of previous commands"));
 
     gtk_box_pack_start (GTK_BOX (mc->applet_box), mc->entry, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox_buttons, TRUE, TRUE, 0);
 
-    gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_box);
+    gtk_container_add (GTK_CONTAINER (mc), mc->applet_box);
 
     gtk_widget_show_all (mc->applet_box);
 }
 
 static void
-mc_destroyed (GtkWidget *widget,
-	      MCData    *mc)
+placement_changed_cb (GpApplet            *applet,
+                      GtkOrientation       orientation,
+                      GtkPositionType      position,
+                      MiniCommanderApplet *self)
 {
-    if (mc->global_settings) {
-        g_object_unref (mc->global_settings);
-        mc->global_settings = NULL;
-    }
-
-    if (mc->settings) {
-        g_object_unref (mc->settings);
-        mc->settings = NULL;
-    }
-
-    mc_macros_free (mc->preferences.macros);
-
-    if (mc->preferences.cmd_line_color_fg)
-       g_free (mc->preferences.cmd_line_color_fg);
-
-    if (mc->preferences.cmd_line_color_bg)
-       g_free (mc->preferences.cmd_line_color_bg);
-
-    if (mc->prefs_dialog.dialog)
-        gtk_widget_destroy (mc->prefs_dialog.dialog);
-
-    if (mc->prefs_dialog.dialog)
-        g_object_unref (mc->prefs_dialog.macros_store);
-
-    if (mc->file_select)
-        gtk_widget_destroy (mc->file_select);
-
-    g_free (mc);
+  self->orient = orientation;
+  mc_applet_draw (self);
 }
 
 static void
-mc_orient_changed (PanelApplet *applet,
-		   PanelAppletOrient orient,
-		   MCData *mc)
+mc_pixel_size_changed (GtkWidget     *widget,
+                       GtkAllocation *allocation,
+                       MCData        *mc)
 {
-  mc->orient = orient;
-  mc_applet_draw (mc);
-}
-
-static void
-mc_pixel_size_changed (PanelApplet *applet,
-		       GtkAllocation *allocation,
-		       MCData      *mc)
-{
-  if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+  if (mc->orient == GTK_ORIENTATION_VERTICAL) {
     if (mc->preferences.panel_size_x == allocation->width)
       return;
     mc->preferences.panel_size_x = allocation->width;
@@ -328,14 +297,12 @@ mc_pixel_size_changed (PanelApplet *applet,
   mc_applet_draw (mc);
 }
 
-static gboolean
-mini_commander_applet_fill (PanelApplet *applet)
+static void
+mini_commander_applet_fill (MCData *mc)
 {
-    MCData *mc;
     GSettings *settings;
-    GSimpleActionGroup *action_group;
+    const char *menu_resource;
     GAction *action;
-    gchar *ui_path;
 
     settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
     if (g_settings_get_boolean (settings, "disable-command-line")) {
@@ -349,81 +316,106 @@ mini_commander_applet_fill (PanelApplet *applet)
 
 	    gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
 	    gtk_window_set_screen (GTK_WINDOW (error_dialog),
-				   gtk_widget_get_screen (GTK_WIDGET (applet)));
+				   gtk_widget_get_screen (GTK_WIDGET (mc)));
 	    gtk_dialog_run (GTK_DIALOG (error_dialog));
 	    gtk_widget_destroy (error_dialog);
 
 	    /* Note that this is only kosher if this is an out of process thing,
 	       which we really are.  We really don't need/want this applet when
 	       command line is disabled */
-	    exit (1);
+	    /* exit (1); */
+	    g_object_unref (settings);
+	    return;
     }
     g_object_unref (settings);
 
-    mc = g_new0 (MCData, 1);
-    mc->applet = applet;
-
     mc->global_settings = g_settings_new (MINI_COMMANDER_GLOBAL_SCHEMA);
-    mc->settings = panel_applet_settings_new (applet, MINI_COMMANDER_SCHEMA);
+    mc->settings = gp_applet_settings_new (GP_APPLET (mc), MINI_COMMANDER_SCHEMA);
 
-    panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+    gp_applet_set_flags (GP_APPLET (mc), GP_APPLET_FLAGS_EXPAND_MINOR);
     mc_load_preferences (mc);
     command_line_init_stock_icons ();
 
-    g_signal_connect (mc->applet, "change_orient",
-		      G_CALLBACK (mc_orient_changed), mc);
-    g_signal_connect (mc->applet, "size_allocate",
+    g_signal_connect (mc, "placement-changed",
+		      G_CALLBACK (placement_changed_cb), mc);
+    g_signal_connect (mc, "size-allocate",
 		      G_CALLBACK (mc_pixel_size_changed), mc);
 
-    mc->orient = panel_applet_get_orient (applet);
+    mc->orient = gp_applet_get_orientation (GP_APPLET (mc));
     mc_applet_draw(mc);
-    gtk_widget_show (GTK_WIDGET (mc->applet));
+    gtk_widget_show (GTK_WIDGET (mc));
 
-    g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc);
-    g_signal_connect (mc->applet, "button_press_event",
+    g_signal_connect (mc, "button_press_event",
 		      G_CALLBACK (send_button_to_entry_event), mc);
-    g_signal_connect (mc->applet, "key_press_event",
+    g_signal_connect (mc, "key_press_event",
 		      G_CALLBACK (key_press_cb), mc);
 
-    action_group = g_simple_action_group_new ();
-    g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-                                     mini_commander_menu_actions,
-                                     G_N_ELEMENTS (mini_commander_menu_actions),
-                                     mc);
-    ui_path = g_build_filename (MC_MENU_UI_DIR, "mini-commander-applet-menu.xml", NULL);
-    panel_applet_setup_menu_from_file (mc->applet, ui_path, action_group, GETTEXT_PACKAGE);
+    menu_resource = GRESOURCE_PREFIX "/ui/mini-commander-applet-menu.xml";
+    gp_applet_setup_menu_from_resource (GP_APPLET (mc),
+                                        menu_resource,
+                                        mini_commander_menu_actions);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "mc",
-	                                G_ACTION_GROUP (action_group));
-
-    action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-	g_object_bind_property (applet, "locked-down",
+    action = gp_applet_menu_lookup_action (GP_APPLET (mc), "preferences");
+	g_object_bind_property (mc, "locked-down",
 	                        action, "enabled",
 	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-    g_object_unref (action_group);
-
-    set_atk_name_description (GTK_WIDGET (applet),
-			      _("Mini-Commander applet"),
-			      _("This applet adds a command line to the panel"));
-
-    return TRUE;
+    mc_set_atk_name_description (GTK_WIDGET (mc),
+                                 _("Mini-Commander applet"),
+                                 _("This applet adds a command line to the panel"));
 }
 
-static gboolean
-mini_commander_applet_factory (PanelApplet *applet,
-			       const gchar *iid,
-			       gpointer     data)
+static void
+mini_commander_applet_constructed (GObject *object)
 {
-        gboolean retval = FALSE;
-
-        if (!strcmp (iid, "MiniCommanderApplet"))
-                retval = mini_commander_applet_fill(applet);
-
-        return retval;
+  G_OBJECT_CLASS (mini_commander_applet_parent_class)->constructed (object);
+  mini_commander_applet_fill (MINI_COMMANDER_APPLET (object));
 }
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("MiniCommanderAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 mini_commander_applet_factory,
-                                 NULL)
+static void
+mini_commander_applet_dispose (GObject *object)
+{
+  MiniCommanderApplet *self;
+
+  self = MINI_COMMANDER_APPLET (object);
+
+  g_clear_object (&self->global_settings);
+  g_clear_object (&self->settings);
+
+  if (self->preferences.macros != NULL)
+    {
+      mc_macros_free (self->preferences.macros);
+      self->preferences.macros = NULL;
+    }
+
+  g_clear_pointer (&self->preferences.cmd_line_color_fg, g_free);
+  g_clear_pointer (&self->preferences.cmd_line_color_bg, g_free);
+
+  if (self->prefs_dialog.dialog != NULL)
+    {
+      gtk_widget_destroy (self->prefs_dialog.dialog);
+      g_object_unref (self->prefs_dialog.macros_store);
+
+      self->prefs_dialog.dialog = NULL;
+    }
+
+  g_clear_pointer (&self->file_select, gtk_widget_destroy);
+
+  G_OBJECT_CLASS (mini_commander_applet_parent_class)->dispose (object);
+}
+
+static void
+mini_commander_applet_class_init (MiniCommanderAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = mini_commander_applet_constructed;
+  object_class->dispose = mini_commander_applet_dispose;
+}
+
+static void
+mini_commander_applet_init (MiniCommanderApplet *self)
+{
+}

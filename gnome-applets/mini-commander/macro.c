@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -18,13 +17,14 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "macro.h"
+
 #include <sys/types.h>
 #include <string.h>
 #include <stdlib.h>
 #include <regex.h>
 
-#include "macro.h"
 #include "preferences.h"
 
 /* search for the longest matching prefix */

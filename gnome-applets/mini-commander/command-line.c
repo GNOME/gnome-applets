@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -18,27 +17,25 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "command-line.h"
+
 #include <string.h>
 #include <stdlib.h>
 
 #include <gdk/gdkkeysyms.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-#include <panel-applet.h>
-
-#include "mini-commander_applet.h"
-#include "command_line.h"
 #include "preferences.h"
 #include "exec.h"
-#include "cmd_completion.h"
+#include "cmd-completion.h"
 #include "history.h"
 
 static gint file_browser_response_signal(GtkWidget *widget, gint response, gpointer mc_data);
 static gint history_popup_clicked_cb(GtkWidget *widget, gpointer data);
 static gint history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data);
 static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
-
 
 static int history_position = MC_HISTORY_LIST_LENGTH;
 static gchar *browsed_folder = NULL;
@@ -66,7 +63,7 @@ button_press_cb (GtkEntry       *entry,
 {
     const gchar *str;
 
-    panel_applet_request_focus (mc->applet, event->time);
+    gp_applet_request_focus (GP_APPLET (mc), event->time);
 
     if (mc->error) {
 	   mc->error = FALSE;
@@ -103,7 +100,7 @@ command_key_event (GtkEntry   *entry,
                     /*
                      * Move focus to the next widget (browser) button.
                      */
-                    gtk_widget_child_focus (GTK_WIDGET (mc->applet), GTK_DIR_TAB_FORWARD);
+                    gtk_widget_child_focus (GTK_WIDGET (mc), GTK_DIR_TAB_FORWARD);
 	            propagate_event = FALSE;
                 }
             else if(event->state != GDK_SHIFT_MASK)
@@ -230,7 +227,7 @@ history_list_key_press_cb (GtkWidget   *widget,
 			   GdkEventKey *event,
 			   MCData      *mc)
 {
-    GtkTreeView *tree = g_object_get_data (G_OBJECT (mc->applet), "tree");
+    GtkTreeView *tree = g_object_get_data (G_OBJECT (mc), "tree");
     GtkTreeIter iter;
     GtkTreeModel *model;
     gchar *command;
@@ -270,7 +267,7 @@ history_list_button_press_cb (GtkWidget      *widget,
 			      GdkEventButton *event,
 			      MCData         *mc)
 {
-    GtkTreeView *tree = g_object_get_data (G_OBJECT (mc->applet), "tree");
+    GtkTreeView *tree = g_object_get_data (G_OBJECT (mc), "tree");
     GtkTreeIter iter;
     GtkTreeModel *model;
     gchar *command;
@@ -318,7 +315,7 @@ mc_show_history (GtkWidget *widget,
 
      window = gtk_window_new(GTK_WINDOW_POPUP);
      gtk_window_set_screen (GTK_WINDOW (window),
-			    gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+			    gtk_widget_get_screen (GTK_WIDGET (mc)));
      gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
      gtk_window_set_type_hint(GTK_WINDOW(window), GDK_WINDOW_TYPE_HINT_COMBO);
      /* cb */
@@ -373,7 +370,7 @@ mc_show_history (GtkWidget *widget,
      }
      model = GTK_TREE_MODEL(store);
      treeview = gtk_tree_view_new_with_model (model);
-     g_object_set_data (G_OBJECT (mc->applet), "tree", treeview);
+     g_object_set_data (G_OBJECT (mc), "tree", treeview);
      cell_renderer = gtk_cell_renderer_text_new ();
      column = gtk_tree_view_column_new_with_attributes (NULL, cell_renderer,
                                                        "text", 0, NULL);
@@ -399,22 +396,22 @@ mc_show_history (GtkWidget *widget,
      gtk_widget_show (treeview);
 
      gtk_widget_get_preferred_size (window, NULL, &req);
-     gdk_window = gtk_widget_get_window (GTK_WIDGET (mc->applet));
+     gdk_window = gtk_widget_get_window (GTK_WIDGET (mc));
      gdk_window_get_origin (gdk_window, &x, &y);
      gdk_window_get_geometry (gdk_window, NULL, NULL,
                               &width, &height);
 
-     switch (panel_applet_get_orient (mc->applet)) {
-     case PANEL_APPLET_ORIENT_DOWN:
+     switch (gp_applet_get_position (GP_APPLET (mc))) {
+     case GTK_POS_TOP:
         y += height;
      	break;
-     case PANEL_APPLET_ORIENT_UP:
+     case GTK_POS_BOTTOM:
         y -= req.height;
      	break;
-     case PANEL_APPLET_ORIENT_LEFT:
+     case GTK_POS_RIGHT:
      	x -= req.width;
 	break;
-     case PANEL_APPLET_ORIENT_RIGHT:
+     case GTK_POS_LEFT:
      	x += width;
 	break;
      }
@@ -505,7 +502,7 @@ mc_show_file_browser (GtkWidget *widget,
     gtk_window_set_modal(GTK_WINDOW(mc->file_select),TRUE);
 
     gtk_window_set_screen (GTK_WINDOW (mc->file_select),
-			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+			   gtk_widget_get_screen (GTK_WIDGET (mc)));
     gtk_window_set_position (GTK_WINDOW (mc->file_select), GTK_WIN_POS_CENTER);
 
     gtk_widget_show(mc->file_select);
@@ -536,9 +533,9 @@ mc_create_command_entry (MCData *mc)
 
     mc_command_update_entry_size (mc);
 
-    set_atk_name_description (mc->entry,
-			      _("Command line"),
-			      _("Type a command here and Gnome will execute it for you"));
+    mc_set_atk_name_description (mc->entry,
+                                 _("Command line"),
+                                 _("Type a command here and Gnome will execute it for you"));
 }
 
 void
@@ -588,7 +585,7 @@ mc_command_update_entry_size (MCData *mc)
     int size_x = -1;
 
     size_x = mc->preferences.normal_size_x - 17;
-    if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+    if (mc->orient == GTK_ORIENTATION_VERTICAL) {
       size_x = MIN(size_x, mc->preferences.panel_size_x - 17);
       gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, -1);
     } else {

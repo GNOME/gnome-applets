@@ -1,6 +1,5 @@
 /*
- * Mini-Commander Applet
- * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
+ * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
  *
@@ -17,17 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __CMD_COMPLETION_H__
-#define __CMD_COMPLETION_H__
+
+#ifndef __COMMAND_LINE_H__
+#define __COMMAND_LINE_H__
 
 #include <glib.h>
 
 G_BEGIN_DECLS
 
-#include "mini-commander_applet.h"
+#include "mini-commander-applet-private.h"
 
-void mc_cmd_completion (MCData *mc, char *cmd);
+void       mc_create_command_entry       (MCData    *mc);
+int        mc_show_history               (GtkWidget *widget,
+				          MCData    *mc);
+int        mc_show_file_browser          (GtkWidget *widget,
+				          MCData    *mc);
+void       mc_command_update_entry_color (MCData    *mc);
+void       mc_command_update_entry_size  (MCData    *mc);
 
 G_END_DECLS
 
-#endif /* __CMD_COMPLETION_H__ */
+#endif /* __COMMAND_LINE_H__ */

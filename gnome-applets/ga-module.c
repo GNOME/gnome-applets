@@ -33,6 +33,7 @@
 #include "geyes/geyes-applet.h"
 #include "gweather/gweather-applet.h"
 #include "inhibit/inhibit-applet.h"
+#include "mini-commander/mini-commander-applet.h"
 #include "netspeed/netspeed-applet.h"
 #include "timer/timer-applet.h"
 #include "trash/trash-applet.h"
@@ -120,6 +121,13 @@ ga_get_applet_info (const char *id)
       description = _("Allows user to inhibit automatic power saving");
       icon_name = "gnome-inhibit-applet";
     }
+  else if (g_strcmp0 (id, "mini-commander") == 0)
+    {
+      type_func = mini_commander_applet_get_type;
+      name = _("Command Line");
+      description = _("Mini-Commander");
+      icon_name = "gnome-mini-commander";
+    }
   else if (g_strcmp0 (id, "netspeed") == 0)
     {
       type_func = netspeed_applet_get_type;
@@ -191,6 +199,8 @@ ga_get_applet_id_from_iid (const char *iid)
     return "gweather";
   else if (g_strcmp0 (iid, "InhibitAppletFactory::InhibitApplet") == 0)
     return "inhibit";
+  else if (g_strcmp0 (iid, "MiniCommanderAppletFactory::MiniCommanderApplet") == 0)
+    return "mini-commander";
   else if (g_strcmp0 (iid, "NetspeedAppletFactory::NetspeedApplet") == 0)
     return "netspeed";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
@@ -231,6 +241,7 @@ gp_module_load (GpModule *module)
                             "geyes",
                             "gweather",
                             "inhibit",
+                            "mini-commander",
                             "netspeed",
                             "timer",
                             "trash",

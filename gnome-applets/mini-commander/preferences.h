@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *               2002 Sun Microsystems Inc.
  *
@@ -73,7 +72,7 @@ typedef struct {
     GtkWidget    *command_entry;
 } MCPrefsDialog;
 
-#include "mini-commander_applet.h"
+#include "mini-commander-applet-private.h"
 
 void       mc_load_preferences (MCData            *mc);
 void       mc_show_preferences (GSimpleAction *action,

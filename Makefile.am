@@ -5,7 +5,6 @@ tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
-	mini-commander \
 	multiload \
 	sticky-notes	\
 	window-buttons \
@@ -25,7 +24,6 @@ DIST_SUBDIRS = \
 	gnome-applets \
 	help \
 	po		\
-	mini-commander	\
 	multiload	\
 	sticky-notes	\
 	window-buttons	\

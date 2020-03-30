@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -18,7 +17,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mini-commander_applet.h"
+#include "mini-commander-applet-private.h"
 
 void show_help (GSimpleAction *action,
                 GVariant      *parameter,

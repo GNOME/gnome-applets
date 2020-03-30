@@ -11,6 +11,7 @@ SUBDIRS = \
 	geyes \
 	gweather \
 	inhibit \
+	mini-commander \
 	netspeed \
 	timer \
 	trash \
@@ -49,6 +50,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/geyes/libgeyes-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/inhibit/libinhibit-applet.la \
+	$(top_builddir)/gnome-applets/mini-commander/libmini-commander-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
@@ -132,6 +134,8 @@ ui_files = \
 	geyes/geyes-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \
 	inhibit/inhibit-applet-menu.xml \
+	mini-commander/mini-commander.ui \
+	mini-commander/mini-commander-applet-menu.xml \
 	netspeed/netspeed-menu.xml \
 	timer/timer-applet-menu.xml \
 	trash/trash-empty.ui \

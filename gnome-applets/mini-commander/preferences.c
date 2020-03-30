@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *               2002 Sun Microsystems Inc.
  *
@@ -20,18 +19,15 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
-
+#include "config.h"
 #include "preferences.h"
 
 #include <string.h>
 
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
-#include <panel-applet.h>
-
-#include "mini-commander_applet.h"
-#include "command_line.h"
+#include "command-line.h"
 #include "history.h"
 #include "gsettings.h"
 
@@ -370,7 +366,7 @@ macro_add (GtkWidget *button,
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/mini-commander.ui", NULL);
+	gtk_builder_add_from_resource (builder, GRESOURCE_PREFIX "/ui/mini-commander.ui", NULL);
 
 	mc->prefs_dialog.macro_add_dialog = GTK_WIDGET (gtk_builder_get_object (builder, "mc_macro_add_dialog"));
 
@@ -383,7 +379,7 @@ macro_add (GtkWidget *button,
     }
 
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.macro_add_dialog),
-			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+			   gtk_widget_get_screen (GTK_WIDGET (mc)));
     gtk_widget_grab_focus (mc->prefs_dialog.pattern_entry);
     gtk_window_present (GTK_WINDOW (mc->prefs_dialog.macro_add_dialog));
 }
@@ -687,7 +683,7 @@ mc_show_preferences (GSimpleAction *action,
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, GTK_BUILDERDIR "/mini-commander.ui", NULL);
+	gtk_builder_add_from_resource (builder, GRESOURCE_PREFIX "/ui/mini-commander.ui", NULL);
 
 	mc->prefs_dialog.dialog = GTK_WIDGET (gtk_builder_get_object (builder,
 			"mc_preferences_dialog"));
@@ -701,7 +697,7 @@ mc_show_preferences (GSimpleAction *action,
     }
 
     gtk_window_set_screen (GTK_WINDOW (mc->prefs_dialog.dialog),
-			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+			   gtk_widget_get_screen (GTK_WIDGET (mc)));
     gtk_window_present (GTK_WINDOW (mc->prefs_dialog.dialog));
 }
 
@@ -777,7 +773,6 @@ mc_load_preferences (MCData *mc)
     guint i;
 
     g_return_if_fail (mc != NULL);
-    g_return_if_fail (PANEL_IS_APPLET (mc->applet));
 
     mc->preferences.show_default_theme = g_settings_get_boolean (mc->settings, KEY_SHOW_DEFAULT_THEME);
     mc->preferences.auto_complete_history = g_settings_get_boolean (mc->settings, KEY_AUTOCOMPLETE_HISTORY);

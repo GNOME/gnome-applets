@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -21,19 +20,17 @@
 /* Actually the command history is a simple list.  So, I guess this
    here could also be done with the list routines of glib. */
 
-#include <config.h>
+#include "config.h"
+#include "history.h"
+
 #include <string.h>
 #include <stdlib.h>
 
-#include <panel-applet.h>
-
-#include "history.h"
 #include "preferences.h"
 #include "gsettings.h"
 
 static char *history_command[MC_HISTORY_LIST_LENGTH];
 static void delete_history_entry(int element_number);
-
 
 int
 exists_history_entry(int pos)

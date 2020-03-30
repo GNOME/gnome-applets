@@ -1,6 +1,5 @@
 /*
- * Mini-Commander Applet
- * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
+ * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
  *
@@ -18,23 +17,25 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __COMMAND_LINE_H__
-#define __COMMAND_LINE_H__
+#include "config.h"
+#include "help.h"
 
-#include <glib.h>
+void 
+show_help (GSimpleAction *action,
+           GVariant      *parameter,
+           gpointer       user_data)
+{
+	MCData *mcdata = (MCData *) user_data;
+    GError *error = NULL;
+   
+    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (mcdata)),
+		"command-line",
+		gtk_get_current_event_time (),
+		&error);
 
-G_BEGIN_DECLS
-
-#include "mini-commander_applet.h"
-
-void       mc_create_command_entry       (MCData    *mc);
-int        mc_show_history               (GtkWidget *widget,
-				          MCData    *mc);
-int        mc_show_file_browser          (GtkWidget *widget,
-				          MCData    *mc);
-void       mc_command_update_entry_color (MCData    *mc);
-void       mc_command_update_entry_size  (MCData    *mc);
-
-G_END_DECLS
-
-#endif /* __COMMAND_LINE_H__ */
+    if (error) { /* FIXME: this error needs to be seen by the user */
+    	g_warning ("help error: %s\n", error->message);
+	g_error_free (error);
+	error = NULL;
+    }
+}

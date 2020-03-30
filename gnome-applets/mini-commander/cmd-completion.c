@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -26,19 +25,17 @@
   should work on every system with a bash-alike shell.  
 */
 
-#include <config.h>
+#include "config.h"
+#include "cmd-completion.h"
+
 #include <string.h>
 #include <stdlib.h>
-
-#include <panel-applet.h>
 
 #include <sys/stat.h>
 #include <dirent.h>
 
-#include "cmd_completion.h"
 #include "preferences.h"
 #include "macro.h"
-
 
 static GList*    cmdc( char* );
 static void      process_dir( const gchar* );

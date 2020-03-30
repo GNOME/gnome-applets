@@ -1,6 +1,5 @@
 /*
- * Mini-Commander Applet
- * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
+ * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
  *
@@ -18,8 +17,24 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mini-commander_applet.h"
+#ifndef __MACRO_H__
+#define __MACRO_H__
 
-void about_box (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data);
+#include <glib.h>
+
+G_BEGIN_DECLS
+
+#include "mini-commander-applet-private.h"
+
+void      mc_macro_expand_command    (MCData *mc,
+				      char   *command);
+int       mc_macro_prefix_len        (MCData *mc,
+				      char   *command);
+int       mc_macro_prefix_len_wspace (MCData *mc,
+				      char   *command);
+char     *mc_macro_get_prefix        (MCData *mc,
+				      char   *command);
+
+G_END_DECLS
+
+#endif /* __MACRO_H__ */

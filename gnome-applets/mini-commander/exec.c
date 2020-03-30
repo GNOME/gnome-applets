@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -18,14 +17,15 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "exec.h"
+
 #include <string.h>
 
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 
-#include "exec.h"
 #include "macro.h"
 #include "preferences.h"
 #include "history.h"
@@ -66,7 +66,7 @@ mc_exec_command (MCData     *mc,
 		return;
 	}
 
-	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (mc)));
 
 	if(!g_spawn_async (NULL, /* working directory */
 	                   argv,

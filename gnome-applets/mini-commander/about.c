@@ -1,5 +1,4 @@
 /*
- * Mini-Commander Applet
  * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
@@ -18,12 +17,12 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "about.h"
 
 #include <glib.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
-
-#include "about.h"
 
 void about_box (GSimpleAction *action,
                 GVariant      *parameter,
