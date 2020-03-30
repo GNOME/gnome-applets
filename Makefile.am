@@ -5,7 +5,6 @@ tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
-	geyes		\
 	mini-commander \
 	multiload \
 	sticky-notes	\
@@ -26,7 +25,6 @@ DIST_SUBDIRS = \
 	gnome-applets \
 	help \
 	po		\
-	geyes		\
 	mini-commander	\
 	multiload	\
 	sticky-notes	\

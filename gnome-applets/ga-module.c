@@ -30,6 +30,7 @@
 #include "cpufreq/cpufreq-applet.h"
 #endif
 #include "drivemount/drivemount-applet.h"
+#include "geyes/geyes-applet.h"
 #include "gweather/gweather-applet.h"
 #include "inhibit/inhibit-applet.h"
 #include "netspeed/netspeed-applet.h"
@@ -97,6 +98,13 @@ ga_get_applet_info (const char *id)
       name = _("Disk Mounter");
       description = _("Mount local disks and devices");
       icon_name = "media-floppy";
+    }
+  else if (g_strcmp0 (id, "geyes") == 0)
+    {
+      type_func = eyes_applet_get_type;
+      name = _("Eyes");
+      description = _("A set of eyeballs for your panel");
+      icon_name = "gnome-eyes-applet";
     }
   else if (g_strcmp0 (id, "gweather") == 0)
     {
@@ -177,6 +185,8 @@ ga_get_applet_id_from_iid (const char *iid)
 #endif
   else if (g_strcmp0 (iid, "DriveMountAppletFactory::DriveMountApplet") == 0)
     return "drivemount";
+  else if (g_strcmp0 (iid, "GeyesAppletFactory::GeyesApplet") == 0)
+    return "geyes";
   else if (g_strcmp0 (iid, "GWeatherAppletFactory::GWeatherApplet") == 0)
     return "gweather";
   else if (g_strcmp0 (iid, "InhibitAppletFactory::InhibitApplet") == 0)
@@ -218,6 +228,7 @@ gp_module_load (GpModule *module)
                             "cpufreq",
 #endif
                             "drivemount",
+                            "geyes",
                             "gweather",
                             "inhibit",
                             "netspeed",

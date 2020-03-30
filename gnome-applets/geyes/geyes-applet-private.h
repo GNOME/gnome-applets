@@ -16,14 +16,12 @@
  *  
  */
 
-#ifndef __GEYES_H__
-#define __GEYES_H__
+#ifndef GEYES_APPLET_PRIVATE_H
+#define GEYES_APPLET_PRIVATE_H
 
-#include <glib.h>
-#include <glib/gi18n.h>
+#include "geyes-applet.h"
+
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gtk/gtk.h>
-#include <panel-applet.h>
 
 #define GEYES_PREFS_SCHEMA "org.gnome.gnome-applets.geyes"
 #define KEY_THEME_PATH     "theme-path"
@@ -36,10 +34,10 @@ typedef struct
 	gint selected_row;
 } EyesPropertyBox;
 
-typedef struct 
+struct _EyesApplet
 {
-	/* Applet */
-	PanelApplet *applet;
+	GpApplet parent;
+
 	GtkWidget   *vbox;
 	GtkWidget   *hbox;
 	GtkWidget   **eyes;
@@ -65,7 +63,7 @@ typedef struct
 	EyesPropertyBox prop_box;
 
 	GSettings *settings;
-} EyesApplet;
+};
 
 /* eyes.c */
 void setup_eyes   (EyesApplet *eyes_applet);

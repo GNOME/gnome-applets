@@ -1,41 +1,35 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
+SUBDIRS = themes
 
-geyes_appletlibdir = $(pkglibdir)
-geyes_appletlib_LTLIBRARIES = libgeyes-applet.la
+noinst_LTLIBRARIES = libgeyes-applet.la
 
 libgeyes_applet_la_CPPFLAGS = \
-	-I. \
-	-I$(srcdir) \
-	-I$(includedir) \
 	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\" \
-	-DGEYES_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.geyes\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libgeyes_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
 libgeyes_applet_la_SOURCES = \
-	geyes.c \
-	geyes.h \
+	geyes-applet-private.h \
+	geyes-applet.c \
+	geyes-applet.h \
 	themes.c \
 	$(NULL)
 
 libgeyes_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libgeyes_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS)\
+	$(GNOME_PANEL_LIBS)\
 	$(LIBM) \
 	$(NULL)
 

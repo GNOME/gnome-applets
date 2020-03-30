@@ -1,5 +1,4 @@
-/* -*- Mode: C++; c-basic-offset: 8 -*-
- * geyes.c - A cheap xeyes ripoff.
+/*
  * Copyright (C) 1999 Dave Camp
  *
  * This program is free software; you can redistribute it and/or modify
@@ -16,13 +15,18 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "geyes-applet.h"
+
 #include <math.h>
 #include <stdlib.h>
-#include <panel-applet.h>
-#include "geyes.h"
+#include <glib/gi18n-lib.h>
+
+#include "geyes-applet-private.h"
 
 #define UPDATE_TIMEOUT 100
+
+G_DEFINE_TYPE (EyesApplet, eyes_applet, GP_TYPE_APPLET)
 
 static gfloat
 gtk_align_to_gfloat (GtkAlign align)
@@ -129,7 +133,7 @@ timer_cb (EyesApplet *eyes_applet)
         gint pupil_x, pupil_y;
         gint i;
 
-        display = gtk_widget_get_display (GTK_WIDGET (eyes_applet->applet));
+        display = gtk_widget_get_display (GTK_WIDGET (eyes_applet));
         device_manager = gdk_display_get_device_manager (display);
         device = gdk_device_manager_get_client_pointer (device_manager);
 
@@ -262,56 +266,6 @@ destroy_eyes (EyesApplet *eyes_applet)
 	g_free (eyes_applet->pointer_last_y);
 }
 
-static EyesApplet *
-create_eyes (PanelApplet *applet)
-{
-	EyesApplet *eyes_applet = g_new0 (EyesApplet, 1);
-
-        eyes_applet->applet = applet;
-        eyes_applet->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-
-	gtk_container_add (GTK_CONTAINER (applet), eyes_applet->vbox);
-
-	return eyes_applet;
-}
-
-static void
-destroy_cb (GtkWidget *object, EyesApplet *eyes_applet)
-{
-	g_return_if_fail (eyes_applet);
-
-	g_source_remove (eyes_applet->timeout_id);
-	if (eyes_applet->hbox)
-		destroy_eyes (eyes_applet);
-	eyes_applet->timeout_id = 0;
-	if (eyes_applet->eye_image)
-		g_object_unref (eyes_applet->eye_image);
-	eyes_applet->eye_image = NULL;
-	if (eyes_applet->pupil_image)
-		g_object_unref (eyes_applet->pupil_image);
-	eyes_applet->pupil_image = NULL;
-	if (eyes_applet->theme_dir)
-		g_free (eyes_applet->theme_dir);
-	eyes_applet->theme_dir = NULL;
-	if (eyes_applet->theme_name)
-		g_free (eyes_applet->theme_name);
-	eyes_applet->theme_name = NULL;
-	if (eyes_applet->eye_filename)
-		g_free (eyes_applet->eye_filename);
-	eyes_applet->eye_filename = NULL;
-	if (eyes_applet->pupil_filename)
-		g_free (eyes_applet->pupil_filename);
-	eyes_applet->pupil_filename = NULL;
-	
-	if (eyes_applet->prop_box.pbox)
-	  	gtk_widget_destroy (eyes_applet->prop_box.pbox);
-
-	if (eyes_applet->settings)
-		g_object_unref (eyes_applet->settings);
-
-	g_free (eyes_applet);
-}
-
 static void
 help_cb (GSimpleAction *action,
          GVariant      *parameter,
@@ -320,7 +274,7 @@ help_cb (GSimpleAction *action,
 	EyesApplet *eyes_applet = (EyesApplet *) user_data;
 	GError *error = NULL;
 
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (eyes_applet)),
 		"help:geyes",
 		gtk_get_current_event_time (),
 		&error);
@@ -330,7 +284,7 @@ help_cb (GSimpleAction *action,
 							    _("There was an error displaying help: %s"), error->message);
 		g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-		gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
+		gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (eyes_applet)));
 		gtk_widget_show (dialog);
 		g_error_free (error);
 		error = NULL;
@@ -340,7 +294,8 @@ help_cb (GSimpleAction *action,
 static const GActionEntry geyes_applet_menu_actions [] = {
 	{ "preferences", properties_cb, NULL, NULL, NULL },
 	{ "help",        help_cb,       NULL, NULL, NULL },
-	{ "about",       about_cb,      NULL, NULL, NULL }
+	{ "about",       about_cb,      NULL, NULL, NULL },
+	{ NULL }
 };
 
 static void
@@ -358,83 +313,102 @@ set_atk_name_description (GtkWidget *widget, const gchar *name,
 	atk_object_set_description (aobj, description);
 }
 
-static gboolean
-geyes_applet_fill (PanelApplet *applet)
+static void
+eyes_applet_fill (EyesApplet *eyes_applet)
 {
-	EyesApplet *eyes_applet;
-	GSimpleActionGroup *action_group;
+	const char *menu_resource;
 	GAction *action;
-	gchar *ui_path;
 
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-	
-        eyes_applet = create_eyes (applet);
+	eyes_applet->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	gtk_container_add (GTK_CONTAINER (eyes_applet), eyes_applet->vbox);
 
-	eyes_applet->settings = panel_applet_settings_new (applet, GEYES_PREFS_SCHEMA);
+	eyes_applet->settings = gp_applet_settings_new (GP_APPLET (eyes_applet), GEYES_PREFS_SCHEMA);
 
         eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GSourceFunc) timer_cb, eyes_applet);
 
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 geyes_applet_menu_actions,
-	                                 G_N_ELEMENTS (geyes_applet_menu_actions),
-	                                 eyes_applet);
-	ui_path = g_build_filename (GEYES_MENU_UI_DIR, "geyes-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (eyes_applet->applet,
-					   ui_path, action_group,
-					   GETTEXT_PACKAGE);
-	g_free (ui_path);
+	menu_resource = GRESOURCE_PREFIX "/ui/geyes-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (eyes_applet),
+	                                    menu_resource,
+	                                    geyes_applet_menu_actions);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "geyes",
-	                                G_ACTION_GROUP (action_group));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-	g_object_bind_property (applet, "locked-down",
+	action = gp_applet_menu_lookup_action (GP_APPLET (eyes_applet), "preferences");
+	g_object_bind_property (eyes_applet, "locked-down",
 	                        action, "enabled",
 	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-	g_object_unref (action_group);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet), _("Eyes"));
 
-	gtk_widget_set_tooltip_text (GTK_WIDGET (eyes_applet->applet), _("Eyes"));
-
-	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Eyes"), 
+	set_atk_name_description (GTK_WIDGET (eyes_applet), _("Eyes"), 
 			_("The eyes look in the direction of the mouse pointer"));
 
-	g_signal_connect (eyes_applet->vbox,
-			  "destroy",
-			  G_CALLBACK (destroy_cb),
-			  eyes_applet);
-
-	gtk_widget_show_all (GTK_WIDGET (eyes_applet->applet));
+	gtk_widget_show_all (GTK_WIDGET (eyes_applet));
 
 	/* setup here and not in create eyes so the destroy signal is set so 
 	 * that when there is an error within loading the theme
 	 * we can emit this signal */
-        if (properties_load (eyes_applet) == FALSE)
-		return FALSE;
+	if (!properties_load (eyes_applet))
+		return;
 
 	setup_eyes (eyes_applet);
-
-	return TRUE;
 }
 
-static gboolean
-geyes_applet_factory (PanelApplet *applet,
-		      const gchar *iid,
-		      gpointer     data)
+static void
+eyes_applet_constructed (GObject *object)
 {
-	gboolean retval = FALSE;
-
-	theme_dirs_create ();
-
-	if (!strcmp (iid, "GeyesApplet"))
-		retval = geyes_applet_fill (applet); 
-
-	return retval;
+  G_OBJECT_CLASS (eyes_applet_parent_class)->constructed (object);
+  eyes_applet_fill (EYES_APPLET (object));
 }
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("GeyesAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 geyes_applet_factory,
-                                 NULL)
+static void
+eyes_applet_dispose (GObject *object)
+{
+  EyesApplet *self;
+
+  self = EYES_APPLET (object);
+
+  if (self->timeout_id != 0)
+    {
+      g_source_remove (self->timeout_id);
+      self->timeout_id = 0;
+    }
+
+  if (self->hbox != NULL)
+    {
+      destroy_eyes (self);
+      self->hbox = NULL;
+    }
+
+  g_clear_object (&self->eye_image);
+  g_clear_object (&self->pupil_image);
+
+  g_clear_pointer (&self->theme_dir, g_free);
+  g_clear_pointer (&self->theme_name, g_free);
+  g_clear_pointer (&self->eye_filename, g_free);
+  g_clear_pointer (&self->pupil_filename, g_free);
+
+  g_clear_pointer (&self->prop_box.pbox, gtk_widget_destroy);
+
+  g_clear_object (&self->settings);
+
+  G_OBJECT_CLASS (eyes_applet_parent_class)->dispose (object);
+}
+
+static void
+eyes_applet_class_init (EyesAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = eyes_applet_constructed;
+  object_class->dispose = eyes_applet_dispose;
+}
+
+static void
+eyes_applet_init (EyesApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+
+  theme_dirs_create ();
+}

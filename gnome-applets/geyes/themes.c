@@ -16,13 +16,16 @@
  *  
  */
 
-#include <config.h>
+#include "config.h"
+
 #include <string.h>
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
-#include "geyes.h"
+
+#include "geyes-applet-private.h"
 
 #define NUM_THEME_DIRECTORIES 2
 #define HIG_IDENTATION  "    "
@@ -142,7 +145,7 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 
-		gtk_widget_destroy (GTK_WIDGET (eyes_applet->applet));
+		gtk_widget_destroy (GTK_WIDGET (eyes_applet));
 
 		return FALSE;
 	}
@@ -285,7 +288,7 @@ properties_cb (GSimpleAction *action,
 	if (eyes_applet->prop_box.pbox) {
 		gtk_window_set_screen (
 			GTK_WINDOW (eyes_applet->prop_box.pbox),
-			gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
+			gtk_widget_get_screen (GTK_WIDGET (eyes_applet)));
 		gtk_window_present (GTK_WINDOW (eyes_applet->prop_box.pbox));
 		return;
 	}
@@ -297,7 +300,7 @@ properties_cb (GSimpleAction *action,
 					     NULL);
 
 	gtk_window_set_screen (GTK_WINDOW (pbox),
-			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
+			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet)));
         
 	gtk_widget_set_size_request (GTK_WIDGET (pbox), 300, 200);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
@@ -428,5 +431,3 @@ properties_cb (GSimpleAction *action,
 	
 	return;
 }
-
-

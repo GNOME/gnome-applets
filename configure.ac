@@ -347,6 +347,8 @@ AC_CONFIG_FILES([
   gnome-applets/cpufreq/Makefile
   gnome-applets/cpufreq/cpufreq-selector/Makefile
   gnome-applets/drivemount/Makefile
+  gnome-applets/geyes/Makefile
+  gnome-applets/geyes/themes/Makefile
   gnome-applets/gweather/Makefile
   gnome-applets/inhibit/Makefile
   gnome-applets/netspeed/Makefile
@@ -370,10 +372,6 @@ AC_CONFIG_FILES([
   help/trash/Makefile
 
   po/Makefile.in
-
-  geyes/Makefile
-  geyes/src/Makefile
-  geyes/themes/Makefile
 
   mini-commander/Makefile
   mini-commander/src/Makefile
