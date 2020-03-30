@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	accessx-status \
 	battstat \
 	charpick \
 	drivemount \
@@ -12,12 +13,6 @@ SUBDIRS = \
 	sticky-notes \
 	trash \
 	$(NULL)
-
-if APPLET_ACCESSX
-SUBDIRS += \
-	accessx-status \
-	$(NULL)
-endif
 
 if BUILD_CPUFREQ_APPLET
 SUBDIRS += \

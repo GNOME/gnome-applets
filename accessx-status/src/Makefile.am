@@ -15,6 +15,7 @@ libaccessx_status_applet_la_CPPFLAGS = \
 
 libaccessx_status_applet_la_CFLAGS = \
 	$(GNOME_APPLETS_CFLAGS) \
+	$(ACCESSX_STATUS_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \
@@ -34,6 +35,7 @@ libaccessx_status_applet_la_LDFLAGS = \
 
 libaccessx_status_applet_la_LIBADD = \
 	$(GNOME_APPLETS_LIBS) \
+	$(ACCESSX_STATUS_LIBS) \
 	$(GIO_LIBS) \
 	$(GIO_UNIX_LIBS) \
 	$(X_LIBS) \

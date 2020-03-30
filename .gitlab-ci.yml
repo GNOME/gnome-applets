@@ -39,6 +39,7 @@ build-ubuntu:
                       libwnck-3-dev
                       libx11-dev
                       libxml2-dev
+                      x11proto-dev
                       yelp-tools
   script:
     - ./autogen.sh --disable-Werror
@@ -81,6 +82,7 @@ coverity:
                       libwnck-3-dev
                       libx11-dev
                       libxml2-dev
+                      x11proto-dev
                       yelp-tools
   script:
     - curl https://scan.coverity.com/download/linux64

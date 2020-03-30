@@ -1,14 +1,11 @@
 NULL =
 
-if APPLET_ACCESSX
-accessx_status_SUBDIR = accessx-status
-endif
-
 if HAVE_TRACKER_SEARCH_BAR
 tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
+	accessx-status \
 	drivemount	\
 	geyes		\
 	mini-commander \
@@ -24,8 +21,6 @@ SUBDIRS = \
 	help \
 	po			\
 	$(always_built_SUBDIRS)	\
-	$(vfs_SUBDIRS)		\
-	$(accessx_status_SUBDIR)\
 	$(tracker_search_bar_SUBDIR) \
 	$(NULL)
 

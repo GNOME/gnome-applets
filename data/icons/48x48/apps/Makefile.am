@@ -6,17 +6,12 @@ context = apps
 
 iconsdir = $(themedir)/$(size)/$(context)
 icons_DATA = \
+	ax-applet.png \
 	gnome-brightness-applet.png \
 	gnome-inhibit-applet.png \
 	gnome-mini-commander.png \
 	netspeed-applet.png \
 	$(NULL)
-
-if APPLET_ACCESSX
-icons_DATA += \
-	ax-applet.png \
-	$(NULL)
-endif
 
 EXTRA_DIST = \
 	$(icons_DATA) \

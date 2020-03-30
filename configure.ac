@@ -206,16 +206,7 @@ dnl ***************************************************************************
 dnl *** keyboard accessibility status applet check                          ***
 dnl ***************************************************************************
 
-savecppflags=$CPPFLAGS
-CPPFLAGS="$CPPFLAGS $X_CFLAGS"
-AC_CHECK_HEADER(X11/extensions/XKB.h, HAVE_XKB=true, HAVE_XKB=false)
-AC_SUBST(HAVE_XKB)
-
-AM_CONDITIONAL(APPLET_ACCESSX, $HAVE_XKB)
-if test "x$APPLET_ACCESSX" = "xtrue"; then
-  AC_MSG_WARN([*** keyboard accessibility status applet will not be built ***])
-fi
-CPPFLAGS=$savecppflags
+PKG_CHECK_MODULES(ACCESSX_STATUS, xproto)
 
 dnl ***************************************************************************
 dnl *** cpufreq applet check                                                ***
@@ -434,7 +425,7 @@ echo "  libgnome-panel"
 echo "    modulesdir ....................: ${GNOME_PANEL_MODULES_DIR}"
 echo ""
 echo "  Applets"
-echo "    accessx-status ................: $HAVE_XKB"
+echo "    accessx-status ................: always"
 echo "    batstat .......................: always"
 echo "    brightness ....................: always"
 echo "    charpick ......................: always"
