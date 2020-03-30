@@ -305,7 +305,8 @@ dialog_cb (GSimpleAction *action,
 static const GActionEntry accessx_status_applet_menu_actions [] = {
 	{ "dialog", dialog_cb, NULL, NULL, NULL },
 	{ "help",   help_cb,   NULL, NULL, NULL },
-	{ "about",  about_cb,  NULL, NULL, NULL }
+	{ "about",  about_cb,  NULL, NULL, NULL },
+	{ NULL }
 };
 
 static XkbDescPtr 
