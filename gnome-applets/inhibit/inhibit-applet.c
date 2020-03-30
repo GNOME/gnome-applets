@@ -1,6 +1,4 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
- *
- * Inhibit Applet
+/*
  * Copyright (C) 2006 Benjamin Canou <bookeldor@gmail.com>
  * Copyright (C) 2006-2009 Richard Hughes <richard@hughsie.com>
  *
@@ -21,29 +19,22 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "inhibit-applet.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <panel-applet.h>
 #include <gtk/gtk.h>
 #include <glib-object.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
 #include "dbus-inhibit.h"
 
-#define GPM_TYPE_INHIBIT_APPLET		(gpm_inhibit_applet_get_type ())
-#define GPM_INHIBIT_APPLET(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_INHIBIT_APPLET, GpmInhibitApplet))
-#define GPM_INHIBIT_APPLET_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_INHIBIT_APPLET, GpmInhibitAppletClass))
-#define GPM_IS_INHIBIT_APPLET(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_INHIBIT_APPLET))
-#define GPM_IS_INHIBIT_APPLET_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_INHIBIT_APPLET))
-#define GPM_INHIBIT_APPLET_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_INHIBIT_APPLET, GpmInhibitAppletClass))
+struct _InhibitApplet
+{
+	GpApplet parent;
 
-typedef struct{
-	PanelApplet parent;
 	/* applet state */
 	guint cookie;
 	/* the icon */
@@ -52,45 +43,26 @@ typedef struct{
 	DBusSessionManager *proxy;
 	guint bus_watch_id;
 	guint level;
-} GpmInhibitApplet;
-
-typedef struct{
-	PanelAppletClass	parent_class;
-} GpmInhibitAppletClass;
-
-GType                gpm_inhibit_applet_get_type  (void);
+};
 
 #define GS_DBUS_SERVICE		"org.gnome.SessionManager"
 #define GS_DBUS_PATH		"/org/gnome/SessionManager"
 
-G_DEFINE_TYPE (GpmInhibitApplet, gpm_inhibit_applet, PANEL_TYPE_APPLET)
+G_DEFINE_TYPE (InhibitApplet, inhibit_applet, GP_TYPE_APPLET)
 
-static void	gpm_applet_update_icon		(GpmInhibitApplet *applet);
-static void	gpm_applet_size_allocate_cb     (GtkWidget *widget, GdkRectangle *allocation);
-static void	gpm_applet_update_tooltip	(GpmInhibitApplet *applet);
-static gboolean	gpm_applet_click_cb		(GpmInhibitApplet *applet, GdkEventButton *event);
-static void	gpm_applet_dialog_about_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
-static gboolean	gpm_applet_cb		        (PanelApplet *_applet, const gchar *iid, gpointer data);
-static void	gpm_applet_destroy_cb		(GObject *object);
-
-#define GPM_INHIBIT_APPLET_ID		        "InhibitApplet"
-#define GPM_INHIBIT_APPLET_FACTORY_ID	        "InhibitAppletFactory"
 #define GPM_INHIBIT_APPLET_ICON		        "gnome-inhibit-applet"
 #define GPM_INHIBIT_APPLET_ICON_INHIBIT		"gpm-inhibit"
 #define GPM_INHIBIT_APPLET_ICON_INVALID		"gpm-inhibit-invalid"
 #define GPM_INHIBIT_APPLET_ICON_UNINHIBIT	"gpm-uninhibit"
 #define GPM_INHIBIT_APPLET_NAME			_("Inhibit Applet")
 #define GPM_INHIBIT_APPLET_DESC			_("Allows user to inhibit automatic power saving.")
-#define PANEL_APPLET_VERTICAL(p)					\
-	 (((p) == PANEL_APPLET_ORIENT_LEFT) || ((p) == PANEL_APPLET_ORIENT_RIGHT))
-
 
 /** cookie is returned as an unsigned integer */
 static gboolean
-gpm_applet_inhibit (GpmInhibitApplet *applet,
-		    const gchar     *appname,
-		    const gchar     *reason,
-		    guint           *cookie)
+gpm_applet_inhibit (InhibitApplet *applet,
+                    const char    *appname,
+                    const char    *reason,
+                    guint         *cookie)
 {
 	GError  *error = NULL;
 	gboolean ret;
@@ -124,8 +96,8 @@ gpm_applet_inhibit (GpmInhibitApplet *applet,
 }
 
 static gboolean
-gpm_applet_uninhibit (GpmInhibitApplet *applet,
-		      guint            cookie)
+gpm_applet_uninhibit (InhibitApplet *applet,
+                      guint          cookie)
 {
 	GError *error = NULL;
 	gboolean ret;
@@ -158,7 +130,7 @@ gpm_applet_uninhibit (GpmInhibitApplet *applet,
  * sets an icon from stock
  **/
 static void
-gpm_applet_update_icon (GpmInhibitApplet *applet)
+gpm_applet_update_icon (InhibitApplet *applet)
 {
 	const gchar *icon;
 
@@ -185,17 +157,18 @@ static void
 gpm_applet_size_allocate_cb (GtkWidget    *widget,
                              GdkRectangle *allocation)
 {
-	GpmInhibitApplet *applet = GPM_INHIBIT_APPLET (widget);
-	int               size = NULL;
+	InhibitApplet *applet;
+	int size;
 
-	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
-		case PANEL_APPLET_ORIENT_LEFT:
-		case PANEL_APPLET_ORIENT_RIGHT:
+	applet = INHIBIT_APPLET (widget);
+	size = 0;
+
+	switch (gp_applet_get_orientation (GP_APPLET (applet))) {
+		case GTK_ORIENTATION_VERTICAL:
 			size = allocation->width;
 			break;
 
-		case PANEL_APPLET_ORIENT_UP:
-		case PANEL_APPLET_ORIENT_DOWN:
+		case GTK_ORIENTATION_HORIZONTAL:
 			size = allocation->height;
 			break;
 	}
@@ -223,7 +196,7 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
  * sets tooltip's content (percentage or disabled)
  **/
 static void
-gpm_applet_update_tooltip (GpmInhibitApplet *applet)
+gpm_applet_update_tooltip (InhibitApplet *applet)
 {
 	const gchar *buf;
 	if (applet->proxy == NULL) {
@@ -245,7 +218,8 @@ gpm_applet_update_tooltip (GpmInhibitApplet *applet)
  * pops and unpops
  **/
 static gboolean
-gpm_applet_click_cb (GpmInhibitApplet *applet, GdkEventButton *event)
+gpm_applet_click_cb (InhibitApplet  *applet,
+                     GdkEventButton *event)
 {
 	/* react only to left mouse button */
 	if (event->button != 1) {
@@ -330,34 +304,14 @@ gpm_applet_dialog_about_cb (GSimpleAction *action, GVariant *parameter, gpointer
 	g_object_unref (logo);
 }
 
-/**
- * gpm_applet_destroy_cb:
- * @object: Class instance to destroy
- **/
-static void
-gpm_applet_destroy_cb (GObject *object)
+static const GActionEntry menu_actions[] =
 {
-	GpmInhibitApplet *applet = GPM_INHIBIT_APPLET(object);
+  { "about", gpm_applet_dialog_about_cb, NULL, NULL, NULL },
+  { NULL }
+};
 
-	g_bus_unwatch_name (applet->bus_watch_id);
-}
-
-/**
- * gpm_inhibit_applet_class_init:
- * @klass: Class instance
- **/
-static void
-gpm_inhibit_applet_class_init (GpmInhibitAppletClass *class)
-{
-	/* nothing to do here */
-}
-
-
-/**
- * gpm_inhibit_applet_dbus_connect:
- **/
 static gboolean
-gpm_inhibit_applet_dbus_connect (GpmInhibitApplet *applet)
+gpm_inhibit_applet_dbus_connect (InhibitApplet *applet)
 {
 	GError *error = NULL;
 
@@ -380,11 +334,8 @@ gpm_inhibit_applet_dbus_connect (GpmInhibitApplet *applet)
 	return TRUE;
 }
 
-/**
- * gpm_inhibit_applet_dbus_disconnect:
- **/
 static gboolean
-gpm_inhibit_applet_dbus_disconnect (GpmInhibitApplet *applet)
+gpm_inhibit_applet_dbus_disconnect (InhibitApplet *applet)
 {
 	if (applet->proxy != NULL) {
 		g_debug ("removing proxy\n");
@@ -396,35 +347,58 @@ gpm_inhibit_applet_dbus_disconnect (GpmInhibitApplet *applet)
 	return TRUE;
 }
 
-/**
- * gpm_inhibit_applet_name_appeared_cb:
- **/
 static void
-gpm_inhibit_applet_name_appeared_cb (GDBusConnection *connection, const gchar *name, const gchar *name_owner, GpmInhibitApplet *applet)
+gpm_inhibit_applet_name_appeared_cb (GDBusConnection *connection,
+                                     const char      *name,
+                                     const char      *name_owner,
+                                     InhibitApplet   *applet)
 {
 	gpm_inhibit_applet_dbus_connect (applet);
 	gpm_applet_update_tooltip (applet);
 	gpm_applet_update_icon (applet);
 }
 
-/**
- * gpm_inhibit_applet_name_vanished_cb:
- **/
 static void
-gpm_inhibit_applet_name_vanished_cb (GDBusConnection *connection, const gchar *name, GpmInhibitApplet *applet)
+gpm_inhibit_applet_name_vanished_cb (GDBusConnection *connection,
+                                     const  char     *name,
+                                     InhibitApplet   *applet)
 {
 	gpm_inhibit_applet_dbus_disconnect (applet);
 	gpm_applet_update_tooltip (applet);
 	gpm_applet_update_icon (applet);
 }
 
-/**
- * gpm_inhibit_applet_init:
- * @applet: Inhibit applet instance
- **/
 static void
-gpm_inhibit_applet_init (GpmInhibitApplet *applet)
+inhibit_applet_dispose (GObject *object)
 {
+  InhibitApplet *self;
+
+  self = INHIBIT_APPLET (object);
+
+  if (self->bus_watch_id != 0)
+    {
+      g_bus_unwatch_name (self->bus_watch_id);
+      self->bus_watch_id = 0;
+    }
+
+  G_OBJECT_CLASS (inhibit_applet_parent_class)->dispose (object);
+}
+
+static void
+inhibit_applet_class_init (InhibitAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->dispose = inhibit_applet_dispose;
+}
+
+static void
+inhibit_applet_init (InhibitApplet *applet)
+{
+	const char *menu_resource;
+
 	/* initialize fields */
 	applet->image = NULL;
 	applet->cookie = 0;
@@ -444,9 +418,14 @@ gpm_inhibit_applet_init (GpmInhibitApplet *applet)
 				  applet, NULL);
 
 	/* prepare */
-	panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
+	gp_applet_set_flags (GP_APPLET (applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 	applet->image = gtk_image_new();
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
+
+	menu_resource = GRESOURCE_PREFIX "/ui/inhibit-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
+	                                    menu_resource,
+	                                    menu_actions);
 
 	/* show */
 	gtk_widget_show_all (GTK_WIDGET(applet));
@@ -457,54 +436,4 @@ gpm_inhibit_applet_init (GpmInhibitApplet *applet)
 
 	g_signal_connect (G_OBJECT(applet), "size-allocate",
 			  G_CALLBACK(gpm_applet_size_allocate_cb), NULL);
-
-	g_signal_connect (G_OBJECT(applet), "destroy",
-			  G_CALLBACK(gpm_applet_destroy_cb), NULL);
 }
-
-/**
- * gpm_applet_cb:
- * @_applet: GpmInhibitApplet instance created by the applet factory
- * @iid: Applet id
- *
- * the function called by libpanel-applet factory after creation
- **/
-static gboolean
-gpm_applet_cb (PanelApplet *_applet, const gchar *iid, gpointer data)
-{
-	GpmInhibitApplet *applet = GPM_INHIBIT_APPLET(_applet);
-	GSimpleActionGroup *action_group;
-	gchar *ui_path;
-
-	static const GActionEntry menu_actions [] = {
-		{ "about", gpm_applet_dialog_about_cb, NULL, NULL, NULL },
-	};
-
-	if (strcmp (iid, GPM_INHIBIT_APPLET_ID) != 0) {
-		return FALSE;
-	}
-
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-					 menu_actions,
-					 G_N_ELEMENTS (menu_actions),
-					 applet);
-	ui_path = g_build_filename (INHIBIT_MENU_UI_DIR, "inhibit-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (PANEL_APPLET (applet), ui_path, action_group, GETTEXT_PACKAGE);
-	g_free (ui_path);
-
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "inhibit",
-					G_ACTION_GROUP (action_group));
-
-	g_object_unref (action_group);
-
-	return TRUE;
-}
-
-/**
- * this generates a main with a applet factory
- **/
-PANEL_APPLET_IN_PROCESS_FACTORY (GPM_INHIBIT_APPLET_FACTORY_ID,
-                                 GPM_TYPE_INHIBIT_APPLET,
-                                 gpm_applet_cb,
-                                 NULL)

@@ -10,7 +10,6 @@ endif
 
 always_built_SUBDIRS =  \
 	drivemount	\
-	inhibit		\
 	geyes		\
 	mini-commander \
 	multiload \
@@ -43,7 +42,6 @@ DIST_SUBDIRS = \
 	sticky-notes	\
 	window-buttons	\
 	window-title	\
-	inhibit		\
 	tracker-search-bar \
 	$(NULL)
 

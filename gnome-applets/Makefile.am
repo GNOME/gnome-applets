@@ -7,6 +7,7 @@ SUBDIRS = \
 	command \
 	cpufreq \
 	gweather \
+	inhibit \
 	netspeed \
 	timer \
 	trash \
@@ -40,6 +41,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/charpick/libcharacter-picker-applet.la \
 	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
+	$(top_builddir)/gnome-applets/inhibit/libinhibit-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
@@ -82,6 +84,7 @@ ui_files = \
 	charpick/charpick-applet-menu.xml \
 	command/command-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \
+	inhibit/inhibit-applet-menu.xml \
 	netspeed/netspeed-menu.xml \
 	timer/timer-applet-menu.xml \
 	trash/trash-empty.ui \
