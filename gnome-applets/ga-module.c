@@ -36,6 +36,7 @@
 #include "timer/timer-applet.h"
 #include "trash/trash-applet.h"
 #include "window-picker/wp-applet.h"
+#include "window-title/window-title.h"
 
 static GpAppletInfo *
 ga_get_applet_info (const char *id)
@@ -139,6 +140,13 @@ ga_get_applet_info (const char *id)
       description = _("Shows a list of icons for the open windows.");
       icon_name = "preferences-system-windows";
     }
+  else if (g_strcmp0 (id, "window-title") == 0)
+    {
+      type_func = wt_applet_get_type;
+      name = _("Window Title");
+      description = _("Window title for your GNOME Panel");
+      icon_name = "windowtitle-applet";
+    }
   else
     {
       g_assert_not_reached ();
@@ -177,11 +185,13 @@ ga_get_applet_id_from_iid (const char *iid)
     return "netspeed";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
+  else if (g_strcmp0 (iid, "TrashAppletFactory::TrashApplet") == 0)
+    return "trash";
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
            g_strcmp0 (iid, "org.gnome.gnome-applets.window-picker::window-picker") == 0)
     return "window-picker";
-  else if (g_strcmp0 (iid, "TrashAppletFactory::TrashApplet") == 0)
-    return "trash";
+  else if (g_strcmp0 (iid, "WindowTitleAppletFactory::WindowTitleApplet") == 0)
+    return "window-title";
 
   return NULL;
 }
@@ -214,6 +224,7 @@ gp_module_load (GpModule *module)
                             "timer",
                             "trash",
                             "window-picker",
+                            "window-title",
                             NULL);
 
   gp_module_set_get_applet_info (module, ga_get_applet_info);

@@ -14,6 +14,7 @@ SUBDIRS = \
 	timer \
 	trash \
 	window-picker \
+	window-title \
 	$(NULL)
 
 gnome_applets_libdir = $(GNOME_PANEL_MODULES_DIR)
@@ -50,6 +51,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \
+	$(top_builddir)/gnome-applets/window-title/libwindow-title-applet.la \
 	$(GNOME_PANEL_LIBS) \
 	$(NULL)
 
@@ -133,6 +135,8 @@ ui_files = \
 	trash/trash-menu.xml \
 	window-picker/wp-menu.xml \
 	window-picker/wp-preferences-dialog.ui \
+	window-title/window-title.ui \
+	window-title/window-title-menu.xml \
 	$(NULL)
 
 if BUILD_CPUFREQ_APPLET

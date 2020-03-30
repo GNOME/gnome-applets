@@ -18,53 +18,33 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#include "windowtitle.h"
+#include "config.h"
+#include "window-title.h"
+
+#include <glib/gi18n-lib.h>
+
 #include "preferences.h"
 
-/* Prototypes */
-static void applet_change_orient (PanelApplet *, PanelAppletOrient, WTApplet *);
-static void active_workspace_changed (WnckScreen *, WnckWorkspace *, WTApplet *);
-static void active_window_changed (WnckScreen *, WnckWindow *, WTApplet *);
+static void init_wtapplet (WTApplet *wtapplet);
 static void active_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WTApplet *);
 static void active_window_nameicon_changed (WnckWindow *, WTApplet *);
 static void umaxed_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WTApplet *);
 static void umaxed_window_nameicon_changed (WnckWindow *, WTApplet *);
-static void viewports_changed (WnckScreen *, WTApplet *);
-static void window_closed (WnckScreen *, WnckWindow *, WTApplet *);
-static void window_opened (WnckScreen *, WnckWindow *, WTApplet *);
 static void about_cb ( GSimpleAction *, GVariant *, gpointer );
-static WnckWindow *getRootWindow (WnckScreen *);
-static WnckWindow *getUpperMaximized (WTApplet *);
-//const gchar *getCheckBoxGConfKey (gushort);
-void setAlignment(WTApplet *, gdouble);
-void placeWidgets (WTApplet *);
-void reloadWidgets (WTApplet *);
-void toggleHidden(WTApplet *);
-void savePreferences(WTPreferences *, WTApplet *);
-WTPreferences *loadPreferences(WTApplet *);
-//gchar *getButtonLayoutGConf(WTApplet *, gboolean);
 
-G_DEFINE_TYPE (WTApplet, wt_applet, PANEL_TYPE_APPLET);
+G_DEFINE_TYPE (WTApplet, wt_applet, GP_TYPE_APPLET)
 
 static GActionEntry windowtitle_menu_actions [] = {
 	{ "preferences", wt_applet_properties_cb,  NULL, NULL, NULL },
-	{ "about",       about_cb, NULL, NULL, NULL }
+	{ "about",       about_cb, NULL, NULL, NULL },
+	{ NULL }
 };
 
-static const gchar windowtitle_menu_items [] =
-	"<section>"
-		"<item>"
-			"<attribute name=\"label\">Preferences</attribute>"
-			"<attribute name=\"action\">windowtitle.preferences</attribute>"
-		"</item>"
-		"<item>"
-			"<attribute name=\"label\">About</attribute>"
-			"<attribute name=\"action\">windowtitle.about</attribute>"
-		"</item>"
-	"</section>";
-
-WTApplet* wt_applet_new (void) {
-        return g_object_new (WT_TYPE_APPLET, NULL);
+static void
+wt_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (wt_applet_parent_class)->constructed (object);
+  init_wtapplet (WT_APPLET (object));
 }
 
 static void
@@ -143,11 +123,14 @@ wt_applet_class_init (WTAppletClass *self_class)
 
   object_class = G_OBJECT_CLASS (self_class);
 
+  object_class->constructed = wt_applet_constructed;
   object_class->dispose = wt_applet_dispose;
 }
 
-static void wt_applet_init(WTApplet *wtapplet) {
-	// Not required
+static void
+wt_applet_init (WTApplet *self)
+{
+  wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
 }
 
 /* The About dialog */
@@ -348,18 +331,20 @@ void
 wt_applet_toggle_expand (WTApplet *wtapplet)
 {
 	if (wtapplet->prefs->expand_applet) {
-		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR);
+		gp_applet_set_flags (GP_APPLET (wtapplet), GP_APPLET_FLAGS_EXPAND_MINOR | GP_APPLET_FLAGS_EXPAND_MAJOR);
 	} else {
 		// We must have a handle due to bug https://bugzilla.gnome.org/show_bug.cgi?id=556355
-		// panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR | PANEL_APPLET_EXPAND_MAJOR | PANEL_APPLET_HAS_HANDLE);
-		panel_applet_set_flags (PANEL_APPLET (wtapplet), PANEL_APPLET_EXPAND_MINOR);
+		// gp_applet_set_flags (GP_APPLET (wtapplet), GP_APPLET_FLAGS_EXPAND_MINOR | GP_APPLET_FLAGS_EXPAND_MAJOR | GP_APPLET_FLAGS_HAS_HANDLE);
+		gp_applet_set_flags (GP_APPLET (wtapplet), GP_APPLET_FLAGS_EXPAND_MINOR);
 	}
-	reloadWidgets(wtapplet);
-	setAlignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
+	wt_applet_reload_widgets(wtapplet);
+	wt_applet_set_alignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
 }
 
 /* Hide/unhide stuff according to preferences */
-void toggleHidden (WTApplet *wtapplet) {
+void
+wt_applet_toggle_hidden (WTApplet *wtapplet)
+{
 	if (wtapplet->prefs->hide_icon) {
 		gtk_widget_hide (GTK_WIDGET(wtapplet->icon));
 	} else {
@@ -382,15 +367,16 @@ void toggleHidden (WTApplet *wtapplet) {
 		gtk_widget_show_all(GTK_WIDGET(wtapplet));
 }
 
-/* Triggered when a different panel orientation is detected */
-static void applet_change_orient (PanelApplet *panelapplet,
-                                  PanelAppletOrient orient,
-                                  WTApplet *wtapplet)
+static void
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      WTApplet        *wtapplet)
 {
-	if (orient != wtapplet->orient) {
-		wtapplet->orient = orient;
+	if (position != wtapplet->position) {
+		wtapplet->position = position;
 
-		reloadWidgets(wtapplet);
+		wt_applet_reload_widgets(wtapplet);
 		wt_applet_update_title(wtapplet);
 	}
 }
@@ -636,12 +622,13 @@ static gboolean title_clicked (GtkWidget *title,
 }
 
 /* Places widgets in box accordingly with angle and order */
-void placeWidgets (WTApplet *wtapplet) {
-
+static void
+placeWidgets (WTApplet *wtapplet)
+{
 	// TODO: merge all this... or not?
-	if (wtapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+	if (wtapplet->position == GTK_POS_LEFT) {
 		wtapplet->angle = GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE;
-	} else if (wtapplet->orient == PANEL_APPLET_ORIENT_LEFT) {
+	} else if (wtapplet->position == GTK_POS_RIGHT) {
 		wtapplet->angle = GDK_PIXBUF_ROTATE_CLOCKWISE;
 	} else {
 		wtapplet->angle = GDK_PIXBUF_ROTATE_NONE;
@@ -671,11 +658,12 @@ void placeWidgets (WTApplet *wtapplet) {
 
 	// Set alignment/orientation
 	gtk_label_set_angle( wtapplet->title, wtapplet->angle );
-	setAlignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
+	wt_applet_set_alignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
 }
 
-/* Reloads all widgets */
-void reloadWidgets (WTApplet *wtapplet) {
+void
+wt_applet_reload_widgets (WTApplet *wtapplet)
+{
 	g_object_ref(wtapplet->eb_icon);
 	g_object_ref(wtapplet->eb_title);
 	gtk_container_remove(GTK_CONTAINER(wtapplet->box), GTK_WIDGET(wtapplet->eb_icon));
@@ -686,7 +674,10 @@ void reloadWidgets (WTApplet *wtapplet) {
 }
 
 /* Sets alignment, min size, padding to title according to panel orientation */
-void setAlignment (WTApplet *wtapplet, gdouble alignment) {
+void
+wt_applet_set_alignment (WTApplet *wtapplet,
+                         gdouble alignment)
+{
 	if (!wtapplet->prefs->expand_applet)
 		alignment = 0.0;
 
@@ -707,27 +698,29 @@ void setAlignment (WTApplet *wtapplet, gdouble alignment) {
 	}
 }
 
-/* Do the actual applet initialization */
-static void init_wtapplet (PanelApplet *applet) {
-	WTApplet *wtapplet;
+static void
+init_wtapplet (WTApplet *wtapplet)
+{
+	GpApplet *applet;
+	const char *menu_resource;
 
-	wtapplet = WT_APPLET (applet);
+	applet = GP_APPLET (wtapplet);
 
-	wtapplet->settings = panel_applet_settings_new (applet, WINDOWTITLE_GSCHEMA);
-	wtapplet->prefs = loadPreferences(wtapplet);
+	wtapplet->settings = gp_applet_settings_new (applet, WINDOWTITLE_GSCHEMA);
+	wtapplet->prefs = wt_applet_load_preferences(wtapplet);
 	wtapplet->activescreen = wnck_screen_get_default();
 	wnck_screen_force_update(wtapplet->activescreen);
 	wtapplet->activeworkspace = wnck_screen_get_active_workspace(wtapplet->activescreen);
 	wtapplet->activewindow = wnck_screen_get_active_window(wtapplet->activescreen);
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 	wtapplet->rootwindow = getRootWindow(wtapplet->activescreen);
-	wtapplet->prefbuilder = gtk_builder_new();
+	wtapplet->prefbuilder = gtk_builder_new ();
 	wtapplet->box = GTK_BOX(gtk_hbox_new(FALSE, 0));
 	wtapplet->icon = GTK_IMAGE(gtk_image_new());
 	wtapplet->title = GTK_LABEL(gtk_label_new(NULL));
 	wtapplet->eb_icon = GTK_EVENT_BOX(gtk_event_box_new());
 	wtapplet->eb_title = GTK_EVENT_BOX(gtk_event_box_new());
-	wtapplet->orient = panel_applet_get_orient(applet);
+	wtapplet->position = gp_applet_get_position (applet);
 	wtapplet->size_hints = g_new(gint,2);
 
 	// Widgets to eventboxes, eventboxes to box
@@ -739,7 +732,7 @@ static void init_wtapplet (PanelApplet *applet) {
 	gtk_event_box_set_visible_window (wtapplet->eb_title, FALSE);
 
 	// Rotate & place elements
-	setAlignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
+	wt_applet_set_alignment(wtapplet, (gdouble)wtapplet->prefs->alignment);
 	placeWidgets(wtapplet);
 
 	// Add box to applet
@@ -773,7 +766,7 @@ static void init_wtapplet (PanelApplet *applet) {
 
 	// g_signal_connect(G_OBJECT (wtapplet->title), "size-request", G_CALLBACK (applet_title_size_request), wtapplet);
 	g_signal_connect(G_OBJECT (wtapplet), "size-allocate", G_CALLBACK (applet_size_allocate), wtapplet);
-	g_signal_connect(G_OBJECT (wtapplet), "change-orient", G_CALLBACK (applet_change_orient), wtapplet);
+	g_signal_connect(G_OBJECT (wtapplet), "placement-changed", G_CALLBACK (placement_changed_cb), wtapplet);
 
 	// Track active window changes
 	wtapplet->active_handler_state =
@@ -783,30 +776,11 @@ static void init_wtapplet (PanelApplet *applet) {
 	wtapplet->active_handler_icon =
 		g_signal_connect(G_OBJECT (wtapplet->activewindow), "icon-changed", G_CALLBACK (active_window_nameicon_changed), wtapplet);
 
-
 	// Setup applet right-click menu
-	GSimpleActionGroup *action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group), windowtitle_menu_actions, G_N_ELEMENTS (windowtitle_menu_actions), wtapplet);
-	panel_applet_setup_menu (applet, windowtitle_menu_items, action_group, GETTEXT_PACKAGE);
-	gtk_widget_insert_action_group (GTK_WIDGET (wtapplet), "windowtitle", G_ACTION_GROUP (action_group));
+	menu_resource = GRESOURCE_PREFIX "/ui/window-title-menu.xml";
+	gp_applet_setup_menu_from_resource (applet, menu_resource, windowtitle_menu_actions);
 
 	wt_applet_toggle_expand (wtapplet);
-	toggleHidden  (wtapplet);	// Properly hide or show stuff
+	wt_applet_toggle_hidden (wtapplet);	// Properly hide or show stuff
 	wt_applet_update_title (wtapplet);
 }
-
-// Initial function that draws the applet
-static gboolean windowtitle_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data) {
-	if (strcmp (iid, APPLET_OAFIID) != 0) return FALSE;
-
-	wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
-
-	init_wtapplet (applet);
-
-	return TRUE;
-}
-
-PANEL_APPLET_IN_PROCESS_FACTORY (APPLET_OAFIID_FACTORY,
-                                 WT_TYPE_APPLET,
-                                 windowtitle_applet_factory,
-                                 NULL)

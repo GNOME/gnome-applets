@@ -18,38 +18,17 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#define PLAINTEXT_CONFIG				0
+#ifndef WINDOW_TITLE_PRIVATE_H
+#define WINDOW_TITLE_PRIVATE_H
 
-#ifndef __WT_APPLET_H__
-#define __WT_APPLET_H__
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <glib.h>
-#include <glib-object.h>
-#include <glib/gi18n.h>
-#include <panel-applet.h>
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include "window-title.h"
 #include <gdk-pixbuf/gdk-pixbuf.h>
-
-#if PLAINTEXT_CONFIG == 1
-#include <glib/gstdio.h>
-#endif
 
 #ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #endif
 #include <libwnck/libwnck.h>
 
-/* static paths and stuff */
-#define APPLET_NAME						"Window Title"
-#define APPLET_OAFIID					"WindowTitleApplet"
-#define APPLET_OAFIID_FACTORY			"WindowTitleAppletFactory"
-#define PATH_UI_PREFS					GTK_BUILDERDIR"/windowtitle.ui"
-#define FILE_CONFIGFILE					".windowtitle"
 #define ICON_WIDTH						16
 #define ICON_HEIGHT						16
 #define ICON_PADDING					5
@@ -73,13 +52,6 @@
 
 G_BEGIN_DECLS
 
-#define WT_TYPE_APPLET                wt_applet_get_type()
-#define WT_APPLET(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), WT_TYPE_APPLET, WTApplet))
-#define WT_APPLET_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), WT_TYPE_APPLET, WTAppletClass))
-#define WT_IS_APPLET(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WT_TYPE_APPLET))
-#define WT_IS_APPLET_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), WT_TYPE_APPLET))
-#define WT_APPLET_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), WT_TYPE_APPLET, WTAppletClass))
-
 /* Applet properties (things that get saved) */
 typedef struct {
 	gboolean 		only_maximized,			// [T/F] Only track maximized windows
@@ -99,9 +71,10 @@ typedef struct {
 	gdouble			alignment;				// Title alignment [0=left, 0.5=center, 1=right]
 } WTPreferences;
 
-/* WBApplet definition (inherits from PanelApplet) */
-typedef struct {
-    PanelApplet parent;
+struct _WTApplet
+{
+	GpApplet parent;
+
 	GSettings *settings;
 
 	/* Widgets */
@@ -134,24 +107,23 @@ typedef struct {
 	gboolean		focused;				// [T/F] Window state (focused or unfocused)
 
 	GdkPixbufRotation	angle;				// Applet angle
-	PanelAppletOrient	orient;				// Panel orientation
+	GtkPositionType position;				// Panel orientation
 	gint				asize;				// Applet allocation size
 	gint				*size_hints;		// Applet size hints
 	GtkPackType			packtype;			// Packaging direction of buttons
 
 	/* GtkBuilder */
 	GtkBuilder 		*prefbuilder;			// Glade GtkBuilder for the preferences
-} WTApplet;
+};
 
-typedef struct {
-        PanelAppletClass applet_class;
-} WTAppletClass;
-
-GType wt_applet_get_type (void);
-WTApplet* wt_applet_new (void);
+void wt_applet_reload_widgets (WTApplet *wtapplet);
+void wt_applet_toggle_hidden (WTApplet *wtapplet);
+void wt_applet_set_alignment (WTApplet *wtapplet,
+                              gdouble   alignment);
 
 void wt_applet_update_title (WTApplet *wtapplet);
 void wt_applet_toggle_expand (WTApplet *wtapplet);
 
 G_END_DECLS
+
 #endif

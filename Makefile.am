@@ -10,7 +10,6 @@ always_built_SUBDIRS =  \
 	multiload \
 	sticky-notes	\
 	window-buttons \
-	window-title \
 	$(NULL)
 
 SUBDIRS = \
@@ -32,7 +31,6 @@ DIST_SUBDIRS = \
 	multiload	\
 	sticky-notes	\
 	window-buttons	\
-	window-title	\
 	tracker-search-bar \
 	$(NULL)
 

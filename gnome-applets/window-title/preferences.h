@@ -18,8 +18,15 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#include "windowtitle.h"
+#ifndef WINDOW_TITLE_PREFERENCE_H
+#define WINDOW_TITLE_PREFERENCE_H
+
+#include "window-title-private.h"
+
+WTPreferences *wt_applet_load_preferences (WTApplet *wtapplet);
 
 void wt_applet_properties_cb (GSimpleAction *action,
                               GVariant      *parameter,
                               gpointer       user_data);
+
+#endif

@@ -353,6 +353,7 @@ AC_CONFIG_FILES([
   gnome-applets/timer/Makefile
   gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
+  gnome-applets/window-title/Makefile
 
   help/Makefile
   help/accessx-status/Makefile
@@ -391,8 +392,6 @@ AC_CONFIG_FILES([
 
   window-buttons/Makefile
   window-buttons/themes/Makefile
-
-  window-title/Makefile
 ])
 
 AC_OUTPUT
