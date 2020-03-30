@@ -520,7 +520,7 @@ open_drive (DriveButton *self, GtkWidget *item)
     } else
 	g_return_if_reached();
 
-    app_info = g_desktop_app_info_new ("nautilus.desktop");
+    app_info = g_desktop_app_info_new ("org.gnome.Nautilus.desktop");
 
     if (app_info) {
         screen = gtk_widget_get_screen (GTK_WIDGET (self));
