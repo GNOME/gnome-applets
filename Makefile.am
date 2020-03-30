@@ -9,7 +9,6 @@ tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
-	charpick	\
 	drivemount	\
 	inhibit		\
 	geyes		\
@@ -37,7 +36,6 @@ DIST_SUBDIRS = \
 	help \
 	po		\
 	drivemount	\
-	charpick	\
 	geyes		\
 	mini-commander	\
 	multiload	\

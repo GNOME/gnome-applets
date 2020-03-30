@@ -11,6 +11,7 @@
 #include <string.h>
 
 #include <atk/atkrelation.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
 #if 0
@@ -226,7 +227,7 @@ add_palette (GtkButton *buttonk, charpick_data *curr_data)
 		gtk_widget_show_all (curr_data->add_edit_dialog);
 	} else {
 		gtk_window_set_screen (GTK_WINDOW (curr_data->add_edit_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (curr_data)));
 
 		gtk_window_present (GTK_WINDOW (curr_data->add_edit_dialog));
 	}
@@ -263,7 +264,7 @@ edit_palette (GtkButton *button, charpick_data *curr_data)
 		gtk_widget_show_all (curr_data->add_edit_dialog);
 	} else {
 		gtk_window_set_screen (GTK_WINDOW (curr_data->add_edit_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (curr_data)));
 
 		gtk_window_present (GTK_WINDOW (curr_data->add_edit_dialog));
 	}
@@ -510,7 +511,7 @@ show_preferences_dialog (GSimpleAction *action,
 
   if (curr_data->propwindow) {
     gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
-			   gtk_widget_get_screen (curr_data->applet));
+			   gtk_widget_get_screen (GTK_WIDGET (curr_data)));
     gtk_window_present (GTK_WINDOW (curr_data->propwindow));
     return;
   }
@@ -522,7 +523,7 @@ show_preferences_dialog (GSimpleAction *action,
 					    _("_Help"), GTK_RESPONSE_HELP,
 					    NULL);
   gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
-			 gtk_widget_get_screen (curr_data->applet));
+			 gtk_widget_get_screen (GTK_WIDGET (curr_data)));
   gtk_window_set_default_size (GTK_WINDOW (curr_data->propwindow), 350, 350);
   gtk_container_set_border_width (GTK_CONTAINER (curr_data->propwindow), 5);
   gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area(GTK_DIALOG (curr_data->propwindow))), 2);

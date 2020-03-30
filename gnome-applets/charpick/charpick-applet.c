@@ -2,17 +2,21 @@
  * accented (and other) characters to be pasted into other apps.
  */
 
-#include <config.h>
+#include "config.h"
+#include "charpick-applet.h"
+
+#include <glib/gi18n-lib.h>
 #include <string.h>
-#include <panel-applet.h>
 #ifdef HAVE_GUCHARMAP
 #	include <gucharmap/gucharmap.h>
 #endif
+
 #include "charpick.h"
+
+G_DEFINE_TYPE (CharpickApplet, charpick_applet, GP_TYPE_APPLET)
 
 /* The comment for each char list has the html entity names of the chars */
 /* All gunicar codes should end in 0 */
-
 
 /* This is the default list used when starting charpick the first time */
 /* aacute, agrave, eacute, iacute, oacute, frac12, copy*/
@@ -84,7 +88,6 @@ static const gunichar ZA_code[] = {7699, 7741, 7755, 7793, 7698, 7740, 7754, 779
 /* South Africa: Afrikaans */
 /* static const gchar *af_ZA_list = "áéíóúýêîôûèäëïöüÁÉÍÓÚÝÊÎÔÛÈÄËÏÖÜ"; */
 static const gunichar af_ZA_code[] = {225, 233, 237, 243, 250, 253, 234, 238, 244, 251, 232, 228, 235, 239, 246, 252, 193, 201, 205, 211, 218, 221, 202, 206, 212, 219, 200, 196, 203, 207, 214, 220, 0};
-
 
 static const gunichar * const chartable[] = {
 	def_code,
@@ -162,7 +165,7 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
     				      FALSE);
     				      
     curr_data->last_toggle_button = button; 
-    gtk_widget_grab_focus(curr_data->applet);
+    gtk_widget_grab_focus (GTK_WIDGET (curr_data));
     unichar = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "unichar"));
     curr_data->selected_unichar = unichar;
     /* set this? widget as the selection owner */
@@ -302,22 +305,22 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
 	gint screen_width, screen_height;
 
 	gtk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &reqmenu);
-	window = gtk_widget_get_window (curr_data->applet);
+	window = gtk_widget_get_window (GTK_WIDGET (curr_data));
 	gdk_window_get_origin (window, &tempx, &tempy);
 	width = gdk_window_get_width (window);
 	height = gdk_window_get_height (window);
 
-     	switch (panel_applet_get_orient (PANEL_APPLET (curr_data->applet))) {
-     	case PANEL_APPLET_ORIENT_DOWN:
+     	switch (gp_applet_get_position (GP_APPLET (curr_data))) {
+     	case GTK_POS_TOP:
         	tempy += height;
      		break;
-     	case PANEL_APPLET_ORIENT_UP:
+     	case GTK_POS_BOTTOM:
         	tempy -= reqmenu.height;
      		break;
-     	case PANEL_APPLET_ORIENT_LEFT:
+     	case GTK_POS_RIGHT:
      		tempx -= reqmenu.width;
 		break;
-     	case PANEL_APPLET_ORIENT_RIGHT:
+     	case GTK_POS_LEFT:
      		tempx += width;
 		break;
      	}
@@ -334,7 +337,7 @@ chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 		gtk_menu_popdown (GTK_MENU (curr_data->menu));
 	else {
 		gtk_menu_set_screen (GTK_MENU (curr_data->menu),
-				gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+				gtk_widget_get_screen (GTK_WIDGET (curr_data)));
 		
 		gtk_menu_popup (GTK_MENU (curr_data->menu), NULL, NULL, get_menu_pos, curr_data,
 				0, gtk_get_current_event_time());
@@ -381,17 +384,17 @@ build_table(charpick_data *p_curr_data)
   {
     gtk_widget_set_tooltip_text (button, _("Available palettes"));
   
-    switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
-        case PANEL_APPLET_ORIENT_DOWN:
+    switch (gp_applet_get_position (GP_APPLET (p_curr_data))) {
+        case GTK_POS_TOP:
             arrow = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_MENU);
             break;
-        case PANEL_APPLET_ORIENT_UP:
+        case GTK_POS_BOTTOM:
             arrow = gtk_image_new_from_icon_name ("pan-up-symbolic", GTK_ICON_SIZE_MENU);
             break;
-        case PANEL_APPLET_ORIENT_LEFT:
+        case GTK_POS_RIGHT:
             arrow = gtk_image_new_from_icon_name ("pan-start-symbolic", GTK_ICON_SIZE_MENU);
             break;
-        case PANEL_APPLET_ORIENT_RIGHT:
+        case GTK_POS_LEFT:
             arrow = gtk_image_new_from_icon_name ("pan-end-symbolic", GTK_ICON_SIZE_MENU);
             break;
         default:
@@ -485,7 +488,7 @@ build_table(charpick_data *p_curr_data)
  
   g_free (toggle_button);
   
-  gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
+  gtk_container_add (GTK_CONTAINER(p_curr_data), box);
   gtk_widget_show_all (p_curr_data->box);
 
   p_curr_data->last_toggle_button = NULL;
@@ -514,9 +517,11 @@ queue_rebuild (charpick_data *curr_data)
   g_source_set_name_by_id (curr_data->rebuild_id, "[charpick] rebuild_cb");
 }
 
-static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
+static void
+applet_size_allocate (GtkWidget     *widget,
+                      GtkAllocation *allocation,
+                      charpick_data *curr_data)
 {
-  charpick_data *curr_data = data;
   if (curr_data->panel_vertical) {
     if (curr_data->panel_size == allocation->width)
       return;
@@ -528,21 +533,21 @@ static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation,
   }
 
   queue_rebuild (curr_data);
-  return;
 }
 
-static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpointer data)
+static void
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      CharpickApplet  *self)
 {
-  charpick_data *curr_data = data;
-  if (o == PANEL_APPLET_ORIENT_UP ||
-      o == PANEL_APPLET_ORIENT_DOWN)
-    curr_data->panel_vertical = FALSE;
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    self->panel_vertical = FALSE;
   else
-    curr_data->panel_vertical = TRUE;
-  build_table (curr_data);
-  return;
-}
+    self->panel_vertical = TRUE;
 
+  queue_rebuild (self);
+}
 
 static void
 about (GSimpleAction *action,
@@ -584,7 +589,7 @@ help_cb (GSimpleAction *action,
   charpick_data *curr_data = (charpick_data *) user_data;
   GError *error = NULL;
 
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)),
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (curr_data)),
                 "help:char-palette",
                 gtk_get_current_event_time (),
                 &error);
@@ -594,34 +599,6 @@ help_cb (GSimpleAction *action,
     g_error_free (error);
     error = NULL;
   }
-}
-
-static void
-applet_destroy (GtkWidget *widget, gpointer data)
-{
-  charpick_data *curr_data = data;
-
-  g_return_if_fail (curr_data);
-
-  if (curr_data->rebuild_id != 0)
-    {
-      g_source_remove (curr_data->rebuild_id);
-      curr_data->rebuild_id = 0;
-    }
-
-  if (curr_data->about_dialog)
-    gtk_widget_destroy (curr_data->about_dialog);   
-  if (curr_data->propwindow)
-    gtk_widget_destroy (curr_data->propwindow);
-  if (curr_data->box)
-    gtk_widget_destroy (curr_data->box);
-  if (curr_data->menu)
-    gtk_widget_destroy (curr_data->menu);
-  if (curr_data->settings)
-    g_object_unref (curr_data->settings);
-  if (curr_data->invisible)
-    gtk_widget_destroy (curr_data->invisible);
-  g_free (curr_data);
 }
 
 void 
@@ -668,7 +645,8 @@ get_chartable (charpick_data *curr_data)
 static const GActionEntry charpick_applet_menu_actions [] = {
 	{ "preferences", show_preferences_dialog, NULL, NULL, NULL },
 	{ "help",        help_cb,                 NULL, NULL, NULL },
-	{ "about",       about,                   NULL, NULL, NULL }
+	{ "about",       about,                   NULL, NULL, NULL },
+	{ NULL }
 };
 
 void
@@ -692,30 +670,26 @@ make_applet_accessible (GtkWidget *applet)
   set_atk_name_description (applet, _("Character Palette"), _("Insert characters"));
 }
 
-static gboolean
-charpicker_applet_fill (PanelApplet *applet)
+static void
+charpicker_applet_fill (charpick_data *curr_data)
 {
-  PanelAppletOrient orientation;
-  charpick_data *curr_data;
+  GtkOrientation orientation;
   GdkScreen *screen;
   GdkAtom utf8_atom;
   GList *list;
   gchar *string;
-  GSimpleActionGroup *action_group;
+  const char *menu_resource;
   GAction *action;
-  gchar *ui_path;
 
-  panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-   
-  curr_data = g_new0 (charpick_data, 1);
-  curr_data->applet = GTK_WIDGET (applet);
+  gp_applet_set_flags (GP_APPLET (curr_data), GP_APPLET_FLAGS_EXPAND_MINOR);
+
   curr_data->about_dialog = NULL;
   curr_data->add_edit_dialog = NULL;
-  curr_data->settings = panel_applet_settings_new (applet, CHARPICK_SCHEMA);
+  curr_data->settings = gp_applet_settings_new (GP_APPLET (curr_data), CHARPICK_SCHEMA);
   curr_data->rebuild_id = 0;
 
   get_chartable (curr_data);
-  
+
   string = g_settings_get_string (curr_data->settings, KEY_CURRENT_LIST);
   if (string[0] != '\0') {
   	list = curr_data->chartable;
@@ -735,15 +709,14 @@ charpicker_applet_fill (PanelApplet *applet)
   	curr_data->charlist = curr_data->chartable->data;  
   }
 
-  orientation = panel_applet_get_orient (applet);
-  curr_data->panel_vertical = (orientation == PANEL_APPLET_ORIENT_LEFT) 
-                              || (orientation == PANEL_APPLET_ORIENT_RIGHT);
+  orientation = gp_applet_get_orientation (GP_APPLET (curr_data));
+  curr_data->panel_vertical = (orientation == GTK_ORIENTATION_VERTICAL);
   build_table (curr_data);
-    
-  g_signal_connect (G_OBJECT (curr_data->applet), "key_press_event",
+
+  g_signal_connect (G_OBJECT (curr_data), "key_press_event",
 		             G_CALLBACK (key_press_event), curr_data);
 
-  screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+  screen = gtk_widget_get_screen (GTK_WIDGET (curr_data));
   curr_data->invisible = gtk_invisible_new_for_screen (screen);
 
   utf8_atom = gdk_atom_intern ("UTF8_STRING", FALSE);
@@ -764,59 +737,75 @@ charpicker_applet_fill (PanelApplet *applet)
                     G_CALLBACK (selection_clear_cb),
                     curr_data);
 
-  make_applet_accessible (GTK_WIDGET (applet));
+  make_applet_accessible (GTK_WIDGET (curr_data));
 
-  /* session save signal */ 
-  g_signal_connect (G_OBJECT (applet), "change_orient",
-		    G_CALLBACK (applet_change_orient), curr_data);
+  g_signal_connect (curr_data,
+                    "placement-changed",
+                    G_CALLBACK (placement_changed_cb),
+                    curr_data);
 
-  g_signal_connect (G_OBJECT (applet), "size_allocate",
-		    G_CALLBACK (applet_size_allocate), curr_data);
-		    
-  g_signal_connect (G_OBJECT (applet), "destroy",
-  		    G_CALLBACK (applet_destroy), curr_data);
-  
-  gtk_widget_show_all (GTK_WIDGET (applet));
+  g_signal_connect (curr_data,
+                    "size-allocate",
+                    G_CALLBACK (applet_size_allocate),
+                    curr_data);
 
-  action_group = g_simple_action_group_new ();
-  g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-                                   charpick_applet_menu_actions,
-                                   G_N_ELEMENTS (charpick_applet_menu_actions),
-                                   curr_data);
-  ui_path = g_build_filename (CHARPICK_MENU_UI_DIR, "charpick-applet-menu.xml", NULL);
-  panel_applet_setup_menu_from_file (applet,
-                                     ui_path, action_group,
-                                     GETTEXT_PACKAGE);
-  g_free (ui_path);
+  gtk_widget_show_all (GTK_WIDGET (curr_data));
 
-  gtk_widget_insert_action_group (GTK_WIDGET (applet), "charpick",
-	                              G_ACTION_GROUP (action_group));
+  menu_resource = GRESOURCE_PREFIX "/ui/charpick-applet-menu.xml";
+  gp_applet_setup_menu_from_resource (GP_APPLET (curr_data),
+                                      menu_resource,
+                                      charpick_applet_menu_actions);
 
-  action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-  g_object_bind_property (applet, "locked-down", action, "enabled",
+  action = gp_applet_menu_lookup_action (GP_APPLET (curr_data), "preferences");
+  g_object_bind_property (curr_data, "locked-down", action, "enabled",
                           G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-  g_object_unref (action_group);
-
   populate_menu (curr_data);
-  
-  return TRUE;
 }
 
-static gboolean
-charpicker_applet_factory (PanelApplet *applet,
-			   const gchar          *iid,
-			   gpointer              data)
+static void
+charpick_applet_constructed (GObject *object)
 {
-	gboolean retval = FALSE;
-    
-	if (!strcmp (iid, "CharpickerApplet"))
-		retval = charpicker_applet_fill (applet); 
-    
-	return retval;
+  G_OBJECT_CLASS (charpick_applet_parent_class)->constructed (object);
+  charpicker_applet_fill (CHARPICK_APPLET (object));
 }
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("CharpickerAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 charpicker_applet_factory,
-                                 NULL)
+static void
+charpick_applet_dispose (GObject *object)
+{
+  CharpickApplet *self;
+
+  self = CHARPICK_APPLET (object);
+
+  if (self->rebuild_id != 0)
+    {
+      g_source_remove (self->rebuild_id);
+      self->rebuild_id = 0;
+    }
+
+  g_clear_pointer (&self->about_dialog, gtk_widget_destroy);
+  g_clear_pointer (&self->propwindow, gtk_widget_destroy);
+  g_clear_pointer (&self->box, gtk_widget_destroy);
+  g_clear_pointer (&self->menu, gtk_widget_destroy);
+  g_clear_pointer (&self->invisible, gtk_widget_destroy);
+
+  g_clear_object (&self->settings);
+
+  G_OBJECT_CLASS (charpick_applet_parent_class)->dispose (object);
+}
+
+static void
+charpick_applet_class_init (CharpickAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = charpick_applet_constructed;
+  object_class->dispose = charpick_applet_dispose;
+}
+
+static void
+charpick_applet_init (CharpickApplet *self)
+{
+}

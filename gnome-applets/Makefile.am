@@ -3,6 +3,7 @@ NULL =
 SUBDIRS = \
 	battstat \
 	brightness \
+	charpick \
 	command \
 	cpufreq \
 	gweather \
@@ -36,6 +37,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/battstat/libbattery-status-applet.la \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
+	$(top_builddir)/gnome-applets/charpick/libcharacter-picker-applet.la \
 	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
@@ -77,6 +79,7 @@ ui_files = \
 	battstat/battstat-applet.ui \
 	battstat/battstat-applet-menu.xml \
 	brightness/brightness-applet-menu.xml \
+	charpick/charpick-applet-menu.xml \
 	command/command-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \
 	netspeed/netspeed-menu.xml \

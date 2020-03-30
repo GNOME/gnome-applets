@@ -23,6 +23,7 @@
 
 #include "battstat/battstat-applet.h"
 #include "brightness/brightness-applet.h"
+#include "charpick/charpick-applet.h"
 #include "command/command-applet.h"
 #ifdef BUILD_CPUFREQ_APPLET
 #include "cpufreq/cpufreq-applet.h"
@@ -55,6 +56,13 @@ ga_get_applet_info (const char *id)
       name = _("Brightness Applet");
       description = _("Adjusts Laptop panel brightness");
       icon_name = "gnome-brightness-applet";
+    }
+  else if (g_strcmp0 (id, "charpick") == 0)
+    {
+      type_func = charpick_applet_get_type;
+      name = _("Character Palette");
+      description = _("Insert characters");
+      icon_name = "accessories-character-map";
     }
   else if (g_strcmp0 (id, "command") == 0)
     {
@@ -125,6 +133,8 @@ ga_get_applet_id_from_iid (const char *iid)
     return "battstat";
   else if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
     return "brightness";
+  else if (g_strcmp0 (iid, "CharpickerAppletFactory::CharpickerApplet") == 0)
+    return "charpick";
   else if (g_strcmp0 (iid, "CommandAppletFactory::CommandApplet") == 0)
     return "command";
 #ifdef BUILD_CPUFREQ_APPLET
@@ -161,6 +171,7 @@ gp_module_load (GpModule *module)
   gp_module_set_applet_ids (module,
                             "battstat",
                             "brightness",
+                            "charpick",
                             "command",
 #ifdef BUILD_CPUFREQ_APPLET
                             "cpufreq",

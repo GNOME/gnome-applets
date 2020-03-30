@@ -350,6 +350,7 @@ AC_CONFIG_FILES([
   gnome-applets/Makefile
   gnome-applets/battstat/Makefile
   gnome-applets/brightness/Makefile
+  gnome-applets/charpick/Makefile
   gnome-applets/command/Makefile
   gnome-applets/cpufreq/Makefile
   gnome-applets/cpufreq/cpufreq-selector/Makefile
@@ -378,9 +379,6 @@ AC_CONFIG_FILES([
   accessx-status/Makefile
   accessx-status/pixmaps/Makefile
   accessx-status/src/Makefile
-
-  charpick/Makefile
-  charpick/src/Makefile
 
   drivemount/Makefile
   drivemount/src/Makefile
