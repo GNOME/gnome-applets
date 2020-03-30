@@ -1,6 +1,7 @@
 NULL =
 
 SUBDIRS = \
+	accessx-status \
 	battstat \
 	brightness \
 	charpick \
@@ -36,6 +37,7 @@ org_gnome_gnome_applets_la_SOURCES = \
 	$(NULL)
 
 org_gnome_gnome_applets_la_LIBADD = \
+	$(top_builddir)/gnome-applets/accessx-status/libaccessx-status-applet.la \
 	$(top_builddir)/gnome-applets/battstat/libbattery-status-applet.la \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
 	$(top_builddir)/gnome-applets/charpick/libcharacter-picker-applet.la \
@@ -74,10 +76,47 @@ cpufreq_ui_files = \
 	$(NULL)
 
 icon_files = \
+	accessx-status/icons/ax-applet.png \
+	accessx-status/icons/ax-key-base.png \
+	accessx-status/icons/ax-key-inverse.png \
+	accessx-status/icons/ax-key-none.png \
+	accessx-status/icons/ax-key-yes.png \
+	accessx-status/icons/ax-key-no.png \
+	accessx-status/icons/mousekeys-base.png \
+	accessx-status/icons/mousekeys-pressed-left.png \
+	accessx-status/icons/mousekeys-pressed-middle.png \
+	accessx-status/icons/mousekeys-pressed-right.png \
+	accessx-status/icons/mousekeys-default-left.png \
+	accessx-status/icons/mousekeys-default-middle.png \
+	accessx-status/icons/mousekeys-default-right.png \
+	accessx-status/icons/sticky-shift-none.png \
+	accessx-status/icons/sticky-shift-latched.png \
+	accessx-status/icons/sticky-shift-locked.png \
+	accessx-status/icons/sticky-ctrl-none.png \
+	accessx-status/icons/sticky-ctrl-latched.png \
+	accessx-status/icons/sticky-ctrl-locked.png \
+	accessx-status/icons/sticky-alt-none.png \
+	accessx-status/icons/sticky-alt-latched.png \
+	accessx-status/icons/sticky-alt-locked.png \
+	accessx-status/icons/sticky-meta-latched.png \
+	accessx-status/icons/sticky-meta-locked.png \
+	accessx-status/icons/sticky-meta-none.png \
+	accessx-status/icons/sticky-hyper-latched.png \
+	accessx-status/icons/sticky-hyper-locked.png \
+	accessx-status/icons/sticky-hyper-none.png \
+	accessx-status/icons/sticky-super-latched.png \
+	accessx-status/icons/sticky-super-locked.png \
+	accessx-status/icons/sticky-super-none.png \
+	accessx-status/icons/ax-slowkeys.png \
+	accessx-status/icons/ax-slowkeys-pending.png \
+	accessx-status/icons/ax-slowkeys-yes.png \
+	accessx-status/icons/ax-slowkeys-no.png \
+	accessx-status/icons/ax-bouncekeys.png \
 	window-picker/wp-about-logo.png \
 	$(NULL)
 
 ui_files = \
+	accessx-status/accessx-status-applet-menu.xml \
 	battstat/battstat-applet.ui \
 	battstat/battstat-applet-menu.xml \
 	brightness/brightness-applet-menu.xml \

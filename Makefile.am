@@ -5,7 +5,6 @@ tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
-	accessx-status \
 	drivemount	\
 	geyes		\
 	mini-commander \
@@ -33,7 +32,6 @@ DIST_SUBDIRS = \
 	geyes		\
 	mini-commander	\
 	multiload	\
-	accessx-status	\
 	sticky-notes	\
 	window-buttons	\
 	window-title	\

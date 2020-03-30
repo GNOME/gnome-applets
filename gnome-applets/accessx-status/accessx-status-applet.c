@@ -1,4 +1,4 @@
-/* Keyboard Accessibility Status Applet
+/*
  * Copyright 2003, 2004 Sun Microsystems Inc.
  *
  * This program is free software; you can redistribute it and/or
@@ -15,12 +15,13 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "accessx-status-applet.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
@@ -31,13 +32,36 @@
 #define XK_MISCELLANY
 #define XK_XKB_KEYS
 #include <X11/keysymdef.h>
-#include "applet.h"
 
 static int xkb_base_event_type = 0;
 
 static GtkIconSize icon_size_spec;
 
 #define ALT_GRAPH_LED_MASK (0x10)
+
+#define ACCESSX_APPLET "ax-applet"
+#define ACCESSX_BASE_ICON "ax-base"
+#define ACCESSX_ACCEPT_BASE "ax-accept"
+#define ACCESSX_REJECT_BASE "ax-reject"
+#define MOUSEKEYS_BASE_ICON "ax-mouse-base"
+#define MOUSEKEYS_BUTTON_LEFT "ax-button-left"
+#define MOUSEKEYS_BUTTON_MIDDLE "ax-button-middle"
+#define MOUSEKEYS_BUTTON_RIGHT "ax-button-right"
+#define MOUSEKEYS_DOT_LEFT "ax-dot-left"
+#define MOUSEKEYS_DOT_MIDDLE "ax-dot-middle"
+#define MOUSEKEYS_DOT_RIGHT "ax-dot-right"
+#define SHIFT_KEY_ICON "ax-shift-key"
+#define CONTROL_KEY_ICON "ax-control-key"
+#define ALT_KEY_ICON "ax-alt-key"
+#define META_KEY_ICON "ax-meta-key"
+#define SUPER_KEY_ICON "ax-super-key"
+#define HYPER_KEY_ICON "ax-hyper-key"
+#define ALTGRAPH_KEY_ICON "ax-altgraph-key"
+#define SLOWKEYS_IDLE_ICON "ax-sk-idle"
+#define SLOWKEYS_PENDING_ICON "ax-sk-pending"
+#define SLOWKEYS_ACCEPT_ICON "ax-sk-accept"
+#define SLOWKEYS_REJECT_ICON "ax-sk-reject"
+#define BOUNCEKEYS_ICON "ax-bouncekeys"
 
 typedef struct
 {
@@ -46,6 +70,48 @@ typedef struct
 	GtkStateType state;
 	gboolean     wildcarded;
 } AppletStockIcon;
+
+typedef enum
+{
+  ACCESSX_STATUS_ERROR_NONE = 0,
+  ACCESSX_STATUS_ERROR_XKB_DISABLED
+} AccessxStatusErrorType;
+
+typedef enum
+{
+  ACCESSX_STATUS_MODIFIERS = 1 << 0,
+  ACCESSX_STATUS_SLOWKEYS = 1 << 1,
+  ACCESSX_STATUS_BOUNCEKEYS = 1 << 2,
+  ACCESSX_STATUS_MOUSEKEYS = 1 << 3,
+  ACCESSX_STATUS_ENABLED = 1 << 4,
+  ACCESSX_STATUS_ALL = 0xFFFF
+} AccessxStatusNotifyType;
+
+struct _AccessxStatusApplet
+{
+  GpApplet                parent;
+
+  GtkWidget              *box;
+  GtkWidget              *idlefoo;
+  GtkWidget              *mousefoo;
+  GtkWidget              *stickyfoo;
+  GtkWidget              *slowfoo;
+  GtkWidget              *bouncefoo;
+  GtkWidget              *shift_indicator;
+  GtkWidget              *ctrl_indicator;
+  GtkWidget              *alt_indicator;
+  GtkWidget              *meta_indicator;
+  GtkWidget              *hyper_indicator;
+  GtkWidget              *super_indicator;
+  GtkWidget              *alt_graph_indicator;
+  GtkIconFactory         *icon_factory;
+  XkbDescRec             *xkb;
+  Display                *xkb_display;
+  AccessxStatusErrorType  error_type;
+  gint                    size;
+};
+
+G_DEFINE_TYPE (AccessxStatusApplet, accessx_status_applet, GP_TYPE_APPLET)
 
 static AppletStockIcon stock_icons [] = {
         { ACCESSX_APPLET, "ax-applet.png", GTK_STATE_NORMAL, True },
@@ -152,14 +218,14 @@ help_cb (GSimpleAction *action,
 	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
 	GError *error = NULL;
 
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sapplet)),
 			"help:accessx-status",
 			gtk_get_current_event_time (),
 			&error);
 
 	if (error) { 
 		GtkWidget *parent =
-			gtk_widget_get_parent (GTK_WIDGET (sapplet->applet));
+			gtk_widget_get_parent (GTK_WIDGET (sapplet));
 
 		GtkWidget *dialog = 
 			gtk_message_dialog_new (GTK_WINDOW (parent),
@@ -174,7 +240,7 @@ help_cb (GSimpleAction *action,
 				  G_CALLBACK (gtk_widget_destroy), NULL);
 
 		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet)));
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 		
 		gtk_widget_show (dialog);
@@ -198,7 +264,7 @@ dialog_cb (GSimpleAction *action,
 		return;
 	}
 
-	screen = gtk_widget_get_screen (GTK_WIDGET (sapplet->applet));
+	screen = gtk_widget_get_screen (GTK_WIDGET (sapplet));
 	appinfo = g_app_info_create_from_commandline ("gnome-control-center universal-access",
 						      _("Open the universal access preferences dialog"),
 						      G_APP_INFO_CREATE_NONE,
@@ -226,7 +292,7 @@ dialog_cb (GSimpleAction *action,
 				  G_CALLBACK (gtk_widget_destroy), NULL);
 
 		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet)));
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
 		gtk_widget_show (dialog);
@@ -270,29 +336,39 @@ accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 }
 
 static gboolean
-accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
+accessx_status_applet_xkb_select (AccessxStatusApplet *self)
 {
-	int opcode_rtn, error_rtn;
-	gboolean retval = FALSE;
-	Display *display = NULL;
-        GdkWindow *window;
+  GdkDisplay *display;
+  Display *xdisplay;
+  int opcode_rtn;
+  int error_rtn;
+  gboolean retval;
 
-        window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
-	g_assert (sapplet && sapplet->applet && window);
-	display = GDK_WINDOW_XDISPLAY (window);
-	g_assert (display);
-	retval = XkbQueryExtension (display, &opcode_rtn, &xkb_base_event_type, 
-				    &error_rtn, NULL, NULL);
-	if (retval) {
-		retval = XkbSelectEvents (display, XkbUseCoreKbd, 
-					  XkbAllEventsMask, 
-					  XkbAllEventsMask);
-		sapplet->xkb = accessx_status_applet_get_xkb_desc (sapplet);
-	} else {
-		sapplet->error_type = ACCESSX_STATUS_ERROR_XKB_DISABLED;
-	}
+  display = gtk_widget_get_display (GTK_WIDGET (self));
+  xdisplay = gdk_x11_display_get_xdisplay (display);
 
-	return retval;
+  retval = XkbQueryExtension (xdisplay,
+                              &opcode_rtn,
+                              &xkb_base_event_type,
+                              &error_rtn,
+                              NULL,
+                              NULL);
+
+  if (retval)
+    {
+      retval = XkbSelectEvents (xdisplay,
+                                XkbUseCoreKbd,
+                                XkbAllEventsMask,
+                                XkbAllEventsMask);
+
+      self->xkb = accessx_status_applet_get_xkb_desc (self);
+    }
+  else
+    {
+      self->error_type = ACCESSX_STATUS_ERROR_XKB_DISABLED;
+    }
+
+  return retval;
 }
 
 static void
@@ -426,7 +502,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 	GdkWindow *window;
 	gboolean is_idle = TRUE;
 	const char *stock_id = SLOWKEYS_IDLE_ICON;
-	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
+	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (sapplet));
 	GdkColor bg = style->bg[GTK_STATE_NORMAL];
 
 	if (event != NULL) {
@@ -458,7 +534,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 			break;
 		}
 	}
-	ret_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
+	ret_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
 					     stock_id,
 					     icon_size_spec,
 					     NULL);
@@ -470,7 +546,7 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 		ret_pixbuf = gdk_pixbuf_copy (tmp_pixbuf);
 		g_object_unref (tmp_pixbuf);
 
-		window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
+		window = gtk_widget_get_window (GTK_WIDGET (sapplet));
 
 		if (event && window) {
 			KeySym keysym = XKeycodeToKeysym (
@@ -482,9 +558,9 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 			    (g_utf8_strlen (glyphstring, -1) > 1))
 				glyphstring = "";
 		}
-		fg = style->fg[gtk_widget_get_state (GTK_WIDGET (sapplet->applet))];
+		fg = style->fg[gtk_widget_get_state (GTK_WIDGET (sapplet))];
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
-								       GTK_WIDGET (sapplet->applet),
+								       GTK_WIDGET (sapplet),
 								       ret_pixbuf, 
 								       &fg,
 								       &bg,
@@ -508,9 +584,8 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 	const char *glyphstring = N_("a");
 	const char *stock_id = ACCESSX_BASE_ICON;
 
-	g_assert (sapplet->applet);
-	style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
-	fg = style->text[gtk_widget_get_state (GTK_WIDGET (sapplet->applet))];
+	style = gtk_widget_get_style (GTK_WIDGET (sapplet));
+	fg = style->text[gtk_widget_get_state (GTK_WIDGET (sapplet))];
 	bg = style->base[GTK_STATE_NORMAL];
 
 	if (event != NULL) {
@@ -527,7 +602,7 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 			break;
 		}
 	}
-	tmp_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
+	tmp_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
 					     stock_id,
 					     icon_size_spec,
 					     NULL);
@@ -536,7 +611,7 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 		icon_base = gdk_pixbuf_copy (tmp_pixbuf);
 		g_object_unref (tmp_pixbuf);
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
-								       GTK_WIDGET (sapplet->applet),
+								       GTK_WIDGET (sapplet),
 								       icon_base, 
 								       &fg,
 								       &bg,
@@ -560,7 +635,7 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 {
 	GdkPixbuf  *mouse_pixbuf = NULL, *button_pixbuf, *dot_pixbuf, *tmp_pixbuf;
 	const char *which_dot = MOUSEKEYS_DOT_LEFT;
-	tmp_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
+	tmp_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
 					       MOUSEKEYS_BASE_ICON,
 					       icon_size_spec, 
 					       NULL);
@@ -571,7 +646,7 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 		gint i;
 		for (i = 0; i < G_N_ELEMENTS (button_icons); ++i) {
 			if (event->ptr_buttons & button_icons[i].mask) {
-				button_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
+				button_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
 									button_icons[i].stock_id,
 									icon_size_spec,
 									NULL);
@@ -596,7 +671,7 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 			break;
 		}
 	}
-	dot_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet->applet),
+	dot_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
 					     which_dot,
 					     icon_size_spec,
 					     NULL);
@@ -617,7 +692,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 	GdkWindow * window;
 	gint i;
 
-	window = gtk_widget_get_window (GTK_WIDGET (sapplet->applet));
+	window = gtk_widget_get_window (GTK_WIDGET (sapplet));
 
 	if (notify_type & ACCESSX_STATUS_MODIFIERS) {
 		unsigned int locked_mods = 0, latched_mods = 0;
@@ -625,7 +700,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 			locked_mods = event->state.locked_mods;
 			latched_mods = event->state.latched_mods;
 		}
-		else if (sapplet->applet && window) {
+		else if (window != NULL) {
 			XkbStateRec state;			
 			XkbGetState (GDK_WINDOW_XDISPLAY (window), 
 				     XkbUseCoreKbd, &state); 
@@ -696,7 +771,6 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 		else
 			gtk_widget_hide (sapplet->bouncefoo);
 	}
-	return;
 }
 
 static void
@@ -892,33 +966,27 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
         GtkIconSet     *icon_set;
                                                                                 
 	gtk_icon_factory_add_default (factory);
-       
+
         while (i <  G_N_ELEMENTS (stock_icons)) {
 		const char *set_name = stock_icons[i].stock_id;
                 icon_set = gtk_icon_set_new ();
 		do {
-			char *filename;
-			GtkIconSource *source = gtk_icon_source_new ();
-			filename = g_build_filename (ACCESSX_PIXMAPS_DIR,
-						     stock_icons[i].name,
-						     NULL);
-			if (g_file_test (filename, G_FILE_TEST_EXISTS) &&
-			    g_file_test (filename, G_FILE_TEST_IS_REGULAR)) {
-				gtk_icon_source_set_filename (source, filename);
-			} else {
-				GtkIconSet *default_set = 
-					gtk_icon_factory_lookup_default (GTK_STOCK_MISSING_IMAGE);
-				gtk_icon_source_set_pixbuf (source,
-							    gtk_icon_set_render_icon (
-								    default_set, 
-								    gtk_widget_get_style (widget),
-								    GTK_TEXT_DIR_NONE,
-								    GTK_STATE_NORMAL,
-								    icon_size_spec,
-								    widget,
-								    NULL));
-			}
-			g_free (filename);
+			GtkIconSource *source;
+			char *resource_path;
+			GdkPixbuf *pixbuf;
+
+			source = gtk_icon_source_new ();
+
+			resource_path = g_build_filename (GRESOURCE_PREFIX "/icons/",
+			                                  stock_icons[i].name,
+			                                  NULL);
+
+			pixbuf = gdk_pixbuf_new_from_resource (resource_path, NULL);
+			g_free (resource_path);
+
+			gtk_icon_source_set_pixbuf (source, pixbuf);
+			g_object_unref (pixbuf);
+
 			gtk_icon_source_set_state (source, stock_icons[i].state);
 			gtk_icon_source_set_state_wildcarded (source, stock_icons[i].wildcarded);
 			gtk_icon_set_add_source (icon_set, source);
@@ -963,8 +1031,6 @@ popup_error_dialog (AccessxStatusApplet* sapplet)
 			error_txt = g_strdup (_("XKB Extension is not enabled"));
 			break;
 
-		case ACCESSX_STATUS_ERROR_UNKNOWN :
-
 		default	: error_txt = g_strdup (_("Unknown error"));
 			  break;				
 	}
@@ -981,7 +1047,7 @@ popup_error_dialog (AccessxStatusApplet* sapplet)
 			  G_CALLBACK (gtk_widget_destroy), NULL);
 
 	gtk_window_set_screen (GTK_WINDOW (dialog),
-	gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+	gtk_widget_get_screen (GTK_WIDGET (sapplet)));
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
@@ -989,22 +1055,17 @@ popup_error_dialog (AccessxStatusApplet* sapplet)
 	g_free (error_txt);
 }
 
-static AccessxStatusApplet *
-create_applet (PanelApplet *applet)
+static void
+create_applet (AccessxStatusApplet *sapplet)
 {
-	AccessxStatusApplet *sapplet = g_new0 (AccessxStatusApplet, 1);
 	AtkObject           *atko;
 	GdkPixbuf	    *pixbuf;
 
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
-	sapplet->initialized = False; /* there must be a better way */
 	sapplet->error_type = ACCESSX_STATUS_ERROR_NONE;
-	sapplet->applet = applet;
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-	sapplet->orient = panel_applet_get_orient (applet);
-	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || 
-	    sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+
+	if (gp_applet_get_orientation (GP_APPLET (sapplet)) == GTK_ORIENTATION_VERTICAL) {
 		sapplet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 		sapplet->stickyfoo = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	}
@@ -1058,7 +1119,7 @@ create_applet (PanelApplet *applet)
 	sapplet->idlefoo = gtk_image_new_from_stock (ACCESSX_APPLET, icon_size_spec);
 	gtk_widget_show (sapplet->slowfoo);
 
-	gtk_container_add (GTK_CONTAINER (sapplet->applet), sapplet->box);
+	gtk_container_add (GTK_CONTAINER (sapplet), sapplet->box);
 	gtk_widget_show (sapplet->box);
 
 	gtk_container_add (GTK_CONTAINER (sapplet->box), sapplet->idlefoo);
@@ -1078,45 +1139,24 @@ create_applet (PanelApplet *applet)
 	gtk_box_set_homogeneous (GTK_BOX (sapplet->stickyfoo), TRUE);
 	gtk_widget_show (sapplet->stickyfoo);
 
-	gtk_widget_show (GTK_WIDGET (sapplet->applet));
+	gtk_widget_show (GTK_WIDGET (sapplet));
 
-	if (gtk_widget_get_realized (sapplet->box) && sapplet->initialized)
-		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
-
-	atko = gtk_widget_get_accessible (GTK_WIDGET (sapplet->applet));
+	atko = gtk_widget_get_accessible (GTK_WIDGET (sapplet));
 	atk_object_set_name (atko, _("AccessX Status"));
 	atk_object_set_description (atko, _("Shows keyboard status when accessibility features are used."));
 
 	atko = gtk_widget_get_accessible (sapplet->box);
 	atk_object_set_name (atko, _("AccessX Status"));
 	atk_object_set_description (atko, _("Shows keyboard status when accessibility features are used."));
-
-	return sapplet;
 }
 
 static void
-accessx_status_applet_destroy (GtkWidget *widget, gpointer user_data)
+placement_changed_cb (GpApplet            *applet,
+                      GtkOrientation       orientation,
+                      GtkPositionType      position,
+                      AccessxStatusApplet *sapplet)
 {
-	AccessxStatusApplet *sapplet = user_data;
-	/* do we need to free the icon factory ? */
-
-	gdk_window_remove_filter (NULL, accessx_status_xkb_filter, sapplet);
-
-	if (sapplet->xkb)
-		XkbFreeKeyboard (sapplet->xkb, 0, True);
-	if (sapplet->xkb_display) 
-		XCloseDisplay (sapplet->xkb_display);
-}
-
-static void
-accessx_status_applet_reorient (GtkWidget *widget, PanelAppletOrient o, gpointer user_data)
-{
-	AccessxStatusApplet *sapplet = user_data;
-
-	sapplet->orient = o;
-
-	if (o == PANEL_APPLET_ORIENT_LEFT || 
-	    o == PANEL_APPLET_ORIENT_RIGHT) {
+	if (orientation == GTK_ORIENTATION_VERTICAL) {
 		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->box),
 		                                GTK_ORIENTATION_VERTICAL);
 		gtk_orientable_set_orientation (GTK_ORIENTABLE (sapplet->stickyfoo),
@@ -1129,17 +1169,18 @@ accessx_status_applet_reorient (GtkWidget *widget, PanelAppletOrient o, gpointer
 		                                                GTK_ORIENTATION_HORIZONTAL);
 	}
 
-	if (gtk_widget_get_realized (sapplet->box) && sapplet->initialized)
+	if (gtk_widget_get_realized (GTK_WIDGET (sapplet)))
 		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 }
 
 static void
-accessx_status_applet_resize (GtkWidget *widget, GtkAllocation *allocation, gpointer user_data)
+accessx_status_applet_resize (GtkWidget           *widget,
+                              GtkAllocation       *allocation,
+                              AccessxStatusApplet *sapplet)
 {
-	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
 	gint old_size = sapplet->size;
 
-	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+	if (gp_applet_get_orientation (GP_APPLET (sapplet)) == GTK_ORIENTATION_VERTICAL) {
 		sapplet->size = allocation->width;
 	} else {
 		sapplet->size = allocation->height;
@@ -1179,122 +1220,115 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, AccessxStatusApplet *sapple
 	return FALSE;
 }
 
-static gboolean
-accessx_status_applet_reset (gpointer user_data)
+static void
+accessx_status_applet_realize (GtkWidget           *widget,
+                               AccessxStatusApplet *self)
 {
-	AccessxStatusApplet *sapplet = user_data;
-	g_assert (sapplet->applet);
-	accessx_status_applet_reorient (GTK_WIDGET (sapplet->applet), 
-					panel_applet_get_orient (sapplet->applet), sapplet);
-	return FALSE;
-}
+  if (!accessx_status_applet_xkb_select (self))
+    {
+      disable_applet (self);
+      popup_error_dialog (self);
+      return;
+    }
 
-static gboolean 
-accessx_status_applet_initialize (AccessxStatusApplet *sapplet)
-{
-	if (!sapplet->initialized) {
-		sapplet->initialized = True;
-		if (!accessx_status_applet_xkb_select (sapplet)) {
-			disable_applet (sapplet);
-			popup_error_dialog (sapplet);
-			return FALSE ;
-		}
-		gdk_window_add_filter (NULL, accessx_status_xkb_filter, sapplet);
-	}
-	accessx_status_applet_init_modifiers (sapplet);
-	accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
-
-	return TRUE;
+  accessx_status_applet_init_modifiers (self);
+  accessx_status_applet_update (self, ACCESSX_STATUS_ALL, NULL);
 }
 
 static void
-accessx_status_applet_realize (GtkWidget *widget, gpointer user_data)
+accessx_status_applet_fill (AccessxStatusApplet *sapplet)
 {
-	AccessxStatusApplet *sapplet = user_data;
-
-	if (!accessx_status_applet_initialize (sapplet))
-		return;
-
-	g_idle_add (accessx_status_applet_reset, sapplet);
-	return;
-}
-
-static gboolean
-accessx_status_applet_fill (PanelApplet *applet)
-{
-	AccessxStatusApplet *sapplet;
 	AtkObject           *atk_object;
-	GSimpleActionGroup  *action_group;
+	const char          *menu_resource;
 	GAction             *action;
-	gchar               *ui_path;
-	gboolean was_realized = FALSE;
 
-	sapplet = create_applet (applet);
+	create_applet (sapplet);
 
-	if (!gtk_widget_get_realized (sapplet->box)) {
-		g_signal_connect_after (G_OBJECT (sapplet->box), 
-					"realize", G_CALLBACK (accessx_status_applet_realize), 
-					sapplet);
-	} else {
-		accessx_status_applet_initialize (sapplet);
-		was_realized = TRUE;
-	}
+	g_signal_connect_after (sapplet,
+	                        "realize",
+	                        G_CALLBACK (accessx_status_applet_realize),
+	                        sapplet);
 
-	g_object_connect (sapplet->applet,
-			  "signal::destroy", accessx_status_applet_destroy, sapplet,
-			  "signal::change_orient", accessx_status_applet_reorient, sapplet,
-			  "signal::size-allocate", accessx_status_applet_resize, sapplet,
-			  NULL);
-			  
-	g_signal_connect (sapplet->applet, "button_press_event",
+	g_signal_connect (sapplet,
+	                  "placement-changed",
+	                  G_CALLBACK (placement_changed_cb),
+	                  sapplet);
+
+	g_signal_connect (sapplet,
+	                  "size-allocate",
+	                  G_CALLBACK (accessx_status_applet_resize),
+	                  sapplet);
+
+	g_signal_connect (sapplet, "button_press_event",
 				   G_CALLBACK (button_press_cb), sapplet);
-	g_signal_connect (sapplet->applet, "key_press_event",
+	g_signal_connect (sapplet, "key_press_event",
 				   G_CALLBACK (key_press_cb), sapplet);				   
 
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 accessx_status_applet_menu_actions,
-	                                 G_N_ELEMENTS (accessx_status_applet_menu_actions),
-	                                 sapplet);
-	ui_path = g_build_filename (ACCESSX_MENU_UI_DIR, "accessx-status-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (sapplet->applet, ui_path, action_group, GETTEXT_PACKAGE);
-	g_free (ui_path);
+	menu_resource = GRESOURCE_PREFIX "/ui/accessx-status-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (sapplet),
+	                                    menu_resource,
+	                                    accessx_status_applet_menu_actions);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "accessx",
-	                                G_ACTION_GROUP (action_group));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "dialog");
-	g_object_bind_property (applet, "locked-down", action, "enabled",
+	action = gp_applet_menu_lookup_action (GP_APPLET (sapplet), "dialog");
+	g_object_bind_property (sapplet, "locked-down", action, "enabled",
                             G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-	g_object_unref (action_group);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (sapplet), _("Keyboard Accessibility Status"));
 
-	gtk_widget_set_tooltip_text (GTK_WIDGET (sapplet->applet), _("Keyboard Accessibility Status"));
-
-	atk_object = gtk_widget_get_accessible (GTK_WIDGET (sapplet->applet));
+	atk_object = gtk_widget_get_accessible (GTK_WIDGET (sapplet));
 	atk_object_set_name (atk_object, _("AccessX Status"));
 	atk_object_set_description (atk_object,
 				    _("Displays current state of keyboard accessibility features"));
-	gtk_widget_show_all (GTK_WIDGET (sapplet->applet));
-	if (was_realized) {
-		accessx_status_applet_reset (sapplet);
-	}
 
-	return TRUE;
+	gtk_widget_show_all (GTK_WIDGET (sapplet));
 }
 
-static gboolean
-accessx_status_applet_factory (PanelApplet *applet,
-			       const gchar *iid,
-			       gpointer     data)
+static void
+accessx_status_applet_constructed (GObject *object)
 {
-	gboolean retval = FALSE;
-	if (!strcmp (iid, "AccessxStatusApplet"))
-		retval = accessx_status_applet_fill (applet);
-	return retval;
+  G_OBJECT_CLASS (accessx_status_applet_parent_class)->constructed (object);
+  accessx_status_applet_fill (ACCESSX_STATUS_APPLET (object));
 }
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("AccessxStatusAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 accessx_status_applet_factory,
-                                 NULL)
+static void
+accessx_status_applet_finalize (GObject *object)
+{
+  AccessxStatusApplet *self;
+
+  self = ACCESSX_STATUS_APPLET (object);
+
+  gdk_window_remove_filter (NULL, accessx_status_xkb_filter, self);
+
+  if (self->xkb != NULL)
+    {
+      XkbFreeKeyboard (self->xkb, 0, True);
+      self->xkb = NULL;
+    }
+
+  if (self->xkb_display)
+    {
+      XCloseDisplay (self->xkb_display);
+      self->xkb_display = NULL;
+    }
+
+  G_OBJECT_CLASS (accessx_status_applet_parent_class)->finalize (object);
+}
+
+static void
+accessx_status_applet_class_init (AccessxStatusAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = accessx_status_applet_constructed;
+  object_class->finalize = accessx_status_applet_finalize;
+}
+
+static void
+accessx_status_applet_init (AccessxStatusApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+
+  gdk_window_add_filter (NULL, accessx_status_xkb_filter, self);
+}

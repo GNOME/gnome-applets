@@ -21,6 +21,7 @@
 #include <glib/gi18n-lib.h>
 #include <libgnome-panel/gp-module.h>
 
+#include "accessx-status/accessx-status-applet.h"
 #include "battstat/battstat-applet.h"
 #include "brightness/brightness-applet.h"
 #include "charpick/charpick-applet.h"
@@ -44,7 +45,14 @@ ga_get_applet_info (const char *id)
   const char *icon_name;
   GpAppletInfo *info;
 
-  if (g_strcmp0 (id, "battstat") == 0)
+  if (g_strcmp0 (id, "accessx-status") == 0)
+    {
+      type_func = accessx_status_applet_get_type;
+      name = _("Keyboard Accessibility Status");
+      description = _("Shows the status of keyboard accessibility features");
+      icon_name = "ax-applet";
+    }
+  else if (g_strcmp0 (id, "battstat") == 0)
     {
       type_func = battstat_applet_get_type;
       name = _("Battery Charge Monitor");
@@ -137,7 +145,9 @@ ga_get_applet_info (const char *id)
 static const char *
 ga_get_applet_id_from_iid (const char *iid)
 {
-  if (g_strcmp0 (iid, "BattstatAppletFactory::BattstatApplet") == 0)
+  if (g_strcmp0 (iid, "AccessxStatusAppletFactory::AccessxStatusApplet") == 0)
+    return "accessx-status";
+  else if (g_strcmp0 (iid, "BattstatAppletFactory::BattstatApplet") == 0)
     return "battstat";
   else if (g_strcmp0 (iid, "BrightnessAppletFactory::BrightnessApplet") == 0)
     return "brightness";
@@ -179,6 +189,7 @@ gp_module_load (GpModule *module)
   gp_module_set_version (module, PACKAGE_VERSION);
 
   gp_module_set_applet_ids (module,
+                            "accessx-status",
                             "battstat",
                             "brightness",
                             "charpick",

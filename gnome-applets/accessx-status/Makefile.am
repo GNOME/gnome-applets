@@ -1,20 +1,14 @@
 NULL =
 
-uidir   = $(pkgdatadir)/ui
-
-accessx_status_applet_libdir = $(pkglibdir)
-accessx_status_applet_lib_LTLIBRARIES = libaccessx-status-applet.la
+noinst_LTLIBRARIES = libaccessx-status-applet.la
 
 libaccessx_status_applet_la_CPPFLAGS = \
-	-DACCESSX_PIXMAPS_DIR=\""$(pkgdatadir)/accessx-status-applet/pixmaps"\" \
-	-DACCESSX_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.accessx-status\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libaccessx_status_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(ACCESSX_STATUS_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
@@ -23,18 +17,17 @@ libaccessx_status_applet_la_CFLAGS = \
 	$(NULL)
 
 libaccessx_status_applet_la_SOURCES = \
-	applet.c \
-	applet.h \
+	accessx-status-applet.c \
+	accessx-status-applet.h \
 	$(NULL)
 
 libaccessx_status_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libaccessx_status_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(ACCESSX_STATUS_LIBS) \
 	$(GIO_LIBS) \
 	$(GIO_UNIX_LIBS) \
