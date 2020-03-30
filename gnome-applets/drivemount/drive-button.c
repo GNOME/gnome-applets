@@ -555,7 +555,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_widget_destroy), NULL);
 	gtk_widget_show (dialog);
-	g_error_free (error);
+	g_clear_error (&error);
     }
 
     g_object_unref(file);
