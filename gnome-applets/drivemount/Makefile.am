@@ -1,28 +1,22 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
-
-drivemount_applet_libdir = $(pkglibdir)
-drivemount_applet_lib_LTLIBRARIES = libdrive-mount-applet.la
+noinst_LTLIBRARIES = libdrive-mount-applet.la
 
 libdrive_mount_applet_la_CPPFLAGS = \
-	-I. \
-	-I$(srcdir) \
-	-DDRIVEMOUNT_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.drive-mount\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libdrive_mount_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
 libdrive_mount_applet_la_SOURCES = \
-	drivemount.c \
+	drivemount-applet.c \
+	drivemount-applet.h \
 	drive-list.c \
 	drive-list.h \
 	drive-button.c \
@@ -30,13 +24,12 @@ libdrive_mount_applet_la_SOURCES = \
 	$(NULL)
 
 libdrive_mount_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libdrive_mount_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PAENL_LIBS) \
 	$(GIO_UNIX_LIBS) \
 	$(NULL)
 

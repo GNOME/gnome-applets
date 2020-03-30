@@ -7,6 +7,7 @@ SUBDIRS = \
 	charpick \
 	command \
 	cpufreq \
+	drivemount \
 	gweather \
 	inhibit \
 	netspeed \
@@ -42,6 +43,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/brightness/libbrightness-applet.la \
 	$(top_builddir)/gnome-applets/charpick/libcharacter-picker-applet.la \
 	$(top_builddir)/gnome-applets/command/libcommand-applet.la \
+	$(top_builddir)/gnome-applets/drivemount/libdrive-mount-applet.la \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/inhibit/libinhibit-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
@@ -122,6 +124,7 @@ ui_files = \
 	brightness/brightness-applet-menu.xml \
 	charpick/charpick-applet-menu.xml \
 	command/command-applet-menu.xml \
+	drivemount/drivemount-applet-menu.xml \
 	gweather/gweather-applet-menu.xml \
 	inhibit/inhibit-applet-menu.xml \
 	netspeed/netspeed-menu.xml \

@@ -5,7 +5,6 @@ tracker_search_bar_SUBDIR = tracker-search-bar
 endif
 
 always_built_SUBDIRS =  \
-	drivemount	\
 	geyes		\
 	mini-commander \
 	multiload \
@@ -28,7 +27,6 @@ DIST_SUBDIRS = \
 	gnome-applets \
 	help \
 	po		\
-	drivemount	\
 	geyes		\
 	mini-commander	\
 	multiload	\

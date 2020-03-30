@@ -1,0 +1,189 @@
+/*
+ * Copyright (c) 2004 Canonical Ltd
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ *
+ * Author:
+ *   James Henstridge <jamesh@canonical.com>
+ */
+
+#include "config.h"
+#include "drivemount-applet.h"
+
+#include <string.h>
+
+#include <glib/gi18n-lib.h>
+#include <gtk/gtk.h>
+
+#include "drive-list.h"
+
+struct _DrivemountApplet
+{
+  GpApplet   parent;
+
+  GtkWidget *drive_list;
+};
+
+G_DEFINE_TYPE (DrivemountApplet, drivemount_applet, GP_TYPE_APPLET)
+
+static void
+placement_changed_cb (GpApplet         *applet,
+                      GtkOrientation    orientation,
+                      GtkPositionType   position,
+                      DrivemountApplet *self)
+{
+  drive_list_set_orientation (DRIVE_LIST (self->drive_list), orientation);
+}
+
+static void
+size_allocate_cb (GtkWidget        *widget,
+                  GtkAllocation    *allocation,
+                  DrivemountApplet *self)
+{
+    int size;
+
+    switch (gp_applet_get_orientation (GP_APPLET (self))) {
+    case GTK_ORIENTATION_VERTICAL:
+	size = allocation->width;
+	break;
+    case GTK_ORIENTATION_HORIZONTAL:
+    default:
+	size = allocation->height;
+	break;
+    }
+
+    drive_list_set_panel_size (DRIVE_LIST (self->drive_list), size);
+}
+
+static void
+display_about_dialog (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
+{
+    const gchar *authors[] = {
+	"James Henstridge <jamesh@canonical.com>",
+	NULL
+    };
+    const gchar *documenters[] = {
+	"Dan Mueth <muet@alumni.uchicago.edu>",
+	"John Fleck <jfleck@inkstain.net>",
+	NULL
+    };
+
+    gtk_show_about_dialog (NULL,
+	"version",     VERSION,
+	"copyright",   "Copyright \xC2\xA9 2004 Canonical Ltd",
+	"comments",    _("Applet for mounting and unmounting block volumes."),
+	"authors",     authors,
+	"documenters", documenters,
+	"translator-credits", _("translator-credits"),
+	"logo_icon_name",     "media-floppy",
+	NULL);
+}
+
+static void
+display_help (GSimpleAction *action,
+              GVariant      *parameter,
+              gpointer       user_data)
+{
+    DrivemountApplet *self = (DrivemountApplet *) user_data;
+    GdkScreen *screen;
+    GError *error = NULL;
+
+    screen = gtk_widget_get_screen (GTK_WIDGET (self));
+
+    gtk_show_uri (screen,
+		"help:drivemount",
+		gtk_get_current_event_time (),
+		&error);
+
+    if (error) {
+	GtkWidget *dialog;
+
+	dialog = gtk_message_dialog_new (NULL,
+					 GTK_DIALOG_MODAL,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("There was an error displaying help: %s"),
+					 error->message);
+	g_signal_connect (dialog, "response",
+			  G_CALLBACK (gtk_widget_destroy), NULL);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_window_set_screen (GTK_WINDOW (dialog), screen);
+	gtk_widget_show (dialog);
+	g_error_free (error);
+    }
+}
+
+static const GActionEntry applet_menu_actions [] = {
+	{ "help",  display_help,         NULL, NULL, NULL },
+	{ "about", display_about_dialog, NULL, NULL, NULL },
+	{ NULL }
+};
+
+static void
+drivemount_applet_setup (DrivemountApplet *self)
+{
+  const char *menu_resource;
+  AtkObject *ao;
+
+  self->drive_list = drive_list_new ();
+  gtk_container_add (GTK_CONTAINER (self), self->drive_list);
+
+  g_signal_connect (self,
+                    "placement-changed",
+                    G_CALLBACK (placement_changed_cb),
+                    self);
+
+  g_signal_connect (self,
+                    "size-allocate",
+                    G_CALLBACK (size_allocate_cb),
+                    self);
+
+  drive_list_set_orientation (DRIVE_LIST (self->drive_list),
+                              gp_applet_get_orientation (GP_APPLET (self)));
+
+  menu_resource = GRESOURCE_PREFIX "/ui/drivemount-applet-menu.xml";
+  gp_applet_setup_menu_from_resource (GP_APPLET (self),
+                                      menu_resource,
+                                      applet_menu_actions);
+
+  ao = gtk_widget_get_accessible (GTK_WIDGET (self));
+  atk_object_set_name (ao, _("Disk Mounter"));
+
+  gtk_widget_show_all (GTK_WIDGET (self));
+}
+
+static void
+drivemount_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (drivemount_applet_parent_class)->constructed (object);
+  drivemount_applet_setup (DRIVEMOUNT_APPLET (object));
+}
+
+static void
+drivemount_applet_class_init (DrivemountAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = drivemount_applet_constructed;
+}
+
+static void
+drivemount_applet_init (DrivemountApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}
