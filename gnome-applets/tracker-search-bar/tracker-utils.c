@@ -18,15 +18,14 @@
  */
 
 #include "config.h"
+#include "tracker-utils.h"
 
 #include <string.h>
 #include <time.h>
 #include <sys/types.h>
 #include <regex.h>
 
-#include <glib/gi18n.h>
-
-#include "tracker-utils.h"
+#include <glib/gi18n-lib.h>
 
 /*
  * Regular Expression code to match urls.

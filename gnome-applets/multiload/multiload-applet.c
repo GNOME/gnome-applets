@@ -9,7 +9,8 @@
  *
  */
 
-#include <config.h>
+#include "config.h"
+
 #include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -21,6 +22,7 @@
 #include <glibtop.h>
 #include <gio/gdesktopappinfo.h>
 #include <gdk/gdkkeysyms.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 

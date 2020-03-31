@@ -15,15 +15,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "sticky-notes.h"
+
 #include <libxml/parser.h>
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
+#include <glib/gi18n-lib.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
 #include <libwnck/libwnck.h>
 #include <string.h>
 
-#include "sticky-notes.h"
 #include "sticky-notes-callbacks.h"
 #include "util.h"
 #include "sticky-notes-applet.h"

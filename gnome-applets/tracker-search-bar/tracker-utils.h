@@ -20,6 +20,8 @@
 #ifndef __TRACKER_UTILS_H__
 #define __TRACKER_UTILS_H__
 
+#include <glib.h>
+
 G_BEGIN_DECLS
 
 typedef enum {

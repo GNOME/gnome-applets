@@ -1,8 +1,9 @@
-#include <config.h>
-#include <glib.h>
-#include <time.h>
-
+#include "config.h"
 #include "netspeed.h"
+
+#include <glib.h>
+#include <glib/gi18n-lib.h>
+#include <time.h>
 
 enum { N_STATES = 4 };
 

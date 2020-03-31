@@ -18,14 +18,12 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#ifdef HAVE_CONFIG_H
 #include "config.h"
-#endif
+#include "cpufreq-prefs.h"
 
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
-#include "cpufreq-prefs.h"
 #include "cpufreq-utils.h"
 
 enum {

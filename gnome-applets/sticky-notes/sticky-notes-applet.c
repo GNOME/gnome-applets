@@ -24,6 +24,7 @@
 #include "sticky-notes.h"
 #include "gsettings.h"
 
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
 G_DEFINE_TYPE (StickyNotesApplet, sticky_notes_applet, GP_TYPE_APPLET)

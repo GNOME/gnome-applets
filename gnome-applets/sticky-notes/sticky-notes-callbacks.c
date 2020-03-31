@@ -18,6 +18,8 @@
 #include "config.h"
 #include "sticky-notes-callbacks.h"
 
+#include <glib/gi18n-lib.h>
+
 /* Sticky Window Callback : Lock/Unlock the window */
 gboolean
 stickynote_toggle_lock_cb (GtkWidget  *widget,

@@ -19,9 +19,12 @@
  *     Jörgen Scheibengruber <mfcn@gmx.de>
  */
 
-#include <glib/gi18n.h>
-#include "backend.h"
+#include "config.h"
 #include "preferences.h"
+
+#include <glib/gi18n-lib.h>
+
+#include "backend.h"
 
 struct _NetspeedPreferences
 {

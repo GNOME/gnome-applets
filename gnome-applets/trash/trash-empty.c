@@ -17,11 +17,11 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gio/gio.h>
-#include <glib/gi18n.h>
-
-#include "trash-empty.h"
 #include "config.h"
+#include "trash-empty.h"
+
+#include <gio/gio.h>
+#include <glib/gi18n-lib.h>
 
 /* only one concurrent trash empty operation can occur */
 static GtkDialog          *trash_empty_confirm_dialog;

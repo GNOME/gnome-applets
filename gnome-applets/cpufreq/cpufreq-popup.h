@@ -22,6 +22,7 @@
 #define CPUFREQ_POPUP_H
 
 #include <glib-object.h>
+#include <gtk/gtk.h>
 
 #include "cpufreq-monitor.h"
 

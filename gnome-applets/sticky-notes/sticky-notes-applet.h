@@ -18,7 +18,6 @@
 #ifndef __STICKYNOTES_APPLET_H__
 #define __STICKYNOTES_APPLET_H__
 
-#include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>

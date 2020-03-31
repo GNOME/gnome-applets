@@ -18,14 +18,16 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#include <glib/gi18n.h>
+#include "config.h"
+#include "cpufreq-popup.h"
+
+#include <glib/gi18n-lib.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "cpufreq-popup.h"
 #include "cpufreq-selector-gen.h"
 #include "cpufreq-utils.h"
 

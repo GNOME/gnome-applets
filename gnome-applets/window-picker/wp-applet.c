@@ -22,17 +22,17 @@
  */
 
 #include "config.h"
+#include "wp-applet.h"
 
 #include <gdk/gdk.h>
 #include <glib.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <libwnck/libwnck.h>
 #include <string.h>
 
 #include "task-list.h"
 #include "wp-about-dialog.h"
-#include "wp-applet.h"
 #include "wp-preferences-dialog.h"
 #include "wp-task-title.h"
 

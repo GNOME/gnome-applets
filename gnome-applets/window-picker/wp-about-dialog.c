@@ -22,10 +22,9 @@
  */
 
 #include "config.h"
-
-#include <glib/gi18n.h>
-
 #include "wp-about-dialog.h"
+
+#include <glib/gi18n-lib.h>
 
 struct _WpAboutDialog
 {

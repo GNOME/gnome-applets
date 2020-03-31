@@ -20,14 +20,12 @@
  *   James Henstridge <jamesh@canonical.com>
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "drive-button.h"
 
 #include <gio/gio.h>
 #include <gio/gdesktopappinfo.h>
-#include "drive-button.h"
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gdk/gdkkeysyms.h>
 
 #include <string.h>

@@ -18,12 +18,14 @@
  *              Sebastian Geiger <sbastig@gmx.net>
  */
 
+#include "config.h"
 #include "task-item.h"
-#include "task-list.h"
 
 #include <math.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <cairo/cairo.h>
+
+#include "task-list.h"
 
 struct _TaskItem {
   GtkEventBox  parent;
