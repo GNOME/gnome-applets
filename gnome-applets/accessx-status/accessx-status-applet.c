@@ -215,37 +215,7 @@ help_cb (GSimpleAction *action,
          GVariant      *parameter,
          gpointer       user_data)
 {
-	AccessxStatusApplet *sapplet = (AccessxStatusApplet *) user_data;
-	GError *error = NULL;
-
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (sapplet)),
-			"help:accessx-status",
-			gtk_get_current_event_time (),
-			&error);
-
-	if (error) { 
-		GtkWidget *parent =
-			gtk_widget_get_parent (GTK_WIDGET (sapplet));
-
-		GtkWidget *dialog = 
-			gtk_message_dialog_new (GTK_WINDOW (parent),
-						GTK_DIALOG_DESTROY_WITH_PARENT,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_CLOSE,
-						_("There was an error launching the help viewer: %s"), 
-						error->message);
-
-		g_signal_connect (G_OBJECT (dialog),
-				  "response",
-				  G_CALLBACK (gtk_widget_destroy), NULL);
-
-		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sapplet)));
-		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-		
-		gtk_widget_show (dialog);
-		g_error_free (error);
-	}
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 static void
