@@ -259,7 +259,7 @@ AS_IF([test "x$disable_cpufreq" = "xno"], [
 
 AS_IF([test "x$build_cpufreq_applet" = "xyes"], [
   AC_DEFINE([BUILD_CPUFREQ_APPLET], [1], [Define to 1 if building cpufreq applet])
-])
+], [enable_selector=no])
 
 AM_CONDITIONAL(BUILD_CPUFREQ_APPLET, test x$build_cpufreq_applet = xyes)
 AM_CONDITIONAL(BUILD_CPUFREQ_SELECTOR, test x$enable_selector = xyes)
