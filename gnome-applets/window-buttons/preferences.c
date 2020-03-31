@@ -532,7 +532,7 @@ wb_applet_properties_cb (GSimpleAction *action,
 		gtk_window_present(GTK_WINDOW(wbapplet->window_prefs)); // CRASHES HERE BECAUSE window_prefs IS NOT NULL WHEN IT SHOULD BE!!!
 	} else {
 		// Create window from builder
-		gtk_builder_add_from_file (wbapplet->prefbuilder, PATH_UI_PREFS, NULL);
+		gtk_builder_add_from_resource (wbapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-buttons.ui", NULL);
 		wbapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wbapplet->prefbuilder, "properties"));
 	}
 

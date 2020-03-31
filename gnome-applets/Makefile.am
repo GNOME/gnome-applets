@@ -18,6 +18,7 @@ SUBDIRS = \
 	timer \
 	tracker-search-bar \
 	trash \
+	window-buttons \
 	window-picker \
 	window-title \
 	$(NULL)
@@ -59,6 +60,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/sticky-notes/libsticky-notes-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
+	$(top_builddir)/gnome-applets/window-buttons/libwindow-buttons-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \
 	$(top_builddir)/gnome-applets/window-title/libwindow-title-applet.la \
 	$(GNOME_PANEL_LIBS) \
@@ -169,6 +171,8 @@ ui_files = \
 	timer/timer-applet-menu.xml \
 	trash/trash-empty.ui \
 	trash/trash-menu.xml \
+	window-buttons/window-buttons.ui \
+	window-buttons/window-buttons-menu.xml \
 	window-picker/wp-menu.xml \
 	window-picker/wp-preferences-dialog.ui \
 	window-title/window-title.ui \

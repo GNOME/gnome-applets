@@ -42,7 +42,7 @@ libmini_commander_applet_la_LDFLAGS = \
 	$(NULL)
 
 libmini_commander_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_PANEL_LIBS) \
 	$(NULL)
 
 BITMAPS = \

@@ -1,31 +1,14 @@
 NULL =
 
-always_built_SUBDIRS =  \
-	window-buttons \
-	$(NULL)
-
 SUBDIRS = \
 	data \
 	gnome-applets \
 	help \
-	po			\
-	$(always_built_SUBDIRS)	\
-	$(NULL)
-
-DIST_SUBDIRS = \
-	data \
-	gnome-applets \
-	help \
-	po		\
-	window-buttons	\
+	po \
 	$(NULL)
 
 EXTRA_DIST = \
 	COPYING-DOCS \
-	$(NULL)
-
-AM_DISTCHECK_CONFIGURE_FLAGS = \
-	--with-libpanel-applet-dir='$${datadir}/gnome-panel/distcheck/applets' \
 	$(NULL)
 
 MAINTAINERCLEANFILES = \

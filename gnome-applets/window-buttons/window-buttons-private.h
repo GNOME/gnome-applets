@@ -27,10 +27,11 @@
 #include <config.h>
 #endif
 
+#include "window-buttons.h"
+
 #include <glib.h>
 #include <glib-object.h>
-#include <glib/gi18n.h>
-#include <panel-applet.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 
 #if PLAINTEXT_CONFIG == 1
@@ -43,11 +44,7 @@
 #include <libwnck/libwnck.h>
 
 /* static paths and stuff */
-#define APPLET_NAME						"Window Buttons"
-#define APPLET_OAFIID					"WindowButtonsApplet"
-#define APPLET_OAFIID_FACTORY			"WindowButtonsAppletFactory"
 #define PATH_THEMES 					WB_DATA_DIR"/themes"
-#define PATH_UI_PREFS					GTK_BUILDERDIR"/windowbuttons.ui"
 #define METACITY_XML 					"metacity-theme-1.xml"
 #define THEME_EXTENSION					"png"
 #define FILE_CONFIGFILE					".windowbuttons"
@@ -82,13 +79,6 @@
 #define CFG_SHOW_TOOLTIPS			"show-tooltips"
 
 G_BEGIN_DECLS
-
-#define WB_TYPE_APPLET                wb_applet_get_type()
-#define WB_APPLET(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), WB_TYPE_APPLET, WBApplet))
-#define WB_APPLET_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), WB_TYPE_APPLET, WBAppletClass))
-#define WB_IS_APPLET(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), WB_TYPE_APPLET))
-#define WB_IS_APPLET_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), WB_TYPE_APPLET))
-#define WB_APPLET_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), WB_TYPE_APPLET, WBAppletClass))
 
 /* we will index images for convenience */
 typedef enum {
@@ -155,9 +145,10 @@ typedef struct {
 				show_tooltips;
 } WBPreferences;
 
-/* WBApplet definition (inherits from PanelApplet) */
-typedef struct {
-    PanelApplet parent;
+struct _WBApplet
+{
+	GpApplet parent;
+
 	GSettings *settings;
 
 	/* Widgets */
@@ -182,7 +173,8 @@ typedef struct {
 	gulong			active_handler,		// activewindow's event handler ID
 					umaxed_handler;		// umaxedwindow's event handler ID
 
-	PanelAppletOrient orient;			// Panel orientation
+	GtkOrientation orient;			// Panel orientation
+	GtkPositionType position;
 	GdkPixbufRotation angle;			// Applet angle
 	GtkPackType		packtype;			// Packaging direction of buttons
 
@@ -190,37 +182,10 @@ typedef struct {
 
 	/* GtkBuilder */
 	GtkBuilder 		*prefbuilder;
-} WBApplet;
-
-typedef struct {
-        PanelAppletClass applet_class;
-} WBAppletClass;
-
-GType wb_applet_get_type (void);
-WBApplet* wb_applet_new (void);
+};
 
 void wb_applet_update_images (WBApplet *wbapplet);
 
 G_END_DECLS
+
 #endif
-
-/*
-Applet structure:
-
-              Panel
-                |
-                |
-              Applet
-                |
-                |
-     _________ Box _________
-    |           |           |
-    |           |           |
-EventBox[0] EventBox[1] EventBox[2]
-    |           |           |
-    |           |           |
-  Image[0]   Image[1]    Image[2]
-
-* note that EventBox/Image pairs (buttons) may be positioned in a different order
-
-*/

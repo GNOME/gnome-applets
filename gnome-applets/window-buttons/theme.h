@@ -18,4 +18,4 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#include "windowbuttons.h"
+#include "window-buttons-private.h"

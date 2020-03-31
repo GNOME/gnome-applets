@@ -106,17 +106,6 @@ PKG_CHECK_MODULES(GIO_UNIX, gio-unix-2.0 >= $GIO_REQUIRED)
 dnl -- Check for GTK+ 3.0 (required) ------------------------------------------
 PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED)
 
-dnl -- check for libpanelapplet (required) ------------------------------------
-PKG_CHECK_MODULES(GNOME_APPLETS, libpanel-applet >= $LIBPANEL_REQUIRED)
-
-AC_ARG_WITH([libpanel-applet-dir], [], [LIBPANEL_APPLET_DIR=$withval], [LIBPANEL_APPLET_DIR=""])
-if test "$LIBPANEL_APPLET_DIR" == ""; then
-	LIBPANEL_APPLET_DIR=`$PKG_CONFIG --variable=libpanel_applet_dir libpanel-applet`
-fi
-
-AC_MSG_NOTICE([installing applets in $LIBPANEL_APPLET_DIR])
-AC_SUBST(LIBPANEL_APPLET_DIR)
-
 dnl -- check for libgnome-panel (required) ------------------------------------
 PKG_CHECK_MODULES([GNOME_PANEL], [libgnome-panel >= $LIBGNOME_PANEL_REQUIRED])
 
@@ -362,6 +351,8 @@ AC_CONFIG_FILES([
   gnome-applets/timer/Makefile
   gnome-applets/tracker-search-bar/Makefile
   gnome-applets/trash/Makefile
+  gnome-applets/window-buttons/Makefile
+  gnome-applets/window-buttons/themes/Makefile
   gnome-applets/window-picker/Makefile
   gnome-applets/window-title/Makefile
 
@@ -380,9 +371,6 @@ AC_CONFIG_FILES([
   help/trash/Makefile
 
   po/Makefile.in
-
-  window-buttons/Makefile
-  window-buttons/themes/Makefile
 ])
 
 AC_OUTPUT

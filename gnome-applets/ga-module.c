@@ -42,6 +42,7 @@
 #include "tracker-search-bar/tracker-applet.h"
 #endif
 #include "trash/trash-applet.h"
+#include "window-buttons/window-buttons.h"
 #include "window-picker/wp-applet.h"
 #include "window-title/window-title.h"
 
@@ -177,6 +178,13 @@ ga_get_applet_info (const char *id)
       description = _("Go to Trash");
       icon_name = "user-trash-full";
     }
+  else if (g_strcmp0 (id, "window-buttons") == 0)
+    {
+      type_func = wb_applet_get_type;
+      name = _("Window Buttons");
+      description = _("Window buttons for your GNOME Panel");
+      icon_name = "windowbuttons-applet";
+    }
   else if (g_strcmp0 (id, "window-picker") == 0)
     {
       type_func = wp_applet_get_type;
@@ -243,6 +251,8 @@ ga_get_applet_id_from_iid (const char *iid)
 #endif
   else if (g_strcmp0 (iid, "TrashAppletFactory::TrashApplet") == 0)
     return "trash";
+  else if (g_strcmp0 (iid, "WindowButtonsAppletFactory::WindowButtonsApplet") == 0)
+    return "window-buttons";
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
            g_strcmp0 (iid, "org.gnome.gnome-applets.window-picker::window-picker") == 0)
     return "window-picker";
@@ -286,6 +296,7 @@ gp_module_load (GpModule *module)
                             "tracker-search-bar",
 #endif
                             "trash",
+                            "window-buttons",
                             "window-picker",
                             "window-title",
                             NULL);

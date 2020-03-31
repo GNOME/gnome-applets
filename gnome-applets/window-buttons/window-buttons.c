@@ -18,23 +18,15 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#include "windowbuttons.h"
+#include "config.h"
+#include "window-buttons-private.h"
 #include "preferences.h"
 
 /* Prototypes */
-//static void applet_change_background (PanelApplet *, PanelAppletBackgroundType, GdkColor *, GdkPixmap *);
-static void active_workspace_changed (WnckScreen *, WnckWorkspace *, WBApplet *);
-static void active_window_changed (WnckScreen *, WnckWindow *, WBApplet *);
+static void init_wbapplet (WBApplet *);
 static void active_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WBApplet *);
 static void umaxed_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WBApplet *);
-static void viewports_changed (WnckScreen *, WBApplet *);
-static void window_closed (WnckScreen *, WnckWindow *, WBApplet *);
-static void window_opened (WnckScreen *, WnckWindow *, WBApplet *);
 static void about_cb ( GSimpleAction *, GVariant *, gpointer );
-static gboolean hover_enter (GtkWidget *, GdkEventCrossing *, WBApplet *);
-static gboolean hover_leave (GtkWidget *, GdkEventCrossing *, WBApplet *);
-static gboolean button_press (GtkWidget *, GdkEventButton *, WBApplet *);
-static gboolean button_release (GtkWidget *, GdkEventButton *, WBApplet *);
 static WnckWindow *getRootWindow (WnckScreen *screen);
 static WnckWindow *getUpperMaximized (WBApplet *);
 void setCustomLayout (WBPreferences *, gchar *);
@@ -44,33 +36,22 @@ void reloadButtons(WBApplet *);
 void toggleHidden(WBApplet *);
 void loadThemes(GtkComboBox *, gchar *);
 WBPreferences *loadPreferences(WBApplet *);
-//gchar *getButtonLayoutGConf(WBApplet *, gboolean);
 gchar *getMetacityLayout(void);
 GdkPixbuf ***getPixbufs(gchar ***);
 
-//G_DEFINE_TYPE(TN, t_n, T_P) G_DEFINE_TYPE_EXTENDED (TN, t_n, T_P, 0, {})
-//This line is very important! It defines how the requested functions will be called
-G_DEFINE_TYPE (WBApplet, wb_applet, PANEL_TYPE_APPLET);
-
-static const gchar windowbuttons_menu_items [] =
-	"<section>"
-		"<item>"
-			"<attribute name=\"label\">Preferences</attribute>"
-			"<attribute name=\"action\">windowbuttons.preferences</attribute>"
-		"</item>"
-		"<item>"
-			"<attribute name=\"label\">About</attribute>"
-			"<attribute name=\"action\">windowbuttons.about</attribute>"
-		"</item>"
-	"</section>";
+G_DEFINE_TYPE (WBApplet, wb_applet, GP_TYPE_APPLET)
 
 static const GActionEntry windowbuttons_menu_actions [] = {
 	{ "preferences", wb_applet_properties_cb,  NULL, NULL, NULL },
-	{ "about",       about_cb, NULL, NULL, NULL }
+	{ "about",       about_cb, NULL, NULL, NULL },
+	{ NULL }
 };
 
-WBApplet* wb_applet_new (void) {
-        return g_object_new (WB_TYPE_APPLET, NULL);
+static void
+wb_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (wb_applet_parent_class)->constructed (object);
+  init_wbapplet (WB_APPLET (object));
 }
 
 static void
@@ -135,11 +116,14 @@ wb_applet_class_init (WBAppletClass *self_class)
 
   object_class = G_OBJECT_CLASS (self_class);
 
+  object_class->constructed = wb_applet_constructed;
   object_class->dispose = wb_applet_dispose;
 }
 
-static void wb_applet_init(WBApplet *wbapplet) {
-	// Called before windowbuttons_applet_fill(), after wb_applet_class_init()
+static void
+wb_applet_init (WBApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
 }
 
 /* The About dialog */
@@ -619,7 +603,7 @@ void placeButtons(WBApplet *wbapplet) {
 		gtk_orientable_set_orientation(GTK_ORIENTABLE(wbapplet->box), GTK_ORIENTATION_HORIZONTAL);
 	} else if (wbapplet->prefs->orientation == 2) {
 		// Vertical position: The pixmaps need to be rotated to: Left/Down=270°, Right/Up=90°
-		if (wbapplet->orient == PANEL_APPLET_ORIENT_LEFT || wbapplet->orient == PANEL_APPLET_ORIENT_DOWN) {
+		if (wbapplet->orient == GTK_ORIENTATION_VERTICAL) {
 			wbapplet->angle = GDK_PIXBUF_ROTATE_CLOCKWISE; // = 270°
 			wbapplet->packtype = GTK_PACK_START;
 		} else {
@@ -629,11 +613,11 @@ void placeButtons(WBApplet *wbapplet) {
 		gtk_orientable_set_orientation(GTK_ORIENTABLE(wbapplet->box), GTK_ORIENTATION_VERTICAL);
 	} else {
 		// Automatic position (default setting)
-		if (wbapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
+		if (wbapplet->position == GTK_POS_LEFT) {
 			wbapplet->angle = GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE;
 			wbapplet->packtype = GTK_PACK_END;
 			gtk_orientable_set_orientation(GTK_ORIENTABLE(wbapplet->box), GTK_ORIENTATION_VERTICAL);
-		} else if (wbapplet->orient == PANEL_APPLET_ORIENT_LEFT) {
+		} else if (wbapplet->position == GTK_POS_RIGHT) {
 			wbapplet->angle = GDK_PIXBUF_ROTATE_CLOCKWISE;
 			wbapplet->packtype = GTK_PACK_START;
 			gtk_orientable_set_orientation(GTK_ORIENTABLE(wbapplet->box), GTK_ORIENTATION_VERTICAL);
@@ -687,26 +671,29 @@ void reloadButtons(WBApplet *wbapplet) {
 }
 
 static void
-applet_change_orient (PanelApplet       *panelapplet,
-                      PanelAppletOrient  orient,
-                      WBApplet          *wbapplet)
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      WBApplet        *self)
 {
-	if (orient != wbapplet->orient) {
-		wbapplet->orient = orient;
-		wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);
-		reloadButtons(wbapplet);
-		wb_applet_update_images(wbapplet);
-	}
+  if (self->orient == orientation && self->position == position)
+    return;
+
+  self->orient = orientation;
+  self->position = position;
+
+  self->pixbufs = getPixbufs (self->prefs->images);
+  reloadButtons (self);
+
+  wb_applet_update_images (self);
 }
 
-/* Do the actual applet initialization */
-static void init_wbapplet(PanelApplet *applet) {
-	WBApplet *wbapplet;
-	GSimpleActionGroup *action_group;
+static void
+init_wbapplet (WBApplet *wbapplet)
+{
+	const char *menu_resource;
 
-	wbapplet = WB_APPLET (applet);
-
-	wbapplet->settings = panel_applet_settings_new (applet, WINDOWBUTTONS_GSCHEMA);
+	wbapplet->settings = gp_applet_settings_new (GP_APPLET (wbapplet), WINDOWBUTTONS_GSCHEMA);
 	wbapplet->prefs = loadPreferences(wbapplet);
 	wbapplet->activescreen = wnck_screen_get_default();
 	wnck_screen_force_update(wbapplet->activescreen);
@@ -717,7 +704,8 @@ static void init_wbapplet(PanelApplet *applet) {
 	wbapplet->prefbuilder = gtk_builder_new();
 	wbapplet->box = GTK_BOX(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
 	wbapplet->button = createButtons(wbapplet);
-	wbapplet->orient = panel_applet_get_orient(applet);
+	wbapplet->orient = gp_applet_get_orientation(GP_APPLET (wbapplet));
+	wbapplet->position = gp_applet_get_position(GP_APPLET (wbapplet));
 	wbapplet->pixbufs = getPixbufs(wbapplet->prefs->images);
 
 	// Rotate & place buttons
@@ -749,18 +737,17 @@ static void init_wbapplet(PanelApplet *applet) {
 	                                               G_CALLBACK (window_opened),
 	                                               wbapplet);
 
-//	g_signal_connect(G_OBJECT (wbapplet), "change-background", G_CALLBACK (applet_change_background), wbapplet);
-	g_signal_connect(G_OBJECT (wbapplet), "change-orient", G_CALLBACK (applet_change_orient), wbapplet);
+	g_signal_connect (wbapplet, "placement-changed", G_CALLBACK (placement_changed_cb), wbapplet);
 
 	// ???: Is this still necessary?
 	wbapplet->active_handler =
 		g_signal_connect(G_OBJECT (wbapplet->activewindow), "state-changed", G_CALLBACK (active_window_state_changed), wbapplet);
 
 	// Setup applet right-click menu
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group), windowbuttons_menu_actions, G_N_ELEMENTS (windowbuttons_menu_actions), wbapplet);
-	panel_applet_setup_menu (applet, windowbuttons_menu_items, action_group, GETTEXT_PACKAGE);
-	gtk_widget_insert_action_group (GTK_WIDGET (wbapplet), "windowbuttons", G_ACTION_GROUP (action_group));
+	menu_resource = GRESOURCE_PREFIX "/ui/window-buttons-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (wbapplet),
+	                                    menu_resource,
+	                                    windowbuttons_menu_actions);
 
 	toggleHidden (wbapplet);	// Properly hide or show stuff
 	wb_applet_update_images (wbapplet);
@@ -782,19 +769,3 @@ void toggleHidden (WBApplet *wbapplet) {
 	if (!gtk_widget_get_visible(GTK_WIDGET(wbapplet)))
 		gtk_widget_show_all(GTK_WIDGET(wbapplet));
 }
-
-// Initial function that creates the applet
-static gboolean windowbuttons_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data) {
-	if (g_strcmp0(iid, APPLET_OAFIID) != 0) return FALSE;
-
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-
-	init_wbapplet(applet);
-
-	return TRUE;
-}
-
-PANEL_APPLET_IN_PROCESS_FACTORY (APPLET_OAFIID_FACTORY,
-                                 WB_TYPE_APPLET,
-                                 windowbuttons_applet_factory,
-                                 NULL)
