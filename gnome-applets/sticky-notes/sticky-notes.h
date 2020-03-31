@@ -20,7 +20,7 @@
 
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
 #include <libwnck/libwnck.h>
-#include "stickynotes_applet.h"
+#include "sticky-notes-applet.h"
 
 typedef struct
 {

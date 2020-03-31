@@ -17,8 +17,8 @@
 
 #include <config.h>
 #include <string.h>
-#include "stickynotes_applet_callbacks.h"
-#include "stickynotes.h"
+#include "sticky-notes-applet-callbacks.h"
+#include "sticky-notes.h"
 #include "gsettings.h"
 #include <gdk/gdkkeysyms.h>
 #include <X11/Xatom.h>
@@ -58,7 +58,7 @@ static gboolean get_desktop_window (Window *window)
 static void
 popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 {
-	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
+	stickynotes_add (gtk_widget_get_screen (GTK_WIDGET (applet)));
 }
 
 static void
@@ -118,7 +118,7 @@ applet_key_cb (GtkWidget         *widget,
 			stickynote_show_notes (TRUE);
 			return TRUE;
 	}
- 	return FALSE;
+	return FALSE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
@@ -205,17 +205,19 @@ void install_check_click_on_desktop (void)
 }
 
 /* Applet Callback : Change the panel orientation. */
-void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient, StickyNotesApplet *applet)
+void
+applet_placement_changed_cb (GpApplet          *applet,
+                             GtkOrientation     orientation,
+                             GtkPositionType    position,
+                             StickyNotesApplet *self)
 {
-	applet->panel_orient = orient;
-
-	return;
+	self->panel_orient = orientation;
 }
 
 /* Applet Callback : Resize the applet. */
 void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet)
 {
-	if ((applet->panel_orient == PANEL_APPLET_ORIENT_UP) || (applet->panel_orient == PANEL_APPLET_ORIENT_DOWN)) {
+	if (applet->panel_orient == GTK_ORIENTATION_HORIZONTAL) {
 	  if (applet->panel_size == allocation->height)
 	    return;
 	  applet->panel_size = allocation->height;
@@ -231,7 +233,7 @@ void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, Stick
 }
 
 /* Applet Callback : Deletes the applet. */
-void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
+void applet_destroy_cb (GtkWidget *widget, StickyNotesApplet *applet)
 {
 	GList *notes;
 
@@ -239,9 +241,6 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 
 	if (applet->destroy_all_dialog != NULL)
 		gtk_widget_destroy (applet->destroy_all_dialog);
-
-	if (applet->action_group)
-		g_object_unref (applet->action_group);
 
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
@@ -303,7 +302,7 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 
 	if (applet->destroy_all_dialog != NULL) {
 		gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (applet)));
 
 		gtk_window_present (GTK_WINDOW (applet->destroy_all_dialog));
 		return;
@@ -318,7 +317,7 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 			  applet);
 
 	gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
-			gtk_widget_get_screen (applet->w_applet));
+			gtk_widget_get_screen (GTK_WIDGET (applet)));
 
 	gtk_widget_show_all (applet->destroy_all_dialog);
 }
@@ -344,7 +343,7 @@ void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 {
 	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	stickynotes_applet_update_prefs();
-	gtk_window_set_screen(GTK_WINDOW(stickynotes->w_prefs), gtk_widget_get_screen(applet->w_applet));
+	gtk_window_set_screen(GTK_WINDOW(stickynotes->w_prefs), gtk_widget_get_screen(GTK_WIDGET (applet)));
 	gtk_window_present(GTK_WINDOW(stickynotes->w_prefs));
 }
 
@@ -353,7 +352,7 @@ void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data
 {
 	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
 	GError *error = NULL;
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
 			"help:stickynotes_applet",
 			gtk_get_current_event_time (),
 			&error);
@@ -362,7 +361,7 @@ void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data
 							   _("There was an error displaying help: %s"), error->message);
 		g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);
 		gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
-		gtk_window_set_screen (GTK_WINDOW(dialog), gtk_widget_get_screen(applet->w_applet));
+		gtk_window_set_screen (GTK_WINDOW(dialog), gtk_widget_get_screen(GTK_WIDGET (applet)));
 		gtk_widget_show(dialog);
 		g_error_free(error);
 	}

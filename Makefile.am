@@ -2,7 +2,6 @@ NULL =
 
 always_built_SUBDIRS =  \
 	multiload \
-	sticky-notes	\
 	window-buttons \
 	$(NULL)
 
@@ -20,7 +19,6 @@ DIST_SUBDIRS = \
 	help \
 	po		\
 	multiload	\
-	sticky-notes	\
 	window-buttons	\
 	$(NULL)
 

@@ -15,8 +15,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
-#include "stickynotes_callbacks.h"
+#include "config.h"
+#include "sticky-notes-callbacks.h"
 
 /* Sticky Window Callback : Lock/Unlock the window */
 gboolean
@@ -34,7 +34,7 @@ stickynote_close_cb (GtkWidget  *widget,
                      StickyNote *note)
 {
 	stickynotes_remove (note);
-	
+
 	return TRUE;
 }
 
@@ -54,7 +54,7 @@ stickynote_resize_cb (GtkWidget      *widget,
 	}
 	else
 		return FALSE;
-			
+
 	return TRUE;
 }
 
@@ -184,7 +184,7 @@ properties_apply_color_cb (StickyNote *note)
 {
 	char *color_str = NULL;
 	char *font_color_str = NULL;
-	
+
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (note->w_def_color)))
 	{
 		GdkRGBA color;

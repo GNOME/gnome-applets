@@ -13,6 +13,7 @@ SUBDIRS = \
 	inhibit \
 	mini-commander \
 	netspeed \
+	sticky-notes \
 	timer \
 	tracker-search-bar \
 	trash \
@@ -53,6 +54,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/inhibit/libinhibit-applet.la \
 	$(top_builddir)/gnome-applets/mini-commander/libmini-commander-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
+	$(top_builddir)/gnome-applets/sticky-notes/libsticky-notes-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
 	$(top_builddir)/gnome-applets/trash/libtrash-applet.la \
 	$(top_builddir)/gnome-applets/window-picker/libwindow-picker-applet.la \
@@ -132,6 +134,11 @@ icon_files = \
 	accessx-status/icons/ax-slowkeys-yes.png \
 	accessx-status/icons/ax-slowkeys-no.png \
 	accessx-status/icons/ax-bouncekeys.png \
+	sticky-notes/icons/sticky-notes-stock-locked.png \
+	sticky-notes/icons/sticky-notes-stock-unlocked.png \
+	sticky-notes/icons/sticky-notes-stock-close.png \
+	sticky-notes/icons/sticky-notes-stock-resize-se.png \
+	sticky-notes/icons/sticky-notes-stock-resize-sw.png \
 	window-picker/wp-about-logo.png \
 	$(NULL)
 
@@ -149,6 +156,13 @@ ui_files = \
 	mini-commander/mini-commander.ui \
 	mini-commander/mini-commander-applet-menu.xml \
 	netspeed/netspeed-menu.xml \
+	sticky-notes/ui/sticky-notes-applet-menu.xml \
+	sticky-notes/ui/sticky-notes-delete.ui \
+	sticky-notes/ui/sticky-notes-delete-all.ui \
+	sticky-notes/ui/sticky-notes-note.ui \
+	sticky-notes/ui/sticky-notes-note-menu.xml \
+	sticky-notes/ui/sticky-notes-preferences.ui \
+	sticky-notes/ui/sticky-notes-properties.ui \
 	timer/timer-applet-menu.xml \
 	trash/trash-empty.ui \
 	trash/trash-menu.xml \
@@ -174,7 +188,7 @@ ui_files += \
 	$(NULL)
 endif
 
-gnome-applets.gresource.xml: Makefile
+gnome-applets.gresource.xml: Makefile.am Makefile
 	$(AM_V_GEN) echo '<?xml version="1.0" encoding="UTF-8"?>' > $@; \
 		echo '<gresources>' >> $@; \
 		echo "  <gresource prefix=\"$(GRESOURCE_PREFIX)/icons\">" >> $@; \

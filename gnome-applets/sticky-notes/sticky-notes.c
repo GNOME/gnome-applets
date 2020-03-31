@@ -23,15 +23,15 @@
 #include <libwnck/libwnck.h>
 #include <string.h>
 
-#include "stickynotes.h"
-#include "stickynotes_callbacks.h"
+#include "sticky-notes.h"
+#include "sticky-notes-callbacks.h"
 #include "util.h"
-#include "stickynotes_applet.h"
+#include "sticky-notes-applet.h"
 #include "gsettings.h"
 
-#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
 /* Stop gcc complaining about xmlChar's signedness */
 #define XML_CHAR(str) ((xmlChar *) (str))
+
 #define STICKYNOTES_ICON_SIZE 8
 
 static gboolean save_scheduled = FALSE;
@@ -60,7 +60,7 @@ setup_note_menu (StickyNote *note)
 	                                 G_N_ELEMENTS (stickynotes_note_menu_actions),
 	                                 note);
 
-	resource_name = GRESOURCE "sticky-notes-note-menu.xml";
+	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-note-menu.xml";
 	builder = gtk_builder_new_from_resource (resource_name);
 
 	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
@@ -74,6 +74,26 @@ setup_note_menu (StickyNote *note)
 	gtk_widget_insert_action_group (GTK_WIDGET (note->w_window), "stickynote",
 	                                G_ACTION_GROUP (action_group));
 	g_object_unref (action_group);
+}
+
+static void
+set_image_from_name (GtkImage   *image,
+                     const char *name)
+{
+  char *resource_path;
+  GdkPixbuf *pixbuf;
+
+  resource_path = g_build_filename (GRESOURCE_PREFIX "/icons/", name, NULL);
+  pixbuf = gdk_pixbuf_new_from_resource_at_scale (resource_path,
+                                                  STICKYNOTES_ICON_SIZE,
+                                                  STICKYNOTES_ICON_SIZE,
+                                                  TRUE,
+                                                  NULL);
+
+  g_free (resource_path);
+
+  gtk_image_set_from_pixbuf (image, pixbuf);
+  g_object_unref (pixbuf);
 }
 
 /* Based on a function found in wnck */
@@ -141,9 +161,11 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder,
-	                               GRESOURCE "sticky-notes-note.ui", NULL);
+	                               GRESOURCE_PREFIX "/ui/sticky-notes-note.ui",
+	                               NULL);
 	gtk_builder_add_from_resource (builder,
-	                               GRESOURCE "sticky-notes-properties.ui", NULL);
+	                               GRESOURCE_PREFIX "/ui/sticky-notes-properties.ui",
+	                               NULL);
 
 	note->w_window = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_window"));
 	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
@@ -227,14 +249,9 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 				note->y);
 
 	/* Set the button images */
-	gtk_image_set_from_icon_name (note->img_close, STICKYNOTES_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
-	gtk_image_set_pixel_size (note->img_close, STICKYNOTES_ICON_SIZE);
-
-	gtk_image_set_from_icon_name (note->img_resize_se, STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
-	gtk_image_set_pixel_size (note->img_resize_se, STICKYNOTES_ICON_SIZE);
-
-	gtk_image_set_from_icon_name (note->img_resize_sw, STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
-	gtk_image_set_pixel_size (note->img_resize_sw, STICKYNOTES_ICON_SIZE);
+	set_image_from_name (note->img_close, "sticky-notes-stock-close.png");
+	set_image_from_name (note->img_resize_se, "sticky-notes-stock-resize-se.png");
+	set_image_from_name (note->img_resize_sw, "sticky-notes-stock-resize-sw.png");
 
 	gtk_widget_show(note->w_lock);
 	gtk_widget_show(note->w_close);
@@ -761,11 +778,11 @@ stickynote_set_locked (StickyNote *note,
 
 	/* Show appropriate icon and tooltip */
 	if (locked) {
-		gtk_image_set_from_icon_name (note->img_lock, STICKYNOTES_STOCK_LOCKED, GTK_ICON_SIZE_MENU);
+		set_image_from_name (note->img_lock, "sticky-notes-stock-locked.png");
 		gtk_widget_set_tooltip_text(note->w_lock, _("This note is locked."));
 	}
 	else {
-		gtk_image_set_from_icon_name (note->img_lock, STICKYNOTES_STOCK_UNLOCKED, GTK_ICON_SIZE_MENU);
+		set_image_from_name (note->img_lock, "sticky-notes-stock-unlocked.png");
 		gtk_widget_set_tooltip_text(note->w_lock, _("This note is unlocked."));
 	}
 
@@ -846,7 +863,8 @@ void stickynotes_remove(StickyNote *note)
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder,
-	                               GRESOURCE "sticky-notes-delete.ui", NULL);
+	                               GRESOURCE_PREFIX "/ui/sticky-notes-delete.ui",
+	                               NULL);
 
 	dialog = GTK_WIDGET (gtk_builder_get_object (builder, "delete_dialog"));
 

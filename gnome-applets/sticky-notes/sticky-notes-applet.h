@@ -22,20 +22,18 @@
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
-#include <panel-applet.h>
+#include <libgnome-panel/gp-applet.h>
 
 #define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
 
-#define STICKYNOTES_STOCK_LOCKED	"stickynotes-stock-locked"
-#define STICKYNOTES_STOCK_UNLOCKED	"stickynotes-stock-unlocked"
-#define STICKYNOTES_STOCK_CLOSE 	"stickynotes-stock-close"
-#define STICKYNOTES_STOCK_RESIZE_SE 	"stickynotes-stock-resize-se"
-#define STICKYNOTES_STOCK_RESIZE_SW	"stickynotes-stock-resize-sw"
+#define STICKY_NOTES_TYPE_APPLET (sticky_notes_applet_get_type ())
+G_DECLARE_FINAL_TYPE (StickyNotesApplet, sticky_notes_applet,
+                      STICKY_NOTES, APPLET, GpApplet)
 
 /* Global Sticky Notes instance */
 typedef struct
 {
-	GtkBuilder *builder;		
+	GtkBuilder *builder;
 
 	GtkWidget *w_prefs;		/* The prefs dialog */
 	GtkAdjustment *w_prefs_width;
@@ -51,7 +49,7 @@ typedef struct
 
 	GList *notes;			/* Linked-List of all the sticky notes */
 	GList *applets;			/* Linked-List of all the applets */
-	
+
 	GdkPixbuf *icon_normal;		/* Normal applet icon */
 	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
 
@@ -64,44 +62,36 @@ typedef struct
 } StickyNotes;
 
 /* Sticky Notes Applet */
-typedef struct
+struct _StickyNotesApplet
 {
-	GtkWidget *w_applet;		/* The applet */
+  GpApplet parent;
+
 	GtkWidget *w_image;		/* The applet icon */
 
 	GtkWidget *destroy_all_dialog;	/* The applet it's destroy all dialog */
-	
+
 	gboolean prelighted;		/* Whether applet is prelighted */
 	gboolean pressed;		/* Whether applet is pressed */
 
 	gint panel_size;
-	PanelAppletOrient panel_orient;
+	GtkOrientation panel_orient;
 
-	GSimpleActionGroup *action_group;
 	GtkWidget *menu_tip;
-} StickyNotesApplet;
-	
+};
+
 typedef enum
 {
 	STICKYNOTES_NEW = 0,
 	STICKYNOTES_SET_VISIBLE,
 	STICKYNOTES_SET_LOCKED
-
 } StickyNotesDefaultAction;
 
 extern StickyNotes *stickynotes;
-
-void stickynotes_applet_init(PanelApplet *panel_applet);
-void stickynotes_applet_init_prefs(void);
-
-StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet);
 
 void stickynotes_applet_update_icon(StickyNotesApplet *applet);
 void stickynotes_applet_update_prefs(void);
 void stickynotes_applet_update_menus(void);
 void stickynotes_applet_update_tooltips(void);
-
-void stickynotes_applet_do_default_action(GdkScreen *screen);
 
 void stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *height);
 

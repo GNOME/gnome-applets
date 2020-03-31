@@ -30,20 +30,20 @@
  * looks like this: "Nov 30, '78" */
 gchar * get_current_date(const gchar *format)
 {
-  	time_t clock = time(NULL);
-  	struct tm *current = localtime(&clock);
+	time_t clock = time(NULL);
+	struct tm *current = localtime(&clock);
 
 	gint date_length = 10;
-  	gchar *date = g_new(gchar, date_length);
-  	
+	gchar *date = g_new(gchar, date_length);
+
 	do
 	{
 		date_length += 5;
 		date = (gchar *) g_renew(gchar, date, date_length);
 	}
-  	while(strftime(date, date_length, format, current) == 0);
-	
-  	return date;
+	while(strftime(date, date_length, format, current) == 0);
+
+	return date;
 }
 
 static Atom
@@ -101,14 +101,14 @@ xstuff_get_current_workspace (GtkWindow *window)
 				     &bytes_after, (gpointer) &num);
 	if (gdk_error_trap_pop () || result != Success)
 		return -1;
- 
+
 	if (type != XA_CARDINAL) {
 		XFree (num);
 		return -1;
 	}
 
 	retval = *num;
- 
+
 	XFree (num);
 
 	return retval;
@@ -125,7 +125,7 @@ xstuff_change_workspace (GtkWindow *window,
   gdk_display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   xwindow = GDK_WINDOW_XID (GDK_WINDOW (gtk_widget_get_window (GTK_WIDGET (window))));
   screen = GDK_SCREEN_XSCREEN (gtk_widget_get_screen (GTK_WIDGET (window)));
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;

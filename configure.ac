@@ -357,6 +357,7 @@ AC_CONFIG_FILES([
   gnome-applets/inhibit/Makefile
   gnome-applets/mini-commander/Makefile
   gnome-applets/netspeed/Makefile
+  gnome-applets/sticky-notes/Makefile
   gnome-applets/timer/Makefile
   gnome-applets/tracker-search-bar/Makefile
   gnome-applets/trash/Makefile
@@ -381,11 +382,6 @@ AC_CONFIG_FILES([
 
   multiload/Makefile
   multiload/src/Makefile
-
-  sticky-notes/Makefile
-  sticky-notes/data/Makefile
-  sticky-notes/src/Makefile
-  sticky-notes/pixmaps/Makefile
 
   window-buttons/Makefile
   window-buttons/themes/Makefile

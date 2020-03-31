@@ -15,18 +15,25 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <config.h>
+#include "config.h"
+#include "sticky-notes-applet.h"
+
 #include <string.h>
-#include "stickynotes_applet.h"
-#include "stickynotes_applet_callbacks.h"
-#include "stickynotes.h"
+
+#include "sticky-notes-applet-callbacks.h"
+#include "sticky-notes.h"
 #include "gsettings.h"
 
 #include <gtk/gtk.h>
 
-#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
+G_DEFINE_TYPE (StickyNotesApplet, sticky_notes_applet, GP_TYPE_APPLET)
 
 StickyNotes *stickynotes = NULL;
+
+static void sticky_notes_init       (GpApplet          *applet);
+static void sticky_notes_init_prefs (void);
+
+static void sticky_notes_applet_new (StickyNotesApplet *self);
 
 /* Popup menu on the applet */
 static const GActionEntry stickynotes_applet_menu_actions [] = {
@@ -36,35 +43,47 @@ static const GActionEntry stickynotes_applet_menu_actions [] = {
 	{ "destroy-all", menu_destroy_all_cb, NULL, NULL,    NULL },
 	{ "preferences", menu_preferences_cb, NULL, NULL,    NULL },
 	{ "help",        menu_help_cb,        NULL, NULL,    NULL },
-	{ "about",       menu_about_cb,       NULL, NULL,    NULL }
+	{ "about",       menu_about_cb,       NULL, NULL,    NULL },
+	{ NULL }
 };
 
-/* Sticky Notes applet factory */
-static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data)
+static void
+sticky_notes_applet_setup (StickyNotesApplet *self)
 {
-	if (!strcmp(iid, "StickyNotesApplet")) {
-		if (!stickynotes)
-			stickynotes_applet_init (panel_applet);
+  if (stickynotes == NULL)
+    sticky_notes_init (GP_APPLET (self));
 
-		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
+  sticky_notes_applet_new (self);
 
-		/* Add applet to linked list of all applets */
-		stickynotes->applets = g_list_append (stickynotes->applets, stickynotes_applet_new(panel_applet));
+  /* Add applet to linked list of all applets */
+  stickynotes->applets = g_list_append (stickynotes->applets, self);
 
-		stickynotes_applet_update_menus ();
-		stickynotes_applet_update_tooltips ();
-
-		return TRUE;
-	}
-
-	return FALSE;
+  stickynotes_applet_update_menus ();
+  stickynotes_applet_update_tooltips ();
 }
 
-/* Sticky Notes applet factory */
-PANEL_APPLET_IN_PROCESS_FACTORY("StickyNotesAppletFactory",
-                                PANEL_TYPE_APPLET,
-                                stickynotes_applet_factory,
-                                NULL)
+static void
+sticky_notes_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (sticky_notes_applet_parent_class)->constructed (object);
+  sticky_notes_applet_setup (STICKY_NOTES_APPLET (object));
+}
+
+static void
+sticky_notes_applet_class_init (StickyNotesAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = sticky_notes_applet_constructed;
+}
+
+static void
+sticky_notes_applet_init (StickyNotesApplet *self)
+{
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}
 
 /* colorshift a pixbuf */
 static void
@@ -107,18 +126,15 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 }
 
 /* Create and initalize global sticky notes instance */
-void
-stickynotes_applet_init (PanelApplet *panel_applet)
+static void
+sticky_notes_init (GpApplet *applet)
 {
 	stickynotes = g_new(StickyNotes, 1);
 
 	stickynotes->notes = NULL;
 	stickynotes->applets = NULL;
-	stickynotes->settings = panel_applet_settings_new (panel_applet, STICKYNOTES_SCHEMA);
+	stickynotes->settings = gp_applet_settings_new (applet, STICKYNOTES_SCHEMA);
 	stickynotes->last_timeout_data = 0;
-
-	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
-	                                   PKG_DATA_DIR G_DIR_SEPARATOR_S "icons");
 
 	stickynotes->icon_normal = gtk_icon_theme_load_icon (
 			gtk_icon_theme_get_default (),
@@ -136,7 +152,7 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 			stickynotes->icon_normal, 30);
 	stickynotes->visible = TRUE;
 
-	stickynotes_applet_init_prefs();
+	sticky_notes_init_prefs ();
 
 	g_signal_connect (stickynotes->settings, "changed",
 	                  G_CALLBACK (preferences_apply_cb), NULL);
@@ -145,18 +161,18 @@ stickynotes_applet_init (PanelApplet *panel_applet)
 	stickynotes->max_height = 0.8*gdk_screen_get_height( gdk_screen_get_default() );
 
 	/* Load sticky notes */
-	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
+	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (applet)));
 
 	install_check_click_on_desktop ();
 }
 
-void stickynotes_applet_init_prefs(void)
+static void
+sticky_notes_init_prefs (void)
 {
-
 	stickynotes->builder = gtk_builder_new ();
 
 	gtk_builder_add_from_resource (stickynotes->builder,
-	                               GRESOURCE "sticky-notes-preferences.ui",
+	                               GRESOURCE_PREFIX "/ui/sticky-notes-preferences.ui",
 	                               NULL);
 
 	stickynotes->w_prefs = GTK_WIDGET (gtk_builder_get_object (stickynotes->builder,
@@ -283,18 +299,14 @@ void stickynotes_applet_init_prefs(void)
 }
 
 /* Create a Sticky Notes applet */
-StickyNotesApplet *
-stickynotes_applet_new (PanelApplet *panel_applet)
+static void
+sticky_notes_applet_new (StickyNotesApplet *applet)
 {
 	AtkObject *atk_obj;
 	const gchar *resource_name;
 	GAction *action;
 
-	/* Create Sticky Notes Applet */
-	StickyNotesApplet *applet = g_new(StickyNotesApplet, 1);
-
 	/* Initialize Sticky Notes Applet */
-	applet->w_applet = GTK_WIDGET(panel_applet);
 	applet->w_image = gtk_image_new();
 	applet->destroy_all_dialog = NULL;
 	applet->prelighted = FALSE;
@@ -302,62 +314,47 @@ stickynotes_applet_new (PanelApplet *panel_applet)
 
 	applet->menu_tip = NULL;
 
-	/* Expand the applet for Fitts' law complience. */
-	panel_applet_set_flags(panel_applet, PANEL_APPLET_EXPAND_MINOR);
-
 	/* Add the applet icon */
-	gtk_container_add(GTK_CONTAINER(panel_applet), applet->w_image);
-	applet->panel_orient = panel_applet_get_orient (panel_applet);
+	gtk_container_add(GTK_CONTAINER(applet), applet->w_image);
+	applet->panel_orient = gp_applet_get_orientation (GP_APPLET (applet));
 	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
-	applet->action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (applet->action_group),
-	                                 stickynotes_applet_menu_actions,
-	                                 G_N_ELEMENTS (stickynotes_applet_menu_actions),
-	                                 applet);
+	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
+	                                    resource_name,
+	                                    stickynotes_applet_menu_actions);
 
-	resource_name = GRESOURCE "sticky-notes-applet-menu.xml";
-	panel_applet_setup_menu_from_resource (panel_applet,
-	                                       resource_name,
-	                                       applet->action_group,
-	                                       GETTEXT_PACKAGE);
-
-	gtk_widget_insert_action_group (GTK_WIDGET (panel_applet), "stickynotes",
-	                                G_ACTION_GROUP (applet->action_group));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "preferences");
-	g_object_bind_property (panel_applet, "locked-down",
+	action = gp_applet_menu_lookup_action (GP_APPLET (applet), "preferences");
+	g_object_bind_property (applet, "locked-down",
 	                        action, "enabled",
 	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
 	/* Connect all signals for applet management */
-	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event",
+	g_signal_connect(applet, "button-press-event",
 			G_CALLBACK(applet_button_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "key-press-event",
+	g_signal_connect(applet, "key-press-event",
 			G_CALLBACK(applet_key_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "focus-in-event",
+	g_signal_connect(applet, "focus-in-event",
 			G_CALLBACK(applet_focus_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "focus-out-event",
+	g_signal_connect(applet, "focus-out-event",
 			G_CALLBACK(applet_focus_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "enter-notify-event",
+	g_signal_connect(applet, "enter-notify-event",
 			G_CALLBACK(applet_cross_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "leave-notify-event",
+	g_signal_connect(applet, "leave-notify-event",
 			G_CALLBACK(applet_cross_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "size-allocate",
+	g_signal_connect(applet, "size-allocate",
 			G_CALLBACK(applet_size_allocate_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "change-orient",
-			G_CALLBACK(applet_change_orient_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "destroy",
+	g_signal_connect(applet, "placement-changed",
+			G_CALLBACK(applet_placement_changed_cb), applet);
+	g_signal_connect(applet, "destroy",
 			G_CALLBACK(applet_destroy_cb), applet);
 
-	atk_obj = gtk_widget_get_accessible (applet->w_applet);
+	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
 	atk_object_set_name (atk_obj, _("Sticky Notes"));
 
 	/* Show the applet */
-	gtk_widget_show_all(GTK_WIDGET(applet->w_applet));
-
-	return applet;
+	gtk_widget_show_all (GTK_WIDGET (applet));
 }
 
 void stickynotes_applet_update_icon(StickyNotesApplet *applet)
@@ -371,9 +368,9 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 
 	/* Choose appropriate icon and size it */
 	if (applet->prelighted)
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
+		pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
 	else
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
+		pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
 
 	if (!pixbuf1)
 		return;
@@ -495,9 +492,9 @@ void stickynotes_applet_update_menus(void)
 	for (l = stickynotes->applets; l != NULL; l = l->next) {
 		StickyNotesApplet *applet = l->data;
 
-		GSimpleAction *action = (GSimpleAction *) g_action_map_lookup_action (G_ACTION_MAP (applet->action_group), "lock");
-		g_simple_action_set_enabled (action, locked_writable);
-		g_simple_action_set_state (action, g_variant_new_boolean (locked));
+		GAction *action = gp_applet_menu_lookup_action (GP_APPLET (applet), "lock");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), locked_writable);
+		g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (locked));
 	}
 }
 
@@ -517,7 +514,7 @@ stickynotes_applet_update_tooltips (void)
 	for (l = stickynotes->applets; l; l = l->next)
 	{
 		applet = l->data;
-		gtk_widget_set_tooltip_text (applet->w_applet, tooltip);
+		gtk_widget_set_tooltip_text (GTK_WIDGET (applet), tooltip);
 
 		if (applet->menu_tip)
 			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (

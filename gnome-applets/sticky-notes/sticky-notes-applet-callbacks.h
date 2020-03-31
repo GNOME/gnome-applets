@@ -15,10 +15,10 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "stickynotes_applet.h"
-
 #ifndef __STICKYNOTES_APPLET_CALLBACKS_H__
 #define __STICKYNOTES_APPLET_CALLBACKS_H__
+
+#include "sticky-notes-applet.h"
 
 /* Callbacks for the sticky notes applet */
 gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *applet);
@@ -26,9 +26,9 @@ gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet 
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet);
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet);
 void install_check_click_on_desktop (void);
-void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient, StickyNotesApplet *applet);
+void applet_placement_changed_cb(GpApplet *applet, GtkOrientation orientation, GtkPositionType position, StickyNotesApplet *self);
 void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);
-void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);
+void applet_destroy_cb (GtkWidget *widget, StickyNotesApplet *applet);
 /* Callbacks for sticky notes applet menu */
 void menu_create_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void menu_new_note_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);

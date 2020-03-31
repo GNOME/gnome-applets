@@ -35,6 +35,7 @@
 #include "inhibit/inhibit-applet.h"
 #include "mini-commander/mini-commander-applet.h"
 #include "netspeed/netspeed-applet.h"
+#include "sticky-notes/sticky-notes-applet.h"
 #include "timer/timer-applet.h"
 #ifdef HAVE_TRACKER_SEARCH_BAR
 #include "tracker-search-bar/tracker-applet.h"
@@ -138,6 +139,13 @@ ga_get_applet_info (const char *id)
       description = _("Netspeed Applet");
       icon_name = "netspeed-applet";
     }
+  else if (g_strcmp0 (id, "sticky-notes") == 0)
+    {
+      type_func = sticky_notes_applet_get_type;
+      name = _("Sticky Notes");
+      description = _("Create, view, and manage sticky notes on the desktop");
+      icon_name = "gnome-sticky-notes-applet";
+    }
   else if (g_strcmp0 (id, "timer") == 0)
     {
       type_func = timer_applet_get_type;
@@ -215,6 +223,8 @@ ga_get_applet_id_from_iid (const char *iid)
     return "mini-commander";
   else if (g_strcmp0 (iid, "NetspeedAppletFactory::NetspeedApplet") == 0)
     return "netspeed";
+  else if (g_strcmp0 (iid, "StickyNotesAppletFactory::StickyNotesApplet") == 0)
+    return "sticky-notes";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
 #ifdef HAVE_TRACKER_SEARCH_BAR
@@ -259,6 +269,7 @@ gp_module_load (GpModule *module)
                             "inhibit",
                             "mini-commander",
                             "netspeed",
+                            "sticky-notes",
                             "timer",
 #ifdef HAVE_TRACKER_SEARCH_BAR
                             "tracker-search-bar",
