@@ -185,9 +185,9 @@ static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
   ProgressData *battstat = data;
-  
+
   if (id == GTK_RESPONSE_HELP)
-    battstat_show_help (battstat, "battstat-appearance");
+    gp_applet_show_help (GP_APPLET (battstat), "battstat-appearance");
   else
     gtk_widget_hide (GTK_WIDGET (battstat->prop_win));
 }

@@ -1063,40 +1063,6 @@ check_for_updates( gpointer data )
   return TRUE;
 }
 
-/* Common function invoked by the 'Help' context menu item and the 'Help'
- * button in the preferences dialog.
- */
-void
-battstat_show_help( ProgressData *battstat, const char *section )
-{
-  GError *error = NULL;
-  char *uri;
-
-  if (section)
-    uri = g_strdup_printf ("help:battstat/%s", section);
-  else
-    uri = g_strdup ("help:battstat");
-
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (battstat)),
-                uri,
-                gtk_get_current_event_time (),
-                &error);
-
-  g_free (uri);
-
-  if( error )
-  {
-    char *message;
-
-    message = g_strdup_printf( _("There was an error displaying help: %s"),
-                               error->message );
-    battstat_error_dialog (GTK_WIDGET (battstat), message);
-    g_error_free( error );
-    g_free( message );
-  }
-}
-
-
 /* Called when the user selects the 'help' menu item.
  */
 static void
@@ -1104,8 +1070,7 @@ help_cb (GSimpleAction *action,
          GVariant      *parameter,
          gpointer       user_data)
 {
-  ProgressData *battstat = (ProgressData *) user_data;
-  battstat_show_help( battstat, NULL );
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 /* Called when the user selects the 'about' menu item.

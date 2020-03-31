@@ -78,6 +78,7 @@ ga_get_applet_info (const char *id)
       icon_name = "battery";
 
       about_func = battstat_applet_setup_about;
+      help_uri = "help:battstat";
     }
   else if (g_strcmp0 (id, "brightness") == 0)
     {

@@ -160,6 +160,5 @@ void prop_cb (GSimpleAction *, GVariant *, gpointer);
 
 /* battstat_applet.c */
 void reconfigure_layout( ProgressData *battstat );
-void battstat_show_help( ProgressData *battstat, const char *section );
 
 #endif /* _battstat_h_ */
