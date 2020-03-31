@@ -1115,42 +1115,7 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-  ProgressData *battstat = (ProgressData *) user_data;
-  const gchar *authors[] = {
-    "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>", 
-    "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
-    "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
-    "Davyd Madeley <davyd@madeley.id.au>",
-    "Ryan Lortie <desrt@desrt.ca>",
-    "Joe Marcus Clarke <marcus@FreeBSD.org> (FreeBSD ACPI support)",
-    NULL
-   };
-
-  const gchar *documenters[] = {
-    "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>",
-    "Trevor Curtis <tcurtis@somaradio.ca>",
-    "Davyd Madeley <davyd@madeley.id.au>",
-    NULL
-  };
-
-  char *comments = g_strdup_printf ("%s\n\n%s",
-		  _("This utility shows the status of your laptop battery."),
-		  _("upower backend enabled.")
-		  );
-
-  gtk_show_about_dialog( NULL,
-    "version",             VERSION,
-    "copyright",           "\xC2\xA9 2000 The Gnulix Society, "
-                           "\xC2\xA9 2002-2005 Free Software Foundation and "
-                           "others",
-    "comments",            comments,
-    "authors",             authors,
-    "documenters",         documenters,
-    "translator-credits",  _("translator-credits"),
-    "logo-icon-name",      "battery",
-    NULL );
-
-  g_free (comments);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 /* Rotate text on side panels.  Called on initial startup and when the
@@ -1571,4 +1536,46 @@ static void
 battstat_applet_init (BattstatApplet *self)
 {
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}
+
+void
+battstat_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("This utility shows the status of your laptop battery.\n\n"
+               "UPower backend enabled.");
+
+  authors = (const char *[])
+    {
+      "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>",
+      "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
+      "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      "Ryan Lortie <desrt@desrt.ca>",
+      "Joe Marcus Clarke <marcus@FreeBSD.org> (FreeBSD ACPI support)",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "J\xC3\xB6rgen Pehrson <jp@spektr.eu.org>",
+      "Trevor Curtis <tcurtis@somaradio.ca>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2000 The Gnulix Society, "
+              "\xC2\xA9 2002-2005 Free Software Foundation and "
+              "others";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

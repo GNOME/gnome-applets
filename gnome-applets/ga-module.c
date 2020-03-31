@@ -76,6 +76,8 @@ ga_get_applet_info (const char *id)
       name = _("Battery Charge Monitor");
       description = _("Monitor a laptop's remaining power");
       icon_name = "battery";
+
+      about_func = battstat_applet_setup_about;
     }
   else if (g_strcmp0 (id, "brightness") == 0)
     {

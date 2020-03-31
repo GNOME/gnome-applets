@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (BattstatApplet, battstat_applet,
                       BATTSTAT, APPLET, GpApplet)
 
+void battstat_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif
