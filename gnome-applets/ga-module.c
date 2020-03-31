@@ -36,6 +36,9 @@
 #include "mini-commander/mini-commander-applet.h"
 #include "netspeed/netspeed-applet.h"
 #include "timer/timer-applet.h"
+#ifdef HAVE_TRACKER_SEARCH_BAR
+#include "tracker-search-bar/tracker-applet.h"
+#endif
 #include "trash/trash-applet.h"
 #include "window-picker/wp-applet.h"
 #include "window-title/window-title.h"
@@ -142,6 +145,15 @@ ga_get_applet_info (const char *id)
       description = _("Start a timer and receive a notification when it is finished");
       icon_name = "gnome-panel-clock";
     }
+#ifdef HAVE_TRACKER_SEARCH_BAR
+  else if (g_strcmp0 (id, "tracker-search-bar") == 0)
+    {
+      type_func = tracker_applet_get_type;
+      name = _("Tracker Search Bar");
+      description = _("Find your data quickly using Tracker");
+      icon_name = "system-search";
+    }
+#endif
   else if (g_strcmp0 (id, "trash") == 0)
     {
       type_func = trash_applet_get_type;
@@ -205,6 +217,10 @@ ga_get_applet_id_from_iid (const char *iid)
     return "netspeed";
   else if (g_strcmp0 (iid, "TimerAppletFactory::TimerApplet") == 0)
     return "timer";
+#ifdef HAVE_TRACKER_SEARCH_BAR
+  else if (g_strcmp0 (iid, "SearchBarFactory::SearchBar") == 0)
+    return "tracker-search-bar";
+#endif
   else if (g_strcmp0 (iid, "TrashAppletFactory::TrashApplet") == 0)
     return "trash";
   else if (g_strcmp0 (iid, "WindowPickerFactory::WindowPicker") == 0 ||
@@ -244,6 +260,9 @@ gp_module_load (GpModule *module)
                             "mini-commander",
                             "netspeed",
                             "timer",
+#ifdef HAVE_TRACKER_SEARCH_BAR
+                            "tracker-search-bar",
+#endif
                             "trash",
                             "window-picker",
                             "window-title",

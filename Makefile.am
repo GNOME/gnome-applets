@@ -1,9 +1,5 @@
 NULL =
 
-if HAVE_TRACKER_SEARCH_BAR
-tracker_search_bar_SUBDIR = tracker-search-bar
-endif
-
 always_built_SUBDIRS =  \
 	multiload \
 	sticky-notes	\
@@ -16,7 +12,6 @@ SUBDIRS = \
 	help \
 	po			\
 	$(always_built_SUBDIRS)	\
-	$(tracker_search_bar_SUBDIR) \
 	$(NULL)
 
 DIST_SUBDIRS = \
@@ -27,7 +22,6 @@ DIST_SUBDIRS = \
 	multiload	\
 	sticky-notes	\
 	window-buttons	\
-	tracker-search-bar \
 	$(NULL)
 
 EXTRA_DIST = \

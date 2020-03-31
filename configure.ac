@@ -294,6 +294,10 @@ else
    fi
 fi
 
+AS_IF([test "x$have_tracker_search_bar" = "xyes"], [
+  AC_DEFINE([HAVE_TRACKER_SEARCH_BAR], [1], [Define to 1 if building tracker-search-bar applet])
+])
+
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl **************************************************************************
@@ -354,6 +358,7 @@ AC_CONFIG_FILES([
   gnome-applets/mini-commander/Makefile
   gnome-applets/netspeed/Makefile
   gnome-applets/timer/Makefile
+  gnome-applets/tracker-search-bar/Makefile
   gnome-applets/trash/Makefile
   gnome-applets/window-picker/Makefile
   gnome-applets/window-title/Makefile
@@ -381,10 +386,6 @@ AC_CONFIG_FILES([
   sticky-notes/data/Makefile
   sticky-notes/src/Makefile
   sticky-notes/pixmaps/Makefile
-
-  tracker-search-bar/Makefile
-  tracker-search-bar/src/Makefile
-  tracker-search-bar/data/Makefile
 
   window-buttons/Makefile
   window-buttons/themes/Makefile

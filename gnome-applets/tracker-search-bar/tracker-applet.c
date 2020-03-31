@@ -17,23 +17,40 @@
  * 02110-1301, USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "config.h"
+#include "tracker-applet.h"
 
 #include <string.h>
 #include <stdlib.h>
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <panel-applet.h>
-
-#include "tracker-applet.h"
 #include "tracker-results-window.h"
 
-#define RESOURCE_PREFIX "/org/gnome/gnome-applets/tracker-search-bar"
+struct _TrackerApplet
+{
+  GpApplet        parent;
+
+  GtkBuilder     *builder;
+
+  GtkWidget      *results;
+
+  GtkWidget      *box;
+  GtkWidget      *event_box;
+  GtkWidget      *image;
+  GtkWidget      *entry;
+
+  guint           new_search_id;
+  guint           idle_draw_id;
+
+  GtkOrientation  orient;
+  GdkPixbuf      *icon;
+  guint           size;
+};
+
+G_DEFINE_TYPE (TrackerApplet, tracker_applet, GP_TYPE_APPLET)
 
 static void applet_about_cb (GSimpleAction *action,
                              GVariant *parameter,
@@ -45,6 +62,9 @@ static const GActionEntry applet_menu_actions[] = {
 	  NULL,
 	  NULL,
 	  NULL,
+	},
+	{
+	  NULL
 	}
 };
 
@@ -95,7 +115,7 @@ applet_entry_start_search (TrackerApplet *applet)
 	g_print ("Searching for: '%s'\n", text);
 
 	if (!applet->results) {
-		applet->results = tracker_results_window_new (applet->parent, text);
+		applet->results = tracker_results_window_new (GTK_WIDGET (applet), text);
 	} else {
 		g_object_set (applet->results, "query", text, NULL);
 	}
@@ -136,7 +156,7 @@ applet_entry_button_press_event_cb (GtkWidget      *widget,
                                     GdkEventButton *event,
                                     TrackerApplet  *applet)
 {
-	panel_applet_request_focus (PANEL_APPLET (applet->parent), event->time);
+	gp_applet_request_focus (GP_APPLET (applet), event->time);
 
 	return FALSE;
 }
@@ -199,7 +219,7 @@ applet_draw (gpointer user_data)
 		break;
 	}
 
-	gtk_container_add (GTK_CONTAINER (PANEL_APPLET (applet->parent)), applet->box);
+	gtk_container_add (GTK_CONTAINER (applet), applet->box);
 	gtk_widget_show (applet->box);
 
 	applet->event_box = gtk_event_box_new ();
@@ -249,54 +269,39 @@ applet_queue_draw (TrackerApplet *applet)
 }
 
 static void
-applet_change_orient_cb (GtkWidget         *widget,
-                         PanelAppletOrient  orient,
-                         gpointer           user_data)
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      TrackerApplet   *self)
 {
-	TrackerApplet *applet;
-	GtkAllocation alloc;
-	guint new_size;
+  GtkAllocation alloc;
 
-	applet = user_data;
-        new_size = applet->size;
+  gtk_widget_get_allocation (GTK_WIDGET (self), &alloc);
 
-	gtk_widget_get_allocation (GTK_WIDGET (applet->parent), &alloc);
+  switch (orientation)
+    {
+      case GTK_ORIENTATION_VERTICAL:
+        self->orient = orientation;
+        self->size = alloc.width;
+        break;
 
-	switch (orient) {
-	case PANEL_APPLET_ORIENT_LEFT:
-	case PANEL_APPLET_ORIENT_RIGHT:
-		applet->orient = GTK_ORIENTATION_VERTICAL;
-		new_size = alloc.width;
-		break;
+      case GTK_ORIENTATION_HORIZONTAL:
+        self->orient = orientation;
+        self->size = alloc.height;
+        break;
+    }
 
-	case PANEL_APPLET_ORIENT_UP:
-	case PANEL_APPLET_ORIENT_DOWN:
-		applet->orient = GTK_ORIENTATION_HORIZONTAL;
-		new_size = alloc.height;
-		break;
-	}
-
-	if (new_size != applet->size) {
-		applet->size = new_size;
-	}
-
-	applet_queue_draw (applet);
+  applet_queue_draw (self);
 }
 
 static void
 applet_size_allocate_cb (GtkWidget     *widget,
                          GtkAllocation *allocation,
-                         gpointer       user_data)
+                         TrackerApplet *applet)
 {
-	TrackerApplet *applet;
-	PanelAppletOrient orient;
 	gint new_size;
 
-	applet = user_data;
-
-	orient = panel_applet_get_orient (PANEL_APPLET (widget));
-	if (orient == PANEL_APPLET_ORIENT_LEFT ||
-	    orient == PANEL_APPLET_ORIENT_RIGHT) {
+	if (gp_applet_get_orientation (GP_APPLET (applet)) == GTK_ORIENTATION_VERTICAL) {
 		new_size = allocation->width;
 	} else {
 		new_size = allocation->height;
@@ -320,62 +325,17 @@ applet_size_allocate_cb (GtkWidget     *widget,
 			g_object_unref (scaled);
 		}
 	}
-
 }
-
-#if 0
 
 static void
-applet_destroy_cb (BonoboObject  *object,
-                   TrackerApplet *applet)
+tracker_applet_setup (TrackerApplet *applet)
 {
-	if (applet->builder) {
-		g_object_unref (applet->builder);
-		applet->builder = NULL;
-	}
-
-	if (applet->results) {
-		gtk_widget_destroy (applet->results);
-		applet->results = NULL;
-	}
-
-	if (applet->icon) {
-		g_object_unref (applet->icon);
-		applet->icon = NULL;
-	}
-
-	if (applet->idle_draw_id) {
-		g_source_remove (applet->idle_draw_id);
-		applet->idle_draw_id = 0;
-	}
-
-	if (applet->new_search_id) {
-		g_source_remove (applet->new_search_id);
-		applet->new_search_id = 0;
-	}
-
-	g_free (applet);
-}
-
-#endif
-
-static gboolean
-applet_new (PanelApplet *parent_applet)
-{
-	TrackerApplet *applet;
-	GtkBuilder *builder;
-	GSimpleActionGroup *action_group;
 	const gchar *resource_name;
 
-	builder = gtk_builder_new ();
+	applet->builder = gtk_builder_new ();
 
-	resource_name = RESOURCE_PREFIX "/tracker-search-bar.ui";
-	gtk_builder_add_from_resource (builder, resource_name, NULL);
-
-	applet = g_new0 (TrackerApplet, 1);
-
-	applet->parent = GTK_WIDGET (parent_applet);
-	applet->builder = builder;
+	resource_name = GRESOURCE_PREFIX "/ui/tracker-search-bar.ui";
+	gtk_builder_add_from_resource (applet->builder, resource_name, NULL);
 
 	applet->icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 	                                         "edit-find",
@@ -385,64 +345,68 @@ applet_new (PanelApplet *parent_applet)
 
 	applet_queue_draw (applet);
 
-	panel_applet_set_flags (PANEL_APPLET (applet->parent),
-	                        PANEL_APPLET_EXPAND_MINOR);
+	gp_applet_set_flags (GP_APPLET (applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 applet_menu_actions,
-	                                 G_N_ELEMENTS (applet_menu_actions),
-	                                 applet);
+	resource_name = GRESOURCE_PREFIX "/ui/tracker-search-bar-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
+	                                    resource_name,
+	                                    applet_menu_actions);
 
-	resource_name = RESOURCE_PREFIX "/tracker-search-bar-menu.xml";
-	panel_applet_setup_menu_from_resource (PANEL_APPLET (applet->parent),
-	                                       resource_name,
-	                                       action_group,
-	                                       GETTEXT_PACKAGE);
+	g_signal_connect (applet, "size-allocate",
+	                  G_CALLBACK (applet_size_allocate_cb),
+	                  applet);
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet->parent), "tracker-search-bar",
-	                                G_ACTION_GROUP (action_group));
-
-	g_object_unref (action_group);
-
-	gtk_widget_show (applet->parent);
-
-	g_signal_connect (applet->parent, "size_allocate",
-	                  G_CALLBACK (applet_size_allocate_cb), applet);
-	g_signal_connect (applet->parent, "change_orient",
-	                  G_CALLBACK (applet_change_orient_cb), applet);
-
-#if 0
-	g_signal_connect (panel_applet_get_control (PANEL_APPLET (applet->parent)), "destroy",
-	                  G_CALLBACK (applet_destroy_cb), applet);
-#endif
-
-	/* Initialise other modules */
-
-	return TRUE;
+	g_signal_connect (applet, "placement-changed",
+	                  G_CALLBACK (placement_changed_cb),
+	                  applet);
 }
 
-/*
- * The entry point for this factory. If the OAFIID matches, create an instance
- * of the applet.
- */
-static gboolean
-applet_factory (PanelApplet *applet,
-                const gchar *iid,
-                gpointer     data)
+static void
+tracker_applet_constructed (GObject *object)
 {
-	if (!strcmp (iid, "SearchBar")) {
-		g_print ("Creating applet\n");
-		return applet_new (applet);
-	}
-
-	return FALSE;
+  G_OBJECT_CLASS (tracker_applet_parent_class)->constructed (object);
+  tracker_applet_setup (TRACKER_APPLET (object));
 }
 
-/*
- * Generate the boilerplate to hook into GObject/Bonobo.
- */
-PANEL_APPLET_IN_PROCESS_FACTORY ("SearchBarFactory",
-                                 PANEL_TYPE_APPLET,
-                                 applet_factory,
-                                 NULL)
+static void
+tracker_applet_dispose (GObject *object)
+{
+  TrackerApplet *self;
+
+  self = TRACKER_APPLET (object);
+
+  if (self->idle_draw_id != 0)
+    {
+      g_source_remove (self->idle_draw_id);
+      self->idle_draw_id = 0;
+    }
+
+  if (self->new_search_id != 0)
+    {
+      g_source_remove (self->new_search_id);
+      self->new_search_id = 0;
+    }
+
+  g_clear_pointer (&self->results, gtk_widget_destroy);
+
+  g_clear_object (&self->builder);
+  g_clear_object (&self->icon);
+
+  G_OBJECT_CLASS (tracker_applet_parent_class)->dispose (object);
+}
+
+static void
+tracker_applet_class_init (TrackerAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = tracker_applet_constructed;
+  object_class->dispose = tracker_applet_dispose;
+}
+
+static void
+tracker_applet_init (TrackerApplet *self)
+{
+}

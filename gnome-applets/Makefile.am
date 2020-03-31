@@ -14,6 +14,7 @@ SUBDIRS = \
 	mini-commander \
 	netspeed \
 	timer \
+	tracker-search-bar \
 	trash \
 	window-picker \
 	window-title \
@@ -65,6 +66,12 @@ org_gnome_gnome_applets_la_LIBADD += \
 	$(NULL)
 endif
 
+if HAVE_TRACKER_SEARCH_BAR
+org_gnome_gnome_applets_la_LIBADD += \
+	$(top_builddir)/gnome-applets/tracker-search-bar/libtracker-search-bar-applet.la \
+	$(NULL)
+endif
+
 org_gnome_gnome_applets_la_LDFLAGS = \
 	-module -avoid-version \
 	$(AM_LDFLAGS) \
@@ -81,6 +88,11 @@ cpufreq_icon_files = \
 cpufreq_ui_files = \
 	cpufreq/cpufreq-applet-menu.xml \
 	cpufreq/cpufreq-preferences.ui \
+	$(NULL)
+
+tracker_search_bar_ui_files = \
+	tracker-search-bar/tracker-search-bar-menu.xml \
+	tracker-search-bar/tracker-search-bar.ui \
 	$(NULL)
 
 icon_files = \
@@ -156,6 +168,12 @@ ui_files += \
 	$(NULL)
 endif
 
+if HAVE_TRACKER_SEARCH_BAR
+ui_files += \
+	$(tracker_search_bar_ui_files) \
+	$(NULL)
+endif
+
 gnome-applets.gresource.xml: Makefile
 	$(AM_V_GEN) echo '<?xml version="1.0" encoding="UTF-8"?>' > $@; \
 		echo '<gresources>' >> $@; \
@@ -208,6 +226,12 @@ if !BUILD_CPUFREQ_APPLET
 EXTRA_DIST += \
 	$(cpufreq_icon_files) \
 	$(cpufreq_ui_files) \
+	$(NULL)
+endif
+
+if !HAVE_TRACKER_SEARCH_BAR
+EXTRA_DIST += \
+	$(tracker_search_bar_ui_files) \
 	$(NULL)
 endif
 

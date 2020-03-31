@@ -20,28 +20,13 @@
 #ifndef __TRACKER_APPLET_H__
 #define __TRACKER_APPLET_H__
 
-#include <gtk/gtk.h>
+#include <libgnome-panel/gp-applet.h>
 
 G_BEGIN_DECLS
 
-typedef struct {
-	GtkBuilder *builder;
-
-	GtkWidget *results;
-	GtkWidget *parent;
-
-	GtkWidget *box;
-	GtkWidget *event_box;
-	GtkWidget *image;
-	GtkWidget *entry;
-
-	guint new_search_id;
-	guint idle_draw_id;
-
-	GtkOrientation orient;
-	GdkPixbuf *icon;
-	guint size;
-} TrackerApplet;
+#define TRACKER_TYPE_APPLET (tracker_applet_get_type ())
+G_DECLARE_FINAL_TYPE (TrackerApplet, tracker_applet,
+                      TRACKER, APPLET, GpApplet)
 
 G_END_DECLS
 
