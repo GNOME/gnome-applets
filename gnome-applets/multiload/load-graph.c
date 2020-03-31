@@ -9,10 +9,8 @@
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <panel-applet.h>
 
 #include "global.h"
-
 
 /*
   Shifts data right
@@ -272,7 +270,6 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
 		const gchar *name, LoadGraphDataFunc get_data)
 {
     LoadGraph *g;
-    PanelAppletOrient orient;
 
     g = g_new0 (LoadGraph, 1);
     g->netspeed_in = netspeed_new(g);
@@ -290,18 +287,15 @@ load_graph_new (MultiloadApplet *ma, guint n, const gchar *label,
     g->main_widget = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 
     g->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    
-    orient = panel_applet_get_orient (g->multiload->applet);
-    switch (orient)
+
+    switch (ma->orientation)
     {
-    case PANEL_APPLET_ORIENT_UP:
-    case PANEL_APPLET_ORIENT_DOWN:
+    case GTK_ORIENTATION_HORIZONTAL:
     {
 	g->orient = FALSE;
 	break;
     }
-    case PANEL_APPLET_ORIENT_LEFT:
-    case PANEL_APPLET_ORIENT_RIGHT:
+    case GTK_ORIENTATION_VERTICAL:
     {
 	g->orient = TRUE;
 	break;

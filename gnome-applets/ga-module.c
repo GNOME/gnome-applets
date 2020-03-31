@@ -34,6 +34,7 @@
 #include "gweather/gweather-applet.h"
 #include "inhibit/inhibit-applet.h"
 #include "mini-commander/mini-commander-applet.h"
+#include "multiload/multiload-applet.h"
 #include "netspeed/netspeed-applet.h"
 #include "sticky-notes/sticky-notes-applet.h"
 #include "timer/timer-applet.h"
@@ -132,6 +133,13 @@ ga_get_applet_info (const char *id)
       description = _("Mini-Commander");
       icon_name = "gnome-mini-commander";
     }
+  else if (g_strcmp0 (id, "multiload") == 0)
+    {
+      type_func = multiload_applet_get_type;
+      name = _("System Monitor");
+      description = _("A system load indicator");
+      icon_name = "utilities-system-monitor";
+    }
   else if (g_strcmp0 (id, "netspeed") == 0)
     {
       type_func = netspeed_applet_get_type;
@@ -221,6 +229,8 @@ ga_get_applet_id_from_iid (const char *iid)
     return "inhibit";
   else if (g_strcmp0 (iid, "MiniCommanderAppletFactory::MiniCommanderApplet") == 0)
     return "mini-commander";
+  else if (g_strcmp0 (iid, "MultiLoadAppletFactory::MultiLoadApplet") == 0)
+    return "multiload";
   else if (g_strcmp0 (iid, "NetspeedAppletFactory::NetspeedApplet") == 0)
     return "netspeed";
   else if (g_strcmp0 (iid, "StickyNotesAppletFactory::StickyNotesApplet") == 0)
@@ -268,6 +278,7 @@ gp_module_load (GpModule *module)
                             "gweather",
                             "inhibit",
                             "mini-commander",
+                            "multiload",
                             "netspeed",
                             "sticky-notes",
                             "timer",

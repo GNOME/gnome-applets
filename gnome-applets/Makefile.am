@@ -12,6 +12,7 @@ SUBDIRS = \
 	gweather \
 	inhibit \
 	mini-commander \
+	multiload \
 	netspeed \
 	sticky-notes \
 	timer \
@@ -53,6 +54,7 @@ org_gnome_gnome_applets_la_LIBADD = \
 	$(top_builddir)/gnome-applets/gweather/libgweather-applet.la \
 	$(top_builddir)/gnome-applets/inhibit/libinhibit-applet.la \
 	$(top_builddir)/gnome-applets/mini-commander/libmini-commander-applet.la \
+	$(top_builddir)/gnome-applets/multiload/libmultiload-applet.la \
 	$(top_builddir)/gnome-applets/netspeed/libnet-speed-applet.la \
 	$(top_builddir)/gnome-applets/sticky-notes/libsticky-notes-applet.la \
 	$(top_builddir)/gnome-applets/timer/libtimer-applet.la \
@@ -155,6 +157,7 @@ ui_files = \
 	inhibit/inhibit-applet-menu.xml \
 	mini-commander/mini-commander.ui \
 	mini-commander/mini-commander-applet-menu.xml \
+	multiload/multiload-applet-menu.xml \
 	netspeed/netspeed-menu.xml \
 	sticky-notes/ui/sticky-notes-applet-menu.xml \
 	sticky-notes/ui/sticky-notes-delete.ui \

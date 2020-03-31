@@ -23,17 +23,16 @@
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <panel-applet.h>
 
 #include "global.h"
+
+G_DEFINE_TYPE (MultiloadApplet, multiload_applet, GP_TYPE_APPLET)
 
 static void
 about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-	MultiloadApplet *ma = (MultiloadApplet *) user_data;
-
     const gchar * const authors[] =
     {
 		"Martin Baulig <martin@home-of-linux.org>",
@@ -72,7 +71,7 @@ help_cb (GSimpleAction *action,
 	MultiloadApplet *ma = (MultiloadApplet *) user_data;
  	GError *error = NULL;
                                                                                 
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma)),
 			"help:multiload",
 			gtk_get_current_event_time (),
 			&error);
@@ -82,8 +81,6 @@ help_cb (GSimpleAction *action,
         	g_error_free (error);
         	error = NULL;
     	}
-
-
 }
 
 /* run the full-scale system process monitor */
@@ -104,7 +101,7 @@ start_procman (MultiloadApplet *ma)
 	if (IS_STRING_EMPTY (monitor))
 	        monitor = g_strdup ("gnome-system-monitor.desktop");
 
-	screen = gtk_widget_get_screen (GTK_WIDGET (ma->applet));
+	screen = gtk_widget_get_screen (GTK_WIDGET (ma));
 	appinfo = g_desktop_app_info_new (monitor);
 	if (appinfo) {
 		GdkAppLaunchContext *context;
@@ -159,7 +156,7 @@ start_procman (MultiloadApplet *ma)
 
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (ma)));
 
 		gtk_widget_show (dialog);
 
@@ -177,50 +174,14 @@ start_procman_cb (GSimpleAction *action,
 }
 
 static void
-multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
+placement_changed_cb (GpApplet        *applet,
+                      GtkOrientation   orientation,
+                      GtkPositionType  position,
+                      MultiloadApplet *self)
 {
-	MultiloadApplet *ma = data;
-	multiload_applet_refresh((MultiloadApplet *)data);
-	gtk_widget_show (GTK_WIDGET (ma->applet));		
-	return;
+  self->orientation = orientation;
+  multiload_applet_refresh (self);
 }
-
-static void
-multiload_destroy_cb(GtkWidget *widget, gpointer data)
-{
-	gint i;
-	MultiloadApplet *ma = data;
-
-	for (i = 0; i < NGRAPHS; i++)
-	{
-		load_graph_stop(ma->graphs[i]);
-		if (ma->graphs[i]->colors)
-		{
-			g_free (ma->graphs[i]->colors);
-			ma->graphs[i]->colors = NULL;
-		}
-		gtk_widget_destroy(ma->graphs[i]->main_widget);
-	
-		load_graph_unalloc(ma->graphs[i]);
-		g_free(ma->graphs[i]);
-	}
-
-	if (ma->settings)
-		g_object_unref (ma->settings);
-
-	if (ma->about_dialog)
-		gtk_widget_destroy (ma->about_dialog);
-	
-	if (ma->prop_dialog)
-		gtk_widget_destroy (ma->prop_dialog);
-
-	gtk_widget_destroy(GTK_WIDGET(ma->applet));
-
-	g_free (ma);
-
-	return;
-}
-
 
 static gboolean
 multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MultiloadApplet *ma)
@@ -397,7 +358,6 @@ void
 multiload_applet_refresh(MultiloadApplet *ma)
 {
 	gint i;
-	PanelAppletOrient orientation;
 
 	/* stop and free the old graphs */
 	for (i = 0; i < NGRAPHS; i++)
@@ -414,18 +374,15 @@ multiload_applet_refresh(MultiloadApplet *ma)
 
 	if (ma->box)
 		gtk_widget_destroy(ma->box);
-	
-	orientation = panel_applet_get_orient(ma->applet);
-	
-	if ( (orientation == PANEL_APPLET_ORIENT_UP) || 
-	     (orientation == PANEL_APPLET_ORIENT_DOWN) ) {
+
+	if (ma->orientation == GTK_ORIENTATION_HORIZONTAL) {
 			ma->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	}
 	else
 		ma->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-	
-	gtk_container_add(GTK_CONTAINER(ma->applet), ma->box);
-			
+
+	gtk_container_add (GTK_CONTAINER (ma), ma->box);
+
 	/* create the NGRAPHS graphs, passing in their user-configurable properties. */
 	multiload_create_graphs (ma);
 
@@ -449,90 +406,117 @@ static const GActionEntry multiload_menu_actions [] = {
 	{ "run",         start_procman_cb,        NULL, NULL, NULL },
 	{ "preferences", multiload_properties_cb, NULL, NULL, NULL },
 	{ "help",        help_cb,                 NULL, NULL, NULL },
-	{ "about",       about_cb,                NULL, NULL, NULL }
+	{ "about",       about_cb,                NULL, NULL, NULL },
+	{ NULL }
 };
 
-/* create a box and stuff the load graphs inside of it */
 static gboolean
-multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
+multiload_applet_setup (MultiloadApplet *ma)
 {
-	MultiloadApplet *ma;
 	GSettings *settings;
-	GSimpleActionGroup *action_group;
+	const char *menu_resource;
 	GAction *action;
-	gchar *ui_path;
-	
-	ma = g_new0(MultiloadApplet, 1);
-	
-	ma->applet = applet;
-	
+
 	ma->about_dialog = NULL;
 	ma->prop_dialog = NULL;
-        ma->last_clicked = 0;
+	ma->last_clicked = 0;
 
-	ma->settings = panel_applet_settings_new (applet, MULTILOAD_SCHEMA);
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+	ma->settings = gp_applet_settings_new (GP_APPLET (ma), MULTILOAD_SCHEMA);
+	gp_applet_set_flags (GP_APPLET (ma), GP_APPLET_FLAGS_EXPAND_MINOR);
 
-	action_group = g_simple_action_group_new ();
-	g_action_map_add_action_entries (G_ACTION_MAP (action_group),
-	                                 multiload_menu_actions,
-	                                 G_N_ELEMENTS (multiload_menu_actions),
-	                                 ma);
-	ui_path = g_build_filename (MULTILOAD_MENU_UI_DIR, "multiload-applet-menu.xml", NULL);
-	panel_applet_setup_menu_from_file (applet, ui_path, action_group, GETTEXT_PACKAGE);
-	g_free (ui_path);
+	ma->orientation = gp_applet_get_orientation (GP_APPLET (ma));
 
-	gtk_widget_insert_action_group (GTK_WIDGET (applet), "multiload",
-	                                G_ACTION_GROUP (action_group));
+	menu_resource = GRESOURCE_PREFIX "/ui/multiload-applet-menu.xml";
+	gp_applet_setup_menu_from_resource (GP_APPLET (ma),
+	                                    menu_resource,
+	                                    multiload_menu_actions);
 
-	action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "preferences");
-	g_object_bind_property (applet, "locked-down", action, "enabled",
+	action = gp_applet_menu_lookup_action (GP_APPLET (ma), "preferences");
+	g_object_bind_property (ma, "locked-down", action, "enabled",
 	                        G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
 	settings = g_settings_new (GNOME_DESKTOP_LOCKDOWN_SCHEMA);
 
 	if (g_settings_get_boolean (settings, DISABLE_COMMAND_LINE) ||
-	    panel_applet_get_locked_down (applet)) {
+	    gp_applet_get_locked_down (GP_APPLET (ma))) {
 		/* When the panel is locked down or when the command line is inhibited,
 		   it seems very likely that running the procman would be at least harmful */
-		action = g_action_map_lookup_action (G_ACTION_MAP (action_group), "run");
+		action = gp_applet_menu_lookup_action (GP_APPLET (ma), "run");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
 	g_object_unref (settings);
-	g_object_unref (action_group);
 
-	g_signal_connect(G_OBJECT(applet), "change_orient",
-				G_CALLBACK(multiload_change_orient_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "destroy",
-				G_CALLBACK(multiload_destroy_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "button_press_event",
-				G_CALLBACK(multiload_button_press_event_cb), ma);
-	g_signal_connect(G_OBJECT(applet), "key_press_event",
-				G_CALLBACK(multiload_key_press_event_cb), ma);
-	
+	g_signal_connect (ma,
+	                  "placement-changed",
+	                  G_CALLBACK (placement_changed_cb),
+	                  ma);
+
+	g_signal_connect (ma,
+	                  "button-press-event",
+	                  G_CALLBACK (multiload_button_press_event_cb),
+	                  ma);
+
+	g_signal_connect (ma,
+	                  "key-press-event",
+	                  G_CALLBACK (multiload_key_press_event_cb),
+	                  ma);
+
 	multiload_applet_refresh (ma);
-		
-	gtk_widget_show(GTK_WIDGET(applet));
-			
-	return TRUE;
+
+	gtk_widget_show (GTK_WIDGET (ma));
 }
 
-static gboolean
-multiload_factory (PanelApplet *applet,
-				const gchar *iid,
-				gpointer data)
+static void
+multiload_applet_constructed (GObject *object)
 {
-	gboolean retval = FALSE;
-	
-	glibtop_init();
-
-	retval = multiload_applet_new(applet, iid, data);
-	
-	return retval;
+  G_OBJECT_CLASS (multiload_applet_parent_class)->constructed (object);
+  multiload_applet_setup (MULTILOAD_APPLET (object));
 }
 
-PANEL_APPLET_IN_PROCESS_FACTORY ("MultiLoadAppletFactory",
-                                 PANEL_TYPE_APPLET,
-                                 multiload_factory,
-                                 NULL)
+static void
+multiload_applet_dispose (GObject *object)
+{
+  MultiloadApplet *self;
+  int i;
+
+  self = MULTILOAD_APPLET (object);
+
+  for (i = 0; i < NGRAPHS; i++)
+    {
+      if (self->graphs[i] != NULL)
+        {
+          load_graph_stop (self->graphs[i]);
+
+          g_clear_pointer (&self->graphs[i]->colors, g_free);
+          g_clear_pointer (&self->graphs[i]->main_widget, gtk_widget_destroy);
+
+          load_graph_unalloc (self->graphs[i]);
+          g_free (self->graphs[i]);
+          self->graphs[i] = NULL;
+        }
+    }
+
+  g_clear_object (&self->settings);
+
+  g_clear_pointer (&self->about_dialog, gtk_widget_destroy);
+  g_clear_pointer (&self->prop_dialog, gtk_widget_destroy);
+
+  G_OBJECT_CLASS (multiload_applet_parent_class)->dispose (object);
+}
+
+static void
+multiload_applet_class_init (MultiloadAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = multiload_applet_constructed;
+  object_class->dispose = multiload_applet_dispose;
+}
+
+static void
+multiload_applet_init (MultiloadApplet *self)
+{
+}

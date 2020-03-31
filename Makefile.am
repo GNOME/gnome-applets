@@ -1,7 +1,6 @@
 NULL =
 
 always_built_SUBDIRS =  \
-	multiload \
 	window-buttons \
 	$(NULL)
 
@@ -18,7 +17,6 @@ DIST_SUBDIRS = \
 	gnome-applets \
 	help \
 	po		\
-	multiload	\
 	window-buttons	\
 	$(NULL)
 

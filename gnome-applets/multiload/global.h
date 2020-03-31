@@ -1,11 +1,12 @@
 #ifndef __GLOBAL_H__
 #define __GLOBAL_H__
 
+#include "multiload-applet.h"
+
 #include <glib.h>
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
-#include <panel-applet.h>
 
 G_BEGIN_DECLS
 
@@ -58,7 +59,6 @@ G_BEGIN_DECLS
 
 #define IS_STRING_EMPTY(x) ((x) == NULL || (x)[0] == '\0')
 
-typedef struct _MultiloadApplet MultiloadApplet;
 typedef struct _LoadGraph LoadGraph;
 typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 
@@ -102,10 +102,11 @@ struct _LoadGraph {
 
 struct _MultiloadApplet
 {
-	PanelApplet *applet;
+	GpApplet parent;
 	
 	LoadGraph *graphs[NGRAPHS];
-	
+
+	GtkOrientation orientation;
 	GtkWidget *box;
 	
 	gboolean view_cpuload;

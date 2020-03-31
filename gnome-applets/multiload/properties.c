@@ -3,17 +3,12 @@
  *
  * Authors: 
  *		  Todd Kulesza
- *
- *
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include "config.h"
 
 #include <string.h>
 #include <gtk/gtk.h>
-#include <panel-applet.h>
 
 #include "global.h"
 
@@ -80,7 +75,7 @@ properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 	{
 		case GTK_RESPONSE_HELP:
 
-			gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+			gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (ma)),
 					"help:multiload/multiload-prefs",
 					gtk_get_current_event_time (),
 					&error);
@@ -284,7 +279,6 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	GtkWidget *indent;
 	GtkWidget *spin_button;
 	GtkWidget *label;
-	PanelAppletOrient orient;
 	GtkSizeGroup *label_size;
 	GtkSizeGroup *spin_size;
 	gchar *label_text;
@@ -437,13 +431,12 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_widget_show (control_hbox);
 	
 	label_size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-	
-	orient = panel_applet_get_orient(ma->applet);
-	if ( (orient == PANEL_APPLET_ORIENT_UP) || (orient == PANEL_APPLET_ORIENT_DOWN) )
+
+	if (ma->orientation == GTK_ORIENTATION_HORIZONTAL)
 		label_text = g_strdup(_("System m_onitor width: "));
 	else
 		label_text = g_strdup(_("System m_onitor height: "));
-	
+
 	label = gtk_label_new_with_mnemonic(label_text);
 	gtk_label_set_xalign (GTK_LABEL (label), 0.0);
 	gtk_size_group_add_widget (label_size, label);
@@ -598,7 +591,7 @@ multiload_properties_cb (GSimpleAction *action,
 		dialog = ma->prop_dialog;
 
 		gtk_window_set_screen (GTK_WINDOW (dialog),
-				gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+				gtk_widget_get_screen (GTK_WIDGET (ma)));
 
 		gtk_notebook_set_current_page (GTK_NOTEBOOK (ma->notebook),
 					       ma->last_clicked);
@@ -612,7 +605,7 @@ multiload_properties_cb (GSimpleAction *action,
 					   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					      NULL);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+			       gtk_widget_get_screen (GTK_WIDGET (ma)));
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);

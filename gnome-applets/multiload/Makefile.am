@@ -1,20 +1,14 @@
 NULL =
 
-uidir = $(pkgdatadir)/ui
-
-multiload_appletlibdir = $(pkglibdir)
-multiload_appletlib_LTLIBRARIES = libmultiload-applet.la
+noinst_LTLIBRARIES = libmultiload-applet.la
 
 libmultiload_applet_la_CPPFLAGS = \
-	-I$(srcdir) \
-	-DMULTILOAD_MENU_UI_DIR=\""$(uidir)"\" \
-	-DGNOMELOCALEDIR=\""$(localedir)"\" \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.multiload\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)
 
 libmultiload_applet_la_CFLAGS = \
-	$(GNOME_APPLETS_CFLAGS) \
+	$(GNOME_PANEL_CFLAGS) \
 	$(GTOP_APPLETS_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
 	$(WARN_CFLAGS) \
@@ -29,20 +23,20 @@ libmultiload_applet_la_SOURCES = \
 	linux-proc.h \
 	load-graph.h \
 	load-graph.c \
-	main.c \
+	multiload-applet.c \
+	multiload-applet.h \
 	netspeed.c \
 	netspeed.h \
 	properties.c \
 	$(NULL)
 
 libmultiload_applet_la_LDFLAGS = \
-	-avoid-version \
 	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
 libmultiload_applet_la_LIBADD = \
-	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_PANEL_LIBS) \
 	$(GTOP_APPLETS_LIBS) \
 	$(GIO_UNIX_LIBS) \
 	$(LIBM) \

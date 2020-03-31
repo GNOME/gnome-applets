@@ -356,6 +356,7 @@ AC_CONFIG_FILES([
   gnome-applets/gweather/Makefile
   gnome-applets/inhibit/Makefile
   gnome-applets/mini-commander/Makefile
+  gnome-applets/multiload/Makefile
   gnome-applets/netspeed/Makefile
   gnome-applets/sticky-notes/Makefile
   gnome-applets/timer/Makefile
@@ -379,9 +380,6 @@ AC_CONFIG_FILES([
   help/trash/Makefile
 
   po/Makefile.in
-
-  multiload/Makefile
-  multiload/src/Makefile
 
   window-buttons/Makefile
   window-buttons/themes/Makefile
