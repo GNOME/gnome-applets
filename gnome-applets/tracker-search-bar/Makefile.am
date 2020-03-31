@@ -1,5 +1,6 @@
 NULL =
 
+if HAVE_TRACKER_SEARCH_BAR
 noinst_LTLIBRARIES=libtracker-search-bar-applet.la
 
 libtracker_search_bar_applet_la_CPPFLAGS = \
@@ -34,5 +35,6 @@ libtracker_search_bar_applet_la_SOURCES = \
 	tracker-utils.c \
 	tracker-utils.h \
 	$(NULL)
+endif
 
 -include $(top_srcdir)/git.mk
