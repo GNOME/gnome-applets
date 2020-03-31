@@ -53,9 +53,11 @@ ga_get_applet_info (const char *id)
   const char *name;
   const char *description;
   const char *icon_name;
+  GpAboutDialogFunc about_func;
   const char *help_uri;
   GpAppletInfo *info;
 
+  about_func = NULL;
   help_uri = NULL;
 
   if (g_strcmp0 (id, "accessx-status") == 0)
@@ -65,6 +67,7 @@ ga_get_applet_info (const char *id)
       description = _("Shows the status of keyboard accessibility features");
       icon_name = "ax-applet";
 
+      about_func = accessx_status_applet_setup_about;
       help_uri = "help:accessx-status";
     }
   else if (g_strcmp0 (id, "battstat") == 0)
@@ -211,6 +214,9 @@ ga_get_applet_info (const char *id)
     }
 
   info = gp_applet_info_new (type_func, name, description, icon_name);
+
+  if (about_func != NULL)
+    gp_applet_info_set_about_dialog (info, about_func);
 
   if (help_uri != NULL)
     gp_applet_info_set_help_uri (info, help_uri);

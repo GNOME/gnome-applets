@@ -186,28 +186,7 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-        static const gchar *authors [] = {
-		"Calum Benson <calum.benson@sun.com>",
-		"Bill Haneman <bill.haneman@sun.com>",
-		NULL
-	};
-
-	const gchar *documenters[] = {
-	        "Bill Haneman <bill.haneman@sun.com>",
-                "Sun GNOME Documentation Team <gdocteam@sun.com>",
-		NULL
-	};
-	
-	gtk_show_about_dialog (NULL,
-		"version",	VERSION,
-		"comments",	_("Shows the state of AccessX features such "
-				  "as latched modifiers"),
-		"copyright",	"\xC2\xA9 2003 Sun Microsystems",
-		"authors",	authors,
-		"documenters",	documenters,
-		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"ax-applet",
-		NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -1302,4 +1281,38 @@ accessx_status_applet_init (AccessxStatusApplet *self)
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
 
   gdk_window_add_filter (NULL, accessx_status_xkb_filter, self);
+}
+
+void
+accessx_status_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("Shows the state of AccessX features such as latched modifiers");
+
+  authors = (const char *[])
+    {
+      "Calum Benson <calum.benson@sun.com>",
+      "Bill Haneman <bill.haneman@sun.com>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Bill Haneman <bill.haneman@sun.com>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2003 Sun Microsystems";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
