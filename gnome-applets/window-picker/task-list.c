@@ -28,6 +28,7 @@
 struct _TaskList {
     GtkBox parent;
     WnckScreen *screen;
+    GHashTable *items;
     WpApplet *windowPickerApplet;
     guint init_windows_event_source;
 };
@@ -70,15 +71,6 @@ get_task_list_for_monitor (GdkMonitor *monitor)
     return task_lists->data;
 }
 
-
-static void on_task_item_closed (
-    TaskItem *item,
-    TaskList *list)
-{
-    gtk_container_remove (GTK_CONTAINER (list),
-                          GTK_WIDGET (item));
-}
-
 static GdkMonitor *
 window_get_monitor (WnckWindow *window)
 {
@@ -95,14 +87,28 @@ window_get_monitor (WnckWindow *window)
 }
 
 static void
+on_window_closed (WnckScreen *screen,
+                  WnckWindow *window,
+                  TaskList   *taskList)
+{
+  g_hash_table_remove (taskList->items, window);
+}
+
+static void
 on_task_item_monitor_changed_cb (TaskItem *item,
-                                 TaskList *current_list)
+                                 gpointer  user_data)
 {
     GdkMonitor *monitor;
     GdkMonitor *list_monitor;
     TaskList *list;
+    TaskList *current_list;
+    WnckWindow *window;
+
+    current_list = task_item_get_task_list (item);
+    window = task_item_get_window (item);
 
     monitor = task_item_get_monitor (item);
+
     list_monitor = task_list_get_monitor (current_list);
 
     if (monitor != list_monitor)
@@ -110,18 +116,16 @@ on_task_item_monitor_changed_cb (TaskItem *item,
         list = get_task_list_for_monitor (monitor);
 
         g_object_ref (item);
+
         gtk_container_remove (GTK_CONTAINER (current_list), GTK_WIDGET (item));
+        g_hash_table_steal (current_list->items, window);
 
         gtk_widget_queue_resize (GTK_WIDGET (current_list));
 
-        g_signal_handlers_disconnect_by_func (item,
-                                              on_task_item_monitor_changed_cb,
-                                              current_list);
-
         gtk_container_add (GTK_CONTAINER (list), GTK_WIDGET (item));
+        g_hash_table_insert (list->items, window, item);
 
-        g_signal_connect (TASK_ITEM (item), "monitor-changed",
-                          G_CALLBACK (on_task_item_monitor_changed_cb), list);
+        task_item_set_task_list (item, list);
 
         g_object_unref (item);
 
@@ -129,8 +133,9 @@ on_task_item_monitor_changed_cb (TaskItem *item,
       }
 }
 
-static void create_task_item (TaskList   *taskList,
-                              WnckWindow *window)
+static GtkWidget *
+create_task_item (TaskList   *taskList,
+                  WnckWindow *window)
 {
     GtkWidget *item;
     GdkMonitor *list_monitor;
@@ -145,34 +150,44 @@ static void create_task_item (TaskList   *taskList,
         window_monitor = window_get_monitor (window);
 
         if (list_monitor != window_monitor)
-            return;
+            return NULL;
       }
 
     item = task_item_new (taskList->windowPickerApplet,
-                          window);
+                          window, taskList);
 
     if (item)
       {
         gtk_container_add (GTK_CONTAINER (taskList), item);
 
-        g_signal_connect_object (TASK_ITEM (item), "task-item-closed",
-                                 G_CALLBACK (on_task_item_closed), taskList, 0);
-
-        g_signal_connect_object (TASK_ITEM (item), "monitor-changed",
-                                 G_CALLBACK (on_task_item_monitor_changed_cb),
-                                 taskList, 0);
+        g_signal_connect (TASK_ITEM (item), "monitor-changed",
+                          G_CALLBACK (on_task_item_monitor_changed_cb),
+                          NULL);
       }
+
+    return item;
 }
 
-static void type_changed (WnckWindow *window,
-                          gpointer user_data)
+static void
+on_window_type_changed (WnckWindow *window,
+                        TaskList   *list)
 {
-    TaskList *taskList = TASK_LIST (user_data);
+  GtkWidget *item;
 
-    if (!window_is_special (window))
-      {
-        create_task_item (taskList, window);
-      }
+  if (window_is_special (window))
+    {
+      g_hash_table_remove (list->items, window);
+    }
+  else
+    {
+      if (g_hash_table_lookup (list->items, window))
+        return;
+
+      item = create_task_item (list, window);
+
+      if (item)
+        g_hash_table_insert (list->items, window, item);
+    }
 }
 
 static void
@@ -189,15 +204,6 @@ on_task_list_placement_changed (GpApplet        *applet,
 }
 
 static void
-remove_task_item (GtkWidget *item,
-                  gpointer   list)
-{
-  g_return_if_fail (TASK_IS_LIST (list));
-
-  gtk_container_remove (GTK_CONTAINER (list), item);
-}
-
-static void
 clear_windows (TaskList *list)
 {
   GdkWindow *window;
@@ -209,21 +215,24 @@ clear_windows (TaskList *list)
                                                     window);
 
   if (task_list_get_monitor (list) == list_monitor)
-    gtk_container_foreach (GTK_CONTAINER (list), remove_task_item, list);
+    g_hash_table_remove_all (list->items);
 }
 
 static void
 add_window (TaskList *list, WnckWindow *window)
 {
-  g_signal_connect_object (window, "type-changed", G_CALLBACK (type_changed),
-                           list, 0);
+  GtkWidget *item;
+
+  g_signal_connect_object (window, "type-changed",
+                           G_CALLBACK (on_window_type_changed), list, 0);
 
   if (window_is_special (window))
-  {
     return;
-  }
 
-  create_task_item (list, window);
+  item = create_task_item (list, window);
+
+  if (item)
+    g_hash_table_insert (list->items, window, item);
 }
 
 static void
@@ -329,6 +338,10 @@ task_list_class_init(TaskListClass *class) {
 
 static void task_list_init (TaskList *list) {
     list->screen = wnck_screen_get_default ();
+
+    list->items = g_hash_table_new_full (NULL, NULL,
+                                         NULL, (GDestroyNotify) gtk_widget_destroy);
+
     gtk_container_set_border_width (GTK_CONTAINER (list), 0);
 }
 
@@ -352,6 +365,9 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     g_signal_connect_object (taskList->screen, "window-opened",
                              G_CALLBACK (on_window_opened), taskList, 0);
+
+    g_signal_connect_object (taskList->screen, "window-closed",
+                             G_CALLBACK (on_window_closed), taskList, 0);
 
     gdk_window_add_filter (gtk_widget_get_window (GTK_WIDGET (taskList)),
                            window_filter_function,

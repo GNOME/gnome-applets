@@ -37,6 +37,7 @@ struct _TaskItem {
   guint        blink_timer;
   gboolean     mouse_over;
   GdkMonitor  *monitor;
+  TaskList    *list;
   WpApplet    *windowPickerApplet;
 };
 
@@ -47,7 +48,6 @@ G_DEFINE_TYPE (TaskItem, task_item, GTK_TYPE_EVENT_BOX)
 #define DEFAULT_TASK_ITEM_WIDTH 28 + 2
 
 enum {
-    TASK_ITEM_CLOSED_SIGNAL,
     TASK_ITEM_MONITOR_CHANGED,
     LAST_SIGNAL
 };
@@ -76,8 +76,6 @@ static const GtkTargetEntry drag_types[] = {
 };
 
 static const gint n_drag_types = G_N_ELEMENTS(drag_types);
-
-static void task_item_close (TaskItem *item);
 
 static void
 update_expand (TaskItem       *self,
@@ -544,26 +542,6 @@ static void on_window_icon_changed (WnckWindow *window, TaskItem *item) {
     gtk_widget_queue_draw (GTK_WIDGET (item));
 }
 
-static void
-on_window_type_changed (WnckWindow *window,
-                        TaskItem *item)
-{
-    WnckWindowType type;
-
-    if (item->window != window)
-        return;
-
-    type = wnck_window_get_window_type (window);
-
-    if (type == WNCK_WINDOW_DESKTOP ||
-        type == WNCK_WINDOW_DOCK ||
-        type == WNCK_WINDOW_SPLASHSCREEN ||
-        type == WNCK_WINDOW_MENU)
-      {
-          task_item_close (item);
-      }
-}
-
 static GdkMonitor *
 get_window_monitor (WnckWindow *window)
 {
@@ -650,25 +628,6 @@ static void on_screen_active_viewport_changed (
     g_return_if_fail (item != NULL);
     g_return_if_fail (TASK_IS_ITEM(item));
     task_item_set_visibility (item);
-}
-
-static void on_screen_window_closed (
-    WnckScreen   *screen,
-    WnckWindow   *window,
-    TaskItem     *item)
-{
-    g_return_if_fail (TASK_IS_ITEM(item));
-    g_return_if_fail (WNCK_IS_WINDOW (item->window));
-    if (item->window == window) {
-        task_item_close (item);
-    }
-}
-
-static void
-task_item_close (TaskItem   *item)
-{
-    g_signal_emit (G_OBJECT (item),
-                   task_item_signals[TASK_ITEM_CLOSED_SIGNAL], 0);
 }
 
 static gboolean activate_window (GtkWidget *widget) {
@@ -993,6 +952,8 @@ static void task_item_finalize (GObject *object) {
     }
 
     g_clear_object (&item->pixbuf);
+    g_clear_object (&item->window);
+    g_clear_object (&item->list);
 
     G_OBJECT_CLASS (task_item_parent_class)->finalize (object);
 }
@@ -1009,14 +970,6 @@ static void task_item_class_init (TaskItemClass *klass) {
     widget_class->get_preferred_height = task_item_get_preferred_height;
     widget_class->get_preferred_height_for_width = task_item_get_preferred_height_for_width;
 
-    task_item_signals [TASK_ITEM_CLOSED_SIGNAL] =
-    g_signal_new ("task-item-closed",
-        G_TYPE_FROM_CLASS (klass),
-        G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
-        0,
-        NULL, NULL,
-        g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
-
     task_item_signals [TASK_ITEM_MONITOR_CHANGED] =
         g_signal_new ("monitor-changed", TASK_TYPE_ITEM, G_SIGNAL_RUN_LAST,
                       0, NULL, NULL, NULL, G_TYPE_NONE, 0);
@@ -1026,7 +979,11 @@ static void task_item_init (TaskItem *item) {
     item->blink_timer = 0;
 }
 
-GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
+GtkWidget *
+task_item_new (WpApplet   *windowPickerApplet,
+               WnckWindow *window,
+               TaskList   *list)
+{
     TaskItem *taskItem;
     WnckScreen *screen;
     GtkWidget *item;
@@ -1043,12 +1000,16 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
     gtk_widget_add_events (item, GDK_ALL_EVENTS_MASK);
     gtk_container_set_border_width (GTK_CONTAINER (item), 0);
     taskItem = TASK_ITEM (item);
-    taskItem->window = window;
+
+    taskItem->window = g_object_ref (window);
+
     screen = wnck_window_get_screen (window);
     taskItem->screen = screen;
     taskItem->windowPickerApplet = windowPickerApplet;
 
     set_monitor (taskItem, get_window_monitor (window));
+
+    task_item_set_task_list (TASK_ITEM (item), list);
 
     g_signal_connect_object (windowPickerApplet,
                              "placement-changed",
@@ -1111,16 +1072,12 @@ GtkWidget *task_item_new (WpApplet* windowPickerApplet, WnckWindow *window) {
         G_CALLBACK (on_screen_active_window_changed), item, 0);
     g_signal_connect_object (screen, "active-workspace-changed",
         G_CALLBACK (on_screen_active_workspace_changed), item, 0);
-    g_signal_connect_object (screen, "window-closed",
-        G_CALLBACK (on_screen_window_closed), item, 0);
     g_signal_connect_object (window, "workspace-changed",
         G_CALLBACK (on_window_workspace_changed), item, 0);
     g_signal_connect_object (window, "state-changed",
         G_CALLBACK (on_window_state_changed), item, 0);
     g_signal_connect_object (window, "icon-changed",
         G_CALLBACK (on_window_icon_changed), item, 0);
-    g_signal_connect_object (window, "type-changed",
-        G_CALLBACK (on_window_type_changed), item, 0);
     g_signal_connect_object (window, "geometry-changed",
         G_CALLBACK (on_window_geometry_changed), item, 0);
 
@@ -1147,4 +1104,26 @@ GdkMonitor *
 task_item_get_monitor (TaskItem *item)
 {
     return item->monitor;
+}
+
+TaskList *
+task_item_get_task_list (TaskItem *item)
+{
+  return item->list;
+}
+
+void
+task_item_set_task_list (TaskItem *item,
+                         TaskList *list)
+{
+  if (item->list)
+    g_object_unref (item->list);
+
+  item->list = g_object_ref (list);
+}
+
+WnckWindow *
+task_item_get_window (TaskItem *item)
+{
+  return item->window;
 }

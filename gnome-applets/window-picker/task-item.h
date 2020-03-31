@@ -27,12 +27,22 @@
 #include <gtk/gtk.h>
 #include <libwnck/libwnck.h>
 
+#include "task-list.h"
+
 #define TASK_TYPE_ITEM (task_item_get_type ())
 G_DECLARE_FINAL_TYPE (TaskItem, task_item, TASK, ITEM, GtkEventBox)
 
-GtkWidget  *task_item_new         (WpApplet   *windowPickerApplet,
-                                   WnckWindow *window);
+GtkWidget  *task_item_new           (WpApplet   *windowPickerApplet,
+                                     WnckWindow *window,
+                                     TaskList   *list);
 
-GdkMonitor *task_item_get_monitor (TaskItem *item);
+GdkMonitor *task_item_get_monitor   (TaskItem   *item);
+
+TaskList   *task_item_get_task_list (TaskItem   *item);
+
+void        task_item_set_task_list (TaskItem   *item,
+                                     TaskList   *list);
+
+WnckWindow *task_item_get_window    (TaskItem   *item);
 
 #endif /* _TASK_ITEM_H_ */
