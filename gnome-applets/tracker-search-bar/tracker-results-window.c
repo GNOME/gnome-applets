@@ -407,7 +407,7 @@ tracker_results_window_init (TrackerResultsWindow *window)
 	gtk_widget_set_size_request (priv->frame, 500, 500);
 	gtk_widget_show (priv->frame);
 
-	vbox = gtk_vbox_new (FALSE, 12);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
 	gtk_container_add (GTK_CONTAINER (priv->frame), vbox);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 2);
 	gtk_widget_show (vbox);
