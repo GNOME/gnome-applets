@@ -412,7 +412,7 @@ static const GActionEntry multiload_menu_actions [] = {
 	{ NULL }
 };
 
-static gboolean
+static void
 multiload_applet_setup (MultiloadApplet *ma)
 {
 	GSettings *settings;
