@@ -1,0 +1,79 @@
+<schemalist gettext-domain="@GETTEXT_PACKAGE@">
+  <schema id="org.gnome.gnome-applets.window-title">
+    <key name="hide-on-unmaximized" type="b">
+      <default>false</default>
+      <summary>Hides title when there are no windows present.</summary>
+      <description>When enabled, the title will disappear when there are no maximized (or active) windows on the screen.</description>
+    </key>
+    <key name="only-maximized" type="b">
+      <default>true</default>
+      <summary>Only control maximized windows.</summary>
+      <description>When enabled, the window title will always display the upper-most maximized window's name.</description>
+    </key>
+    <key name="alignment" type="d">
+      <default>0.5</default>
+      <summary>Set the title alignment.</summary>
+      <description>Legal values are between 0 and 1.</description>
+    </key>
+    <key name="swap-order" type="b">
+      <default>false</default>
+      <summary>Swap icon and title.</summary>
+      <description>When enabled, window title will be on the left side and the icon on the right side.</description>
+    </key>
+    <key name="expand-applet" type="b">
+      <default>true</default>
+      <summary>Expand the applet</summary>
+      <description>When enabled, the applet will use up all available space in the panel.</description>
+    </key>
+    <key name="hide-icon" type="b">
+      <default>false</default>
+      <summary>Hide the icon</summary>
+      <description>When enabled, the window icon will not be displayed.</description>
+    </key>
+    <key name="hide-title" type="b">
+      <default>false</default>
+      <summary>Hide the title</summary>
+      <description>When enabled, the window title will not be displayed.</description>
+    </key>
+    <key name="show-tooltips" type="b">
+      <default>false</default>
+      <summary>Show tooltips over title and icon</summary>
+      <description>When enabled, a tooltip carrying the name of the currently active window will be shown.</description>
+    </key>
+    <key name="title-size" type="i">
+      <default>16</default>
+      <summary>Minimal title size</summary>
+      <description>This size is used when the applet is not expanded or otherwise to determine the minimal size the title label can be shrunk to. The value represents the amount of pixels either in width or height, depending on the panel orientation.</description>
+    </key>
+    <key name="custom-style" type="b">
+      <default>false</default>
+      <summary>Use a custom style.</summary>
+      <description>When enabled, custom font style and color will be used. When disabled, system theme defaults will be used.</description>
+    </key>
+    <key name="show-window-menu" type="b">
+      <default>false</default>
+      <summary>Show the window action menu on right click.</summary>
+      <description>Will cause the window action menu to appear when the title is right-clicked. This experimental feature is still under development! Warning! In current feature state you will be unable to access the applet action menu via title-right click when this option is enabled! You may still do so by right-clicking the icon if it is not hidden.</description>
+    </key>
+    <key name="title-active-font" type="s">
+      <default>'Sans 10'</default>
+      <summary>Active title font.</summary>
+      <description>Font name and size for the active window state.</description>
+    </key>
+    <key name="title-inactive-font" type="s">
+      <default>'Sans 10'</default>
+      <summary>Inactive title font.</summary>
+      <description>Font name and size for the inactive window state.</description>
+    </key>
+    <key name="title-active-color-fg" type="s">
+      <default>'#000000'</default>
+      <summary>Active title foreground color.</summary>
+      <description>Title foreground color in hex format for the active window state.</description>
+    </key>
+    <key name="title-inactive-color-fg" type="s">
+      <default>'#808080'</default>
+      <summary>Inactive title foreground color.</summary>
+      <description>Title foreground color in hex format for the inactive window state.</description>
+    </key>
+  </schema>
+</schemalist>

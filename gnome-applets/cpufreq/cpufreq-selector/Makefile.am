@@ -45,7 +45,9 @@ dbus_conf_DATA = $(dbus_conf_files)
 polkitdir = $(datadir)/polkit-1/actions
 polkit_DATA = $(polkit_in_files:.policy.in=.policy)
 
-@INTLTOOL_POLICY_RULE@
+$(polkit_DATA): %.policy: %.policy.in
+	$(AM_V_GEN) $(MSGFMT) --xml --template $< -o $@-t \
+		-d $(top_srcdir)/po && mv $@-t $@
 
 cpufreq-selector-gen.h:
 cpufreq-selector-gen.c: ../org.gnome.CPUFreqSelector.xml

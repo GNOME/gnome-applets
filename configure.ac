@@ -75,7 +75,6 @@ GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.97
 dnl ***************************************************************************
 
-IT_PROG_INTLTOOL([0.35.0])
 PKG_PROG_PKG_CONFIG([0.19])
 
 AC_PATH_PROG([GDBUS_CODEGEN], [gdbus-codegen])
@@ -184,10 +183,17 @@ dnl ***************************************************************************
 dnl *** Set up gettext                                                      ***
 dnl ***************************************************************************
 
-GETTEXT_PACKAGE=gnome-applets-3.0
-AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
-AM_GLIB_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.6])
+AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
+
+GETTEXT_PACKAGE=gnome-applets
+AC_SUBST([GETTEXT_PACKAGE])
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Gettext Package])
+
+dnl ***************************************************************************
+dnl *** Help                                                                ***
+dnl ***************************************************************************
 
 YELP_HELP_INIT
 
