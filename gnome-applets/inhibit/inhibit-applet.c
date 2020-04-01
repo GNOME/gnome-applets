@@ -422,7 +422,7 @@ inhibit_applet_init (InhibitApplet *applet)
 	applet->image = gtk_image_new();
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
 
-	menu_resource = GRESOURCE_PREFIX "/ui/inhibit-applet-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/inhibit-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
 	                                    menu_resource,
 	                                    menu_actions);

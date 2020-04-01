@@ -800,7 +800,7 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), applet->image);
 
 	/* menu */
-	menu_resource = GRESOURCE_PREFIX "/ui/brightness-applet-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/brightness-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (applet), menu_resource, menu_actions);
 
 	/* show */

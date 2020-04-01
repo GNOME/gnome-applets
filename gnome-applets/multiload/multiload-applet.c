@@ -428,7 +428,7 @@ multiload_applet_setup (MultiloadApplet *ma)
 
 	ma->orientation = gp_applet_get_orientation (GP_APPLET (ma));
 
-	menu_resource = GRESOURCE_PREFIX "/ui/multiload-applet-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/multiload-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (ma),
 	                                    menu_resource,
 	                                    multiload_menu_actions);

@@ -1498,7 +1498,7 @@ battstat_applet_fill (BattstatApplet *self)
   create_layout (battstat);
   setup_text_orientation (battstat, gp_applet_get_position (GP_APPLET (self)));
 
-  menu_resource = GRESOURCE_PREFIX "/ui/battstat-applet-menu.xml";
+  menu_resource = GRESOURCE_PREFIX "/ui/battstat-applet-menu.ui";
   gp_applet_setup_menu_from_resource (GP_APPLET (self),
                                       menu_resource,
                                       battstat_menu_actions);

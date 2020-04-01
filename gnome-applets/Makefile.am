@@ -92,12 +92,12 @@ cpufreq_icon_files = \
 	$(NULL)
 
 cpufreq_ui_files = \
-	cpufreq/cpufreq-applet-menu.xml \
+	cpufreq/cpufreq-applet-menu.ui \
 	cpufreq/cpufreq-preferences.ui \
 	$(NULL)
 
 tracker_search_bar_ui_files = \
-	tracker-search-bar/tracker-search-bar-menu.xml \
+	tracker-search-bar/tracker-search-bar-menu.ui \
 	tracker-search-bar/tracker-search-bar.ui \
 	$(NULL)
 
@@ -147,36 +147,36 @@ icon_files = \
 	$(NULL)
 
 ui_files = \
-	accessx-status/accessx-status-applet-menu.xml \
+	accessx-status/accessx-status-applet-menu.ui \
 	battstat/battstat-applet.ui \
-	battstat/battstat-applet-menu.xml \
-	brightness/brightness-applet-menu.xml \
-	charpick/charpick-applet-menu.xml \
-	command/command-applet-menu.xml \
-	drivemount/drivemount-applet-menu.xml \
-	geyes/geyes-applet-menu.xml \
-	gweather/gweather-applet-menu.xml \
-	inhibit/inhibit-applet-menu.xml \
+	battstat/battstat-applet-menu.ui \
+	brightness/brightness-applet-menu.ui \
+	charpick/charpick-applet-menu.ui \
+	command/command-applet-menu.ui \
+	drivemount/drivemount-applet-menu.ui \
+	geyes/geyes-applet-menu.ui \
+	gweather/gweather-applet-menu.ui \
+	inhibit/inhibit-applet-menu.ui \
 	mini-commander/mini-commander.ui \
-	mini-commander/mini-commander-applet-menu.xml \
-	multiload/multiload-applet-menu.xml \
-	netspeed/netspeed-menu.xml \
-	sticky-notes/ui/sticky-notes-applet-menu.xml \
+	mini-commander/mini-commander-applet-menu.ui \
+	multiload/multiload-applet-menu.ui \
+	netspeed/netspeed-menu.ui \
+	sticky-notes/ui/sticky-notes-applet-menu.ui \
 	sticky-notes/ui/sticky-notes-delete.ui \
 	sticky-notes/ui/sticky-notes-delete-all.ui \
 	sticky-notes/ui/sticky-notes-note.ui \
-	sticky-notes/ui/sticky-notes-note-menu.xml \
+	sticky-notes/ui/sticky-notes-note-menu.ui \
 	sticky-notes/ui/sticky-notes-preferences.ui \
 	sticky-notes/ui/sticky-notes-properties.ui \
-	timer/timer-applet-menu.xml \
+	timer/timer-applet-menu.ui \
 	trash/trash-empty.ui \
-	trash/trash-menu.xml \
+	trash/trash-menu.ui \
 	window-buttons/window-buttons.ui \
-	window-buttons/window-buttons-menu.xml \
-	window-picker/wp-menu.xml \
+	window-buttons/window-buttons-menu.ui \
+	window-picker/wp-menu.ui \
 	window-picker/wp-preferences-dialog.ui \
 	window-title/window-title.ui \
-	window-title/window-title-menu.xml \
+	window-title/window-title-menu.ui \
 	$(NULL)
 
 if BUILD_CPUFREQ_APPLET

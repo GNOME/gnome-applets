@@ -420,7 +420,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     if (GTK_IS_ACCESSIBLE (atk_obj))
 	   atk_object_set_name (atk_obj, _("GNOME Weather"));
 
-    menu_resource = GRESOURCE_PREFIX "/ui/gweather-applet-menu.xml";
+    menu_resource = GRESOURCE_PREFIX "/ui/gweather-applet-menu.ui";
     gp_applet_setup_menu_from_resource (GP_APPLET (gw_applet),
                                         menu_resource,
                                         weather_applet_menu_actions);

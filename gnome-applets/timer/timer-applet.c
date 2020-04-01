@@ -389,7 +389,7 @@ timer_applet_fill (TimerApplet *applet)
     gtk_widget_hide (GTK_WIDGET (applet->pause_image));
 
     /* set up context menu */
-    menu_resource = GRESOURCE_PREFIX "/ui/timer-applet-menu.xml";
+    menu_resource = GRESOURCE_PREFIX "/ui/timer-applet-menu.ui";
     gp_applet_setup_menu_from_resource (GP_APPLET (applet),
                                         menu_resource,
                                         applet_menu_actions);

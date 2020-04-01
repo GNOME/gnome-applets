@@ -62,7 +62,7 @@ setup_note_menu (StickyNote *note)
 	                                 G_N_ELEMENTS (stickynotes_note_menu_actions),
 	                                 note);
 
-	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-note-menu.xml";
+	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-note-menu.ui";
 	builder = gtk_builder_new_from_resource (resource_name);
 
 	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);

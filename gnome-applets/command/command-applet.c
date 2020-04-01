@@ -359,7 +359,7 @@ command_applet_fill (CommandApplet *command_applet)
                      G_SETTINGS_BIND_DEFAULT);
 
     /* set up context menu */
-    menu_resource = GRESOURCE_PREFIX "/ui/command-applet-menu.xml";
+    menu_resource = GRESOURCE_PREFIX "/ui/command-applet-menu.ui";
     gp_applet_setup_menu_from_resource (GP_APPLET (command_applet),
                                         menu_resource,
                                         applet_menu_actions);

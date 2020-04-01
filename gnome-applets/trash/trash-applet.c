@@ -565,7 +565,7 @@ trash_applet_init (TrashApplet *self)
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
 
   /* Set up the menu */
-  resource_name = GRESOURCE_PREFIX "/ui/trash-menu.xml";
+  resource_name = GRESOURCE_PREFIX "/ui/trash-menu.ui";
   gp_applet_setup_menu_from_resource (GP_APPLET (self),
                                       resource_name,
                                       trash_applet_menu_actions);

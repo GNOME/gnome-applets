@@ -979,7 +979,7 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
                                   (gpointer) applet);
            
         /* Setup the menus */
-        menu_resource = GRESOURCE_PREFIX "/ui/cpufreq-applet-menu.xml";
+        menu_resource = GRESOURCE_PREFIX "/ui/cpufreq-applet-menu.ui";
         gp_applet_setup_menu_from_resource (GP_APPLET (applet),
                                             menu_resource,
                                             cpufreq_applet_menu_actions);

@@ -327,7 +327,7 @@ eyes_applet_fill (EyesApplet *eyes_applet)
         eyes_applet->timeout_id = g_timeout_add (
 		UPDATE_TIMEOUT, (GSourceFunc) timer_cb, eyes_applet);
 
-	menu_resource = GRESOURCE_PREFIX "/ui/geyes-applet-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/geyes-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (eyes_applet),
 	                                    menu_resource,
 	                                    geyes_applet_menu_actions);

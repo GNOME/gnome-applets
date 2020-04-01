@@ -744,7 +744,7 @@ init_wbapplet (WBApplet *wbapplet)
 		g_signal_connect(G_OBJECT (wbapplet->activewindow), "state-changed", G_CALLBACK (active_window_state_changed), wbapplet);
 
 	// Setup applet right-click menu
-	menu_resource = GRESOURCE_PREFIX "/ui/window-buttons-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/window-buttons-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (wbapplet),
 	                                    menu_resource,
 	                                    windowbuttons_menu_actions);

@@ -154,7 +154,7 @@ drivemount_applet_setup (DrivemountApplet *self)
   drive_list_set_orientation (DRIVE_LIST (self->drive_list),
                               gp_applet_get_orientation (GP_APPLET (self)));
 
-  menu_resource = GRESOURCE_PREFIX "/ui/drivemount-applet-menu.xml";
+  menu_resource = GRESOURCE_PREFIX "/ui/drivemount-applet-menu.ui";
   gp_applet_setup_menu_from_resource (GP_APPLET (self),
                                       menu_resource,
                                       applet_menu_actions);

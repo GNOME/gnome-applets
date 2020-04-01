@@ -1265,7 +1265,7 @@ accessx_status_applet_fill (AccessxStatusApplet *sapplet)
 	g_signal_connect (sapplet, "key_press_event",
 				   G_CALLBACK (key_press_cb), sapplet);				   
 
-	menu_resource = GRESOURCE_PREFIX "/ui/accessx-status-applet-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/accessx-status-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (sapplet),
 	                                    menu_resource,
 	                                    accessx_status_applet_menu_actions);

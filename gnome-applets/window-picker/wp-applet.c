@@ -154,7 +154,7 @@ wp_applet_setup_menu (GpApplet *applet)
 {
   const gchar *resource_name;
 
-  resource_name = GRESOURCE_PREFIX "/ui/wp-menu.xml";
+  resource_name = GRESOURCE_PREFIX "/ui/wp-menu.ui";
 
   gp_applet_setup_menu_from_resource (applet, resource_name, menu_actions);
 }

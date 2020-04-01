@@ -1233,7 +1233,7 @@ setup_menu (GpApplet *applet)
 	const char *menu_resource;
 	GAction *action;
 
-	menu_resource = GRESOURCE_PREFIX "/ui/netspeed-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/netspeed-menu.ui";
 	gp_applet_setup_menu_from_resource (applet, menu_resource, menu_actions);
 
 	action = gp_applet_menu_lookup_action (applet, "preferences");

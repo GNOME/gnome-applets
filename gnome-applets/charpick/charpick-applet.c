@@ -751,7 +751,7 @@ charpicker_applet_fill (charpick_data *curr_data)
 
   gtk_widget_show_all (GTK_WIDGET (curr_data));
 
-  menu_resource = GRESOURCE_PREFIX "/ui/charpick-applet-menu.xml";
+  menu_resource = GRESOURCE_PREFIX "/ui/charpick-applet-menu.ui";
   gp_applet_setup_menu_from_resource (GP_APPLET (curr_data),
                                       menu_resource,
                                       charpick_applet_menu_actions);

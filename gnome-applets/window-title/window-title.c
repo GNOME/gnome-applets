@@ -777,7 +777,7 @@ init_wtapplet (WTApplet *wtapplet)
 		g_signal_connect(G_OBJECT (wtapplet->activewindow), "icon-changed", G_CALLBACK (active_window_nameicon_changed), wtapplet);
 
 	// Setup applet right-click menu
-	menu_resource = GRESOURCE_PREFIX "/ui/window-title-menu.xml";
+	menu_resource = GRESOURCE_PREFIX "/ui/window-title-menu.ui";
 	gp_applet_setup_menu_from_resource (applet, menu_resource, windowtitle_menu_actions);
 
 	wt_applet_toggle_expand (wtapplet);

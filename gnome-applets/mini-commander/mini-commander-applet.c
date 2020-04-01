@@ -350,7 +350,7 @@ mini_commander_applet_fill (MCData *mc)
     g_signal_connect (mc, "key_press_event",
 		      G_CALLBACK (key_press_cb), mc);
 
-    menu_resource = GRESOURCE_PREFIX "/ui/mini-commander-applet-menu.xml";
+    menu_resource = GRESOURCE_PREFIX "/ui/mini-commander-applet-menu.ui";
     gp_applet_setup_menu_from_resource (GP_APPLET (mc),
                                         menu_resource,
                                         mini_commander_menu_actions);

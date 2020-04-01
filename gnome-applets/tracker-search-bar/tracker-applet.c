@@ -347,7 +347,7 @@ tracker_applet_setup (TrackerApplet *applet)
 
 	gp_applet_set_flags (GP_APPLET (applet), GP_APPLET_FLAGS_EXPAND_MINOR);
 
-	resource_name = GRESOURCE_PREFIX "/ui/tracker-search-bar-menu.xml";
+	resource_name = GRESOURCE_PREFIX "/ui/tracker-search-bar-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
 	                                    resource_name,
 	                                    applet_menu_actions);

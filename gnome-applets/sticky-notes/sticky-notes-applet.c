@@ -321,7 +321,7 @@ sticky_notes_applet_new (StickyNotesApplet *applet)
 	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
-	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-applet-menu.xml";
+	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-applet-menu.ui";
 	gp_applet_setup_menu_from_resource (GP_APPLET (applet),
 	                                    resource_name,
 	                                    stickynotes_applet_menu_actions);
