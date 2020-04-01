@@ -715,7 +715,7 @@ init_wtapplet (WTApplet *wtapplet)
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 	wtapplet->rootwindow = getRootWindow(wtapplet->activescreen);
 	wtapplet->prefbuilder = gtk_builder_new ();
-	wtapplet->box = GTK_BOX(gtk_hbox_new(FALSE, 0));
+	wtapplet->box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
 	wtapplet->icon = GTK_IMAGE(gtk_image_new());
 	wtapplet->title = GTK_LABEL(gtk_label_new(NULL));
 	wtapplet->eb_icon = GTK_EVENT_BOX(gtk_event_box_new());
