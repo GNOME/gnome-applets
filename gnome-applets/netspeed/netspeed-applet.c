@@ -181,15 +181,15 @@ applet_change_size_or_orient (NetspeedApplet *applet,
 	}
 
 	if (orientation == GTK_ORIENTATION_VERTICAL) {
-		applet->box = gtk_vbox_new(FALSE, 0);
+		applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 		if (size > 64) {
 			applet->sum_box = gtk_hbox_new(FALSE, 2);
 			applet->in_box = gtk_hbox_new(FALSE, 1);
 			applet->out_box = gtk_hbox_new(FALSE, 1);
 		} else {	
-			applet->sum_box = gtk_vbox_new(FALSE, 0);
-			applet->in_box = gtk_vbox_new(FALSE, 0);
-			applet->out_box = gtk_vbox_new(FALSE, 0);
+			applet->sum_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+			applet->in_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+			applet->out_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 		}
 		labels_dont_shrink = FALSE;
 	} else {
@@ -200,8 +200,8 @@ applet_change_size_or_orient (NetspeedApplet *applet,
 			applet->box = gtk_hbox_new(FALSE, 1);
 			labels_dont_shrink = TRUE;
 		} else {
-			applet->sum_box = gtk_vbox_new(FALSE, 0);
-			applet->box = gtk_vbox_new(FALSE, 0);
+			applet->sum_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+			applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 			labels_dont_shrink = !applet->show_sum;
 		}
 	}
@@ -869,7 +869,7 @@ details_cb (GSimpleAction *action,
 
 	gtk_dialog_set_default_response(GTK_DIALOG(applet->details), GTK_RESPONSE_CLOSE);
 	
-	box = gtk_vbox_new(FALSE, 10);
+	box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
 	gtk_container_set_border_width(GTK_CONTAINER(box), 12);
 	
 	table = gtk_table_new(4, 4, FALSE);
