@@ -183,9 +183,9 @@ applet_change_size_or_orient (NetspeedApplet *applet,
 	if (orientation == GTK_ORIENTATION_VERTICAL) {
 		applet->box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 		if (size > 64) {
-			applet->sum_box = gtk_hbox_new(FALSE, 2);
-			applet->in_box = gtk_hbox_new(FALSE, 1);
-			applet->out_box = gtk_hbox_new(FALSE, 1);
+			applet->sum_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+			applet->in_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
+			applet->out_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
 		} else {	
 			applet->sum_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 			applet->in_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -193,11 +193,11 @@ applet_change_size_or_orient (NetspeedApplet *applet,
 		}
 		labels_dont_shrink = FALSE;
 	} else {
-		applet->in_box = gtk_hbox_new(FALSE, 1);
-		applet->out_box = gtk_hbox_new(FALSE, 1);
+		applet->in_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
+		applet->out_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
 		if (size < 48) {
-			applet->sum_box = gtk_hbox_new(FALSE, 2);
-			applet->box = gtk_hbox_new(FALSE, 1);
+			applet->sum_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
+			applet->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
 			labels_dont_shrink = TRUE;
 		} else {
 			applet->sum_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -882,7 +882,7 @@ details_cb (GSimpleAction *action,
 	gtk_widget_set_size_request(GTK_WIDGET(applet->drawingarea), -1, 180);
 	gtk_container_add(GTK_CONTAINER(da_frame), GTK_WIDGET(applet->drawingarea));
 	
-	hbox = gtk_hbox_new(FALSE, 5);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
 	incolor_label = gtk_label_new_with_mnemonic(_("_In graph color"));
 	outcolor_label = gtk_label_new_with_mnemonic(_("_Out graph color"));
 	
@@ -1448,13 +1448,13 @@ netspeed_applet_setup (GpApplet *applet)
 	netspeed->dev_pix = gtk_image_new ();
 	netspeed->qual_pix = gtk_image_new ();
 	
-	netspeed->pix_box = gtk_hbox_new (FALSE, 0);
+	netspeed->pix_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	spacer = gtk_label_new("");
 	gtk_box_pack_start (GTK_BOX (netspeed->pix_box), spacer, TRUE, TRUE, 0);
 	spacer = gtk_label_new("");
 	gtk_box_pack_end (GTK_BOX (netspeed->pix_box), spacer, TRUE, TRUE, 0);
 
-	spacer_box = gtk_hbox_new(FALSE, 2);	
+	spacer_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
 	gtk_box_pack_start (GTK_BOX (netspeed->pix_box), spacer_box, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (spacer_box), netspeed->qual_pix, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (spacer_box), netspeed->dev_pix, FALSE, FALSE, 0);
