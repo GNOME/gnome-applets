@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 #define TRASH_TYPE_APPLET (trash_applet_get_type ())
 G_DECLARE_FINAL_TYPE (TrashApplet, trash_applet, TRASH, APPLET, GpApplet)
 
+void trash_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

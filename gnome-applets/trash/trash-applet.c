@@ -47,15 +47,20 @@ G_DEFINE_TYPE (TrashApplet, trash_applet, GP_TYPE_APPLET)
 static void trash_applet_do_empty    (GSimpleAction *action,
                                       GVariant      *parameter,
                                       gpointer       user_data);
-static void trash_applet_show_about  (GSimpleAction *action,
-                                      GVariant      *parameter,
-                                      gpointer       user_data);
 static void trash_applet_open_folder (GSimpleAction *action,
                                       GVariant      *parameter,
                                       gpointer       user_data);
 static void trash_applet_show_help   (GSimpleAction *action,
                                       GVariant      *parameter,
                                       gpointer       user_data);
+
+static void
+trash_applet_show_about (GSimpleAction *action,
+                         GVariant      *parameter,
+                         gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
 
 static const GActionEntry trash_applet_menu_actions [] = {
 	{ "open",  trash_applet_open_folder, NULL, NULL, NULL },
@@ -347,39 +352,6 @@ trash_applet_show_help (GSimpleAction *action,
     }
 }
 
-
-static void
-trash_applet_show_about (GSimpleAction *action,
-                         GVariant      *parameter,
-                         gpointer       user_data)
-{
-  static const char *authors[] = {
-    "Michiel Sikkes <michiel@eyesopened.nl>",
-    "Emmanuele Bassi <ebassi@gmail.com>",
-    "Sebastian Bacher <seb128@canonical.com>",
-    "James Henstridge <james.henstridge@canonical.com>",
-    "Ryan Lortie <desrt@desrt.ca>",
-    NULL
-  };
-  static const char *documenters[] = {
-    "Michiel Sikkes <michiel@eyesopened.nl>",
-    NULL
-  };
-
-  gtk_show_about_dialog (NULL,
-                         "version", VERSION,
-                         "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes,"
-                                      "\xC2\xA9 2008 Ryan Lortie",
-                         "comments", _("A GNOME trash bin that lives in your panel. "
-                                       "You can use it to view the trash or drag "
-                                       "and drop items into the trash."),
-                         "authors", authors,
-                         "documenters", documenters,
-                         "translator-credits", _("translator-credits"),
-                         "logo_icon_name", "user-trash-full",
-                         NULL);
-}
-
 static gboolean
 confirm_delete_immediately (GtkWidget *parent_view,
                             gint num_files,
@@ -590,4 +562,43 @@ trash_applet_init (TrashApplet *self)
   /* synthesise the first update */
   self->items = -1;
   trash_applet_monitor_changed (self);
+}
+
+void
+trash_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("A GNOME trash bin that lives in your panel. "
+               "You can use it to view the trash or drag "
+               "and drop items into the trash.");
+
+  authors = (const char *[])
+    {
+      "Michiel Sikkes <michiel@eyesopened.nl>",
+      "Emmanuele Bassi <ebassi@gmail.com>",
+      "Sebastian Bacher <seb128@canonical.com>",
+      "James Henstridge <james.henstridge@canonical.com>",
+      "Ryan Lortie <desrt@desrt.ca>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Michiel Sikkes <michiel@eyesopened.nl>",
+      NULL
+    };
+
+  copyright = "Copyright \xC2\xA9 2004 Michiel Sikkes, "
+              "\xC2\xA9 2008 Ryan Lortie";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
