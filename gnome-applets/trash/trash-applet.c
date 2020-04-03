@@ -37,7 +37,7 @@ struct _TrashApplet
   GFileMonitor *trash_monitor;
   GFile *trash;
 
-  GtkImage *image;
+  GtkWidget *image;
   GIcon *icon;
   gint items;
 };
@@ -153,7 +153,7 @@ trash_applet_set_icon_size (TrashApplet *applet,
     size = 48;
 
   /* GtkImage already contains a check to do nothing if it's the same */
-  gtk_image_set_pixel_size (applet->image, size);
+  gtk_image_set_pixel_size (GTK_IMAGE (applet->image), size);
 }
 
 static void
@@ -526,8 +526,8 @@ trash_applet_init (TrashApplet *self)
 
   /* setup the image */
   self->image = g_object_ref_sink (gtk_image_new ());
-  gtk_container_add (GTK_CONTAINER (self), GTK_WIDGET (self->image));
-  gtk_widget_show (GTK_WIDGET (self->image));
+  gtk_container_add (GTK_CONTAINER (self), self->image);
+  gtk_widget_show (self->image);
 
   /* setup the trash backend */
   self->trash = g_file_new_for_uri ("trash:/");
