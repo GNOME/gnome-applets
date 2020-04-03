@@ -36,6 +36,8 @@ GtkWidget *wp_applet_get_tasks            (WpApplet *applet);
 gboolean   wp_applet_get_show_all_windows (WpApplet *applet);
 gboolean   wp_applet_get_icons_greyscale  (WpApplet *applet);
 
+void       wp_applet_setup_about          (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

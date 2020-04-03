@@ -32,7 +32,6 @@
 #include <string.h>
 
 #include "task-list.h"
-#include "wp-about-dialog.h"
 #include "wp-preferences-dialog.h"
 #include "wp-task-title.h"
 
@@ -46,7 +45,6 @@ struct _WpApplet
 
   GSettings   *settings;
 
-  GtkWidget   *about_dialog;
   GtkWidget   *preferences_dialog;
 
   gboolean     show_all_windows;
@@ -70,39 +68,11 @@ static GParamSpec *properties[LAST_PROP] = { NULL };
 G_DEFINE_TYPE (WpApplet, wp_applet, GP_TYPE_APPLET)
 
 static void
-wp_about_dialog_response_cb (GtkDialog *dialog,
-                             gint       response_id,
-                             gpointer   user_data)
-{
-  WpApplet *applet;
-
-  applet = WP_APPLET (user_data);
-
-  if (applet->about_dialog == NULL)
-    return;
-
-  gtk_widget_destroy (applet->about_dialog);
-  applet->about_dialog = NULL;
-}
-
-static void
 display_about_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-  WpApplet *applet;
-
-  applet = WP_APPLET (user_data);
-
-  if (applet->about_dialog == NULL)
-    {
-      applet->about_dialog = wp_about_dialog_new ();
-
-      g_signal_connect (applet->about_dialog, "response",
-                        G_CALLBACK (wp_about_dialog_response_cb), applet);
-    }
-
-  gtk_window_present (GTK_WINDOW (applet->about_dialog));
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -273,7 +243,6 @@ wp_applet_dispose (GObject *object)
   applet = WP_APPLET (object);
 
   g_clear_object (&applet->settings);
-  g_clear_pointer (&applet->about_dialog, gtk_widget_destroy);
   g_clear_pointer (&applet->preferences_dialog, gtk_widget_destroy);
 
   G_OBJECT_CLASS (wp_applet_parent_class)->dispose (object);
@@ -429,4 +398,32 @@ gboolean
 wp_applet_get_icons_greyscale (WpApplet *applet)
 {
   return applet->icons_greyscale;
+}
+
+void
+wp_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char **authors;
+  const char *copyright;
+  const gchar *resource;
+  GdkPixbuf *logo;
+
+  authors = (const char *[])
+    {
+      "Neil J. Patel <neil.patel@canonical.com>",
+      "Sebastian Geiger <sbastig@gmx.net>",
+      NULL
+    };
+
+  copyright = "Copyright \xc2\xa9 2008 Canonical Ltd\nand Sebastian Geiger";
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
+
+  resource = GRESOURCE_PREFIX "/icons/wp-about-logo.png";
+  logo = gdk_pixbuf_new_from_resource (resource, NULL);
+
+  gtk_about_dialog_set_logo (dialog, logo);
+  g_object_unref (logo);
 }

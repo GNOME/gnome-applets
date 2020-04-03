@@ -244,6 +244,8 @@ ga_get_applet_info (const char *id)
       name = _("Window Picker");
       description = _("Shows a list of icons for the open windows.");
       icon_name = "preferences-system-windows";
+
+      about_func = wp_applet_setup_about;
     }
   else if (g_strcmp0 (id, "window-title") == 0)
     {
