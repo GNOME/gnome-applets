@@ -33,7 +33,7 @@ struct _TaskItem {
   WnckScreen  *screen;
   GdkPixbuf   *pixbuf;
   GdkRectangle area;
-  GTimeVal     urgent_time;
+  gint64       urgent_time;
   guint        blink_timer;
   gboolean     mouse_over;
   GdkMonitor  *monitor;
@@ -414,14 +414,12 @@ static gboolean task_item_draw (
         g_object_unref (desat);
     }
     if (!item->mouse_over && attention) { /* urgent */
-        GTimeVal current_time;
+        gint64 current_time;
         gdouble ms;
         gdouble alpha;
 
-        g_get_current_time (&current_time);
-        ms = (
-            current_time.tv_sec - item->urgent_time.tv_sec) * 1000 +
-            (current_time.tv_usec - item->urgent_time.tv_usec) / 1000;
+        current_time = g_get_monotonic_time ();
+        ms = (current_time - item->urgent_time) / 1000.0;
         alpha = .66 + (cos (3.15 * ms / 600) / 3);
         cairo_paint_with_alpha (cr, alpha);
     } else if (item->mouse_over || active || !icons_greyscale) { /* focused */
@@ -524,7 +522,7 @@ static void on_window_state_changed (
     g_return_if_fail (TASK_IS_ITEM (taskItem));
     if (new_state & WNCK_WINDOW_STATE_URGENT && !taskItem->blink_timer) {
         taskItem->blink_timer = g_timeout_add (30, (GSourceFunc) on_blink, taskItem);
-        g_get_current_time (&taskItem->urgent_time);
+        taskItem->urgent_time = g_get_monotonic_time ();
     }
     task_item_set_visibility (taskItem);
 }
