@@ -112,7 +112,7 @@ static void
 update_hints (TaskItem *item)
 {
     GtkWidget *toplevel;
-    GtkAllocation item_allocation, toplevel_allocation;
+    GtkAllocation item_allocation;
     WnckWindow *window;
     gint x, y, toplevel_x, toplevel_y;
 
