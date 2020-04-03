@@ -119,7 +119,7 @@ typedef struct _BattstatApplet
   gboolean refresh_label;
 
   /* the main table that contains the visual elements */
-  GtkWidget *table;
+  GtkWidget *grid;
 
   /* the visual elements */
   GtkWidget *battery;

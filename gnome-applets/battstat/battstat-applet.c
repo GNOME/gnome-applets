@@ -1163,45 +1163,46 @@ load_preferences(ProgressData *battstat)
   battstat->showtext = g_settings_get_int (battstat->settings, KEY_SHOW_TEXT);
 }
 
-/* Convenience function to attach a child widget to a GtkTable in the
-   position indicated by 'loc'.  This is very special-purpose for 3x3
-   tables and only supports positions that are used in this applet.
- */
 static void
-table_layout_attach( GtkTable *table, LayoutLocation loc, GtkWidget *child )
+grid_layout_attach (GtkGrid        *grid,
+                    LayoutLocation  loc,
+                    GtkWidget      *child)
 {
   GtkAttachOptions flags;
 
   flags = GTK_FILL | GTK_EXPAND;
 
+  gtk_widget_set_hexpand (child, TRUE);
+  gtk_widget_set_vexpand (child, TRUE);
+
   switch( loc )
   {
     case LAYOUT_LONG:
-      gtk_table_attach( table, child, 1, 2, 0, 2, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 1, 0, 1, 2);
       break;
 
     case LAYOUT_TOPLEFT:
-      gtk_table_attach( table, child, 0, 1, 0, 1, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 0, 0, 1, 1);
       break;
 
     case LAYOUT_TOP:
-      gtk_table_attach( table, child, 1, 2, 0, 1, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 1, 0, 1, 1);
       break;
 
     case LAYOUT_LEFT:
-      gtk_table_attach( table, child, 0, 1, 1, 2, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 0, 1, 1, 1);
       break;
 
     case LAYOUT_CENTRE:
-      gtk_table_attach( table, child, 1, 2, 1, 2, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 1, 1, 1, 1);
       break;
 
     case LAYOUT_RIGHT:
-      gtk_table_attach( table, child, 2, 3, 1, 2, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 2, 1, 1, 1);
       break;
 
     case LAYOUT_BOTTOM:
-      gtk_table_attach( table, child, 1, 2, 2, 3, flags, flags, 2, 2 );
+      gtk_grid_attach (grid, child, 1, 2, 1, 1);
       break;
 
     default:
@@ -1307,22 +1308,16 @@ reconfigure_layout( ProgressData *battstat )
 
     /* Start by removing any elements in the table from the table. */
     if( battstat->layout.text )
-      gtk_container_remove( GTK_CONTAINER( battstat->table ),
-                            battstat->percent );
+      gtk_container_remove (GTK_CONTAINER (battstat->grid), battstat->percent);
     if( battstat->layout.status )
-      gtk_container_remove( GTK_CONTAINER( battstat->table ),
-                            battstat->status );
+      gtk_container_remove (GTK_CONTAINER (battstat->grid), battstat->status);
     if( battstat->layout.battery )
-      gtk_container_remove( GTK_CONTAINER( battstat->table ),
-                            battstat->battery );
+      gtk_container_remove (GTK_CONTAINER (battstat->grid), battstat->battery);
 
     /* Attach the elements to their new locations. */
-    table_layout_attach( GTK_TABLE(battstat->table),
-                         c.battery, battstat->battery );
-    table_layout_attach( GTK_TABLE(battstat->table),
-                         c.status, battstat->status );
-    table_layout_attach( GTK_TABLE(battstat->table),
-                         c.text, battstat->percent );
+    grid_layout_attach (GTK_GRID (battstat->grid), c.battery, battstat->battery);
+    grid_layout_attach (GTK_GRID (battstat->grid), c.status, battstat->status);
+    grid_layout_attach (GTK_GRID (battstat->grid), c.text, battstat->percent);
 
     gtk_widget_show_all (GTK_WIDGET (battstat));
   }
@@ -1353,10 +1348,13 @@ static gint
 create_layout(ProgressData *battstat)
 {
   /* Allocate the four widgets that we need. */
-  battstat->table = gtk_table_new( 3, 3, FALSE );
+  battstat->grid = gtk_grid_new ();
   battstat->percent = gtk_label_new( "" );
   battstat->status = gtk_image_new();
   battstat->battery = gtk_image_new();
+
+  gtk_grid_set_column_spacing (GTK_GRID (battstat->grid), 2);
+  gtk_grid_set_row_spacing (GTK_GRID (battstat->grid), 2);
 
   gp_add_text_color_class (battstat->percent);
 
@@ -1378,7 +1376,7 @@ create_layout(ProgressData *battstat)
   battstat->layout.battery = LAYOUT_NONE;
 
   /* Put the table directly inside the applet and show everything. */
-  gtk_container_add (GTK_CONTAINER (battstat), battstat->table);
+  gtk_container_add (GTK_CONTAINER (battstat), battstat->grid);
   gtk_widget_show_all (GTK_WIDGET (battstat));
 
   /* Attach all sorts of signals to the applet. */
