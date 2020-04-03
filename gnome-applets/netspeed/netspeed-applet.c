@@ -810,7 +810,7 @@ details_cb (GSimpleAction *action,
 {
 	NetspeedApplet *applet = (NetspeedApplet*)user_data;
 	GtkWidget *box, *hbox;
-	GtkWidget *table, *da_frame;
+	GtkWidget *grid, *da_frame;
 	GtkWidget *ip_label, *netmask_label;
 	GtkWidget *hwaddr_label, *ptpip_label;
 	GtkWidget *ip_text, *netmask_text;
@@ -842,11 +842,11 @@ details_cb (GSimpleAction *action,
 	
 	box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
 	gtk_container_set_border_width(GTK_CONTAINER(box), 12);
-	
-	table = gtk_table_new(4, 4, FALSE);
-	gtk_table_set_row_spacings(GTK_TABLE(table), 10);
-	gtk_table_set_col_spacings(GTK_TABLE(table), 15);
-	
+
+	grid = gtk_grid_new ();
+	gtk_grid_set_row_spacing (GTK_GRID (grid), 10);
+	gtk_grid_set_column_spacing (GTK_GRID (grid), 15);
+
 	da_frame = gtk_frame_new(NULL);
 	gtk_frame_set_shadow_type(GTK_FRAME(da_frame), GTK_SHADOW_IN);
 	applet->drawingarea = GTK_DRAWING_AREA(gtk_drawing_area_new());
@@ -902,20 +902,33 @@ details_cb (GSimpleAction *action,
 	gtk_misc_set_alignment(GTK_MISC(applet->inbytes_text), 0.0f, 0.5f);
 	gtk_misc_set_alignment(GTK_MISC(outbytes_label), 0.0f, 0.5f);
 	gtk_misc_set_alignment(GTK_MISC(applet->outbytes_text), 0.0f, 0.5f);
-	
-	gtk_table_attach_defaults(GTK_TABLE(table), ip_label, 0, 1, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), ip_text, 1, 2, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), netmask_label, 2, 3, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), netmask_text, 3, 4, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(table), hwaddr_label, 0, 1, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(table), hwaddr_text, 1, 2, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(table), ptpip_label, 2, 3, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(table), ptpip_text, 3, 4, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(table), inbytes_label, 0, 1, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(table), applet->inbytes_text, 1, 2, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(table), outbytes_label, 2, 3, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(table), applet->outbytes_text, 3, 4, 2, 3);
-	
+
+	gtk_widget_set_hexpand (ip_label, TRUE);
+	gtk_widget_set_hexpand (ip_text, TRUE);
+	gtk_widget_set_hexpand (netmask_label, TRUE);
+	gtk_widget_set_hexpand (netmask_text, TRUE);
+	gtk_widget_set_hexpand (hwaddr_label, TRUE);
+	gtk_widget_set_hexpand (hwaddr_text, TRUE);
+	gtk_widget_set_hexpand (ptpip_label, TRUE);
+	gtk_widget_set_hexpand (inbytes_label, TRUE);
+	gtk_widget_set_hexpand (ptpip_text, TRUE);
+	gtk_widget_set_hexpand (applet->inbytes_text, TRUE);
+	gtk_widget_set_hexpand (outbytes_label, TRUE);
+	gtk_widget_set_hexpand (applet->outbytes_text, TRUE);
+
+	gtk_grid_attach (GTK_GRID (grid), ip_label, 0, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), ip_text, 1, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), netmask_label, 2, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), netmask_text, 3, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), hwaddr_label, 0, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), hwaddr_text, 1, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), ptpip_label, 2, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), ptpip_text, 3, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), inbytes_label, 0, 2, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), applet->inbytes_text, 1, 2, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), outbytes_label, 2, 2, 1, 1);
+	gtk_grid_attach (GTK_GRID (grid), applet->outbytes_text, 3, 2, 1, 1);
+
 	/* check if we got an ipv6 address */
 	if (applet->devinfo.ipv6 && (strlen (applet->devinfo.ipv6) > 2)) {
 		GtkWidget *ipv6_label, *ipv6_text;
@@ -927,11 +940,14 @@ details_cb (GSimpleAction *action,
 		
 		gtk_misc_set_alignment (GTK_MISC (ipv6_label), 0.0f, 0.5f);
 		gtk_misc_set_alignment (GTK_MISC (ipv6_text), 0.0f, 0.5f);
-		
-		gtk_table_attach_defaults (GTK_TABLE (table), ipv6_label, 0, 1, 3, 4);
-		gtk_table_attach_defaults (GTK_TABLE (table), ipv6_text, 1, 2, 3, 4);
+
+		gtk_widget_set_hexpand (ipv6_label, TRUE);
+		gtk_widget_set_hexpand (ipv6_text, TRUE);
+
+		gtk_grid_attach (GTK_GRID (grid), ipv6_label, 0, 3, 1, 1);
+		gtk_grid_attach (GTK_GRID (grid), ipv6_text, 1, 3, 1, 1);
 	}
-	
+
 	if (applet->devinfo.type == DEV_WIRELESS) {
 		GtkWidget *signal_label;
 		GtkWidget *essid_label;
@@ -962,10 +978,15 @@ details_cb (GSimpleAction *action,
 
 		gtk_label_set_selectable (GTK_LABEL (essid_text), TRUE);
 
-		gtk_table_attach_defaults (GTK_TABLE (table), signal_label, 2, 3, 4, 5);
-		gtk_table_attach_defaults (GTK_TABLE (table), GTK_WIDGET (applet->signalbar), 3, 4, 4, 5);
-		gtk_table_attach_defaults (GTK_TABLE (table), essid_label, 0, 3, 4, 5);
-		gtk_table_attach_defaults (GTK_TABLE (table), essid_text, 1, 4, 4, 5);
+		gtk_widget_set_hexpand (signal_label, TRUE);
+		gtk_widget_set_hexpand (applet->signalbar, TRUE);
+		gtk_widget_set_hexpand (essid_label, TRUE);
+		gtk_widget_set_hexpand (essid_text, TRUE);
+
+		gtk_grid_attach (GTK_GRID (grid), signal_label, 2, 4, 1, 1);
+		gtk_grid_attach (GTK_GRID (grid), GTK_WIDGET (applet->signalbar), 3, 4, 1, 1);
+		gtk_grid_attach (GTK_GRID (grid), essid_label, 0, 4, 3, 1);
+		gtk_grid_attach (GTK_GRID (grid), essid_text, 1, 4, 3, 1);
 	}
 
 	g_signal_connect(applet->drawingarea, "draw",
@@ -985,7 +1006,7 @@ details_cb (GSimpleAction *action,
 
 	gtk_box_pack_start(GTK_BOX(box), da_frame, TRUE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(box), hbox, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(box), table, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (box), grid, FALSE, FALSE, 0);
 
         dialog_vbox = gtk_dialog_get_content_area (GTK_DIALOG (applet->details));
 	gtk_container_add(GTK_CONTAINER(dialog_vbox), box);
