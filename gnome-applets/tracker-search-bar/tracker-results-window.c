@@ -163,9 +163,10 @@
 
 #undef USE_SEPARATOR_FOR_SPACING
 
-#define TRACKER_RESULTS_WINDOW_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), TRACKER_TYPE_RESULTS_WINDOW, TrackerResultsWindowPrivate))
+struct _TrackerResultsWindow
+{
+	TrackerAlignedWindow parent;
 
-typedef struct {
 	GtkWidget *frame;
 	GtkWidget *treeview;
 	GtkWidget *scrolled_window;
@@ -184,7 +185,7 @@ typedef struct {
 	GList *search_queries;
 	gint queries_pending;
 	gint request_id;
-} TrackerResultsWindowPrivate;
+};
 
 typedef enum {
 	CATEGORY_NONE                  = 1 << 0,
@@ -297,8 +298,6 @@ tracker_results_window_class_init (TrackerResultsWindowClass *klass)
 	                                                      "Query",
 	                                                      NULL,
 	                                                      G_PARAM_READWRITE));
-
-	g_type_class_add_private (object_class, sizeof (TrackerResultsWindowPrivate));
 }
 
 static gboolean
@@ -339,7 +338,6 @@ tree_view_row_activated_cb (GtkTreeView       *treeview,
                             GtkTreeViewColumn *column,
                             gpointer           user_data)
 {
-	TrackerResultsWindowPrivate *priv;
 	TrackerResultsWindow *window;
 	GtkTreeModel *model;
 	GtkTreeIter iter;
@@ -347,8 +345,7 @@ tree_view_row_activated_cb (GtkTreeView       *treeview,
 	gboolean success;
 
 	window = user_data;
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-	model = GTK_TREE_MODEL (priv->store);
+	model = GTK_TREE_MODEL (window->store);
 
 	if (!gtk_tree_model_get_iter (model, &iter, path)) {
 		return;
@@ -385,54 +382,51 @@ tree_view_row_activated_cb (GtkTreeView       *treeview,
 }
 
 static void
-tracker_results_window_init (TrackerResultsWindow *window)
+tracker_results_window_init (TrackerResultsWindow *self)
 {
-	TrackerResultsWindowPrivate *priv;
 	GtkWidget *vbox;
 	GError *error = NULL;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-
-	priv->cancellable = g_cancellable_new ();
-	priv->connection = tracker_sparql_connection_get (priv->cancellable, &error);
+	self->cancellable = g_cancellable_new ();
+	self->connection = tracker_sparql_connection_get (self->cancellable, &error);
 	if (error != NULL) {
 		g_warning ("Cannot connect to tracker: %s\n", error->message);
 		g_error_free (error);
-		g_object_unref (priv->cancellable);
+		g_object_unref (self->cancellable);
 	}
 
-	priv->frame = gtk_frame_new (NULL);
-	gtk_container_add (GTK_CONTAINER (window), priv->frame);
-	gtk_frame_set_shadow_type (GTK_FRAME (priv->frame), GTK_SHADOW_IN);
-	gtk_widget_set_size_request (priv->frame, 500, 500);
-	gtk_widget_show (priv->frame);
+	self->frame = gtk_frame_new (NULL);
+	gtk_container_add (GTK_CONTAINER (self), self->frame);
+	gtk_frame_set_shadow_type (GTK_FRAME (self->frame), GTK_SHADOW_IN);
+	gtk_widget_set_size_request (self->frame, 500, 500);
+	gtk_widget_show (self->frame);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-	gtk_container_add (GTK_CONTAINER (priv->frame), vbox);
+	gtk_container_add (GTK_CONTAINER (self->frame), vbox);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 2);
 	gtk_widget_show (vbox);
 
-	priv->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-	gtk_container_add (GTK_CONTAINER (vbox), priv->scrolled_window);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
+	self->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+	gtk_container_add (GTK_CONTAINER (vbox), self->scrolled_window);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (self->scrolled_window),
 	                                GTK_POLICY_AUTOMATIC,
 	                                GTK_POLICY_AUTOMATIC);
 
-	priv->treeview = gtk_tree_view_new ();
-	gtk_container_add (GTK_CONTAINER (priv->scrolled_window), priv->treeview);
-	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->treeview), FALSE);
-	g_signal_connect (priv->treeview, "row-activated",
-	                  G_CALLBACK (tree_view_row_activated_cb), window);
+	self->treeview = gtk_tree_view_new ();
+	gtk_container_add (GTK_CONTAINER (self->scrolled_window), self->treeview);
+	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (self->treeview), FALSE);
+	g_signal_connect (self->treeview, "row-activated",
+	                  G_CALLBACK (tree_view_row_activated_cb), self);
 
-	priv->label = gtk_label_new (NULL);
-	gtk_widget_set_sensitive (priv->label, FALSE);
-	gtk_container_add (GTK_CONTAINER (vbox), priv->label);
+	self->label = gtk_label_new (NULL);
+	gtk_widget_set_sensitive (self->label, FALSE);
+	gtk_container_add (GTK_CONTAINER (vbox), self->label);
 
-	priv->icon_theme = gtk_icon_theme_get_default ();
+	self->icon_theme = gtk_icon_theme_get_default ();
 
-	model_set_up (window);
+	model_set_up (self);
 
-	gtk_widget_show_all (priv->scrolled_window);
+	gtk_widget_show_all (self->scrolled_window);
 }
 
 static void
@@ -448,26 +442,26 @@ results_window_constructed (GObject *object)
 static void
 results_window_finalize (GObject *object)
 {
-	TrackerResultsWindowPrivate *priv;
+	TrackerResultsWindow *self;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (object);
+	self = TRACKER_RESULTS_WINDOW (object);
 
-	g_free (priv->query);
+	g_free (self->query);
 
-	if (priv->cancellable) {
-		g_cancellable_cancel (priv->cancellable);
-		g_object_unref (priv->cancellable);
+	if (self->cancellable) {
+		g_cancellable_cancel (self->cancellable);
+		g_object_unref (self->cancellable);
 	}
 
-	if (priv->connection) {
-		g_object_unref (priv->connection);
+	if (self->connection) {
+		g_object_unref (self->connection);
 	}
 
 	/* Clean up previous requests, this will call
 	 * g_cancellable_cancel() on each query still running.
 	 */
-	g_list_foreach (priv->search_queries, (GFunc) search_query_free, NULL);
-	g_list_free (priv->search_queries);
+	g_list_foreach (self->search_queries, (GFunc) search_query_free, NULL);
+	g_list_free (self->search_queries);
 
 	G_OBJECT_CLASS (tracker_results_window_parent_class)->finalize (object);
 }
@@ -478,17 +472,17 @@ results_window_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-	TrackerResultsWindowPrivate *priv;
+	TrackerResultsWindow *self;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (object);
+	self = TRACKER_RESULTS_WINDOW (object);
 
 	switch (prop_id) {
 	case PROP_QUERY:
 		/* Don't do the search_start() call if the window was
 		 * just set up.
 		 */
-		g_free (priv->query);
-		priv->query = g_value_dup_string (value);
+		g_free (self->query);
+		self->query = g_value_dup_string (value);
 		search_start (TRACKER_RESULTS_WINDOW (object));
 		break;
 	default:
@@ -503,13 +497,13 @@ results_window_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-	TrackerResultsWindowPrivate *priv;
+	TrackerResultsWindow *self;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (object);
+	self = TRACKER_RESULTS_WINDOW (object);
 
 	switch (prop_id) {
 	case PROP_QUERY:
-		g_value_set_string (value, priv->query);
+		g_value_set_string (value, self->query);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -624,19 +618,19 @@ static void
 results_window_screen_changed (GtkWidget *widget,
                                GdkScreen *prev_screen)
 {
-	TrackerResultsWindowPrivate *priv;
+	TrackerResultsWindow *self;
 	GdkScreen *screen;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (widget);
+	self = TRACKER_RESULTS_WINDOW (widget);
 
-	if (priv->icon_theme) {
-		priv->icon_theme = NULL;
+	if (self->icon_theme) {
+		self->icon_theme = NULL;
 	}
 
 	screen = gtk_widget_get_screen (widget);
 
 	if (screen) {
-		priv->icon_theme = gtk_icon_theme_get_for_screen (screen);
+		self->icon_theme = gtk_icon_theme_get_for_screen (screen);
 		/* FIXME: trigger the model to update icons */
 	}
 
@@ -797,7 +791,6 @@ pixbuf_get (TrackerResultsWindow *window,
             const gchar          *icon_name,
             TrackerCategory       category)
 {
-	TrackerResultsWindowPrivate *priv;
 	const gchar *attributes;
 	GFile *file;
 	GFileInfo *info;
@@ -805,7 +798,6 @@ pixbuf_get (TrackerResultsWindow *window,
 	GdkPixbuf *pixbuf = NULL;
 	GError *error = NULL;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
 	file = g_file_new_for_uri (uri);
 
         if (category & CATEGORY_TAG) {
@@ -816,7 +808,7 @@ pixbuf_get (TrackerResultsWindow *window,
 
 	if (icon_name) {
 		if (strrchr (icon_name, '.') == NULL) {
-			pixbuf = gtk_icon_theme_load_icon (priv->icon_theme,
+			pixbuf = gtk_icon_theme_load_icon (window->icon_theme,
 			                                   icon_name, 24,
 			                                   GTK_ICON_LOOKUP_USE_BUILTIN,
 			                                   &error);
@@ -889,7 +881,7 @@ pixbuf_get (TrackerResultsWindow *window,
 			const gchar **names;
 
 			names = (const gchar**) g_themed_icon_get_names (G_THEMED_ICON (icon));
-			icon_info = gtk_icon_theme_choose_icon (priv->icon_theme,
+			icon_info = gtk_icon_theme_choose_icon (window->icon_theme,
 			                                        names,
 			                                        24,
 			                                        GTK_ICON_LOOKUP_USE_BUILTIN);
@@ -1052,15 +1044,13 @@ model_selection_func (GtkTreeSelection *selection,
 static void
 model_set_up (TrackerResultsWindow *window)
 {
-	TrackerResultsWindowPrivate *priv;
 	GtkTreeView *view;
 	GtkTreeViewColumn *column;
 	GtkTreeSelection *selection;
 	GtkListStore *store;
 	GtkCellRenderer *cell;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-	view = GTK_TREE_VIEW (priv->treeview);
+	view = GTK_TREE_VIEW (window->treeview);
 
 	/* View */
 	gtk_tree_view_set_enable_search (view, FALSE);
@@ -1145,7 +1135,7 @@ model_set_up (TrackerResultsWindow *window)
 	gtk_tree_view_set_tooltip_column (view, COL_TOOLTIP);
 
 	/* Save */
-	priv->store = G_OBJECT (store);
+	window->store = G_OBJECT (store);
 }
 
 static void
@@ -1157,13 +1147,10 @@ model_add (TrackerResultsWindow *window,
            const gchar          *link,
            const gchar          *icon_name)
 {
-	TrackerResultsWindowPrivate *priv;
 	GtkTreeIter iter;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-
-	gtk_list_store_append (GTK_LIST_STORE (priv->store), &iter);
-	gtk_list_store_set (GTK_LIST_STORE (priv->store), &iter,
+	gtk_list_store_append (GTK_LIST_STORE (window->store), &iter);
+	gtk_list_store_set (GTK_LIST_STORE (window->store), &iter,
 	                    COL_CATEGORY_ID, category,
 	                    COL_IMAGE, NULL,
 	                    COL_URN, urn,
@@ -1181,28 +1168,24 @@ model_add (TrackerResultsWindow *window,
 }
 
 static void
-search_window_ensure_not_blank (TrackerResultsWindow *window)
+search_window_ensure_not_blank (TrackerResultsWindow *self)
 {
-	TrackerResultsWindowPrivate *priv;
-
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-
-	if (priv->queries_pending == 0) {
+	if (self->queries_pending == 0) {
 		GtkTreeIter iter;
 
 		/* No more queries pending */
-		if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (priv->store), &iter)) {
+		if (!gtk_tree_model_get_iter_first (GTK_TREE_MODEL (self->store), &iter)) {
 			gchar *str;
 
-			str = g_strdup_printf (_("No results found for “%s”"), priv->query);
-			gtk_label_set_text (GTK_LABEL (priv->label), str);
+			str = g_strdup_printf (_("No results found for “%s”"), self->query);
+			gtk_label_set_text (GTK_LABEL (self->label), str);
 			g_free (str);
 
-			gtk_widget_hide (priv->scrolled_window);
-			gtk_widget_show (priv->label);
+			gtk_widget_hide (self->scrolled_window);
+			gtk_widget_show (self->label);
 		} else {
-			gtk_widget_show_all (priv->scrolled_window);
-			gtk_widget_hide (priv->label);
+			gtk_widget_show_all (self->scrolled_window);
+			gtk_widget_hide (self->label);
 		}
 	}
 }
@@ -1249,27 +1232,25 @@ search_get_cb (GObject      *source_object,
 {
 	TrackerSparqlCursor *cursor;
 	TrackerResultsWindow *window;
-	TrackerResultsWindowPrivate *priv;
 	SearchQuery *sq;
 	GError *error = NULL;
 
 	sq = user_data;
 	window = sq->window;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-	priv->queries_pending--;
+	window->queries_pending--;
 
 	cursor = tracker_sparql_connection_query_finish (TRACKER_SPARQL_CONNECTION (source_object),
 							 res,
 							 &error);
 
 	/* If request IDs don't match, data is no longer needed */
-	if (priv->request_id != sq->request_id) {
+	if (window->request_id != sq->request_id) {
 		g_message ("Received data from request id:%d, now on request id:%d",
 		           sq->request_id,
-		           priv->request_id);
+		           window->request_id);
 
-		priv->search_queries = g_list_remove (priv->search_queries, sq);
+		window->search_queries = g_list_remove (window->search_queries, sq);
 		search_query_free (sq);
 
 		/* We don't care about errors if we're not interested
@@ -1292,7 +1273,7 @@ search_get_cb (GObject      *source_object,
 			g_object_unref (cursor);
 		}
 
-		priv->search_queries = g_list_remove (priv->search_queries, sq);
+		window->search_queries = g_list_remove (window->search_queries, sq);
 		search_query_free (sq);
 		search_window_ensure_not_blank (window);
 
@@ -1310,16 +1291,16 @@ search_get_cb (GObject      *source_object,
 
 		/* FIXME: make async */
 		while (tracker_sparql_cursor_next (cursor,
-						   priv->cancellable,
+						   window->cancellable,
 						   &error)) {
 			search_get_foreach (sq, cursor);
 		}
 
 		/* Add separator */
-		if (priv->first_category_populated && g_slist_length (sq->results) > 0) {
+		if (window->first_category_populated && g_slist_length (sq->results) > 0) {
 			model_add (window, CATEGORY_NONE, NULL, NULL, NULL, NULL, NULL);
 		} else {
-			priv->first_category_populated = TRUE;
+			window->first_category_populated = TRUE;
 		}
 
 		for (l = sq->results; l; l = l->next) {
@@ -1337,11 +1318,11 @@ search_get_cb (GObject      *source_object,
 		g_object_unref (cursor);
 	}
 
-	priv->search_queries = g_list_remove (priv->search_queries, sq);
+	window->search_queries = g_list_remove (window->search_queries, sq);
 	search_query_free (sq);
 	search_window_ensure_not_blank (window);
 
-	if (priv->queries_pending < 1) {
+	if (window->queries_pending < 1) {
 		g_print ("\n\n\n");
 	}
 }
@@ -1350,14 +1331,11 @@ static void
 search_get (TrackerResultsWindow *window,
             TrackerCategory       category)
 {
-	TrackerResultsWindowPrivate *priv;
 	SearchQuery *sq;
 	gchar *sparql;
 	const gchar *format;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-
-	if (!priv->connection) {
+	if (!window->connection) {
 		return;
 	}
 
@@ -1401,53 +1379,50 @@ search_get (TrackerResultsWindow *window,
 		return;
 	}
 
-	sq = search_query_new (priv->request_id, category, window);
-	priv->search_queries = g_list_prepend (priv->search_queries, sq);
+	sq = search_query_new (window->request_id, category, window);
+	window->search_queries = g_list_prepend (window->search_queries, sq);
 
-	sparql = g_strdup_printf (format, priv->query, MAX_ITEMS);
-	tracker_sparql_connection_query_async (priv->connection,
+	sparql = g_strdup_printf (format, window->query, MAX_ITEMS);
+	tracker_sparql_connection_query_async (window->connection,
 					       sparql,
 					       sq->cancellable,
 					       search_get_cb,
 					       sq);
 	g_free (sparql);
 
-	priv->queries_pending++;
+	window->queries_pending++;
 }
 
 static void
 search_start (TrackerResultsWindow *window)
 {
-	TrackerResultsWindowPrivate *priv;
 	GtkTreeModel *model;
 	GtkListStore *store;
 
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
-
 	/* Cancel current requests */
-	priv->request_id++;
-	g_message ("Incrementing request ID to %d", priv->request_id);
+	window->request_id++;
+	g_message ("Incrementing request ID to %d", window->request_id);
 
 	/* Clear current data */
 	g_message ("Clearing previous results");
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (priv->treeview));
+	model = gtk_tree_view_get_model (GTK_TREE_VIEW (window->treeview));
 	store = GTK_LIST_STORE (model);
 	gtk_list_store_clear (store);
 
-	if (!priv->query || strlen (priv->query) < 1) {
-		gtk_widget_show (priv->scrolled_window);
-		gtk_widget_hide (priv->label);
+	if (!window->query || strlen (window->query) < 1) {
+		gtk_widget_show (window->scrolled_window);
+		gtk_widget_hide (window->label);
 		gtk_widget_hide (GTK_WIDGET (window));
 		return;
 	}
 
-	priv->first_category_populated = FALSE;
+	window->first_category_populated = FALSE;
 
 	/* Clean up previous requests, this will call
 	 * g_cancellable_cancel() on each query still running.
 	 */
-	g_list_foreach (priv->search_queries, (GFunc) search_query_free, NULL);
-	g_list_free (priv->search_queries);
+	g_list_foreach (window->search_queries, (GFunc) search_query_free, NULL);
+	g_list_free (window->search_queries);
 
 	/* SPARQL requests */
 	search_get (window, CATEGORY_IMAGE);
@@ -1508,21 +1483,18 @@ tracker_results_window_new (GtkWidget   *parent,
 void
 tracker_results_window_popup (TrackerResultsWindow *window)
 {
-        TrackerResultsWindowPrivate *priv;
         GtkAdjustment *vadj, *hadj;
 
         g_return_if_fail (TRACKER_IS_RESULTS_WINDOW (window));
-
-	priv = TRACKER_RESULTS_WINDOW_GET_PRIVATE (window);
 
 	gtk_widget_realize (GTK_WIDGET (window));
 	gtk_widget_show (GTK_WIDGET (window));
 
         /* Force scroll to top-left */
-        vadj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (priv->scrolled_window));
+        vadj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (window->scrolled_window));
         gtk_adjustment_set_value (vadj, gtk_adjustment_get_lower (vadj));
 
-        hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (priv->scrolled_window));
+        hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (window->scrolled_window));
         gtk_adjustment_set_value (hadj, gtk_adjustment_get_lower (hadj));
 
         g_idle_add ((GSourceFunc) grab_popup_window, window);

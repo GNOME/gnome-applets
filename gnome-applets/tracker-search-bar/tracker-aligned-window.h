@@ -24,28 +24,15 @@
 
 G_BEGIN_DECLS
 
-#define TRACKER_TYPE_ALIGNED_WINDOW             (tracker_aligned_window_get_type ())
-#define TRACKER_ALIGNED_WINDOW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TRACKER_TYPE_ALIGNED_WINDOW, TrackerAlignedWindow))
-#define TRACKER_IS_ALIGNED_WINDOW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TRACKER_TYPE_ALIGNED_WINDOW))
-#define TRACKER_ALIGNED_WINDOW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), TRACKER_TYPE_ALIGNED_WINDOW, TrackerAlignedWindowClass))
-#define TRACKER_IS_ALIGNED_WINDOW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), TRACKER_TYPE_ALIGNED_WINDOW))
-#define TRACKER_ALIGNED_WINDOW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), TRACKER_TYPE_ALIGNED_WINDOW, TrackerAlignedWindowClass))
+#define TRACKER_TYPE_ALIGNED_WINDOW (tracker_aligned_window_get_type ())
+G_DECLARE_DERIVABLE_TYPE (TrackerAlignedWindow, tracker_aligned_window,
+                          TRACKER, ALIGNED_WINDOW, GtkWindow)
 
-typedef struct _TrackerAlignedWindow        TrackerAlignedWindow;
-typedef struct _TrackerAlignedWindowClass   TrackerAlignedWindowClass;
-typedef struct _TrackerAlignedWindowPrivate TrackerAlignedWindowPrivate;
-
-struct _TrackerAlignedWindow {
-	GtkWindow parent_instance;
-
-	TrackerAlignedWindowPrivate *private;
-};
-
-struct _TrackerAlignedWindowClass {
+struct _TrackerAlignedWindowClass
+{
 	GtkWindowClass parent_class;
 };
 
-GType      tracker_aligned_window_get_type   (void) G_GNUC_CONST;
 GtkWidget *tracker_aligned_window_new        (GtkWidget            *align_widget);
 void       tracker_aligned_window_set_widget (TrackerAlignedWindow *aligned_window,
                                               GtkWidget            *align_widget);

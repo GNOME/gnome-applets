@@ -27,12 +27,11 @@
 
 #include "tracker-aligned-window.h"
 
-#define TRACKER_ALIGNED_WINDOW_GET_PRIVATE(obj)         (G_TYPE_INSTANCE_GET_PRIVATE ((obj), TRACKER_TYPE_ALIGNED_WINDOW, TrackerAlignedWindowPrivate))
-
-struct _TrackerAlignedWindowPrivate {
+typedef struct
+{
 	GtkWidget *align_widget;
 	guint motion_id;
-};
+} TrackerAlignedWindowPrivate;
 
 enum {
 	PROP_0,
@@ -54,7 +53,9 @@ static gboolean tracker_aligned_window_motion_notify_cb (GtkWidget            *w
                                                          GdkEventMotion       *event,
                                                          TrackerAlignedWindow *aligned_window);
 
-G_DEFINE_TYPE (TrackerAlignedWindow, tracker_aligned_window, GTK_TYPE_WINDOW);
+G_DEFINE_TYPE_WITH_PRIVATE (TrackerAlignedWindow,
+                            tracker_aligned_window,
+                            GTK_TYPE_WINDOW)
 
 static void
 tracker_aligned_window_class_init (TrackerAlignedWindowClass *klass)
@@ -75,20 +76,12 @@ tracker_aligned_window_class_init (TrackerAlignedWindowClass *klass)
 	                                                      "The widget the window should align to",
 	                                                      GTK_TYPE_WIDGET,
 	                                                      G_PARAM_READWRITE));
-
-	g_type_class_add_private (klass, sizeof (TrackerAlignedWindowPrivate));
 }
 
 static void
 tracker_aligned_window_init (TrackerAlignedWindow *aligned_window)
 {
-	TrackerAlignedWindowPrivate *priv = TRACKER_ALIGNED_WINDOW_GET_PRIVATE (aligned_window);
 	GtkWindow *window = GTK_WINDOW (aligned_window);
-
-	aligned_window->private = priv;
-
-	priv->align_widget = NULL;
-	priv->motion_id = 0;
 
 	/* set window properties */
 	gtk_window_set_decorated (window, FALSE);
@@ -102,10 +95,11 @@ tracker_aligned_window_get_property (GObject    *object,
                                      GParamSpec *pspec)
 {
 	TrackerAlignedWindow *aligned_window = TRACKER_ALIGNED_WINDOW (object);
+	TrackerAlignedWindowPrivate *priv = tracker_aligned_window_get_instance_private (aligned_window);
 
 	switch (prop_id) {
 	case PROP_ALIGN_WIDGET:
-		g_value_set_object (value, aligned_window->private->align_widget);
+		g_value_set_object (value,priv->align_widget);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -143,7 +137,7 @@ tracker_aligned_window_position (TrackerAlignedWindow *window)
 	GdkGravity gravity = GDK_GRAVITY_NORTH_WEST;
 
 	g_assert (TRACKER_IS_ALIGNED_WINDOW (window));
-	priv = window->private;
+	priv = tracker_aligned_window_get_instance_private (window);
 
 	if (!priv->align_widget) {
 		return;
@@ -293,7 +287,7 @@ tracker_aligned_window_set_widget (TrackerAlignedWindow *aligned_window,
 		}
 #endif
 
-	priv = TRACKER_ALIGNED_WINDOW_GET_PRIVATE (aligned_window);
+	priv = tracker_aligned_window_get_instance_private (aligned_window);
 
 	if (priv->align_widget) {
 		g_signal_handler_disconnect (priv->align_widget, priv->motion_id);
@@ -326,7 +320,11 @@ tracker_aligned_window_set_widget (TrackerAlignedWindow *aligned_window,
 GtkWidget *
 tracker_aligned_window_get_widget (TrackerAlignedWindow *aligned_window)
 {
+	TrackerAlignedWindowPrivate *priv;
+
 	g_return_val_if_fail (TRACKER_IS_ALIGNED_WINDOW (aligned_window), NULL);
 
-	return aligned_window->private->align_widget;
+	priv = tracker_aligned_window_get_instance_private (aligned_window);
+
+	return priv->align_widget;
 }
