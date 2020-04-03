@@ -142,12 +142,17 @@ static WnckWindow *getRootWindow (WnckScreen *screen) {
 }
 
 /* Returns the highest maximized window */
-static WnckWindow *getUpperMaximized (WBApplet *wbapplet) {
+static WnckWindow *
+getUpperMaximized (WBApplet *wbapplet)
+{
+	GList *windows;
+	WnckWindow *returnwindow;
+
 	if (!wbapplet->prefs->only_maximized)
 		return wbapplet->activewindow;
 
-	GList *windows = wnck_screen_get_windows_stacked(wbapplet->activescreen);
-	WnckWindow *returnwindow = NULL;
+	windows = wnck_screen_get_windows_stacked(wbapplet->activescreen);
+	returnwindow = NULL;
 
 	while (windows && windows->data) {
 		if (wnck_window_is_maximized(windows->data)) {

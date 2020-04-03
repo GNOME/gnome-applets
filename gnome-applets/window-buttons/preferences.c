@@ -138,14 +138,14 @@ loadPreferences (WBApplet *wbapplet)
 gshort *getEBPos(gchar *button_layout) {
 	gshort *ebps = g_new(gshort, WB_BUTTONS);
 	gint i, j;
+	gchar **pch;
 
 	// in case we got a faulty button_layout:
 	for (i=0; i<WB_BUTTONS; i++) ebps[i] = i;
 		if (button_layout == NULL || *button_layout == '\0')
 			return ebps;
 
-//	for(i=0; i<WB_BUTTONS; i++) ebps[i] = -1; //set to -1 if we don't find some
-	gchar **pch = g_strsplit_set(button_layout, ":, ", -1);
+	pch = g_strsplit_set(button_layout, ":, ", -1);
 	i = 0; j = 0;
 	while (pch[j]) {
 		if (!g_strcmp0(pch[j], "minimize")) ebps[0] = i++;
@@ -290,8 +290,10 @@ static void
 cb_show_tooltips (GtkButton *button,
                   WBApplet  *wbapplet)
 {
-	wbapplet->prefs->show_tooltips = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	gint i;
+
+	wbapplet->prefs->show_tooltips = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
+
 	for (i=0; i<WB_BUTTONS; i++)
 		gtk_widget_set_has_tooltip (GTK_WIDGET(wbapplet->button[i]->image), wbapplet->prefs->show_tooltips);
 	savePreferences(wbapplet->prefs, wbapplet);
@@ -325,9 +327,11 @@ cb_metacity_layout (GtkButton *button,
 		wbapplet->prefs->button_layout = getMetacityLayout();
 		gtk_widget_set_sensitive(GTK_WIDGET(entry_custom_layout), FALSE);
 	} else {
+		gchar *new_layout;
+
 		gtk_widget_set_sensitive(GTK_WIDGET(entry_custom_layout), TRUE);
 		wbapplet->prefs->use_metacity_layout = FALSE;
-		gchar *new_layout = g_strdup(gtk_entry_get_text(entry_custom_layout));
+		new_layout = g_strdup(gtk_entry_get_text(entry_custom_layout));
 		wbapplet->prefs->button_layout = new_layout;
 	}
 
@@ -413,6 +417,21 @@ wb_applet_properties_cb (GSimpleAction *action,
 	GtkWidget		***btn;
 	ImageOpenData 	***iod;
 	gint i,j;
+	GtkToggleButton *chkb_only_maximized;
+	GtkToggleButton *chkb_click_effect;
+	GtkToggleButton *chkb_hover_effect;
+	GtkToggleButton *chkb_hide_on_unmaximized;
+	GtkToggleButton *chkb_reverse_order;
+	GtkToggleButton *chkb_hide_decoration;
+	GtkToggleButton *chkb_metacity_order;
+	GtkToggleButton *chkb_show_tooltips;
+	GtkButton *btn_reload_order;
+	GtkButton *btn_close;
+	GtkEntry *entry_custom_order;
+	GtkComboBox *combo_theme;
+	GtkToggleButton **chkb_btn_hidden;
+	GtkRadioButton **radio_orientation;
+	CheckBoxData **cbd;
 
 	wbapplet = (WBApplet *) user_data;
 
@@ -442,22 +461,20 @@ wb_applet_properties_cb (GSimpleAction *action,
 		}
 	}
 
-	GtkToggleButton
-		*chkb_only_maximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_ONLY_MAXIMIZED)),
-		*chkb_click_effect = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_CLICK_EFFECT)),
-		*chkb_hover_effect = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HOVER_EFFECT)),
-		*chkb_hide_on_unmaximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HIDE_ON_UNMAXIMIZED)),
-		*chkb_reverse_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_REVERSE_ORDER)),
-		*chkb_hide_decoration = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HIDE_DECORATION)),
-		*chkb_metacity_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_USE_METACITY_LAYOUT)),
-		*chkb_show_tooltips = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_SHOW_TOOLTIPS));
-	GtkButton
-		*btn_reload_order = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_reload_order")),
-		*btn_close = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_close"));
-	GtkEntry *entry_custom_order = GTK_ENTRY (gtk_builder_get_object(wbapplet->prefbuilder, CFG_BUTTON_LAYOUT));
-	GtkComboBox *combo_theme = GTK_COMBO_BOX (gtk_builder_get_object(wbapplet->prefbuilder, CFG_THEME));
-	GtkToggleButton **chkb_btn_hidden = getHideButtons(wbapplet->prefbuilder);
-	GtkRadioButton **radio_orientation = getOrientationButtons(wbapplet->prefbuilder);
+	chkb_only_maximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_ONLY_MAXIMIZED));
+	chkb_click_effect = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_CLICK_EFFECT));
+	chkb_hover_effect = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HOVER_EFFECT));
+	chkb_hide_on_unmaximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HIDE_ON_UNMAXIMIZED));
+	chkb_reverse_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_REVERSE_ORDER));
+	chkb_hide_decoration = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_HIDE_DECORATION));
+	chkb_metacity_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_USE_METACITY_LAYOUT));
+	chkb_show_tooltips = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_SHOW_TOOLTIPS));
+	btn_reload_order = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_reload_order"));
+	btn_close = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_close"));
+	entry_custom_order = GTK_ENTRY (gtk_builder_get_object(wbapplet->prefbuilder, CFG_BUTTON_LAYOUT));
+	combo_theme = GTK_COMBO_BOX (gtk_builder_get_object(wbapplet->prefbuilder, CFG_THEME));
+	chkb_btn_hidden = getHideButtons(wbapplet->prefbuilder);
+	radio_orientation = getOrientationButtons(wbapplet->prefbuilder);
 
 	loadThemeComboBox(combo_theme, wbapplet->prefs->theme);
 	loadThemeButtons(btn, wbapplet->pixbufs, wbapplet->prefs->images);
@@ -475,7 +492,7 @@ wb_applet_properties_cb (GSimpleAction *action,
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(radio_orientation[wbapplet->prefs->orientation]), TRUE);
 	gtk_entry_set_text (entry_custom_order, (const gchar*)wbapplet->prefs->button_layout);
 
-	CheckBoxData **cbd = g_new(CheckBoxData*, WB_BUTTONS);
+	cbd = g_new(CheckBoxData*, WB_BUTTONS);
 	for (i=0; i<WB_BUTTONS; i++) {
 		cbd[i] = g_new(CheckBoxData,1);
 		cbd[i]->button_id = i;

@@ -57,37 +57,52 @@ gchar *getMetacityLayout() {
 	return retval;
 }
 
-gboolean issetCompizDecoration() {
+gboolean
+issetCompizDecoration ()
+{
+	gboolean retval;
+	GSettings *settings;
+	gchar *current_profile;
+	gchar *path;
+	gchar *cdm;
+
 	if(!decorPluginInstalled()) return FALSE;
 
-	gboolean retval = FALSE;
-	
-	GSettings *settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
-	gchar *current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
+	retval = FALSE;
 
-	gchar *path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
+	settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
+	current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
+
+	path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
 
 	settings = g_settings_new_with_path(GSETTINGS_COMPIZ_DECOR_SCHEMA, path);
-	gchar *cdm = g_settings_get_string(settings, CFG_COMPIZ_DECORATION_MATCH);
+	cdm = g_settings_get_string(settings, CFG_COMPIZ_DECORATION_MATCH);
 
 	if (cdm == NULL) {
 		retval = FALSE;
 	} else if (!g_strcmp0(cdm, CFG_COMPIZ_DECORATION_MATCH_VALUE)) {
 		retval = TRUE;
 	}
+
 	g_free(cdm);
 	g_free(path);
 	g_object_unref(settings);
 	return retval;
 }
 
-void toggleCompizDecoration(gboolean new_value) {
+void
+toggleCompizDecoration(gboolean new_value)
+{
+	GSettings *settings;
+	gchar *current_profile;
+	gchar *path;
+
 	if(!decorPluginInstalled()) return;
 
-	GSettings *settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
-	gchar *current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
+	settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
+	current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
 
-	gchar *path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
+	path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
 
 	settings = g_settings_new_with_path(GSETTINGS_COMPIZ_DECOR_SCHEMA, path);
 

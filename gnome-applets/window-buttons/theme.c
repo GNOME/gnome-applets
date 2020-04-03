@@ -90,23 +90,34 @@ const gchar* getButtonImageState4(int state_id) { // old 4-state mode for backwa
 	}
 }
 
-/* Load the themes into a combo Box */
-void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {
-	GtkTreeIter		iter;
-	GtkListStore	*store = gtk_list_store_new( 3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT );
-	// (0=real_name, 1=display_name, 2=id)
+void
+loadThemeComboBox (GtkComboBox *combo,
+                   gchar       *active_theme)
+{
+	GError *error;
+	GDir *dir_themes;
+	gint active;
+	gint N_THEMES;
+	GtkListStore *store;
+	const gchar *curtheme;
+	GtkTreeIter iter;
+	GtkCellRenderer	*cell;
 
-	GError	*error = NULL;
-	GDir	*dir_themes = g_dir_open(PATH_THEMES, 0, &error);
+	error = NULL;
+	dir_themes = g_dir_open(PATH_THEMES, 0, &error);
+
 	if (error) {
 		g_printerr ("g_dir_open(%s) failed - %s\n", PATH_THEMES, error->message);
 		g_error_free(error);
 		return;
 	}
 
-	gint active = -1;
-	gint N_THEMES = 0;
-	const gchar *curtheme;
+	active = -1;
+	N_THEMES = 0;
+
+	// (0=real_name, 1=display_name, 2=id)
+	store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
+
 	while ((curtheme = g_dir_read_name(dir_themes))) { //TODO: do this in a separate function
 		if ( g_strcmp0(
 		    	g_ascii_strdown(curtheme,-1),
@@ -131,7 +142,7 @@ void loadThemeComboBox(GtkComboBox *combo, gchar *active_theme) {
 	gtk_combo_box_set_model( combo, GTK_TREE_MODEL(store) );
     g_object_unref( G_OBJECT( store ) );
 
-	GtkCellRenderer	*cell = gtk_cell_renderer_text_new();
+	cell = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start( GTK_CELL_LAYOUT( combo ), cell, TRUE );
     gtk_cell_layout_set_attributes( GTK_CELL_LAYOUT( combo ), cell, "text",1, NULL );
 
