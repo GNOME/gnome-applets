@@ -28,9 +28,6 @@ G_DECLARE_FINAL_TYPE (NetspeedApplet, netspeed_applet,
                       NETSPEED, APPLET,
                       GpApplet)
 
-void         netspeed_applet_display_help            (NetspeedApplet *netspeed,
-                                                      const gchar    *section);
-
 GSettings   *netspeed_applet_get_settings            (NetspeedApplet *netspeed);
 
 const gchar *netspeed_applet_get_current_device_name (NetspeedApplet *netspeed);

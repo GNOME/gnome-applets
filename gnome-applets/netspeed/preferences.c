@@ -277,7 +277,8 @@ netspeed_preferences_response (GtkDialog *dialog,
 
   switch (response_id) {
     case GTK_RESPONSE_HELP:
-      netspeed_applet_display_help (preferences->netspeed, "netspeed_applet-settings");
+      gp_applet_show_help (GP_APPLET (preferences->netspeed),
+                           "netspeed_applet-settings");
       break;
     default:
       gtk_widget_destroy (GTK_WIDGET (preferences));

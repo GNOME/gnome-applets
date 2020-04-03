@@ -584,18 +584,12 @@ timeout_function(NetspeedApplet *applet)
 	return TRUE;
 }
 
-/* Opens gnome help application
- */
 static void
 help_cb (GSimpleAction *action,
          GVariant      *parameter,
          gpointer       user_data)
 {
-	NetspeedApplet *netspeed;
-
-	netspeed = NETSPEED_APPLET (user_data);
-
-	netspeed_applet_display_help (netspeed, NULL);
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 static void
@@ -795,7 +789,7 @@ static void
 info_response_cb (GtkDialog *dialog, gint id, NetspeedApplet *applet)
 {
 	if (id == GTK_RESPONSE_HELP) {
-		netspeed_applet_display_help (applet, "netspeed_applet-details");
+		gp_applet_show_help (GP_APPLET (applet), "netspeed_applet-details");
 		return;
 	}
 
@@ -1459,43 +1453,6 @@ netspeed_applet_setup (GpApplet *applet)
 	                  netspeed);
 
 	setup_menu (applet);
-}
-
-void
-netspeed_applet_display_help (NetspeedApplet *netspeed,
-                              const gchar    *section)
-{
-	GError *error;
-	gboolean ret;
-	gchar *uri;
-
-	if (section)
-		uri = g_strdup_printf ("help:netspeed_applet/%s", section);
-	else
-		uri = g_strdup ("help:netspeed_applet");
-
-	error = NULL;
-	ret = gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (netspeed)),
-	                    uri, GDK_CURRENT_TIME, &error);
-	g_free (uri);
-
-	if (ret == FALSE) {
-		GtkWidget *error_dialog;
-
-		error_dialog = gtk_message_dialog_new (NULL,
-		                                       GTK_DIALOG_MODAL,
-		                                       GTK_MESSAGE_ERROR,
-		                                       GTK_BUTTONS_OK,
-		                                       _("There was an error displaying help:\n%s"),
-		                                       error->message);
-		g_error_free (error);
-
-		g_signal_connect (error_dialog, "response",
-		                  G_CALLBACK (gtk_widget_destroy), NULL);
-
-		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-		gtk_widget_show (error_dialog);
-	}
 }
 
 GSettings *
