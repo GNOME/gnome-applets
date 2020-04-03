@@ -204,6 +204,22 @@ wt_applet_properties_cb (GSimpleAction *action,
 {
 	WTApplet *wtapplet;
 	GdkColor btn_color_color;
+	GtkToggleButton *chkb_only_maximized;
+	GtkToggleButton *chkb_hide_on_unmaximized;
+	GtkToggleButton *chkb_hide_icon;
+	GtkToggleButton *chkb_hide_title;
+	GtkToggleButton *chkb_swap_order;
+	GtkToggleButton *chkb_expand_applet;
+	GtkToggleButton *chkb_custom_style;
+	GtkToggleButton *chkb_show_window_menu;
+	GtkToggleButton *chkb_show_tooltips;
+	GtkHScale *scale_alignment;
+	GtkColorButton *btn_color_active;
+	GtkFontButton *btn_font_active;
+	GtkColorButton *btn_color_inactive;
+	GtkFontButton *btn_font_inactive;
+	GtkButton *btn_close;
+	GtkGrid *grid_custom_style;
 
 	wtapplet = (WTApplet *) user_data;
 
@@ -216,23 +232,22 @@ wt_applet_properties_cb (GSimpleAction *action,
 	}
 	//gtk_builder_connect_signals (wtapplet->prefbuilder, NULL); // no need for now
 
-	GtkToggleButton
-		*chkb_only_maximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_ONLY_MAXIMIZED)),
-		*chkb_hide_on_unmaximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_ON_UNMAXIMIZED)),
-		*chkb_hide_icon = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_ICON)),
-		*chkb_hide_title = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_TITLE)),
-		*chkb_swap_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SWAP_ORDER)),
-		*chkb_expand_applet = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_EXPAND_APPLET)),
-		*chkb_custom_style = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_CUSTOM_STYLE)),
-		*chkb_show_window_menu = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SHOW_WINDOW_MENU)),
-		*chkb_show_tooltips = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SHOW_TOOLTIPS));
-	GtkHScale *scale_alignment = GTK_HSCALE (gtk_builder_get_object(wtapplet->prefbuilder, "scale_alignment"));
-	GtkColorButton *btn_color_active = GTK_COLOR_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_color_active"));
-	GtkFontButton *btn_font_active = GTK_FONT_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_font_active"));
-	GtkColorButton *btn_color_inactive = GTK_COLOR_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_color_inactive"));
-	GtkFontButton *btn_font_inactive = GTK_FONT_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_font_inactive"));
-	GtkButton *btn_close = GTK_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_close"));
-	GtkGrid *grid_custom_style = GTK_GRID (gtk_builder_get_object (wtapplet->prefbuilder, "grid_custom_style"));
+	chkb_only_maximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_ONLY_MAXIMIZED));
+	chkb_hide_on_unmaximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_ON_UNMAXIMIZED));
+	chkb_hide_icon = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_ICON));
+	chkb_hide_title = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_HIDE_TITLE));
+	chkb_swap_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SWAP_ORDER));
+	chkb_expand_applet = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_EXPAND_APPLET));
+	chkb_custom_style = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_CUSTOM_STYLE));
+	chkb_show_window_menu = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SHOW_WINDOW_MENU));
+	chkb_show_tooltips = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_SHOW_TOOLTIPS));
+	scale_alignment = GTK_HSCALE (gtk_builder_get_object(wtapplet->prefbuilder, "scale_alignment"));
+	btn_color_active = GTK_COLOR_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_color_active"));
+	btn_font_active = GTK_FONT_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_font_active"));
+	btn_color_inactive = GTK_COLOR_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_color_inactive"));
+	btn_font_inactive = GTK_FONT_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_font_inactive"));
+	btn_close = GTK_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_close"));
+	grid_custom_style = GTK_GRID (gtk_builder_get_object (wtapplet->prefbuilder, "grid_custom_style"));
 
 	// set widgets according to preferences
 	gtk_toggle_button_set_active (chkb_only_maximized, wtapplet->prefs->only_maximized);

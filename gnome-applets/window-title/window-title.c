@@ -149,13 +149,17 @@ static WnckWindow *getRootWindow (WnckScreen *screen) {
 		return NULL;
 }
 
-/* Returns the highest maximized window */
-static WnckWindow *getUpperMaximized (WTApplet *wtapplet) {
+static WnckWindow *
+getUpperMaximized (WTApplet *wtapplet)
+{
+	GList *windows;
+	WnckWindow *returnwindow;
+
 	if (!wtapplet->prefs->only_maximized)
 		return wtapplet->activewindow;
 
-	GList *windows = wnck_screen_get_windows_stacked(wtapplet->activescreen);
-	WnckWindow *returnwindow = NULL;
+	windows = wnck_screen_get_windows_stacked(wtapplet->activescreen);
+	returnwindow = NULL;
 
 	while (windows && windows->data) {
 		if (wnck_window_is_maximized(windows->data)) {
@@ -282,10 +286,15 @@ wt_applet_update_title (WTApplet *wtapplet)
 	if (icon_pixbuf == NULL) {
 		gtk_image_clear(wtapplet->icon);
 	} else {
+		GdkPixbuf *ipb1;
+		GdkPixbuf *ipb2;
+
 		// We're updating window info (Careful! We've had pixbuf memory leaks here)
-		GdkPixbuf *ipb1 = gdk_pixbuf_scale_simple(icon_pixbuf, ICON_WIDTH, ICON_HEIGHT, GDK_INTERP_BILINEAR);
+		ipb1 = gdk_pixbuf_scale_simple (icon_pixbuf, ICON_WIDTH, ICON_HEIGHT, GDK_INTERP_BILINEAR);
+
 		if (controlledwindow == wtapplet->rootwindow) g_object_unref(icon_pixbuf); //this is stupid beyond belief, thanks to the retarded GTK framework
-		GdkPixbuf *ipb2 = gdk_pixbuf_rotate_simple(ipb1, wtapplet->angle);
+
+		ipb2 = gdk_pixbuf_rotate_simple (ipb1, wtapplet->angle);
 		g_object_unref(ipb1);	// Unref ipb1 to get it cleared from memory (we still need ipb2)
 
 		// Saturate icon when window is not focused
@@ -519,13 +528,14 @@ static void active_workspace_changed (WnckScreen *screen,
 	*/
 }
 
-static gboolean icon_clicked (GtkWidget *icon,
-                              GdkEventButton *event,
-                              WTApplet *wtapplet)
+static gboolean
+icon_clicked (GtkWidget      *icon,
+              GdkEventButton *event,
+              WTApplet       *wtapplet)
 {
-	if (event->button != 1) return FALSE;
-
 	WnckWindow *controlledwindow;
+
+	if (event->button != 1) return FALSE;
 
 	if (wtapplet->prefs->only_maximized) {
 		controlledwindow = wtapplet->umaxedwindow;
@@ -546,9 +556,10 @@ static gboolean icon_clicked (GtkWidget *icon,
 	return TRUE;
 }
 
-static gboolean title_clicked (GtkWidget *title,
-                               GdkEventButton *event,
-                               WTApplet *wtapplet)
+static gboolean
+title_clicked (GtkWidget      *title,
+               GdkEventButton *event,
+               WTApplet       *wtapplet)
 {
 	// only allow left and right mouse button
 	//if (event->button != 1 && event->button != 3) return FALSE;
@@ -580,8 +591,11 @@ static gboolean title_clicked (GtkWidget *title,
 	} else if (event->button == 3) {
 		// right-click
 		if (wtapplet->prefs->show_window_menu) {
+			GtkMenu *window_menu;
+
 			wnck_window_activate(controlledwindow, gtk_get_current_event_time());
-			GtkMenu *window_menu = GTK_MENU(wnck_action_menu_new(controlledwindow));
+
+			window_menu = GTK_MENU(wnck_action_menu_new(controlledwindow));
 			gtk_menu_popup(window_menu, NULL, NULL, NULL, NULL, event->button, gtk_get_current_event_time());
 			//TODO: somehow alter the panel action menu to also display the wnck_action_menu !
 		} else {
