@@ -70,8 +70,6 @@ properties_set_insensitive(MultiloadApplet *ma)
 static void
 properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 {
-	GError *error = NULL;
-
 	switch (arg)
 	{
 		case GTK_RESPONSE_HELP:
