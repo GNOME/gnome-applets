@@ -117,15 +117,6 @@ get_default_route(void)
 	return NULL;
 }
 
-
-void
-free_devices_list(GList *list)
-{
-	g_list_foreach(list, (GFunc)g_free, NULL);
-	g_list_free(list);
-}
-
-
 /* Frees a DevInfo struct and all the stuff it contains
  */
 void

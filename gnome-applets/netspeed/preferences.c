@@ -135,8 +135,14 @@ device_settings_changed (GSettings   *settings,
     g_settings_set_boolean (settings, "auto-change-device", TRUE);
   }
 
-  free_devices_list (devices);
+  g_list_free_full (devices, g_free);
   g_free (device);
+}
+
+static void
+free_devices (gpointer data)
+{
+  g_list_free_full (data, g_free);
 }
 
 GtkWidget *
@@ -180,7 +186,7 @@ create_network_hbox (NetspeedPreferences *preferences)
 
   g_object_set_data_full (G_OBJECT (network_device_combo),
                           "devices", devices,
-                          (GDestroyNotify) free_devices_list);
+                          free_devices);
 
   g_signal_connect (network_device_combo, "changed",
                     G_CALLBACK (device_change_cb), preferences);

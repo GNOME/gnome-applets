@@ -418,7 +418,8 @@ search_for_up_if(NetspeedApplet *applet)
 		if (set_applet_devinfo(applet, tmp->data))
 			break;
 	}
-	free_devices_list(devices);
+
+	g_list_free_full (devices, g_free);
 }
 
 /* Here happens the really interesting stuff */
@@ -1503,7 +1504,7 @@ netspeed_applet_get_auto_device_name (void)
 		}
 	}
 
-	free_devices_list (devices);
+	g_list_free_full (devices, g_free);
 
 	if (device != NULL)
 		return device;
