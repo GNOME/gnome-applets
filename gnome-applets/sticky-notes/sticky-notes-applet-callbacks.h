@@ -37,7 +37,6 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 void menu_toggle_lock_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer user_data);
 void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
-void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(gpointer data);

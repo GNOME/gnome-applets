@@ -37,6 +37,14 @@ static void sticky_notes_init_prefs (void);
 static void sticky_notes_applet_new (StickyNotesApplet *self);
 
 static void
+menu_help_cb (GSimpleAction *action,
+              GVariant      *parameter,
+              gpointer       user_data)
+{
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
+}
+
+static void
 menu_about_cb (GSimpleAction *action,
                GVariant      *parameter,
                gpointer       user_data)

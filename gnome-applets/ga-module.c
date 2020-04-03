@@ -197,6 +197,7 @@ ga_get_applet_info (const char *id)
       icon_name = "gnome-sticky-notes-applet";
 
       about_func = stickynotes_applet_setup_about;
+      help_uri = "help:stickynotes_applet";
     }
   else if (g_strcmp0 (id, "timer") == 0)
     {
