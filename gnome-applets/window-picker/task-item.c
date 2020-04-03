@@ -218,10 +218,12 @@ static GtkSizeRequestMode
 task_item_get_request_mode (GtkWidget *widget)
 {
   TaskItem *self;
+  GtkOrientation orientation;
 
   self = TASK_ITEM (widget);
+  orientation = gp_applet_get_orientation (GP_APPLET (self->windowPickerApplet));
 
-  if (gp_applet_get_orientation (self->windowPickerApplet) == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
     return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
   else
     return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
