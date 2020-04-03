@@ -14,8 +14,6 @@ libmini_commander_applet_la_CFLAGS = \
 	$(NULL)
 
 libmini_commander_applet_la_SOURCES = \
-	about.c \
-	about.h \
 	cmd-completion.c \
 	cmd-completion.h\
 	command-line.c \

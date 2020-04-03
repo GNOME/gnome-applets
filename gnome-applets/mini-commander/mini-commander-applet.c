@@ -32,7 +32,6 @@
 #include "mini-commander-applet-private.h"
 #include "preferences.h"
 #include "command-line.h"
-#include "about.h"
 #include "help.h"
 #include "gsettings.h"
 
@@ -48,6 +47,14 @@ G_DEFINE_TYPE (MiniCommanderApplet, mini_commander_applet, GP_TYPE_APPLET)
 
 static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
+
+static void
+about_box (GSimpleAction *action,
+           GVariant      *parameter,
+           gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
 
 static const GActionEntry mini_commander_menu_actions [] = {
 	{ "preferences", mc_show_preferences, NULL, NULL, NULL },
@@ -418,4 +425,41 @@ mini_commander_applet_class_init (MiniCommanderAppletClass *self_class)
 static void
 mini_commander_applet_init (MiniCommanderApplet *self)
 {
+}
+
+void
+mini_commander_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("This GNOME applet adds a command line to "
+               "the panel. It features command completion, "
+               "command history, and changeable macros.");
+
+  authors = (const char *[])
+    {
+      "Oliver Maruhn <oliver@maruhn.com>",
+      "Mark McLoughlin <mark@skynet.ie>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Dan Mueth <d-mueth@uchicago.edu>",
+      "Oliver Maruhn <oliver@maruhn.com>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xc2\xa9 1998-2005 Oliver Maruhn and others";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

@@ -165,6 +165,8 @@ ga_get_applet_info (const char *id)
       name = _("Command Line");
       description = _("Mini-Commander");
       icon_name = "gnome-mini-commander";
+
+      about_func = mini_commander_applet_setup_about;
     }
   else if (g_strcmp0 (id, "multiload") == 0)
     {

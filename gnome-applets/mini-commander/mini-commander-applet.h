@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MiniCommanderApplet, mini_commander_applet,
                       MINI_COMMANDER, APPLET, GpApplet)
 
+void mini_commander_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif
