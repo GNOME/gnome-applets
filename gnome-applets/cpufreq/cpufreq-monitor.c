@@ -207,15 +207,13 @@ cpufreq_monitor_finalize (GObject *object)
 
   if (monitor->available_freqs)
     {
-      g_list_foreach (monitor->available_freqs, (GFunc) g_free, NULL);
-      g_list_free (monitor->available_freqs);
+      g_list_free_full (monitor->available_freqs, g_free);
       monitor->available_freqs = NULL;
     }
 
   if (monitor->available_govs)
     {
-      g_list_foreach (monitor->available_govs, (GFunc) g_free, NULL);
-      g_list_free (monitor->available_govs);
+      g_list_free_full (monitor->available_govs, g_free);
       monitor->available_govs = NULL;
     }
 
