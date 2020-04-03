@@ -403,10 +403,9 @@ search_for_up_if(NetspeedApplet *applet)
 {
 	const gchar *default_route;
 	GList *devices, *tmp;
-	DevInfo info;
-	
+
 	default_route = get_default_route();
-    
+
 	if (default_route != NULL) {
 		if (set_applet_devinfo(applet, default_route))
 			return;
