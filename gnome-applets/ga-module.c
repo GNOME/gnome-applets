@@ -128,6 +128,7 @@ ga_get_applet_info (const char *id)
       icon_name = "media-floppy";
 
       about_func = drivemount_applet_setup_about;
+      help_uri = "help:drivemount";
     }
   else if (g_strcmp0 (id, "geyes") == 0)
     {

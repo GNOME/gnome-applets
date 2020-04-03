@@ -79,33 +79,7 @@ display_help (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-    DrivemountApplet *self = (DrivemountApplet *) user_data;
-    GdkScreen *screen;
-    GError *error = NULL;
-
-    screen = gtk_widget_get_screen (GTK_WIDGET (self));
-
-    gtk_show_uri (screen,
-		"help:drivemount",
-		gtk_get_current_event_time (),
-		&error);
-
-    if (error) {
-	GtkWidget *dialog;
-
-	dialog = gtk_message_dialog_new (NULL,
-					 GTK_DIALOG_MODAL,
-					 GTK_MESSAGE_ERROR,
-					 GTK_BUTTONS_OK,
-					 _("There was an error displaying help: %s"),
-					 error->message);
-	g_signal_connect (dialog, "response",
-			  G_CALLBACK (gtk_widget_destroy), NULL);
-	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-	gtk_window_set_screen (GTK_WINDOW (dialog), screen);
-	gtk_widget_show (dialog);
-	g_error_free (error);
-    }
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 static const GActionEntry applet_menu_actions [] = {
