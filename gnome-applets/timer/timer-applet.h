@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 #define TIMER_TYPE_APPLET (timer_applet_get_type ())
 G_DECLARE_FINAL_TYPE (TimerApplet, timer_applet, TIMER, APPLET, GpApplet)
 
+void timer_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

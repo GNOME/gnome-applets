@@ -232,20 +232,12 @@ timer_stop_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
     timer_callback (applet);
 }
 
-/* Show the about dialog */
 static void
-timer_about_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
+timer_about_callback (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
-    const char* authors[] = { "Stefano Karapetsas <stefano@karapetsas.com>", NULL };
-
-    gtk_show_about_dialog(NULL,
-                          "version", VERSION,
-                          "copyright", "Copyright © 2014 Stefano Karapetsas",
-                          "authors", authors,
-                          "comments", _("Start a timer and receive a notification when it is finished"),
-                          "translator-credits", _("translator-credits"),
-                          "logo-icon-name", APPLET_ICON,
-                          NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 /* calculate duration and save in GSettings */
@@ -451,4 +443,23 @@ timer_applet_init (TimerApplet *self)
     notify_init ("timer-applet");
 
   gp_applet_set_flags (applet, GP_APPLET_FLAGS_EXPAND_MINOR);
+}
+
+void
+timer_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char **authors;
+  const char *copyright;
+
+  authors = (const char *[])
+    {
+      "Stefano Karapetsas <stefano@karapetsas.com>",
+      NULL
+    };
+
+  copyright = "Copyright © 2014 Stefano Karapetsas";
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

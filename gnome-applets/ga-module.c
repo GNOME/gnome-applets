@@ -205,6 +205,8 @@ ga_get_applet_info (const char *id)
       name = _("Timer");
       description = _("Start a timer and receive a notification when it is finished");
       icon_name = "gnome-panel-clock";
+
+      about_func = timer_applet_setup_about;
     }
 #ifdef HAVE_TRACKER_SEARCH_BAR
   else if (g_strcmp0 (id, "tracker-search-bar") == 0)
