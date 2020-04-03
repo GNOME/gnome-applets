@@ -98,39 +98,39 @@ static void
 on_task_item_monitor_changed_cb (TaskItem *item,
                                  gpointer  user_data)
 {
-    GdkMonitor *monitor;
-    GdkMonitor *list_monitor;
-    TaskList *list;
-    TaskList *current_list;
-    WnckWindow *window;
+  GdkMonitor *monitor;
+  GdkMonitor *list_monitor;
+  TaskList *list;
+  TaskList *current_list;
+  WnckWindow *window;
 
-    current_list = task_item_get_task_list (item);
-    window = task_item_get_window (item);
+  current_list = task_item_get_task_list (item);
+  window = task_item_get_window (item);
 
-    monitor = task_item_get_monitor (item);
+  monitor = task_item_get_monitor (item);
 
-    list_monitor = task_list_get_monitor (current_list);
+  list_monitor = task_list_get_monitor (current_list);
 
-    if (monitor != list_monitor)
-      {
-        list = get_task_list_for_monitor (monitor);
+  if (monitor == list_monitor)
+    return;
 
-        g_object_ref (item);
+  list = get_task_list_for_monitor (monitor);
 
-        gtk_container_remove (GTK_CONTAINER (current_list), GTK_WIDGET (item));
-        g_hash_table_steal (current_list->items, window);
+  g_object_ref (item);
 
-        gtk_widget_queue_resize (GTK_WIDGET (current_list));
+  gtk_container_remove (GTK_CONTAINER (current_list), GTK_WIDGET (item));
+  g_hash_table_steal (current_list->items, window);
 
-        gtk_container_add (GTK_CONTAINER (list), GTK_WIDGET (item));
-        g_hash_table_insert (list->items, window, item);
+  gtk_widget_queue_resize (GTK_WIDGET (current_list));
 
-        task_item_set_task_list (item, list);
+  gtk_container_add (GTK_CONTAINER (list), GTK_WIDGET (item));
+  g_hash_table_insert (list->items, window, item);
 
-        g_object_unref (item);
+  task_item_set_task_list (item, list);
 
-        gtk_widget_queue_resize (GTK_WIDGET (list));
-      }
+  g_object_unref (item);
+
+  gtk_widget_queue_resize (GTK_WIDGET (list));
 }
 
 static GtkWidget *
