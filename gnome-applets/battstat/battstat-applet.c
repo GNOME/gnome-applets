@@ -1205,6 +1205,7 @@ grid_layout_attach (GtkGrid        *grid,
       gtk_grid_attach (grid, child, 1, 2, 1, 1);
       break;
 
+    case LAYOUT_NONE:
     default:
       break;
   }
