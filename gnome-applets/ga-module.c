@@ -148,6 +148,7 @@ ga_get_applet_info (const char *id)
       icon_name = "weather-storm";
 
       about_func = gweather_applet_setup_about;
+      help_uri = "help:gweather";
     }
   else if (g_strcmp0 (id, "inhibit") == 0)
     {
