@@ -117,6 +117,7 @@ ga_get_applet_info (const char *id)
       icon_name = "gnome-cpu-frequency-applet";
 
       about_func = cpufreq_applet_setup_about;
+      help_uri = "help:cpufreq-applet";
     }
 #endif
   else if (g_strcmp0 (id, "drivemount") == 0)

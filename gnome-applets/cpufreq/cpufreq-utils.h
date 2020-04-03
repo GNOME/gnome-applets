@@ -27,8 +27,6 @@ G_BEGIN_DECLS
 
 /* Useful global methods */
 guint    cpufreq_utils_get_n_cpus            (void);
-void     cpufreq_utils_display_error         (const gchar *message,
-					      const gchar *secondary);
 gboolean cpufreq_utils_selector_is_available (void);
 gchar   *cpufreq_utils_get_frequency_label   (guint        freq);
 gchar   *cpufreq_utils_get_frequency_unit    (guint        freq);

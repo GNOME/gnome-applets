@@ -596,18 +596,7 @@ cpufreq_applet_help_cb (GSimpleAction *action,
                         GVariant      *parameter,
                         gpointer       user_data)
 {
-        GError *error = NULL;
-           
-	gtk_show_uri_on_window (NULL,
-	                        "help:cpufreq-applet",
-	                        gtk_get_current_event_time (),
-	                        &error);
-
-        if (error) {
-                cpufreq_utils_display_error (_("Could not open help document"),
-                                             error->message);
-                g_error_free (error);
-        }
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 static void
@@ -932,7 +921,7 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 	GSettings *settings;
 
         settings = gp_applet_settings_new (GP_APPLET (applet), "org.gnome.gnome-applets.cpufreq");
-        applet->prefs = cpufreq_prefs_new (settings);
+        applet->prefs = cpufreq_prefs_new (applet, settings);
 
 	g_signal_connect (G_OBJECT (applet->prefs),
 			  "notify::cpu",

@@ -50,7 +50,8 @@ struct _CPUFreqPrefsClass {
 
 GType               cpufreq_prefs_get_type           (void) G_GNUC_CONST;
 
-CPUFreqPrefs       *cpufreq_prefs_new                (GSettings *settings);
+CPUFreqPrefs       *cpufreq_prefs_new                (CPUFreqApplet *applet,
+                                                      GSettings     *settings);
 
 guint               cpufreq_prefs_get_cpu            (CPUFreqPrefs *prefs);
 CPUFreqShowMode     cpufreq_prefs_get_show_mode      (CPUFreqPrefs *prefs);

@@ -59,32 +59,6 @@ cpufreq_utils_get_n_cpus (void)
 	return 1;
 }
 
-void
-cpufreq_utils_display_error (const gchar *message,
-			     const gchar *secondary)
-{
-	GtkWidget *dialog;
-
-	g_return_if_fail (message != NULL);
-
-	dialog = gtk_message_dialog_new (NULL,
-					 GTK_DIALOG_DESTROY_WITH_PARENT,
-					 GTK_MESSAGE_ERROR,
-					 GTK_BUTTONS_OK,
-					 "%s", message);
-	if (secondary) {
-		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  "%s", secondary);
-	}
-	
-	gtk_window_set_title (GTK_WINDOW (dialog), ""); /* as per HIG */
-	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dialog), TRUE);
-	g_signal_connect (G_OBJECT (dialog),
-			  "response",
-			  G_CALLBACK (gtk_widget_destroy), NULL);
-	gtk_widget_show (dialog);
-}
-
 #define CACHE_VALIDITY_SEC 2
 
 static gboolean

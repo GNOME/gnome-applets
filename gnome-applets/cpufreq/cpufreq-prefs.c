@@ -38,6 +38,7 @@ struct _CPUFreqPrefsPrivate {
 	CPUFreqShowMode     show_mode;
 	CPUFreqShowTextMode show_text_mode;
 
+	CPUFreqApplet *applet;
 	GSettings *settings;
 
 	/* Preferences dialog */
@@ -221,13 +222,15 @@ cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 }
 
 CPUFreqPrefs *
-cpufreq_prefs_new (GSettings *settings)
+cpufreq_prefs_new (CPUFreqApplet *applet,
+                   GSettings     *settings)
 {
 	CPUFreqPrefs *prefs;
 
 	g_return_val_if_fail (settings != NULL, NULL);
 
 	prefs = CPUFREQ_PREFS (g_object_new (CPUFREQ_TYPE_PREFS, NULL));
+	prefs->priv->applet = applet;
 	prefs->priv->settings = g_object_ref (settings);
 
 	cpufreq_prefs_setup (prefs);
@@ -347,16 +350,8 @@ cpufreq_prefs_dialog_response_cb (CPUFreqPrefs *prefs,
         GError *error = NULL;
 
         if (response == GTK_RESPONSE_HELP) {
-		gtk_show_uri_on_window (GTK_WINDOW (prefs->priv->dialog),
-		                        "help:cpufreq-applet/cpufreq-applet-prefs",
-		                        gtk_get_current_event_time (),
-		                        &error);
-
-                if (error) {
-                        cpufreq_utils_display_error (_("Could not open help document"),
-						     error->message);
-                        g_error_free (error);
-		}
+                gp_applet_show_help (GP_APPLET (prefs->priv->applet),
+                                     "cpufreq-applet-prefs");
         } else {
                 gtk_widget_destroy (prefs->priv->dialog);
                 prefs->priv->dialog = NULL;
