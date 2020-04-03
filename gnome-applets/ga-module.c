@@ -115,6 +115,8 @@ ga_get_applet_info (const char *id)
       name = _("CPU Frequency Scaling Monitor");
       description = _("Monitor the CPU Frequency Scaling");
       icon_name = "gnome-cpu-frequency-applet";
+
+      about_func = cpufreq_applet_setup_about;
     }
 #endif
   else if (g_strcmp0 (id, "drivemount") == 0)

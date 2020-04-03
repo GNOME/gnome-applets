@@ -46,6 +46,8 @@ typedef enum {
 GType    cpufreq_applet_show_mode_get_type      (void) G_GNUC_CONST;
 GType    cpufreq_applet_show_text_mode_get_type (void) G_GNUC_CONST;
 
+void     cpufreq_applet_setup_about             (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif /* CPUFREQ_APPLET_H */

@@ -612,34 +612,10 @@ cpufreq_applet_help_cb (GSimpleAction *action,
 
 static void
 cpufreq_applet_about_cb (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       user_data)
+                         GVariant      *parameter,
+                         gpointer       user_data)
 {
-        static const gchar *const authors[] = {
-                "Carlos Garcia Campos <carlosgc@gnome.org>",
-                NULL
-        };
-        static const gchar *const documenters[] = {
-                "Carlos Garcia Campos <carlosgc@gnome.org>",
-                "Davyd Madeley <davyd@madeley.id.au>",
-                NULL
-        };
-        static const gchar *const artists[] = {
-                "Pablo Arroyo Loma <zzioma@yahoo.es>",
-                NULL
-        };
-
-        gtk_show_about_dialog (NULL,
-                               "version",       VERSION,
-                               "copyright",     "\xC2\xA9 2004 Carlos Garcia Campos",
-                               "comments",      _("This utility shows the current CPU "
-                                                  "Frequency Scaling."),
-                               "authors",       authors,
-                               "documenters",   documenters,
-                               "artists",       artists, 
-                               "translator-credits",    _("translator-credits"),
-			       "logo-icon-name",        "gnome-cpu-frequency-applet",
-                               NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -998,4 +974,45 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 	cpufreq_applet_update_visibility (applet);
 
 	gtk_widget_show (GTK_WIDGET (applet));
+}
+
+void
+cpufreq_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char **artists;
+  const char *copyright;
+
+  comments = _("This utility shows the current CPU Frequency Scaling.");
+
+  authors = (const char *[])
+    {
+      "Carlos Garcia Campos <carlosgc@gnome.org>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Carlos Garcia Campos <carlosgc@gnome.org>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      NULL
+    };
+
+  artists = (const char *[])
+    {
+      "Pablo Arroyo Loma <zzioma@yahoo.es>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2004 Carlos Garcia Campos";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_artists (dialog, artists);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
