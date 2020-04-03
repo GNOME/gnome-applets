@@ -250,24 +250,7 @@ help_cb (GSimpleAction *action,
          GVariant      *parameter,
          gpointer       user_data)
 {
-	EyesApplet *eyes_applet = (EyesApplet *) user_data;
-	GError *error = NULL;
-
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (eyes_applet)),
-		"help:geyes",
-		gtk_get_current_event_time (),
-		&error);
-
-	if (error) {
-		GtkWidget *dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE, 
-							    _("There was an error displaying help: %s"), error->message);
-		g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (gtk_widget_destroy), NULL);
-		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-		gtk_window_set_screen (GTK_WINDOW (dialog), gtk_widget_get_screen (GTK_WIDGET (eyes_applet)));
-		gtk_widget_show (dialog);
-		g_error_free (error);
-		error = NULL;
-	}
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
 }
 
 static const GActionEntry geyes_applet_menu_actions [] = {

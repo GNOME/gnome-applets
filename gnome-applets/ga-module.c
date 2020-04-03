@@ -138,6 +138,7 @@ ga_get_applet_info (const char *id)
       icon_name = "gnome-eyes-applet";
 
       about_func = eyes_applet_setup_about;
+      help_uri = "help:geyes";
     }
   else if (g_strcmp0 (id, "gweather") == 0)
     {
