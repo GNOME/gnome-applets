@@ -136,6 +136,8 @@ ga_get_applet_info (const char *id)
       name = _("Eyes");
       description = _("A set of eyeballs for your panel");
       icon_name = "gnome-eyes-applet";
+
+      about_func = eyes_applet_setup_about;
     }
   else if (g_strcmp0 (id, "gweather") == 0)
     {

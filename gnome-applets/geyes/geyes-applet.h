@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 #define EYES_TYPE_APPLET (eyes_applet_get_type ())
 G_DECLARE_FINAL_TYPE (EyesApplet, eyes_applet, EYES, APPLET, GpApplet)
 
+void eyes_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

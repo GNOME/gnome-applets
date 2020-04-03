@@ -158,28 +158,7 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-        static const gchar *authors [] = {
-		"Dave Camp <campd@oit.edu>",
-		NULL
-	};
-
-	const gchar *documenters[] = {
-                "Arjan Scherpenisse <acscherp@wins.uva.nl>",
-                "Telsa Gwynne <hobbit@aloss.ukuu.org.uk>",
-                "Sun GNOME Documentation Team <gdocteam@sun.com>",
-		NULL
-	};
-
-	gtk_show_about_dialog (NULL,
-		"version",	VERSION,
-		"comments",	_("A goofy set of eyes for the GNOME "
-				  "panel. They follow your mouse."),
-		"copyright",	"\xC2\xA9 1999 Dave Camp",
-		"authors",	authors,
-		"documenters",	documenters,
-		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"gnome-eyes-applet",
-		NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static int
@@ -411,4 +390,39 @@ eyes_applet_init (EyesApplet *self)
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
 
   theme_dirs_create ();
+}
+
+void
+eyes_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("A goofy set of eyes for the GNOME panel. They "
+               "follow your mouse.");
+
+  authors = (const char *[])
+    {
+      "Dave Camp <campd@oit.edu>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Arjan Scherpenisse <acscherp@wins.uva.nl>",
+      "Telsa Gwynne <hobbit@aloss.ukuu.org.uk>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 1999 Dave Camp";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
