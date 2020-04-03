@@ -144,7 +144,7 @@ static void
 cb_custom_style (GtkButton *button,
                  WTApplet  *wtapplet)
 {
-	GtkTable *parent = GTK_TABLE(gtk_builder_get_object(wtapplet->prefbuilder, "table_custom_style"));
+	GtkGrid *parent = GTK_GRID (gtk_builder_get_object (wtapplet->prefbuilder, "grid_custom_style"));
 	gtk_widget_set_sensitive(GTK_WIDGET(parent), gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button)));
 	wtapplet->prefs->custom_style = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(button));
 	savePreferences(wtapplet->prefs, wtapplet);
@@ -232,7 +232,7 @@ wt_applet_properties_cb (GSimpleAction *action,
 	GtkColorButton *btn_color_inactive = GTK_COLOR_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_color_inactive"));
 	GtkFontButton *btn_font_inactive = GTK_FONT_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_font_inactive"));
 	GtkButton *btn_close = GTK_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, "btn_close"));
-	GtkTable *table_custom_style = GTK_TABLE(gtk_builder_get_object(wtapplet->prefbuilder, "table_custom_style"));
+	GtkGrid *grid_custom_style = GTK_GRID (gtk_builder_get_object (wtapplet->prefbuilder, "grid_custom_style"));
 
 	// set widgets according to preferences
 	gtk_toggle_button_set_active (chkb_only_maximized, wtapplet->prefs->only_maximized);
@@ -251,7 +251,7 @@ wt_applet_properties_cb (GSimpleAction *action,
 	gtk_color_button_set_color(btn_color_inactive, &btn_color_color);
 	gtk_font_button_set_font_name(btn_font_active, wtapplet->prefs->title_active_font);
 	gtk_font_button_set_font_name(btn_font_inactive, wtapplet->prefs->title_inactive_font);
-	gtk_widget_set_sensitive(GTK_WIDGET(table_custom_style), gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON(chkb_custom_style)));
+	gtk_widget_set_sensitive (GTK_WIDGET (grid_custom_style), gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (chkb_custom_style)));
 
 	g_signal_connect(G_OBJECT(chkb_only_maximized), "clicked", G_CALLBACK (cb_only_maximized), wtapplet);
 	g_signal_connect(G_OBJECT(chkb_hide_on_unmaximized), "clicked", G_CALLBACK (cb_hide_on_unmaximized), wtapplet);
