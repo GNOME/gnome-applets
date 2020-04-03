@@ -97,6 +97,7 @@ ga_get_applet_info (const char *id)
       icon_name = "accessories-character-map";
 
       about_func = charpick_applet_setup_about;
+      help_uri = "help:char-palette";
     }
   else if (g_strcmp0 (id, "command") == 0)
     {

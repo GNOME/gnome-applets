@@ -471,32 +471,15 @@ static void default_chars_frame_create(charpick_data *curr_data)
 }
 
 static void
-phelp_cb (GtkDialog *dialog, gint tab, gpointer data)
-{
-  GError *error = NULL;
-
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
-                "help:char-palette/charpick-prefs",
-                gtk_get_current_event_time (),
-                &error);
-
-  if (error) { /* FIXME: the user needs to see this */
-    g_warning ("help error: %s\n", error->message);
-    g_error_free (error);
-    error = NULL;
-  }
-}
-
-static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
   charpick_data *curr_data = data;
 
   if(id == GTK_RESPONSE_HELP){
-    phelp_cb (dialog,id,data);
+    gp_applet_show_help (GP_APPLET (curr_data), "charpick-prefs");
     return;
   }
-  
+
   gtk_widget_destroy (curr_data->propwindow);
   curr_data->propwindow = NULL;
   
