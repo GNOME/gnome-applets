@@ -23,8 +23,6 @@ libmini_commander_applet_la_SOURCES = \
 	mini-commander-applet-private.h \
 	mini-commander-applet.c \
 	mini-commander-applet.h \
-	help.c \
-	help.h \
 	history.c \
 	history.h \
 	macro.c \

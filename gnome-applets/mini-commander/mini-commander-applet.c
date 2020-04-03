@@ -32,7 +32,6 @@
 #include "mini-commander-applet-private.h"
 #include "preferences.h"
 #include "command-line.h"
-#include "help.h"
 #include "gsettings.h"
 
 #include "browser-mini.xpm"
@@ -47,6 +46,14 @@ G_DEFINE_TYPE (MiniCommanderApplet, mini_commander_applet, GP_TYPE_APPLET)
 
 static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
+
+static void
+show_help (GSimpleAction *action,
+           GVariant      *parameter,
+           gpointer       user_data)
+{
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
+}
 
 static void
 about_box (GSimpleAction *action,

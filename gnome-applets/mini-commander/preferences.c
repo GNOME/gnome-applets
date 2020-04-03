@@ -227,47 +227,6 @@ duplicate_pattern (MCData     *mc,
 }
 
 static void
-show_help_section (GtkWindow *dialog, gchar *section)
-{
-	GError *error = NULL;
-	char *uri;
-
-	if (section)
-		uri = g_strdup_printf ("ghelp:command-line?%s", section);
-	else
-		uri = g_strdup ("ghelp:command-line");
-
-	gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
-			uri,
-			gtk_get_current_event_time (),
-			&error);
-
-	g_free (uri);
-
-	if (error) {
-		GtkWidget *error_dialog;
-
-		error_dialog = gtk_message_dialog_new (
-				NULL,
-				GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_OK,
-				_("There was an error displaying help: %s"),
-				error->message);
-
-		g_signal_connect (error_dialog, "response",
-				  G_CALLBACK (gtk_widget_destroy),
-				  NULL);
-
-		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
-		gtk_window_set_screen (GTK_WINDOW (error_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
-		gtk_widget_show (error_dialog);
-		g_error_free (error);
-	}
-}
-
-static void
 add_response (GtkWidget *window,
 	      int        id,
 	      MCData    *mc)
@@ -330,7 +289,7 @@ add_response (GtkWidget *window,
     }
 	break;
     case GTK_RESPONSE_HELP:
-    	show_help_section (GTK_WINDOW (window), "command-line-prefs-2");
+        gp_applet_show_help (GP_APPLET (mc), "command-line-prefs-2");
 	break;
     case GTK_RESPONSE_CLOSE:
     default:
@@ -526,7 +485,7 @@ preferences_response (MCPrefsDialog *dialog,
 {
     switch (id) {
     case GTK_RESPONSE_HELP:
-    	show_help_section (GTK_WINDOW (dialog), "command-line-prefs-0");
+        gp_applet_show_help (GP_APPLET (mc), "command-line-apperance");
 	break;
     case GTK_RESPONSE_CLOSE:
     default: {
