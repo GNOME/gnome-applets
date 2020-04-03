@@ -51,14 +51,14 @@ struct _GWeatherApplet
   GtkWidget         *pref_dialog;
 
   GtkWidget         *details_dialog;
-
-  GtkWidget         *about_dialog;
 };
 
 void gweather_applet_create(GWeatherApplet *gw_applet);
 gboolean timeout_cb (gpointer data);
 gboolean suncalc_timeout_cb (gpointer data);
 void gweather_update (GWeatherApplet *applet);
+
+void gweather_applet_setup_about (GtkAboutDialog *dialog);
 
 G_END_DECLS
 

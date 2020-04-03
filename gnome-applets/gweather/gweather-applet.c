@@ -59,63 +59,12 @@ get_default_location (GWeatherApplet *gw_applet)
     return location;
 }
 
-static const gchar *authors[] =
-  {
-    "Todd Kulesza <fflewddur@dropline.net>",
-    "Philip Langdale <philipl@mail.utexas.edu>",
-    "Ryan Lortie <desrt@desrt.ca>",
-    "Davyd Madeley <davyd@madeley.id.au>",
-    "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
-    "Kevin Vandersloot <kfv101@psu.edu>",
-    NULL
-  };
-
-const gchar *documenters[] =
-  {
-    "Dan Mueth <d-mueth@uchicago.edu>",
-    "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
-    "Sun GNOME Documentation Team <gdocteam@sun.com>",
-    "Davyd Madeley <davyd@madeley.id.au>",
-    NULL
-  };
-
 static void
 about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-  GWeatherApplet *applet;
-  GtkAboutDialog *dialog;
-  const gchar *text;
-
-  applet = (GWeatherApplet *) user_data;
-
-  if (applet->about_dialog != NULL)
-    {
-      gtk_window_present (GTK_WINDOW (applet->about_dialog));
-      return;
-    }
-
-  applet->about_dialog = gtk_about_dialog_new ();
-  dialog = GTK_ABOUT_DIALOG (applet->about_dialog);
-
-  gtk_about_dialog_set_version (dialog, VERSION);
-  gtk_about_dialog_set_logo_icon_name (dialog, "weather-storm");
-
-  text = _("\xC2\xA9 1999-2005 by S. Papadimitriou and others");
-  gtk_about_dialog_set_copyright (dialog, text);
-
-  text = _("A panel application for monitoring local weather conditions.");
-  gtk_about_dialog_set_copyright (dialog, text);
-
-  gtk_about_dialog_set_authors (dialog, authors);
-  gtk_about_dialog_set_documenters (dialog, documenters);
-  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
-
-  g_object_add_weak_pointer (G_OBJECT (applet->about_dialog),
-                             (gpointer *) &applet->about_dialog);
-
-  gtk_window_present (GTK_WINDOW (applet->about_dialog));
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void help_cb (GSimpleAction *action,
@@ -620,4 +569,44 @@ gweather_applet_class_init (GWeatherAppletClass *self_class)
 static void
 gweather_applet_init (GWeatherApplet *self)
 {
+}
+
+void
+gweather_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("A panel application for monitoring local weather conditions.");
+
+  authors = (const char *[])
+    {
+      "Todd Kulesza <fflewddur@dropline.net>",
+      "Philip Langdale <philipl@mail.utexas.edu>",
+      "Ryan Lortie <desrt@desrt.ca>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
+      "Kevin Vandersloot <kfv101@psu.edu>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Dan Mueth <d-mueth@uchicago.edu>",
+      "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      NULL
+    };
+
+  copyright = _("\xC2\xA9 1999-2005 by S. Papadimitriou and others");
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

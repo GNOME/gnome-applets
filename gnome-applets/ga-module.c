@@ -146,6 +146,8 @@ ga_get_applet_info (const char *id)
       name = _("Weather Report");
       description = _("Monitor the current weather conditions, and forecasts");
       icon_name = "weather-storm";
+
+      about_func = gweather_applet_setup_about;
     }
   else if (g_strcmp0 (id, "inhibit") == 0)
     {
