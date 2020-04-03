@@ -31,7 +31,10 @@
 #include "cpufreq-selector-gen.h"
 #include "cpufreq-utils.h"
 
-struct _CPUFreqPopupPrivate {
+struct _CPUFreqPopup
+{
+	GObject              parent;
+
 	CPUFreqSelectorGen  *selector;
 
 	GtkUIManager        *ui_manager;
@@ -49,9 +52,6 @@ struct _CPUFreqPopupPrivate {
 
 	CPUFreqMonitor      *monitor;
 };
-
-#define CPUFREQ_POPUP_GET_PRIVATE(object) \
-        (G_TYPE_INSTANCE_GET_PRIVATE ((object), CPUFREQ_TYPE_POPUP, CPUFreqPopupPrivate))
 
 static void cpufreq_popup_finalize   (GObject           *object);
 
@@ -111,46 +111,30 @@ cpufreq_popup_init (CPUFreqPopup *popup)
 {
 	GError *error;
 
-	popup->priv = CPUFREQ_POPUP_GET_PRIVATE (popup);
-
 	error = NULL;
-	popup->priv->selector = cpufreq_selector_gen_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
-	                                                                     G_DBUS_PROXY_FLAGS_NONE,
-	                                                                     "org.gnome.CPUFreqSelector",
-	                                                                     "/org/gnome/cpufreq_selector/selector",
-	                                                                     NULL,
-	                                                                     &error);
+	popup->selector = cpufreq_selector_gen_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+	                                                               G_DBUS_PROXY_FLAGS_NONE,
+	                                                               "org.gnome.CPUFreqSelector",
+	                                                               "/org/gnome/cpufreq_selector/selector",
+	                                                               NULL,
+	                                                               &error);
 
 	if (error != NULL) {
 		g_warning ("%s", error->message);
 		g_error_free (error);
 	}
 
-	popup->priv->ui_manager = gtk_ui_manager_new ();
-	popup->priv->radio_group = NULL;
+	popup->ui_manager = gtk_ui_manager_new ();
+	popup->need_build = TRUE;
 
-	popup->priv->freqs_group = NULL;
-	popup->priv->freqs_actions = NULL;
-
-	popup->priv->govs_group = NULL;
-	popup->priv->govs_actions = NULL;
-
-	popup->priv->merge_id = 0;
-	popup->priv->need_build = TRUE;
-	popup->priv->show_freqs = FALSE;
-
-	gtk_ui_manager_add_ui_from_string (popup->priv->ui_manager,
+	gtk_ui_manager_add_ui_from_string (popup->ui_manager,
 					   ui_popup, -1, NULL);
-	
-	popup->priv->monitor = NULL;
 }
 
 static void
 cpufreq_popup_class_init (CPUFreqPopupClass *klass)
 {
 	GObjectClass *g_object_class = G_OBJECT_CLASS (klass);
-
-	g_type_class_add_private (g_object_class, sizeof (CPUFreqPopupPrivate));
 
 	g_object_class->finalize = cpufreq_popup_finalize;
 }
@@ -160,38 +144,15 @@ cpufreq_popup_finalize (GObject *object)
 {
 	CPUFreqPopup *popup = CPUFREQ_POPUP (object);
 
-	g_clear_object (&popup->priv->selector);
+	g_clear_object (&popup->selector);
+	g_clear_object (&popup->ui_manager);
+	g_clear_object (&popup->freqs_group);
+	g_clear_object (&popup->govs_group);
+	g_clear_object (&popup->monitor);
 
-	if (popup->priv->ui_manager) {
-		g_object_unref (popup->priv->ui_manager);
-		popup->priv->ui_manager = NULL;
-	}
+	g_clear_pointer (&popup->freqs_actions, g_slist_free);
+	g_clear_pointer (&popup->govs_actions, g_slist_free);
 
-	if (popup->priv->freqs_group) {
-		g_object_unref (popup->priv->freqs_group);
-		popup->priv->freqs_group = NULL;
-	}
-
-	if (popup->priv->freqs_actions) {
-		g_slist_free (popup->priv->freqs_actions);
-		popup->priv->freqs_actions = NULL;
-	}
-
-	if (popup->priv->govs_group) {
-		g_object_unref (popup->priv->govs_group);
-		popup->priv->govs_group = NULL;
-	}
-
-	if (popup->priv->govs_actions) {
-		g_slist_free (popup->priv->govs_actions);
-		popup->priv->govs_actions = NULL;
-	}
-	
-	if (popup->priv->monitor) {
-		g_object_unref (popup->priv->monitor);
-		popup->priv->monitor = NULL;
-	}
-	
 	G_OBJECT_CLASS (cpufreq_popup_parent_class)->finalize (object);
 }
 
@@ -214,12 +175,12 @@ cpufreq_popup_set_monitor (CPUFreqPopup   *popup,
 	g_return_if_fail (CPUFREQ_IS_POPUP (popup));
 	g_return_if_fail (CPUFREQ_IS_MONITOR (monitor));
 
-	if (popup->priv->monitor == monitor)
+	if (popup->monitor == monitor)
 		return;
 	
-	if (popup->priv->monitor)
-		g_object_unref (popup->priv->monitor);
-	popup->priv->monitor = g_object_ref (monitor);
+	if (popup->monitor)
+		g_object_unref (popup->monitor);
+	popup->monitor = g_object_ref (monitor);
 }
 
 static void
@@ -233,14 +194,14 @@ cpufreq_popup_frequencies_menu_activate (GtkAction    *action,
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
 
-	if (popup->priv->selector == NULL)
+	if (popup->selector == NULL)
 		return;
 
-	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
+	cpu = cpufreq_monitor_get_cpu (popup->monitor);
 	name = gtk_action_get_name (action);
 	freq = (guint) atoi (name + strlen ("Frequency"));
 
-	cpufreq_selector_gen_call_set_frequency (popup->priv->selector,
+	cpufreq_selector_gen_call_set_frequency (popup->selector,
 	                                         cpu,
 	                                         freq,
 	                                         NULL,
@@ -259,14 +220,14 @@ cpufreq_popup_governors_menu_activate (GtkAction    *action,
 	if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
 		return;
 
-	if (popup->priv->selector == NULL)
+	if (popup->selector == NULL)
 		return;
 	
-	cpu = cpufreq_monitor_get_cpu (popup->priv->monitor);
+	cpu = cpufreq_monitor_get_cpu (popup->monitor);
 	name = gtk_action_get_name (action);
 	governor = name + strlen ("Governor");
 
-	cpufreq_selector_gen_call_set_governor (popup->priv->selector,
+	cpufreq_selector_gen_call_set_governor (popup->selector,
 	                                        cpu,
 	                                        governor,
 	                                        NULL,
@@ -294,19 +255,19 @@ cpufreq_popup_menu_add_action (CPUFreqPopup   *popup,
 
 	gtk_action_set_sensitive (GTK_ACTION (action), sensitive);
 	
-	gtk_radio_action_set_group (GTK_RADIO_ACTION (action), popup->priv->radio_group);
-	popup->priv->radio_group = gtk_radio_action_get_group (GTK_RADIO_ACTION (action));
+	gtk_radio_action_set_group (GTK_RADIO_ACTION (action), popup->radio_group);
+	popup->radio_group = gtk_radio_action_get_group (GTK_RADIO_ACTION (action));
 	
 	if (g_ascii_strcasecmp (menu, "Frequency") == 0) {
-		popup->priv->freqs_actions = g_slist_prepend (popup->priv->freqs_actions,
-							      (gpointer) action);
+		popup->freqs_actions = g_slist_prepend (popup->freqs_actions,
+		                                        (gpointer) action);
 
 		g_signal_connect (action, "activate",
 				  G_CALLBACK (cpufreq_popup_frequencies_menu_activate),
 				  (gpointer) popup);
 	} else if (g_ascii_strcasecmp (menu, "Governor") == 0) {
-		popup->priv->govs_actions = g_slist_prepend (popup->priv->govs_actions,
-							     (gpointer) action);
+		popup->govs_actions = g_slist_prepend (popup->govs_actions,
+		                                       (gpointer) action);
 
 		g_signal_connect (action, "activate",
 				  G_CALLBACK (cpufreq_popup_governors_menu_activate),
@@ -324,7 +285,7 @@ frequencies_menu_create_actions (CPUFreqPopup *popup)
 {
 	GList *available_freqs;
 
-	available_freqs = cpufreq_monitor_get_available_frequencies (popup->priv->monitor);
+	available_freqs = cpufreq_monitor_get_available_frequencies (popup->monitor);
 
 	while (available_freqs) {
 		const gchar *text;
@@ -345,7 +306,7 @@ frequencies_menu_create_actions (CPUFreqPopup *popup)
 
 		cpufreq_popup_menu_add_action (popup,
 					       "Frequency", 
-					       popup->priv->freqs_group,
+					       popup->freqs_group,
 					       text, label, TRUE);
 		g_free (label);
 
@@ -358,7 +319,7 @@ governors_menu_create_actions (CPUFreqPopup *popup)
 {
 	GList *available_govs;
 
-	available_govs = cpufreq_monitor_get_available_governors (popup->priv->monitor);
+	available_govs = cpufreq_monitor_get_available_governors (popup->monitor);
 	available_govs = g_list_sort (available_govs, (GCompareFunc)g_ascii_strcasecmp);
 
 	while (available_govs) {
@@ -367,7 +328,7 @@ governors_menu_create_actions (CPUFreqPopup *popup)
 
 		governor = (const gchar *) available_govs->data;
 		if (g_ascii_strcasecmp (governor, "userspace") == 0) {
-			popup->priv->show_freqs = TRUE;
+			popup->show_freqs = TRUE;
 			available_govs = g_list_next (available_govs);
 			continue;
 		}
@@ -377,7 +338,7 @@ governors_menu_create_actions (CPUFreqPopup *popup)
 		
 		cpufreq_popup_menu_add_action (popup,
 					       "Governor",
-					       popup->priv->govs_group,
+					       popup->govs_group,
 					       governor, label, TRUE);
 		g_free (label);
 
@@ -404,8 +365,8 @@ cpufreq_popup_build_ui (CPUFreqPopup *popup,
 			      "label", &label,
 			      NULL);
 
-		gtk_ui_manager_add_ui (popup->priv->ui_manager,
-				       popup->priv->merge_id,
+		gtk_ui_manager_add_ui (popup->ui_manager,
+				       popup->merge_id,
 				       menu_path,
 				       label, name,
 				       GTK_UI_MANAGER_MENUITEM,
@@ -420,62 +381,55 @@ static void
 cpufreq_popup_build_frequencies_menu (CPUFreqPopup *popup,
 				      const gchar  *path)
 {
-	if (!popup->priv->freqs_group) {
+	if (!popup->freqs_group) {
 		GtkActionGroup *action_group;
 
 		action_group = gtk_action_group_new ("FreqsActions");
-		popup->priv->freqs_group = action_group;
+		popup->freqs_group = action_group;
 		gtk_action_group_set_translation_domain (action_group, NULL);
 
 		frequencies_menu_create_actions (popup);
-		popup->priv->freqs_actions = g_slist_reverse (popup->priv->freqs_actions);
-		gtk_ui_manager_insert_action_group (popup->priv->ui_manager,
+		popup->freqs_actions = g_slist_reverse (popup->freqs_actions);
+		gtk_ui_manager_insert_action_group (popup->ui_manager,
 						    action_group, 0);
 	}
 
-	cpufreq_popup_build_ui (popup,
-				popup->priv->freqs_actions,
-				path);
+	cpufreq_popup_build_ui (popup, popup->freqs_actions, path);
 }
 
 static void
 cpufreq_popup_build_governors_menu (CPUFreqPopup *popup,
 				    const gchar  *path)
 {
-	if (!popup->priv->govs_group) {
+	if (!popup->govs_group) {
 		GtkActionGroup *action_group;
 
 		action_group = gtk_action_group_new ("GovsActions");
-		popup->priv->govs_group = action_group;
+		popup->govs_group = action_group;
 		gtk_action_group_set_translation_domain (action_group, NULL);
 
 		governors_menu_create_actions (popup);
-		popup->priv->govs_actions = g_slist_reverse (popup->priv->govs_actions);
-		gtk_ui_manager_insert_action_group (popup->priv->ui_manager,
-						    action_group, 1);
+		popup->govs_actions = g_slist_reverse (popup->govs_actions);
+		gtk_ui_manager_insert_action_group (popup->ui_manager, action_group, 1);
 	}
 
-	cpufreq_popup_build_ui (popup,
-				popup->priv->govs_actions,
-				path);
+	cpufreq_popup_build_ui (popup, popup->govs_actions, path);
 }
 
 static void
 cpufreq_popup_build_menu (CPUFreqPopup *popup)
 {
-	if (popup->priv->merge_id > 0) {
-		gtk_ui_manager_remove_ui (popup->priv->ui_manager,
-					  popup->priv->merge_id);
-		gtk_ui_manager_ensure_update (popup->priv->ui_manager);
+	if (popup->merge_id > 0) {
+		gtk_ui_manager_remove_ui (popup->ui_manager, popup->merge_id);
+		gtk_ui_manager_ensure_update (popup->ui_manager);
 	}
 	
-	popup->priv->merge_id = gtk_ui_manager_new_merge_id (popup->priv->ui_manager);
+	popup->merge_id = gtk_ui_manager_new_merge_id (popup->ui_manager);
 		
 	cpufreq_popup_build_frequencies_menu (popup, FREQS_PLACEHOLDER_PATH);
 	cpufreq_popup_build_governors_menu (popup, GOVS_PLACEHOLDER_PATH);
 
-	gtk_action_group_set_visible (popup->priv->freqs_group,
-				      popup->priv->show_freqs);
+	gtk_action_group_set_visible (popup->freqs_group, popup->show_freqs);
 }
 
 static void
@@ -512,21 +466,21 @@ cpufreq_popup_menu_set_active (CPUFreqPopup *popup)
 {
 	const gchar *governor;
 
-	governor = cpufreq_monitor_get_governor (popup->priv->monitor);
+	governor = cpufreq_monitor_get_governor (popup->monitor);
 	
 	if (g_ascii_strcasecmp (governor, "userspace") == 0) {
 		gchar *active;
 		guint  freq;
 
-		freq = cpufreq_monitor_get_frequency (popup->priv->monitor);
+		freq = cpufreq_monitor_get_frequency (popup->monitor);
 		active = g_strdup_printf ("%d", freq);
 		cpufreq_popup_menu_set_active_action (popup,
-						      popup->priv->freqs_group,
+						      popup->freqs_group,
 						      "Frequency", active);
 		g_free (active);
 	} else {
 		cpufreq_popup_menu_set_active_action (popup,
-						      popup->priv->govs_group,
+						      popup->govs_group,
 						      "Governor", governor);
 	}
 }
@@ -537,20 +491,20 @@ cpufreq_popup_get_menu (CPUFreqPopup *popup)
 	GtkWidget *menu;
 	
 	g_return_val_if_fail (CPUFREQ_IS_POPUP (popup), NULL);
-	g_return_val_if_fail (CPUFREQ_IS_MONITOR (popup->priv->monitor), NULL);
+	g_return_val_if_fail (CPUFREQ_IS_MONITOR (popup->monitor), NULL);
 	
 	if (!cpufreq_utils_selector_is_available ())
 		return NULL;
 
-	if (popup->priv->need_build) {
+	if (popup->need_build) {
 		cpufreq_popup_build_menu (popup);
-		popup->priv->need_build = FALSE;
+		popup->need_build = FALSE;
 	}
 
 	cpufreq_popup_menu_set_active (popup);
-	
-	menu = gtk_ui_manager_get_widget (popup->priv->ui_manager,
+
+	menu = gtk_ui_manager_get_widget (popup->ui_manager,
 					  "/CPUFreqSelectorPopup");
-	
+
 	return menu;
 }

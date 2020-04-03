@@ -27,28 +27,8 @@
 
 G_BEGIN_DECLS
 
-#define CPUFREQ_TYPE_PREFS            (cpufreq_prefs_get_type ())
-#define CPUFREQ_PREFS(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CPUFREQ_TYPE_PREFS, CPUFreqPrefs))
-#define CPUFREQ_PREFS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CPUFREQ_TYPE_PREFS, CPUFreqPrefsClass))
-#define CPUFREQ_IS_PREFS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CPUFREQ_TYPE_PREFS))
-#define CPUFREQ_IS_PREFS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CPUFREQ_TYPE_PREFS))
-#define CPUFREQ_PREFS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CPUFREQ_TYPE_PREFS, CPUFreqPrefsClass))
-
-typedef struct _CPUFreqPrefs        CPUFreqPrefs;
-typedef struct _CPUFreqPrefsClass   CPUFreqPrefsClass;
-typedef struct _CPUFreqPrefsPrivate CPUFreqPrefsPrivate;
-
-struct _CPUFreqPrefs {
-	GObject              base;
-
-	CPUFreqPrefsPrivate *priv;
-};
-
-struct _CPUFreqPrefsClass {
-	GObjectClass         parent_class;
-};
-
-GType               cpufreq_prefs_get_type           (void) G_GNUC_CONST;
+#define CPUFREQ_TYPE_PREFS (cpufreq_prefs_get_type ())
+G_DECLARE_FINAL_TYPE (CPUFreqPrefs, cpufreq_prefs, CPUFREQ, PREFS, GObject)
 
 CPUFreqPrefs       *cpufreq_prefs_new                (CPUFreqApplet *applet,
                                                       GSettings     *settings);

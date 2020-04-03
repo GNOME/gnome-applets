@@ -33,7 +33,10 @@ enum {
 	PROP_SHOW_TEXT_MODE,
 };
 
-struct _CPUFreqPrefsPrivate {
+struct _CPUFreqPrefs
+{
+	GObject parent;
+
 	guint               cpu;
 	CPUFreqShowMode     show_mode;
 	CPUFreqShowTextMode show_text_mode;
@@ -51,9 +54,6 @@ struct _CPUFreqPrefsPrivate {
 	GtkWidget *show_mode_combo;
 };
 
-#define CPUFREQ_PREFS_GET_PRIVATE(object) \
-        (G_TYPE_INSTANCE_GET_PRIVATE ((object), CPUFREQ_TYPE_PREFS, CPUFreqPrefsPrivate))
-
 static void cpufreq_prefs_finalize                  (GObject           *object);
 
 static void cpufreq_prefs_set_property              (GObject           *object,
@@ -67,16 +67,11 @@ static void cpufreq_prefs_get_property              (GObject           *object,
 
 static void cpufreq_prefs_dialog_update_sensitivity (CPUFreqPrefs      *prefs);
 
-
 G_DEFINE_TYPE (CPUFreqPrefs, cpufreq_prefs, G_TYPE_OBJECT)
 
 static void
 cpufreq_prefs_init (CPUFreqPrefs *prefs)
 {
-	prefs->priv = CPUFREQ_PREFS_GET_PRIVATE (prefs);
-
-	prefs->priv->settings = NULL;
-	prefs->priv->cpu = 0;
 }
 
 static void
@@ -86,8 +81,6 @@ cpufreq_prefs_class_init (CPUFreqPrefsClass *klass)
 
 	g_object_class->set_property = cpufreq_prefs_set_property;
 	g_object_class->get_property = cpufreq_prefs_get_property;
-	
-	g_type_class_add_private (g_object_class, sizeof (CPUFreqPrefsPrivate));
 
 	/* Properties */
 	g_object_class_install_property (g_object_class,
@@ -124,15 +117,8 @@ cpufreq_prefs_finalize (GObject *object)
 {
 	CPUFreqPrefs *prefs = CPUFREQ_PREFS (object);
 
-	if (prefs->priv->settings) {
-		g_object_unref (prefs->priv->settings);
-		prefs->priv->settings = NULL;
-	}
-
-	if (prefs->priv->dialog) {
-		gtk_widget_destroy (prefs->priv->dialog);
-		prefs->priv->dialog = NULL;
-	}
+	g_clear_object (&prefs->settings);
+	g_clear_pointer (&prefs->dialog, gtk_widget_destroy);
 
 	G_OBJECT_CLASS (cpufreq_prefs_parent_class)->finalize (object);
 }
@@ -151,9 +137,10 @@ cpufreq_prefs_set_property (GObject      *object,
 		guint cpu;
 
 		cpu = g_value_get_uint (value);
-		if (prefs->priv->cpu != cpu) {
-			prefs->priv->cpu = cpu;
-			g_settings_set_int (prefs->priv->settings, "cpu", cpu);
+
+		if (prefs->cpu != cpu) {
+			prefs->cpu = cpu;
+			g_settings_set_int (prefs->settings, "cpu", cpu);
 		}
 	}
 		break;
@@ -161,10 +148,10 @@ cpufreq_prefs_set_property (GObject      *object,
 		CPUFreqShowMode mode;
 
 		mode = g_value_get_enum (value);
-		if (prefs->priv->show_mode != mode) {
+		if (prefs->show_mode != mode) {
 			update_sensitivity = TRUE;
-			prefs->priv->show_mode = mode;
-			g_settings_set_enum (prefs->priv->settings, "show-mode", mode);
+			prefs->show_mode = mode;
+			g_settings_set_enum (prefs->settings, "show-mode", mode);
 		}
 	}
 		break;
@@ -172,10 +159,10 @@ cpufreq_prefs_set_property (GObject      *object,
 		CPUFreqShowTextMode mode;
 
 		mode = g_value_get_enum (value);
-		if (prefs->priv->show_text_mode != mode) {
+		if (prefs->show_text_mode != mode) {
 			update_sensitivity = TRUE;
-			prefs->priv->show_text_mode = mode;
-			g_settings_set_enum (prefs->priv->settings, "show-text-mode", mode);
+			prefs->show_text_mode = mode;
+			g_settings_set_enum (prefs->settings, "show-text-mode", mode);
 		}
 	}
 		break;
@@ -183,7 +170,7 @@ cpufreq_prefs_set_property (GObject      *object,
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	}
 
-	if (prefs->priv->dialog && update_sensitivity)
+	if (prefs->dialog && update_sensitivity)
 		cpufreq_prefs_dialog_update_sensitivity (prefs);
 }
 
@@ -197,13 +184,13 @@ cpufreq_prefs_get_property (GObject    *object,
 
 	switch (prop_id) {
 	case PROP_CPU:
-		g_value_set_uint (value, prefs->priv->cpu);
+		g_value_set_uint (value, prefs->cpu);
 		break;
 	case PROP_SHOW_MODE:
-		g_value_set_enum (value, prefs->priv->show_mode);
+		g_value_set_enum (value, prefs->show_mode);
 		break;
 	case PROP_SHOW_TEXT_MODE:
-		g_value_set_enum (value, prefs->priv->show_text_mode);
+		g_value_set_enum (value, prefs->show_text_mode);
 		break;
 	default:
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -213,12 +200,11 @@ cpufreq_prefs_get_property (GObject    *object,
 static void
 cpufreq_prefs_setup (CPUFreqPrefs *prefs)
 {
-	g_assert (G_IS_SETTINGS (prefs->priv->settings));
+	g_assert (G_IS_SETTINGS (prefs->settings));
 
-	prefs->priv->cpu = g_settings_get_int (prefs->priv->settings, "cpu");
-	prefs->priv->show_mode = g_settings_get_enum (prefs->priv->settings, "show-mode");
-	prefs->priv->show_text_mode = g_settings_get_enum (prefs->priv->settings, "show-text-mode");
-
+	prefs->cpu = g_settings_get_int (prefs->settings, "cpu");
+	prefs->show_mode = g_settings_get_enum (prefs->settings, "show-mode");
+	prefs->show_text_mode = g_settings_get_enum (prefs->settings, "show-text-mode");
 }
 
 CPUFreqPrefs *
@@ -230,8 +216,8 @@ cpufreq_prefs_new (CPUFreqApplet *applet,
 	g_return_val_if_fail (settings != NULL, NULL);
 
 	prefs = CPUFREQ_PREFS (g_object_new (CPUFREQ_TYPE_PREFS, NULL));
-	prefs->priv->applet = applet;
-	prefs->priv->settings = g_object_ref (settings);
+	prefs->applet = applet;
+	prefs->settings = g_object_ref (settings);
 
 	cpufreq_prefs_setup (prefs);
 
@@ -244,7 +230,7 @@ cpufreq_prefs_get_cpu (CPUFreqPrefs *prefs)
 {
 	g_return_val_if_fail (CPUFREQ_IS_PREFS (prefs), 0);
 	
-	return MIN (prefs->priv->cpu, cpufreq_utils_get_n_cpus () - 1);
+	return MIN (prefs->cpu, cpufreq_utils_get_n_cpus () - 1);
 }
 
 CPUFreqShowMode
@@ -253,7 +239,7 @@ cpufreq_prefs_get_show_mode (CPUFreqPrefs *prefs)
 	g_return_val_if_fail (CPUFREQ_IS_PREFS (prefs),
 			      CPUFREQ_MODE_BOTH);
 
-	return prefs->priv->show_mode;
+	return prefs->show_mode;
 }
 
 CPUFreqShowTextMode
@@ -262,7 +248,7 @@ cpufreq_prefs_get_show_text_mode (CPUFreqPrefs *prefs)
 	g_return_val_if_fail (CPUFREQ_IS_PREFS (prefs),
 			      CPUFREQ_MODE_TEXT_FREQUENCY_UNIT);
 
-	return prefs->priv->show_text_mode;
+	return prefs->show_text_mode;
 }
 
 /* Preferences Dialog */
@@ -270,9 +256,9 @@ static void
 cpufreq_prefs_dialog_show_freq_toggled (GtkWidget *show_freq, CPUFreqPrefs *prefs)
 {
 	CPUFreqShowTextMode show_text_mode;
-           
+
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (show_freq))) {
-		GtkWidget *show_unit = prefs->priv->show_unit;
+		GtkWidget *show_unit = prefs->show_unit;
 
                 if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (show_unit)))
                         show_text_mode = CPUFREQ_MODE_TEXT_FREQUENCY_UNIT;
@@ -321,8 +307,8 @@ static void
 cpufreq_prefs_dialog_cpu_number_changed (GtkWidget *cpu_combo, CPUFreqPrefs *prefs)
 {
         gint cpu;
-	
-        cpu = gtk_combo_box_get_active (GTK_COMBO_BOX (prefs->priv->cpu_combo));
+
+        cpu = gtk_combo_box_get_active (GTK_COMBO_BOX (prefs->cpu_combo));
 
         if (cpu >= 0) {
 		g_object_set (G_OBJECT (prefs),
@@ -348,11 +334,11 @@ cpufreq_prefs_dialog_response_cb (CPUFreqPrefs *prefs,
 				  GtkDialog    *dialog)
 {
         if (response == GTK_RESPONSE_HELP) {
-                gp_applet_show_help (GP_APPLET (prefs->priv->applet),
+                gp_applet_show_help (GP_APPLET (prefs->applet),
                                      "cpufreq-applet-prefs");
         } else {
-                gtk_widget_destroy (prefs->priv->dialog);
-                prefs->priv->dialog = NULL;
+                gtk_widget_destroy (prefs->dialog);
+                prefs->dialog = NULL;
         }
 }
 
@@ -360,37 +346,37 @@ static void
 cpufreq_prefs_dialog_update_visibility (CPUFreqPrefs *prefs)
 {
 	if (cpufreq_utils_get_n_cpus () > 1)
-		gtk_widget_show (prefs->priv->monitor_settings_box);
+		gtk_widget_show (prefs->monitor_settings_box);
 	else
-		gtk_widget_hide (prefs->priv->monitor_settings_box);
+		gtk_widget_hide (prefs->monitor_settings_box);
 }
 
 static void
 cpufreq_prefs_dialog_update_sensitivity (CPUFreqPrefs *prefs)
 {
-	gtk_widget_set_sensitive (prefs->priv->show_mode_combo,
-				  g_settings_is_writable (prefs->priv->settings, "show-mode"));
+	gtk_widget_set_sensitive (prefs->show_mode_combo,
+				  g_settings_is_writable (prefs->settings, "show-mode"));
 	
-	if (prefs->priv->show_mode != CPUFREQ_MODE_GRAPHIC) {
+	if (prefs->show_mode != CPUFREQ_MODE_GRAPHIC) {
 		gboolean key_writable;
 		
-		key_writable = g_settings_is_writable (prefs->priv->settings, "show-text-mode");
+		key_writable = g_settings_is_writable (prefs->settings, "show-text-mode");
 		
-		gtk_widget_set_sensitive (prefs->priv->show_freq,
+		gtk_widget_set_sensitive (prefs->show_freq,
 					  (TRUE && key_writable));
-		gtk_widget_set_sensitive (prefs->priv->show_perc,
+		gtk_widget_set_sensitive (prefs->show_perc,
 					  (TRUE && key_writable));
 		
-		if (prefs->priv->show_text_mode == CPUFREQ_MODE_TEXT_PERCENTAGE)
-			gtk_widget_set_sensitive (prefs->priv->show_unit,
+		if (prefs->show_text_mode == CPUFREQ_MODE_TEXT_PERCENTAGE)
+			gtk_widget_set_sensitive (prefs->show_unit,
 						  FALSE);
 		else
-			gtk_widget_set_sensitive (prefs->priv->show_unit,
+			gtk_widget_set_sensitive (prefs->show_unit,
 						  (TRUE && key_writable));
 	} else {
-		gtk_widget_set_sensitive (prefs->priv->show_freq, FALSE);
-		gtk_widget_set_sensitive (prefs->priv->show_unit, FALSE);
-		gtk_widget_set_sensitive (prefs->priv->show_perc, FALSE);
+		gtk_widget_set_sensitive (prefs->show_freq, FALSE);
+		gtk_widget_set_sensitive (prefs->show_unit, FALSE);
+		gtk_widget_set_sensitive (prefs->show_perc, FALSE);
 	}
 }
 
@@ -398,30 +384,30 @@ static void
 cpufreq_prefs_dialog_update (CPUFreqPrefs *prefs)
 {
 	if (cpufreq_utils_get_n_cpus () > 1) {
-		gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->priv->cpu_combo),
-					  MIN (prefs->priv->cpu, cpufreq_utils_get_n_cpus () - 1));
+		gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->cpu_combo),
+					  MIN (prefs->cpu, cpufreq_utils_get_n_cpus () - 1));
 	}
 
-	gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->priv->show_mode_combo),
-				  prefs->priv->show_mode);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (prefs->show_mode_combo),
+				  prefs->show_mode);
 	
-	switch (prefs->priv->show_text_mode) {
+	switch (prefs->show_text_mode) {
 	case CPUFREQ_MODE_TEXT_FREQUENCY:
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->priv->show_freq),
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->show_freq),
 					      TRUE);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->priv->show_unit),
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->show_unit),
 					      FALSE);
 
 		break;
 	case CPUFREQ_MODE_TEXT_FREQUENCY_UNIT:
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->priv->show_freq),
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->show_freq),
 					      TRUE);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->priv->show_unit),
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->show_unit),
 					      TRUE);
 
 		break;
 	case CPUFREQ_MODE_TEXT_PERCENTAGE:
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->priv->show_perc),
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (prefs->show_perc),
 					      TRUE);
 
 		break;
@@ -441,7 +427,7 @@ cpufreq_prefs_dialog_cpu_combo_setup (CPUFreqPrefs *prefs)
 	guint            n_cpus;
 
 	model = gtk_list_store_new (1, G_TYPE_STRING);
-	gtk_combo_box_set_model (GTK_COMBO_BOX (prefs->priv->cpu_combo),
+	gtk_combo_box_set_model (GTK_COMBO_BOX (prefs->cpu_combo),
 				 GTK_TREE_MODEL (model));
 
 	n_cpus = cpufreq_utils_get_n_cpus ();
@@ -462,10 +448,10 @@ cpufreq_prefs_dialog_cpu_combo_setup (CPUFreqPrefs *prefs)
 	g_object_unref (model);
 
 	renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_clear (GTK_CELL_LAYOUT (prefs->priv->cpu_combo));
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (prefs->priv->cpu_combo),
+	gtk_cell_layout_clear (GTK_CELL_LAYOUT (prefs->cpu_combo));
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (prefs->cpu_combo),
 				    renderer, TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (prefs->priv->cpu_combo),
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (prefs->cpu_combo),
 					renderer,
 					"text", 0,
 					NULL);
@@ -479,7 +465,7 @@ cpufreq_prefs_dialog_show_mode_combo_setup (CPUFreqPrefs *prefs)
 	GtkCellRenderer *renderer;
 
 	model = gtk_list_store_new (1, G_TYPE_STRING);
-	gtk_combo_box_set_model (GTK_COMBO_BOX (prefs->priv->show_mode_combo),
+	gtk_combo_box_set_model (GTK_COMBO_BOX (prefs->show_mode_combo),
 				 GTK_TREE_MODEL (model));
 
 	gtk_list_store_append (model, &iter);
@@ -500,10 +486,10 @@ cpufreq_prefs_dialog_show_mode_combo_setup (CPUFreqPrefs *prefs)
 	g_object_unref (model);
 
 	renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_clear (GTK_CELL_LAYOUT (prefs->priv->show_mode_combo));
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (prefs->priv->show_mode_combo),
+	gtk_cell_layout_clear (GTK_CELL_LAYOUT (prefs->show_mode_combo));
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (prefs->show_mode_combo),
 				    renderer, TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (prefs->priv->show_mode_combo),
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (prefs->show_mode_combo),
 					renderer,
 					"text", 0,
 					NULL);
@@ -516,17 +502,17 @@ cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 
 	builder = gtk_builder_new_from_resource (GRESOURCE_PREFIX "/ui/cpufreq-preferences.ui");
 
-	prefs->priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_dialog"));
+	prefs->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_dialog"));
 
-	prefs->priv->cpu_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_cpu_number"));
+	prefs->cpu_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_cpu_number"));
 	
-	prefs->priv->show_mode_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_mode"));
+	prefs->show_mode_combo = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_mode"));
 	
-	prefs->priv->show_freq = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_freq"));
-	prefs->priv->show_unit = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_unit"));
-	prefs->priv->show_perc = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_perc"));
+	prefs->show_freq = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_freq"));
+	prefs->show_unit = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_unit"));
+	prefs->show_perc = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_show_perc"));
 
-	prefs->priv->monitor_settings_box = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_settings_box"));
+	prefs->monitor_settings_box = GTK_WIDGET (gtk_builder_get_object (builder, "monitor_settings_box"));
 
 	g_object_unref (builder);
 
@@ -535,23 +521,23 @@ cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 	if (cpufreq_utils_get_n_cpus () > 1)
 		cpufreq_prefs_dialog_cpu_combo_setup (prefs);
 		
-	g_signal_connect_swapped (G_OBJECT (prefs->priv->dialog), "response",
+	g_signal_connect_swapped (prefs->dialog, "response",
 				  G_CALLBACK (cpufreq_prefs_dialog_response_cb),
 				  (gpointer) prefs);
 	
-	g_signal_connect (G_OBJECT (prefs->priv->show_freq), "toggled",
+	g_signal_connect (prefs->show_freq, "toggled",
 			  G_CALLBACK (cpufreq_prefs_dialog_show_freq_toggled),
 			  (gpointer) prefs);
-	g_signal_connect (G_OBJECT (prefs->priv->show_unit), "toggled",
+	g_signal_connect (prefs->show_unit, "toggled",
 			  G_CALLBACK (cpufreq_prefs_dialog_show_unit_toggled),
 			  (gpointer) prefs);
-	g_signal_connect (G_OBJECT (prefs->priv->show_perc), "toggled",
+	g_signal_connect (prefs->show_perc, "toggled",
 			  G_CALLBACK (cpufreq_prefs_dialog_show_perc_toggled),
 			  (gpointer) prefs);
-	g_signal_connect (G_OBJECT (prefs->priv->cpu_combo), "changed",
+	g_signal_connect (prefs->cpu_combo, "changed",
 			  G_CALLBACK (cpufreq_prefs_dialog_cpu_number_changed),
 			  (gpointer) prefs);
-	g_signal_connect (G_OBJECT (prefs->priv->show_mode_combo), "changed",
+	g_signal_connect (prefs->show_mode_combo, "changed",
 			  G_CALLBACK (cpufreq_prefs_dialog_show_mode_changed),
 			  (gpointer) prefs);
 }
@@ -561,18 +547,18 @@ cpufreq_preferences_dialog_run (CPUFreqPrefs *prefs, GdkScreen *screen)
 {
         g_return_if_fail (CPUFREQ_IS_PREFS (prefs));
 
-        if (prefs->priv->dialog) {
+        if (prefs->dialog) {
                 /* Dialog already exist, only show it */
-                gtk_window_present (GTK_WINDOW (prefs->priv->dialog));
+                gtk_window_present (GTK_WINDOW (prefs->dialog));
                 return;
         }
 
 	cpufreq_prefs_dialog_create (prefs);
-        gtk_window_set_screen (GTK_WINDOW (prefs->priv->dialog), screen);
+        gtk_window_set_screen (GTK_WINDOW (prefs->dialog), screen);
 
 	cpufreq_prefs_dialog_update_sensitivity (prefs);
 	cpufreq_prefs_dialog_update_visibility (prefs);
 	cpufreq_prefs_dialog_update (prefs);
 
-	gtk_widget_show (prefs->priv->dialog);
+	gtk_widget_show (prefs->dialog);
 }
