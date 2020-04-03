@@ -227,6 +227,7 @@ ga_get_applet_info (const char *id)
       icon_name = "user-trash-full";
 
       about_func = trash_applet_setup_about;
+      help_uri = "help:trashapplet";
     }
   else if (g_strcmp0 (id, "window-buttons") == 0)
     {

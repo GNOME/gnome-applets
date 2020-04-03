@@ -50,9 +50,14 @@ static void trash_applet_do_empty    (GSimpleAction *action,
 static void trash_applet_open_folder (GSimpleAction *action,
                                       GVariant      *parameter,
                                       gpointer       user_data);
-static void trash_applet_show_help   (GSimpleAction *action,
-                                      GVariant      *parameter,
-                                      gpointer       user_data);
+
+static void
+trash_applet_show_help (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
+{
+  gp_applet_show_help (GP_APPLET (user_data), NULL);
+}
 
 static void
 trash_applet_show_about (GSimpleAction *action,
@@ -325,29 +330,6 @@ trash_applet_open_folder (GSimpleAction *action,
     {
       error_dialog (applet, _("Error while spawning Nautilus:\n%s"),
       err->message);
-      g_error_free (err);
-    }
-}
-
-static void
-trash_applet_show_help (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       user_data)
-{
-  TrashApplet *applet = (TrashApplet *) user_data;
-  GError *err = NULL;
-
-  /* FIXME - Actually, we need a user guide */
-  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (applet)),
-                "help:trashapplet",
-                gtk_get_current_event_time (),
-                &err);
-
-  if (err)
-    {
-      error_dialog (applet,
-                    _("There was an error displaying help: %s"),
-                    err->message);
       g_error_free (err);
     }
 }
