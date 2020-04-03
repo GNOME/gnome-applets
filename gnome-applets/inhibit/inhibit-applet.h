@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (InhibitApplet, inhibit_applet,
                       INHIBIT, APPLET, GpApplet)
 
+void inhibit_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

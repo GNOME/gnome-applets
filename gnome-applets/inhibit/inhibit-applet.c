@@ -50,12 +50,10 @@ struct _InhibitApplet
 
 G_DEFINE_TYPE (InhibitApplet, inhibit_applet, GP_TYPE_APPLET)
 
-#define GPM_INHIBIT_APPLET_ICON		        "gnome-inhibit-applet"
 #define GPM_INHIBIT_APPLET_ICON_INHIBIT		"gpm-inhibit"
 #define GPM_INHIBIT_APPLET_ICON_INVALID		"gpm-inhibit-invalid"
 #define GPM_INHIBIT_APPLET_ICON_UNINHIBIT	"gpm-uninhibit"
 #define GPM_INHIBIT_APPLET_NAME			_("Inhibit Applet")
-#define GPM_INHIBIT_APPLET_DESC			_("Allows user to inhibit automatic power saving.")
 
 /** cookie is returned as an unsigned integer */
 static gboolean
@@ -244,64 +242,12 @@ gpm_applet_click_cb (InhibitApplet  *applet,
 	return TRUE;
 }
 
-/**
- * gpm_applet_dialog_about_cb:
- *
- * displays about dialog
- **/
 static void
-gpm_applet_dialog_about_cb (GSimpleAction *action, GVariant *parameter, gpointer data)
+gpm_applet_dialog_about_cb (GSimpleAction *action,
+                            GVariant      *parameter,
+                            gpointer       user_data)
 {
-	GtkAboutDialog *about;
-
-	GdkPixbuf *logo =
-		gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-					  GPM_INHIBIT_APPLET_ICON,
-					  128, 0, NULL);
-
-	static const gchar *authors[] = {
-		"Benjamin Canou <bookeldor@gmail.com>",
-		"Richard Hughes <richard@hughsie.com>",
-		NULL
-	};
-	const char *license[] = {
-		 N_("Licensed under the GNU General Public License Version 2"),
-		 N_("Inhibit Applet is free software; you can redistribute it and/or\n"
-		   "modify it under the terms of the GNU General Public License\n"
-		   "as published by the Free Software Foundation; either version 2\n"
-		   "of the License, or (at your option) any later version."),
-		 N_("Inhibit Applet is distributed in the hope that it will be useful,\n"
-		   "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-		   "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-		   "GNU General Public License for more details."),
-		 N_("You should have received a copy of the GNU General Public License\n"
-		   "along with this program; if not, write to the Free Software\n"
-		   "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
-		   "02110-1301, USA.")
-	};
-	const char *translator_credits = NULL;
-	char	   *license_trans;
-
-	license_trans = g_strconcat (_(license[0]), "\n\n", _(license[1]), "\n\n",
-				     _(license[2]), "\n\n", _(license[3]), "\n", NULL);
-
-	about = (GtkAboutDialog*) gtk_about_dialog_new ();
-	gtk_about_dialog_set_program_name (about, GPM_INHIBIT_APPLET_NAME);
-	gtk_about_dialog_set_version (about, VERSION);
-	gtk_about_dialog_set_copyright (about, _("Copyright \xc2\xa9 2006-2007 Richard Hughes"));
-	gtk_about_dialog_set_comments (about, GPM_INHIBIT_APPLET_DESC);
-	gtk_about_dialog_set_authors (about, authors);
-	gtk_about_dialog_set_translator_credits (about, translator_credits);
-	gtk_about_dialog_set_logo (about, logo);
-	gtk_about_dialog_set_license (about, license_trans);
-
-	g_signal_connect (G_OBJECT(about), "response",
-			  G_CALLBACK(gtk_widget_destroy), NULL);
-
-	gtk_widget_show (GTK_WIDGET(about));
-
-	g_free (license_trans);
-	g_object_unref (logo);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static const GActionEntry menu_actions[] =
@@ -436,4 +382,48 @@ inhibit_applet_init (InhibitApplet *applet)
 
 	g_signal_connect (G_OBJECT(applet), "size-allocate",
 			  G_CALLBACK(gpm_applet_size_allocate_cb), NULL);
+}
+
+void
+inhibit_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char *license;
+  const char *copyright;
+
+  comments = _("Allows user to inhibit automatic power saving.");
+
+  authors = (const char *[])
+    {
+      "Benjamin Canou <bookeldor@gmail.com>",
+      "Richard Hughes <richard@hughsie.com>",
+      NULL
+    };
+
+  license = _("Licensed under the GNU General Public License Version 2\n\n"
+
+              "Inhibit Applet is free software; you can redistribute it and/or\n"
+              "modify it under the terms of the GNU General Public License\n"
+              "as published by the Free Software Foundation; either version 2\n"
+              "of the License, or (at your option) any later version.\n\n"
+
+              "Inhibit Applet is distributed in the hope that it will be useful,\n"
+              "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+              "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+              "GNU General Public License for more details."
+
+              "You should have received a copy of the GNU General Public License\n"
+              "along with this program; if not, write to the Free Software\n"
+              "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+              "02110-1301, USA.\n");
+
+  copyright = _("Copyright \xc2\xa9 2006-2007 Richard Hughes");
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_license (dialog, license);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

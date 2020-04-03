@@ -156,6 +156,8 @@ ga_get_applet_info (const char *id)
       name = _("Inhibit Applet");
       description = _("Allows user to inhibit automatic power saving");
       icon_name = "gnome-inhibit-applet";
+
+      about_func = inhibit_applet_setup_about;
     }
   else if (g_strcmp0 (id, "mini-commander") == 0)
     {
