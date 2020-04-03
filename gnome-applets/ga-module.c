@@ -105,6 +105,8 @@ ga_get_applet_info (const char *id)
       name = _("Command");
       description = _("Shows the output of a command");
       icon_name = "utilities-terminal";
+
+      about_func = command_applet_setup_about;
     }
 #ifdef BUILD_CPUFREQ_APPLET
   else if (g_strcmp0 (id, "cpufreq") == 0)

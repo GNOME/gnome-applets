@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 #define COMMAND_TYPE_APPLET (command_applet_get_type ())
 G_DECLARE_FINAL_TYPE (CommandApplet, command_applet, COMMAND, APPLET, GpApplet)
 
+void command_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

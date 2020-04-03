@@ -74,20 +74,12 @@ static const GActionEntry applet_menu_actions [] = {
     {NULL}
 };
 
-/* Show the about dialog */
 static void
-command_about_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
+command_about_callback (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
-    const char* authors[] = { "Stefano Karapetsas <stefano@karapetsas.com>", NULL };
-
-    gtk_show_about_dialog(NULL,
-                          "version", VERSION,
-                          "copyright", "Copyright © 2013-2014 Stefano Karapetsas",
-                          "authors", authors,
-                          "comments", _("Shows the output of a command"),
-                          "translator-credits", _("translator-credits"),
-                          "logo-icon-name", APPLET_ICON,
-    NULL );
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 /* Show the preferences dialog */
@@ -403,4 +395,23 @@ static void
 command_applet_init (CommandApplet *self)
 {
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}
+
+void
+command_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char **authors;
+  const char *copyright;
+
+  authors = (const char *[])
+    {
+      "Stefano Karapetsas <stefano@karapetsas.com>",
+      NULL
+    };
+
+  copyright = "Copyright © 2013-2014 Stefano Karapetsas";
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
