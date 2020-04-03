@@ -74,8 +74,9 @@ device_removed_cb (UpClient *client, const gchar *object_path, gpointer user_dat
 const char *
 battstat_upower_initialise (void (*callback) (void))
 {
-  status_updated_callback = callback;
   GPtrArray *devices;
+
+  status_updated_callback = callback;
 
   if( upc != NULL )
     return "Already initialised!";
