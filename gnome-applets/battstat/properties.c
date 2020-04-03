@@ -215,7 +215,7 @@ prop_cb (GSimpleAction *action,
 
   builder = gtk_builder_new_from_resource (GRESOURCE_PREFIX "/ui/battstat-applet.ui");
 
-  battstat->prop_win = GTK_DIALOG (gtk_builder_get_object (builder, 
+  battstat->prop_win = GTK_WIDGET (gtk_builder_get_object (builder,
   				   "battstat_properties"));
   gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
 			 gtk_widget_get_screen (GTK_WIDGET (battstat)));

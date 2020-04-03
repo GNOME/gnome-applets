@@ -90,8 +90,15 @@ battstat_upower_initialise (void (*callback) (void))
   }
   g_ptr_array_unref(devices);
 
-  g_signal_connect_after( upc, "device-added", device_cb, NULL );
-  g_signal_connect_after( upc, "device-removed", device_removed_cb, NULL );
+  g_signal_connect_after (upc,
+                          "device-added",
+                          G_CALLBACK (device_cb),
+                          NULL);
+
+  g_signal_connect_after (upc,
+                          "device-removed",
+                          G_CALLBACK (device_removed_cb),
+                          NULL);
 
   return NULL;
 
