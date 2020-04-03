@@ -830,12 +830,12 @@ details_cb (GSimpleAction *action,
 	}
 	
 	title = g_strdup_printf(_("Device Details for %s"), applet->devinfo.name);
-	applet->details = GTK_DIALOG(gtk_dialog_new_with_buttons(title, 
-		NULL, 
-                GTK_DIALOG_DESTROY_WITH_PARENT,
-		GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, 
-		GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-		NULL));
+	applet->details = gtk_dialog_new_with_buttons (title,
+	                                               NULL,
+	                                               GTK_DIALOG_DESTROY_WITH_PARENT,
+	                                               GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+	                                               GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+	                                               NULL);
 	g_free(title);
 
 	gtk_dialog_set_default_response(GTK_DIALOG(applet->details), GTK_RESPONSE_CLOSE);
