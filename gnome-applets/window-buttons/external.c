@@ -72,6 +72,7 @@ issetCompizDecoration ()
 
 	settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
 	current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
+	g_object_unref (settings);
 
 	path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
 
@@ -101,6 +102,7 @@ toggleCompizDecoration(gboolean new_value)
 
 	settings = g_settings_new(GSETTINGS_COMPIZ_SCHEMA);
 	current_profile = g_settings_get_string(settings, CFG_COMPIZ_CURRENT_PROFILE);
+	g_object_unref (settings);
 
 	path = g_strdup_printf(GSETTINGS_COMPIZ_DECOR_PATH, current_profile);
 
