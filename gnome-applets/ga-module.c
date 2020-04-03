@@ -86,6 +86,8 @@ ga_get_applet_info (const char *id)
       name = _("Brightness Applet");
       description = _("Adjusts Laptop panel brightness");
       icon_name = "gnome-brightness-applet";
+
+      about_func = gpm_brightness_applet_setup_about;
     }
   else if (g_strcmp0 (id, "charpick") == 0)
     {

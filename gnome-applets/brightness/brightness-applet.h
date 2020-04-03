@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GpmBrightnessApplet, gpm_brightness_applet,
                       GPM, BRIGHTNESS_APPLET, GpApplet)
 
+void gpm_brightness_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif
