@@ -95,6 +95,8 @@ ga_get_applet_info (const char *id)
       name = _("Character Palette");
       description = _("Insert characters");
       icon_name = "accessories-character-map";
+
+      about_func = charpick_applet_setup_about;
     }
   else if (g_strcmp0 (id, "command") == 0)
     {

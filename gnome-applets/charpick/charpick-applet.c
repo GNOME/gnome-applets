@@ -554,32 +554,8 @@ about (GSimpleAction *action,
        GVariant      *parameter,
        gpointer       user_data)
 {
-  static const char * const authors[] = {
-	  "Alexandre Muñiz <munizao@xprt.net>",
-	  "Kevin Vandersloot",
-	  NULL
-  };
-
-  static const gchar * const documenters[] = {
-          "Dan Mueth <d-mueth@uchicago.edu>",
-          "Sun GNOME Documentation Team <gdocteam@sun.com>",
-	  NULL
-  };
-
-  gtk_show_about_dialog (NULL,
-	"version",	VERSION,
-	"copyright",	"\xC2\xA9 1998, 2004-2005 GNOME Applets Maintainers "
-			"and others",
-	"comments",	_("Gnome Panel applet for selecting strange "
-			  "characters that are not on my keyboard. "
-			  "Released under GNU General Public Licence."),
-	"authors",	authors,
-	"documenters",	documenters,
-	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"accessories-character-map",
-	NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
-
 
 static void
 help_cb (GSimpleAction *action,
@@ -808,4 +784,41 @@ charpick_applet_class_init (CharpickAppletClass *self_class)
 static void
 charpick_applet_init (CharpickApplet *self)
 {
+}
+
+void
+charpick_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("GNOME Panel applet for selecting strange "
+               "characters that are not on my keyboard. "
+               "Released under GNU General Public Licence.");
+
+  authors = (const char *[])
+    {
+      "Alexandre Muñiz <munizao@xprt.net>",
+      "Kevin Vandersloot",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Dan Mueth <d-mueth@uchicago.edu>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 1998, 2004-2005 GNOME Applets Maintainers "
+              "and others";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
