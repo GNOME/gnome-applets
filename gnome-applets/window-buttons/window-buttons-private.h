@@ -18,8 +18,6 @@
  *     Andrej Belcijan <{andrejx} at {gmail.com}>
  */
 
-#define PLAINTEXT_CONFIG				0
-
 #ifndef __WB_APPLET_H__
 #define __WB_APPLET_H__
 
@@ -33,10 +31,6 @@
 #include <glib-object.h>
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
-
-#if PLAINTEXT_CONFIG == 1
-#include <glib/gstdio.h>
-#endif
 
 #ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE

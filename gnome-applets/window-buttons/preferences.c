@@ -35,29 +35,6 @@ gshort *getEBPos(gchar *);
 WBPreferences *loadPreferences(WBApplet *);
 gboolean issetCompizDecoration(void);
 
-#if PLAINTEXT_CONFIG != 0
-static gchar *
-getCfgValue (FILE  *f,
-             gchar *key)
-{
-  gchar tmp[256] = { 0x0 };
-  long int pos = ftell (f);
-  gchar *r;
-
-  while (f != NULL && fgets (tmp, sizeof (tmp), f) != NULL)
-    {
-      if (g_strrstr (tmp, key))
-        break;
-    }
-
-  r = g_strndup (tmp + strlen (key) + 1, strlen (tmp) - strlen (key) + 1);
-  g_strstrip (r);
-
-  fseek (f, pos, SEEK_SET);
-  return r;
-}
-#endif
-
 static const gchar *
 getCheckBoxCfgKey (gushort checkbox_id)
 {
@@ -86,7 +63,6 @@ static void
 savePreferences (WBPreferences *wbp,
                  WBApplet      *wbapplet)
 {
-#if PLAINTEXT_CONFIG == 0
 	gint i, j;
 
 	for (i=0; i<WB_BUTTONS; i++) {
@@ -110,49 +86,21 @@ savePreferences (WBPreferences *wbp,
 		// save only when we're using a custom layout
 		g_settings_set_string (wbapplet->settings, CFG_BUTTON_LAYOUT, wbp->button_layout);
 	}
-#else
-	FILE *cfg = g_fopen (g_strconcat(g_get_home_dir(),"/",FILE_CONFIGFILE,NULL),"w");
-	gint i, j;
-
-	for (i=0; i<WB_BUTTONS; i++) {
-		fprintf(cfg, "%s %d\n", getCheckBoxCfgKey(i), wbp->button_hidden[i]);
-	}
-	for (i=0; i<WB_IMAGE_STATES; i++) {
-		for (j=0; j<WB_IMAGES; j++) {
-			fprintf(cfg, "%s %s\n", getImageCfgKey(i,j), wbp->images[i][j]);
-		}
-	}
-	fprintf(cfg, "%s %d\n", CFG_ONLY_MAXIMIZED, wbp->only_maximized);
-	fprintf(cfg, "%s %d\n", CFG_CLICK_EFFECT, wbp->click_effect);
-	fprintf(cfg, "%s %d\n", CFG_HOVER_EFFECT, wbp->hover_effect);
-	fprintf(cfg, "%s %d\n", CFG_HIDE_ON_UNMAXIMIZED, wbp->hide_on_unmaximized);
-	fprintf(cfg, "%s %d\n", CFG_USE_METACITY_LAYOUT, wbp->use_metacity_layout);
-	fprintf(cfg, "%s %d\n", CFG_REVERSE_ORDER, wbp->reverse_order);
-	fprintf(cfg, "%s %d\n", CFG_SHOW_TOOLTIPS, wbp->show_tooltips);
-	fprintf(cfg, "%s %d\n", CFG_ORIENTATION, wbp->orientation);
-	fprintf(cfg, "%s %s\n", CFG_THEME, wbp->theme);
-	if (!wbp->use_metacity_layout) {
-		fprintf(cfg, "%s %s\n", CFG_BUTTON_LAYOUT, wbp->button_layout);
-	}
-
-	fclose (cfg);
-#endif
 }
 
 /* Get our properties (the only properties getter that should be called) */
-WBPreferences *loadPreferences(WBApplet *wbapplet) {
+WBPreferences *
+loadPreferences (WBApplet *wbapplet)
+{
 	WBPreferences *wbp = g_new0(WBPreferences, 1);
 	gint i;
+	gint j;
 
 	wbp->button_hidden = g_new(gboolean, WB_BUTTONS);
 	wbp->images = g_new(gchar**, WB_IMAGE_STATES);
 	for (i=0; i<WB_IMAGE_STATES; i++) {
 		wbp->images[i] = g_new(gchar*, WB_IMAGES);
 	}
-
-#if PLAINTEXT_CONFIG == 0
-	//gint i, j;
-	gint j;
 
 	for (i=0; i<WB_BUTTONS; i++) {
 		wbp->button_hidden[i] = g_settings_get_boolean(wbapplet->settings, getCheckBoxCfgKey(i));
@@ -180,64 +128,6 @@ WBPreferences *loadPreferences(WBApplet *wbapplet) {
 	} else {
 		wbp->button_layout = g_settings_get_string(wbapplet->settings, CFG_BUTTON_LAYOUT);
 	}
-#else
-	FILE *cfg = g_fopen (g_strconcat(g_get_home_dir(),"/",FILE_CONFIGFILE, NULL), "r");
-	gint i,j;
-
-	if (cfg) {
-		for (i=0; i<WB_BUTTONS; i++) {
-			wbp->button_hidden[i] = g_ascii_strtod(getCfgValue(cfg,(gchar*)getCheckBoxCfgKey(i)),NULL);
-		}
-		for (i=0; i<WB_IMAGE_STATES; i++) {
-			for (j=0; j<WB_IMAGES; j++) {
-				wbp->images[i][j] = getCfgValue(cfg,(gchar*)getImageCfgKey(i,j));
-			}
-		}
-		wbp->only_maximized = g_ascii_strtod(getCfgValue(cfg,CFG_ONLY_MAXIMIZED),NULL);
-		wbp->hide_on_unmaximized = g_ascii_strtod(getCfgValue(cfg,CFG_HIDE_ON_UNMAXIMIZED),NULL);
-		wbp->click_effect = g_ascii_strtod(getCfgValue(cfg,CFG_CLICK_EFFECT),NULL);
-		wbp->hover_effect = g_ascii_strtod(getCfgValue(cfg,CFG_HOVER_EFFECT),NULL);
-		wbp->reverse_order = g_ascii_strtod(getCfgValue(cfg,CFG_REVERSE_ORDER),NULL);
-		wbp->show_tooltips = g_ascii_strtod(getCfgValue(cfg,CFG_SHOW_TOOLTIPS),NULL);
-		wbp->orientation = g_ascii_strtod(getCfgValue(cfg,CFG_ORIENTATION),NULL);
-		wbp->use_metacity_layout = g_ascii_strtod(getCfgValue(cfg,CFG_USE_METACITY_LAYOUT),NULL);
-		if (wbp->use_metacity_layout) {
-			// wbp->button_layout = getMetacityLayout(); // We're avoiding GConf, so let's not use that
-			wbp->button_layout = "menu:minimize,maximize,close";
-		} else {
-			wbp->button_layout = getCfgValue(cfg,CFG_BUTTON_LAYOUT);
-		}
-		wbp->theme = getCfgValue(cfg,CFG_THEME);
-
-		fclose (cfg);
-	} else {
-		// Defaults if the file doesn't exist
-
-		wbp->only_maximized = TRUE;
-		wbp->hide_on_unmaximized = FALSE;
-		wbp->click_effect = TRUE;
-		wbp->hover_effect = TRUE;
-		wbp->use_metacity_layout = TRUE;
-		wbp->reverse_order = FALSE;
-		wbp->show_tooltips = FALSE;
-		wbp->orientation = 0;
-		wbp->button_layout = "menu:minimize,maximize,close";
-		wbp->theme = "default";
-		for (i=0; i<WB_BUTTONS; i++) {
-			wbp->button_hidden[i] = 0;
-		}
-		for (i=0; i<WB_IMAGE_STATES; i++) {
-			for (j=0; j<WB_IMAGES; j++) {
-				wbp->images[i][j] = g_strconcat(PATH_THEMES,"/",wbp->theme,"/",getButtonImageName(j),"-",getButtonImageState(i,"-"),".",THEME_EXTENSION,NULL);
-				if (!g_file_test(wbp->images[i][j], G_FILE_TEST_EXISTS | ~G_FILE_TEST_IS_DIR)) {
-					wbp->images[i][j] = g_strconcat(PATH_THEMES,"/",wbp->theme,"/",getButtonImageName(j),"-",getButtonImageState4(i),".",THEME_EXTENSION,NULL);
-				}
-			}
-		}
-
-		savePreferences(wbp,wbapplet);
-	}
-#endif
 
 	wbp->eventboxposition = getEBPos(wbp->button_layout);
 
