@@ -195,6 +195,8 @@ ga_get_applet_info (const char *id)
       name = _("Sticky Notes");
       description = _("Create, view, and manage sticky notes on the desktop");
       icon_name = "gnome-sticky-notes-applet";
+
+      about_func = stickynotes_applet_setup_about;
     }
   else if (g_strcmp0 (id, "timer") == 0)
     {

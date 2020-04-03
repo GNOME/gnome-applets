@@ -94,4 +94,6 @@ void stickynotes_applet_update_tooltips(void);
 
 void stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *height);
 
+void stickynotes_applet_setup_about (GtkAboutDialog *dialog);
+
 #endif /* __STICKYNOTES_APPLET_H__ */

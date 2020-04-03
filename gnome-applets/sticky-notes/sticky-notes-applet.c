@@ -36,7 +36,14 @@ static void sticky_notes_init_prefs (void);
 
 static void sticky_notes_applet_new (StickyNotesApplet *self);
 
-/* Popup menu on the applet */
+static void
+menu_about_cb (GSimpleAction *action,
+               GVariant      *parameter,
+               gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
+
 static const GActionEntry stickynotes_applet_menu_actions [] = {
 	{ "new-note",    menu_new_note_cb,    NULL, NULL,    NULL },
 	{ "hide-notes",  menu_hide_notes_cb,  NULL, NULL,    NULL },
@@ -546,4 +553,39 @@ stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *hei
 	gtk_widget_get_allocation (widget, &allocation);
 	*width = allocation.x;
 	*height = allocation.y;
+}
+
+void
+stickynotes_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("Sticky Notes for the GNOME Desktop Environment");
+
+  authors = (const char *[])
+    {
+      "Loban A Rahman <loban@earthling.net>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Loban A Rahman <loban@earthling.net>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2002-2003 Loban A Rahman, "
+              "\xC2\xA9 2005 Davyd Madeley";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

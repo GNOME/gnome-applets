@@ -370,35 +370,6 @@ void menu_help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data
 	}
 }
 
-/* Menu Callback : Display About window */
-void
-menu_about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data)
-{
-	static const gchar *authors[] = {
-		"Loban A Rahman <loban@earthling.net>",
-		"Davyd Madeley <davyd@madeley.id.au>",
-		NULL
-	};
-
-	static const gchar *documenters[] = {
-		"Loban A Rahman <loban@earthling.net>",
-		"Sun GNOME Documentation Team <gdocteam@sun.com>",
-		NULL
-	};
-
-	gtk_show_about_dialog (NULL,
-		"version",	VERSION,
-		"copyright",	"\xC2\xA9 2002-2003 Loban A Rahman, "
-				"\xC2\xA9 2005 Davyd Madeley",
-		"comments",	_("Sticky Notes for the "
-				  "GNOME Desktop Environment"),
-		"authors",	authors,
-		"documenters",	documenters,
-		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"gnome-sticky-notes-applet",
-		NULL);
-}
-
 /* Preferences Callback : Save. */
 void
 preferences_save_cb (gpointer data)
