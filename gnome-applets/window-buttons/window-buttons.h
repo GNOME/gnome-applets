@@ -25,6 +25,8 @@ G_BEGIN_DECLS
 #define WB_TYPE_APPLET (wb_applet_get_type ())
 G_DECLARE_FINAL_TYPE (WBApplet, wb_applet, WB, APPLET, GpApplet)
 
+void wb_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

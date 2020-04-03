@@ -235,6 +235,8 @@ ga_get_applet_info (const char *id)
       name = _("Window Buttons");
       description = _("Window buttons for your GNOME Panel");
       icon_name = "windowbuttons-applet";
+
+      about_func = wb_applet_setup_about;
     }
   else if (g_strcmp0 (id, "window-picker") == 0)
     {

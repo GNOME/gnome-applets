@@ -26,7 +26,6 @@
 static void init_wbapplet (WBApplet *);
 static void active_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WBApplet *);
 static void umaxed_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WBApplet *);
-static void about_cb ( GSimpleAction *, GVariant *, gpointer );
 static WnckWindow *getRootWindow (WnckScreen *screen);
 static WnckWindow *getUpperMaximized (WBApplet *);
 void setCustomLayout (WBPreferences *, gchar *);
@@ -40,6 +39,14 @@ gchar *getMetacityLayout(void);
 GdkPixbuf ***getPixbufs(gchar ***);
 
 G_DEFINE_TYPE (WBApplet, wb_applet, GP_TYPE_APPLET)
+
+static void
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
 
 static const GActionEntry windowbuttons_menu_actions [] = {
 	{ "preferences", wb_applet_properties_cb,  NULL, NULL, NULL },
@@ -124,50 +131,6 @@ static void
 wb_applet_init (WBApplet *self)
 {
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
-}
-
-/* The About dialog */
-//static void about_cb (BonoboUIComponent *uic, WBApplet *applet) {
-static void about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-    static const gchar *authors [] = {
-		"Andrej Belcijan <{andrejx}at{gmail.com}>",
-		" ",
-		"Also contributed:",
-		"quiescens",
-		NULL
-	};
-
-	const gchar *artists[] = {
-		"Andrej Belcijan <{andrejx}at{gmail.com}> for theme \"Default\" and contribution moderating",
-		"Maurizio De Santis <{desantis.maurizio}at{gmail.com}> for theme \"Blubuntu\"",
-		"Nasser Alshammari <{designernasser}at{gmail.com}> for logo design",
-		"Jeff M. Hubbard <{jeffmhubbard}at{gmail.com}> for theme \"Elementary\"",
-		"Gaurang Arora for theme \"Dust-Invert\"",
-		"Giacomo Porrà for themes \"Ambiance\", \"Ambiance-Maverick\", \"Radiance\", \"Radiance-Maverick\"",
-		"Vitalii Dmytruk for theme \"Ambiance-X-Studio\"",
-		"amoob for themes \"Plano\", \"New-Hope\" and \"WoW\"",
-		"McBurri for theme \"Equinox-Glass\"",
-		"milky2313 for theme \"Sorbet\"",
-		NULL
-	};
-
-	const gchar *documenters[] = {
-        "Andrej Belcijan <{andrejx}at{gmail.com}>",
-		NULL
-	};
-
-	gtk_show_about_dialog (NULL,
-		"version",	VERSION,
-		"comments",	N_("Window buttons for your GNOME Panel."),
-		"copyright",	"\xC2\xA9 2011 Andrej Belcijan",
-		"authors",	authors,
-	    "artists",	artists,
-		"documenters",	documenters,
-		"translator-credits", ("translator-credits"),
-		"logo-icon-name",	"windowbuttons-applet",
-	    "website",	"http://www.gnome-look.org/content/show.php?content=103732",
-   		"website-label", N_("Window Applets on Gnome-Look"),
-		NULL);
 }
 
 static WnckWindow *getRootWindow (WnckScreen *screen) {
@@ -768,4 +731,59 @@ void toggleHidden (WBApplet *wbapplet) {
 		gtk_widget_show_all(GTK_WIDGET(wbapplet->box));
 	if (!gtk_widget_get_visible(GTK_WIDGET(wbapplet)))
 		gtk_widget_show_all(GTK_WIDGET(wbapplet));
+}
+
+void
+wb_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **artists;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("Window buttons for your GNOME Panel.");
+
+  authors = (const char *[])
+    {
+      "Andrej Belcijan <{andrejx}at{gmail.com}>",
+      " ",
+      "Also contributed:",
+      "quiescens",
+      NULL
+    };
+
+  artists = (const char *[])
+    {
+      "Andrej Belcijan <{andrejx}at{gmail.com}> for theme \"Default\" and contribution moderating",
+      "Maurizio De Santis <{desantis.maurizio}at{gmail.com}> for theme \"Blubuntu\"",
+      "Nasser Alshammari <{designernasser}at{gmail.com}> for logo design",
+      "Jeff M. Hubbard <{jeffmhubbard}at{gmail.com}> for theme \"Elementary\"",
+      "Gaurang Arora for theme \"Dust-Invert\"",
+      "Giacomo Porrà for themes \"Ambiance\", \"Ambiance-Maverick\", \"Radiance\", \"Radiance-Maverick\"",
+      "Vitalii Dmytruk for theme \"Ambiance-X-Studio\"",
+      "amoob for themes \"Plano\", \"New-Hope\" and \"WoW\"",
+      "McBurri for theme \"Equinox-Glass\"",
+      "milky2313 for theme \"Sorbet\"",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Andrej Belcijan <{andrejx}at{gmail.com}>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2011 Andrej Belcijan";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_artists (dialog, artists);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
+
+  gtk_about_dialog_set_website_label (dialog, _("Window Applets on Gnome-Look"));
+  gtk_about_dialog_set_website (dialog, "http://www.gnome-look.org/content/show.php?content=103732");
 }
