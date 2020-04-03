@@ -30,9 +30,16 @@ static void active_window_state_changed (WnckWindow *, WnckWindowState, WnckWind
 static void active_window_nameicon_changed (WnckWindow *, WTApplet *);
 static void umaxed_window_state_changed (WnckWindow *, WnckWindowState, WnckWindowState, WTApplet *);
 static void umaxed_window_nameicon_changed (WnckWindow *, WTApplet *);
-static void about_cb ( GSimpleAction *, GVariant *, gpointer );
 
 G_DEFINE_TYPE (WTApplet, wt_applet, GP_TYPE_APPLET)
+
+static void
+about_cb (GSimpleAction *action,
+          GVariant      *parameter,
+          gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
 
 static GActionEntry windowtitle_menu_actions [] = {
 	{ "preferences", wt_applet_properties_cb,  NULL, NULL, NULL },
@@ -131,41 +138,6 @@ static void
 wt_applet_init (WTApplet *self)
 {
   wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
-}
-
-/* The About dialog */
-//static void about_cb (BonoboUIComponent *uic, WTApplet *wtapplet) {
-static void about_cb (GSimpleAction *action, GVariant *parameter, gpointer user_data) {
-        static const gchar *authors [] = {
-		"Andrej Belcijan <{andrejx}at{gmail.com}>",
-		" ",
-		"Also contributed:",
-		"Niko Bellic <{yurik81}at{gmail.com}>",
-		NULL
-	};
-
-	const gchar *artists[] = {
-		"Nasser Alshammari <{designernasser}at{gmail.com}>",
-		NULL
-	};
-
-	const gchar *documenters[] = {
-        "Andrej Belcijan <{andrejx}at{gmail.com}>",
-		NULL
-	};
-
-	gtk_show_about_dialog (NULL,
-		"version",	VERSION,
-		"comments",	N_("Window title for your GNOME Panel."),
-		"copyright",	"\xC2\xA9 2011 Andrej Belcijan",
-		"authors",	authors,
-	    "artists",	artists,
-		"documenters",	documenters,
-		"translator-credits",	("translator-credits"),
-		"logo-icon-name",	"windowtitle-applet",
-   	    "website",	"http://www.gnome-look.org/content/show.php?content=103732",
-		"website-label", N_("Window Applets on Gnome-Look"),
-		NULL);
 }
 
 /* Safely returns the bottom-most (root) window */
@@ -783,4 +755,50 @@ init_wtapplet (WTApplet *wtapplet)
 	wt_applet_toggle_expand (wtapplet);
 	wt_applet_toggle_hidden (wtapplet);	// Properly hide or show stuff
 	wt_applet_update_title (wtapplet);
+}
+
+void
+wt_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **artists;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("Window title for your GNOME Panel.");
+
+  authors = (const char *[])
+    {
+      "Andrej Belcijan <{andrejx}at{gmail.com}>",
+      " ",
+      "Also contributed:",
+      "Niko Bellic <{yurik81}at{gmail.com}>",
+      NULL
+    };
+
+  artists = (const char *[])
+    {
+      "Nasser Alshammari <{designernasser}at{gmail.com}>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Andrej Belcijan <{andrejx}at{gmail.com}>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 2011 Andrej Belcijan";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_artists (dialog, artists);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
+
+  gtk_about_dialog_set_website_label (dialog, _("Window Applets on Gnome-Look"));
+  gtk_about_dialog_set_website (dialog, "http://www.gnome-look.org/content/show.php?content=103732");
 }

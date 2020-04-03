@@ -253,6 +253,8 @@ ga_get_applet_info (const char *id)
       name = _("Window Title");
       description = _("Window title for your GNOME Panel");
       icon_name = "windowtitle-applet";
+
+      about_func = wt_applet_setup_about;
     }
   else
     {
