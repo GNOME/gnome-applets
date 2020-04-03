@@ -347,8 +347,6 @@ cpufreq_prefs_dialog_response_cb (CPUFreqPrefs *prefs,
 				  gint          response,
 				  GtkDialog    *dialog)
 {
-        GError *error = NULL;
-
         if (response == GTK_RESPONSE_HELP) {
                 gp_applet_show_help (GP_APPLET (prefs->priv->applet),
                                      "cpufreq-applet-prefs");
