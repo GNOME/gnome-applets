@@ -185,6 +185,8 @@ ga_get_applet_info (const char *id)
       name = _("Network Monitor");
       description = _("Netspeed Applet");
       icon_name = "netspeed-applet";
+
+      about_func = netspeed_applet_setup_about;
     }
   else if (g_strcmp0 (id, "sticky-notes") == 0)
     {

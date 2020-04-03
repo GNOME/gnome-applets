@@ -49,7 +49,6 @@ static const char* wireless_quality_icon[] = {
 static const char IN_ICON[] = "go-down";
 static const char OUT_ICON[] = "go-up";
 static const char ERROR_ICON[] = "gtk-dialog-error";
-static const char LOGO_ICON[] = "netspeed-applet";
 
 /* How many old in out values do we store?
  * The value actually shown in the applet is the average
@@ -599,34 +598,12 @@ help_cb (GSimpleAction *action,
 	netspeed_applet_display_help (netspeed, NULL);
 }
 
-/* Just the about window... If it's already open, just fokus it
- */
 static void
 about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-	const char *authors[] = 
-	{
-		"Jörgen Scheibengruber <mfcn@gmx.de>", 
-		"Dennis Cranston <dennis_cranston@yahoo.com>",
-		"Pedro Villavicencio Garrido <pvillavi@gnome.org>",
-		"Benoît Dejean <benoit@placenet.org>",
-		NULL
-	};
-
-	gtk_show_about_dialog (NULL, 
-			       "version", VERSION, 
-			       "copyright", "Copyright 2002 - 2010 Jörgen Scheibengruber",
-			       "comments", _("A little applet that displays some information on the traffic on the specified network device"),
-			       "authors", authors, 
-			       "documenters", NULL, 
-			       "translator-credits", _("translator-credits"),
-			       "website", "http://www.gnome.org/projects/netspeed/",
-			       "website-label", _("Netspeed Website"),
-			       "logo-icon-name", LOGO_ICON,
-			       NULL);
-	
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -1555,4 +1532,32 @@ netspeed_applet_get_auto_device_name (void)
 		return device;
 
 	return g_strdup ("lo");
+}
+
+void
+netspeed_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char *copyright;
+
+  comments = _("A little applet that displays some information on the "
+               "traffic on the specified network device");
+
+  authors = (const char *[])
+    {
+      "Jörgen Scheibengruber <mfcn@gmx.de>",
+      "Dennis Cranston <dennis_cranston@yahoo.com>",
+      "Pedro Villavicencio Garrido <pvillavi@gnome.org>",
+      "Benoît Dejean <benoit@placenet.org>",
+      NULL
+    };
+
+  copyright = "Copyright 2002 - 2010 Jörgen Scheibengruber";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

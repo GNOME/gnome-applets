@@ -36,4 +36,6 @@ GSettings   *netspeed_applet_get_settings            (NetspeedApplet *netspeed);
 const gchar *netspeed_applet_get_current_device_name (NetspeedApplet *netspeed);
 gchar       *netspeed_applet_get_auto_device_name    (void);
 
+void         netspeed_applet_setup_about             (GtkAboutDialog *dialog);
+
 #endif
