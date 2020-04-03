@@ -126,6 +126,8 @@ ga_get_applet_info (const char *id)
       name = _("Disk Mounter");
       description = _("Mount local disks and devices");
       icon_name = "media-floppy";
+
+      about_func = drivemount_applet_setup_about;
     }
   else if (g_strcmp0 (id, "geyes") == 0)
     {

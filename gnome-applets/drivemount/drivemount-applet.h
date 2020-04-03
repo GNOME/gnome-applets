@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (DrivemountApplet, drivemount_applet,
                       DRIVEMOUNT, APPLET, GpApplet)
 
+void drivemount_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif

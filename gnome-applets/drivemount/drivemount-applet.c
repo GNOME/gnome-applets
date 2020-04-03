@@ -71,25 +71,7 @@ display_about_dialog (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-    const gchar *authors[] = {
-	"James Henstridge <jamesh@canonical.com>",
-	NULL
-    };
-    const gchar *documenters[] = {
-	"Dan Mueth <muet@alumni.uchicago.edu>",
-	"John Fleck <jfleck@inkstain.net>",
-	NULL
-    };
-
-    gtk_show_about_dialog (NULL,
-	"version",     VERSION,
-	"copyright",   "Copyright \xC2\xA9 2004 Canonical Ltd",
-	"comments",    _("Applet for mounting and unmounting block volumes."),
-	"authors",     authors,
-	"documenters", documenters,
-	"translator-credits", _("translator-credits"),
-	"logo_icon_name",     "media-floppy",
-	NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -186,4 +168,37 @@ static void
 drivemount_applet_init (DrivemountApplet *self)
 {
   gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+}
+
+void
+drivemount_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("Applet for mounting and unmounting block volumes.");
+
+  authors = (const char *[])
+    {
+      "James Henstridge <jamesh@canonical.com>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Dan Mueth <muet@alumni.uchicago.edu>",
+      "John Fleck <jfleck@inkstain.net>",
+      NULL
+    };
+
+  copyright = "Copyright \xC2\xA9 2004 Canonical Ltd";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }
