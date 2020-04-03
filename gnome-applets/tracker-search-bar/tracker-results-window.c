@@ -460,8 +460,7 @@ results_window_finalize (GObject *object)
 	/* Clean up previous requests, this will call
 	 * g_cancellable_cancel() on each query still running.
 	 */
-	g_list_foreach (self->search_queries, (GFunc) search_query_free, NULL);
-	g_list_free (self->search_queries);
+	g_list_free_full (self->search_queries, (GDestroyNotify) search_query_free);
 
 	G_OBJECT_CLASS (tracker_results_window_parent_class)->finalize (object);
 }
@@ -1421,8 +1420,7 @@ search_start (TrackerResultsWindow *window)
 	/* Clean up previous requests, this will call
 	 * g_cancellable_cancel() on each query still running.
 	 */
-	g_list_foreach (window->search_queries, (GFunc) search_query_free, NULL);
-	g_list_free (window->search_queries);
+	g_list_free_full (window->search_queries, (GDestroyNotify) search_query_free);
 
 	/* SPARQL requests */
 	search_get (window, CATEGORY_IMAGE);
