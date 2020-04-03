@@ -175,6 +175,8 @@ ga_get_applet_info (const char *id)
       name = _("System Monitor");
       description = _("A system load indicator");
       icon_name = "utilities-system-monitor";
+
+      about_func = multiload_applet_setup_about;
     }
   else if (g_strcmp0 (id, "netspeed") == 0)
     {

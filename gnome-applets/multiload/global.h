@@ -114,8 +114,7 @@ struct _MultiloadApplet
 	gboolean view_swapload;
 	gboolean view_loadavg;
 	gboolean view_diskload;
-	
-	GtkWidget *about_dialog;
+
 	GtkWidget *check_boxes[NGRAPHS];
 	GtkWidget *prop_dialog;
 	GtkWidget *notebook;

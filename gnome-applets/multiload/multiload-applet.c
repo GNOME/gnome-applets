@@ -35,34 +35,7 @@ about_cb (GSimpleAction *action,
           GVariant      *parameter,
           gpointer       user_data)
 {
-    const gchar * const authors[] =
-    {
-		"Martin Baulig <martin@home-of-linux.org>",
-		"Todd Kulesza <fflewddur@dropline.net>",
-		"Benoît Dejean <TazForEver@dlfp.org>",
-		"Davyd Madeley <davyd@madeley.id.au>",
-		NULL
-    };
-
-    const gchar * const documenters[] =
-    {
-		"Chee Bin HOH <cbhoh@gnome.org>",
-		"Sun GNOME Documentation Team <gdocteam@sun.com>",
-		NULL
-    };
-
-    gtk_show_about_dialog (NULL,
-	"version",	VERSION,
-	"copyright",	"\xC2\xA9 1999-2005 Free Software Foundation "
-			"and others",
-	"comments",	_("A system load monitor capable of displaying graphs "
-			"for CPU, ram, and swap space use, plus network "
-			"traffic."),
-	"authors",	authors,
-	"documenters",	documenters,
-	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"utilities-system-monitor",
-	NULL);
+  gp_applet_show_about (GP_APPLET (user_data));
 }
 
 static void
@@ -419,7 +392,6 @@ multiload_applet_setup (MultiloadApplet *ma)
 	const char *menu_resource;
 	GAction *action;
 
-	ma->about_dialog = NULL;
 	ma->prop_dialog = NULL;
 	ma->last_clicked = 0;
 
@@ -501,7 +473,6 @@ multiload_applet_dispose (GObject *object)
 
   g_clear_object (&self->settings);
 
-  g_clear_pointer (&self->about_dialog, gtk_widget_destroy);
   g_clear_pointer (&self->prop_dialog, gtk_widget_destroy);
 
   G_OBJECT_CLASS (multiload_applet_parent_class)->dispose (object);
@@ -521,4 +492,42 @@ multiload_applet_class_init (MultiloadAppletClass *self_class)
 static void
 multiload_applet_init (MultiloadApplet *self)
 {
+}
+
+void
+multiload_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char **documenters;
+  const char *copyright;
+
+  comments = _("A system load monitor capable of displaying graphs "
+               "for CPU, ram, and swap space use, plus network "
+               "traffic.");
+
+  authors = (const char *[])
+    {
+      "Martin Baulig <martin@home-of-linux.org>",
+      "Todd Kulesza <fflewddur@dropline.net>",
+      "Benoît Dejean <TazForEver@dlfp.org>",
+      "Davyd Madeley <davyd@madeley.id.au>",
+      NULL
+    };
+
+  documenters = (const char *[])
+    {
+      "Chee Bin HOH <cbhoh@gnome.org>",
+      "Sun GNOME Documentation Team <gdocteam@sun.com>",
+      NULL
+    };
+
+  copyright = "\xC2\xA9 1999-2005 Free Software Foundation and others";
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_documenters (dialog, documenters);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

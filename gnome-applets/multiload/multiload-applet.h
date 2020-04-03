@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (MultiloadApplet, multiload_applet,
                       MULTILOAD, APPLET, GpApplet)
 
+void multiload_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif
