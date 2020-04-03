@@ -50,7 +50,9 @@ static gboolean decorPluginInstalled (void) {
 		&& gsettings_schema_exists(GSETTINGS_COMPIZ_DECOR_SCHEMA);
 }
 
-gchar *getMetacityLayout() {
+gchar *
+getMetacityLayout (void)
+{
 	GSettings *gs = g_settings_new(GSETTINGS_METACITY_SCHEMA);
 	gchar *retval = g_settings_get_string(gs, CFG_METACITY_BUTTON_LAYOUT);
 	g_object_unref(gs);
@@ -58,7 +60,7 @@ gchar *getMetacityLayout() {
 }
 
 gboolean
-issetCompizDecoration ()
+issetCompizDecoration (void)
 {
 	gboolean retval;
 	GSettings *settings;
