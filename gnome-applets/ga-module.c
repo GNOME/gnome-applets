@@ -177,6 +177,7 @@ ga_get_applet_info (const char *id)
       icon_name = "utilities-system-monitor";
 
       about_func = multiload_applet_setup_about;
+      help_uri = "help:multiload";
     }
   else if (g_strcmp0 (id, "netspeed") == 0)
     {
