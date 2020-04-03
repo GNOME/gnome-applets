@@ -690,6 +690,7 @@ check_audio_cd (DriveButton *self)
 	GFile *file;
 	char *activation_uri;
 	GMount *mount;
+	gboolean result;
 
 	if (!self->volume)
 		return FALSE;
@@ -709,7 +710,7 @@ check_audio_cd (DriveButton *self)
 	g_object_unref (file);
 
 	/* we have an audioCD if the activation URI starts by 'cdda://' */
-	gboolean result = (strncmp ("cdda://", activation_uri, 7) == 0);
+	result = (strncmp ("cdda://", activation_uri, 7) == 0);
 	g_free (activation_uri);
 	return result;
 }
