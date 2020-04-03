@@ -52,9 +52,13 @@ struct _TrackerApplet
 
 G_DEFINE_TYPE (TrackerApplet, tracker_applet, GP_TYPE_APPLET)
 
-static void applet_about_cb (GSimpleAction *action,
-                             GVariant *parameter,
-                             gpointer user_data);
+static void
+applet_about_cb (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       user_data)
+{
+  gp_applet_show_about (GP_APPLET (user_data));
+}
 
 static const GActionEntry applet_menu_actions[] = {
 	{ "about",
@@ -67,24 +71,6 @@ static const GActionEntry applet_menu_actions[] = {
 	  NULL
 	}
 };
-
-static void
-applet_about_cb (GSimpleAction *action,
-                 GVariant *parameter,
-                 gpointer user_data)
-{
-	TrackerApplet *applet = user_data;
-	GObject *object;
-	GtkWidget *dialog;
-
-	object = gtk_builder_get_object (applet->builder, "dialog_about");
-	g_return_if_fail (object != NULL);
-
-	dialog = GTK_WIDGET (object);
-
-	gtk_dialog_run (GTK_DIALOG(dialog));
-	gtk_widget_hide (dialog);
-}
 
 static gboolean
 applet_event_box_button_press_event_cb (GtkWidget      *widget,
@@ -409,4 +395,68 @@ tracker_applet_class_init (TrackerAppletClass *self_class)
 static void
 tracker_applet_init (TrackerApplet *self)
 {
+}
+
+void
+tracker_applet_setup_about (GtkAboutDialog *dialog)
+{
+  const char *comments;
+  const char **authors;
+  const char *copyright;
+
+  comments = _("A search bar applet for finding content stored in Tracker");
+
+  authors = (const char *[])
+    {
+      "Martyn Russell <martyn@lanedo.com>",
+      "J&#xFC;rg Billeter <juerg.billeter@codethink.co.uk>",
+      "Philip Van Hoof <pvanhoof@gnome.org>",
+      "Carlos Garnacho <carlos@lanedo.com>",
+      "Mikael Ottela <mikael.ottela@ixonos.com>",
+      "Ivan Frade <ivan.frade@nokia.com>",
+      "Jamie McCracken <jamiemcc@gnome.org>",
+      "Adrien Bustany <abustany@gnome.org>",
+      "Aleksander Morgado <aleksander@lanedo.com>",
+      "Anders Aagaard <aagaande@gmail.com>",
+      "Anders Rune Jensen <anders@iola.dk>",
+      "Baptiste Mille-Mathias <baptist.millemathias@gmail.com>",
+      "Christoph Laimburg <christoph.laimburg@rolmail.net>",
+      "Dan Nicolaescu <dann@ics.uci.edu>",
+      "Deji Akingunola <dakingun@gmail.com>",
+      "Edward Duffy <eduffy@gmail.com>",
+      "Eskil Bylund <eskil@letterboxes.org>",
+      "Eugenio <me@eugesoftware.com>",
+      "Fabien VALLON <fabien@sonappart.net>",
+      "Gergan Penkov <gergan@gmail.com>",
+      "Halton Huo <halton.huo@sun.com>",
+      "Jaime Frutos Morales <acidborg@gmail.com>",
+      "Jedy Wang <jedy.wang@sun.com>",
+      "Jerry Tan <jerry.tan@sun.com>",
+      "John Stowers <john.stowers@gmail.com>",
+      "Julien <julienc@psychologie-fr.org>",
+      "Laurent Aguerreche <laurent.aguerreche@free.fr>",
+      "Luca Ferretti <elle.uca@libero.it>",
+      "Marcus Fritzsch <fritschy@googlemail.com>",
+      "Michael Biebl <mbiebl@gmail.com>",
+      "Michal Pryc <michal.pryc@sun.com>",
+      "Mikkel Kamstrup Erlandsen <mikkel.kamstrup@gmail.com>",
+      "Nate Nielsen  <nielsen@memberwewbs.com>",
+      "Neil Patel <njpatel@gmail.com>",
+      "Richard Quirk <quirky@zoom.co.uk>",
+      "Saleem Abdulrasool <compnerd@gentoo.org>",
+      "Samuel Cormier-Iijima <sciyoshi@gmail.com>",
+      "Tobutaz <tobutaz@gmail.com>",
+      "Tom <tpgww@onepost.net>",
+      "Tshepang Lekhonkhobe <tshepang@gmail.com>",
+      "Ulrik Mikaelsson <ulrik.mikaelsson@gmail.com>",
+      NULL
+    };
+
+  copyright = _("Copyright Tracker Authors 2005-2010");
+
+  gtk_about_dialog_set_comments (dialog, comments);
+
+  gtk_about_dialog_set_authors (dialog, authors);
+  gtk_about_dialog_set_translator_credits (dialog, _("translator-credits"));
+  gtk_about_dialog_set_copyright (dialog, copyright);
 }

@@ -28,6 +28,8 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (TrackerApplet, tracker_applet,
                       TRACKER, APPLET, GpApplet)
 
+void tracker_applet_setup_about (GtkAboutDialog *dialog);
+
 G_END_DECLS
 
 #endif /* __TRACKER_APPLET_H__ */

@@ -215,6 +215,8 @@ ga_get_applet_info (const char *id)
       name = _("Tracker Search Bar");
       description = _("Find your data quickly using Tracker");
       icon_name = "system-search";
+
+      about_func = tracker_applet_setup_about;
     }
 #endif
   else if (g_strcmp0 (id, "trash") == 0)

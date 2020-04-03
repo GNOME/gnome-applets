@@ -98,7 +98,6 @@ cpufreq_ui_files = \
 
 tracker_search_bar_ui_files = \
 	tracker-search-bar/tracker-search-bar-menu.ui \
-	tracker-search-bar/tracker-search-bar.ui \
 	$(NULL)
 
 icon_files = \
