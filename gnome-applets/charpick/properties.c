@@ -136,7 +136,8 @@ add_palette_cb (GtkDialog *dialog, int response_id, charpick_data *curr_data)
 
 	if (curr_data->chartable == NULL) {
 		curr_data->chartable = list;
-		curr_data->charlist = curr_data->chartable->data;
+		g_free (curr_data->charlist);
+		curr_data->charlist = g_strdup (curr_data->chartable->data);
 		build_table (curr_data);
 
 		if (g_settings_is_writable (curr_data->settings, KEY_CURRENT_LIST))
@@ -198,7 +199,9 @@ edit_palette_cb (GtkDialog *dialog, int response_id, charpick_data *curr_data)
 	gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, new, 1, new, -1);
 	
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
-		curr_data->charlist = new;
+		g_free (curr_data->charlist);
+		curr_data->charlist = g_strdup (new);
+
 		build_table (curr_data);
 
 		if (g_settings_is_writable (curr_data->settings, KEY_CURRENT_LIST))
@@ -288,8 +291,9 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 	curr_data->chartable = g_list_remove (curr_data->chartable, charlist);
 	
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
+		g_free (curr_data->charlist);
 		curr_data->charlist = curr_data->chartable != NULL ? 
-				      curr_data->chartable->data : "";
+				      g_strdup (curr_data->chartable->data) : g_strdup ("");
 		if (g_settings_is_writable (curr_data->settings, KEY_CURRENT_LIST))
 			g_settings_set_string (curr_data->settings, KEY_CURRENT_LIST, curr_data->charlist);
 	}

@@ -258,8 +258,10 @@ menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 	string = g_object_get_data (G_OBJECT (menuitem), "string");
 	if (g_ascii_strcasecmp (curr_data->charlist, string) == 0)
 		return;
-	
-	curr_data->charlist = string;
+
+	g_free (curr_data->charlist);
+	curr_data->charlist = g_strdup (string);
+
 	build_table (curr_data);
 	if (g_settings_is_writable (curr_data->settings, KEY_CURRENT_LIST))
 		g_settings_set_string (curr_data->settings, KEY_CURRENT_LIST, curr_data->charlist);
@@ -660,23 +662,30 @@ charpicker_applet_fill (charpick_data *curr_data)
   get_chartable (curr_data);
 
   string = g_settings_get_string (curr_data->settings, KEY_CURRENT_LIST);
-  if (string[0] != '\0') {
-  	list = curr_data->chartable;
-  	while (list) {
-  		if (g_ascii_strcasecmp (list->data, string) == 0)
-  			curr_data->charlist = list->data;
-  		list = g_list_next (list);
-  	}
-	/* FIXME: yeah leak, but this code is full of leaks and evil
-	   point shuffling.  This should really be rewritten
-	   -George */
-	if (curr_data->charlist == NULL)
-		curr_data->charlist = string;
-	else
-		g_free (string);
-  } else {
-  	curr_data->charlist = curr_data->chartable->data;  
-  }
+
+  if (string[0] != '\0')
+    {
+      list = curr_data->chartable;
+
+      while (list)
+        {
+          if (g_ascii_strcasecmp (list->data, string) == 0)
+            {
+              g_free (curr_data->charlist);
+              curr_data->charlist = g_strdup (list->data);
+            }
+
+          list = g_list_next (list);
+        }
+
+      if (curr_data->charlist == NULL)
+        curr_data->charlist = g_strdup (string);
+    }
+  else
+    {
+      curr_data->charlist = g_strdup (curr_data->chartable->data);
+    }
+	g_free (string);
 
   orientation = gp_applet_get_orientation (GP_APPLET (curr_data));
   curr_data->panel_vertical = (orientation == GTK_ORIENTATION_VERTICAL);
@@ -764,6 +773,18 @@ charpick_applet_dispose (GObject *object)
 }
 
 static void
+charpick_applet_finalize (GObject *object)
+{
+  CharpickApplet *self;
+
+  self = CHARPICK_APPLET (object);
+
+  g_clear_pointer (&self->charlist, g_free);
+
+  G_OBJECT_CLASS (charpick_applet_parent_class)->finalize (object);
+}
+
+static void
 charpick_applet_class_init (CharpickAppletClass *self_class)
 {
   GObjectClass *object_class;
@@ -772,6 +793,7 @@ charpick_applet_class_init (CharpickAppletClass *self_class)
 
   object_class->constructed = charpick_applet_constructed;
   object_class->dispose = charpick_applet_dispose;
+  object_class->finalize = charpick_applet_finalize;
 }
 
 static void
