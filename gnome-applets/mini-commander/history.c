@@ -100,8 +100,8 @@ append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
 
     for (i = 0; i < MC_HISTORY_LIST_LENGTH; i++) {
 	    if (exists_history_entry(i)) {
-	        gchar *entry = g_strdup (get_history_entry (i));
-	        history = g_array_append_val (history, entry);
+	        gchar *history_entry = g_strdup (get_history_entry (i));
+	        history = g_array_append_val (history, history_entry);
         }
 	}
 
