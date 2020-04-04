@@ -123,6 +123,10 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
 		case GTK_ORIENTATION_HORIZONTAL:
 			size = allocation->height;
 			break;
+
+		default:
+			g_assert_not_reached ();
+			break;
 	}
 
 	/* copied from button-widget.c in the panel */
