@@ -1370,6 +1370,10 @@ search_get (TrackerResultsWindow *window,
 	case CATEGORY_CONTACT:
 		format = CONTACT_QUERY;
 		break;
+	case CATEGORY_NONE:
+	case CATEGORY_EMAIL_ADDRESS:
+	case CATEGORY_FONT:
+	case CATEGORY_ARCHIVE:
 	default:
 		format = NULL;
 		break;
