@@ -25,6 +25,36 @@
 #define HIG_IDENTATION		"    "
 #define NEVER_SENSITIVE		"never_sensitive"
 
+typedef struct
+{
+  MultiloadApplet *ma;
+  const char      *key;
+  int              prop_type;
+} CallbackData;
+
+static CallbackData *
+callback_data_new (MultiloadApplet *ma,
+                   const char      *key,
+                   int              prop_type)
+{
+  CallbackData *data;
+
+  data = g_new0 (CallbackData, 1);
+
+  data->ma = ma;
+  data->key = key;
+  data->prop_type = prop_type;
+
+  return data;
+}
+
+static void
+callback_data_free (gpointer  data,
+                    GClosure *closure)
+{
+  g_free (data);
+}
+
 /* set sensitive and setup NEVER_SENSITIVE appropriately */
 static void
 hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
@@ -84,16 +114,17 @@ properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 }
 
 static void
-property_toggled_cb(GtkWidget *widget, gpointer name)
+property_toggled_cb (GtkWidget    *widget,
+                     CallbackData *data)
 {
 	MultiloadApplet *ma;
 	gint prop_type, i;
 	gboolean active = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
-	
-	ma = g_object_get_data(G_OBJECT(widget), "MultiloadApplet");
-	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
 
-	g_settings_set_boolean (ma->settings, (gchar *)name, active);
+	ma = data->ma;
+	prop_type = data->prop_type;
+
+	g_settings_set_boolean (ma->settings, data->key, active);
 
 	if (active)
 	{
@@ -115,16 +146,17 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 }
 
 static void
-spin_button_changed_cb(GtkWidget *widget, gpointer name)
+spin_button_changed_cb (GtkWidget    *widget,
+                        CallbackData *data)
 {
 	MultiloadApplet *ma;
 	gint value, prop_type, i;
-	
-	ma = g_object_get_data(G_OBJECT(widget), "MultiloadApplet");
-	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
+
+	ma = data->ma;
+	prop_type = data->prop_type;
 	value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widget));
 
-	g_settings_set_int (ma->settings, (gchar *)name, value);
+	g_settings_set_int (ma->settings, data->key, value);
 
 	switch(prop_type)
 	{
@@ -182,7 +214,8 @@ add_page(GtkWidget *notebook, gchar *label)
 
 /* save the selected color to GSettings and apply it on the applet */
 static void
-color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
+color_picker_set_cb (GtkColorButton *color_picker,
+                     CallbackData   *data)
 {
 	gchar *color_string;
 	const gchar *key;
@@ -190,8 +223,8 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 	GdkRGBA color;
 	MultiloadApplet *ma;
 
-	key = (const gchar *) data;
-	ma = g_object_get_data (G_OBJECT (color_picker), "MultiloadApplet");
+	key = data->key;
+	ma = data->ma;
 
 	prop_type = 0;
 	
@@ -220,7 +253,10 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 
 /* create a color selector */
 static void
-add_color_selector(GtkWidget *page, gchar *name, gchar *key, MultiloadApplet *ma)
+add_color_selector (GtkWidget       *page,
+                    const char      *name,
+                    const char      *key,
+                    MultiloadApplet *ma)
 {
 	GtkWidget *vbox;
 	GtkWidget *label;
@@ -243,12 +279,15 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *key, MultiloadApplet *ma
 	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 	
 	gtk_box_pack_start(GTK_BOX(page), vbox, FALSE, FALSE, 0);	
-	
-	g_object_set_data (G_OBJECT (color_picker), "MultiloadApplet", ma);
 
 	gtk_color_button_set_rgba (GTK_COLOR_BUTTON (color_picker), &color);
 
-	g_signal_connect(G_OBJECT(color_picker), "color_set", G_CALLBACK(color_picker_set_cb), key);
+	g_signal_connect_data (color_picker,
+	                       "color_set",
+	                       G_CALLBACK (color_picker_set_cb),
+	                       callback_data_new (ma, key, 0),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, key))
 		hard_set_sensitive (vbox, FALSE);
@@ -317,11 +356,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[0] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				g_settings_get_boolean (ma->settings, KEY_VIEW_CPULOAD));
-	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_CPU));
-	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view-cpuload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-cpuload", PROP_CPU),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_VIEW_CPULOAD))
 		hard_set_sensitive (check_box, FALSE);
@@ -330,11 +372,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[1] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				g_settings_get_boolean (ma->settings, KEY_VIEW_MEMLOAD));
-	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_MEM));
-	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view-memload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-memload", PROP_MEM),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_VIEW_MEMLOAD))
 		hard_set_sensitive (check_box, FALSE);
@@ -343,11 +388,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[2] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				g_settings_get_boolean (ma->settings, KEY_VIEW_NETLOAD2));
-	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_NET));
-	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view-netload2");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-netload2", PROP_NET),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_VIEW_NETLOAD2))
 		hard_set_sensitive (check_box, FALSE);
@@ -356,11 +404,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[3] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				g_settings_get_boolean (ma->settings, KEY_VIEW_SWAPLOAD));
-	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_SWAP));
-	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view-swapload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-swapload", PROP_SWAP),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_VIEW_SWAPLOAD))
 		hard_set_sensitive (check_box, FALSE);
@@ -369,11 +420,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[4] = check_box;	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				g_settings_get_boolean (ma->settings, KEY_VIEW_LOADAVG));
-	g_object_set_data(G_OBJECT(check_box), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_AVG));
-	g_signal_connect(G_OBJECT(check_box), "toggled",
-				G_CALLBACK(property_toggled_cb), "view-loadavg");
 	gtk_box_pack_start(GTK_BOX(control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-loadavg", PROP_AVG),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_VIEW_LOADAVG))
 		hard_set_sensitive (check_box, FALSE);
@@ -382,12 +436,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	ma->check_boxes[5] = check_box;
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_box),
 			g_settings_get_boolean (ma->settings, KEY_VIEW_DISKLOAD));
-	g_object_set_data (G_OBJECT (check_box), "MultiloadApplet", ma);
-	g_object_set_data (G_OBJECT (check_box), "prop_type",
-			GINT_TO_POINTER (PROP_DISK));
-	g_signal_connect (G_OBJECT (check_box), "toggled",
-			G_CALLBACK (property_toggled_cb), "view-diskload");
 	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	g_signal_connect_data (check_box,
+	                       "toggled",
+	                       G_CALLBACK (property_toggled_cb),
+	                       callback_data_new (ma, "view-diskload", PROP_DISK),
+	                       callback_data_free,
+	                       0);
 
 	category_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
@@ -439,14 +495,16 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 			  
 	spin_button = gtk_spin_button_new_with_range(10, 1000, 5);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
-	g_object_set_data(G_OBJECT(spin_button), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(spin_button), "prop_type",
-				GINT_TO_POINTER(PROP_SIZE));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
 				(gdouble)g_settings_get_int (ma->settings, KEY_SIZE));
-	g_signal_connect(G_OBJECT(spin_button), "value_changed",
-				G_CALLBACK(spin_button_changed_cb), "size");
-	
+
+	g_signal_connect_data (spin_button,
+	                       "value_changed",
+	                       G_CALLBACK (spin_button_changed_cb),
+	                       callback_data_new (ma, "size", PROP_SIZE),
+	                       callback_data_free,
+	                       0);
+
 	if (!g_settings_is_writable (ma->settings, KEY_SIZE)) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (hbox, FALSE);
@@ -474,15 +532,17 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	spin_button = gtk_spin_button_new_with_range(50, 10000, 50);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
-	g_object_set_data(G_OBJECT(spin_button), "MultiloadApplet", ma);
-	g_object_set_data(G_OBJECT(spin_button), "prop_type",
-				GINT_TO_POINTER(PROP_SPEED));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
 				(gdouble)g_settings_get_int (ma->settings, KEY_SPEED));
-	g_signal_connect(G_OBJECT(spin_button), "value_changed",
-				G_CALLBACK(spin_button_changed_cb), "speed");
 	gtk_size_group_add_widget (spin_size, spin_button);
 	gtk_box_pack_start (GTK_BOX (hbox), spin_button, FALSE, FALSE, 0);
+
+	g_signal_connect_data (spin_button,
+	                       "value_changed",
+	                       G_CALLBACK (spin_button_changed_cb),
+	                       callback_data_new (ma, "speed", PROP_SPEED),
+	                       callback_data_free,
+	                       0);
 
 	if (!g_settings_is_writable (ma->settings, KEY_SPEED)) {
 		hard_set_sensitive (label, FALSE);
