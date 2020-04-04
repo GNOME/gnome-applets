@@ -288,7 +288,7 @@ multiload_create_graphs(MultiloadApplet *ma)
 		};
 
 	gint speed, size;
-	gint i;
+	unsigned int i;
 
 	speed = g_settings_get_int (ma->settings, KEY_SPEED);
 	size = g_settings_get_int (ma->settings, KEY_SIZE);
