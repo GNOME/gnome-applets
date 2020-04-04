@@ -120,6 +120,9 @@ applet_key_cb (GtkWidget         *widget,
 		case GDK_KEY_Return:
 			stickynote_show_notes (TRUE);
 			return TRUE;
+
+		default:
+			break;
 	}
 	return FALSE;
 }
