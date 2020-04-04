@@ -503,7 +503,7 @@ update_applet(NetspeedApplet *applet)
 			char *text;
 
 			quality = applet->devinfo.qual / 100.0f;
-			if (quality > 1.0)
+			if (quality > 1.0f)
 				quality = 1.0;
 
 			text = g_strdup_printf ("%d %%", applet->devinfo.qual);
@@ -960,8 +960,8 @@ details_cb (GSimpleAction *action,
 		applet->signalbar = gtk_progress_bar_new ();
 
 		quality = applet->devinfo.qual / 100.0f;
-		if (quality > 1.0)
-		quality = 1.0;
+		if (quality > 1.0f)
+			quality = 1.0;
 
 		text = g_strdup_printf ("%d %%", applet->devinfo.qual);
 		gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (applet->signalbar), quality);
