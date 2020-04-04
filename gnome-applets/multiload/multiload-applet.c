@@ -245,7 +245,6 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		g_free(tx_in);
 		g_free(tx_out);
 	} else {
-		const char *msg;
 		guint i, total_used, percent;
 
 		for (i = 0, total_used = 0; i < (g->n - 1); i++)
@@ -254,15 +253,11 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		percent = 100.0f * total_used / g->draw_height;
 		percent = MIN(percent, 100);
 
-		msg = ngettext("%s:\n"
-			       "%u%% in use",
-			       "%s:\n"
-			       "%u%% in use",
-			       percent);
-
-		tooltip_text = g_strdup_printf(msg,
-					       name,
-					       percent);
+		tooltip_text = g_strdup_printf (ngettext ("%s:\n%u%% in use",
+		                                          "%s:\n%u%% in use",
+		                                          percent),
+		                                name,
+		                                percent);
 	}
 
 	gtk_widget_set_tooltip_text(g->disp, tooltip_text);
