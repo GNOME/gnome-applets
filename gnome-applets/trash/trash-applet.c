@@ -171,6 +171,10 @@ trash_applet_size_allocate (GtkWidget    *widget,
     case GTK_ORIENTATION_HORIZONTAL:
       trash_applet_set_icon_size (applet, allocation->height);
       break;
+
+    default:
+      g_assert_not_reached ();
+      break;
   }
 
   GTK_WIDGET_CLASS (trash_applet_parent_class)
