@@ -892,7 +892,7 @@ void stickynotes_remove(StickyNote *note)
 }
 
 /* Save all sticky notes in an XML configuration file */
-gboolean
+void
 stickynotes_save_now (void)
 {
 	WnckScreen *wnck_screen;
@@ -1007,8 +1007,14 @@ stickynotes_save_now (void)
 	xmlFreeDoc(doc);
 
 	save_scheduled = FALSE;
+}
 
-	return FALSE;
+static gboolean
+stickynotes_save_cb (gpointer user_data)
+{
+  stickynotes_save_now ();
+
+  return G_SOURCE_REMOVE;
 }
 
 void
@@ -1016,7 +1022,7 @@ stickynotes_save (void)
 {
   /* If a save isn't already schedules, save everything a minute from now. */
   if (!save_scheduled) {
-    g_timeout_add_seconds (60, (GSourceFunc) stickynotes_save_now, NULL);
+    g_timeout_add_seconds (60, stickynotes_save_cb, NULL);
     save_scheduled = TRUE;
   }
 }
