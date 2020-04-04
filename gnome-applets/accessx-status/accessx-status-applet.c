@@ -499,10 +499,18 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 		window = gtk_widget_get_window (GTK_WIDGET (sapplet));
 
 		if (event && window) {
-			KeySym keysym = XKeycodeToKeysym (
-				GDK_WINDOW_XDISPLAY (window),
-				event->keycode, 
-				0); 
+			int keysyms_return;
+			KeySym *keysyms;
+			KeySym keysym;
+
+			keysyms = XGetKeyboardMapping (GDK_WINDOW_XDISPLAY (window),
+			                               event->keycode,
+			                               1,
+			                               &keysyms_return);
+
+			keysym = keysyms[0];
+			XFree (keysyms);
+
 			glyphstring = XKeysymToString (keysym);
 			if ((!g_utf8_validate (glyphstring, -1, NULL)) || 
 			    (g_utf8_strlen (glyphstring, -1) > 1))
