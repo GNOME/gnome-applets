@@ -1331,7 +1331,6 @@ search_get (TrackerResultsWindow *window,
 {
 	SearchQuery *sq;
 	gchar *sparql;
-	const gchar *format;
 
 	if (!window->connection) {
 		return;
@@ -1339,52 +1338,51 @@ search_get (TrackerResultsWindow *window,
 
 	switch (category) {
 	case CATEGORY_IMAGE:
-		format = IMAGE_QUERY;
+		sparql = g_strdup_printf (IMAGE_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_AUDIO:
-		format = MUSIC_QUERY;
+		sparql = g_strdup_printf (MUSIC_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_VIDEO:
-		format = VIDEO_QUERY;
+		sparql = g_strdup_printf (VIDEO_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_DOCUMENT:
-		format = DOCUMENT_QUERY;
+		sparql = g_strdup_printf (DOCUMENT_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_FOLDER:
-		format = FOLDER_QUERY;
+		sparql = g_strdup_printf (FOLDER_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_APPLICATION:
-		format = APP_QUERY;
+		sparql = g_strdup_printf (APP_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_TAG:
-		format = TAGS_QUERY;
+		sparql = g_strdup_printf (TAGS_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_BOOKMARK:
-		format = BOOKMARK_QUERY;
+		sparql = g_strdup_printf (BOOKMARK_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_WEBSITE:
-		format = WEBSITE_QUERY;
+		sparql = g_strdup_printf (WEBSITE_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_CONTACT:
-		format = CONTACT_QUERY;
+		sparql = g_strdup_printf (CONTACT_QUERY, window->query, MAX_ITEMS);
 		break;
 	case CATEGORY_NONE:
 	case CATEGORY_EMAIL_ADDRESS:
 	case CATEGORY_FONT:
 	case CATEGORY_ARCHIVE:
 	default:
-		format = NULL;
+		sparql = NULL;
 		break;
 	}
 
-	if (!format) {
+	if (sparql == NULL) {
 		return;
 	}
 
 	sq = search_query_new (window->request_id, category, window);
 	window->search_queries = g_list_prepend (window->search_queries, sq);
 
-	sparql = g_strdup_printf (format, window->query, MAX_ITEMS);
 	tracker_sparql_connection_query_async (window->connection,
 					       sparql,
 					       sq->cancellable,
