@@ -546,8 +546,8 @@ open_drive (DriveButton *self, GtkWidget *item)
 						     _("Cannot start Nautilus File Manager"));
 	  if (error)
 	      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-	                                                error->message,
-	                                                NULL);
+	                                                "%s",
+	                                                error->message);
 	  else
 	      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 	                                                "%s", _("Could not find Nautilus"));
