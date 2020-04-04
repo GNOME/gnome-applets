@@ -47,7 +47,7 @@ struct _TrackerApplet
 
   GtkOrientation  orient;
   GdkPixbuf      *icon;
-  guint           size;
+  gint            size;
 };
 
 G_DEFINE_TYPE (TrackerApplet, tracker_applet, GP_TYPE_APPLET)
