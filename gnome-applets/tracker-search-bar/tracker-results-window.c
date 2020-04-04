@@ -720,6 +720,7 @@ category_to_string (TrackerCategory category)
 	case CATEGORY_ARCHIVE: return _("Archives");
 	case CATEGORY_BOOKMARK: return _("Bookmarks");
 	case CATEGORY_WEBSITE: return _("Links");
+	default: break;
 	}
 
 	return _("Other");

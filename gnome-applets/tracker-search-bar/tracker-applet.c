@@ -275,6 +275,10 @@ placement_changed_cb (GpApplet        *applet,
         self->orient = orientation;
         self->size = alloc.height;
         break;
+
+      default:
+        g_assert_not_reached ();
+        break;
     }
 
   applet_queue_draw (self);
