@@ -1245,6 +1245,10 @@ reconfigure_layout( ProgressData *battstat )
       if( battstat->width >= needwidth )
         do_square = TRUE;
       break;
+
+    default:
+      g_assert_not_reached ();
+      break;
   }
 
   /* Default to no elements being displayed. */
