@@ -314,6 +314,19 @@ task_item_sized_pixbuf_for_window (TaskItem   *item,
     return pixbuf;
 }
 
+static double
+get_alpha_ratio (TaskItem *item)
+{
+    gint64 current_time;
+    gdouble delta_ms;
+
+    current_time = g_get_monotonic_time ();
+
+    delta_ms = (current_time - item->urgent_time) / 1000.0;
+
+    return 0.66 + (cos (3.15 * delta_ms / 600) / 3);
+}
+
 /* Callback to draw the icon, this function is responsible to draw the different states of the icon
  * for example it will draw the rectange around an active icon, the white circle on hover, etc.
  */
@@ -414,13 +427,10 @@ static gboolean task_item_draw (
         g_object_unref (desat);
     }
     if (!item->mouse_over && attention) { /* urgent */
-        gint64 current_time;
-        gdouble ms;
         gdouble alpha;
 
-        current_time = g_get_monotonic_time ();
-        ms = (current_time - item->urgent_time) / 1000.0;
-        alpha = .66 + (cos (3.15 * ms / 600) / 3);
+        alpha = get_alpha_ratio (item);
+
         cairo_paint_with_alpha (cr, alpha);
     } else if (item->mouse_over || active || !icons_greyscale) { /* focused */
         cairo_paint (cr);
