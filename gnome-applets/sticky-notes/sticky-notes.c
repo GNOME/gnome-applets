@@ -900,8 +900,7 @@ stickynotes_save_now (void)
 	GtkTextBuffer *buffer;
 	GtkTextIter start, end;
 	gchar *body;
-
-	gint i;
+	guint i;
 
 	/* Create a new XML document */
 	xmlDocPtr doc = xmlNewDoc(XML_CHAR ("1.0"));
