@@ -611,6 +611,8 @@ title_clicked (GtkWidget      *title,
 static void
 placeWidgets (WTApplet *wtapplet)
 {
+	gboolean swap_order;
+
 	// TODO: merge all this... or not?
 	if (wtapplet->position == GTK_POS_LEFT) {
 		wtapplet->angle = GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE;
@@ -620,10 +622,10 @@ placeWidgets (WTApplet *wtapplet)
 		wtapplet->angle = GDK_PIXBUF_ROTATE_NONE;
 	}
 
+	swap_order = wtapplet->prefs->swap_order;
+
 	if (wtapplet->angle == GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE) {
-		wtapplet->packtype = GTK_PACK_END;
-	} else {
-		wtapplet->packtype = GTK_PACK_START;
+		swap_order = !swap_order;
 	}
 
 	// set box orientation
@@ -634,7 +636,7 @@ placeWidgets (WTApplet *wtapplet)
 	}
 
 	// set packing order
-	if (wtapplet->prefs->swap_order == wtapplet->packtype) {
+	if (!swap_order) {
 		gtk_box_pack_start(wtapplet->box, GTK_WIDGET(wtapplet->eb_icon), FALSE, TRUE, 0);
 		gtk_box_pack_start(wtapplet->box, GTK_WIDGET(wtapplet->eb_title), TRUE, TRUE, 0);
 	} else {

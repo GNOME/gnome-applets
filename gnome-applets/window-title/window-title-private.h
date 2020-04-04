@@ -110,7 +110,6 @@ struct _WTApplet
 	GtkPositionType position;				// Panel orientation
 	gint				asize;				// Applet allocation size
 	gint				*size_hints;		// Applet size hints
-	GtkPackType			packtype;			// Packaging direction of buttons
 
 	/* GtkBuilder */
 	GtkBuilder 		*prefbuilder;			// Glade GtkBuilder for the preferences
