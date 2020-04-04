@@ -39,6 +39,7 @@ gtk_align_to_gfloat (GtkAlign align)
 		case GTK_ALIGN_CENTER:
 		case GTK_ALIGN_FILL:
 			return 0.5;
+		case GTK_ALIGN_BASELINE:
 		default:
 			return 0.0;
 	}
