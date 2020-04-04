@@ -34,11 +34,11 @@ mc_macro_with_prefix (MCData *mc,
 {
     MCMacro *retval = NULL;
     GSList  *l;
-    int      prefix_len_found = 0;
+    size_t prefix_len_found = 0;
 
     for (l = mc->preferences.macros; l; l = l->next) {
 	MCMacro *macro = l->data;
-	int      pattern_len;
+	size_t pattern_len;
 
 	pattern_len = strlen (macro->pattern);
 

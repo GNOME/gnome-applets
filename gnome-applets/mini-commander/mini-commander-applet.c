@@ -83,7 +83,7 @@ static CommandLineStockIcon items[] = {
 static void
 register_command_line_stock_icons (GtkIconFactory *factory)
 {
-    gint i;
+    guint i;
 
     for (i = 0; i < G_N_ELEMENTS (items); ++i) {
        GtkIconSet *icon_set;
