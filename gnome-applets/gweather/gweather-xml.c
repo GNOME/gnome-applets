@@ -126,6 +126,9 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 			    -1);
 	break;
 
+    case GWEATHER_LOCATION_NAMED_TIMEZONE:
+	break;
+
     case GWEATHER_LOCATION_DETACHED:
     default:
 	g_assert_not_reached ();
