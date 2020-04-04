@@ -6,6 +6,7 @@ if BUILD_CPUFREQ_APPLET
 noinst_LTLIBRARIES = libcpu-frequency-applet.la
 
 libcpu_frequency_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.cpu-frequency\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

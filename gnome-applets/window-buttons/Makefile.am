@@ -5,6 +5,7 @@ SUBDIRS = themes
 noinst_LTLIBRARIES = libwindow-buttons-applet.la
 
 libwindow_buttons_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DWB_DATA_DIR=\""$(pkgdatadir)/window-buttons-applet"\" \
 	$(NULL)
 

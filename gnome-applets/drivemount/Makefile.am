@@ -3,6 +3,8 @@ NULL =
 noinst_LTLIBRARIES = libdrive-mount-applet.la
 
 libdrive_mount_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.drive-mount\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

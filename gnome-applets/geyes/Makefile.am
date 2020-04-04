@@ -6,6 +6,7 @@ noinst_LTLIBRARIES = libgeyes-applet.la
 
 libgeyes_applet_la_CPPFLAGS = \
 	-DGEYES_THEMES_DIR=\""$(pkgdatadir)/geyes/"\" \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.geyes\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

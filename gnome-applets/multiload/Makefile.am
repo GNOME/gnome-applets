@@ -3,6 +3,8 @@ NULL =
 noinst_LTLIBRARIES = libmultiload-applet.la
 
 libmultiload_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.multiload\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

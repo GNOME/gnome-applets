@@ -3,6 +3,7 @@ NULL =
 noinst_LTLIBRARIES = libaccessx-status-applet.la
 
 libaccessx_status_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.accessx-status\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

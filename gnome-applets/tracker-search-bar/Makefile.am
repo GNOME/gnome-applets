@@ -4,6 +4,7 @@ if HAVE_TRACKER_SEARCH_BAR
 noinst_LTLIBRARIES=libtracker-search-bar-applet.la
 
 libtracker_search_bar_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.tracker-search-bar\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

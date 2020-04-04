@@ -3,6 +3,7 @@ NULL =
 noinst_LTLIBRARIES = libsticky-notes-applet.la
 
 libsticky_notes_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.sticky-notes\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

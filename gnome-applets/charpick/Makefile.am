@@ -3,6 +3,7 @@ NULL =
 noinst_LTLIBRARIES = libcharacter-picker-applet.la
 
 libcharacter_picker_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.character-picker\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

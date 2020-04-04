@@ -3,6 +3,7 @@ NULL =
 noinst_LTLIBRARIES = libgweather-applet.la
 
 libgweather_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.gweather\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

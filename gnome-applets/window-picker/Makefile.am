@@ -4,6 +4,8 @@ noinst_LTLIBRARIES=libwindow-picker-applet.la
 
 libwindow_picker_applet_la_CFLAGS = \
 	-D_GNU_SOURCE \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
+	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.window-picker\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1 \

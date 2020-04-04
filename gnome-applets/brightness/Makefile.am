@@ -4,6 +4,7 @@ noinst_LTLIBRARIES = libbrightness-applet.la
 
 libbrightness_applet_la_CPPFLAGS = \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.brightness\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	$(NULL)

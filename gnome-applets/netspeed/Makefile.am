@@ -3,6 +3,7 @@ NULL =
 noinst_LTLIBRARIES = libnet-speed-applet.la
 
 libnet_speed_applet_la_CPPFLAGS = \
+	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.net-speed\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
