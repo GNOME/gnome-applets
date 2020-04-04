@@ -443,6 +443,9 @@ static gboolean button_release (GtkWidget *event_box, GdkEventButton *event, WBA
 				if ((actions & WNCK_WINDOW_ACTION_CLOSE) == WNCK_WINDOW_ACTION_CLOSE)
 					wnck_window_close (controlledwindow, GDK_CURRENT_TIME);
 				break;
+			default:
+				g_assert_not_reached ();
+				break;
 		}
 	}
 
