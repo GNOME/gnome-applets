@@ -54,9 +54,9 @@ device_change_cb (GtkComboBox *combo_box,
     if (auto_change_device)
       return;
 
-      auto_change_device = TRUE;
+    auto_change_device = TRUE;
 
-      g_settings_set_string (preferences->settings, "device", "");
+    g_settings_set_string (preferences->settings, "device", "");
   } else {
     GList *devices;
 
