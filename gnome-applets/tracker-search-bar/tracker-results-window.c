@@ -696,9 +696,7 @@ search_query_free (SearchQuery *sq)
 		g_object_unref (sq->cancellable);
 	}
 
-	g_slist_foreach (sq->results, (GFunc) item_data_free, NULL);
-	g_slist_free (sq->results);
-
+	g_slist_free_full (sq->results, (GDestroyNotify) item_data_free);
 	g_slice_free (SearchQuery, sq);
 }
 
