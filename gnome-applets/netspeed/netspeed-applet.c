@@ -336,7 +336,6 @@ icon_theme_changed_cb(GtkIconTheme *icon_theme, gpointer user_data)
 static char* 
 bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 {
-	const char *format;
 	const char *unit;
 	guint kilo; /* no really a kilo : a kilo or kibi */
 
@@ -347,16 +346,13 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 		kilo = 1024;
 
 	if (bytes < kilo) {
-
-		format = "%.0f %s";
-
 		if (per_sec)
 			unit = bits ? N_("b/s")   : N_("B/s");
 		else
 			unit = bits ? N_("bits")  : N_("bytes");
 
+		return g_strdup_printf ("%.0f %s", bytes, gettext (unit));
 	} else if (bytes < (kilo * kilo)) {
-		format = (bytes < (100 * kilo)) ? "%.1f %s" : "%.0f %s";
 		bytes /= kilo;
 
 		if (per_sec)
@@ -364,10 +360,9 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 		else
 			unit = bits ? N_("kb")   : N_("KiB");
 
+		return g_strdup_printf (bytes < (100 * kilo) ? "%.1f %s" : "%.0f %s",
+		                        bytes, gettext (unit));
 	} else {
-
-		format = "%.1f %s";
-
 		bytes /= kilo * kilo;
 
 		if (per_sec)
@@ -376,7 +371,7 @@ bytes_to_string(double bytes, gboolean per_sec, gboolean bits)
 			unit = bits ? N_("Mb")   : N_("MiB");
 	}
 
-	return g_strdup_printf(format, bytes, gettext(unit));
+	return g_strdup_printf ("%.1f %s", bytes, gettext (unit));
 }
 
 static gboolean
@@ -1120,19 +1115,23 @@ netspeed_applet_button_press_event (GtkWidget      *widget,
 		}
 
 		if (netspeed->up_cmd && netspeed->down_cmd) {
-			const gchar *question;
+			char *question;
 			gint response;
 
 			if (netspeed->devinfo.up)
-				question = _("Do you want to disconnect %s now?");
+				question = g_strdup_printf (_("Do you want to disconnect %s now?"),
+				                            netspeed->devinfo.name);
 			else
-				question = _("Do you want to connect %s now?");
+				question = g_strdup_printf (_("Do you want to connect %s now?"),
+				                            netspeed->devinfo.name);
 
 			netspeed->connect_dialog = gtk_message_dialog_new (NULL,
 			                                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
 			                                                   GTK_MESSAGE_QUESTION, GTK_BUTTONS_YES_NO,
-			                                                   question,
-			                                                   netspeed->devinfo.name);
+			                                                   "%s", question);
+
+			g_free (question);
+
 			response = gtk_dialog_run (GTK_DIALOG (netspeed->connect_dialog));
 			gtk_widget_destroy (netspeed->connect_dialog);
 			netspeed->connect_dialog = NULL;
