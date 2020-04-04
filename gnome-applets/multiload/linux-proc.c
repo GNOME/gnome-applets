@@ -258,8 +258,8 @@ void
 GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 {
     const float per_cpu_max_loadavg = 5.0f;
-    float max_loadavg;
-    float loadavg1;
+    double max_loadavg;
+    double loadavg1;
     float used;
 
     glibtop_loadavg loadavg;
