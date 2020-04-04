@@ -225,7 +225,7 @@ trash_empty_start (GtkWidget *parent)
     };
   GCancellable *cancellable;
   GtkBuilder *builder;
-  gint i;
+  guint i;
   const gchar *resource_name;
   GTask *task;
 
