@@ -109,24 +109,23 @@ trash_empty_update_dialog (gpointer user_data)
 
   trash_empty_update_pending = FALSE;
 
-  return FALSE;
+  return G_SOURCE_REMOVE;
 }
 
-static gboolean
-trash_empty_done (gpointer user_data)
+static void
+empty_trash_done_cb (GObject      *source_object,
+                     GAsyncResult *res,
+                     gpointer      user_data)
 {
   gtk_widget_destroy (GTK_WIDGET (trash_empty_dialog));
-
   g_assert (trash_empty_dialog == NULL);
-
-  return FALSE;
 }
 
 /* =============== worker thread code begins here =============== */
 static void
-trash_empty_maybe_schedule_update (GIOSchedulerJob *job,
-                                   GFile           *file,
-                                   gsize            deleted)
+trash_empty_maybe_schedule_update (GTask *task,
+                                   GFile *file,
+                                   gsize  deleted)
 {
   if (!trash_empty_update_pending)
     {
@@ -136,18 +135,16 @@ trash_empty_maybe_schedule_update (GIOSchedulerJob *job,
       trash_empty_deleted_files = deleted;
 
       trash_empty_update_pending = TRUE;
-      g_io_scheduler_job_send_to_mainloop_async (job,
-                                                 trash_empty_update_dialog,
-                                                 NULL, NULL);
+      g_idle_add (trash_empty_update_dialog, NULL);
     }
 }
 
 static void
-trash_empty_delete_contents (GIOSchedulerJob *job,
-                             GCancellable    *cancellable,
-                             GFile           *file,
-                             gboolean         actually_delete,
-                             gsize           *deleted)
+trash_empty_delete_contents (GTask        *task,
+                             GCancellable *cancellable,
+                             GFile        *file,
+                             gboolean      actually_delete,
+                             gsize        *deleted)
 {
   GFileEnumerator *enumerator;
   GFileInfo *info;
@@ -169,12 +166,12 @@ trash_empty_delete_contents (GIOSchedulerJob *job,
           child = g_file_get_child (file, g_file_info_get_name (info));
 
           if (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY)
-            trash_empty_delete_contents (job, cancellable, child,
+            trash_empty_delete_contents (task, cancellable, child,
                                          actually_delete, deleted);
 
           if (actually_delete)
             {
-              trash_empty_maybe_schedule_update (job, child, *deleted);
+              trash_empty_maybe_schedule_update (task, child, *deleted);
               g_file_delete (child, cancellable, NULL);
             }
 
@@ -191,10 +188,11 @@ trash_empty_delete_contents (GIOSchedulerJob *job,
     }
 }
 
-static gboolean
-trash_empty_job (GIOSchedulerJob *job,
-                 GCancellable    *cancellable,
-                 gpointer         user_data)
+static void
+empty_trash_func (GTask        *task,
+                  gpointer      source_object,
+                  gpointer      task_data,
+                  GCancellable *cancellable)
 {
   gsize deleted;
   GFile *trash;
@@ -203,20 +201,15 @@ trash_empty_job (GIOSchedulerJob *job,
 
   /* first do a dry run to count the number of files */
   deleted = 0;
-  trash_empty_delete_contents (job, cancellable, trash, FALSE, &deleted);
+  trash_empty_delete_contents (task, cancellable, trash, FALSE, &deleted);
   trash_empty_total_files = deleted;
 
   /* now do the real thing */
   deleted = 0;
-  trash_empty_delete_contents (job, cancellable, trash, TRUE, &deleted);
+  trash_empty_delete_contents (task, cancellable, trash, TRUE, &deleted);
 
   /* done */
   g_object_unref (trash);
-  g_io_scheduler_job_send_to_mainloop_async (job,
-                                             trash_empty_done,
-                                             NULL, NULL);
-
-  return FALSE;
 }
 /* ================ worker thread code ends here ================ */
 
@@ -234,6 +227,7 @@ trash_empty_start (GtkWidget *parent)
   GtkBuilder *builder;
   gint i;
   const gchar *resource_name;
+  GTask *task;
 
   builder = gtk_builder_new ();
 
@@ -267,8 +261,12 @@ trash_empty_start (GtkWidget *parent)
   g_signal_connect_object (trash_empty_dialog, "response",
                            G_CALLBACK (g_cancellable_cancel),
                            cancellable, G_CONNECT_SWAPPED);
-  g_io_scheduler_push_job (trash_empty_job, NULL, NULL, 0, cancellable);
+
+  task = g_task_new (NULL, cancellable, empty_trash_done_cb, NULL);
   g_object_unref (cancellable);
+
+  g_task_run_in_thread (task, empty_trash_func);
+  g_object_unref (task);
 
   gtk_window_set_screen (GTK_WINDOW (trash_empty_dialog),
                          gtk_widget_get_screen (parent));
