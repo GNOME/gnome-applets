@@ -64,7 +64,7 @@ typedef struct
 	char *essid;
 	gboolean up, running;
 	guint64 tx, rx;
-	int qual;
+	unsigned int qual;
 	char *tx_rate;
 	char *rx_rate;
 	char *sum_rate;

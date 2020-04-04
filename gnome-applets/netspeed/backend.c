@@ -275,7 +275,7 @@ void
 get_wireless_info (DevInfo *devinfo)
 {
 	int fd;
-	int newqual;
+	unsigned int newqual;
 	wireless_info info = {0};
 
 	fd = iw_sockets_open ();
@@ -304,7 +304,7 @@ get_wireless_info (DevInfo *devinfo)
 			newqual = info.stats.qual.qual;
 		}
 		
-		newqual = CLAMP(newqual, 0, 100);
+		newqual = MIN(newqual, 100);
 		if (devinfo->qual != newqual)
 			devinfo->qual = newqual;
 	} else {

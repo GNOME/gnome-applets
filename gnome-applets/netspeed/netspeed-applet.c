@@ -298,7 +298,7 @@ update_quality_icon(NetspeedApplet *applet)
 	
 	q = (applet->devinfo.qual);
 	q /= 25;
-	q = CLAMP(q, 0, 3); /* q out of range would crash when accessing qual_pixbufs[q] */
+	q = MIN(q, 3); /* q out of range would crash when accessing qual_pixbufs[q] */
 	gtk_image_set_from_pixbuf (GTK_IMAGE(applet->qual_pix), applet->qual_pixbufs[q]);
 }
 
