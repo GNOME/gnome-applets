@@ -323,7 +323,12 @@ get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
      	case GTK_POS_LEFT:
      		tempx += width;
 		break;
+
+      default:
+            g_assert_not_reached ();
+            break;
      	}
+
 	screen_width = gdk_screen_width ();
      	screen_height = gdk_screen_height ();
      	*x = CLAMP (tempx, 0, MAX (0, screen_width - reqmenu.width));
