@@ -705,7 +705,8 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
   GdkColor *color, *darkcolor;
   GdkPixbuf *pixbuf;
   guint progress_value;
-  gint i, x;
+  guint i;
+  gint x;
   int batt_life;
 
   if (!battstat->showbattery)

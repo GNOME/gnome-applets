@@ -103,9 +103,9 @@ typedef struct _BattstatApplet
   GtkWidget *hbox_ptr;
 
   /* flags set from gsettings or the properties dialog */
-  guint red_val;
-  guint orange_val;
-  guint yellow_val;
+  gint red_val;
+  gint orange_val;
+  gint yellow_val;
   gboolean red_value_is_time;
   gboolean lowbattnotification;
   gboolean fullbattnot;
@@ -147,11 +147,11 @@ typedef struct _BattstatApplet
   int timeout;
 
   /* last_* for the benefit of the check_for_updates function */
-  guint last_batt_life;
-  guint last_acline_status;
+  gint last_batt_life;
+  gint last_acline_status;
   StatusPixmapIndex last_pixmap_index;
-  guint last_charging;
-  guint last_minutes;
+  gint last_charging;
+  gint last_minutes;
   gboolean last_present;
 } ProgressData;
 

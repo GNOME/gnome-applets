@@ -183,7 +183,7 @@ battstat_upower_get_battery_info( BatteryStatus *status )
   int charging = 0;
 
   /* For each physical battery bay... */
-  int i;
+  unsigned int i;
   for( i = 0; i < devices->len; i++ )
   {
     UpDevice *upd = g_ptr_array_index( devices, i );
