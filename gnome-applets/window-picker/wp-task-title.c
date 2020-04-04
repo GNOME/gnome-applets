@@ -35,18 +35,20 @@
 
 struct _WpTaskTitle
 {
-  GtkBox             parent;
+  GtkBox          parent;
 
-  GtkWidget         *label;
-  GtkWidget         *button;
-  GtkWidget         *image;
+  WpApplet       *applet;
 
-  gboolean           show_application_title;
-  gboolean           show_home_title;
-  GtkOrientation     orientation;
+  GtkWidget      *label;
+  GtkWidget      *button;
+  GtkWidget      *image;
 
-  WnckWindow        *active_window;
-  GDBusProxy        *session_proxy;
+  gboolean        show_application_title;
+  gboolean        show_home_title;
+  GtkOrientation  orientation;
+
+  WnckWindow     *active_window;
+  GDBusProxy     *session_proxy;
 };
 
 enum
@@ -468,6 +470,46 @@ wp_task_title_class_init (WpTaskTitleClass *title_class)
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
+static void
+popup_menu_at_item (WpTaskTitle *title,
+                    GtkMenu     *menu,
+                    GdkEvent    *event)
+{
+    GdkGravity widget_anchor;
+    GdkGravity menu_anchor;
+
+    switch (gp_applet_get_position (GP_APPLET (title->applet)))
+    {
+        case GTK_POS_TOP:
+            widget_anchor = GDK_GRAVITY_SOUTH_WEST;
+            menu_anchor = GDK_GRAVITY_NORTH_WEST;
+            break;
+
+        case GTK_POS_LEFT:
+            widget_anchor = GDK_GRAVITY_NORTH_EAST;
+            menu_anchor = GDK_GRAVITY_NORTH_WEST;
+            break;
+
+        case GTK_POS_RIGHT:
+            widget_anchor = GDK_GRAVITY_NORTH_WEST;
+            menu_anchor = GDK_GRAVITY_NORTH_EAST;
+            break;
+
+        case GTK_POS_BOTTOM:
+            widget_anchor = GDK_GRAVITY_NORTH_WEST;
+            menu_anchor = GDK_GRAVITY_SOUTH_WEST;
+            break;
+
+        default:
+            g_assert_not_reached ();
+            break;
+    }
+
+    gtk_menu_popup_at_widget (menu, GTK_WIDGET (title),
+                              widget_anchor, menu_anchor,
+                              event);
+}
+
 static gboolean
 label_button_press_event_cb (GtkWidget      *widget,
                              GdkEventButton *event,
@@ -489,8 +531,7 @@ label_button_press_event_cb (GtkWidget      *widget,
 
           menu = wnck_action_menu_new (title->active_window);
 
-          gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
-                          event->button, event->time);
+          popup_menu_at_item (title, GTK_MENU (menu), (GdkEvent *) event);
 
           return TRUE;
         }
@@ -589,9 +630,16 @@ wp_task_title_init (WpTaskTitle *title)
 }
 
 GtkWidget *
-wp_task_title_new (gint spacing)
+wp_task_title_new (gint      spacing,
+                   WpApplet *applet)
 {
-  return g_object_new (WP_TYPE_TASK_TITLE,
-                       "spacing", spacing,
-                       NULL);
+  WpTaskTitle *title;
+
+  title = g_object_new (WP_TYPE_TASK_TITLE,
+                        "spacing", spacing,
+                         NULL);
+
+  title->applet = applet;
+
+  return GTK_WIDGET (title);
 }

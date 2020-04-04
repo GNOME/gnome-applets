@@ -145,7 +145,7 @@ wp_applet_setup_title (WpApplet *applet)
 
   panel_applet = GP_APPLET (applet);
 
-  applet->title = wp_task_title_new (TITLE_BUTTON_SPACE);
+  applet->title = wp_task_title_new (TITLE_BUTTON_SPACE, applet);
 
   g_object_bind_property (applet->container, "orientation",
                           applet->title, "orientation",

@@ -25,12 +25,15 @@
 
 #include <gtk/gtk.h>
 
+#include "wp-applet.h"
+
 G_BEGIN_DECLS
 
 #define WP_TYPE_TASK_TITLE wp_task_title_get_type ()
 G_DECLARE_FINAL_TYPE (WpTaskTitle, wp_task_title, WP, TASK_TITLE, GtkBox)
 
-GtkWidget *wp_task_title_new (gint spacing);
+GtkWidget *wp_task_title_new (gint      spacing,
+                              WpApplet *applet);
 
 G_END_DECLS
 
