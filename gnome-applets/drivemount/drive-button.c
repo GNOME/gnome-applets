@@ -571,7 +571,7 @@ open_drive (DriveButton *self, GtkWidget *item)
 static void
 gvm_run_command (const char *device, const char *command, const char *path)
 {
-	char *argv[4];
+	const char *argv[4];
 	gchar *new_command;
 	GError *error = NULL;
 	GString *exec = g_string_new (NULL);
@@ -606,7 +606,7 @@ gvm_run_command (const char *device, const char *command, const char *path)
 	argv[2] = exec->str;
 	argv[3] = NULL;
 
-	g_spawn_async (g_get_home_dir (), argv, NULL, 0, NULL, NULL,
+	g_spawn_async (g_get_home_dir (), (char **) argv, NULL, 0, NULL, NULL,
 		       NULL, &error);
 	if (error) {
 		g_warning ("failed to exec %s: %s\n", exec->str, error->message);
