@@ -1169,10 +1169,6 @@ grid_layout_attach (GtkGrid        *grid,
                     LayoutLocation  loc,
                     GtkWidget      *child)
 {
-  GtkAttachOptions flags;
-
-  flags = GTK_FILL | GTK_EXPAND;
-
   gtk_widget_set_hexpand (child, TRUE);
   gtk_widget_set_vexpand (child, TRUE);
 
