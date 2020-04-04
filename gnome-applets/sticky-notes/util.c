@@ -28,6 +28,8 @@
 
 /* Returns the current date in a customizable form, the default
  * looks like this: "Nov 30, '78" */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
 gchar * get_current_date(const gchar *format)
 {
 	time_t clock = time(NULL);
@@ -45,6 +47,7 @@ gchar * get_current_date(const gchar *format)
 
 	return date;
 }
+#pragma GCC diagnostic pop
 
 static Atom
 xstuff_atom_get (const char *atom_name)
