@@ -446,7 +446,9 @@ auto_complete_history_toggled (GtkToggleButton *toggle,
     if (auto_complete_history == mc->preferences.auto_complete_history) 
         return;
 
-	g_settings_set_boolean (mc->settings, KEY_AUTOCOMPLETE_HISTORY, auto_complete_history);
+    g_settings_set_boolean (mc->settings,
+                            KEY_AUTOCOMPLETE_HISTORY,
+                            auto_complete_history);
 }
 
 static void
