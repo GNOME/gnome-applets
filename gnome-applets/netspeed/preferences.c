@@ -145,7 +145,7 @@ free_devices (gpointer data)
   g_list_free_full (data, g_free);
 }
 
-GtkWidget *
+static GtkWidget *
 create_network_hbox (NetspeedPreferences *preferences)
 {
   GtkWidget *network_device_hbox;
