@@ -71,7 +71,7 @@ static const GActionEntry mini_commander_menu_actions [] = {
 };
 
 typedef struct {
-    char *stock_id;
+    const char  *stock_id;
     const char **icon_data;
 } CommandLineStockIcon;
 
