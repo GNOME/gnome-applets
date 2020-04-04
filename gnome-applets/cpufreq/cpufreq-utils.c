@@ -143,7 +143,7 @@ cpufreq_utils_get_frequency_label (guint freq)
 	if (((freq % divisor) == 0) || divisor == 1000) /* integer */
 		return g_strdup_printf ("%d", freq / divisor);
 	else /* float */
-		return g_strdup_printf ("%3.2f", ((gfloat)freq / divisor));
+		return g_strdup_printf ("%3.2f", ((double) freq / divisor));
 }
 
 gchar *
