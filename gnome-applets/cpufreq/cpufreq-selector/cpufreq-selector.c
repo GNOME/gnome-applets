@@ -101,7 +101,10 @@ cpufreq_selector_get_valid_frequency (CPUFreqSelector *selector,
           return frequency;
         }
 
-      current_dist = abs (freq->frequency - frequency);
+      if (freq->frequency > frequency)
+        current_dist = freq->frequency - frequency;
+      else
+        current_dist = frequency - freq->frequency;
 
       if (current_dist < dist)
         {
