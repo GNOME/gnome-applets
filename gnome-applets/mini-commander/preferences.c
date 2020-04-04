@@ -245,15 +245,13 @@ add_response (GtkWidget *window,
 	pattern = gtk_entry_get_text (GTK_ENTRY (dialog->pattern_entry));
 	command = gtk_entry_get_text (GTK_ENTRY (dialog->command_entry));
 
-	if (!pattern || !pattern [0])
+	if ((pattern == NULL || *pattern == '\0') && (command == NULL || *command == '\0'))
+		error_message = _("You must specify a pattern and a command");
+	else if (pattern == NULL || *pattern == '\0')
 		error_message = _("You must specify a pattern");
-
-	if (!command || !command [0]) 
-		error_message = error_message != NULL ?
-					_("You must specify a pattern and a command") :
-					_("You must specify a command");
-
-	if (!error_message && duplicate_pattern (mc, pattern))
+	else if (command == NULL || *command == '\0')
+		error_message = _("You must specify a command");
+	else if (duplicate_pattern (mc, pattern))
 		error_message = _("You may not specify duplicate patterns");
 
 	if (error_message) {
