@@ -514,7 +514,7 @@ trash_applet_class_init (TrashAppletClass *self_class)
 static void
 trash_applet_init (TrashApplet *self)
 {
-  const GtkTargetEntry drop_types[] = { { "text/uri-list" } };
+  const GtkTargetEntry drop_types[] = { { (char *) "text/uri-list" } };
   const gchar *resource_name;
 
   /* needed to clamp ourselves to the panel size */
