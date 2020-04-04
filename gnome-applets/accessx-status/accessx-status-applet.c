@@ -873,6 +873,14 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 			gtk_widget_set_sensitive (widget, TRUE);
 			gtk_widget_set_state (widget, GTK_STATE_SELECTED);
 			break;
+
+		case GTK_STATE_ACTIVE:
+		case GTK_STATE_PRELIGHT:
+		case GTK_STATE_INCONSISTENT:
+		case GTK_STATE_FOCUSED:
+			g_assert_not_reached ();
+			break;
+
 		case GTK_STATE_INSENSITIVE:
 		default:
 			alpha = 63;
@@ -987,6 +995,10 @@ popup_error_dialog (AccessxStatusApplet* sapplet)
 	switch (sapplet->error_type) {
 		case ACCESSX_STATUS_ERROR_XKB_DISABLED : 
 			error_txt = g_strdup (_("XKB Extension is not enabled"));
+			break;
+
+		case ACCESSX_STATUS_ERROR_NONE :
+			g_assert_not_reached ();
 			break;
 
 		default	: error_txt = g_strdup (_("Unknown error"));
