@@ -113,7 +113,7 @@ gpm_applet_size_allocate_cb (GtkWidget    *widget,
                              GdkRectangle *allocation)
 {
 	GpmBrightnessApplet *applet = GPM_BRIGHTNESS_APPLET (widget);
-	int               size = NULL;
+	int size = 0;
 
 	switch (gp_applet_get_orientation (GP_APPLET (applet))) {
 		case GTK_ORIENTATION_VERTICAL:
