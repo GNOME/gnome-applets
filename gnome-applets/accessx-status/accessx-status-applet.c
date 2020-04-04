@@ -324,7 +324,7 @@ accessx_status_applet_xkb_select (AccessxStatusApplet *self)
 static void
 accessx_status_applet_init_modifiers (AccessxStatusApplet *sapplet) 
 {
-	int i;
+	unsigned int i;
 	unsigned int alt_mask, meta_mask, hyper_mask, super_mask, alt_gr_mask;
 	alt_mask = XkbKeysymToModifiers (sapplet->xkb_display, XK_Alt_L);
 	meta_mask = XkbKeysymToModifiers (sapplet->xkb_display, XK_Meta_L);
@@ -593,7 +593,7 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 	g_object_unref (tmp_pixbuf);
 	/* composite in the buttons */
 	if (mouse_pixbuf && event && event->ptr_buttons) {
-		gint i;
+		unsigned int i;
 		for (i = 0; i < G_N_ELEMENTS (button_icons); ++i) {
 			if (event->ptr_buttons & button_icons[i].mask) {
 				button_pixbuf = gtk_widget_render_icon (GTK_WIDGET (sapplet),
@@ -640,7 +640,7 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 			      XkbEvent *event)
 {
 	GdkWindow * window;
-	gint i;
+	unsigned int i;
 
 	window = gtk_widget_get_window (GTK_WIDGET (sapplet));
 
@@ -912,7 +912,7 @@ static void
 accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 {
 	GtkIconFactory *factory = gtk_icon_factory_new ();
-        gint            i = 0;
+        unsigned int i = 0;
         GtkIconSet     *icon_set;
                                                                                 
 	gtk_icon_factory_add_default (factory);
