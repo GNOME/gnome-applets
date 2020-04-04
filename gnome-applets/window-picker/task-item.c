@@ -398,8 +398,8 @@ static gboolean task_item_draw (
         gdk_cairo_set_source_pixbuf (
             cr,
             pbuf,
-            (area.x + (area.width - gdk_pixbuf_get_width (pbuf)) / 2),
-            (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2)
+            (area.x + (area.width - gdk_pixbuf_get_width (pbuf)) / 2.0),
+            (area.y + (area.height - gdk_pixbuf_get_height (pbuf)) / 2.0)
         );
     } else { /* create grayscale pixbuf */
         GdkPixbuf *desat = gdk_pixbuf_new (
@@ -422,8 +422,8 @@ static gboolean task_item_draw (
         gdk_cairo_set_source_pixbuf (
             cr,
             desat,
-            (area.x + (area.width - gdk_pixbuf_get_width (desat)) / 2),
-            (area.y + (area.height - gdk_pixbuf_get_height (desat)) / 2));
+            (area.x + (area.width - gdk_pixbuf_get_width (desat)) / 2.0),
+            (area.y + (area.height - gdk_pixbuf_get_height (desat)) / 2.0));
         g_object_unref (desat);
     }
     if (!item->mouse_over && attention) { /* urgent */
