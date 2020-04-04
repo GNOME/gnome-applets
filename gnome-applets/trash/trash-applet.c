@@ -278,6 +278,11 @@ trash_applet_drag_motion (GtkWidget      *widget,
   return TRUE;
 }
 
+static void
+error_dialog (TrashApplet *applet,
+              const gchar *error,
+              ...) G_GNUC_PRINTF (2, 3);
+
 /* TODO - Must HIGgify this dialog */
 static void
 error_dialog (TrashApplet *applet, const gchar *error, ...)
