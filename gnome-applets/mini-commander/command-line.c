@@ -414,6 +414,10 @@ mc_show_history (GtkWidget *widget,
      case GTK_POS_LEFT:
      	x += width;
 	break;
+
+     default:
+        g_assert_not_reached ();
+        break;
      }
 
      screen_width = gdk_screen_width ();
