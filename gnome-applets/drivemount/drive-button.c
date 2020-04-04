@@ -236,6 +236,8 @@ drive_button_key_press (GtkWidget      *widget,
 			    0, event->time);
 	}
 	return TRUE;
+    default:
+	break;
     }
     return FALSE;
 }
