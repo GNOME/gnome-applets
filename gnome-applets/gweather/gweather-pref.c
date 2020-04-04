@@ -1023,6 +1023,10 @@ gweather_pref_set_property (GObject *object,
 	case PROP_GWEATHER_APPLET:
 	    pref->applet = g_value_get_pointer (value);
 	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+	    break;
     }
 }
 
@@ -1037,6 +1041,10 @@ gweather_pref_get_property (GObject *object,
     switch (prop_id) {
 	case PROP_GWEATHER_APPLET:
 	    g_value_set_pointer (value, pref->applet);
+	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	    break;
     }
 }

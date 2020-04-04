@@ -127,6 +127,7 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 	break;
 
     case GWEATHER_LOCATION_DETACHED:
+    default:
 	g_assert_not_reached ();
 
 	break;

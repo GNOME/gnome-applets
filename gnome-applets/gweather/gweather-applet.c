@@ -140,6 +140,10 @@ static void place_widgets (GWeatherApplet *gw_applet)
 	case GTK_ORIENTATION_HORIZONTAL:
 	    horizontal = TRUE;
 	    break;
+
+	default:
+	    g_assert_not_reached ();
+	    break;
     }
 
     /* Create the weather icon */
