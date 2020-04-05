@@ -25,6 +25,8 @@ libmultiload_applet_la_SOURCES = \
 	linux-proc.h \
 	load-graph.h \
 	load-graph.c \
+	ma-disk-stats.c \
+	ma-disk-stats.h \
 	multiload-applet.c \
 	multiload-applet.h \
 	netspeed.c \

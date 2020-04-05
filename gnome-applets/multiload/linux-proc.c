@@ -13,10 +13,10 @@
 #include <glibtop/loadavg.h>
 #include <glibtop/netload.h>
 #include <glibtop/netlist.h>
-#include <glibtop/mountlist.h>
 #include <glibtop/fsusage.h>
 
 #include "linux-proc.h"
+#include "ma-disk-stats.h"
 #include "autoscaler.h"
 
 static const unsigned needed_cpu_flags =
@@ -100,14 +100,10 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 	static guint64 lastread = 0, lastwrite = 0;
 	static AutoScaler scaler;
 
-	glibtop_mountlist mountlist;
-	glibtop_mountentry *mountentries;
-	guint i;
 	int max;
 
 	guint64 read, write;
 	guint64 readdiff, writediff;
-
 
 	if(first_call)
 	{
@@ -115,32 +111,7 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 	}
 
 	read = write = 0;
-
-	mountentries = glibtop_get_mountlist (&mountlist, FALSE);
-
-	for (i = 0; i < mountlist.number; i++)
-	{
-		struct statvfs statresult;
-		glibtop_fsusage fsusage;
-
-		if (strcmp(mountentries[i].type, "smbfs") == 0
-		    || strcmp(mountentries[i].type, "nfs") == 0
-		    || strcmp(mountentries[i].type, "cifs") == 0)
-			continue;
-
-
-		if (statvfs (mountentries[i].mountdir, &statresult) < 0)
-		{
-			g_debug ("Failed to get statistics for mount entry: %s. Reason: %s. Skipping entry.",
-			         mountentries[i].mountdir, strerror(errno));
-			continue;
-		}
-
-		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
-		read += fsusage.read; write += fsusage.write;
-	}
-
-	g_free(mountentries);
+	ma_disk_stats_get_usage (&read, &write);
 
 	readdiff  = read - lastread;
 	writediff = write - lastwrite;
