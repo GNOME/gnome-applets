@@ -19,7 +19,6 @@
 #include "config.h"
 
 #include <string.h>
-#include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
 #include <glib/gi18n-lib.h>
@@ -252,16 +251,9 @@ properties_cb (GSimpleAction *action,
         GtkCellRenderer *cell;
         GtkTreeSelection *selection;
         GtkTreeIter iter;
-        DIR *dfd;
-        struct dirent *dp;
         int i;
-#ifdef PATH_MAX
-        gchar filename [PATH_MAX];
-#else
-	gchar *filename;
-#endif
         gchar *title;
-     
+
 	if (eyes_applet->prop_box.pbox) {
 		gtk_window_set_screen (
 			GTK_WINDOW (eyes_applet->prop_box.pbox),
@@ -358,53 +350,55 @@ properties_cb (GSimpleAction *action,
 	}
 
         for (i = 0; i < NUM_THEME_DIRECTORIES; i++) {
-                if ((dfd = opendir (theme_directories[i])) != NULL) {
-                        while ((dp = readdir (dfd)) != NULL) {
-                                if (dp->d_name[0] != '.') {
-                                        gchar *theme_dir;
-					gchar *theme_name;
-#ifdef PATH_MAX
-                                        strcpy (filename, 
-                                                theme_directories[i]);
-                                        strcat (filename, dp->d_name);
-#else
-					asprintf (&filename, theme_directories[i], dp->d_name);
-#endif
-					theme_dir = g_strdup_printf ("%s/", filename);
-					theme_name = g_path_get_basename (filename);
-					
-                                        gtk_list_store_append (model, &iter);
-                                        gtk_list_store_set (model, &iter,
-							    COL_THEME_DIR, &filename,
-							    COL_THEME_NAME, theme_name,
-							    -1);
-                                        
-					if (!g_ascii_strncasecmp (eyes_applet->theme_dir, theme_dir, strlen (theme_dir))) {
-                                        	GtkTreePath *path;
-                                        	path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
-                                                        			&iter);
-                                                gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree), 
-                                                			  path, 
-                                                			  NULL, 
-                                                			  FALSE);
-                                                gtk_tree_path_free (path);
-                                        }
-					g_free (theme_name);
-                                        g_free (theme_dir);
-                                }
+                GDir *dir;
+                const char *name;
+
+                dir = g_dir_open (theme_directories[i], 0, NULL);
+                if (dir == NULL)
+                        continue;
+
+                while ((name = g_dir_read_name (dir)) != NULL) {
+                        char *filename;
+                        char *theme_dir;
+                        char *theme_name;
+
+                        filename = g_build_filename (theme_directories[i], name, NULL);
+                        theme_dir = g_strdup_printf ("%s/", filename);
+                        theme_name = g_path_get_basename (filename);
+
+                        gtk_list_store_append (model, &iter);
+                        gtk_list_store_set (model, &iter,
+                                            COL_THEME_DIR, filename,
+                                            COL_THEME_NAME, theme_name,
+                                            -1);
+
+                        if (!g_ascii_strncasecmp (eyes_applet->theme_dir,
+                                                  theme_dir,
+                                                  strlen (theme_dir))) {
+                                GtkTreePath *path;
+
+                                path = gtk_tree_model_get_path (GTK_TREE_MODEL (model),
+                                                                &iter);
+
+                                gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree),
+                                                          path,
+                                                          NULL,
+                                                          FALSE);
+
+                                gtk_tree_path_free (path);
                         }
-                        closedir (dfd);
+
+                        g_free (theme_dir);
+                        g_free (theme_name);
+                        g_free (filename);
                 }
+
+                g_dir_close (dir);
         }
-#ifndef PATH_MAX
-	g_free (filename);
-#endif
         
         gtk_box_pack_start (GTK_BOX (control_vbox), scrolled, TRUE, TRUE, 0);
         
         gtk_widget_show_all (pbox);
         
         eyes_applet->prop_box.pbox = pbox;
-	
-	return;
 }
