@@ -511,29 +511,10 @@ cpufreq_applet_menu_popup (CPUFreqApplet *applet,
         if (!menu)
                 return;
 
-        position = gp_applet_get_position (GP_APPLET (applet));
-
-        if (position == GTK_POS_TOP) {
-                widget_anchor = GDK_GRAVITY_SOUTH_WEST;
-                menu_anchor = GDK_GRAVITY_NORTH_WEST;
-        } else if (position == GTK_POS_LEFT) {
-                widget_anchor = GDK_GRAVITY_NORTH_EAST;
-                menu_anchor = GDK_GRAVITY_NORTH_WEST;
-        } else if (position == GTK_POS_RIGHT) {
-                widget_anchor = GDK_GRAVITY_NORTH_WEST;
-                menu_anchor = GDK_GRAVITY_NORTH_EAST;
-        } else if (position == GTK_POS_BOTTOM) {
-                widget_anchor = GDK_GRAVITY_NORTH_WEST;
-                menu_anchor = GDK_GRAVITY_SOUTH_WEST;
-        } else {
-                g_assert_not_reached ();
-        }
-
-        gtk_menu_popup_at_widget (GTK_MENU (menu),
-                                  GTK_WIDGET (applet),
-                                  widget_anchor,
-                                  menu_anchor,
-                                  event);
+        gp_applet_popup_menu_at_widget (GP_APPLET (applet),
+                                        GTK_MENU (menu),
+                                        GTK_WIDGET (applet),
+                                        event);
 }
 
 static gboolean
