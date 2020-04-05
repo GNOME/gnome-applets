@@ -59,7 +59,7 @@ static gboolean get_desktop_window (Window *window)
 }
 
 static void
-popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
+popup_add_note (StickyNotesApplet *applet)
 {
 	stickynotes_add (gtk_widget_get_screen (GTK_WIDGET (applet)));
 }
@@ -94,7 +94,7 @@ applet_button_cb (GtkWidget         *widget,
 {
 	if (event->type == GDK_2BUTTON_PRESS)
 	{
-		popup_add_note (applet, NULL);
+		popup_add_note (applet);
 		return TRUE;
 	}
 	else if (event->button == 1)
@@ -286,7 +286,7 @@ destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 void menu_new_note_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
-	popup_add_note (applet, NULL);
+	popup_add_note (applet);
 }
 
 /* Menu Callback : Hide Notes */
