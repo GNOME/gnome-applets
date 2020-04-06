@@ -35,9 +35,6 @@ typedef struct
 	GList *notes;			/* Linked-List of all the sticky notes */
 	GList *applets;			/* Linked-List of all the applets */
 
-	GdkPixbuf *icon_normal;		/* Normal applet icon */
-	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
-
 	GSettings *settings;
 
 	gint max_height;
@@ -52,6 +49,9 @@ struct _StickyNotesApplet
   GpApplet parent;
 
 	GtkWidget *w_image;		/* The applet icon */
+
+	GdkPixbuf *icon_normal;		/* Normal applet icon */
+	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
 
 	GtkWidget *destroy_all_dialog;	/* The applet it's destroy all dialog */
 

@@ -129,6 +129,9 @@ sticky_notes_applet_dispose (GObject *object)
 
   self = STICKY_NOTES_APPLET (object);
 
+  g_clear_object (&self->icon_normal);
+  g_clear_object (&self->icon_prelight);
+
   g_clear_pointer (&self->w_prefs, gtk_widget_destroy);
 
   G_OBJECT_CLASS (sticky_notes_applet_parent_class)->dispose (object);
@@ -202,20 +205,6 @@ sticky_notes_init (GpApplet *applet)
 	stickynotes->settings = gp_applet_settings_new (applet, STICKYNOTES_SCHEMA);
 	stickynotes->last_timeout_data = 0;
 
-	stickynotes->icon_normal = gtk_icon_theme_load_icon (
-			gtk_icon_theme_get_default (),
-			"gnome-sticky-notes-applet",
-			48, 0, NULL);
-
-	stickynotes->icon_prelight = gdk_pixbuf_new (
-			gdk_pixbuf_get_colorspace (stickynotes->icon_normal),
-			gdk_pixbuf_get_has_alpha (stickynotes->icon_normal),
-			gdk_pixbuf_get_bits_per_sample (
-				stickynotes->icon_normal),
-			gdk_pixbuf_get_width (stickynotes->icon_normal),
-			gdk_pixbuf_get_height (stickynotes->icon_normal));
-	stickynotes_make_prelight_icon (stickynotes->icon_prelight,
-			stickynotes->icon_normal, 30);
 	stickynotes->visible = TRUE;
 
 	g_signal_connect (stickynotes->settings, "changed",
@@ -240,6 +229,23 @@ sticky_notes_applet_new (StickyNotesApplet *applet)
 
 	/* Initialize Sticky Notes Applet */
 	applet->w_image = gtk_image_new();
+
+	applet->icon_normal = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+	                                                "gnome-sticky-notes-applet",
+	                                                48,
+	                                                0,
+	                                                NULL);
+
+	applet->icon_prelight = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (applet->icon_normal),
+	                                        gdk_pixbuf_get_has_alpha (applet->icon_normal),
+	                                        gdk_pixbuf_get_bits_per_sample (applet->icon_normal),
+	                                        gdk_pixbuf_get_width (applet->icon_normal),
+	                                        gdk_pixbuf_get_height (applet->icon_normal));
+
+	stickynotes_make_prelight_icon (applet->icon_prelight,
+	                                applet->icon_normal,
+	                                30);
+
 	applet->destroy_all_dialog = NULL;
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
@@ -300,9 +306,9 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 
 	/* Choose appropriate icon and size it */
 	if (applet->prelighted)
-		pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_prelight, size, size, GDK_INTERP_BILINEAR);
+		pixbuf1 = gdk_pixbuf_scale_simple(applet->icon_prelight, size, size, GDK_INTERP_BILINEAR);
 	else
-		pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->icon_normal, size, size, GDK_INTERP_BILINEAR);
+		pixbuf1 = gdk_pixbuf_scale_simple(applet->icon_normal, size, size, GDK_INTERP_BILINEAR);
 
 	if (!pixbuf1)
 		return;
