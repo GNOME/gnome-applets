@@ -66,13 +66,6 @@ struct _StickyNotesApplet
 	GtkWidget *w_prefs;
 };
 
-typedef enum
-{
-	STICKYNOTES_NEW = 0,
-	STICKYNOTES_SET_VISIBLE,
-	STICKYNOTES_SET_LOCKED
-} StickyNotesDefaultAction;
-
 extern StickyNotes *stickynotes;
 
 void stickynotes_applet_update_icon(StickyNotesApplet *applet);
