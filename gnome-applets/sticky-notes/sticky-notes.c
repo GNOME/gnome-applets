@@ -26,7 +26,6 @@
 #include <libwnck/libwnck.h>
 #include <string.h>
 
-#include "sticky-notes-callbacks.h"
 #include "util.h"
 #include "sticky-notes-applet.h"
 #include "gsettings.h"
@@ -39,6 +38,54 @@
 static gboolean save_scheduled = FALSE;
 
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
+
+static void
+popup_create_cb (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       user_data)
+{
+	StickyNote *note = (StickyNote *) user_data;
+	stickynotes_add (gtk_widget_get_screen (note->w_window));
+}
+
+static void
+popup_destroy_cb (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       user_data)
+{
+	StickyNote *note = (StickyNote *) user_data;
+	stickynotes_remove (note);
+}
+
+static void
+popup_toggle_lock_cb (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
+{
+	GVariant *state = g_action_get_state (G_ACTION (action));
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
+	g_variant_unref (state);
+}
+
+static void
+popup_toggle_lock_state (GSimpleAction *action,
+                         GVariant      *value,
+                         gpointer       user_data)
+{
+	StickyNote *note = (StickyNote *) user_data;
+	gboolean locked = g_variant_get_boolean (value);
+
+	stickynote_set_locked (note, locked);
+}
+
+static void
+popup_properties_cb (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
+{
+	StickyNote *note = (StickyNote *) user_data;
+	stickynote_change_properties (note);
+}
 
 /* Popup menu on the sticky note */
 static const GActionEntry stickynotes_note_menu_actions [] = {
@@ -123,6 +170,166 @@ set_icon_geometry  (GdkWindow *window,
 			       "_NET_WM_ICON_GEOMETRY"),
 		       XA_CARDINAL, 32, PropModeReplace,
                        (guchar *)&data, 4);
+}
+
+static gboolean
+stickynote_show_popup_menu (GtkWidget      *widget,
+                            GdkEventButton *event,
+                            GtkWidget      *popup_menu)
+{
+	if (event->type == GDK_BUTTON_PRESS && event->button == 3)
+	{
+		gtk_menu_popup (GTK_MENU (popup_menu),
+				NULL, NULL,
+				NULL, NULL,
+				event->button, event->time);
+	}
+
+	return FALSE;
+}
+
+static gboolean
+stickynote_toggle_lock_cb (GtkWidget  *widget,
+                           StickyNote *note)
+{
+	stickynote_set_locked (note, !note->locked);
+
+	return TRUE;
+}
+
+static gboolean
+stickynote_close_cb (GtkWidget  *widget,
+                     StickyNote *note)
+{
+	stickynotes_remove (note);
+
+	return TRUE;
+}
+
+static gboolean
+stickynote_resize_cb (GtkWidget      *widget,
+                      GdkEventButton *event,
+                      StickyNote     *note)
+{
+	if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
+		if (widget == note->w_resize_se)
+			gtk_window_begin_resize_drag (GTK_WINDOW (note->w_window), GDK_WINDOW_EDGE_SOUTH_EAST,
+						     event->button, event->x_root, event->y_root, event->time);
+		else /* if (widget == note->w_resize_sw) */
+			gtk_window_begin_resize_drag (GTK_WINDOW (note->w_window), GDK_WINDOW_EDGE_SOUTH_WEST,
+						     event->button, event->x_root, event->y_root, event->time);
+	}
+	else
+		return FALSE;
+
+	return TRUE;
+}
+
+static gboolean
+stickynote_move_cb (GtkWidget      *widget,
+                    GdkEventButton *event,
+                    StickyNote     *note)
+{
+	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
+		gtk_window_begin_move_drag (GTK_WINDOW (note->w_window), event->button,
+		                            event->x_root, event->y_root, event->time);
+	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
+		stickynote_change_properties (note);
+	else
+		return FALSE;
+
+	return TRUE;
+}
+
+static gboolean
+stickynote_configure_cb (GtkWidget         *widget,
+                         GdkEventConfigure *event,
+                         StickyNote        *note)
+{
+	note->x = event->x;
+	note->y = event->y;
+	note->w = event->width;
+	note->h = event->height;
+
+	stickynotes_save();
+
+	return FALSE;
+}
+
+static gboolean
+stickynote_delete_cb (GtkWidget  *widget,
+                      GdkEvent   *event,
+                      StickyNote *note)
+{
+	stickynotes_remove(note);
+
+	return TRUE;
+}
+
+static void
+properties_apply_title_cb (StickyNote *note)
+{
+	stickynote_set_title (note, gtk_entry_get_text (GTK_ENTRY (note->w_entry)));
+}
+
+static void
+properties_apply_color_cb (StickyNote *note)
+{
+	char *color_str = NULL;
+	char *font_color_str = NULL;
+
+	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (note->w_def_color)))
+	{
+		GdkRGBA color;
+		GdkRGBA font_color;
+
+		gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (note->w_color), &color);
+		gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (note->w_font_color), &font_color);
+
+		color_str = gdk_rgba_to_string (&color);
+		font_color_str = gdk_rgba_to_string (&font_color);
+	}
+
+	stickynote_set_color (note, color_str, font_color_str, TRUE);
+
+	g_free (color_str);
+	g_free (font_color_str);
+}
+
+static void
+properties_color_cb (GtkWidget  *button,
+                     StickyNote *note)
+{
+	properties_apply_color_cb (note);
+}
+
+static void
+properties_font_cb (GtkWidget  *button,
+                    StickyNote *note)
+{
+	const gchar *font_str;
+
+	font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
+
+	stickynote_set_font (note, font_str, TRUE);
+}
+
+static void
+properties_apply_font_cb (StickyNote *note)
+{
+	const gchar *font_str = NULL;
+
+	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (note->w_def_font)))
+		font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (note->w_font));
+
+	stickynote_set_font (note, font_str, TRUE);
+}
+
+static void
+properties_activate_cb (GtkWidget  *widget,
+                        StickyNote *note)
+{
+	gtk_dialog_response (GTK_DIALOG (note->w_properties), GTK_RESPONSE_CLOSE);
 }
 
 /* Called when a timeout occurs.  */
