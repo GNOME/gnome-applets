@@ -250,8 +250,6 @@ sticky_notes_applet_new (StickyNotesApplet *applet)
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
 
-	applet->menu_tip = NULL;
-
 	/* Add the applet icon */
 	gtk_container_add(GTK_CONTAINER(applet), applet->w_image);
 	applet->panel_orient = gp_applet_get_orientation (GP_APPLET (applet));
@@ -358,11 +356,6 @@ stickynotes_applet_update_tooltips (void)
 	{
 		applet = l->data;
 		gtk_widget_set_tooltip_text (GTK_WIDGET (applet), tooltip);
-
-		if (applet->menu_tip)
-			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (
-						GTK_BIN (applet->menu_tip))),
-				no_notes);
 	}
 
 	g_free (tooltip);

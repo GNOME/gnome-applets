@@ -61,8 +61,6 @@ struct _StickyNotesApplet
 	gint panel_size;
 	GtkOrientation panel_orient;
 
-	GtkWidget *menu_tip;
-
 	GtkWidget *w_prefs;
 };
 
