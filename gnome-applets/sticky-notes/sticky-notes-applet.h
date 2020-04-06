@@ -32,19 +32,7 @@ G_DECLARE_FINAL_TYPE (StickyNotesApplet, sticky_notes_applet,
 /* Global Sticky Notes instance */
 typedef struct
 {
-	GtkBuilder *builder;
-
 	GtkWidget *w_prefs;		/* The prefs dialog */
-	GtkAdjustment *w_prefs_width;
-	GtkAdjustment *w_prefs_height;
-	GtkWidget *w_prefs_color;
-	GtkWidget *w_prefs_font_color;
-	GtkWidget *w_prefs_sys_color;
-	GtkWidget *w_prefs_font;
-	GtkWidget *w_prefs_sys_font;
-	GtkWidget *w_prefs_sticky;
-	GtkWidget *w_prefs_force;
-	GtkWidget *w_prefs_desktop;
 
 	GList *notes;			/* Linked-List of all the sticky notes */
 	GList *applets;			/* Linked-List of all the applets */
@@ -88,7 +76,6 @@ typedef enum
 extern StickyNotes *stickynotes;
 
 void stickynotes_applet_update_icon(StickyNotesApplet *applet);
-void stickynotes_applet_update_prefs(void);
 void stickynotes_applet_update_menus(void);
 void stickynotes_applet_update_tooltips(void);
 

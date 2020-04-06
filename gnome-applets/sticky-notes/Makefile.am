@@ -26,6 +26,8 @@ libsticky_notes_applet_la_SOURCES = \
 	sticky-notes-applet-callbacks.h \
 	sticky-notes-callbacks.c \
 	sticky-notes-callbacks.h \
+	sticky-notes-preferences.c \
+	sticky-notes-preferences.h \
 	util.c \
 	util.h \
 	$(NULL)

@@ -36,14 +36,9 @@ void menu_hide_notes_cb(GSimpleAction *action, GVariant *parameter, gpointer use
 void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void menu_toggle_lock_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer user_data);
-void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data);
 
 /* Callbacks for sticky notes preferences dialog */
-void preferences_save_cb(gpointer data);
-void preferences_color_cb (GtkWidget *button, gpointer data);
-void preferences_font_cb (GtkWidget *button, gpointer data);
 void preferences_apply_cb(GSettings *settings, const gchar *key, gpointer user_data);
 void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data);
-gboolean preferences_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer data);
 
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

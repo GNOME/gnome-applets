@@ -344,77 +344,6 @@ void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer use
 		g_settings_set_boolean (stickynotes->settings, KEY_LOCKED, locked);
 }
 
-/* Menu Callback : Configure preferences */
-void menu_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
-{
-	StickyNotesApplet *applet = (StickyNotesApplet *) user_data;
-	stickynotes_applet_update_prefs();
-	gtk_window_set_screen(GTK_WINDOW(stickynotes->w_prefs), gtk_widget_get_screen(GTK_WIDGET (applet)));
-	gtk_window_present(GTK_WINDOW(stickynotes->w_prefs));
-}
-
-/* Preferences Callback : Save. */
-void
-preferences_save_cb (gpointer data)
-{
-	gint width = gtk_adjustment_get_value (stickynotes->w_prefs_width);
-	gint height = gtk_adjustment_get_value (stickynotes->w_prefs_height);
-	gboolean sys_color = gtk_toggle_button_get_active (
-			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sys_color));
-	gboolean sys_font = gtk_toggle_button_get_active (
-			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sys_font));
-	gboolean sticky = gtk_toggle_button_get_active (
-			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sticky));
-	gboolean force_default = gtk_toggle_button_get_active (
-			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_force));
-	gboolean desktop_hide = gtk_toggle_button_get_active (
-			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_desktop));
-
-	if (g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_WIDTH))
-		g_settings_set_int (stickynotes->settings, KEY_DEFAULT_WIDTH, width);
-	if (g_settings_is_writable (stickynotes->settings, KEY_DEFAULT_HEIGHT))
-		g_settings_set_int (stickynotes->settings, KEY_DEFAULT_HEIGHT, height);
-	if (g_settings_is_writable (stickynotes->settings, KEY_USE_SYSTEM_COLOR))
-		g_settings_set_boolean (stickynotes->settings, KEY_USE_SYSTEM_COLOR, sys_color);
-	if (g_settings_is_writable (stickynotes->settings, KEY_USE_SYSTEM_FONT))
-		g_settings_set_boolean (stickynotes->settings, KEY_USE_SYSTEM_FONT, sys_font);
-	if (g_settings_is_writable (stickynotes->settings, KEY_STICKY))
-		g_settings_set_boolean (stickynotes->settings, KEY_STICKY, sticky);
-	if (g_settings_is_writable (stickynotes->settings, KEY_FORCE_DEFAULT))
-		g_settings_set_boolean (stickynotes->settings, KEY_FORCE_DEFAULT, force_default);
-	if (g_settings_is_writable (stickynotes->settings, KEY_DESKTOP_HIDE))
-		g_settings_set_boolean (stickynotes->settings, KEY_DESKTOP_HIDE, desktop_hide);
-}
-
-/* Preferences Callback : Change color. */
-void
-preferences_color_cb (GtkWidget *button, gpointer data)
-{
-	GdkRGBA color, font_color;
-	char *color_str, *font_color_str;
-
-	gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (stickynotes->w_prefs_color), &color);
-	gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (stickynotes->w_prefs_font_color), &font_color);
-
-	color_str = gdk_rgba_to_string (&color);
-	font_color_str = gdk_rgba_to_string (&font_color);
-
-	g_settings_set_string (stickynotes->settings, KEY_DEFAULT_COLOR, color_str);
-	g_settings_set_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR, font_color_str);
-
-	g_free (color_str);
-	g_free (font_color_str);
-}
-
-/* Preferences Callback : Change font. */
-void preferences_font_cb (GtkWidget *button, gpointer data)
-{
-	const char *font_str;
-
-	font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
-	g_settings_set_string (stickynotes->settings, KEY_DEFAULT_FONT, font_str);
-}
-
 /* Preferences Callback : Apply to existing notes. */
 void preferences_apply_cb (GSettings   *settings,
                            const gchar *key,
@@ -451,6 +380,7 @@ void preferences_apply_cb (GSettings   *settings,
 	}
 
 	else if (!strcmp (key, KEY_USE_SYSTEM_COLOR) ||
+		 !strcmp (key, KEY_DEFAULT_FONT_COLOR) ||
 		 !strcmp (key, KEY_DEFAULT_COLOR))
 	{
 		for (l = stickynotes->notes; l; l = l->next)
@@ -484,7 +414,6 @@ void preferences_apply_cb (GSettings   *settings,
 		}
 	}
 
-	stickynotes_applet_update_prefs();
 	stickynotes_applet_update_menus();
 }
 
@@ -509,13 +438,5 @@ void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data)
 	}
 
 	else if (response == GTK_RESPONSE_CLOSE)
-	        gtk_widget_hide(GTK_WIDGET(dialog));
-}
-
-/* Preferences Callback : Delete */
-gboolean preferences_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
-{
-	gtk_widget_hide(widget);
-
-	return TRUE;
+	        gtk_widget_destroy(GTK_WIDGET(dialog));
 }
