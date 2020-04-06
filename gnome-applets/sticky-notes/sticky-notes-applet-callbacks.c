@@ -27,8 +27,6 @@
 #include "gsettings.h"
 #include "sticky-notes.h"
 
-#define GRESOURCE "/org/gnome/gnome-applets/sticky-notes/"
-
 static gboolean get_desktop_window (Window *window)
 {
 	Window *desktop_window;
@@ -303,7 +301,7 @@ void menu_destroy_all_cb(GSimpleAction *action, GVariant *parameter, gpointer us
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder,
-	                               GRESOURCE "/sticky-notes-delete-all.ui",
+	                               GRESOURCE_PREFIX "/ui/sticky-notes-delete-all.ui",
 	                               NULL);
 
 	if (applet->destroy_all_dialog != NULL) {
