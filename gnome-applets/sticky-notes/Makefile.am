@@ -22,8 +22,6 @@ libsticky_notes_applet_la_SOURCES = \
 	sticky-notes.h \
 	sticky-notes-applet.c \
 	sticky-notes-applet.h \
-	sticky-notes-applet-callbacks.c \
-	sticky-notes-applet-callbacks.h \
 	sticky-notes-preferences.c \
 	sticky-notes-preferences.h \
 	util.c \
