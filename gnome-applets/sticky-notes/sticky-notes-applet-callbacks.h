@@ -39,6 +39,5 @@ void menu_toggle_lock_state(GSimpleAction *action, GVariant *value, gpointer use
 
 /* Callbacks for sticky notes preferences dialog */
 void preferences_apply_cb(GSettings *settings, const gchar *key, gpointer user_data);
-void preferences_response_cb(GtkWidget *dialog, gint response, gpointer data);
 
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

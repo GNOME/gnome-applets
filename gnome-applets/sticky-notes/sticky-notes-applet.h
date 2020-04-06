@@ -32,8 +32,6 @@ G_DECLARE_FINAL_TYPE (StickyNotesApplet, sticky_notes_applet,
 /* Global Sticky Notes instance */
 typedef struct
 {
-	GtkWidget *w_prefs;		/* The prefs dialog */
-
 	GList *notes;			/* Linked-List of all the sticky notes */
 	GList *applets;			/* Linked-List of all the applets */
 
@@ -64,6 +62,8 @@ struct _StickyNotesApplet
 	GtkOrientation panel_orient;
 
 	GtkWidget *menu_tip;
+
+	GtkWidget *w_prefs;
 };
 
 typedef enum

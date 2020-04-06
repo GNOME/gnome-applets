@@ -36,26 +36,41 @@ static void sticky_notes_init       (GpApplet          *applet);
 static void sticky_notes_applet_new (StickyNotesApplet *self);
 
 static void
+preferences_response_cb (GtkWidget         *widget,
+                         gint               response_id,
+                         StickyNotesApplet *self)
+{
+  if (response_id == GTK_RESPONSE_HELP)
+    gp_applet_show_help (GP_APPLET (self), "stickynotes-advanced-settings");
+  else if (response_id == GTK_RESPONSE_CLOSE)
+    gtk_widget_destroy (widget);
+}
+
+static void
 menu_preferences_cb (GSimpleAction *action,
                      GVariant      *parameter,
                      gpointer       user_data)
 {
-  if (stickynotes->w_prefs != NULL)
+  StickyNotesApplet *self;
+
+  self = STICKY_NOTES_APPLET (user_data);
+
+  if (self->w_prefs != NULL)
     {
-      gtk_window_present (GTK_WINDOW (stickynotes->w_prefs));
+      gtk_window_present (GTK_WINDOW (self->w_prefs));
       return;
     }
 
-  stickynotes->w_prefs = sticky_notes_preferences_new (stickynotes->settings);
-  g_object_add_weak_pointer (G_OBJECT (stickynotes->w_prefs),
-                             (gpointer *) &stickynotes->w_prefs);
+  self->w_prefs = sticky_notes_preferences_new (stickynotes->settings);
+  g_object_add_weak_pointer (G_OBJECT (self->w_prefs),
+                             (gpointer *) &self->w_prefs);
 
-  g_signal_connect (stickynotes->w_prefs,
+  g_signal_connect (self->w_prefs,
                     "response",
                     G_CALLBACK (preferences_response_cb),
-                    NULL);
+                    self);
 
-  gtk_window_present (GTK_WINDOW (stickynotes->w_prefs));
+  gtk_window_present (GTK_WINDOW (self->w_prefs));
 }
 
 static void
@@ -108,6 +123,18 @@ sticky_notes_applet_constructed (GObject *object)
 }
 
 static void
+sticky_notes_applet_dispose (GObject *object)
+{
+  StickyNotesApplet *self;
+
+  self = STICKY_NOTES_APPLET (object);
+
+  g_clear_pointer (&self->w_prefs, gtk_widget_destroy);
+
+  G_OBJECT_CLASS (sticky_notes_applet_parent_class)->dispose (object);
+}
+
+static void
 sticky_notes_applet_class_init (StickyNotesAppletClass *self_class)
 {
   GObjectClass *object_class;
@@ -115,6 +142,7 @@ sticky_notes_applet_class_init (StickyNotesAppletClass *self_class)
   object_class = G_OBJECT_CLASS (self_class);
 
   object_class->constructed = sticky_notes_applet_constructed;
+  object_class->dispose = sticky_notes_applet_dispose;
 }
 
 static void
