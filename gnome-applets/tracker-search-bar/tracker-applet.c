@@ -297,7 +297,7 @@ applet_size_allocate_cb (GtkWidget     *widget,
 		new_size = allocation->height;
 	}
 
-	if (applet->size != new_size) {
+	if (applet->image != NULL && applet->size != new_size) {
 		applet->size = new_size;
 
 		gtk_image_set_pixel_size (GTK_IMAGE (applet->image), applet->size - 2);
