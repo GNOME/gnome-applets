@@ -35,6 +35,8 @@ struct _StickyNotesApplet
 
 	GSettings *settings;
 
+	char *filename;
+
 	GtkWidget *w_image;		/* The applet icon */
 
 	GdkPixbuf *icon_normal;		/* Normal applet icon */

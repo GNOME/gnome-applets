@@ -22,6 +22,7 @@
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 #include <glib/gi18n-lib.h>
+#include <glib/gstdio.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
 #include <libwnck/libwnck.h>
 #include <string.h>
@@ -1118,6 +1119,10 @@ void stickynotes_remove(StickyNote *note)
 void
 stickynotes_save_now (StickyNotesApplet *applet)
 {
+	char *path;
+	char *notes_file;
+	xmlDocPtr doc;
+	xmlNodePtr root;
 	WnckScreen *wnck_screen;
 	const gchar *title;
 	GtkTextBuffer *buffer;
@@ -1125,9 +1130,26 @@ stickynotes_save_now (StickyNotesApplet *applet)
 	gchar *body;
 	guint i;
 
+	path = g_build_filename (g_get_user_config_dir (),
+	                         "gnome-applets",
+	                         "sticky-notes",
+	                         NULL);
+
+	g_mkdir_with_parents (path, 0700);
+	notes_file = g_build_filename (path, applet->filename, NULL);
+	g_free (path);
+
+	if (applet->notes == NULL) {
+		g_unlink (notes_file);
+		g_free (notes_file);
+
+		applet->save_scheduled = FALSE;
+		return;
+	}
+
 	/* Create a new XML document */
-	xmlDocPtr doc = xmlNewDoc(XML_CHAR ("1.0"));
-	xmlNodePtr root = xmlNewDocNode(doc, NULL, XML_CHAR ("stickynotes"), NULL);
+	doc = xmlNewDoc(XML_CHAR ("1.0"));
+	root = xmlNewDocNode(doc, NULL, XML_CHAR ("stickynotes"), NULL);
 
 	xmlDocSetRootElement(doc, root);
 	xmlNewProp(root, XML_CHAR("version"), XML_CHAR (VERSION));
@@ -1211,21 +1233,19 @@ stickynotes_save_now (StickyNotesApplet *applet)
 	}
 
 	{
-		const gchar *dir;
-		gchar *path;
-		gchar *file;
+		char *tmp_file;
 
-		dir = g_get_user_config_dir ();
-		path = g_build_filename (dir, "gnome-applets", "sticky-notes", NULL);
-		file = g_build_filename (path, "sticky-notes.xml", NULL);
+		tmp_file = g_strdup_printf ("%s.tmp", notes_file);
+		if (xmlSaveFormatFile (tmp_file, doc, 1) == -1 ||
+			g_rename (tmp_file, notes_file) == -1) {
+			g_warning ("Failed to save notes");
+			g_unlink (tmp_file);
+		}
 
-		g_mkdir_with_parents (path, 0700);
-		g_free (path);
-
-		xmlSaveFormatFile (file, doc, 1);
-		g_free (file);
+		g_free (tmp_file);
 	}
 
+	g_free (notes_file);
 	xmlFreeDoc(doc);
 
 	applet->save_scheduled = FALSE;
@@ -1253,10 +1273,43 @@ stickynotes_save (StickyNotesApplet *applet)
   }
 }
 
+static char *
+get_unique_filename (void)
+{
+  int number;
+  char *filename;
+  char *path;
+
+  number = 1;
+  filename = NULL;
+  path = NULL;
+
+  do
+    {
+      g_free (filename);
+      filename = g_strdup_printf ("sticky-notes-%d.xml", number++);
+
+      g_free (path);
+      path = g_build_filename (g_get_user_config_dir (),
+                               "gnome-applets",
+                               "sticky-notes",
+                               filename,
+                               NULL);
+    }
+  while (g_file_test (path, G_FILE_TEST_EXISTS));
+
+  g_free (path);
+
+  return filename;
+}
+
 /* Load all sticky notes from an XML configuration file */
 void
 stickynotes_load (StickyNotesApplet *applet)
 {
+	const char *dir;
+	char *filename;
+	char *notes_file;
 	xmlDocPtr doc;
 	xmlNodePtr root;
 	xmlNodePtr node;
@@ -1264,31 +1317,70 @@ stickynotes_load (StickyNotesApplet *applet)
 	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
 	int x, y, w, h;
 
-	{
-		const gchar *dir;
-		gchar *file;
+	dir = g_get_user_config_dir ();
+	filename = g_settings_get_string (applet->settings, KEY_FILENAME);
+	g_free (applet->filename);
 
-		dir = g_get_user_config_dir ();
-		file = g_build_filename (dir, "gnome-applets", "sticky-notes",
-		                         "sticky-notes.xml", NULL);
+	if (*filename == '\0') {
+		char *old_file;
 
-		if (!g_file_test (file, G_FILE_TEST_EXISTS))
-		{
-			g_free (file);
-			file = g_build_filename (dir, "gnome-applets",
-			                         "stickynotes", NULL);
+		g_free (filename);
+		filename = get_unique_filename ();
+
+		notes_file = g_build_filename (dir,
+		                               "gnome-applets",
+		                               "sticky-notes",
+		                               filename,
+		                               NULL);
+
+		old_file = g_build_filename (dir,
+		                             "gnome-applets",
+		                             "sticky-notes",
+		                             "sticky-notes.xml",
+		                             NULL);
+
+		if (g_file_test (old_file, G_FILE_TEST_EXISTS)) {
+			g_rename (old_file, notes_file);
+
+			g_free (old_file);
+			old_file = g_build_filename (dir,
+			                             "gnome-applets",
+			                             "stickynotes",
+			                             NULL);
+
+			if (g_file_test (old_file, G_FILE_TEST_EXISTS))
+				g_unlink (old_file);
+		} else {
+			g_free (old_file);
+			old_file = g_build_filename (dir,
+			                             "gnome-applets",
+			                             "stickynotes",
+			                             NULL);
+
+			if (g_file_test (old_file, G_FILE_TEST_EXISTS))
+				g_rename (old_file, notes_file);
 		}
 
-		doc = xmlParseFile (file);
-		g_free (file);
+		applet->filename = filename;
+		g_settings_set_string (applet->settings, KEY_FILENAME, filename);
+
+		g_free (old_file);
+	} else {
+		applet->filename = filename;
+		notes_file = g_build_filename (dir,
+		                               "gnome-applets",
+		                               "sticky-notes",
+		                               filename,
+		                               NULL);
 	}
 
-	/* If the XML file does not exist, create a blank one */
-	if (!doc)
-	{
-		stickynotes_save (applet);
+	if (!g_file_test (notes_file, G_FILE_TEST_EXISTS)) {
+		g_free (notes_file);
 		return;
 	}
+
+	doc = xmlParseFile (notes_file);
+	g_free (notes_file);
 
 	/* If the XML file is corrupted/incorrect, create a blank one */
 	root = xmlDocGetRootElement(doc);

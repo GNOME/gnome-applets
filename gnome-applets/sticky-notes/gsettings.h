@@ -19,6 +19,7 @@
 #define STICKYNOTES_GSETTINGS_H
 
 #define STICKYNOTES_SCHEMA "org.gnome.gnome-applets.stickynotes"
+#define KEY_FILENAME "filename"
 
 #define KEY_DEFAULT_WIDTH      "default-width"
 #define KEY_DEFAULT_HEIGHT     "default-height"

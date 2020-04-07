@@ -262,6 +262,18 @@ sticky_notes_applet_dispose (GObject *object)
 }
 
 static void
+sticky_notes_applet_finalize (GObject *object)
+{
+  StickyNotesApplet *self;
+
+  self = STICKY_NOTES_APPLET (object);
+
+  g_clear_pointer (&self->filename, g_free);
+
+  G_OBJECT_CLASS (sticky_notes_applet_parent_class)->finalize (object);
+}
+
+static void
 sticky_notes_applet_class_init (StickyNotesAppletClass *self_class)
 {
   GObjectClass *object_class;
@@ -270,6 +282,7 @@ sticky_notes_applet_class_init (StickyNotesAppletClass *self_class)
 
   object_class->constructed = sticky_notes_applet_constructed;
   object_class->dispose = sticky_notes_applet_dispose;
+  object_class->finalize = sticky_notes_applet_finalize;
 }
 
 static void
@@ -316,6 +329,32 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 				*(pixdest++) = *(pixsrc++);
 		}
 	}
+}
+
+static void
+filename_changed_cb (GSettings         *settings,
+                     const gchar       *key,
+                     StickyNotesApplet *self)
+{
+  char *filename;
+
+  filename = g_settings_get_string (settings, key);
+
+  if (g_strcmp0 (self->filename, filename) == 0)
+    {
+      g_free (filename);
+      return;
+    }
+
+  g_free (filename);
+
+  /* Save and remove existing notes */
+  stickynotes_save_now (self);
+  g_list_free_full (self->notes, (GDestroyNotify) stickynote_free);
+  self->notes = NULL;
+
+  /* Reload notes from new file */
+  stickynotes_load (self);
 }
 
 static void
@@ -493,6 +532,11 @@ static void
 sticky_notes_init (StickyNotesApplet *self)
 {
   self->settings = gp_applet_settings_new (GP_APPLET (self), STICKYNOTES_SCHEMA);
+
+  g_signal_connect (self->settings,
+                    "changed::" KEY_FILENAME,
+                    G_CALLBACK (filename_changed_cb),
+                    self);
 
   g_signal_connect (self->settings,
                     "changed",
