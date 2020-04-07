@@ -29,24 +29,11 @@
 G_DECLARE_FINAL_TYPE (StickyNotesApplet, sticky_notes_applet,
                       STICKY_NOTES, APPLET, GpApplet)
 
-/* Global Sticky Notes instance */
-typedef struct
-{
-	GList *notes;			/* Linked-List of all the sticky notes */
-	GList *applets;			/* Linked-List of all the applets */
-
-	GSettings *settings;
-
-	gint max_height;
-	guint last_timeout_data;
-
-    gboolean visible;       /* Toggle show/hide notes */
-} StickyNotes;
-
-/* Sticky Notes Applet */
 struct _StickyNotesApplet
 {
   GpApplet parent;
+
+	GSettings *settings;
 
 	GtkWidget *w_image;		/* The applet icon */
 
@@ -62,15 +49,25 @@ struct _StickyNotesApplet
 	GtkOrientation panel_orient;
 
 	GtkWidget *w_prefs;
+
+	gboolean save_scheduled;
+
+	GList *notes;
+
+	gint max_height;
+
+	gboolean visible;
 };
 
-extern StickyNotes *stickynotes;
+void stickynotes_applet_update_icon             (StickyNotesApplet *self);
+void stickynotes_applet_update_menus            (StickyNotesApplet *self);
+void stickynotes_applet_update_tooltips         (StickyNotesApplet *self);
 
-void stickynotes_applet_update_icon(StickyNotesApplet *applet);
-void stickynotes_applet_update_menus(void);
-void stickynotes_applet_update_tooltips(void);
-
-void stickynotes_applet_panel_icon_get_geometry (int *x, int *y, int *width, int *height);
+void stickynotes_applet_panel_icon_get_geometry (StickyNotesApplet *self,
+                                                 int               *x,
+                                                 int               *y,
+                                                 int               *width,
+                                                 int               *height);
 
 void stickynotes_applet_setup_about (GtkAboutDialog *dialog);
 

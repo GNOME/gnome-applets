@@ -24,6 +24,8 @@
 
 typedef struct
 {
+	StickyNotesApplet *applet;
+
 	GtkWidget *w_window;		/* Sticky Note window */
 	GtkWidget *w_menu;		/* Sticky Note menu */
 	GtkWidget *w_properties;	/* Sticky Note properties dialog */
@@ -67,9 +69,10 @@ typedef struct
 
 	int workspace;			/* Workspace the note is on */
 
+	guint buffer_changed_id;
 } StickyNote;
 
-StickyNote * stickynote_new(GdkScreen *screen);
+StickyNote * stickynote_new (StickyNotesApplet *applet);
 void stickynote_free(StickyNote *note);
 
 gboolean stickynote_get_empty(const StickyNote *note);
@@ -85,10 +88,12 @@ void stickynote_set_visible(StickyNote *note, gboolean visible);
 
 void stickynote_change_properties(StickyNote *note);
 
-void stickynotes_add(GdkScreen *screen);
+void stickynotes_add      (StickyNotesApplet *applet);
 void stickynotes_remove(StickyNote *note);
-void stickynotes_save(void);
-void stickynotes_save_now (void);
-void stickynotes_load(GdkScreen *screen);
+
+void stickynotes_save     (StickyNotesApplet *applet);
+void stickynotes_save_now (StickyNotesApplet *applet);
+
+void stickynotes_load     (StickyNotesApplet *applet);
 
 #endif /* __STICKYNOTES_H__ */

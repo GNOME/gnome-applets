@@ -35,8 +35,6 @@
 
 #define STICKYNOTES_ICON_SIZE 8
 
-static gboolean save_scheduled = FALSE;
-
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 
 static void
@@ -45,7 +43,7 @@ popup_create_cb (GSimpleAction *action,
                  gpointer       user_data)
 {
 	StickyNote *note = (StickyNote *) user_data;
-	stickynotes_add (gtk_widget_get_screen (note->w_window));
+	stickynotes_add (note->applet);
 }
 
 static void
@@ -251,7 +249,7 @@ stickynote_configure_cb (GtkWidget         *widget,
 	note->w = event->width;
 	note->h = event->height;
 
-	stickynotes_save();
+	stickynotes_save (note->applet);
 
 	return FALSE;
 }
@@ -332,41 +330,57 @@ properties_activate_cb (GtkWidget  *widget,
 	gtk_dialog_response (GTK_DIALOG (note->w_properties), GTK_RESPONSE_CLOSE);
 }
 
-/* Called when a timeout occurs.  */
 static gboolean
-timeout_happened (gpointer data)
+timeout_cb (gpointer user_data)
 {
-	if (GPOINTER_TO_UINT (data) == stickynotes->last_timeout_data)
-		stickynotes_save ();
-	return FALSE;
+  StickyNote *note;
+
+  note = user_data;
+  note->buffer_changed_id = 0;
+
+  stickynotes_save (note->applet);
+
+  return G_SOURCE_REMOVE;
 }
 
 /* Called when a text buffer is changed.  */
 static void
 buffer_changed (GtkTextBuffer *buffer, StickyNote *note)
 {
-	if ( (note->h + note->y) > stickynotes->max_height )
-		gtk_scrolled_window_set_policy ( GTK_SCROLLED_WINDOW(note->w_scroller),
-													GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+	if ((note->h + note->y) > note->applet->max_height)
+		gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (note->w_scroller),
+		                                GTK_POLICY_NEVER,
+		                                GTK_POLICY_AUTOMATIC);
 
 	/* When a buffer is changed, we set a 10 second timer.  When
 	   the timer triggers, we will save the buffer if there have
 	   been no subsequent changes.  */
-	++stickynotes->last_timeout_data;
-	g_timeout_add_seconds (10, (GSourceFunc) timeout_happened,
-		       GUINT_TO_POINTER (stickynotes->last_timeout_data));
+	if (note->buffer_changed_id != 0)
+		g_source_remove (note->buffer_changed_id);
+
+	note->buffer_changed_id = g_timeout_add_seconds (10, timeout_cb, note);
 }
 
 /* Create a new (empty) Sticky Note at a specific position
    and with specific size */
 static StickyNote *
-stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
+stickynote_new_aux (StickyNotesApplet *applet,
+                    gint               x,
+                    gint               y,
+                    gint               w,
+                    gint               h)
 {
+	GdkScreen *screen;
 	StickyNote *note;
 	GtkBuilder *builder;
 	static guint id = 0;
 
+	screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+
 	note = g_new (StickyNote, 1);
+	note->applet = applet;
+
+	note->buffer_changed_id = 0;
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder,
@@ -440,13 +454,13 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 	note->h = h;
 
 	/* Customize the window */
-	if (g_settings_get_boolean (stickynotes->settings, KEY_STICKY))
+	if (g_settings_get_boolean (applet->settings, KEY_STICKY))
 		gtk_window_stick(GTK_WINDOW(note->w_window));
 
 	if (w == 0 || h == 0)
 		gtk_window_resize (GTK_WINDOW(note->w_window),
-				g_settings_get_int (stickynotes->settings, KEY_DEFAULT_WIDTH),
-				g_settings_get_int (stickynotes->settings, KEY_DEFAULT_HEIGHT));
+				g_settings_get_int (applet->settings, KEY_DEFAULT_WIDTH),
+				g_settings_get_int (applet->settings, KEY_DEFAULT_HEIGHT));
 	else
 		gtk_window_resize (GTK_WINDOW(note->w_window),
 				note->w,
@@ -553,9 +567,9 @@ stickynote_new_aux (GdkScreen *screen, gint x, gint y, gint w, gint h)
 
 /* Create a new (empty) Sticky Note */
 StickyNote *
-stickynote_new (GdkScreen *screen)
+stickynote_new (StickyNotesApplet *applet)
 {
-	return stickynote_new_aux (screen, -1, -1, 0, 0);
+  return stickynote_new_aux (applet, -1, -1, 0, 0);
 }
 
 /* Destroy a Sticky Note */
@@ -579,8 +593,11 @@ void stickynote_free(StickyNote *note)
 /* Change the sticky note title and color */
 void stickynote_change_properties (StickyNote *note)
 {
+	StickyNotesApplet *applet;
 	GdkRGBA color, font_color;
 	char *color_str = NULL;
+
+	applet = note->applet;
 
 	gtk_entry_set_text(GTK_ENTRY(note->w_entry),
 			gtk_label_get_text (GTK_LABEL (note->w_title)));
@@ -592,7 +609,7 @@ void stickynote_change_properties (StickyNote *note)
 		color_str = g_strdup (note->color);
 	else
 	{
-		color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_COLOR);
+		color_str = g_settings_get_string (applet->settings, KEY_DEFAULT_COLOR);
 	}
 
 	if (!IS_STRING_EMPTY (color_str))
@@ -606,7 +623,7 @@ void stickynote_change_properties (StickyNote *note)
 		color_str = g_strdup (note->font_color);
 	else
 	{
-		color_str = g_settings_get_string (stickynotes->settings, KEY_DEFAULT_FONT_COLOR);
+		color_str = g_settings_get_string (applet->settings, KEY_DEFAULT_FONT_COLOR);
 	}
 
 	if (!IS_STRING_EMPTY (color_str))
@@ -624,7 +641,7 @@ void stickynote_change_properties (StickyNote *note)
 
 	gtk_widget_show (note->w_properties);
 
-	stickynotes_save();
+	stickynotes_save (applet);
 }
 
 static void
@@ -651,7 +668,7 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	/* If title is NULL, use the current date as the title. */
 	if (!title) {
 		gchar *date_title, *tmp;
-		gchar *date_format = g_settings_get_string (stickynotes->settings, KEY_DATE_FORMAT);
+		gchar *date_format = g_settings_get_string (note->applet->settings, KEY_DATE_FORMAT);
 		if (IS_STRING_EMPTY (date_format)) {
 			g_free (date_format);
 			date_format = g_strdup ("%x");
@@ -919,9 +936,9 @@ update_css (StickyNote *note)
 
   string = g_string_new (NULL);
 
-  append_background_color (note, stickynotes->settings, string);
-  append_font_color (note, stickynotes->settings, string);
-  append_font (note, stickynotes->settings, string);
+  append_background_color (note, note->applet->settings, string);
+  append_font_color (note, note->applet->settings, string);
+  append_font (note, note->applet->settings, string);
 
   css = g_string_free (string, FALSE);
   gtk_css_provider_load_from_data (note->css, css, -1, NULL);
@@ -997,7 +1014,7 @@ stickynote_set_locked (StickyNote *note,
 
 	gtk_image_set_pixel_size (note->img_lock, STICKYNOTES_ICON_SIZE);
 
-	stickynotes_applet_update_menus();
+	stickynotes_applet_update_menus (note->applet);
 }
 
 /* Show/Hide a sticky note */
@@ -1012,7 +1029,7 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 			gtk_window_move (GTK_WINDOW (note->w_window),
 					note->x, note->y);
 		/* Put the note on all workspaces if necessary. */
-		if (g_settings_get_boolean (stickynotes->settings, KEY_STICKY))
+		if (g_settings_get_boolean (note->applet->settings, KEY_STICKY))
 			gtk_window_stick(GTK_WINDOW(note->w_window));
 		else if (note->workspace > 0)
 		{
@@ -1044,7 +1061,7 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 	else {
 		/* Hide sticky note */
 		int x, y, width, height;
-		stickynotes_applet_panel_icon_get_geometry (&x, &y, &width, &height);
+		stickynotes_applet_panel_icon_get_geometry (note->applet, &x, &y, &width, &height);
 		set_icon_geometry (gtk_widget_get_window (GTK_WIDGET (note->w_window)),
 				   x, y, width, height);
 		gtk_window_iconify(GTK_WINDOW (note->w_window));
@@ -1052,15 +1069,16 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 }
 
 /* Add a sticky note */
-void stickynotes_add (GdkScreen *screen)
+void
+stickynotes_add (StickyNotesApplet *applet)
 {
 	StickyNote *note;
 
-	note = stickynote_new (screen);
+	note = stickynote_new (applet);
 
-	stickynotes->notes = g_list_append(stickynotes->notes, note);
-	stickynotes_applet_update_tooltips();
-	stickynotes_save();
+	applet->notes = g_list_append(applet->notes, note);
+	stickynotes_applet_update_tooltips(applet);
+	stickynotes_save (applet);
 	stickynote_set_visible (note, TRUE);
 }
 
@@ -1080,18 +1098,19 @@ void stickynotes_remove(StickyNote *note)
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->w_window));
 
 	if (stickynote_get_empty(note)
-	    || !g_settings_get_boolean (stickynotes->settings, KEY_CONFIRM_DELETION)
+	    || !g_settings_get_boolean (note->applet->settings, KEY_CONFIRM_DELETION)
 	    || gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
-		stickynote_free(note);
 
 		/* Remove the note from the linked-list of all notes */
-		stickynotes->notes = g_list_remove(stickynotes->notes, note);
+		note->applet->notes = g_list_remove (note->applet->notes, note);
 
 		/* Update tooltips */
-		stickynotes_applet_update_tooltips();
+		stickynotes_applet_update_tooltips(note->applet);
 
 		/* Save notes */
-		stickynotes_save();
+		stickynotes_save (note->applet);
+
+		stickynote_free (note);
 	}
 
 	gtk_widget_destroy(dialog);
@@ -1100,7 +1119,7 @@ void stickynotes_remove(StickyNote *note)
 
 /* Save all sticky notes in an XML configuration file */
 void
-stickynotes_save_now (void)
+stickynotes_save_now (StickyNotesApplet *applet)
 {
 	WnckScreen *wnck_screen;
 	const gchar *title;
@@ -1120,12 +1139,12 @@ stickynotes_save_now (void)
 	wnck_screen_force_update (wnck_screen);
 
 	/* For all sticky notes */
-	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+	for (i = 0; i < g_list_length (applet->notes); i++) {
 		WnckWindow *wnck_win;
 		gulong xid = 0;
 
 		/* Access the current note in the list */
-		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+		StickyNote *note = g_list_nth_data (applet->notes, i);
 
 		/* Retrieve the window size of the note */
 		gchar *w_str = g_strdup_printf("%d", note->w);
@@ -1138,7 +1157,7 @@ stickynotes_save_now (void)
 		xid = GDK_WINDOW_XID (gtk_widget_get_window (note->w_window));
 		wnck_win = wnck_window_get (xid);
 
-		if (!g_settings_get_boolean (stickynotes->settings, KEY_STICKY) &&
+		if (!g_settings_get_boolean (note->applet->settings, KEY_STICKY) &&
 			wnck_win)
 			note->workspace = 1 +
 				wnck_workspace_get_number (
@@ -1212,30 +1231,34 @@ stickynotes_save_now (void)
 
 	xmlFreeDoc(doc);
 
-	save_scheduled = FALSE;
+	applet->save_scheduled = FALSE;
 }
 
 static gboolean
 stickynotes_save_cb (gpointer user_data)
 {
-  stickynotes_save_now ();
+  StickyNotesApplet *applet;
+
+  applet = STICKY_NOTES_APPLET (user_data);
+
+  stickynotes_save_now (applet);
 
   return G_SOURCE_REMOVE;
 }
 
 void
-stickynotes_save (void)
+stickynotes_save (StickyNotesApplet *applet)
 {
   /* If a save isn't already schedules, save everything a minute from now. */
-  if (!save_scheduled) {
-    g_timeout_add_seconds (60, stickynotes_save_cb, NULL);
-    save_scheduled = TRUE;
+  if (!applet->save_scheduled) {
+    g_timeout_add_seconds (60, stickynotes_save_cb, applet);
+    applet->save_scheduled = TRUE;
   }
 }
 
 /* Load all sticky notes from an XML configuration file */
 void
-stickynotes_load (GdkScreen *screen)
+stickynotes_load (StickyNotesApplet *applet)
 {
 	xmlDocPtr doc;
 	xmlNodePtr root;
@@ -1267,7 +1290,7 @@ stickynotes_load (GdkScreen *screen)
 	/* If the XML file does not exist, create a blank one */
 	if (!doc)
 	{
-		stickynotes_save();
+		stickynotes_save (applet);
 		return;
 	}
 
@@ -1276,7 +1299,7 @@ stickynotes_load (GdkScreen *screen)
 	if (!root || xmlStrcmp(root->name, XML_CHAR ("stickynotes")))
 	{
 		xmlFreeDoc(doc);
-		stickynotes_save();
+		stickynotes_save (applet);
 		return;
 	}
 
@@ -1330,9 +1353,8 @@ stickynotes_load (GdkScreen *screen)
 			}
 
 			/* Create a new note */
-			note = stickynote_new_aux (screen, x, y, w, h);
-			stickynotes->notes = g_list_append (stickynotes->notes,
-					note);
+			note = stickynote_new_aux (applet, x, y, w, h);
+			applet->notes = g_list_append (applet->notes, note);
 			new_notes = g_list_append (new_notes, note);
 			new_nodes = g_list_append (new_nodes, node);
 
@@ -1425,7 +1447,7 @@ stickynotes_load (GdkScreen *screen)
 	{
 		StickyNote *note = tmp1->data;
 
-		stickynote_set_visible (note, stickynotes->visible);
+		stickynote_set_visible (note, applet->visible);
 		tmp1 = tmp1->next;
 	}
 
