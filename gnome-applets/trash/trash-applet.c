@@ -539,6 +539,7 @@ trash_applet_init (TrashApplet *self)
   /* setup the trash backend */
   self->trash = g_file_new_for_uri ("trash:/");
   self->trash_monitor = g_file_monitor_file (self->trash, 0, NULL, NULL);
+  g_file_monitor_set_rate_limit (self->trash_monitor, 200);
   g_signal_connect_swapped (self->trash_monitor, "changed",
                             G_CALLBACK (trash_applet_monitor_changed),
                             self);
