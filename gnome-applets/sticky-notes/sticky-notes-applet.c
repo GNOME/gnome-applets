@@ -646,7 +646,6 @@ sticky_notes_applet_new (StickyNotesApplet *applet)
 	/* Add the applet icon */
 	gtk_container_add(GTK_CONTAINER(applet), applet->w_image);
 	applet->panel_orient = gp_applet_get_orientation (GP_APPLET (applet));
-	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
 	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-applet-menu.ui";
