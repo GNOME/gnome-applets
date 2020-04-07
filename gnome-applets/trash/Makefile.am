@@ -31,8 +31,26 @@ libtrash_applet_la_LIBADD = \
 libtrash_applet_la_SOURCES = \
 	trash-applet.c \
 	trash-applet.h \
-	trash-empty.h \
-	trash-empty.c \
+	$(BUILT_SOURCES) \
+	$(NULL)
+
+ta-nautilus-gen.h:
+ta-nautilus-gen.c: org.gnome.Nautilus.FileOperations2.xml
+	$(AM_V_GEN) $(GDBUS_CODEGEN) --c-namespace Ta \
+		--generate-c-code ta-nautilus-gen \
+		$(srcdir)/org.gnome.Nautilus.FileOperations2.xml
+
+BUILT_SOURCES = \
+	ta-nautilus-gen.c \
+	ta-nautilus-gen.h \
+	$(NULL)
+
+CLEANFILES = \
+	$(BUILT_SOURCES) \
+	$(NULL)
+
+EXTRA_DIST = \
+	org.gnome.Nautilus.FileOperations2.xml \
 	$(NULL)
 
 -include $(top_srcdir)/git.mk

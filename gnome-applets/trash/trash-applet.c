@@ -28,11 +28,15 @@
 #include <gdk/gdkkeysyms.h>
 #include <gio/gio.h>
 
-#include "trash-empty.h"
+#include "ta-nautilus-gen.h"
 
 struct _TrashApplet
 {
   GpApplet parent;
+
+  GCancellable *cancellable;
+
+  TaNautilusGen *nautilus;
 
   GFileMonitor *trash_monitor;
   GFile *trash;
@@ -74,6 +78,32 @@ static const GActionEntry trash_applet_menu_actions [] = {
 	{ "about", trash_applet_show_about,   NULL, NULL, NULL },
 	{ NULL }
 };
+
+static void
+nautilus_ready_cb (GObject      *object,
+                   GAsyncResult *res,
+                   gpointer      user_data)
+
+{
+  GError *error;
+  TaNautilusGen *nautilus;
+  TrashApplet *self;
+
+  error = NULL;
+  nautilus = ta_nautilus_gen_proxy_new_for_bus_finish (res, &error);
+
+  if (error != NULL)
+    {
+      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+        g_warning ("%s", error->message);
+
+      g_error_free (error);
+      return;
+    }
+
+  self = TRASH_APPLET (user_data);
+  self->nautilus = nautilus;
+}
 
 static void
 trash_applet_monitor_changed (TrashApplet *applet)
@@ -182,9 +212,34 @@ trash_applet_size_allocate (GtkWidget    *widget,
 }
 
 static void
+trash_applet_constructed (GObject *object)
+{
+  TrashApplet *self;
+
+  self = TRASH_APPLET (object);
+
+  G_OBJECT_CLASS (trash_applet_parent_class)->constructed (object);
+
+  self->cancellable = g_cancellable_new ();
+
+  ta_nautilus_gen_proxy_new_for_bus (G_BUS_TYPE_SESSION,
+                                     G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION,
+                                     "org.gnome.Nautilus",
+                                     "/org/gnome/Nautilus/FileOperations2",
+                                     self->cancellable,
+                                     nautilus_ready_cb,
+                                     self);
+}
+
+static void
 trash_applet_dispose (GObject *object)
 {
   TrashApplet *applet = TRASH_APPLET (object);
+
+  g_cancellable_cancel (applet->cancellable);
+  g_clear_object (&applet->cancellable);
+
+  g_clear_object (&applet->nautilus);
 
   if (applet->trash_monitor)
     g_object_unref (applet->trash_monitor);
@@ -313,13 +368,59 @@ error_dialog (TrashApplet *applet, const gchar *error, ...)
   g_free (error_string);
 }
 
+static GVariant *
+get_platform_data (guint32 timestamp)
+{
+  GVariantBuilder builder;
+
+  g_variant_builder_init (&builder, G_VARIANT_TYPE ("a{sv}"));
+
+  g_variant_builder_add (&builder,
+                         "{sv}",
+                         "timestamp",
+                         g_variant_new_uint32 (timestamp));
+
+  return g_variant_builder_end (&builder);
+}
+
+static void
+empty_trash_cb (GObject      *object,
+                GAsyncResult *res,
+                gpointer      user_data)
+{
+  GError *error;
+
+  error = NULL;
+  ta_nautilus_gen_call_empty_trash_finish (TA_NAUTILUS_GEN (object),
+                                           res,
+                                           &error);
+
+  if (error != NULL)
+    {
+      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+        g_warning ("Error emptying trash: %s", error->message);
+      g_error_free (error);
+    }
+}
+
 static void
 trash_applet_do_empty (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
-  TrashApplet *applet = (TrashApplet *) user_data;
-  trash_empty (GTK_WIDGET (applet));
+  TrashApplet *self;
+  guint32 timestamp;
+
+  self = TRASH_APPLET (user_data);
+
+  timestamp = gtk_get_current_event_time ();
+
+  ta_nautilus_gen_call_empty_trash (self->nautilus,
+                                    TRUE,
+                                    get_platform_data (timestamp),
+                                    self->cancellable,
+                                    empty_trash_cb,
+                                    self);
 }
 
 static void
@@ -507,6 +608,7 @@ trash_applet_class_init (TrashAppletClass *self_class)
   object_class = G_OBJECT_CLASS (self_class);
   widget_class = GTK_WIDGET_CLASS (self_class);
 
+  object_class->constructed = trash_applet_constructed;
   object_class->dispose = trash_applet_dispose;
 
   widget_class->size_allocate = trash_applet_size_allocate;

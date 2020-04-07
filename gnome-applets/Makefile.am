@@ -170,7 +170,6 @@ ui_files = \
 	sticky-notes/ui/sticky-notes-preferences.ui \
 	sticky-notes/ui/sticky-notes-properties.ui \
 	timer/timer-applet-menu.ui \
-	trash/trash-empty.ui \
 	trash/trash-menu.ui \
 	window-buttons/window-buttons.ui \
 	window-buttons/window-buttons-menu.ui \
