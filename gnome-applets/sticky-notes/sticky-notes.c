@@ -35,8 +35,6 @@
 
 #define STICKYNOTES_ICON_SIZE 8
 
-static void response_cb (GtkWidget *dialog, gint id, gpointer data);
-
 static void
 popup_create_cb (GSimpleAction *action,
                  GVariant      *parameter,
@@ -184,6 +182,17 @@ stickynote_show_popup_menu (GtkWidget      *widget,
 	}
 
 	return FALSE;
+}
+
+static void
+response_cb (GtkWidget  *dialog,
+             gint        response_id,
+             StickyNote *self)
+{
+  if (response_id == GTK_RESPONSE_HELP)
+    gp_applet_show_help (GP_APPLET (self->applet), "stickynotes-settings-individual");
+  else if (response_id == GTK_RESPONSE_CLOSE)
+    gtk_widget_hide (dialog);
 }
 
 static gboolean
@@ -642,18 +651,6 @@ void stickynote_change_properties (StickyNote *note)
 	gtk_widget_show (note->w_properties);
 
 	stickynotes_save (applet);
-}
-
-static void
-response_cb (GtkWidget *dialog, gint id, gpointer data)
-{
-        if (id == GTK_RESPONSE_HELP)
-		gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (dialog)),
-				"help:stickynotes_applet/stickynotes-settings-individual",
-				gtk_get_current_event_time (),
-				NULL);
-        else if (id == GTK_RESPONSE_CLOSE)
-                gtk_widget_hide (dialog);
 }
 
 /* Check if a sticky note is empty */
