@@ -196,7 +196,7 @@ ui_files += \
 	$(NULL)
 endif
 
-gnome-applets.gresource.xml: Makefile.am Makefile
+gnome-applets.gresource.xml: Makefile.am
 	$(AM_V_GEN) echo '<?xml version="1.0" encoding="UTF-8"?>' > $@; \
 		echo '<gresources>' >> $@; \
 		echo "  <gresource prefix=\"$(GRESOURCE_PREFIX)/icons\">" >> $@; \
@@ -219,7 +219,7 @@ resource_files = \
 		--generate-dependencies \
 		$(builddir)/gnome-applets.gresource.xml)
 
-ga-resources.c: gnome-applets.gresource.xml $(resource_files)
+ga-resources.c: gnome-applets.gresource.xml Makefile.am $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) \
 		--target=$@ --sourcedir=$(srcdir) \
 		--generate --c-name ga $<
