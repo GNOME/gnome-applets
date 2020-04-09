@@ -36,6 +36,7 @@ org_gnome_gnome_applets_la_CPPFLAGS = \
 org_gnome_gnome_applets_la_CFLAGS = \
 	$(GNOME_PANEL_CFLAGS) \
 	$(LIBGWEATHER_CFLAGS) \
+	$(WARN_CFLAGS) \
 	$(AM_CFLAGS) \
 	$(NULL)
 
@@ -80,6 +81,7 @@ endif
 
 org_gnome_gnome_applets_la_LDFLAGS = \
 	-module -avoid-version \
+	$(WARN_LDFLAGS) \
 	$(AM_LDFLAGS) \
 	$(NULL)
 
