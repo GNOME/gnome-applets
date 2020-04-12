@@ -379,12 +379,9 @@ stickynote_new_aux (StickyNotesApplet *applet,
                     gint               w,
                     gint               h)
 {
-	GdkScreen *screen;
 	StickyNote *note;
 	GtkBuilder *builder;
 	static guint id = 0;
-
-	screen = gtk_widget_get_screen (GTK_WIDGET (applet));
 
 	note = g_new (StickyNote, 1);
 	note->applet = applet;
@@ -400,7 +397,6 @@ stickynote_new_aux (StickyNotesApplet *applet,
 	                               NULL);
 
 	note->w_window = GTK_WIDGET (gtk_builder_get_object (builder, "stickynote_window"));
-	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
 	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
 	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
@@ -436,7 +432,6 @@ stickynote_new_aux (StickyNotesApplet *applet,
 
 	note->w_properties = GTK_WIDGET (gtk_builder_get_object (builder,
 			"stickynote_properties"));
-	gtk_window_set_screen (GTK_WINDOW (note->w_properties), screen);
 
 	note->w_entry = GTK_WIDGET (gtk_builder_get_object (builder, "title_entry"));
 	note->w_color = GTK_WIDGET (gtk_builder_get_object (builder, "note_color"));
@@ -493,7 +488,7 @@ stickynote_new_aux (StickyNotesApplet *applet,
 	gtk_widget_set_name (note->w_window, note->name);
 
 	note->css = gtk_css_provider_new ();
-	gtk_style_context_add_provider_for_screen (screen,
+	gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
 	                                           GTK_STYLE_PROVIDER (note->css),
 	                                           GTK_STYLE_PROVIDER_PRIORITY_USER + 100);
 
