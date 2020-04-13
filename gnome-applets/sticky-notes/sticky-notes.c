@@ -1260,7 +1260,7 @@ stickynotes_load (StickyNotesApplet *applet)
 	xmlDocPtr doc;
 	xmlNodePtr root;
 	xmlNodePtr node;
-	/* WnckScreen *wnck_screen; */
+
 	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
 	GList *new_nodes; /* Lists of xmlNodePtr's */
 	int x, y, w, h;
@@ -1435,10 +1435,6 @@ stickynotes_load (StickyNotesApplet *applet)
 	}
 
 	tmp1 = new_notes;
-	/*
-	wnck_screen = wnck_screen_get_default ();
-	wnck_screen_force_update (wnck_screen);
-	*/
 
 	while (tmp1)
 	{
