@@ -1303,12 +1303,102 @@ get_unique_filename (void)
   return filename;
 }
 
+static char *
+get_notes_file (StickyNotesApplet *applet)
+{
+  const char *dir;
+  char *filename;
+  char *notes_file;
+
+  dir = g_get_user_config_dir ();
+  filename = g_settings_get_string (applet->settings, KEY_FILENAME);
+
+  g_free (applet->filename);
+
+  if (*filename == '\0')
+    {
+      g_free (filename);
+      filename = get_unique_filename ();
+
+      notes_file = g_build_filename (dir,
+                                     "gnome-applets",
+                                     "sticky-notes",
+                                     filename,
+                                     NULL);
+
+
+
+      applet->filename = filename;
+      g_settings_set_string (applet->settings, KEY_FILENAME, filename);
+    }
+  else
+    {
+      applet->filename = filename;
+      notes_file = g_build_filename (dir,
+                                     "gnome-applets",
+                                     "sticky-notes",
+                                     filename,
+                                     NULL);
+    }
+
+  return notes_file;
+}
+
+/**
+ * The sticky-notes file had various locations in past versions of the applet.
+ *
+ * Until version 3.24 the location was: `~/.config/gnome-applets/stickynotes`.
+ * In version 3.26 the location changed to: `<XDG_CONFIG_HOME>/gnome-applets/sticky-notes/sticky-notes.xml`.
+ * In version 3.38 the location changed to: `<XDG_CONFIG_HOME>/gnome-applets/sticky-notes/sticky-notes-%d.xml`
+ * where `%d` is incremented for each notes applet on the panel.
+ */
+static void
+migrate_legacy_note_file (StickyNotesApplet *applet,
+                          const char        *notes_file)
+{
+  const char *dir;
+  char *old_file;
+
+  dir = g_get_user_config_dir ();
+
+  old_file = g_build_filename (dir,
+                               "gnome-applets",
+                               "sticky-notes",
+                               "sticky-notes.xml",
+                               NULL);
+
+  if (g_file_test (old_file, G_FILE_TEST_EXISTS))
+    {
+      g_rename (old_file, notes_file);
+
+      g_free (old_file);
+      old_file = g_build_filename (dir,
+                                   "gnome-applets",
+                                   "stickynotes",
+                                   NULL);
+
+      if (g_file_test (old_file, G_FILE_TEST_EXISTS))
+        g_unlink (old_file);
+    }
+  else
+    {
+      g_free (old_file);
+      old_file = g_build_filename (dir,
+                                   "gnome-applets",
+                                   "stickynotes",
+                                   NULL);
+
+      if (g_file_test (old_file, G_FILE_TEST_EXISTS))
+        g_rename (old_file, notes_file);
+    }
+
+  g_free (old_file);
+}
+
 /* Load all sticky notes from an XML configuration file */
 void
 stickynotes_load (StickyNotesApplet *applet)
 {
-	const char *dir;
-	char *filename;
 	char *notes_file;
 	xmlDocPtr doc;
 	xmlNodePtr root;
@@ -1317,62 +1407,10 @@ stickynotes_load (StickyNotesApplet *applet)
 	GList *new_notes, *tmp1;  /* Lists of StickyNote*'s */
 	int x, y, w, h;
 
-	dir = g_get_user_config_dir ();
-	filename = g_settings_get_string (applet->settings, KEY_FILENAME);
-	g_free (applet->filename);
+	notes_file = get_notes_file (applet);
 
-	if (*filename == '\0') {
-		char *old_file;
-
-		g_free (filename);
-		filename = get_unique_filename ();
-
-		notes_file = g_build_filename (dir,
-		                               "gnome-applets",
-		                               "sticky-notes",
-		                               filename,
-		                               NULL);
-
-		old_file = g_build_filename (dir,
-		                             "gnome-applets",
-		                             "sticky-notes",
-		                             "sticky-notes.xml",
-		                             NULL);
-
-		if (g_file_test (old_file, G_FILE_TEST_EXISTS)) {
-			g_rename (old_file, notes_file);
-
-			g_free (old_file);
-			old_file = g_build_filename (dir,
-			                             "gnome-applets",
-			                             "stickynotes",
-			                             NULL);
-
-			if (g_file_test (old_file, G_FILE_TEST_EXISTS))
-				g_unlink (old_file);
-		} else {
-			g_free (old_file);
-			old_file = g_build_filename (dir,
-			                             "gnome-applets",
-			                             "stickynotes",
-			                             NULL);
-
-			if (g_file_test (old_file, G_FILE_TEST_EXISTS))
-				g_rename (old_file, notes_file);
-		}
-
-		applet->filename = filename;
-		g_settings_set_string (applet->settings, KEY_FILENAME, filename);
-
-		g_free (old_file);
-	} else {
-		applet->filename = filename;
-		notes_file = g_build_filename (dir,
-		                               "gnome-applets",
-		                               "sticky-notes",
-		                               filename,
-		                               NULL);
-	}
+	if (!g_file_test (notes_file, G_FILE_TEST_EXISTS))
+		migrate_legacy_note_file (applet, notes_file);
 
 	if (!g_file_test (notes_file, G_FILE_TEST_EXISTS)) {
 		g_free (notes_file);
