@@ -8,7 +8,6 @@ libnet_speed_applet_la_CPPFLAGS = \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
 	-I$(top_srcdir) \
-	-I$(includedir) \
 	$(NULL)
 
 libnet_speed_applet_la_CFLAGS = \
