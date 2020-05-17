@@ -144,10 +144,23 @@ on_task_item_monitor_changed_cb (TaskItem *item,
                                               on_task_item_monitor_changed_cb,
                                               current_list);
 
+        g_signal_handlers_disconnect_by_func (item,
+                                              on_task_item_closed,
+                                              current_list);
+
         gtk_container_add (GTK_CONTAINER (list), GTK_WIDGET (item));
 
-        g_signal_connect (TASK_ITEM (item), "monitor-changed",
-                          G_CALLBACK (on_task_item_monitor_changed_cb), list);
+        g_signal_connect_object (TASK_ITEM (item),
+                                 "monitor-changed",
+                                 G_CALLBACK (on_task_item_monitor_changed_cb),
+                                 list,
+                                 0);
+
+        g_signal_connect_object (TASK_ITEM (item),
+                                 "task-item-closed",
+                                 G_CALLBACK (on_task_item_closed),
+                                 list,
+                                 0);
 
         g_object_unref (item);
 
