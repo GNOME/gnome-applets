@@ -15,17 +15,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2020-05-18 20:26+0000\n"
-"PO-Revision-Date: 2020-06-03 20:16+0300\n"
+"POT-Creation-Date: 2020-06-03 17:22+0000\n"
+"PO-Revision-Date: 2020-08-27 08:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.07.70\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.11.70\n"
 
 #: ../accessx-status/accessx-status-applet-menu.xml.h:1
 msgid "_Keyboard Accessibility Preferences"
@@ -236,9 +236,6 @@ msgid "Warn on low time rather than low percentage"
 msgstr "Попереджувати при маленькому часі, а не при низькому відсотки"
 
 #: ../battstat/org.gnome.gnome-applets.battstat.gschema.xml.in.in.h:4
-#| msgid ""
-#| "Use the value defined in red_value as a time remaining to show the "
-#| "warning dialog rather than a percentage."
 msgid ""
 "Use the value defined in red-value as a time remaining to show the warning "
 "dialog rather than a percentage."
@@ -346,6 +343,7 @@ msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "залишилась %d хвилина (%d%%)"
 msgstr[1] "залишилось %d хвилини (%d%%)"
 msgstr[2] "залишилось %d хвилин (%d%%)"
+msgstr[3] "залишилась %d хвилина (%d%%)"
 
 #: ../battstat/src/battstat_applet.c:343
 #, c-format
@@ -354,6 +352,7 @@ msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d хвилина (%d%%) до повного зарядження"
 msgstr[1] "%d хвилини (%d%%) до повного зарядження"
 msgstr[2] "%d хвилин (%d%%) до повного зарядження"
+msgstr[3] "%d хвилина (%d%%) до повного зарядження"
 
 #: ../battstat/src/battstat_applet.c:349
 #, c-format
@@ -362,6 +361,7 @@ msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "залишилась %d година (%d%%)"
 msgstr[1] "залишилось %d години (%d%%)"
 msgstr[2] "залишилось %d годин (%d%%)"
+msgstr[3] "залишилась %d година (%d%%)"
 
 #: ../battstat/src/battstat_applet.c:354
 #, c-format
@@ -370,6 +370,7 @@ msgid_plural "%d hours until charged (%d%%)"
 msgstr[0] "%d година (%d%%) до повного зарядження"
 msgstr[1] "%d години (%d%%) до повного зарядження"
 msgstr[2] "%d годин (%d%%) до повного зарядження"
+msgstr[3] "%d година (%d%%) до повного зарядження"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -384,6 +385,7 @@ msgid_plural "hours"
 msgstr[0] "година"
 msgstr[1] "години"
 msgstr[2] "годин"
+msgstr[3] "година"
 
 #: ../battstat/src/battstat_applet.c:363 ../battstat/src/battstat_applet.c:370
 msgid "minute"
@@ -391,6 +393,7 @@ msgid_plural "minutes"
 msgstr[0] "хвилина"
 msgstr[1] "хвилини"
 msgstr[2] "хвилин"
+msgstr[3] "хвилина"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -431,6 +434,9 @@ msgstr[1] ""
 "ємності)."
 msgstr[2] ""
 "Час роботи від акумулятора, що лишився - %d хвилин (%d%% від загальної "
+"ємності)."
+msgstr[3] ""
+"Час роботи від акумулятора, що лишився - %d хвилина (%d%% від загальної "
 "ємності)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
@@ -494,7 +500,6 @@ msgstr "Ця утиліта показує стан акумулятора ва�
 
 #. true
 #: ../battstat/src/battstat_applet.c:1191
-#| msgid "HAL backend enabled."
 msgid "upower backend enabled."
 msgstr "Увімкнено драйвер upower."
 
@@ -521,7 +526,6 @@ msgstr "Залишилось часу"
 
 #: ../brightness/org.gnome.BrightnessApplet.panel-applet.in.in.h:1
 #: ../brightness/src/brightness-applet.c:92
-#| msgid "Invest Applet"
 msgid "Brightness Applet"
 msgstr "Аплет яскравості"
 
@@ -544,7 +548,7 @@ msgstr "Не вдалося отримати яскравість екрана �
 #: ../brightness/src/brightness-applet.c:214
 #, c-format
 msgid "LCD brightness : %d%%"
-msgstr ""
+msgstr "Яскравість екрана : %d%%"
 
 #: ../brightness/src/brightness-applet.c:646
 #: ../inhibit/src/inhibit-applet.c:294
@@ -559,9 +563,10 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
-"Аплет яскравості ― вільне програмне забезпечення. Ви можете його"
-" розповсюджувати\n"
-"чи змінювати на умовах ліцензії GNU General Public License, що опублікована \n"
+"Аплет яскравості ― вільне програмне забезпечення. Ви можете його "
+"розповсюджувати\n"
+"чи змінювати на умовах ліцензії GNU General Public License, що "
+"опублікована \n"
 "Free Software Foundation; або версії 2d ліцензії, або (на ваш розсуд) будь-\n"
 "якій більш пізній версії."
 
@@ -586,7 +591,8 @@ msgid ""
 "02110-1301, USA."
 msgstr ""
 "Ви мали б отримати копію ліцензії GNU з програмою. Якщо ліцензія не була\n"
-"отримана, сповістіть про це Free Software Foundation на адресу Free Software\n"
+"отримана, сповістіть про це Free Software Foundation на адресу Free "
+"Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
 
@@ -721,7 +727,6 @@ msgid "Click to edit the selected palette"
 msgstr "Клацніть для зміни вибраної палітри"
 
 #: ../charpick/src/properties.c:458 ../trash/src/trash-applet.c:502
-#| msgid "_Delete All"
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -741,12 +746,10 @@ msgstr "Параметри палітри символів"
 #: ../geyes/src/themes.c:295 ../netspeed/src/preferences.c:325
 #: ../timer/src/timer-applet.c:324
 #: ../windowpicker/src/wp-preferences-dialog.ui.h:2
-#| msgid "Close note"
 msgid "_Close"
 msgstr "_Закрити"
 
 #: ../command/org.gnome.applets.CommandApplet.panel-applet.in.in.h:1
-#| msgid "MiniCommander Applet Factory"
 msgid "Command Factory"
 msgstr "Фабрика команд"
 
@@ -761,7 +764,6 @@ msgid "Shows the output of a command"
 msgstr "Показує виведення команди"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:1
-#| msgid "Cannot execute '%s'"
 msgid "Command to execute"
 msgstr "Команда, яку слід виконати"
 
@@ -778,7 +780,6 @@ msgid "Interval to execute the command (in seconds)"
 msgstr "Інтервал для виконання команди (у секундах)"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:5
-#| msgid "Width of the applet"
 msgid "Width of output"
 msgstr "Довжина рядка виведених даних"
 
@@ -788,7 +789,6 @@ msgstr "Кількість символів, які слід показати"
 
 #: ../command/org.gnome.gnome-applets.command.gschema.xml.in.in.h:7
 #: ../command/src/command.c:177
-#| msgid "Show sticky notes"
 msgid "Show icon"
 msgstr "Показувати піктограму"
 
@@ -797,12 +797,10 @@ msgid "If applet icon is shown or not"
 msgstr "Чи показано піктограму аплету"
 
 #: ../command/src/command.c:140
-#| msgid "Command Line Preferences"
 msgid "Command Applet Preferences"
 msgstr "Параметри аплету «Команда»"
 
 #: ../command/src/command.c:153
-#| msgid "Co_mmand:"
 msgid "Command:"
 msgstr "Команда:"
 
@@ -873,35 +871,27 @@ msgid "Mode to show cpu usage"
 msgstr "Режим показу використання ЦП"
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:4
-#| msgid ""
-#| "A 0 value means to show the applet in graphic mode (pixmap only), 1 to "
-#| "show the applet in text mode (not to show the pixmap) and 2 to show the "
-#| "applet in graphic and text mode."
 msgid ""
 "A 'graphic' value means to show the applet in graphic mode (pixmap only), "
 "'text' to show the applet in text mode (not to show the pixmap) and 'both' "
 "to show the applet in graphic and text mode."
 msgstr ""
-"«graphic» — показувати аплет у графічному режимі (лише зображення), «text» —"
-" текстовий "
-"режим (не відображати зображення), «both» — показувати текст та зображення."
+"«graphic» — показувати аплет у графічному режимі (лише зображення), «text» — "
+"текстовий режим (не відображати зображення), «both» — показувати текст та "
+"зображення."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:5
 msgid "The type of text to display (if the text is enabled)."
 msgstr "Введіть текст для відображення (якщо текст увімкнено)."
 
 #: ../cpufreq/org.gnome.gnome-applets.cpufreq.gschema.xml.in.in.h:6
-#| msgid ""
-#| "A 0 value means to show cpu frequency, 1 to show frequency and units, and "
-#| "2 to show percentage instead of frequency."
 msgid ""
 "A 'frequency' value means to show cpu frequency, 'frequency-unit' to show "
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 msgstr ""
-"«frequency» — показувати частоту ЦП, «frequency-unit» — частоту та одиниці,"
-" «percentage» — відсотки замість "
-"частоти."
+"«frequency» — показувати частоту ЦП, «frequency-unit» — частоту та одиниці, "
+"«percentage» — відсотки замість частоти."
 
 #: ../cpufreq/src/cpufreq-applet.c:608 ../cpufreq/src/cpufreq-prefs.c:358
 msgid "Could not open help document"
@@ -1081,17 +1071,14 @@ msgid ""
 msgstr "Визначає, чи оновлюватиме аплет погодну статистику автоматично."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:3
-#| msgid "Update spin button"
 msgid "Update interval"
 msgstr "Інтервал оновлення"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:4
-#| msgid "Time in seconds between status updates"
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Інтервал, у секундах, між автоматичними оновленнями стану."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:5
-#| msgid "Enable _radar map"
 msgid "Display radar map"
 msgstr "Показати радарну мапу"
 
@@ -1100,12 +1087,10 @@ msgid "Fetch a radar map on each update."
 msgstr "Отримувати радарну мапу при кожному оновленні."
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:7
-#| msgid "Notifications"
 msgid "Show notification"
 msgstr "Показувати сповіщення"
 
 #: ../gweather/org.gnome.gnome-applets.gweather.gschema.xml.in.in.h:8
-#| msgid "A panel application for monitoring local weather conditions."
 msgid "Show notifications for critical weather conditions"
 msgstr "Показувати сповіщення щодо критичних погодних умов"
 
@@ -1431,7 +1416,6 @@ msgstr "Місцевість"
 
 #: ../inhibit/org.gnome.InhibitApplet.panel-applet.in.in.h:1
 #: ../inhibit/src/inhibit-applet.c:82
-#| msgid "Invest Applet"
 msgid "Inhibit Applet"
 msgstr "Аплет заборони"
 
@@ -1466,9 +1450,10 @@ msgid ""
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
 msgstr ""
-"Аплет заборони ― вільне програмне забезпечення. Ви можете його"
-" розповсюджувати\n"
-"чи змінювати на умовах ліцензії GNU General Public License, що опублікована \n"
+"Аплет заборони ― вільне програмне забезпечення. Ви можете його "
+"розповсюджувати\n"
+"чи змінювати на умовах ліцензії GNU General Public License, що "
+"опублікована \n"
 "Free Software Foundation; або версії 2d ліцензії, або (на ваш розсуд) будь-\n"
 "якій більш пізній версії."
 
@@ -1635,8 +1620,6 @@ msgid "Macro pattern list"
 msgstr "Список шаблонів макрокоманд"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:2
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro patterns."
 msgid "List of entries containing strings for the macro patterns."
 msgstr "Список записів, що містять рядки шаблонів макрокоманд."
 
@@ -1645,8 +1628,6 @@ msgid "Macro command list"
 msgstr "Список макрокоманд"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:4
-#| msgid ""
-#| "List of GConfValue entries containing strings for the macro commands."
 msgid "List of entries containing strings for the macro commands."
 msgstr "Список записів, що містять рядки макрокоманд."
 
@@ -1693,12 +1674,10 @@ msgid "Use theme colors instead of custom ones."
 msgstr "Використовувати кольори теми."
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:15
-#| msgid "Foreground color, red component"
 msgid "Foreground color"
 msgstr "Колір переднього плану"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:16
-#| msgid "_Background"
 msgid "Background color"
 msgstr "Колір тла"
 
@@ -1707,7 +1686,6 @@ msgid "History list"
 msgstr "Список історії"
 
 #: ../mini-commander/src/org.gnome.gnome-applets.mini-commander.gschema.xml.in.in.h:18
-#| msgid "List of GConfValue entries containing strings for history entries."
 msgid "List of entries containing strings for history entries."
 msgstr "Список записів, що містять рядки записів історії."
 
@@ -1798,7 +1776,6 @@ msgid "Graph color for nice-related CPU activity"
 msgstr "Колір графіка активності ЦП з урахуванням пріоритету"
 
 #: ../multiload/org.gnome.gnome-applets.multiload.gschema.xml.in.in.h:13
-#| msgid "Graph color for iowait related CPU activity"
 msgid "Graph color for iowait-related CPU activity"
 msgstr "Колір графіка для відображення активності ЦП з урахуванням iowait"
 
@@ -1883,7 +1860,6 @@ msgstr ""
 "пам'яті, файлу підкачки, дискового простору та мережі."
 
 #: ../multiload/src/main.c:131
-#| msgid "System Monitor"
 msgid "Start system-monitor"
 msgstr "Запустити «Системний монітор»"
 
@@ -1962,6 +1938,9 @@ msgstr[1] ""
 "%s:\n"
 "%u%% використовується"
 msgstr[2] ""
+"%s:\n"
+"%u%% використовується"
+msgstr[3] ""
 "%s:\n"
 "%u%% використовується"
 
@@ -2128,32 +2107,26 @@ msgid "Device _Details"
 msgstr "_Подробиці про пристрій..."
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:1
-#| msgid "Show frame"
 msgid "Show sum"
 msgstr "Показувати суму"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:2
-#| msgid "Show _sum instead of in & out"
 msgid "Show sum instead of in &amp; out"
 msgstr "Показувати суму замість входу та виходу"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:3
-#| msgid "Show sticky notes"
 msgid "Show bits"
 msgstr "Показувати біти"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:4
-#| msgid "Show _bits instead of bytes"
 msgid "Show bits instead of bytes"
 msgstr "Показувати біти замість байтів"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:5
-#| msgid "Change %"
 msgid "Change icon"
 msgstr "Змінити піктограму"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:6
-#| msgid "Change _icon according to the selected device"
 msgid "Change icon according to the selected device"
 msgstr "Міняти піктограму відповідно до вибраного пристрою"
 
@@ -2162,37 +2135,30 @@ msgid "Auto change device"
 msgstr "Автоматично змінювати пристрій"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:8
-#| msgid "_Refresh"
 msgid "Refresh time"
 msgstr "Інтервал оновлення"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:9
-#| msgid "Applet refresh rate in milliseconds"
 msgid "Refresh time in milliseconds"
 msgstr "Інтервал оновлення у мілісекундах"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:10
-#| msgid "Network _device:"
 msgid "Network device"
 msgstr "Мережний пристрій"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:11
-#| msgid "Command"
 msgid "Up command"
 msgstr "Команда з'єднання"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:12
-#| msgid "Command"
 msgid "Down command"
 msgstr "Команда від'єднання"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:13
-#| msgid "_In graph color"
 msgid "In graph color"
 msgstr "Колір графіка вхідного трафіку"
 
 #: ../netspeed/data/org.gnome.gnome-applets.netspeed.gschema.xml.in.in.h:14
-#| msgid "_Out graph color"
 msgid "Out graph color"
 msgstr "Колір графіка вихідного трафіку"
 
@@ -2268,66 +2234,66 @@ msgstr ""
 msgid "Netspeed Website"
 msgstr "Вебсайт Netspeed"
 
-#: ../netspeed/src/netspeed.c:862
+#: ../netspeed/src/netspeed.c:861
 #, c-format
 msgid "Device Details for %s"
 msgstr "Деталі пристрою для %s"
 
-#: ../netspeed/src/netspeed.c:887
+#: ../netspeed/src/netspeed.c:886
 msgid "_In graph color"
 msgstr "Колір графіку _вхідного трафіку"
 
-#: ../netspeed/src/netspeed.c:888
+#: ../netspeed/src/netspeed.c:887
 msgid "_Out graph color"
 msgstr "Колір графіку в_ихідного трафіку"
 
-#: ../netspeed/src/netspeed.c:904
+#: ../netspeed/src/netspeed.c:903
 msgid "Internet Address:"
 msgstr "Адреса у інтернет:"
 
-#: ../netspeed/src/netspeed.c:905
+#: ../netspeed/src/netspeed.c:904
 msgid "Netmask:"
 msgstr "Маска мережі:"
 
-#: ../netspeed/src/netspeed.c:906
+#: ../netspeed/src/netspeed.c:905
 msgid "Hardware Address:"
 msgstr "Апаратна адреса:"
 
-#: ../netspeed/src/netspeed.c:907
+#: ../netspeed/src/netspeed.c:906
 msgid "P-t-P Address:"
 msgstr "P-t-P адреса:"
 
-#: ../netspeed/src/netspeed.c:908
+#: ../netspeed/src/netspeed.c:907
 msgid "Bytes in:"
 msgstr "Байтів вх.:"
 
-#: ../netspeed/src/netspeed.c:909
+#: ../netspeed/src/netspeed.c:908
 msgid "Bytes out:"
 msgstr "Байтів вих.:"
 
-#: ../netspeed/src/netspeed.c:911 ../netspeed/src/netspeed.c:912
-#: ../netspeed/src/netspeed.c:913 ../netspeed/src/netspeed.c:914
+#: ../netspeed/src/netspeed.c:910 ../netspeed/src/netspeed.c:911
+#: ../netspeed/src/netspeed.c:912 ../netspeed/src/netspeed.c:913
 msgid "none"
 msgstr "немає"
 
-#: ../netspeed/src/netspeed.c:953
+#: ../netspeed/src/netspeed.c:952
 msgid "IPv6 Address:"
 msgstr "Адреса IPv6:"
 
-#: ../netspeed/src/netspeed.c:985
+#: ../netspeed/src/netspeed.c:984
 msgid "Signal Strength:"
 msgstr "Сила сигналу:"
 
-#: ../netspeed/src/netspeed.c:986
+#: ../netspeed/src/netspeed.c:985
 msgid "ESSID:"
 msgstr "ESSID:"
 
-#: ../netspeed/src/netspeed.c:1036
+#: ../netspeed/src/netspeed.c:1035
 #, c-format
 msgid "%s is down"
 msgstr "%s відключено"
 
-#: ../netspeed/src/netspeed.c:1041
+#: ../netspeed/src/netspeed.c:1040
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2336,11 +2302,11 @@ msgstr ""
 "%s: %s\n"
 "вх: %s вих: %s"
 
-#: ../netspeed/src/netspeed.c:1043 ../netspeed/src/netspeed.c:1052
+#: ../netspeed/src/netspeed.c:1042 ../netspeed/src/netspeed.c:1051
 msgid "has no ip"
 msgstr "не має ip"
 
-#: ../netspeed/src/netspeed.c:1050
+#: ../netspeed/src/netspeed.c:1049
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -2349,7 +2315,7 @@ msgstr ""
 "%s: %s\n"
 "сума: %s"
 
-#: ../netspeed/src/netspeed.c:1059
+#: ../netspeed/src/netspeed.c:1058
 #, c-format
 msgid ""
 "\n"
@@ -2360,21 +2326,21 @@ msgstr ""
 "ESSID: %s\n"
 "Сила: %d %%"
 
-#: ../netspeed/src/netspeed.c:1060
+#: ../netspeed/src/netspeed.c:1059
 msgid "unknown"
 msgstr "невідомо"
 
-#: ../netspeed/src/netspeed.c:1125
+#: ../netspeed/src/netspeed.c:1127
 #, c-format
 msgid "Do you want to disconnect %s now?"
 msgstr "Бажаєте відключитись від %s?"
 
-#: ../netspeed/src/netspeed.c:1127
+#: ../netspeed/src/netspeed.c:1129
 #, c-format
 msgid "Do you want to connect %s now?"
 msgstr "Бажаєте підключитись до %s?"
 
-#: ../netspeed/src/netspeed.c:1150
+#: ../netspeed/src/netspeed.c:1152
 #, c-format
 msgid ""
 "<b>Running command %s failed</b>\n"
@@ -2383,7 +2349,7 @@ msgstr ""
 "<b>Запуск команди %s завершився з помилкою</b>\n"
 "%s"
 
-#: ../netspeed/src/netspeed.c:1511
+#: ../netspeed/src/netspeed.c:1513
 #, c-format
 msgid ""
 "There was an error displaying help:\n"
@@ -2446,30 +2412,24 @@ msgid "Default color for new notes"
 msgstr "Початковий колір нових приміток"
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:5
-#| msgid ""
-#| "Default color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#30FF50\"."
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
 msgstr ""
-"Типовий колір для нових липких нотаток. Це може бути стандартна назва,"
-" шістнадцяткове значення, колір RGB або колір RGBA."
+"Типовий колір для нових липких нотаток. Це може бути стандартна назва, "
+"шістнадцяткове значення, колір RGB або колір RGBA."
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:6
 msgid "Default color for font"
 msgstr "Типовий колір шрифту"
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:7
-#| msgid ""
-#| "Default font color for new sticky notes. This should be in html hex "
-#| "specification, for example \"#000000\"."
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
 msgstr ""
-"Типовий колір шрифту для нових липких нотаток. Це може бути стандартна назва,"
-" шістнадцяткове значення, колір RGB або колір RGBA."
+"Типовий колір шрифту для нових липких нотаток. Це може бути стандартна "
+"назва, шістнадцяткове значення, колір RGB або колір RGBA."
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:8
 msgid "Default font for new notes"
@@ -2553,13 +2513,15 @@ msgstr ""
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:22
 msgid "Whether to hide all notes when the desktop is selected"
-msgstr ""
+msgstr "Чи слід ховати усі нотатки, якщо вибрано щось на стільниці"
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:23
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
 msgstr ""
+"Якщо позначено цей пункт, вибір стільниці у будь-який спосіб призводитиме до"
+" автоматичного приховування усіх відкритих нотаток."
 
 #: ../sticky-notes/src/org.gnome.gnome-applets.stickynotes.gschema.xml.in.in.h:24
 msgid "Whether to ask for confirmation when deleting a note"
@@ -2576,6 +2538,7 @@ msgid_plural "%d notes"
 msgstr[0] "%d нотатка"
 msgstr[1] "%d нотатки"
 msgstr[2] "%d приміток"
+msgstr[3] "%d нотатка"
 
 #: ../sticky-notes/src/stickynotes_applet.c:545
 msgid "Show sticky notes"
@@ -2672,7 +2635,6 @@ msgid "Specify the default width (in pixels) of new notes"
 msgstr "Початкова висота нових приміток (в точках)"
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:6
-#| msgid "10"
 msgid "1"
 msgstr "1"
 
@@ -2681,7 +2643,6 @@ msgid "Specify the default height (in pixels) of new notes"
 msgstr "Початкова висота нових приміток (в точках)"
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:8
-#| msgid "10"
 msgid "0"
 msgstr "0"
 
@@ -2745,11 +2706,11 @@ msgstr "Відмітьте, щоб стандартний стиль засто�
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:23
 msgid "Hide notes when the des_ktop is clicked on"
-msgstr ""
+msgstr "Ховати нотатки, якщо виконано кла_цання на стільниці"
 
 #: ../sticky-notes/src/sticky-notes-preferences.ui.h:24
 msgid "Choose whether to hide all notes when selecting on the desktop"
-msgstr ""
+msgstr "Виберіть, чи слід ховати усі нотатки при виборі на стільниці"
 
 #: ../sticky-notes/src/sticky-notes-properties.ui.h:1
 msgid "Sticky Note Properties"
@@ -2833,7 +2794,6 @@ msgid "Show dialog window when timer finish"
 msgstr "Показати діалогове вікно, коли відлік таймера буде завершено"
 
 #: ../timer/src/timer-applet.c:158
-#| msgid "Finnish keymap"
 msgid "Finished"
 msgstr "Завершено"
 
@@ -2842,7 +2802,6 @@ msgid "Timer finished!"
 msgstr "Відлік завершено!"
 
 #: ../timer/src/timer-applet.c:321
-#| msgid "Geyes Preferences"
 msgid "Timer Applet Preferences"
 msgstr "Параметри аплету «Таймер»"
 
@@ -2855,22 +2814,18 @@ msgid "Hours:"
 msgstr "Години:"
 
 #: ../timer/src/timer-applet.c:354
-#| msgid "minutes"
 msgid "Minutes:"
 msgstr "Хвилини:"
 
 #: ../timer/src/timer-applet.c:365
-#| msgid "milliseconds"
 msgid "Seconds:"
 msgstr "Секунди:"
 
 #: ../timer/src/timer-applet.c:376
-#| msgid "Notifications"
 msgid "Show notification popup"
 msgstr "Показати контекстне сповіщення"
 
 #: ../timer/src/timer-applet.c:380
-#| msgid "Show handle"
 msgid "Show dialog"
 msgstr "Показувати діалогове вікно"
 
@@ -2884,7 +2839,6 @@ msgstr "Шукайте ваші дані швидко за допомогою «
 
 #: ../tracker-search-bar/src/tracker-results-window.c:718
 #: ../tracker-search-bar/src/tracker-results-window.c:734
-#| msgid "Othe_r"
 msgid "Other"
 msgstr "Інше"
 
@@ -2905,7 +2859,6 @@ msgid "Documents"
 msgstr "Документи"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:723
-#| msgid "Notifications"
 msgid "Applications"
 msgstr "Програми"
 
@@ -2922,7 +2875,6 @@ msgid "Folders"
 msgstr "Теки"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:727
-#| msgid "_Font:"
 msgid "Fonts"
 msgstr "Шрифти"
 
@@ -2948,22 +2900,21 @@ msgstr "Категорія"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:1135
 #: ../window-title/windowtitle.ui.h:18
-#| msgid "_Title:"
 msgid "Title"
 msgstr "Заголовок"
 
 #: ../tracker-search-bar/src/tracker-results-window.c:1199
 #, c-format
 msgid "No results found for “%s”"
-msgstr ""
+msgstr "За критерієм пошуку «%s» нічого не знайдено"
 
 #: ../tracker-search-bar/src/tracker-search-bar.ui.h:1
 msgid "Copyright Tracker Authors 2005-2010"
-msgstr ""
+msgstr "© Розробники «Tracker», 2005-2010"
 
 #: ../tracker-search-bar/src/tracker-search-bar.ui.h:2
 msgid "A search bar applet for finding content stored in Tracker"
-msgstr ""
+msgstr "Аплет панелі пошуку для пошуку даних, які зберігаються у «Tracker»"
 
 #: ../tracker-search-bar/src/tracker-search-bar.ui.h:3
 msgid ""
@@ -2981,20 +2932,19 @@ msgid ""
 "Tracker; if not, write to the Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA  02110-1301, USA."
 msgstr ""
-"Tracker є вільним програмним забезпеченням; ви можете поширювати її і/"
-"або змінювати її за умов дотримання GNU General Public License у тому "
-"вигляді, у якому її оприлюднено Free Software Foundation; версії 2 цієї "
-"ліцензії, або (за потреби) будь-якої пізнішої версії.\n"
+"Tracker є вільним програмним забезпеченням; ви можете поширювати її і/або "
+"змінювати її за умов дотримання GNU General Public License у тому вигляді, у "
+"якому її оприлюднено Free Software Foundation; версії 2 цієї ліцензії, або "
+"(за потреби) будь-якої пізнішої версії.\n"
 "\n"
-"Tracker поширюється у сподіванні, що вона буде корисною, але БЕЗ БУДЬ-"
-"ЯКИХ ГАРАНТІЙ; навіть без очевидної гарантії КОМЕРЦІЙНОЇ ЦІННОСТІ або "
-"ПРИДАТНОСТІ ДЛЯ ЯКОЇСЬ МЕТИ.  Докладніше про це ви можете дізнатися з GNU "
-"General Public License.\n"
+"Tracker поширюється у сподіванні, що вона буде корисною, але БЕЗ БУДЬ-ЯКИХ "
+"ГАРАНТІЙ; навіть без очевидної гарантії КОМЕРЦІЙНОЇ ЦІННОСТІ або ПРИДАТНОСТІ "
+"ДЛЯ ЯКОЇСЬ МЕТИ.  Докладніше про це ви можете дізнатися з GNU General Public "
+"License.\n"
 "\n"
-"Разом з Tracker ви маєте отримати копію GNU General Public License; "
-"якщо ви її не отримали, повідомте про це за адресою Free Software "
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, "
-"USA."
+"Разом з Tracker ви маєте отримати копію GNU General Public License; якщо ви "
+"її не отримали, повідомте про це за адресою Free Software Foundation, Inc., "
+"51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA."
 
 #: ../trash/data/org.gnome.applets.TrashApplet.panel-applet.in.in.h:1
 msgid "Trash"
@@ -3011,6 +2961,7 @@ msgid_plural "%d Items in Trash"
 msgstr[0] "%d елемент у смітнику"
 msgstr[1] "%d елементи у смітнику"
 msgstr[2] "%d елементів у смітнику"
+msgstr[3] "%d елемент у смітнику"
 
 #: ../trash/src/trash-applet.c:129
 msgid "No Items in Trash"
@@ -3018,9 +2969,6 @@ msgstr "У смітнику немає елементів"
 
 #: ../trash/src/trash-applet.c:362
 #, c-format
-#| msgid ""
-#| "Error while spawning nautilus:\n"
-#| "%s"
 msgid ""
 "Error while spawning Nautilus:\n"
 "%s"
@@ -3048,9 +2996,10 @@ msgstr "Не вдається перемістити елементи в смі�
 #, c-format
 msgid "The selected item cannot be moved to the trash"
 msgid_plural "None of the %d selected items can be moved to the Trash"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Жоден із позначеного %d запису не може бути пересунуто до смітника"
+msgstr[1] "Жоден із позначених %d записів не може бути пересунуто до смітника"
+msgstr[2] "Жоден із позначених %d записів не може бути пересунуто до смітника"
+msgstr[3] "Позначений запис не можна пересунути до смітника"
 
 #: ../trash/src/trash-applet.c:475
 msgid ""
@@ -3061,9 +3010,10 @@ msgstr "Не вдається перемістити елементи в смі�
 #, c-format
 msgid "The selected item cannot be moved to the Trash"
 msgid_plural "%d of the selected items cannot be moved to the Trash"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Позначений %d запис не може бути пересунуто до смітника"
+msgstr[1] "%d позначених записів не може бути пересунуто до смітника"
+msgstr[2] "%d позначених записів не може бути пересунуто до смітника"
+msgstr[3] "Позначений запис не може бути пересунуто до смітника"
 
 #. Translators: the %s in this string should be read as %d.
 #: ../trash/src/trash-empty.c:70
@@ -3108,6 +3058,8 @@ msgstr "_Відкрити смітник"
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:1
 msgid "Determines whether we use custom or Metacity's button layout"
 msgstr ""
+"Визначає, слід використовувати нетипове компонування кнопок чи компонування"
+" кнопок Metacity"
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:2
 msgid ""
@@ -3117,7 +3069,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:3
 msgid "Layout of buttons."
-msgstr ""
+msgstr "Компонування кнопок."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:4
 msgid ""
@@ -3134,7 +3086,6 @@ msgid "Name of a folder located in windowapplets/themes/ or \"custom\"."
 msgstr "Назва теки, яку розташовано у windowapplets/themes/, або «custom»."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:7
-#| msgid "Auto Completion"
 msgid "Button orientation"
 msgstr "Орієнтація кнопки"
 
@@ -3148,7 +3099,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:9
 msgid "Hides buttons when there are no windows present."
-msgstr ""
+msgstr "Ховає кнопки, якщо не показано жодного вікна."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:10
 msgid ""
@@ -3159,7 +3110,7 @@ msgstr ""
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:11
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:3
 msgid "Only control maximized windows."
-msgstr ""
+msgstr "Керувати лише максимізованими вікнами."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:12
 msgid ""
@@ -3169,7 +3120,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:13
 msgid "Reverse the buttons placement."
-msgstr ""
+msgstr "Обернене розташування кнопок."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:14
 msgid ""
@@ -3179,7 +3130,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:15
 msgid "Enable click effect."
-msgstr ""
+msgstr "Увімкнути ефект клацання."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:16
 msgid ""
@@ -3189,7 +3140,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:17
 msgid "Enable hover effect."
-msgstr ""
+msgstr "Увімкнути ефект наведення."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:18
 msgid ""
@@ -3199,7 +3150,7 @@ msgstr ""
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:19
 msgid "Show tooltips on buttons."
-msgstr ""
+msgstr "Показувати підказки для кнопок."
 
 #: ../window-buttons/org.gnome.gnome-applets.window-buttons.gschema.xml.in.in.h:20
 msgid ""
@@ -3208,12 +3159,10 @@ msgid ""
 msgstr ""
 
 #: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:1
-#| msgid "Drive Mount Applet Factory"
 msgid "Window Buttons applet Factory"
 msgstr "Фабрика аплету кнопок вікон"
 
 #: ../window-buttons/org.gnome.panel.WindowButtonsApplet.panel-applet.in.in.h:2
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window buttons for your GNOME Panel"
 msgstr "Кнопки вікон для панелі GNOME"
 
@@ -3222,7 +3171,6 @@ msgid "Window Buttons"
 msgstr "Кнопки вікон"
 
 #: ../window-buttons/windowbuttons.c:177
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window buttons for your GNOME Panel."
 msgstr "Кнопки вікон для панелі GNOME."
 
@@ -3235,7 +3183,6 @@ msgid "Unmaximize"
 msgstr "Відновити розгорнуте"
 
 #: ../window-buttons/windowbuttons.c:306 ../window-buttons/windowbuttons.ui.h:4
-#| msgid "Maximum"
 msgid "Maximize"
 msgstr "Максимізувати"
 
@@ -3248,12 +3195,10 @@ msgid "Close"
 msgstr "Закрити"
 
 #: ../window-buttons/windowbuttons.ui.h:1
-#| msgid "Sticky Notes Preferences"
 msgid "Window Buttons Preferences"
 msgstr "Параметри «Кнопок вікон»"
 
 #: ../window-buttons/windowbuttons.ui.h:2
-#| msgid "Themes"
 msgid "Theme:"
 msgstr "Тема:"
 
@@ -3262,40 +3207,52 @@ msgid ""
 "Focused\n"
 "Normal"
 msgstr ""
+"Фокусований\n"
+"Звичайний"
 
 #: ../window-buttons/windowbuttons.ui.h:9
 msgid ""
 "Focused\n"
 "Clicked"
 msgstr ""
+"Фокусований\n"
+"Натиснутий"
 
 #: ../window-buttons/windowbuttons.ui.h:11
 msgid ""
 "Focused\n"
 "Hover"
 msgstr ""
+"Фокусований\n"
+"Наведення"
 
 #: ../window-buttons/windowbuttons.ui.h:13
 msgid ""
 "Unfocused\n"
 "Normal"
 msgstr ""
+"Нефокусований\n"
+"Звичайний"
 
 #: ../window-buttons/windowbuttons.ui.h:15
 msgid ""
 "Unfocused\n"
 "Hover"
 msgstr ""
+"Нефокусований\n"
+"Наведення"
 
 #: ../window-buttons/windowbuttons.ui.h:17
 msgid ""
 "Unfocused\n"
 "Clicked"
 msgstr ""
+"Нефокусований\n"
+"Натиснений"
 
 #: ../window-buttons/windowbuttons.ui.h:20
 msgid "Use Metacity's button order"
-msgstr ""
+msgstr "Порядок кнопок Metacity"
 
 #: ../window-buttons/windowbuttons.ui.h:21
 msgid ""
@@ -3305,7 +3262,7 @@ msgstr ""
 
 #: ../window-buttons/windowbuttons.ui.h:22
 msgid "Custom order:"
-msgstr ""
+msgstr "Нетиповий порядок:"
 
 #. Translators: minimize, maximize, close should not be translated
 #: ../window-buttons/windowbuttons.ui.h:24
@@ -3319,7 +3276,7 @@ msgstr ""
 #. Translators: these words should not be translated
 #: ../window-buttons/windowbuttons.ui.h:29
 msgid "minimize,maximize,close"
-msgstr ""
+msgstr "minimize,maximize,close"
 
 #: ../window-buttons/windowbuttons.ui.h:30
 msgid "Reload"
@@ -3327,7 +3284,7 @@ msgstr "Перезавантажити"
 
 #: ../window-buttons/windowbuttons.ui.h:31
 msgid "Click to reload buttons."
-msgstr ""
+msgstr "Клацніть, щоб перезавантажити кнопки."
 
 #: ../window-buttons/windowbuttons.ui.h:32
 msgid "Reverse order"
@@ -3343,7 +3300,7 @@ msgstr "Автоматично"
 
 #: ../window-buttons/windowbuttons.ui.h:35
 msgid "Align buttons with panel orientation."
-msgstr ""
+msgstr "Вирівняти кнопки за орієнтацією панелі."
 
 #: ../window-buttons/windowbuttons.ui.h:36
 msgid "Horizontal"
@@ -3374,7 +3331,6 @@ msgid "Maximize/Unmaximize Button"
 msgstr "Кнопка «Максимізувати/Скасувати максимізацію»"
 
 #: ../window-buttons/windowbuttons.ui.h:43
-#| msgid "Delete button"
 msgid "Close Button"
 msgstr "Кнопка закриття"
 
@@ -3407,7 +3363,6 @@ msgid "Show _tooltips"
 msgstr "Показувати п_ідказки"
 
 #: ../window-buttons/windowbuttons.ui.h:51
-#| msgid "<b>Appearance</b>"
 msgid "<b>Internal</b>"
 msgstr "<b>Вбудовані</b>"
 
@@ -3416,7 +3371,6 @@ msgid "Hide Compiz _decorations for maximized windows"
 msgstr ""
 
 #: ../window-buttons/windowbuttons.ui.h:53
-#| msgid "<b>Appearance</b>"
 msgid "<b>External</b>"
 msgstr "<b>Зовнішні</b>"
 
@@ -3426,7 +3380,6 @@ msgid "Window Picker"
 msgstr "Вибір вікон"
 
 #: ../windowpicker/data/org.gnome.applets.WindowPicker.panel-applet.in.in.h:2
-#| msgid "Factory for creating the weather applet."
 msgid "Factory for the window picker applet"
 msgstr "Фабрика для аплету вибору вікон"
 
@@ -3435,7 +3388,6 @@ msgid "Switch between open windows"
 msgstr ""
 
 #: ../windowpicker/data/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in.in.h:1
-#| msgid "Show windows from all workspaces"
 msgid "Show windows from all workspaces."
 msgstr "Показувати вікна з усіх робочих областей."
 
@@ -3536,7 +3488,6 @@ msgid ""
 msgstr ""
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:9
-#| msgid "Width of the applet"
 msgid "Expand the applet"
 msgstr "Розгорнути аплет"
 
@@ -3622,7 +3573,6 @@ msgid "Font name and size for the inactive window state."
 msgstr ""
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:27
-#| msgid "The red component of the foreground color."
 msgid "Active title foreground color."
 msgstr "Колір тексту активного заголовка."
 
@@ -3631,7 +3581,6 @@ msgid "Title foreground color in hex format for the active window state."
 msgstr ""
 
 #: ../window-title/org.gnome.gnome-applets.window-title.gschema.xml.in.in.h:29
-#| msgid "The green component of the foreground color."
 msgid "Inactive title foreground color."
 msgstr "Колір тексту неактивного заголовка."
 
@@ -3640,32 +3589,26 @@ msgid "Title foreground color in hex format for the inactive window state."
 msgstr ""
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:1
-#| msgid "Gweather Applet Factory"
 msgid "Window Title applet Factory"
 msgstr "Фабрика аплету заголовка вікон"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:2
-#| msgid "Factory for drive mount applet"
 msgid "Factory for Window Title"
 msgstr "Фабрика для «Заголовка вікон»"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:3
-#| msgid "Window Picker"
 msgid "Window Title"
 msgstr "Заголовок вікна"
 
 #: ../window-title/org.gnome.panel.WindowTitleApplet.panel-applet.in.in.h:4
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window title for your GNOME Panel"
 msgstr "Заголовок вікна для вашої панелі GNOME"
 
 #: ../window-title/windowtitle.c:176
-#| msgid "Volume control for your GNOME Panel."
 msgid "Window title for your GNOME Panel."
 msgstr "Заголовок вікна для вашої панелі GNOME."
 
 #: ../window-title/windowtitle.ui.h:1
-#| msgid "Command Line Preferences"
 msgid "Window Title Preferences"
 msgstr "Параметри «Заголовка вікон»"
 
@@ -3711,22 +3654,18 @@ msgid "Custom _style"
 msgstr ""
 
 #: ../window-title/windowtitle.ui.h:14
-#| msgid "Font C_olor:"
 msgid "Font color:"
 msgstr "Колір шрифту:"
 
 #: ../window-title/windowtitle.ui.h:15
-#| msgid "Font C_olor:"
 msgid "Font style:"
 msgstr "Стиль шрифту:"
 
 #: ../window-title/windowtitle.ui.h:16
-#| msgid "_Activate"
 msgid "Active"
 msgstr "Активний"
 
 #: ../window-title/windowtitle.ui.h:17
-#| msgid "_Deactivate"
 msgid "Inactive"
 msgstr "Неактивний"
 
