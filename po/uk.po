@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2020-06-03 17:30+0000\n"
-"PO-Revision-Date: 2020-10-05 19:04+0300\n"
+"POT-Creation-Date: 2020-10-14 22:43+0000\n"
+"PO-Revision-Date: 2020-10-16 08:21+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -500,23 +500,34 @@ msgid "Out graph color"
 msgstr "Колір графіка вихідного трафіку"
 
 #: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:5
+#| msgid "Delete all sticky notes?"
+msgid "File name for sticky notes"
+msgstr "Назва файла липких нотаток"
+
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:6
+msgid ""
+"File name for sticky notes in $XDG_CONFIG_HOME/gnome-applets/sticky-notes."
+msgstr ""
+"Назва файла липких нотаток в $XDG_CONFIG_HOME/gnome-applets/sticky-notes."
+
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:10
 msgid "Default width for new notes"
 msgstr "Початкова ширина нових приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:6
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:11
 msgid "Default width for new sticky notes in pixels."
 msgstr "Початкова ширина нових приміток в точках."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:10
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:11
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:15
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:16
 msgid "Default height for new notes"
 msgstr "Початкова висота нових приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:15
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:20
 msgid "Default color for new notes"
 msgstr "Початковий колір нових приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:16
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:21
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -524,11 +535,11 @@ msgstr ""
 "Типовий колір для нових липких нотаток. Це може бути стандартна назва, "
 "шістнадцяткове значення, колір RGB або колір RGBA."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:20
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:25
 msgid "Default color for font"
 msgstr "Типовий колір шрифту"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:21
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:26
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -536,11 +547,11 @@ msgstr ""
 "Типовий колір шрифту для нових липких нотаток. Це може бути стандартна "
 "назва, шістнадцяткове значення, колір RGB або колір RGBA."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:25
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:30
 msgid "Default font for new notes"
 msgstr "Початковий шрифт нових приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:26
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:31
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
@@ -548,30 +559,30 @@ msgstr ""
 "Початковий шрифт у нових приміток. Це має бути назва шрифту у форматі Pango, "
 "наприклад, \"Sans Italic 10\"."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:30
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:35
 msgid "Sticky notes' workspace stickyness"
 msgstr "Липкість приміток до робочої області"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:31
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:36
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr ""
 "Визначає, чи показуються примітки на всіх робочих областях робочого столу."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:35
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:40
 msgid "Sticky notes' locked state"
 msgstr "Заблокований стан приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:36
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:41
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Визначає, чи примітки заблоковані (їх заборонено редагувати)."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:40
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:45
 msgid "Date format of note's title"
 msgstr "Формат дати заголовка примітки"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:41
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:46
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -580,11 +591,11 @@ msgstr ""
 "Зазвичай, новим приміткам призначається заголовок з поточною датою. "
 "Використовується формат, який розпізнає функція strftime()."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:45
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:50
 msgid "Whether to use the default system color"
 msgstr "Чи використовувати типовий системний колір"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:46
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:51
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -592,11 +603,11 @@ msgstr ""
 "Якщо цей параметр вимкнено, то власний колір може бути використано в якості "
 "стандартного кольору для всіх приміток."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:50
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:55
 msgid "Whether to use the default system font"
 msgstr "Чи використовувати типовий системний шрифт"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:51
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:56
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -604,11 +615,11 @@ msgstr ""
 "Якщо цей параметр вимкнено, то власний шрифт може бути використано в якості "
 "стандартного кольору для всіх приміток."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:55
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:60
 msgid "Whether to force the default color and font on all notes"
 msgstr "Чи застосовувати стандартний колір та шрифт до всіх приміток"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:56
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:61
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -616,23 +627,23 @@ msgstr ""
 "Якщо цей параметр увімкнено, то власні призначені приміткам кольори і шрифти "
 "будуть ігноруватись."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:60
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:65
 msgid "Whether to hide all notes when the desktop is selected"
 msgstr "Чи слід ховати усі нотатки, якщо вибрано щось на стільниці"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:61
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:66
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
 msgstr ""
-"Якщо позначено цей пункт, вибір стільниці у будь-який спосіб призводитиме до"
-" автоматичного приховування усіх відкритих нотаток."
+"Якщо позначено цей пункт, вибір стільниці у будь-який спосіб призводитиме до "
+"автоматичного приховування усіх відкритих нотаток."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:65
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:70
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Чи запитувати підтвердження перед знищенням нотатки"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:66
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:71
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Порожні примітки завжди знищуються без попередження."
 
@@ -659,16 +670,16 @@ msgstr "Показати діалогове вікно, коли відлік т
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:77
 msgid "Determines whether we use custom or Metacity's button layout"
 msgstr ""
-"Визначає, слід використовувати нетипове компонування кнопок чи компонування"
-" кнопок Metacity"
+"Визначає, слід використовувати нетипове компонування кнопок чи компонування "
+"кнопок Metacity"
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:78
 msgid ""
 "When disabled, this applet's button_layout string will be used to order the "
 "buttons."
 msgstr ""
-"Якщо вимкнено, для упорядковування кнопок цього аплету буде використано рядок"
-" button_layout."
+"Якщо вимкнено, для упорядковування кнопок цього аплету буде використано "
+"рядок button_layout."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:82
 msgid "Layout of buttons."
@@ -679,6 +690,8 @@ msgid ""
 "Essentially a copy from Metacity's button_layout, but we can modify it for "
 "custom settings."
 msgstr ""
+"Копія button_layout Metacity, але її можна змінювати, встановлюючи нетипові"
+" значення параметрів."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:87
 msgid "Button theme"
@@ -709,6 +722,8 @@ msgid ""
 "When enabled, the buttons will disappear when there are no maximized (or "
 "active) windows on the screen."
 msgstr ""
+"Якщо увімкнено, кнопки зникатимуть, якщо на екрані не буде максимізованих"
+" (або активних) вікон."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:111
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:10
@@ -720,8 +735,8 @@ msgid ""
 "When enabled, the window buttons will always control the upper-most "
 "maximized window."
 msgstr ""
-"Якщо увімкнено, кнопки вікна завжди керуватимуть найвищим максимізованим"
-" вікном."
+"Якщо увімкнено, кнопки вікна завжди керуватимуть найвищим максимізованим "
+"вікном."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:116
 msgid "Reverse the buttons placement."
@@ -742,8 +757,8 @@ msgid ""
 "When enabled, the button will change image to 'clicked' whenever it is "
 "clicked."
 msgstr ""
-"Якщо увімкнено, зображення на кнопці буде замінено на «clicked», коли кнопку"
-" буде натиснуто."
+"Якщо увімкнено, зображення на кнопці буде замінено на «clicked», коли кнопку "
+"буде натиснуто."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:126
 msgid "Enable hover effect."
@@ -778,19 +793,22 @@ msgstr ""
 #: data/schemas/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in:13
 msgid "Show the application title when an application is active and maximized"
 msgstr ""
+"Показувати заголовок програми, якщо вікно програми є активним і максимізованим"
 
 #: data/schemas/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in:17
 msgid ""
 "All icons except the current active window icon are greyed out. Disable to "
 "have colored icons for all windows"
 msgstr ""
+"Усі піктограми, окрім піктограми поточного активного вікна, показано сірим"
+" кольором. Вимкніть, щоб кольорові піктограми було показано для усіх вікон."
 
 #: data/schemas/org.gnome.gnome-applets.window-picker-applet.gschema.xml.in:22
 msgid ""
 "Whether the task list will expand automatically and use all available space."
 msgstr ""
-"Визначає, чи розширюватиметься список задач автоматично з метою використання"
-" усього доступного місця."
+"Визначає, чи розширюватиметься список задач автоматично з метою використання "
+"усього доступного місця."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:5
 msgid "Hides title when there are no windows present."
@@ -801,12 +819,16 @@ msgid ""
 "When enabled, the title will disappear when there are no maximized (or "
 "active) windows on the screen."
 msgstr ""
+"Якщо увімкнено, заголовки зникатимуть, якщо на екрані не буде максимізованих"
+" (або активних) вікон."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:11
 msgid ""
 "When enabled, the window title will always display the upper-most maximized "
 "window's name."
 msgstr ""
+"Якщо увімкнено, на смужці заголовка вікна завжди буде показано заголовок"
+" найвищого максимізованого вікна."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:15
 msgid "Set the title alignment."
@@ -825,6 +847,7 @@ msgid ""
 "When enabled, window title will be on the left side and the icon on the "
 "right side."
 msgstr ""
+"Якщо увімкнено, заголовок вікна буде показано ліворуч, а піктограму — праворуч"
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:25
 msgid "Expand the applet"
@@ -832,7 +855,7 @@ msgstr "Розгорнути аплет"
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:26
 msgid "When enabled, the applet will use up all available space in the panel."
-msgstr ""
+msgstr "Якщо увімкнено, аплет використовуватиме усе доступне місце на панелі."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:30
 msgid "Hide the icon"
@@ -859,6 +882,8 @@ msgid ""
 "When enabled, a tooltip carrying the name of the currently active window "
 "will be shown."
 msgstr ""
+"Якщо увімкнено, буде показано панель підказки із назвою поточного активного"
+" вікна."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:45
 msgid "Minimal title size"
@@ -881,6 +906,8 @@ msgid ""
 "When enabled, custom font style and color will be used. When disabled, "
 "system theme defaults will be used."
 msgstr ""
+"Якщо увімкнено, буде використано нетиповий стиль і колір шрифту. Якщо"
+" вимкнено, буде використано типові параметри системи."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:55
 msgid "Show the window action menu on right click."
@@ -927,7 +954,8 @@ msgstr "Колір тексту неактивного заголовка."
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:76
 msgid "Title foreground color in hex format for the inactive window state."
 msgstr ""
-"Колір тексту заголовка у шістнадцятковому форматі для неактивного стану вікна."
+"Колір тексту заголовка у шістнадцятковому форматі для неактивного стану "
+"вікна."
 
 #: gnome-applets/accessx-status/accessx-status-applet-menu.ui:5
 msgid "_Keyboard Accessibility Preferences"
@@ -1038,7 +1066,7 @@ msgstr "Показує стан особливостей AccessX, наприкл
 #: gnome-applets/mini-commander/mini-commander-applet.c:470
 #: gnome-applets/multiload/multiload-applet.c:514
 #: gnome-applets/netspeed/netspeed-applet.c:1538
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:804
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:848
 #: gnome-applets/timer/timer-applet.c:463
 #: gnome-applets/tracker-search-bar/tracker-applet.c:464
 #: gnome-applets/trash/trash-applet.c:592
@@ -1727,7 +1755,7 @@ msgid "Netspeed Applet"
 msgstr "Аплет Netspeed"
 
 #: gnome-applets/ga-module.c:195
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:682
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:726
 msgid "Sticky Notes"
 msgstr "Липкі примітки"
 
@@ -2824,7 +2852,7 @@ msgstr "Міняти _значок відповідно до вибраного 
 msgid "Netspeed Preferences"
 msgstr "Параметри Netspeed"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:742
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:786
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2833,19 +2861,19 @@ msgstr[1] "%d нотатки"
 msgstr[2] "%d приміток"
 msgstr[3] "%d нотатка"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:743
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:787
 msgid "Show sticky notes"
 msgstr "Показує липкі нотатки"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:781
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:825
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "\"Липкі\" нотатки для середовища GNOME"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1005
+#: gnome-applets/sticky-notes/sticky-notes.c:1006
 msgid "This note is locked."
 msgstr "Ця примітка заблокована."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1009
+#: gnome-applets/sticky-notes/sticky-notes.c:1010
 msgid "This note is unlocked."
 msgstr "Ця примітка розблокована."
 
@@ -3378,8 +3406,8 @@ msgid ""
 "When checked, the button order will be the same as on Metacity window "
 "borders."
 msgstr ""
-"Якщо позначено, порядок кнопок буде таким самим, як на обрамленні вікна"
-" Metacity."
+"Якщо позначено, порядок кнопок буде таким самим, як на обрамленні вікна "
+"Metacity."
 
 #: gnome-applets/window-buttons/window-buttons.ui:754
 msgid "Custom order:"
@@ -3514,6 +3542,8 @@ msgid ""
 "Show the home title and\n"
 "log out icon when on the desktop"
 msgstr ""
+"Показувати заголовок домівки та\n"
+"піктограму виходу, коли на стільниці"
 
 #: gnome-applets/window-picker/wp-preferences-dialog.ui:88
 msgid ""
@@ -3558,6 +3588,9 @@ msgid ""
 "You may change it using gconf-editor, but then you also need to set a fixed "
 "size."
 msgstr ""
+"Вимкнено до часу, коли розробники GTK+ усунуть різноманітні вади.\n"
+"Можете змінити значення за допомогою gconf-editor, але тоді вам також треба"
+" встановити фіксований розмір."
 
 #: gnome-applets/window-title/window-title.ui:157
 msgid "Hide _icon"
@@ -3580,6 +3613,8 @@ msgid ""
 "Set the title alignment.\n"
 "Note: only has effect when \"Expand applet\" is active."
 msgstr ""
+"Встановити вирівнювання заголовка.\n"
+"Зауваження: має значення, лише якщо задіяно «Розгорнути аплет»."
 
 #: gnome-applets/window-title/window-title.ui:277
 msgid "Custom _style"
