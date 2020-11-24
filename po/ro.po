@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: window-picker-applet\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2020-05-28 10:19+0000\n"
-"PO-Revision-Date: 2020-07-25 14:38+0300\n"
+"POT-Creation-Date: 2020-11-21 02:03+0000\n"
+"PO-Revision-Date: 2020-11-24 14:44+0200\n"
 "Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 
@@ -514,23 +514,34 @@ msgid "Out graph color"
 msgstr "Culoare grafic de ieșire"
 
 #: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:5
+msgid "File name for sticky notes"
+msgstr "Nume de fișier pentru notițe persistente"
+
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:6
+msgid ""
+"File name for sticky notes in $XDG_CONFIG_HOME/gnome-applets/sticky-notes."
+msgstr ""
+"Nume de fișier pentru notițe persistente în $XDG_CONFIG_HOME/gnome-applets/"
+"sticky-notes."
+
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:10
 msgid "Default width for new notes"
 msgstr "Lățimea implicită pentru noile notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:6
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:11
 msgid "Default width for new sticky notes in pixels."
 msgstr "Lățimea implicită în pixeli pentru noile notițe adezive."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:10
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:11
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:15
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:16
 msgid "Default height for new notes"
 msgstr "Înălțimea standard pentru noile notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:15
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:20
 msgid "Default color for new notes"
 msgstr "Culoarea implicită pentru noile notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:16
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:21
 msgid ""
 "Default color for new sticky notes. This can be standard name, hexadecimal "
 "value, RGB color or RGBA color."
@@ -538,11 +549,11 @@ msgstr ""
 "Culoare implicită pentru notițele adezive noi. Aceasta poate fi un nume "
 "standard, o valoare hexazecimală, o culoare RGB sau una RGBA."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:20
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:25
 msgid "Default color for font"
 msgstr "Culoarea implicită pentru font"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:21
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:26
 msgid ""
 "Default font color for new sticky notes. This can be standard name, "
 "hexadecimal value, RGB color or RGBA color."
@@ -550,11 +561,11 @@ msgstr ""
 "Culoarea fontului implicită pentru notițe adezive noi. Aceasta poate fi un "
 "nume standard, o valoare hexazecimală, o culoare RGB sau una RGBA."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:25
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:30
 msgid "Default font for new notes"
 msgstr "Fontul implicit pentru noile notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:26
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:31
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\"."
@@ -562,11 +573,11 @@ msgstr ""
 "Fonturile implicite pentru noile notițe lipicioase. Acestea trebuie să fie "
 "un nume de font Pango, de exemplu „Sans Italic 10”."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:30
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:35
 msgid "Sticky notes' workspace stickyness"
 msgstr "Persistența notițelor pe spațiile de lucru"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:31
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:36
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
@@ -574,19 +585,19 @@ msgstr ""
 "Specifică dacă notițele adezive sunt vizibile pe TOATE spațiile de lucru de "
 "pe desktop, sau nu."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:35
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:40
 msgid "Sticky notes' locked state"
 msgstr "Starea blocată pentru notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:36
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:41
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr "Specifică dacă notițele adezive sunt blocate (non-editabile) sau nu."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:40
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:45
 msgid "Date format of note's title"
 msgstr "Formatul datei pentru tilul notiței"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:41
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:46
 msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
@@ -595,11 +606,11 @@ msgstr ""
 "Implicit, notițele adezive primesc ca titlu data la care sunt create. Acest "
 "format este folosit, orice poate fi parsat de strftime() este valid."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:45
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:50
 msgid "Whether to use the default system color"
 msgstr "Dacă să fie folosite culorile implicite ale temei"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:46
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:51
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
@@ -607,11 +618,11 @@ msgstr ""
 "Dacă această opțiune este dezactivată, o culoare personalizată poate fi "
 "folosită ca implicită pentru toate noile notițe adezive."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:50
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:55
 msgid "Whether to use the default system font"
 msgstr "Dacă să fie folosit fontul implicit ale temei"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:51
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:56
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
@@ -619,11 +630,11 @@ msgstr ""
 "Dacă această opțiune este dezactivată, un font personalizat poate fi folosit "
 "ca font implicit pentru toate notițele adezive."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:55
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:60
 msgid "Whether to force the default color and font on all notes"
 msgstr "Dacă să fie forțată culoarea și fontul implicit pentru toate notițele"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:56
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:61
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
@@ -631,11 +642,11 @@ msgstr ""
 "Dacă această opțiune este activată, culorile și fonturile atribuite "
 "individual notițelor vor fi ignorate."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:60
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:65
 msgid "Whether to hide all notes when the desktop is selected"
 msgstr "Dacă să se ascundă toate notițele când desktopul este selectat"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:61
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:66
 msgid ""
 "If this option is enabled, selecting the desktop in any way will "
 "automatically hide all the open notes."
@@ -643,11 +654,11 @@ msgstr ""
 "Dacă această opțiune este activată, selectarea desktopului în orice mod va "
 "duce automat la ascunderea tuturor notițelor deschise."
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:65
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:70
 msgid "Whether to ask for confirmation when deleting a note"
 msgstr "Dacă să fie cerută confirmarea la ștergerea unei notițe"
 
-#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:66
+#: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:71
 msgid "Empty notes are always deleted without confirmation."
 msgstr "Notițele goale sunt întotdeauna șterse fără confirmare."
 
@@ -1103,7 +1114,7 @@ msgstr "Arată starea facilităților AccessX precum modificatorii blocanți"
 #: gnome-applets/mini-commander/mini-commander-applet.c:470
 #: gnome-applets/multiload/multiload-applet.c:514
 #: gnome-applets/netspeed/netspeed-applet.c:1538
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:804
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:848
 #: gnome-applets/timer/timer-applet.c:463
 #: gnome-applets/tracker-search-bar/tracker-applet.c:464
 #: gnome-applets/trash/trash-applet.c:592
@@ -1792,7 +1803,7 @@ msgid "Netspeed Applet"
 msgstr "Aplet Viteză Rețea"
 
 #: gnome-applets/ga-module.c:195
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:682
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:726
 msgid "Sticky Notes"
 msgstr "Notițe adezive"
 
@@ -2883,7 +2894,7 @@ msgstr "Schimbă _iconița funcție de dispozitivul selectat"
 msgid "Netspeed Preferences"
 msgstr "Preferințe viteză rețea"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:742
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:786
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2891,19 +2902,19 @@ msgstr[0] "%d notiță"
 msgstr[1] "%d notițe"
 msgstr[2] "%d de notițe"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:743
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:787
 msgid "Show sticky notes"
 msgstr "Afișează notițele adezive"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:781
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:825
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Notițe adezive pentru desktopul GNOME"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1005
+#: gnome-applets/sticky-notes/sticky-notes.c:1006
 msgid "This note is locked."
 msgstr "Această notiță este blocată."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1009
+#: gnome-applets/sticky-notes/sticky-notes.c:1010
 msgid "This note is unlocked."
 msgstr "Această notiță este deblocată."
 
