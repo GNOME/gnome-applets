@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "tracker-utils.h"
+#include "tracker-regex.h"
 
 #include <string.h>
 #include <time.h>

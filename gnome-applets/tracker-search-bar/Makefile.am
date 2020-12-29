@@ -33,8 +33,8 @@ libtracker_search_bar_applet_la_SOURCES = \
 	tracker-aligned-window.h \
 	tracker-results-window.c \
 	tracker-results-window.h \
-	tracker-utils.c \
-	tracker-utils.h \
+	tracker-regex.c \
+	tracker-regex.h \
 	$(NULL)
 endif
 

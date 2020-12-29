@@ -17,8 +17,8 @@
  * 02110-1301, USA.
  */
 
-#ifndef __TRACKER_UTILS_H__
-#define __TRACKER_UTILS_H__
+#ifndef TRACKER_REGEX_H
+#define TRACKER_REGEX_H
 
 #include <glib.h>
 
@@ -40,4 +40,4 @@ gint tracker_regex_match (TrackerRegExType  type,
 
 G_END_DECLS
 
-#endif /* __TRACKER_UTILS_H__ */
+#endif

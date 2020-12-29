@@ -29,7 +29,7 @@
 
 #include "tracker-results-window.h"
 #include "tracker-aligned-window.h"
-#include "tracker-utils.h"
+#include "tracker-regex.h"
 
 #define MAX_ITEMS 10
 
