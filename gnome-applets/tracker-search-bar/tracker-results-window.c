@@ -407,7 +407,7 @@ tracker_results_window_init (TrackerResultsWindow *self)
 	gtk_widget_show (vbox);
 
 	self->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-	gtk_container_add (GTK_CONTAINER (vbox), self->scrolled_window);
+	gtk_box_pack_start (GTK_BOX (vbox), self->scrolled_window, TRUE, TRUE, 0);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (self->scrolled_window),
 	                                GTK_POLICY_AUTOMATIC,
 	                                GTK_POLICY_AUTOMATIC);
@@ -420,7 +420,7 @@ tracker_results_window_init (TrackerResultsWindow *self)
 
 	self->label = gtk_label_new (NULL);
 	gtk_widget_set_sensitive (self->label, FALSE);
-	gtk_container_add (GTK_CONTAINER (vbox), self->label);
+	gtk_box_pack_start (GTK_BOX (vbox), self->label, TRUE, TRUE, 0);
 
 	self->icon_theme = gtk_icon_theme_get_default ();
 
