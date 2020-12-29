@@ -359,7 +359,16 @@ tracker_results_window_init (TrackerResultsWindow *self)
 	GError *error = NULL;
 
 	self->cancellable = g_cancellable_new ();
+
+#ifdef HAVE_TRACKER3
+	self->connection = tracker_sparql_connection_bus_new ("org.freedesktop.Tracker3.Miner.Files",
+	                                                      NULL,
+	                                                      NULL,
+	                                                      &error);
+#else
 	self->connection = tracker_sparql_connection_get (self->cancellable, &error);
+#endif
+
 	if (error != NULL) {
 		g_warning ("Cannot connect to tracker: %s\n", error->message);
 		g_error_free (error);

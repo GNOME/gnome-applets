@@ -175,11 +175,20 @@ PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED)
 
  dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
-TRACKER_SEARCH_BAR_REQUIRED="tracker-sparql-2.0"
-
-PKG_CHECK_MODULES(TRACKER_SEARCH_BAR, [$TRACKER_SEARCH_BAR_REQUIRED],
-                  [have_tracker_search_bar=yes],
-                  [have_tracker_search_bar=no])
+PKG_CHECK_MODULES([TRACKER_SEARCH_BAR], [
+  tracker-sparql-3.0
+], [
+  AC_DEFINE([HAVE_TRACKER3], [1], [Define to 1 if tracker3 is available])
+  have_tracker_search_bar=yes
+], [
+  PKG_CHECK_MODULES([TRACKER_SEARCH_BAR], [
+    tracker-sparql-2.0
+  ], [
+    have_tracker_search_bar=yes
+  ], [
+    have_tracker_search_bar=no
+  ])
+])
 
 dnl -- check for GSettings (required for gweather applet)
 GLIB_GSETTINGS
@@ -286,7 +295,7 @@ AC_ARG_ENABLE([tracker-search-bar],
 
 if test "x$enable_tracker_search_bar" = "xyes" ; then
    if test "x$have_tracker_search_bar" != "xyes"; then
-      AC_MSG_ERROR([Couldn't find tracker-search-bar dependencies ($TRACKER_SEARCH_BAR_REQUIRED).])
+      AC_MSG_ERROR([Couldn't find tracker-search-bar dependencies.])
    fi
 else
    if test "x$enable_tracker_search_bar" = "xno"; then
