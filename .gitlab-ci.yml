@@ -59,7 +59,7 @@ ubuntu:
     - *install-ubuntu-dependencies
     - *build-gnome-panel
   script:
-    - ./autogen.sh
+    - ./autogen.sh --enable-tracker-search-bar
     - make
     - make distcheck
 
@@ -79,7 +79,7 @@ coverity:
       --data "token=$COVERITY_TOKEN&project=gnome-applets"
       --output /tmp/coverity_tool.tgz
     - tar zxf /tmp/coverity_tool.tgz
-    - CC=clang ./autogen.sh --disable-Werror
+    - CC=clang ./autogen.sh --disable-Werror --enable-tracker-search-bar
     - ./cov-analysis-linux64-*/bin/cov-build --dir cov-int make
     - tar czf cov-int.tar.gz cov-int
     - curl --form token=$COVERITY_TOKEN
