@@ -37,8 +37,9 @@
 	"SELECT" \
 	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
 	"WHERE {" \
-	"  ?urn a nfo:Audio ;" \
-	"  nie:url ?uri ; " \
+	"  ?content a nfo:Audio ;" \
+	"  nie:isStoredAs ?urn ." \
+	"  ?urn nie:url ?uri ; " \
 	"  nfo:fileName ?title ;" \
 	"  nfo:belongsToContainer ?tooltip ." \
 	"  ?urn fts:match \"%s*\" " \
@@ -49,8 +50,9 @@
 	"SELECT" \
 	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
 	"WHERE {" \
-	"  ?urn a nfo:Image ;" \
-	"  nie:url ?uri ; " \
+	"  ?content a nfo:Image ;" \
+	"  nie:isStoredAs ?urn ." \
+	"  ?urn nie:url ?uri ; " \
 	"  nfo:fileName ?title ;" \
 	"  nfo:belongsToContainer ?tooltip ." \
 	"  ?urn fts:match \"%s*\" " \
@@ -61,8 +63,9 @@
 	"SELECT" \
 	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
 	"WHERE {" \
-	"  ?urn a nmm:Video ;" \
-	"  nie:url ?uri ; " \
+	"  ?content a nmm:Video ;" \
+	"  nie:isStoredAs ?urn ." \
+	"  ?urn nie:url ?uri ; " \
 	"  nfo:fileName ?title ;" \
 	"  nfo:belongsToContainer ?tooltip ." \
 	"  ?urn fts:match \"%s*\" " \
@@ -73,8 +76,9 @@
 	"SELECT" \
 	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
 	"WHERE {" \
-	"  ?urn a nfo:Document ;" \
-	"  nie:url ?uri ; " \
+	"  ?content a nfo:Document ;" \
+	"  nie:isStoredAs ?urn ." \
+	"  ?urn nie:url ?uri ; " \
 	"  nfo:fileName ?title ;" \
 	"  nfo:belongsToContainer ?tooltip ." \
 	"  ?urn fts:match \"%s*\" " \
@@ -85,8 +89,9 @@
 	"SELECT" \
 	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
 	"WHERE {" \
-	"  ?urn a nfo:Folder ;" \
-	"  nie:url ?uri ; " \
+	"  ?content a nfo:Folder ;" \
+	"  nie:isStoredAs ?urn ." \
+	"  ?urn nie:url ?uri ; " \
 	"  nfo:fileName ?title ;" \
 	"  nfo:belongsToContainer ?tooltip ." \
 	"  ?urn fts:match \"%s*\" " \
