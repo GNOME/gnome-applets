@@ -140,7 +140,12 @@ free_device_info(DevInfo *devinfo)
 static char*
 format_ipv4(guint32 ip)
 {
-	char *str = g_malloc(INET_ADDRSTRLEN);
+	char *str;
+	
+	if (ip == 0)
+		return NULL;
+
+	str = g_malloc(INET_ADDRSTRLEN);
 	inet_ntop(AF_INET, &ip, str, INET_ADDRSTRLEN);
 	return str;
 }
