@@ -33,71 +33,37 @@
 
 #define MAX_ITEMS 10
 
-#define MUSIC_QUERY	  \
-	"SELECT" \
-	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
+#define FILE_SEARCH_QUERY(rdftype) \
+	"SELECT DISTINCT" \
+	"  ?uri ?title ?tooltip ?uri '' " \
 	"WHERE {" \
-	"  ?content a nfo:Audio ;" \
-	"  nie:isStoredAs ?urn ." \
-	"  ?urn nie:url ?uri ; " \
-	"  nfo:fileName ?title ;" \
-	"  nfo:belongsToContainer ?tooltip ." \
-	"  ?urn fts:match \"%s*\" " \
+	"  { " \
+	"    { " \
+	"      ?urn a " #rdftype "; " \
+	"	 nie:isStoredAs ?file . " \
+	"      ?file nie:url ?uri ; " \
+	"	 nfo:belongsToContainer ?tooltip ; " \
+	"	 nfo:fileName ?title . " \
+	"    } UNION { " \
+	"      ?urn a nfo:FileDataObject ; " \
+	"	 nie:url ?uri ; " \
+	"	 nfo:belongsToContainer ?tooltip ; " \
+	"	 nfo:fileName ?title . " \
+	"      ?content a " #rdftype "; " \
+	"	 nie:isStoredAs ?urn . " \
+	"    } " \
+	"  } " \
+	"  ?urn fts:match \"%s*\" . " \
 	"}" \
 	"ORDER BY DESC(fts:rank(?urn)) " \
 	"OFFSET 0 LIMIT %d"
-#define IMAGE_QUERY	  \
-	"SELECT" \
-	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
-	"WHERE {" \
-	"  ?content a nfo:Image ;" \
-	"  nie:isStoredAs ?urn ." \
-	"  ?urn nie:url ?uri ; " \
-	"  nfo:fileName ?title ;" \
-	"  nfo:belongsToContainer ?tooltip ." \
-	"  ?urn fts:match \"%s*\" " \
-	"} " \
-	"ORDER BY DESC(fts:rank(?urn)) " \
-	"OFFSET 0 LIMIT %d"
-#define VIDEO_QUERY	  \
-	"SELECT" \
-	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
-	"WHERE {" \
-	"  ?content a nmm:Video ;" \
-	"  nie:isStoredAs ?urn ." \
-	"  ?urn nie:url ?uri ; " \
-	"  nfo:fileName ?title ;" \
-	"  nfo:belongsToContainer ?tooltip ." \
-	"  ?urn fts:match \"%s*\" " \
-	"} " \
-	"ORDER BY DESC(fts:rank(?urn)) " \
-	"OFFSET 0 LIMIT %d"
-#define DOCUMENT_QUERY	  \
-	"SELECT" \
-	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
-	"WHERE {" \
-	"  ?content a nfo:Document ;" \
-	"  nie:isStoredAs ?urn ." \
-	"  ?urn nie:url ?uri ; " \
-	"  nfo:fileName ?title ;" \
-	"  nfo:belongsToContainer ?tooltip ." \
-	"  ?urn fts:match \"%s*\" " \
-	"} " \
-	"ORDER BY DESC(fts:rank(?urn)) " \
-	"OFFSET 0 LIMIT %d"
-#define FOLDER_QUERY	  \
-	"SELECT" \
-	"  ?uri ?title ?tooltip ?uri fts:rank(?urn) " \
-	"WHERE {" \
-	"  ?content a nfo:Folder ;" \
-	"  nie:isStoredAs ?urn ." \
-	"  ?urn nie:url ?uri ; " \
-	"  nfo:fileName ?title ;" \
-	"  nfo:belongsToContainer ?tooltip ." \
-	"  ?urn fts:match \"%s*\" " \
-	"} " \
-	"ORDER BY DESC(fts:rank(?urn)) " \
-	"OFFSET 0 LIMIT %d"
+
+#define MUSIC_QUERY FILE_SEARCH_QUERY(nfo:Audio)
+#define IMAGE_QUERY FILE_SEARCH_QUERY(nfo:Image)
+#define VIDEO_QUERY FILE_SEARCH_QUERY(nmm:Video)
+#define DOCUMENT_QUERY FILE_SEARCH_QUERY (nfo:Document)
+#define FOLDER_QUERY FILE_SEARCH_QUERY (nfo:Folder)
+
 #define APP_QUERY	  \
 	"SELECT" \
 	"  ?urn ?title ?tooltip ?link fts:rank(?urn) nfo:softwareIcon(?urn)" \
