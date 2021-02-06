@@ -130,7 +130,7 @@ dnl -- check for libnotify (required) -----------------------------------------
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= $LIBNOTIFY_REQUIRED)
 
 PKG_CHECK_MODULES([CPUFREQ_SELECTOR], [
-  gio-unix-2.0 >= $GIO_REQUIRED)
+  gio-unix-2.0 >= $GIO_REQUIRED
   glib-2.0 >= $GLIB_REQUIRED
   gobject-2.0 >= $GLIB_REQUIRED
   polkit-gobject-1 >= $POLKIT_REQUIRED
