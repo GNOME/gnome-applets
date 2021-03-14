@@ -626,7 +626,7 @@ item_data_new (const gchar     *urn,
 {
 	ItemData *id;
 
-	id = g_slice_new0 (ItemData);
+	id = g_new0 (ItemData, 1);
 
 	id->urn = g_strdup (urn);
 	id->title = g_strdup (title);
@@ -647,7 +647,7 @@ item_data_free (ItemData *id)
 	g_free (id->link);
 	g_free (id->icon_name);
 
-	g_slice_free (ItemData, id);
+	g_free (id);
 }
 
 static SearchQuery *
@@ -657,7 +657,7 @@ search_query_new (gint                  request_id,
 {
 	SearchQuery *sq;
 
-	sq = g_slice_new0 (SearchQuery);
+	sq = g_new0 (SearchQuery, 1);
 
 	sq->request_id = request_id;
 	sq->cancellable = g_cancellable_new ();
@@ -677,7 +677,7 @@ search_query_free (SearchQuery *sq)
 	}
 
 	g_slist_free_full (sq->results, (GDestroyNotify) item_data_free);
-	g_slice_free (SearchQuery, sq);
+	g_free (sq);
 }
 
 static gchar *
