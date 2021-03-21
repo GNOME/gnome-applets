@@ -896,4 +896,6 @@ drive_button_ensure_popup (DriveButton *self)
 	g_free (label);
 	gtk_container_add (GTK_CONTAINER (self->popup_menu), item);
     }
+
+    g_free (display_name);
 }
