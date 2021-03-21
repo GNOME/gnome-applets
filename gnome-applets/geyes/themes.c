@@ -330,7 +330,6 @@ properties_cb (GSimpleAction *action,
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
 	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
-	g_object_unref (model);
 
 	gtk_container_add (GTK_CONTAINER (scrolled), tree);
 	
@@ -395,7 +394,9 @@ properties_cb (GSimpleAction *action,
 
                 g_dir_close (dir);
         }
-        
+
+        g_object_unref (model);
+
         gtk_box_pack_start (GTK_BOX (control_vbox), scrolled, TRUE, TRUE, 0);
         
         gtk_widget_show_all (pbox);
