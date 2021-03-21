@@ -397,6 +397,8 @@ cb_orientation (GtkRadioButton *style,
 		loadThemeButtons(getImageButtons(wbapplet->prefbuilder), wbapplet->pixbufs, wbapplet->prefs->images); // set pref button images from pixbufs
 		wb_applet_update_images(wbapplet);
 		savePreferences(wbapplet->prefs, wbapplet);
+
+		g_free (radio_orientation);
 	}
 }
 
@@ -408,6 +410,20 @@ properties_close (GtkButton *object,
   wbapplet->window_prefs = NULL;
 }
 
+static void
+free_image_open_data (gpointer  data,
+                      GClosure *closure)
+{
+  g_free (data);
+}
+
+static void
+free_check_box_data (gpointer  data,
+                     GClosure *closure)
+{
+  g_free (data);
+}
+
 void
 wb_applet_properties_cb (GSimpleAction *action,
                          GVariant      *parameter,
@@ -415,7 +431,6 @@ wb_applet_properties_cb (GSimpleAction *action,
 {
 	WBApplet *wbapplet;
 	GtkWidget		***btn;
-	ImageOpenData 	***iod;
 	gint i,j;
 	GtkToggleButton *chkb_only_maximized;
 	GtkToggleButton *chkb_click_effect;
@@ -431,7 +446,6 @@ wb_applet_properties_cb (GSimpleAction *action,
 	GtkComboBox *combo_theme;
 	GtkToggleButton **chkb_btn_hidden;
 	GtkRadioButton **radio_orientation;
-	CheckBoxData **cbd;
 
 	wbapplet = (WBApplet *) user_data;
 
@@ -447,17 +461,23 @@ wb_applet_properties_cb (GSimpleAction *action,
 
 	/* Get the widgets from GtkBuilder & Init data structures we'll pass to our buttons */
 	btn = getImageButtons(wbapplet->prefbuilder);
-	iod =  g_new(ImageOpenData**, WB_IMAGE_STATES);
+
 	for (i=0; i<WB_IMAGE_STATES; i++) {
-		iod[i] = g_new(ImageOpenData*, WB_IMAGES);
 		for (j=0; j<WB_IMAGES; j++) {
-			iod[i][j] = g_new0(ImageOpenData, 1);
-			iod[i][j]->wbapplet = wbapplet;
-			iod[i][j]->image_state = i;
-			iod[i][j]->image_index = j;
+			ImageOpenData *iod;
+
+			iod = g_new0 (ImageOpenData, 1);
+			iod->wbapplet = wbapplet;
+			iod->image_state = i;
+			iod->image_index = j;
 
 			// Connect buttons to select_new_image callback
-			g_signal_connect(G_OBJECT (btn[i][j]), "clicked", G_CALLBACK (select_new_image), iod[i][j]);
+			g_signal_connect_data (btn[i][j],
+			                       "clicked",
+			                       G_CALLBACK (select_new_image),
+			                       iod,
+			                       free_image_open_data,
+			                       0);
 		}
 	}
 
@@ -492,14 +512,20 @@ wb_applet_properties_cb (GSimpleAction *action,
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(radio_orientation[wbapplet->prefs->orientation]), TRUE);
 	gtk_entry_set_text (entry_custom_order, (const gchar*)wbapplet->prefs->button_layout);
 
-	cbd = g_new(CheckBoxData*, WB_BUTTONS);
 	for (i=0; i<WB_BUTTONS; i++) {
-		cbd[i] = g_new(CheckBoxData,1);
-		cbd[i]->button_id = i;
-		cbd[i]->wbapplet = wbapplet;
+		CheckBoxData *cbd;
+
+		cbd = g_new(CheckBoxData,1);
+		cbd->button_id = i;
+		cbd->wbapplet = wbapplet;
 
 		gtk_toggle_button_set_active (chkb_btn_hidden[i], wbapplet->prefs->button_hidden[i]);
-		g_signal_connect(G_OBJECT(chkb_btn_hidden[i]), "clicked", G_CALLBACK (cb_btn_hidden), cbd[i]);
+		g_signal_connect_data (chkb_btn_hidden[i],
+		                       "clicked",
+		                       G_CALLBACK (cb_btn_hidden),
+		                       cbd,
+		                       free_check_box_data,
+		                       0);
 	}
 
 	for (i=0; i<3; i++)
@@ -518,4 +544,7 @@ wb_applet_properties_cb (GSimpleAction *action,
 	g_signal_connect(G_OBJECT(wbapplet->window_prefs), "destroy", G_CALLBACK(properties_close), wbapplet);
 
 	gtk_widget_show (wbapplet->window_prefs);
+
+	g_free (chkb_btn_hidden);
+	g_free (radio_orientation);
 }
