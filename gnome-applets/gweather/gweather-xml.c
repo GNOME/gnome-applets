@@ -53,7 +53,15 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
     int i;
 
     name = gweather_location_get_name (gloc);
+
+#ifdef HAVE_GWEATHER_40
+    /* FIXME: Use gweather_location_next_child! */
+#endif
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     children = gweather_location_get_children (gloc);
+    G_GNUC_END_IGNORE_DEPRECATIONS
+
     level = gweather_location_get_level (gloc);
 
     if (!children[0] && level < GWEATHER_LOCATION_WEATHER_STATION) {
@@ -108,8 +116,14 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 			    -1);
 
 	parent_loc = gweather_location_get_parent (gloc);
-	if (parent_loc && gweather_location_get_level (parent_loc) == GWEATHER_LOCATION_CITY)
-	    name = gweather_location_get_name (parent_loc);
+	if (parent_loc != NULL) {
+		if (gweather_location_get_level (parent_loc) == GWEATHER_LOCATION_CITY)
+			name = gweather_location_get_name (parent_loc);
+
+#ifdef HAVE_GWEATHER_40
+		gweather_location_unref (parent_loc);
+#endif
+	}
 
 	code = gweather_location_get_code (gloc);
 	has_coords = gweather_location_has_coords (gloc);
@@ -161,6 +175,10 @@ gweather_xml_load_locations (void)
 	g_object_unref (store);
 	store = NULL;
     }
+
+#ifdef HAVE_GWEATHER_40
+    gweather_location_unref (world);
+#endif
 
     return (GtkTreeModel *)store;
 }

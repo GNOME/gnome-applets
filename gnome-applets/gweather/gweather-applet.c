@@ -56,7 +56,13 @@ get_default_location (GWeatherApplet *gw_applet)
     location = gweather_location_find_by_station_code (world, station_code);
     g_variant_unref (default_loc);
 
+#ifdef HAVE_GWEATHER_40
+    gweather_location_unref (world);
+
     return location;
+#else
+    return gweather_location_ref (location);
+#endif
 }
 
 static void
@@ -333,6 +339,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GAction *action;
     const char *menu_resource;
     AtkObject      *atk_obj;
+    GWeatherLocation *location;
+#ifdef HAVE_GWEATHER_40
+    const char *contact_info;
+#endif
     GNetworkMonitor*monitor;
 
     gp_applet_set_flags (GP_APPLET (gw_applet), GP_APPLET_FLAGS_EXPAND_MINOR);
@@ -366,7 +376,16 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 	g_object_bind_property (gw_applet, "locked-down", action, "enabled",
 				G_BINDING_DEFAULT|G_BINDING_INVERT_BOOLEAN|G_BINDING_SYNC_CREATE);
 
-    gw_applet->gweather_info = gweather_info_new (get_default_location (gw_applet));
+    location = get_default_location (gw_applet);
+    gw_applet->gweather_info = gweather_info_new (location);
+    gweather_location_unref (location);
+
+#ifdef HAVE_GWEATHER_40
+    gweather_info_set_application_id (gw_applet->gweather_info, "org.gnome.gnome-applets");
+
+    contact_info = "https://gitlab.gnome.org/GNOME/gnome-applets/-/raw/master/gnome-applets.doap";
+    gweather_info_set_contact_info (gw_applet->gweather_info, contact_info);
+#endif
 
     gweather_info_set_enabled_providers (gw_applet->gweather_info,
                                          GWEATHER_PROVIDER_ALL);
@@ -379,6 +398,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     monitor = g_network_monitor_get_default();
     g_signal_connect (monitor, "network-changed",
                       G_CALLBACK (network_changed), gw_applet);
+
+#ifdef HAVE_GWEATHER_40
+    gweather_info_update (gw_applet->gweather_info);
+#endif
 }
 
 gboolean
@@ -521,9 +544,14 @@ suncalc_timeout_cb (gpointer data)
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
+    GWeatherLocation *location;
+
     gtk_widget_set_tooltip_text (GTK_WIDGET (gw_applet),  _("Updating..."));
 
-    gweather_info_set_location (gw_applet->gweather_info, get_default_location (gw_applet));
+    location = get_default_location (gw_applet);
+    gweather_info_set_location (gw_applet->gweather_info, location);
+    gweather_location_unref (location);
+
     gweather_info_update (gw_applet->gweather_info);
 }
 
