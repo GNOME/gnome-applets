@@ -121,12 +121,15 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 
         file_name = g_strdup_printf("%s%s",theme_dir,"/config");
         theme_file = fopen (file_name, "r");
+        g_free (file_name);
+
         if (theme_file == NULL) {
         	g_free (eyes_applet->theme_dir);
         	eyes_applet->theme_dir = g_strdup_printf (GEYES_THEMES_DIR "Default-tiny/");
-        	g_free (file_name);
+
                 file_name = g_strdup (GEYES_THEMES_DIR "Default-tiny/config");
                 theme_file = fopen (file_name, "r");
+                g_free (file_name);
         }
 
 	/* if it's still NULL we've got a major problem */
@@ -164,8 +167,7 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         eyes_applet->pupil_width = gdk_pixbuf_get_width (eyes_applet->pupil_image);
 
         fclose (theme_file);
-        g_free (file_name);
-   
+
 	return TRUE;
 }
 
