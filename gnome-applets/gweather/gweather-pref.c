@@ -444,8 +444,8 @@ radar_toggled (GtkToggleButton *button, GWeatherPref *pref)
     
     toggled = gtk_toggle_button_get_active(button);
 
-    if (toggled)
-      g_settings_set_boolean (gw_applet->applet_settings, "enable-radar-map", toggled);
+    g_settings_set_boolean (gw_applet->applet_settings, "enable-radar-map", toggled);
+
     gtk_widget_set_sensitive (pref->basic_radar_url_btn, toggled);
     if (toggled == FALSE || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (pref->basic_radar_url_btn)) == TRUE)
             gtk_widget_set_sensitive (pref->basic_radar_url_hbox, toggled);
