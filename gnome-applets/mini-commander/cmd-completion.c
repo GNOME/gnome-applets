@@ -215,17 +215,25 @@ process_dir( const char *d )
       strcpy( path_str, d );
       strcat( path_str, "/" );
       strcat( path_str, de->d_name );
+
       if( stat( path_str, &buf ) != 0)
+      {
+         g_free (path_str);
          continue;
-      g_free( (gpointer)path_str );
+      }
+
+      g_free (path_str);
 
       if( S_ISDIR( buf.st_mode ) )
          continue;
 
-      data = g_malloc( strlen( (gchar *)de->d_name ) + 1 );
-      strcpy( (gchar *)data, (gchar *)(de->d_name) );
-      if( buf.st_mode & S_IXUSR )
-         path_elements = g_list_append( path_elements, data );
+      if (buf.st_mode & S_IXUSR)
+      {
+         data = g_malloc (strlen (de->d_name) + 1);
+         strcpy (data, de->d_name);
+
+         path_elements = g_list_append (path_elements, data);
+      }
    }
    closedir( dir );
 }
@@ -237,5 +245,6 @@ process_dir( const char *d )
 static void
 cleanup( void )
 {
-   g_list_free( path_elements );
+   g_list_free_full (path_elements, g_free);
+   path_elements = NULL;
 }
