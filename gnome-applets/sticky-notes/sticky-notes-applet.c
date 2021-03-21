@@ -112,11 +112,8 @@ destroy_all_response_cb (GtkDialog         *dialog,
                          StickyNotesApplet *applet)
 {
 	if (id == GTK_RESPONSE_OK) {
-		while (g_list_length (applet->notes) > 0) {
-			StickyNote *note = g_list_nth_data (applet->notes, 0);
-			stickynote_free(note);
-			applet->notes = g_list_remove (applet->notes, note);
-		}
+		g_list_free_full (applet->notes, (GDestroyNotify) stickynote_free);
+		applet->notes = NULL;
 	}
 
 	stickynotes_applet_update_tooltips (applet);
