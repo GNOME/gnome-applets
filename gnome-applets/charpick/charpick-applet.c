@@ -494,6 +494,7 @@ build_table(charpick_data *p_curr_data)
   }
  
   g_free (toggle_button);
+  g_free (row_box);
   
   gtk_container_add (GTK_CONTAINER(p_curr_data), box);
   gtk_widget_show_all (p_curr_data->box);
