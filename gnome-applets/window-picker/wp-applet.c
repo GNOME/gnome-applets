@@ -37,7 +37,6 @@
 
 #define SETTINGS_SCHEMA "org.gnome.gnome-applets.window-picker-applet"
 #define TITLE_BUTTON_SPACE 6
-#define CONTAINER_SPACING 10
 
 struct _WpApplet
 {
@@ -195,47 +194,6 @@ wp_applet_contructed (GObject *object)
 }
 
 static void
-wp_applet_size_allocate (GtkWidget     *widget,
-                         GtkAllocation *allocation)
-{
-  WpApplet *applet;
-  GpApplet *panel_applet;
-  GtkOrientation orientation;
-  gint size_hints[2];
-  gint size;
-
-  GTK_WIDGET_CLASS (wp_applet_parent_class)->size_allocate (widget, allocation);
-
-  applet = WP_APPLET (widget);
-  panel_applet = GP_APPLET (widget);
-
-  orientation = gp_applet_get_orientation (panel_applet);
-
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
-    gtk_widget_get_preferred_width_for_height (applet->tasks, allocation->height, NULL, &size);
-  else
-    gtk_widget_get_preferred_height_for_width (applet->tasks, allocation->width, NULL, &size);
-
-  size_hints[0] = size;
-  size_hints[1] = 0;
-
-  if (gtk_widget_is_visible (applet->title))
-    {
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
-        gtk_widget_get_preferred_width (applet->title, NULL, &size);
-      else
-        gtk_widget_get_preferred_height (applet->title, NULL, &size);
-
-      if (size != 0)
-        size_hints[0] += CONTAINER_SPACING;
-
-      size_hints[0] += size;
-    }
-
-  gp_applet_set_size_hints (panel_applet, size_hints, 2, 0);
-}
-
-static void
 wp_applet_dispose (GObject *object)
 {
   WpApplet *applet;
@@ -330,14 +288,10 @@ static void
 wp_applet_class_init (WpAppletClass *applet_class)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
   GpAppletClass *panel_applet_class;
 
   object_class = G_OBJECT_CLASS (applet_class);
-  widget_class = GTK_WIDGET_CLASS (applet_class);
   panel_applet_class = GP_APPLET_CLASS (applet_class);
-
-  widget_class->size_allocate = wp_applet_size_allocate;
 
   object_class->dispose = wp_applet_dispose;
   object_class->set_property = wp_applet_set_property;
@@ -378,7 +332,7 @@ wp_applet_init (WpApplet *applet)
 
   gp_applet_set_flags (panel_applet, flags);
 
-  applet->container = gtk_box_new (orientation, CONTAINER_SPACING);
+  applet->container = gtk_box_new (orientation, 10);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
 }
 
