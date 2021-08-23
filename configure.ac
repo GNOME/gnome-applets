@@ -12,7 +12,7 @@ dnl Define bugzilla address
 dnl **************************************************************************
 
 m4_define([ga_bugzilla_url],
-          [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets])
+          [https://gitlab.gnome.org/GNOME/gnome-applets/-/issues])
 
 dnl **************************************************************************
 dnl Initialize autoconf
