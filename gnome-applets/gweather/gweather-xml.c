@@ -45,26 +45,20 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 			 GtkTreeStore *store, GtkTreeIter *parent)
 {
     GtkTreeIter iter, *self = &iter;
-    GWeatherLocation **children, *parent_loc;
+    GWeatherLocation *first_child;
+    GWeatherLocation *second_child;
+    GWeatherLocation *parent_loc;
     GWeatherLocationLevel level;
     const char *name, *code;
     double latitude, longitude;
     gboolean has_coords;
-    int i;
+    GWeatherLocation *child;
 
     name = gweather_location_get_name (gloc);
-
-#ifdef HAVE_GWEATHER_40
-    /* FIXME: Use gweather_location_next_child! */
-#endif
-
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    children = gweather_location_get_children (gloc);
-    G_GNUC_END_IGNORE_DEPRECATIONS
-
+    first_child = gweather_location_next_child (gloc, NULL);
     level = gweather_location_get_level (gloc);
 
-    if (!children[0] && level < GWEATHER_LOCATION_WEATHER_STATION) {
+    if (first_child == NULL && level < GWEATHER_LOCATION_WEATHER_STATION) {
 	return TRUE;
     }
 
@@ -92,20 +86,28 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 	gtk_tree_store_set (store, &iter,
 			    GWEATHER_XML_COL_LOCATION_NAME, name,
 			    -1);
-	if (children[0] && !children[1]) {
-	    code = gweather_location_get_code (children[0]);
-	    has_coords = gweather_location_has_coords (children[0]);
-	    latitude = longitude = 0;
-	    if (has_coords) {
-	    	gweather_location_get_coords (children[0], &latitude, &longitude);
+
+	if (first_child != NULL) {
+	    gweather_location_ref (first_child);
+	    second_child = gweather_location_next_child (gloc, first_child);
+
+	    if (second_child == NULL) {
+		code = gweather_location_get_code (first_child);
+		has_coords = gweather_location_has_coords (first_child);
+		latitude = longitude = 0;
+		if (has_coords) {
+		    gweather_location_get_coords (first_child, &latitude, &longitude);
+		}
+
+		gtk_tree_store_set (store, &iter,
+				    GWEATHER_XML_COL_METAR_CODE, code,
+				    GWEATHER_XML_COL_LATLON_VALID, has_coords,
+				    GWEATHER_XML_COL_LATITUDE, latitude,
+				    GWEATHER_XML_COL_LONGITUDE, longitude,
+				    -1);
 	    }
 
-	    gtk_tree_store_set (store, &iter,
-				GWEATHER_XML_COL_METAR_CODE, code,
-				GWEATHER_XML_COL_LATLON_VALID, has_coords,
-				GWEATHER_XML_COL_LATITUDE, latitude,
-				GWEATHER_XML_COL_LONGITUDE, longitude,
-				-1);
+	    g_clear_pointer (&second_child, gweather_location_unref);
 	}
 	break;
 
@@ -120,9 +122,7 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 		if (gweather_location_get_level (parent_loc) == GWEATHER_LOCATION_CITY)
 			name = gweather_location_get_name (parent_loc);
 
-#ifdef HAVE_GWEATHER_40
 		gweather_location_unref (parent_loc);
-#endif
 	}
 
 	code = gweather_location_get_code (gloc);
@@ -150,8 +150,12 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 	break;
     }
 
-    for (i = 0; children[i]; i++) {
-	if (!gweather_xml_parse_node (children[i], store, self)) {
+    g_clear_pointer (&first_child, gweather_location_unref);
+
+    child = NULL;
+    while ((child = gweather_location_next_child (gloc, child)) != NULL) {
+	if (!gweather_xml_parse_node (child, store, self)) {
+	    gweather_location_unref (child);
 	    return FALSE;
 	}
     }
@@ -176,9 +180,7 @@ gweather_xml_load_locations (void)
 	store = NULL;
     }
 
-#ifdef HAVE_GWEATHER_40
     gweather_location_unref (world);
-#endif
 
     return (GtkTreeModel *)store;
 }

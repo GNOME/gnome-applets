@@ -56,13 +56,9 @@ get_default_location (GWeatherApplet *gw_applet)
     location = gweather_location_find_by_station_code (world, station_code);
     g_variant_unref (default_loc);
 
-#ifdef HAVE_GWEATHER_40
     gweather_location_unref (world);
 
     return location;
-#else
-    return gweather_location_ref (location);
-#endif
 }
 
 static void
@@ -340,9 +336,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     const char *menu_resource;
     AtkObject      *atk_obj;
     GWeatherLocation *location;
-#ifdef HAVE_GWEATHER_40
     const char *contact_info;
-#endif
     GNetworkMonitor*monitor;
 
     gp_applet_set_flags (GP_APPLET (gw_applet), GP_APPLET_FLAGS_EXPAND_MINOR);
@@ -380,12 +374,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_info = gweather_info_new (location);
     gweather_location_unref (location);
 
-#ifdef HAVE_GWEATHER_40
     gweather_info_set_application_id (gw_applet->gweather_info, "org.gnome.gnome-applets");
 
     contact_info = "https://gitlab.gnome.org/GNOME/gnome-applets/-/raw/master/gnome-applets.doap";
     gweather_info_set_contact_info (gw_applet->gweather_info, contact_info);
-#endif
 
     gweather_info_set_enabled_providers (gw_applet->gweather_info,
                                          GWEATHER_PROVIDER_ALL);
@@ -399,9 +391,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     g_signal_connect (monitor, "network-changed",
                       G_CALLBACK (network_changed), gw_applet);
 
-#ifdef HAVE_GWEATHER_40
     gweather_info_update (gw_applet->gweather_info);
-#endif
 }
 
 gboolean
