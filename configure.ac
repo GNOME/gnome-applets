@@ -314,6 +314,14 @@ AS_IF([test "x$have_tracker_search_bar" = "xyes"], [
 AM_CONDITIONAL(HAVE_TRACKER_SEARCH_BAR, test "$have_tracker_search_bar" = "yes")
 
 dnl **************************************************************************
+dnl Pango
+dnl **************************************************************************
+
+PKG_CHECK_EXISTS([pango >= 1.50.0],
+                 AC_DEFINE([HAVE_PANGO_1_50_0], [1],
+                           [Define if pango is 1.50.0 or newer]))
+
+dnl **************************************************************************
 dnl GResource
 dnl **************************************************************************
 

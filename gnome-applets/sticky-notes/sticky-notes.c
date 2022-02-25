@@ -864,6 +864,28 @@ get_font_variant_from (PangoFontDescription *font_desc)
         font_variant = "small-caps";
         break;
 
+#ifdef HAVE_PANGO_1_50_0
+      case PANGO_VARIANT_ALL_SMALL_CAPS:
+        font_variant = "all-small-caps";
+        break;
+
+      case PANGO_VARIANT_PETITE_CAPS:
+        font_variant = "petite-caps";
+        break;
+
+      case PANGO_VARIANT_ALL_PETITE_CAPS:
+        font_variant = "all-petite-caps";
+        break;
+
+      case PANGO_VARIANT_UNICASE:
+        font_variant = "unicase";
+        break;
+
+      case PANGO_VARIANT_TITLE_CAPS:
+        font_variant = "title-caps";
+        break;
+#endif
+
       case PANGO_VARIANT_NORMAL:
       default:
         font_variant = "normal";
