@@ -28,7 +28,6 @@
 #include <gtk/gtk.h>
 #include <libxml/xmlreader.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 #include <libgweather/gweather.h>
 
 #include "gweather-xml.h"
@@ -88,7 +87,7 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 			    -1);
 
 	if (first_child != NULL) {
-	    gweather_location_ref (first_child);
+	    g_object_ref (first_child);
 	    second_child = gweather_location_next_child (gloc, first_child);
 
 	    if (second_child == NULL) {
@@ -107,7 +106,7 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 				    -1);
 	    }
 
-	    g_clear_pointer (&second_child, gweather_location_unref);
+	    g_clear_object (&second_child);
 	}
 	break;
 
@@ -122,7 +121,7 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 		if (gweather_location_get_level (parent_loc) == GWEATHER_LOCATION_CITY)
 			name = gweather_location_get_name (parent_loc);
 
-		gweather_location_unref (parent_loc);
+		g_object_unref (parent_loc);
 	}
 
 	code = gweather_location_get_code (gloc);
@@ -150,12 +149,12 @@ gweather_xml_parse_node (GWeatherLocation *gloc,
 	break;
     }
 
-    g_clear_pointer (&first_child, gweather_location_unref);
+    g_clear_object (&first_child);
 
     child = NULL;
     while ((child = gweather_location_next_child (gloc, child)) != NULL) {
 	if (!gweather_xml_parse_node (child, store, self)) {
-	    gweather_location_unref (child);
+	    g_object_unref (child);
 	    return FALSE;
 	}
     }
@@ -180,7 +179,7 @@ gweather_xml_load_locations (void)
 	store = NULL;
     }
 
-    gweather_location_unref (world);
+    g_object_unref (world);
 
     return (GtkTreeModel *)store;
 }

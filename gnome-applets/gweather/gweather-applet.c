@@ -56,7 +56,7 @@ get_default_location (GWeatherApplet *gw_applet)
     location = gweather_location_find_by_station_code (world, station_code);
     g_variant_unref (default_loc);
 
-    gweather_location_unref (world);
+    g_object_unref (world);
 
     return location;
 }
@@ -372,7 +372,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     location = get_default_location (gw_applet);
     gw_applet->gweather_info = gweather_info_new (location);
-    gweather_location_unref (location);
+    g_object_unref (location);
 
     gweather_info_set_application_id (gw_applet->gweather_info, "org.gnome.gnome-applets");
 
@@ -540,7 +540,7 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     location = get_default_location (gw_applet);
     gweather_info_set_location (gw_applet->gweather_info, location);
-    gweather_location_unref (location);
+    g_object_unref (location);
 
     gweather_info_update (gw_applet->gweather_info);
 }
@@ -554,7 +554,7 @@ gweather_applet_constructed (GObject *object)
 
   G_OBJECT_CLASS (gweather_applet_parent_class)->constructed (object);
 
-  self->lib_settings = g_settings_new ("org.gnome.GWeather");
+  self->lib_settings = g_settings_new ("org.gnome.GWeather4");
   self->applet_settings = gp_applet_settings_new (GP_APPLET (self),
                                                   "org.gnome.gnome-applets.gweather");
 

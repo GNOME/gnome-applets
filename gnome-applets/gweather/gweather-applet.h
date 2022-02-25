@@ -21,7 +21,6 @@
 
 #include <glib/gi18n-lib.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 #include <libgweather/gweather.h>
 
 #include <libgnome-panel/gp-applet.h>

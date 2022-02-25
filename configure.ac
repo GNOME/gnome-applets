@@ -75,7 +75,7 @@ LIBNOTIFY_REQUIRED=0.7
 UPOWER_REQUIRED=0.99.8
 ADWAITA_ICON_THEME_REQUIRED=3.14.0
 LIBXML_REQUIRED=2.5.0
-GWEATHER_REQUIRED=40.beta
+GWEATHER_REQUIRED=3.91.0
 GUCHARMAP3_REQUIRED=2.33.0
 POLKIT_REQUIRED=0.97
 dnl ***************************************************************************
@@ -171,7 +171,7 @@ dnl -- check for libxml2 (required) ------------------------------------------
 PKG_CHECK_MODULES(XML2, libxml-2.0 >= $LIBXML_REQUIRED)
 
  dnl -- check for libgweather (required) ------------------
-PKG_CHECK_MODULES(LIBGWEATHER, gweather-3.0 >= $GWEATHER_REQUIRED)
+PKG_CHECK_MODULES(LIBGWEATHER, gweather4 >= $GWEATHER_REQUIRED)
 
  dnl -- check for tracker-sparql (required for tracker-search-bar) ------------
 PKG_CHECK_MODULES([TRACKER_SEARCH_BAR], [

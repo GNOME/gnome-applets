@@ -26,7 +26,6 @@
 #include <ctype.h>
 #include <locale.h>
 
-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
 #include <libgweather/gweather.h>
 
 #include "gweather-xml.h"
