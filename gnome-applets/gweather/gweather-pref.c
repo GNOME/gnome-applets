@@ -15,9 +15,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Radar map on by default. */
-#define RADARMAP
-
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
@@ -47,13 +44,7 @@ struct _GWeatherPref
 	GtkWidget *basic_pres_combo;
 	GtkWidget *find_entry;
 	GtkWidget *find_next_btn;
-	
-#ifdef RADARMAP
-	GtkWidget *basic_radar_btn;
-	GtkWidget *basic_radar_url_btn;
-	GtkWidget *basic_radar_url_hbox;
-	GtkWidget *basic_radar_url_entry;
-#endif /* RADARMAP */
+
 	GtkWidget *basic_update_spin;
 	GtkWidget *basic_update_btn;
 	GtkWidget *tree;
@@ -119,18 +110,13 @@ gweather_pref_set_accessibility (GWeatherPref *pref)
     /* Relation between components in General page */
 
     add_atk_relation (pref->basic_update_btn, pref->basic_update_spin, ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (pref->basic_radar_btn, pref->basic_radar_url_btn, ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (pref->basic_radar_btn, pref->basic_radar_url_entry, ATK_RELATION_CONTROLLER_FOR);
 
     add_atk_relation (pref->basic_update_spin, pref->basic_update_btn, ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (pref->basic_radar_url_btn, pref->basic_radar_btn, ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (pref->basic_radar_url_entry, pref->basic_radar_btn, ATK_RELATION_CONTROLLED_BY);
 
     /* Accessible Name and Description for the components in Preference Dialog */
 
     set_access_namedesc (pref->tree, _("Location view"), _("Select Location from the list"));
     set_access_namedesc (pref->basic_update_spin, _("Update spin button"), _("Spinbutton for updating"));
-    set_access_namedesc (pref->basic_radar_url_entry, _("Address Entry"), _("Enter the URL"));
 }
 
 static gboolean
@@ -215,8 +201,6 @@ enum_to_string (const GValue *value,
 static gboolean update_dialog (GWeatherPref *pref)
 {
     GWeatherApplet *gw_applet = pref->applet;
-    gchar *radar_url;
-    gboolean has_radar, has_custom_radar;
 
     g_settings_bind_with_mapping (gw_applet->applet_settings, "auto-update-interval",
 				  pref->basic_update_spin, "value",
@@ -255,22 +239,6 @@ static gboolean update_dialog (GWeatherPref *pref)
 		     G_SETTINGS_BIND_DEFAULT,
 		     string_to_enum, enum_to_string,
 		     gweather_distance_unit_get_type, NULL);
-
-#ifdef RADARMAP
-    has_radar = g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map");
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pref->basic_radar_btn),
-				 has_radar);
-
-    radar_url = g_settings_get_string (gw_applet->lib_settings, "radar");
-    has_custom_radar = radar_url && *radar_url;
-    				 
-    gtk_widget_set_sensitive (pref->basic_radar_url_btn, has_radar);
-    gtk_widget_set_sensitive (pref->basic_radar_url_hbox, has_radar && has_custom_radar);
-    if (radar_url)
-        gtk_entry_set_text (GTK_ENTRY (pref->basic_radar_url_entry), radar_url);
-
-    g_free(radar_url);
-#endif /* RADARMAP */
 
     return TRUE;
 }
@@ -434,47 +402,6 @@ static void dist_combo_changed_cb (GtkComboBox *combo, GWeatherPref *pref)
 
     if (gw_applet->details_dialog)
         gweather_dialog_update (GWEATHER_DIALOG (gw_applet->details_dialog));
-}
-
-static void
-radar_toggled (GtkToggleButton *button, GWeatherPref *pref)
-{
-    GWeatherApplet *gw_applet = pref->applet;
-    gboolean toggled;
-    
-    toggled = gtk_toggle_button_get_active(button);
-
-    g_settings_set_boolean (gw_applet->applet_settings, "enable-radar-map", toggled);
-
-    gtk_widget_set_sensitive (pref->basic_radar_url_btn, toggled);
-    if (toggled == FALSE || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (pref->basic_radar_url_btn)) == TRUE)
-            gtk_widget_set_sensitive (pref->basic_radar_url_hbox, toggled);
-}
-
-static void
-use_radar_url_toggled (GtkToggleButton *button, GWeatherPref *pref)
-{
-    GWeatherApplet *gw_applet = pref->applet;
-    gboolean toggled;
-    
-    toggled = gtk_toggle_button_get_active(button);
-
-    if (!toggled)
-      g_settings_set_string (gw_applet->lib_settings, "radar", "");
-    gtk_widget_set_sensitive (pref->basic_radar_url_hbox, toggled);
-}
-
-static gboolean
-radar_url_changed (GtkWidget *widget, GdkEventFocus *event, GWeatherPref *pref)
-{
-    GWeatherApplet *gw_applet = pref->applet;
-    gchar *text;
-
-    text = gtk_editable_get_chars (GTK_EDITABLE (widget), 0, -1);
-
-    g_settings_set_string (gw_applet->lib_settings, "radar", text);
-
-    return FALSE;
 }
 
 static void
@@ -669,9 +596,6 @@ gweather_pref_create (GWeatherPref *pref)
 {
     GtkWidget *pref_vbox;
     GtkWidget *pref_notebook;
-#ifdef RADARMAP
-    GtkWidget *radar_toggle_hbox;
-#endif /* RADARMAP */
     GtkWidget *pref_basic_update_alignment;
     GtkWidget *pref_basic_update_lbl;
     GtkWidget *pref_basic_update_hbox;
@@ -681,7 +605,7 @@ gweather_pref_create (GWeatherPref *pref)
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
-    GtkWidget *label, *value_hbox, *tree_label;
+    GtkWidget *value_hbox, *tree_label;
     GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
     GtkWidget *vbox;
@@ -846,46 +770,6 @@ gweather_pref_create (GWeatherPref *pref)
 	g_signal_connect (dist_combo, "changed", G_CALLBACK (dist_combo_changed_cb), pref);
 	g_signal_connect (pres_combo, "changed", G_CALLBACK (pres_combo_changed_cb), pref);
 
-#ifdef RADARMAP
-    pref->basic_radar_btn = gtk_check_button_new_with_mnemonic (_("Enable _radar map"));
-    gtk_widget_show (pref->basic_radar_btn);
-    g_signal_connect (G_OBJECT (pref->basic_radar_btn), "toggled",
-    		      G_CALLBACK (radar_toggled), pref);
-    
-    radar_toggle_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-    gtk_widget_show (radar_toggle_hbox);
-    
-    label = gtk_label_new ("    ");
-    gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (radar_toggle_hbox), label, FALSE, FALSE, 0); 
-					      
-    pref->basic_radar_url_btn = gtk_check_button_new_with_mnemonic (_("Use _custom address for radar map"));
-    gtk_widget_show (pref->basic_radar_url_btn);
-    gtk_box_pack_start (GTK_BOX (radar_toggle_hbox), pref->basic_radar_url_btn, FALSE, FALSE, 0);
-
-    g_signal_connect (G_OBJECT (pref->basic_radar_url_btn), "toggled",
-    		      G_CALLBACK (use_radar_url_toggled), pref);
-    		      
-    pref->basic_radar_url_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-    gtk_widget_show (pref->basic_radar_url_hbox);
-
-    label = gtk_label_new ("    ");
-    gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (pref->basic_radar_url_hbox),
-    			label, FALSE, FALSE, 0); 
-			
-    label = gtk_label_new_with_mnemonic (_("A_ddress:"));
-    gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (pref->basic_radar_url_hbox),
-    			label, FALSE, FALSE, 0); 
-    pref->basic_radar_url_entry = gtk_entry_new ();
-    gtk_widget_show (pref->basic_radar_url_entry);
-    gtk_box_pack_start (GTK_BOX (pref->basic_radar_url_hbox),
-                        pref->basic_radar_url_entry, TRUE, TRUE, 0);
-    g_signal_connect (G_OBJECT (pref->basic_radar_url_entry), "focus_out_event",
-    		      G_CALLBACK (radar_url_changed), pref);
-#endif /* RADARMAP */
-
     frame = create_hig_catagory (pref_basic_vbox, _("Update"));
 
     pref_basic_update_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
@@ -926,13 +810,6 @@ gweather_pref_create (GWeatherPref *pref)
     vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 
   gtk_box_pack_start (GTK_BOX (vbox), unit_grid, TRUE, TRUE, 0);
-
-#ifdef RADARMAP
-    gtk_box_pack_start (GTK_BOX (vbox), pref->basic_radar_btn, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), radar_toggle_hbox, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), pref->basic_radar_url_hbox, TRUE,
-    			TRUE, 0);
-#endif /* RADARMAP */
 
     gtk_container_add (GTK_CONTAINER (frame), vbox);
 
@@ -1008,7 +885,6 @@ gweather_pref_create (GWeatherPref *pref)
 
     gweather_pref_set_accessibility (pref); 
     gtk_label_set_mnemonic_widget (GTK_LABEL (pref_basic_update_sec_lbl), pref->basic_update_spin);
-    gtk_label_set_mnemonic_widget (GTK_LABEL (label), pref->basic_radar_url_entry);
 }
 
 static void

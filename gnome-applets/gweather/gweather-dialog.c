@@ -47,7 +47,6 @@ struct _GWeatherDialog
   GtkWidget      *cond_sunrise;
   GtkWidget      *cond_sunset;
   GtkWidget      *cond_image;
-  GtkWidget      *radar_image;
 
   GtkWidget      *forecast_text;
   GSettings      *monospace_settings;
@@ -79,16 +78,6 @@ response_cb (GWeatherDialog *dialog,
     } else {
         gtk_widget_destroy (GTK_WIDGET(dialog));
     }
-}
-
-static void
-link_cb (GtkButton *button,
-         gpointer data)
-{
-    gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (button)),
-		    "http://www.weather.com/",
-		    gtk_get_current_event_time (),
-		    NULL);
 }
 
 static GString *
@@ -176,14 +165,8 @@ gweather_dialog_create (GWeatherDialog *dialog)
   GtkWidget *cond_frame_alignment;
   GtkWidget *current_note_lbl;
   GtkWidget *forecast_note_lbl;
-  GtkWidget *radar_note_lbl;
-  GtkWidget *radar_vbox;
-  GtkWidget *radar_link_btn;
-  GtkWidget *radar_link_alignment;
   GtkWidget *forecast_hbox;
-  GtkWidget *ebox;
   GtkWidget *scrolled_window;
-  GtkWidget *imagescroll_window;
 
   gw_applet = dialog->applet;
 
@@ -198,10 +181,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 2);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 
-  if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map"))
-      gtk_window_set_default_size (GTK_WINDOW (dialog), 570,440);
-  else
-      gtk_window_set_default_size (GTK_WINDOW (dialog), 590, 340);
+  gtk_window_set_default_size (GTK_WINDOW (dialog), 590, 340);
 
   gtk_window_set_screen (GTK_WINDOW (dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (gw_applet)));
@@ -445,51 +425,6 @@ gweather_dialog_create (GWeatherDialog *dialog)
   forecast_note_lbl = gtk_label_new (_("Forecast"));
   gtk_widget_show (forecast_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
-
-  if (g_settings_get_boolean (gw_applet->applet_settings, "enable-radar-map")) {
-
-      radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
-      gtk_widget_show (radar_note_lbl);
-
-      radar_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-      gtk_widget_show (radar_vbox);
-      gtk_notebook_append_page (GTK_NOTEBOOK (weather_notebook), radar_vbox, radar_note_lbl);
-      gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
-
-      dialog->radar_image = gtk_image_new ();
-      
-      imagescroll_window = gtk_scrolled_window_new (NULL, NULL);
-      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (imagescroll_window),
-                                 GTK_POLICY_AUTOMATIC,
-                                 GTK_POLICY_AUTOMATIC);
-      gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (imagescroll_window),
-                                      GTK_SHADOW_ETCHED_IN);
-      
-      ebox = gtk_event_box_new ();
-      gtk_widget_show (ebox);
-
-      gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(imagescroll_window),ebox);
-      gtk_box_pack_start (GTK_BOX (radar_vbox), imagescroll_window, TRUE, TRUE, 0);
-      gtk_widget_show (dialog->radar_image);
-      gtk_widget_show (imagescroll_window);
-      
-      gtk_container_add (GTK_CONTAINER (ebox), dialog->radar_image);
-
-      radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
-      gtk_widget_show (radar_link_alignment);
-      gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
-
-      /* XXX: weather.com? is this an advert? */
-      radar_link_btn = gtk_button_new_with_mnemonic (_("_Visit Weather.com"));
-      set_access_namedesc (radar_link_btn, _("Visit Weather.com"), _("Click to Enter Weather.com"));
-      gtk_widget_set_size_request (radar_link_btn, 450, -2);
-      gtk_widget_show (radar_link_btn);
-      gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
-
-      g_signal_connect (G_OBJECT (radar_link_btn), "clicked",
-                        G_CALLBACK (link_cb), NULL);
-
-  }
 
   g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (response_cb), NULL);
 }
@@ -741,19 +676,4 @@ gweather_dialog_update (GWeatherDialog *dialog)
     }
 
   g_free (forecast);
-
-  /* Update radar map */
-  if (g_settings_get_boolean (dialog->applet->applet_settings,
-                              "enable-radar-map"))
-    {
-      GdkPixbufAnimation *radar;
-
-      radar = gweather_info_get_radar (weather_info);
-
-      if (radar)
-        {
-          gtk_image_set_from_animation (GTK_IMAGE (dialog->radar_image), radar);
-          g_object_unref (radar);
-        }
-    }
 }
