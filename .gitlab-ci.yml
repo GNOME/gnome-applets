@@ -41,6 +41,8 @@ ubuntu:
   stage: build
   except:
     - tags
+  tags:
+    - crun
   before_script:
     - apt-get update
     - *install-ubuntu-dependencies
@@ -53,6 +55,8 @@ coverity:
   image: ubuntu:devel
   stage: analysis
   when: manual
+  tags:
+    - crun
   before_script:
     - apt-get update
     - *install-ubuntu-dependencies
