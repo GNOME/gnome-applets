@@ -222,12 +222,12 @@ resource_files = \
 ga-resources.c: gnome-applets.gresource.xml Makefile.am $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) \
 		--target=$@ --sourcedir=$(srcdir) \
-		--generate --c-name ga $<
+		--generate --c-name ga $< || true
 
 ga-resources.h: gnome-applets.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) \
 		--target=$@ --sourcedir=$(srcdir) \
-		--generate --c-name ga $<
+		--generate --c-name ga $< || true
 
 BUILT_SOURCES = \
 	ga-resources.c \
