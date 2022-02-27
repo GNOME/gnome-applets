@@ -60,7 +60,7 @@ dnl **************************************************************************
 dnl libgtop uses TIME_WITH_SYS_TIME in global.h
 dnl **************************************************************************
 
-AC_HEADER_TIME
+AC_DEFINE([TIME_WITH_SYS_TIME], [1], [Define to 1 for libgtop])
 
 dnl ***************************************************************************
 dnl *** Minimum library versions for GNOME Applets                          ***
@@ -89,7 +89,6 @@ if test x$GLIB_COMPILE_RESOURCES = xno; then
 fi
 
 AC_PROG_CC
-AC_ISC_POSIX
 AC_PATH_XTRA
 
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
