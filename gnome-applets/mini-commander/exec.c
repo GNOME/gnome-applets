@@ -39,7 +39,8 @@ static void beep (void);
 static void
 set_environment (gpointer display)
 {
-	g_setenv ("DISPLAY", display, TRUE);
+	if (!g_setenv ("DISPLAY", display, TRUE))
+		g_warning ("Failed to set DISPLAY environment variable");
 }
 
 void
