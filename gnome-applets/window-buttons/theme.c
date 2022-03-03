@@ -134,6 +134,9 @@ loadThemeComboBox (GtkComboBox *combo,
 				2, 1+N_THEMES++,
 				-1 );
 	}
+
+	g_dir_close (dir_themes);
+
 	if (active<0) active = N_THEMES;
 
     gtk_list_store_append( store, &iter );
