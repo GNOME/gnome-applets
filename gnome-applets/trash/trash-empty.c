@@ -273,16 +273,6 @@ trash_empty_start (GtkWidget *parent)
   gtk_widget_show (GTK_WIDGET (trash_empty_dialog));
 }
 
-static gboolean
-trash_empty_require_confirmation (void)
-{
-  GSettings *settings = g_settings_new ("org.gnome.nautilus.preferences");
-  gboolean confirm_trash = g_settings_get_boolean (settings, "confirm-trash");
-  g_object_unref (settings);
-
-  return confirm_trash;
-}
-
 static void
 trash_empty_confirmation_response (GtkDialog *dialog,
                                    gint       response_id,
@@ -306,12 +296,6 @@ trash_empty_show_confirmation_dialog (GtkWidget *parent)
   GtkWidget *dialog;
   GtkWidget *button;
   GdkScreen *screen;
-
-  if (!trash_empty_require_confirmation ())
-    {
-      trash_empty_start (parent);
-      return;
-    }
 
   screen = gtk_widget_get_screen (parent);
 
