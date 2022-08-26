@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2022-07-27 15:38+0000\n"
-"PO-Revision-Date: 2022-08-26 15:45+0200\n"
+"POT-Creation-Date: 2022-08-26 13:48+0000\n"
+"PO-Revision-Date: 2022-08-26 15:52+0200\n"
 "Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
 "net>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -230,10 +230,18 @@ msgid "The interval, in seconds, between automatic updates."
 msgstr "Razdoblje, u sekundama, između automatske nadopune."
 
 #: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:15
+msgid "Display radar map"
+msgstr "Prikaži radarsku kartu"
+
+#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:16
+msgid "Fetch a radar map on each update."
+msgstr "Dohvati radarsku kartu pri svakoj nadopuni."
+
+#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:20
 msgid "Show notification"
 msgstr "Prikaži obavijesti"
 
-#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:16
+#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:21
 msgid "Show notifications for critical weather conditions"
 msgstr "Prikaži obavijesti za kritične vremensk uvjete"
 
@@ -1078,7 +1086,7 @@ msgstr "Prikazuje stanje AccessX značajke, kao što su zaključani izmjenjivač
 #: gnome-applets/cpufreq/cpufreq-applet.c:1005
 #: gnome-applets/drivemount/drivemount-applet.c:176
 #: gnome-applets/geyes/geyes-applet.c:410
-#: gnome-applets/gweather/gweather-applet.c:616
+#: gnome-applets/gweather/gweather-applet.c:626
 #: gnome-applets/inhibit/inhibit-applet.c:431
 #: gnome-applets/mini-commander/mini-commander-applet.c:470
 #: gnome-applets/multiload/multiload-applet.c:514
@@ -1858,20 +1866,20 @@ msgid "_Details"
 msgstr "_Pojedinosti"
 
 #: gnome-applets/gweather/gweather-applet-menu.ui:9
-#: gnome-applets/gweather/gweather-dialog.c:176
+#: gnome-applets/gweather/gweather-dialog.c:193
 msgid "_Update"
 msgstr "_Nadopuni"
 
-#: gnome-applets/gweather/gweather-applet.c:358
-#: gnome-applets/gweather/gweather-applet.c:362
+#: gnome-applets/gweather/gweather-applet.c:364
+#: gnome-applets/gweather/gweather-applet.c:368
 msgid "GNOME Weather"
 msgstr "GNOME Vrijeme"
 
-#: gnome-applets/gweather/gweather-applet.c:467
+#: gnome-applets/gweather/gweather-applet.c:477
 msgid "Weather Forecast"
 msgstr "Vremenska prognoza"
 
-#: gnome-applets/gweather/gweather-applet.c:486
+#: gnome-applets/gweather/gweather-applet.c:496
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1882,123 +1890,148 @@ msgstr ""
 "Naoblaka: %s\n"
 "Temperatura: %s"
 
-#: gnome-applets/gweather/gweather-applet.c:539
+#: gnome-applets/gweather/gweather-applet.c:549
 msgid "Updating..."
 msgstr "Nadopunjivanje..."
 
-#: gnome-applets/gweather/gweather-applet.c:588
+#: gnome-applets/gweather/gweather-applet.c:598
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Aplikacija panela za praćenje lokalnih vremenskih uvjeta."
 
-#: gnome-applets/gweather/gweather-applet.c:610
+#: gnome-applets/gweather/gweather-applet.c:620
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 S. Papadimitriou i suradnici"
 
-#: gnome-applets/gweather/gweather-dialog.c:174
+#: gnome-applets/gweather/gweather-dialog.c:191
 msgid "Details"
 msgstr "Pojedinosti"
 
-#: gnome-applets/gweather/gweather-dialog.c:212
+#: gnome-applets/gweather/gweather-dialog.c:232
 msgid "City:"
 msgstr "Grad:"
 
-#: gnome-applets/gweather/gweather-dialog.c:218
+#: gnome-applets/gweather/gweather-dialog.c:238
 msgid "Last update:"
 msgstr "Posljednja nadopuna:"
 
-#: gnome-applets/gweather/gweather-dialog.c:224
+#: gnome-applets/gweather/gweather-dialog.c:244
 msgid "Conditions:"
 msgstr "Stanje:"
 
-#: gnome-applets/gweather/gweather-dialog.c:230
+#: gnome-applets/gweather/gweather-dialog.c:250
 msgid "Sky:"
 msgstr "Naoblaka:"
 
-#: gnome-applets/gweather/gweather-dialog.c:236
+#: gnome-applets/gweather/gweather-dialog.c:256
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gnome-applets/gweather/gweather-dialog.c:242
+#: gnome-applets/gweather/gweather-dialog.c:262
 msgid "Feels like:"
 msgstr "Kao da je:"
 
-#: gnome-applets/gweather/gweather-dialog.c:248
+#: gnome-applets/gweather/gweather-dialog.c:268
 msgid "Dew point:"
 msgstr "Rosište:"
 
-#: gnome-applets/gweather/gweather-dialog.c:254
+#: gnome-applets/gweather/gweather-dialog.c:274
 msgid "Relative humidity:"
 msgstr "Relativna vlažnost:"
 
-#: gnome-applets/gweather/gweather-dialog.c:260
+#: gnome-applets/gweather/gweather-dialog.c:280
 msgid "Wind:"
 msgstr "Vjetar:"
 
-#: gnome-applets/gweather/gweather-dialog.c:266
+#: gnome-applets/gweather/gweather-dialog.c:286
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: gnome-applets/gweather/gweather-dialog.c:272
+#: gnome-applets/gweather/gweather-dialog.c:292
 msgid "Visibility:"
 msgstr "Vidljivost:"
 
-#: gnome-applets/gweather/gweather-dialog.c:278
+#: gnome-applets/gweather/gweather-dialog.c:298
 msgid "Sunrise:"
 msgstr "Izlazak sunca:"
 
-#: gnome-applets/gweather/gweather-dialog.c:284
+#: gnome-applets/gweather/gweather-dialog.c:304
 msgid "Sunset:"
 msgstr "Zalazak sunca:"
 
-#: gnome-applets/gweather/gweather-dialog.c:390
+#: gnome-applets/gweather/gweather-dialog.c:410
 msgid "Current Conditions"
 msgstr "Trenutno stanje"
 
-#: gnome-applets/gweather/gweather-dialog.c:405
+#: gnome-applets/gweather/gweather-dialog.c:425
 msgid "Forecast Report"
 msgstr "Vremenska prognoza"
 
-#: gnome-applets/gweather/gweather-dialog.c:405
+#: gnome-applets/gweather/gweather-dialog.c:425
 msgid "See the ForeCast Details"
 msgstr "Pogledajte opširniju vremensku prognozu"
 
-#: gnome-applets/gweather/gweather-dialog.c:425
+#: gnome-applets/gweather/gweather-dialog.c:445
 msgid "Forecast"
 msgstr "Vremenska prognoza"
 
-#: gnome-applets/gweather/gweather-dialog.c:674
+#: gnome-applets/gweather/gweather-dialog.c:451
+msgid "Radar Map"
+msgstr "Radarska mapa"
+
+#. XXX: weather.com? is this an advert?
+#: gnome-applets/gweather/gweather-dialog.c:483
+msgid "_Visit Weather.com"
+msgstr "_Posjetite Weather.com"
+
+#: gnome-applets/gweather/gweather-dialog.c:484
+msgid "Visit Weather.com"
+msgstr "Posjetite Weather.com"
+
+#: gnome-applets/gweather/gweather-dialog.c:484
+msgid "Click to Enter Weather.com"
+msgstr "Kliknite za posjećivanje stranica Weather.com"
+
+#: gnome-applets/gweather/gweather-dialog.c:739
 msgid "Forecast not currently available for this location."
 msgstr "Vremenska prognoza trenutno je nedostupna za ovu lokaciju."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gnome-applets/gweather/gweather-pref.c:117
+#: gnome-applets/gweather/gweather-pref.c:131
 msgid "Location view"
 msgstr "Pregled lokacije"
 
-#: gnome-applets/gweather/gweather-pref.c:117
+#: gnome-applets/gweather/gweather-pref.c:131
 msgid "Select Location from the list"
 msgstr "Odaberi lokaciju iz popisa"
 
-#: gnome-applets/gweather/gweather-pref.c:118
+#: gnome-applets/gweather/gweather-pref.c:132
 msgid "Update spin button"
 msgstr "Osvježi rotirajuću tipku"
 
-#: gnome-applets/gweather/gweather-pref.c:118
+#: gnome-applets/gweather/gweather-pref.c:132
 msgid "Spinbutton for updating"
 msgstr "Rotirajuća tipka za osvježavanje"
 
-#: gnome-applets/gweather/gweather-pref.c:332
+#: gnome-applets/gweather/gweather-pref.c:133
+msgid "Address Entry"
+msgstr "Polje za adresu"
+
+#: gnome-applets/gweather/gweather-pref.c:133
+msgid "Enter the URL"
+msgstr "Unesite adresu"
+
+#: gnome-applets/gweather/gweather-pref.c:365
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Nemoguće učitavanje XML baze podatka lokacije.  Prijavite ovo kao grešku."
 
-#: gnome-applets/gweather/gweather-pref.c:626
+#: gnome-applets/gweather/gweather-pref.c:703
 msgid "Weather Preferences"
 msgstr "Osobitosti vremena"
 
-#: gnome-applets/gweather/gweather-pref.c:657
-#: gnome-applets/gweather/gweather-pref.c:776
+#: gnome-applets/gweather/gweather-pref.c:734
+#: gnome-applets/gweather/gweather-pref.c:893
 msgid "_Automatically update every:"
 msgstr "_Automatski nadopuni svakih:"
 
@@ -2006,147 +2039,159 @@ msgstr "_Automatski nadopuni svakih:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: gnome-applets/gweather/gweather-pref.c:668
+#: gnome-applets/gweather/gweather-pref.c:745
 msgid "_Temperature unit:"
 msgstr "_Jedinica temperature:"
 
 #. Default means device with default route set
-#: gnome-applets/gweather/gweather-pref.c:677
-#: gnome-applets/gweather/gweather-pref.c:695
-#: gnome-applets/gweather/gweather-pref.c:718
-#: gnome-applets/gweather/gweather-pref.c:744
+#: gnome-applets/gweather/gweather-pref.c:754
+#: gnome-applets/gweather/gweather-pref.c:772
+#: gnome-applets/gweather/gweather-pref.c:795
+#: gnome-applets/gweather/gweather-pref.c:821
 #: gnome-applets/netspeed/preferences.c:171
 msgid "Default"
 msgstr "Zadana"
 
-#: gnome-applets/gweather/gweather-pref.c:678
+#: gnome-applets/gweather/gweather-pref.c:755
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gnome-applets/gweather/gweather-pref.c:680
+#: gnome-applets/gweather/gweather-pref.c:757
 msgid "Celsius"
 msgstr "Celzijus"
 
-#: gnome-applets/gweather/gweather-pref.c:681
+#: gnome-applets/gweather/gweather-pref.c:758
 msgid "Fahrenheit"
 msgstr "Farenhajt"
 
 #. Speed Unit
-#: gnome-applets/gweather/gweather-pref.c:686
+#: gnome-applets/gweather/gweather-pref.c:763
 msgid "_Wind speed unit:"
 msgstr "_Jedinica brzine vjetra:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gnome-applets/gweather/gweather-pref.c:697
+#: gnome-applets/gweather/gweather-pref.c:774
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gnome-applets/gweather/gweather-pref.c:699
+#: gnome-applets/gweather/gweather-pref.c:776
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gnome-applets/gweather/gweather-pref.c:701
+#: gnome-applets/gweather/gweather-pref.c:778
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gnome-applets/gweather/gweather-pref.c:703
+#: gnome-applets/gweather/gweather-pref.c:780
 msgid "knots"
 msgstr "čvorova"
 
-#: gnome-applets/gweather/gweather-pref.c:704
+#: gnome-applets/gweather/gweather-pref.c:781
 msgid "Beaufort scale"
 msgstr "Boforova skala"
 
 #. Pressure Unit
-#: gnome-applets/gweather/gweather-pref.c:709
+#: gnome-applets/gweather/gweather-pref.c:786
 msgid "_Pressure unit:"
 msgstr "_Jedinica tlaka:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gnome-applets/gweather/gweather-pref.c:720
+#: gnome-applets/gweather/gweather-pref.c:797
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gnome-applets/gweather/gweather-pref.c:722
+#: gnome-applets/gweather/gweather-pref.c:799
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gnome-applets/gweather/gweather-pref.c:724
+#: gnome-applets/gweather/gweather-pref.c:801
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gnome-applets/gweather/gweather-pref.c:726
+#: gnome-applets/gweather/gweather-pref.c:803
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gnome-applets/gweather/gweather-pref.c:728
+#: gnome-applets/gweather/gweather-pref.c:805
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: gnome-applets/gweather/gweather-pref.c:730
+#: gnome-applets/gweather/gweather-pref.c:807
 msgid "atm"
 msgstr "atm"
 
 #. Distance Unit
-#: gnome-applets/gweather/gweather-pref.c:735
+#: gnome-applets/gweather/gweather-pref.c:812
 msgid "_Visibility unit:"
 msgstr "_Jedinica vidljivosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gnome-applets/gweather/gweather-pref.c:746
+#: gnome-applets/gweather/gweather-pref.c:823
 msgid "meters"
 msgstr "metara"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gnome-applets/gweather/gweather-pref.c:748
+#: gnome-applets/gweather/gweather-pref.c:825
 msgid "km"
 msgstr "kilometara"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gnome-applets/gweather/gweather-pref.c:750
+#: gnome-applets/gweather/gweather-pref.c:827
 msgid "miles"
 msgstr "milja"
 
-#: gnome-applets/gweather/gweather-pref.c:772
+#: gnome-applets/gweather/gweather-pref.c:850
+msgid "Enable _radar map"
+msgstr "Uključi _radarsku mapu"
+
+#: gnome-applets/gweather/gweather-pref.c:862
+msgid "Use _custom address for radar map"
+msgstr "Korištenje _vlastite URL adrese za radarsku mapu"
+
+#: gnome-applets/gweather/gweather-pref.c:877
+msgid "A_ddress:"
+msgstr "A_dresa:"
+
+#: gnome-applets/gweather/gweather-pref.c:889
 msgid "Update"
 msgstr "Nadopuni"
 
-#: gnome-applets/gweather/gweather-pref.c:795
+#: gnome-applets/gweather/gweather-pref.c:912
 msgid "minutes"
 msgstr "minuta"
 
-#: gnome-applets/gweather/gweather-pref.c:807
+#: gnome-applets/gweather/gweather-pref.c:924
 msgid "Display"
 msgstr "Prikaz"
 
-#: gnome-applets/gweather/gweather-pref.c:815
+#: gnome-applets/gweather/gweather-pref.c:939
 #: gnome-applets/mini-commander/mini-commander.ui:429
 #: gnome-applets/window-title/window-title.ui:127
 msgid "General"
 msgstr "Općenito"
 
-#: gnome-applets/gweather/gweather-pref.c:828
+#: gnome-applets/gweather/gweather-pref.c:952
 msgid "_Select a location:"
 msgstr "Odaberite _lokaciju:"
 
-#: gnome-applets/gweather/gweather-pref.c:853
+#: gnome-applets/gweather/gweather-pref.c:977
 msgid "_Find:"
 msgstr "_Potraži:"
 
-#: gnome-applets/gweather/gweather-pref.c:860
+#: gnome-applets/gweather/gweather-pref.c:984
 msgid "Find _Next"
 msgstr "Potraži _sljedeće"
 
-#: gnome-applets/gweather/gweather-pref.c:878
+#: gnome-applets/gweather/gweather-pref.c:1002
 msgid "Location"
 msgstr "Lokacija"
 
@@ -2837,11 +2882,11 @@ msgstr "Prikaži ljepljive bilješke"
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Ljepljive bilješke za GNOME radno okruženje"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1028
+#: gnome-applets/sticky-notes/sticky-notes.c:1006
 msgid "This note is locked."
 msgstr "Ova bilješka je zaključana."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1032
+#: gnome-applets/sticky-notes/sticky-notes.c:1010
 msgid "This note is unlocked."
 msgstr "Ova bilješka je otključana."
 
@@ -4216,30 +4261,6 @@ msgstr "Naslov prozora za vaš GNOME panel."
 
 #~ msgid "Gweather Applet Factory"
 #~ msgstr "Gweather tvornica apleta"
-
-#~ msgid "Radar Map"
-#~ msgstr "Radarska mapa"
-
-#~ msgid "_Visit Weather.com"
-#~ msgstr "_Posjetite Weather.com"
-
-#~ msgid "Visit Weather.com"
-#~ msgstr "Posjetite Weather.com"
-
-#~ msgid "Click to Enter Weather.com"
-#~ msgstr "Kliknite za posjećivanje stranica Weather.com"
-
-#~ msgid "Address Entry"
-#~ msgstr "Polje za adresu"
-
-#~ msgid "Enter the URL"
-#~ msgstr "Unesite adresu"
-
-#~ msgid "Enable _radar map"
-#~ msgstr "Uključi _radarsku mapu"
-
-#~ msgid "Use _custom address for radar map"
-#~ msgstr "Korištenje _vlastite URL adrese za radarsku mapu"
 
 #~ msgid "Invest"
 #~ msgstr "Uloži"
