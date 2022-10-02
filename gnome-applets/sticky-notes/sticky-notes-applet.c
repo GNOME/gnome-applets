@@ -250,9 +250,18 @@ sticky_notes_applet_dispose (GObject *object)
 
   self = STICKY_NOTES_APPLET (object);
 
+  if (self->notes != NULL)
+    {
+      stickynotes_save_now (self);
+
+      g_list_free_full (self->notes, (GDestroyNotify) stickynote_free);
+      self->notes = NULL;
+    }
+
   g_clear_object (&self->icon_normal);
   g_clear_object (&self->icon_prelight);
 
+  g_clear_pointer (&self->destroy_all_dialog, gtk_widget_destroy);
   g_clear_pointer (&self->w_prefs, gtk_widget_destroy);
 
   G_OBJECT_CLASS (sticky_notes_applet_parent_class)->dispose (object);
@@ -634,25 +643,6 @@ applet_placement_changed_cb (GpApplet          *applet,
 	self->panel_orient = orientation;
 }
 
-static void
-applet_destroy_cb (GtkWidget         *widget,
-                   StickyNotesApplet *applet)
-{
-	GList *notes;
-
-	stickynotes_save_now (applet);
-
-	if (applet->destroy_all_dialog != NULL)
-		gtk_widget_destroy (applet->destroy_all_dialog);
-
-	notes = applet->notes;
-	while (notes) {
-		StickyNote *note = notes->data;
-		stickynote_free (note);
-		notes = g_list_next (notes);
-	}
-}
-
 /* Create a Sticky Notes applet */
 static void
 sticky_notes_applet_new (StickyNotesApplet *applet)
@@ -716,8 +706,6 @@ sticky_notes_applet_new (StickyNotesApplet *applet)
 			G_CALLBACK(applet_size_allocate_cb), applet);
 	g_signal_connect(applet, "placement-changed",
 			G_CALLBACK(applet_placement_changed_cb), applet);
-	g_signal_connect(applet, "destroy",
-			G_CALLBACK(applet_destroy_cb), applet);
 
 	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
 	atk_object_set_name (atk_obj, _("Sticky Notes"));
