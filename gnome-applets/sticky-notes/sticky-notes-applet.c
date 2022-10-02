@@ -264,6 +264,8 @@ sticky_notes_applet_dispose (GObject *object)
   g_clear_pointer (&self->destroy_all_dialog, gtk_widget_destroy);
   g_clear_pointer (&self->w_prefs, gtk_widget_destroy);
 
+  g_clear_object (&self->settings);
+
   G_OBJECT_CLASS (sticky_notes_applet_parent_class)->dispose (object);
 }
 
