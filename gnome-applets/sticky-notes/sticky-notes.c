@@ -1145,6 +1145,7 @@ stickynotes_save_now (StickyNotesApplet *applet)
 	char *notes_file;
 	xmlDocPtr doc;
 	xmlNodePtr root;
+	WnckHandle *wnck_handle;
 	WnckScreen *wnck_screen;
 	const gchar *title;
 	GtkTextBuffer *buffer;
@@ -1176,7 +1177,8 @@ stickynotes_save_now (StickyNotesApplet *applet)
 	xmlDocSetRootElement(doc, root);
 	xmlNewProp(root, XML_CHAR("version"), XML_CHAR (VERSION));
 
-	wnck_screen = wnck_screen_get_default ();
+	wnck_handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+	wnck_screen = wnck_handle_get_default_screen (wnck_handle);
 	wnck_screen_force_update (wnck_screen);
 
 	/* For all sticky notes */
@@ -1196,7 +1198,7 @@ stickynotes_save_now (StickyNotesApplet *applet)
 		gchar *y_str = g_strdup_printf("%d", note->y);
 
 		xid = GDK_WINDOW_XID (gtk_widget_get_window (note->w_window));
-		wnck_win = wnck_window_get (xid);
+		wnck_win = wnck_handle_get_window (wnck_handle, xid);
 
 		if (!g_settings_get_boolean (note->applet->settings, KEY_STICKY) &&
 			wnck_win)
@@ -1253,6 +1255,8 @@ stickynotes_save_now (StickyNotesApplet *applet)
 		g_free(h_str);
 		g_free(body);
 	}
+
+	g_clear_object (&wnck_handle);
 
 	{
 		char *tmp_file;
