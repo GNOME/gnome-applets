@@ -86,6 +86,7 @@ struct _WTApplet
 
 	/* Variables */
 	WTPreferences	*prefs;					// Main properties
+	WnckHandle *handle;
 	WnckScreen 		*activescreen;			// Active screen
 
 	gulong active_window_changed_id;

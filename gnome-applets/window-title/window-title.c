@@ -120,6 +120,8 @@ wt_applet_dispose (GObject *object)
         }
     }
 
+  g_clear_object (&self->handle);
+
   G_OBJECT_CLASS (wt_applet_parent_class)->dispose (object);
 }
 
@@ -137,7 +139,7 @@ wt_applet_class_init (WTAppletClass *self_class)
 static void
 wt_applet_init (WTApplet *self)
 {
-  wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+  self->handle = wnck_handle_new (WNCK_CLIENT_TYPE_PAGER);
 }
 
 /* Safely returns the bottom-most (root) window */
@@ -696,7 +698,7 @@ init_wtapplet (WTApplet *wtapplet)
 
 	wtapplet->settings = gp_applet_settings_new (applet, WINDOWTITLE_GSCHEMA);
 	wtapplet->prefs = wt_applet_load_preferences(wtapplet);
-	wtapplet->activescreen = wnck_screen_get_default();
+	wtapplet->activescreen = wnck_handle_get_default_screen (wtapplet->handle);
 	wnck_screen_force_update(wtapplet->activescreen);
 	wtapplet->activeworkspace = wnck_screen_get_active_workspace(wtapplet->activescreen);
 	wtapplet->activewindow = wnck_screen_get_active_window(wtapplet->activescreen);
