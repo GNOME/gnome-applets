@@ -7,6 +7,8 @@ libnet_speed_applet_la_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.net-speed\" \
 	-DG_LOG_USE_STRUCTURED=1 \
 	-DPKG_DATA_DIR=\""$(pkgdatadir)"\" \
+	-DTIME_WITH_SYS_TIME=1 \
+	-DHAVE_SYS_TIME_H=1 \
 	-I$(top_srcdir) \
 	$(NULL)
 
