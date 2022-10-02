@@ -22,7 +22,7 @@
  */
 
 #include "config.h"
-#include "wp-applet.h"
+#include "wp-applet-private.h"
 
 #include <gdk/gdk.h>
 #include <glib.h>
@@ -41,6 +41,8 @@
 struct _WpApplet
 {
   GpApplet     parent;
+
+  WnckHandle  *handle;
 
   GSettings   *settings;
 
@@ -169,6 +171,8 @@ wp_applet_contructed (GObject *object)
   applet = WP_APPLET (object);
   gp_applet = GP_APPLET (object);
 
+  applet->handle = wnck_handle_new (WNCK_CLIENT_TYPE_PAGER);
+
   wp_applet_setup_list (applet);
   wp_applet_setup_title (applet);
 
@@ -202,6 +206,7 @@ wp_applet_dispose (GObject *object)
 
   g_clear_object (&applet->settings);
   g_clear_pointer (&applet->preferences_dialog, gtk_widget_destroy);
+  g_clear_object (&applet->handle);
 
   G_OBJECT_CLASS (wp_applet_parent_class)->dispose (object);
 }
@@ -334,6 +339,12 @@ wp_applet_init (WpApplet *applet)
 
   applet->container = gtk_box_new (orientation, 10);
   gtk_container_add (GTK_CONTAINER (applet), applet->container);
+}
+
+WnckScreen *
+wp_applet_get_default_screen (WpApplet *self)
+{
+  return wnck_handle_get_default_screen (self->handle);
 }
 
 GtkWidget *

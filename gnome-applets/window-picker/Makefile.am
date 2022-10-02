@@ -29,6 +29,7 @@ libwindow_picker_applet_la_LIBADD = \
 	$(NULL)
 
 libwindow_picker_applet_la_SOURCES = \
+	wp-applet-private.h \
 	wp-applet.c \
 	wp-applet.h \
 	wp-preferences-dialog.c \

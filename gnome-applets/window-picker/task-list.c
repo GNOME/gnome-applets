@@ -337,8 +337,6 @@ task_list_class_init(TaskListClass *class) {
 }
 
 static void task_list_init (TaskList *list) {
-    list->screen = wnck_screen_get_default ();
-
     list->items = g_hash_table_new_full (NULL, NULL,
                                          NULL, (GDestroyNotify) gtk_widget_destroy);
 
@@ -358,6 +356,7 @@ GtkWidget *task_list_new (WpApplet *windowPickerApplet) {
 
     task_lists = g_slist_append (task_lists, taskList);
 
+    taskList->screen = wp_applet_get_default_screen (windowPickerApplet);
     taskList->windowPickerApplet = windowPickerApplet;
 
     g_signal_connect_object (windowPickerApplet, "placement-changed",

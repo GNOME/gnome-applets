@@ -115,7 +115,7 @@ button_clicked_cb (GtkButton *button,
       WnckScreen *screen;
       WnckWindow *active_window;
 
-      screen = wnck_screen_get_default ();
+      screen = wp_applet_get_default_screen (title->applet);
       active_window = wnck_screen_get_active_window (screen);
 
       if (WNCK_IS_WINDOW (active_window) == FALSE)
@@ -147,13 +147,13 @@ button_clicked_cb (GtkButton *button,
 }
 
 static gboolean
-is_desktop_visible (void)
+is_desktop_visible (WpTaskTitle *title)
 {
   WnckScreen *screen;
   GList *windows;
   GList *w;
 
-  screen = wnck_screen_get_default ();
+  screen = wp_applet_get_default_screen (title->applet);
   windows = wnck_screen_get_windows (screen);
 
   for (w = windows; w; w = w->next)
@@ -237,7 +237,7 @@ update_title_visibility (WpTaskTitle *title)
       if (title->show_home_title == FALSE)
         return;
 
-      if (is_desktop_visible () == FALSE)
+      if (is_desktop_visible (title) == FALSE)
         return;
 
       if (title->session_proxy == NULL)
@@ -425,14 +425,12 @@ static void
 wp_task_title_dispose (GObject *object)
 {
   WpTaskTitle *title;
-  WnckScreen *screen;
 
   title = WP_TASK_TITLE (object);
-  screen = wnck_screen_get_default ();
 
   g_clear_object (&title->session_proxy);
 
-  g_signal_handlers_disconnect_by_func (screen, active_window_changed_cb, title);
+  G_OBJECT_CLASS (wp_task_title_parent_class)->dispose (object);
 }
 
 static void
@@ -568,7 +566,7 @@ wp_task_title_setup_wnck (WpTaskTitle *title)
 {
   WnckScreen *screen;
 
-  screen = wnck_screen_get_default ();
+  screen = wp_applet_get_default_screen (title->applet);
 
   g_signal_connect_object (screen, "active-window-changed",
                            G_CALLBACK (active_window_changed_cb), title,
@@ -580,10 +578,6 @@ wp_task_title_setup_wnck (WpTaskTitle *title)
 static void
 wp_task_title_init (WpTaskTitle *title)
 {
-  wp_task_title_setup_label (title);
-  wp_task_title_setup_button (title);
-  wp_task_title_setup_wnck (title);
-
   g_dbus_proxy_new_for_bus (G_BUS_TYPE_SESSION, G_DBUS_PROXY_FLAGS_NONE, NULL,
                             "org.gnome.SessionManager",
                             "/org/gnome/SessionManager",
@@ -602,6 +596,10 @@ wp_task_title_new (gint      spacing,
                          NULL);
 
   title->applet = applet;
+
+  wp_task_title_setup_label (title);
+  wp_task_title_setup_button (title);
+  wp_task_title_setup_wnck (title);
 
   return GTK_WIDGET (title);
 }

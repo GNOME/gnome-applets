@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 Canonical Ltd
+ * Copyright (C) 2014 Sebastian Geiger
  * Copyright (C) 2015 Alberts Muktupāvels
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,23 +17,18 @@
  *
  * Authors:
  *     Alberts Muktupāvels <alberts.muktupavels@gmail.com>
- *     Neil Jagdish Patel <neil.patel@canonical.com>
+ *     Sebastian Geiger <sbastig@gmx.net>
  */
 
-#ifndef WP_TASK_TITLE_H
-#define WP_TASK_TITLE_H
+#ifndef WP_APPLET_PRIVATE_H
+#define WP_APPLET_PRIVATE_H
 
-#include <gtk/gtk.h>
-
-#include "wp-applet-private.h"
+#include <libwnck/libwnck.h>
+#include "wp-applet.h"
 
 G_BEGIN_DECLS
 
-#define WP_TYPE_TASK_TITLE wp_task_title_get_type ()
-G_DECLARE_FINAL_TYPE (WpTaskTitle, wp_task_title, WP, TASK_TITLE, GtkBox)
-
-GtkWidget *wp_task_title_new (gint      spacing,
-                              WpApplet *applet);
+WnckScreen *wp_applet_get_default_screen  (WpApplet *self);
 
 G_END_DECLS
 

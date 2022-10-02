@@ -20,7 +20,7 @@
 #ifndef _TASK_LIST_H_
 #define _TASK_LIST_H_
 
-#include "wp-applet.h"
+#include "wp-applet-private.h"
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
