@@ -7,6 +7,8 @@ libmultiload_applet_la_CPPFLAGS = \
 	-DGLIB_DISABLE_DEPRECATION_WARNINGS \
 	-DG_LOG_DOMAIN=\"org.gnome.gnome-applets.multiload\" \
 	-DG_LOG_USE_STRUCTURED=1 \
+	-DTIME_WITH_SYS_TIME=1 \
+	-DHAVE_SYS_TIME_H=1 \
 	$(NULL)
 
 libmultiload_applet_la_CFLAGS = \
