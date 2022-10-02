@@ -250,6 +250,12 @@ sticky_notes_applet_dispose (GObject *object)
 
   self = STICKY_NOTES_APPLET (object);
 
+  if (self->save_timeout_id != 0)
+    {
+      g_source_remove (self->save_timeout_id);
+      self->save_timeout_id = 0;
+    }
+
   if (self->notes != NULL)
     {
       stickynotes_save_now (self);

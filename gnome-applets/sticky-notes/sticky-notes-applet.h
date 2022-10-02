@@ -52,7 +52,7 @@ struct _StickyNotesApplet
 
 	GtkWidget *w_prefs;
 
-	gboolean save_scheduled;
+	guint save_timeout_id;
 
 	GList *notes;
 

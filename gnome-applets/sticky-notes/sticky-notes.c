@@ -1165,8 +1165,6 @@ stickynotes_save_now (StickyNotesApplet *applet)
 	if (applet->notes == NULL) {
 		g_unlink (notes_file);
 		g_free (notes_file);
-
-		applet->save_scheduled = FALSE;
 		return;
 	}
 
@@ -1273,8 +1271,6 @@ stickynotes_save_now (StickyNotesApplet *applet)
 
 	g_free (notes_file);
 	xmlFreeDoc(doc);
-
-	applet->save_scheduled = FALSE;
 }
 
 static gboolean
@@ -1283,6 +1279,7 @@ stickynotes_save_cb (gpointer user_data)
   StickyNotesApplet *applet;
 
   applet = STICKY_NOTES_APPLET (user_data);
+  applet->save_timeout_id = 0;
 
   stickynotes_save_now (applet);
 
@@ -1293,10 +1290,12 @@ void
 stickynotes_save (StickyNotesApplet *applet)
 {
   /* If a save isn't already schedules, save everything a minute from now. */
-  if (!applet->save_scheduled) {
-    g_timeout_add_seconds (60, stickynotes_save_cb, applet);
-    applet->save_scheduled = TRUE;
-  }
+  if (applet->save_timeout_id != 0)
+    return;
+
+  applet->save_timeout_id = g_timeout_add_seconds (60,
+                                                   stickynotes_save_cb,
+                                                   applet);
 }
 
 static char *
