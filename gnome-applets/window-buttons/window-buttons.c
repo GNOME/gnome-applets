@@ -113,6 +113,8 @@ wb_applet_dispose (GObject *object)
         }
     }
 
+  g_clear_object (&self->handle);
+
   G_OBJECT_CLASS (wb_applet_parent_class)->dispose (object);
 }
 
@@ -666,7 +668,8 @@ init_wbapplet (WBApplet *wbapplet)
 
 	wbapplet->settings = gp_applet_settings_new (GP_APPLET (wbapplet), WINDOWBUTTONS_GSCHEMA);
 	wbapplet->prefs = loadPreferences(wbapplet);
-	wbapplet->activescreen = wnck_screen_get_default();
+	wbapplet->handle = wnck_handle_new (WNCK_CLIENT_TYPE_PAGER);
+	wbapplet->activescreen = wnck_handle_get_default_screen (wbapplet->handle);
 	wnck_screen_force_update(wbapplet->activescreen);
 	wbapplet->activeworkspace = wnck_screen_get_active_workspace(wbapplet->activescreen);
 	wbapplet->activewindow = wnck_screen_get_active_window(wbapplet->activescreen);

@@ -152,6 +152,7 @@ struct _WBApplet
 	/* Variables */
 	WBPreferences	*prefs;				// Main preferences
 	WindowButton	**button;			// Array of buttons
+	WnckHandle *handle;
 	WnckScreen 		*activescreen;		// Active screen
 
 	gulong active_window_changed_id;
