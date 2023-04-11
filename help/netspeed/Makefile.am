@@ -17,6 +17,6 @@ HELP_MEDIA = \
 	figures/settings.png \
 	figures/wavelan.png
 
-HELP_LINGUAS = cs de el es fr id pt_BR sl sv zh_HK zh_TW
+HELP_LINGUAS = cs de el es fr id pt_BR ru sl sv zh_HK zh_TW
 
 -include $(top_srcdir)/git.mk
