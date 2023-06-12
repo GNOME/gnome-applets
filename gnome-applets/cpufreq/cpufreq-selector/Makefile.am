@@ -39,7 +39,7 @@ dbus_services_DATA = $(dbus_services_in_files:.service.in=.service)
 $(dbus_services_DATA): $(dbus_services_in_files)
 	sed -e "s|\@BINDIR\@|$(DESTDIR)$(bindir)|" $< > $@
 
-dbus_confdir = $(sysconfdir)/dbus-1/system.d
+dbus_confdir = $(datadir)/dbus-1/system.d
 dbus_conf_DATA = $(dbus_conf_files)
 
 polkitdir = $(datadir)/polkit-1/actions
