@@ -13,6 +13,6 @@ HELP_MEDIA = \
 	figures/battstat-preferences.png \
 	figures/context-menu.png
 
-HELP_LINGUAS = ca cs bg da de el en_GB es eu fi fr hu ko oc pa pt_BR sl sv uk zh_CN
+HELP_LINGUAS = ca cs bg da de el en_GB es eu fi fr hu ko oc pa pt_BR ru sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
