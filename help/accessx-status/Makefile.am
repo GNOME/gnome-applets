@@ -19,6 +19,6 @@ HELP_MEDIA = \
 	figures/accessx_sticky-shift-key.png \
 	figures/accessx_sticky-windows-key.png
 
-HELP_LINGUAS = bg ca cs de el en_GB es eu fi fr gl it ko nl oc ro sl sv uk zh_CN
+HELP_LINGUAS = bg ca cs de el en_GB es eu fi fr gl hu it ko nl oc ro sl sv uk zh_CN
 
 -include $(top_srcdir)/git.mk
