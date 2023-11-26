@@ -32,7 +32,7 @@ see the [libpanel-applet documentation](https://developer.gnome.org/libpanel-app
 # Releases
 
 You may download GNOME Applets releases and updates from the
-[release server](http://download.gnome.org/sources/gnome-applets/).
+[release server](https://download.gnome.org/sources/gnome-applets/).
 
 # Requirements
 
@@ -42,7 +42,7 @@ See the section "Minimum library versions for GNOME Applets" in
 # Discussions
 
 To discuss gnome-panel, you may use the
-[gnome-flashback-list](http://mail.gnome.org/mailman/listinfo/gnome-flashback-list) mailing list.
+[discussion forum](https://discourse.gnome.org/).
 
 # Installation
 
