@@ -380,7 +380,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gweather_info_set_contact_info (gw_applet->gweather_info, contact_info);
 
     gweather_info_set_enabled_providers (gw_applet->gweather_info,
-                                         GWEATHER_PROVIDER_ALL);
+                                         GWEATHER_PROVIDER_METAR | GWEATHER_PROVIDER_MET_NO);
 
     g_signal_connect (gw_applet->gweather_info, "updated",
                       G_CALLBACK (update_finish), gw_applet);
