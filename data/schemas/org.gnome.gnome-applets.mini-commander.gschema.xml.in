@@ -7,9 +7,9 @@
 				'^(ftp://.*)',
 				'^(www\\..*)$',
 				'^(ftp\\..*)$',
-				'^av: *(.*)$',
-				'^yahoo: *(.*)$',
-				'^fm: *(.*)$',
+				'^bing: *(.*)$',
+				'^ddg: *(.*)$',
+				'^w: *(.*)$',
 				'^dictionary: *(.*)$',
 				'^google: *(.*)$'
 			]
@@ -24,11 +24,11 @@
 				'gio open \\1',
 				'gio open http://\\1',
 				'gio open ftp://\\1',
-				"gio open http://www.altavista.net/cgi-bin/query?pg=q\\&amp;kl=XX\\&amp;q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
-				"gio open http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
-				"gio open http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)",
+				"gio open https://www.bing.com/search?q=\\1",
+				"gio open https://duckduckgo.com/?q=\\1",
+				"gio open https://en.wikipedia.org/w/index.php?title=Special:Search&amp;search=\\1",
 				'gnome-dictionary "\\1"',
-				'gio open http://www.google.com/search?q=\\1'
+				'gio open https://www.google.com/search?q=\\1'
 			]
 			</default>
 			<summary>Macro command list</summary>
