@@ -777,7 +777,7 @@ stickynotes_applet_update_tooltips (StickyNotesApplet *self)
 
 	num = g_list_length (self->notes);
 
-	no_notes = g_strdup_printf (ngettext ("%d note", "%d notes", num), num);
+	no_notes = g_strdup_printf (dngettext (GETTEXT_PACKAGE, "%d note", "%d notes", num), num);
 	tooltip = g_strdup_printf ("%s\n%s", _("Show sticky notes"), no_notes);
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (self), tooltip);
