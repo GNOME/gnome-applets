@@ -20,15 +20,15 @@
 		<key name="macro-commands" type="as">
 			<default>
 			[
-				'gnome-open \\1',
-				'gnome-open \\1',
-				'gnome-open http://\\1',
-				'gnome-open ftp://\\1',
-				"gnome-open http://www.altavista.net/cgi-bin/query?pg=q\\&amp;kl=XX\\&amp;q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
-				"gnome-open http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
-				"gnome-open http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)",
+				'gio open \\1',
+				'gio open \\1',
+				'gio open http://\\1',
+				'gio open ftp://\\1',
+				"gio open http://www.altavista.net/cgi-bin/query?pg=q\\&amp;kl=XX\\&amp;q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
+				"gio open http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')",
+				"gio open http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)",
 				'gnome-dictionary "\\1"',
-				'gnome-open http://www.google.com/search?q=\\1'
+				'gio open http://www.google.com/search?q=\\1'
 			]
 			</default>
 			<summary>Macro command list</summary>
