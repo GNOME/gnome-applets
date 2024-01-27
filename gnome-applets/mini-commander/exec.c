@@ -33,16 +33,6 @@
 
 static void beep (void);
 
-/*
- * Set the DISPLAY variable, to be use by g_spawn_async.
- */
-static void
-set_environment (gpointer display)
-{
-	if (!g_setenv ("DISPLAY", display, TRUE))
-		g_warning ("Failed to set DISPLAY environment variable");
-}
-
 void
 mc_exec_command (MCData     *mc,
 		 const char *cmd)
@@ -51,7 +41,6 @@ mc_exec_command (MCData     *mc,
 	char command [1000];
 	char **argv = NULL;
 	gchar *str;
-	gchar *display;
 
 	strncpy (command, cmd, sizeof (command));
 	command [sizeof (command) - 1] = '\0';
@@ -67,14 +56,12 @@ mc_exec_command (MCData     *mc,
 		return;
 	}
 
-	display = gdk_screen_make_display_name (gtk_widget_get_screen (GTK_WIDGET (mc)));
-
 	if(!g_spawn_async (NULL, /* working directory */
 	                   argv,
 	                   NULL, /* envp */
 	                   G_SPAWN_SEARCH_PATH,
-	                   set_environment,
-	                   &display,
+	                   NULL,
+	                   NULL,
 	                   NULL,
 	                   &error)) {
 		str = g_strconcat ("(?)", command, NULL);
@@ -87,7 +74,6 @@ mc_exec_command (MCData     *mc,
 		gtk_entry_set_text (GTK_ENTRY (mc->entry), (gchar *) "");
 		append_history_entry (mc, cmd, FALSE);
 		}
-	g_free (display);
 	g_strfreev (argv);
 
 	if (error != NULL)
