@@ -183,6 +183,51 @@ trash_applet_size_allocate (GtkWidget    *widget,
 }
 
 static void
+trash_applet_setup (TrashApplet *self)
+{
+  const GtkTargetEntry drop_types[] = { { (char *) "text/uri-list" } };
+  const gchar *resource_name;
+
+  /* needed to clamp ourselves to the panel size */
+  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
+
+  /* Set up the menu */
+  resource_name = GRESOURCE_PREFIX "/ui/trash-menu.ui";
+  gp_applet_setup_menu_from_resource (GP_APPLET (self),
+                                      resource_name,
+                                      trash_applet_menu_actions);
+
+  /* setup the image */
+  self->image = g_object_ref_sink (gtk_image_new ());
+  gtk_container_add (GTK_CONTAINER (self), self->image);
+  gtk_widget_show (self->image);
+
+  /* setup the trash backend */
+  self->trash = g_file_new_for_uri ("trash:/");
+  self->trash_monitor = g_file_monitor_file (self->trash, 0, NULL, NULL);
+  g_file_monitor_set_rate_limit (self->trash_monitor, 200);
+  g_signal_connect_swapped (self->trash_monitor, "changed",
+                            G_CALLBACK (trash_applet_monitor_changed),
+                            self);
+
+  /* setup drag and drop */
+  gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL,
+                     drop_types, G_N_ELEMENTS (drop_types),
+                     GDK_ACTION_MOVE);
+
+  /* synthesise the first update */
+  self->items = -1;
+  trash_applet_monitor_changed (self);
+}
+
+static void
+trash_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (trash_applet_parent_class)->constructed (object);
+  trash_applet_setup (TRASH_APPLET (object));
+}
+
+static void
 trash_applet_dispose (GObject *object)
 {
   TrashApplet *applet = TRASH_APPLET (object);
@@ -510,6 +555,7 @@ trash_applet_class_init (TrashAppletClass *self_class)
   object_class = G_OBJECT_CLASS (self_class);
   widget_class = GTK_WIDGET_CLASS (self_class);
 
+  object_class->constructed = trash_applet_constructed;
   object_class->dispose = trash_applet_dispose;
 
   widget_class->size_allocate = trash_applet_size_allocate;
@@ -522,39 +568,6 @@ trash_applet_class_init (TrashAppletClass *self_class)
 static void
 trash_applet_init (TrashApplet *self)
 {
-  const GtkTargetEntry drop_types[] = { { (char *) "text/uri-list" } };
-  const gchar *resource_name;
-
-  /* needed to clamp ourselves to the panel size */
-  gp_applet_set_flags (GP_APPLET (self), GP_APPLET_FLAGS_EXPAND_MINOR);
-
-  /* Set up the menu */
-  resource_name = GRESOURCE_PREFIX "/ui/trash-menu.ui";
-  gp_applet_setup_menu_from_resource (GP_APPLET (self),
-                                      resource_name,
-                                      trash_applet_menu_actions);
-
-  /* setup the image */
-  self->image = g_object_ref_sink (gtk_image_new ());
-  gtk_container_add (GTK_CONTAINER (self), self->image);
-  gtk_widget_show (self->image);
-
-  /* setup the trash backend */
-  self->trash = g_file_new_for_uri ("trash:/");
-  self->trash_monitor = g_file_monitor_file (self->trash, 0, NULL, NULL);
-  g_file_monitor_set_rate_limit (self->trash_monitor, 200);
-  g_signal_connect_swapped (self->trash_monitor, "changed",
-                            G_CALLBACK (trash_applet_monitor_changed),
-                            self);
-
-  /* setup drag and drop */
-  gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL,
-                     drop_types, G_N_ELEMENTS (drop_types),
-                     GDK_ACTION_MOVE);
-
-  /* synthesise the first update */
-  self->items = -1;
-  trash_applet_monitor_changed (self);
 }
 
 void
