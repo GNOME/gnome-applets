@@ -33,8 +33,6 @@ struct _TrackerApplet
 {
   GpApplet        parent;
 
-  GtkBuilder     *builder;
-
   GtkWidget      *results;
 
   GtkWidget      *box;
@@ -322,11 +320,6 @@ tracker_applet_setup (TrackerApplet *applet)
 {
 	const gchar *resource_name;
 
-	applet->builder = gtk_builder_new ();
-
-	resource_name = GRESOURCE_PREFIX "/ui/tracker-search-bar.ui";
-	gtk_builder_add_from_resource (applet->builder, resource_name, NULL);
-
 	applet->icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
 	                                         "edit-find",
 	                                         48,
@@ -379,7 +372,6 @@ tracker_applet_dispose (GObject *object)
 
   g_clear_pointer (&self->results, gtk_widget_destroy);
 
-  g_clear_object (&self->builder);
   g_clear_object (&self->icon);
 
   G_OBJECT_CLASS (tracker_applet_parent_class)->dispose (object);
