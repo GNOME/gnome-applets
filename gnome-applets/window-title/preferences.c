@@ -227,6 +227,7 @@ wt_applet_properties_cb (GSimpleAction *action,
 	if(wtapplet->window_prefs) {
 		gtk_window_present(GTK_WINDOW(wtapplet->window_prefs));
 	} else {
+		gtk_builder_set_translation_domain (wtapplet->prefbuilder, GETTEXT_PACKAGE);
 		gtk_builder_add_from_resource (wtapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-title.ui", NULL);
 		wtapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wtapplet->prefbuilder, "properties"));
 	}
