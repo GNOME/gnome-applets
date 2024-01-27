@@ -500,7 +500,9 @@ cpufreq_prefs_dialog_create (CPUFreqPrefs *prefs)
 {
 	GtkBuilder *builder;
 
-	builder = gtk_builder_new_from_resource (GRESOURCE_PREFIX "/ui/cpufreq-preferences.ui");
+	builder = gtk_builder_new ();
+	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
+	gtk_builder_add_from_resource (builder, GRESOURCE_PREFIX "/ui/cpufreq-preferences.ui", NULL);
 
 	prefs->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "prefs_dialog"));
 
