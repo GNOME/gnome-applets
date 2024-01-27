@@ -213,7 +213,9 @@ prop_cb (GSimpleAction *action,
      return;
    } 
 
-  builder = gtk_builder_new_from_resource (GRESOURCE_PREFIX "/ui/battstat-applet.ui");
+  builder = gtk_builder_new ();
+  gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
+  gtk_builder_add_from_resource (builder, GRESOURCE_PREFIX "/ui/battstat-applet.ui", NULL);
 
   battstat->prop_win = GTK_WIDGET (gtk_builder_get_object (builder,
   				   "battstat_properties"));
