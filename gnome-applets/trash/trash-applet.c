@@ -120,9 +120,10 @@ trash_applet_monitor_changed (TrashApplet *applet)
         {
           char *text;
 
-          text = g_strdup_printf (ngettext ("%d Item in Trash",
-                                            "%d Items in Trash",
-                                            items), items);
+          text = g_strdup_printf (dngettext (GETTEXT_PACKAGE,
+                                             "%d Item in Trash",
+                                             "%d Items in Trash",
+                                             items), items);
           gtk_widget_set_tooltip_text (GTK_WIDGET (applet), text);
           g_free (text);
         }
@@ -388,16 +389,18 @@ confirm_delete_immediately (GtkWidget *parent_view,
   if (all)
     {
       prompt = _("Cannot move items to trash, do you want to delete them immediately?");
-      detail = g_strdup_printf (ngettext ("The selected item cannot be moved to the trash",
-                                          "None of the %d selected items can be moved to the Trash",
-                                          num_files), num_files);
+      detail = g_strdup_printf (dngettext (GETTEXT_PACKAGE,
+                                           "The selected item cannot be moved to the trash",
+                                           "None of the %d selected items can be moved to the Trash",
+                                           num_files), num_files);
     }
   else
     {
       prompt = _("Cannot move some items to trash, do you want to delete these immediately?");
-      detail = g_strdup_printf (ngettext ("The selected item cannot be moved to the Trash",
-                                          "%d of the selected items cannot be moved to the Trash",
-                                          num_files) , num_files);
+      detail = g_strdup_printf (dngettext (GETTEXT_PACKAGE,
+                                           "The selected item cannot be moved to the Trash",
+                                           "%d of the selected items cannot be moved to the Trash",
+                                           num_files) , num_files);
     }
 
   str = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
