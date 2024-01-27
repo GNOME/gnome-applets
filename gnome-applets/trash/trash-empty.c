@@ -233,6 +233,7 @@ trash_empty_start (GtkWidget *parent)
 
   resource_name = GRESOURCE_PREFIX "/ui/trash-empty.ui";
 
+  gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
   gtk_builder_add_from_resource (builder, resource_name, NULL);
 
   for (i = 0; i < G_N_ELEMENTS (widgets); i++)
