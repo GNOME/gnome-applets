@@ -319,33 +319,7 @@ gpm_inhibit_applet_name_vanished_cb (GDBusConnection *connection,
 }
 
 static void
-inhibit_applet_dispose (GObject *object)
-{
-  InhibitApplet *self;
-
-  self = INHIBIT_APPLET (object);
-
-  if (self->bus_watch_id != 0)
-    {
-      g_bus_unwatch_name (self->bus_watch_id);
-      self->bus_watch_id = 0;
-    }
-
-  G_OBJECT_CLASS (inhibit_applet_parent_class)->dispose (object);
-}
-
-static void
-inhibit_applet_class_init (InhibitAppletClass *self_class)
-{
-  GObjectClass *object_class;
-
-  object_class = G_OBJECT_CLASS (self_class);
-
-  object_class->dispose = inhibit_applet_dispose;
-}
-
-static void
-inhibit_applet_init (InhibitApplet *applet)
+inhibit_applet_setup (InhibitApplet *applet)
 {
 	const char *menu_resource;
 
@@ -386,6 +360,45 @@ inhibit_applet_init (InhibitApplet *applet)
 
 	g_signal_connect (G_OBJECT(applet), "size-allocate",
 			  G_CALLBACK(gpm_applet_size_allocate_cb), NULL);
+}
+
+static void
+inhibit_applet_constructed (GObject *object)
+{
+  G_OBJECT_CLASS (inhibit_applet_parent_class)->constructed (object);
+  inhibit_applet_setup (INHIBIT_APPLET (object));
+}
+
+static void
+inhibit_applet_dispose (GObject *object)
+{
+  InhibitApplet *self;
+
+  self = INHIBIT_APPLET (object);
+
+  if (self->bus_watch_id != 0)
+    {
+      g_bus_unwatch_name (self->bus_watch_id);
+      self->bus_watch_id = 0;
+    }
+
+  G_OBJECT_CLASS (inhibit_applet_parent_class)->dispose (object);
+}
+
+static void
+inhibit_applet_class_init (InhibitAppletClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->constructed = inhibit_applet_constructed;
+  object_class->dispose = inhibit_applet_dispose;
+}
+
+static void
+inhibit_applet_init (InhibitApplet *applet)
+{
 }
 
 void
