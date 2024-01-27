@@ -233,7 +233,7 @@ wt_applet_update_title (WTApplet *wtapplet)
 		} else {
 			// display "custom" icon/title (TODO: customization via preferences?)
 			icon_pixbuf = gtk_widget_render_icon(GTK_WIDGET(wtapplet),GTK_STOCK_HOME,GTK_ICON_SIZE_MENU,NULL); // This has to be unrefed!
-			title_text = ("Desktop");
+			title_text = _("Desktop");
 		}
 	} else {
 		icon_pixbuf = wnck_window_get_icon(controlledwindow); // This only returns a pointer - it SHOULDN'T be unrefed!
