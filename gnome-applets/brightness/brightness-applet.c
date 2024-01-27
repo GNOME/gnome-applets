@@ -625,16 +625,6 @@ gpm_applet_destroy_cb (GtkWidget *widget)
 	g_bus_unwatch_name (applet->bus_watch_id);
 }
 
-/**
- * gpm_brightness_applet_class_init:
- * @klass: Class instance
- **/
-static void
-gpm_brightness_applet_class_init (GpmBrightnessAppletClass *class)
-{
-	/* nothing to do here */
-}
-
 static void
 brightness_changed_cb (GDBusProxy *proxy,
 		       GVariant   *changed_properties,
@@ -714,12 +704,8 @@ gpm_brightness_applet_name_vanished_cb (GDBusConnection *connection, const gchar
 	gpm_applet_update_icon (applet);
 }
 
-/**
- * gpm_brightness_applet_init:
- * @applet: Brightness applet instance
- **/
 static void
-gpm_brightness_applet_init (GpmBrightnessApplet *applet)
+gpm_brightness_applet_setup (GpmBrightnessApplet *applet)
 {
 	const char *menu_resource;
 
@@ -771,6 +757,28 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 
 	g_signal_connect (G_OBJECT(applet), "destroy",
 			  G_CALLBACK(gpm_applet_destroy_cb), NULL);
+}
+
+static void
+gpm_brightness_applet_constructed (GObject *object)
+{
+	G_OBJECT_CLASS (gpm_brightness_applet_parent_class)->constructed (object);
+	gpm_brightness_applet_setup (GPM_BRIGHTNESS_APPLET (object));
+}
+
+static void
+gpm_brightness_applet_class_init (GpmBrightnessAppletClass *class)
+{
+	GObjectClass *object_class;
+
+	object_class = G_OBJECT_CLASS (class);
+
+	object_class->constructed = gpm_brightness_applet_constructed;
+}
+
+static void
+gpm_brightness_applet_init (GpmBrightnessApplet *applet)
+{
 }
 
 void
