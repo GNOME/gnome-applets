@@ -107,9 +107,11 @@ setup_note_menu (StickyNote *note)
 	                                 note);
 
 	resource_name = GRESOURCE_PREFIX "/ui/sticky-notes-note-menu.ui";
-	builder = gtk_builder_new_from_resource (resource_name);
-
+	builder = gtk_builder_new ();
 	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
+	gtk_builder_add_from_resource (builder,
+	                               resource_name,
+	                               NULL);
 
 	gmenu = G_MENU (gtk_builder_get_object (builder, "note-popup"));
 	note->w_menu = gtk_menu_new_from_model (G_MENU_MODEL (gmenu));
@@ -393,6 +395,7 @@ stickynote_new_aux (StickyNotesApplet *applet,
 	note->buffer_changed_id = 0;
 
 	builder = gtk_builder_new ();
+	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 	gtk_builder_add_from_resource (builder,
 	                               GRESOURCE_PREFIX "/ui/sticky-notes-note.ui",
 	                               NULL);
@@ -1109,6 +1112,7 @@ void stickynotes_remove(StickyNote *note)
 	GtkWidget *dialog;
 
 	builder = gtk_builder_new ();
+	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 	gtk_builder_add_from_resource (builder,
 	                               GRESOURCE_PREFIX "/ui/sticky-notes-delete.ui",
 	                               NULL);

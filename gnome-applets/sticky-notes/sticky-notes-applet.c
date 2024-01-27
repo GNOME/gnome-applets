@@ -132,6 +132,7 @@ menu_destroy_all_cb (GSimpleAction *action,
 	GtkBuilder *builder;
 
 	builder = gtk_builder_new ();
+	gtk_builder_set_translation_domain (builder, GETTEXT_PACKAGE);
 	gtk_builder_add_from_resource (builder,
 	                               GRESOURCE_PREFIX "/ui/sticky-notes-delete-all.ui",
 	                               NULL);
