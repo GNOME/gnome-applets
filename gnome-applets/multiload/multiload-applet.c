@@ -253,9 +253,10 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		percent = 100.0f * total_used / g->draw_height;
 		percent = MIN(percent, 100);
 
-		tooltip_text = g_strdup_printf (ngettext ("%s:\n%u%% in use",
-		                                          "%s:\n%u%% in use",
-		                                          percent),
+		tooltip_text = g_strdup_printf (dngettext (GETTEXT_PACKAGE,
+		                                           "%s:\n%u%% in use",
+		                                           "%s:\n%u%% in use",
+		                                           percent),
 		                                name,
 		                                percent);
 	}
