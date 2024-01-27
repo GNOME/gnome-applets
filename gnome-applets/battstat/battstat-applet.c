@@ -329,23 +329,27 @@ get_remaining (BatteryStatus *info)
 	else
 		if (hours == 0)
 			if (!info->on_ac_power)
-				return g_strdup_printf (ngettext (
+				return g_strdup_printf (dngettext (
+						GETTEXT_PACKAGE,
 						"%d minute (%d%%) remaining",
 						"%d minutes (%d%%) remaining",
 						mins), mins, info->percent);
 			else
-				return g_strdup_printf (ngettext (
+				return g_strdup_printf (dngettext (
+						GETTEXT_PACKAGE,
 						"%d minute until charged (%d%%)",
 						"%d minutes until charged (%d%%)",
 						mins), mins, info->percent);
 		else if (mins == 0)
 			if (!info->on_ac_power)
-				return g_strdup_printf (ngettext (
+				return g_strdup_printf (dngettext (
+						GETTEXT_PACKAGE,
 						"%d hour (%d%%) remaining",
 						"%d hours (%d%%) remaining",
 						hours), hours, info->percent);
 			else
-				return g_strdup_printf (ngettext (
+				return g_strdup_printf (dngettext (
+						GETTEXT_PACKAGE,
 						"%d hour until charged (%d%%)",
 						"%d hours until charged (%d%%)",
 						hours), hours, info->percent);
@@ -354,15 +358,15 @@ get_remaining (BatteryStatus *info)
 				/* TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 				 * Swap order with "%2$s %2$d %1$s %1$d if needed */
 				return g_strdup_printf (_("%d %s %d %s (%d%%) remaining"),
-						hours, ngettext ("hour", "hours", hours),
-						mins, ngettext ("minute", "minutes", mins),
+						hours, dngettext (GETTEXT_PACKAGE, "hour", "hours", hours),
+						mins, dngettext (GETTEXT_PACKAGE, "minute", "minutes", mins),
 						info->percent);
 			else
 				/* TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 				 * Swap order with "%2$s %2$d %1$s %1$d if needed */
 				return g_strdup_printf (_("%d %s %d %s until charged (%d%%)"),
-						hours, ngettext ("hour", "hours", hours),
-						mins, ngettext ("minute", "minutes", mins),
+						hours, dngettext (GETTEXT_PACKAGE, "hour", "hours", hours),
+						mins, dngettext (GETTEXT_PACKAGE, "minute", "minutes", mins),
 						info->percent);
 }
 
@@ -522,7 +526,8 @@ battery_low_update_text( ProgressData *battstat, BatteryStatus *info )
   }
   else
   {
-	  remaining = g_strdup_printf( ngettext(
+	  remaining = g_strdup_printf( dngettext(
+                                 GETTEXT_PACKAGE,
                                  "You have %d minute of battery power "
 				   "remaining (%d%% of the total capacity).",
                                  "You have %d minutes of battery power "
