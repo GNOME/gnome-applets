@@ -253,19 +253,19 @@ wb_applet_update_images (WBApplet *wbapplet)
 	if (controlledwindow && wnck_window_is_maximized(controlledwindow)) {
 		gtk_image_set_from_pixbuf (wbapplet->button[WB_BUTTON_UMAXIMIZE]->image, wbapplet->pixbufs[getImageState(wbapplet->button[WB_BUTTON_UMAXIMIZE]->state)][WB_IMAGE_UNMAXIMIZE]);
 		if (wbapplet->prefs->show_tooltips)
-			gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_UMAXIMIZE]->image), N_("Unmaximize")); // Set correct tooltip
+			gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_UMAXIMIZE]->image), _("Unmaximize")); // Set correct tooltip
 	} else {
 		gtk_image_set_from_pixbuf (wbapplet->button[WB_BUTTON_UMAXIMIZE]->image, wbapplet->pixbufs[getImageState(wbapplet->button[WB_BUTTON_UMAXIMIZE]->state)][WB_IMAGE_MAXIMIZE]);
 		if (wbapplet->prefs->show_tooltips)
-			gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_UMAXIMIZE]->image), N_("Maximize")); // Set correct tooltip
+			gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_UMAXIMIZE]->image), _("Maximize")); // Set correct tooltip
 	}
 	//update close button
 	gtk_image_set_from_pixbuf (wbapplet->button[WB_BUTTON_CLOSE]->image, wbapplet->pixbufs[getImageState(wbapplet->button[WB_BUTTON_CLOSE]->state)][WB_IMAGE_CLOSE]);
 
 	//set remaining tooltips
 	if (wbapplet->prefs->show_tooltips) {
-		gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_MINIMIZE]->image), N_("Minimize"));
-		gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_CLOSE]->image), N_("Close"));
+		gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_MINIMIZE]->image), _("Minimize"));
+		gtk_widget_set_tooltip_text (GTK_WIDGET(wbapplet->button[WB_BUTTON_CLOSE]->image), _("Close"));
 	}
 }
 
