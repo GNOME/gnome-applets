@@ -441,6 +441,7 @@ results_window_finalize (GObject *object)
 	 * g_cancellable_cancel() on each query still running.
 	 */
 	g_list_free_full (self->search_queries, (GDestroyNotify) search_query_free);
+	self->search_queries = NULL;
 
 	G_OBJECT_CLASS (tracker_results_window_parent_class)->finalize (object);
 }
@@ -676,6 +677,7 @@ search_query_free (SearchQuery *sq)
 		g_object_unref (sq->cancellable);
 	}
 
+	sq->window->queries_pending--;
 	g_slist_free_full (sq->results, (GDestroyNotify) item_data_free);
 	g_free (sq);
 }
@@ -1214,13 +1216,17 @@ search_get_cb (GObject      *source_object,
 	GError *error = NULL;
 
 	sq = user_data;
-	window = sq->window;
-
-	window->queries_pending--;
 
 	cursor = tracker_sparql_connection_query_finish (TRACKER_SPARQL_CONNECTION (source_object),
 							 res,
 							 &error);
+
+	if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+		g_error_free (error);
+		return;
+	}
+
+	window = sq->window;
 
 	/* If request IDs don't match, data is no longer needed */
 	if (window->request_id != sq->request_id) {
@@ -1402,6 +1408,7 @@ search_start (TrackerResultsWindow *window)
 	 * g_cancellable_cancel() on each query still running.
 	 */
 	g_list_free_full (window->search_queries, (GDestroyNotify) search_query_free);
+	window->search_queries = NULL;
 
 	/* SPARQL requests */
 	search_get (window, CATEGORY_IMAGE);
