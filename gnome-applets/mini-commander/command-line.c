@@ -520,6 +520,10 @@ mc_create_command_entry (MCData *mc)
     mc->entry = gtk_entry_new ();
     gtk_entry_set_max_length (GTK_ENTRY (mc->entry), MC_MAX_COMMAND_LENGTH);
 
+    gtk_style_context_add_provider (gtk_widget_get_style_context (mc->entry),
+				    GTK_STYLE_PROVIDER (mc->provider),
+				    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+
     g_signal_connect (mc->entry, "key_press_event",
 		      G_CALLBACK (command_key_event), mc);
 
@@ -547,40 +551,22 @@ mc_command_update_entry_color (MCData *mc)
 {
     GdkRGBA fg_color;
     GdkRGBA bg_color;
-    GdkColor fg;
-    GdkColor bg;
-    char *rc_string;
+    gchar *css_string;
 
     gdk_rgba_parse (&fg_color, mc->preferences.cmd_line_color_fg);
     gdk_rgba_parse (&bg_color, mc->preferences.cmd_line_color_bg);
 
-    fg.red   = fg_color.red;
-    fg.green = fg_color.green;
-    fg.blue  = fg_color.blue;
+    css_string = g_strdup_printf ("#minicommander-applet-entry {\n"
+                                  "\tcolor: %s;\n"
+                                  "\tcaret-color: %s;\n"
+                                  "\tbackground-color: %s;\n"
+                                  "}\n",
+                                  gdk_rgba_to_string (&fg_color),
+                                  gdk_rgba_to_string (&fg_color),
+                                  gdk_rgba_to_string (&bg_color));
 
-    bg.red   = bg_color.red;
-    bg.green = bg_color.green;
-    bg.blue  = bg_color.blue;
-
-    /* FIXME: wish we had an API for this, see bug #79585 */
-    rc_string = g_strdup_printf (
-		    "\n"
-		    " style \"minicommander-applet-entry-style\"\n"
-		    " {\n"
-		    "  GtkWidget::cursor-color=\"#%04x%04x%04x\"\n"
-		    " }\n"
-		    " widget \"*.minicommander-applet-entry\" "
-		    "style \"minicommander-applet-entry-style\"\n"
-		    "\n",
-		    fg.red, fg.green, fg.blue);
-    gtk_rc_parse_string (rc_string);
-    g_free (rc_string);
-
-    gtk_widget_modify_text (mc->entry, GTK_STATE_NORMAL, &fg);
-    gtk_widget_modify_text (mc->entry, GTK_STATE_PRELIGHT, &fg);
-
-    gtk_widget_modify_base (mc->entry, GTK_STATE_NORMAL, &bg);
-    gtk_widget_modify_base (mc->entry, GTK_STATE_PRELIGHT, &bg);
+    gtk_css_provider_load_from_data (mc->provider, css_string, -1, NULL);
+    g_free (css_string);
 }
 
 void

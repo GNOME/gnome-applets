@@ -47,6 +47,8 @@ struct _MiniCommanderApplet
     GtkWidget     *entry;
     GtkWidget     *file_select;
 
+    GtkCssProvider *provider;
+
     int            label_timeout;
     int            cmd_line_size_y;
 

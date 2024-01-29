@@ -395,6 +395,7 @@ mini_commander_applet_dispose (GObject *object)
 
   g_clear_object (&self->global_settings);
   g_clear_object (&self->settings);
+  g_clear_object (&self->provider);
 
   if (self->preferences.macros != NULL)
     {
@@ -432,6 +433,7 @@ mini_commander_applet_class_init (MiniCommanderAppletClass *self_class)
 static void
 mini_commander_applet_init (MiniCommanderApplet *self)
 {
+  self->provider = gtk_css_provider_new ();
 }
 
 void
