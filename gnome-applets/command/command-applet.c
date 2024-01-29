@@ -59,6 +59,8 @@ struct _CommandApplet
   GtkBox      *box;
   GtkEntry    *command_entry;
 
+  GtkWidget   *preferences_dialog;
+
   guint        width;
 
   GaCommand   *command;
@@ -94,12 +96,24 @@ apply_command_callback (GtkButton *button,
   g_settings_set_string (command_applet->settings, COMMAND_KEY, gtk_entry_get_text (command_applet->command_entry));
 }
 
+static void
+command_preferences_dialog_response_cb (GtkDialog *dialog,
+                                        gint       response_id,
+                                        gpointer   data)
+{
+    CommandApplet *command_applet;
+
+    command_applet = (CommandApplet *) data;
+
+    gtk_widget_destroy (command_applet->preferences_dialog);
+    command_applet->preferences_dialog = NULL;
+}
+
 /* Show the preferences dialog */
 static void
 command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
 {
     CommandApplet *command_applet;
-    GtkDialog *dialog;
     GtkGrid *grid;
     GtkWidget *widget;
     GtkWidget *button;
@@ -109,18 +123,23 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
 
     command_applet = (CommandApplet *) data;
 
-    dialog = GTK_DIALOG (gtk_dialog_new_with_buttons(_("Command Applet Preferences"),
+    if (command_applet->preferences_dialog != NULL) {
+        gtk_window_present (GTK_WINDOW (command_applet->preferences_dialog));
+        return;
+    }
+
+    command_applet->preferences_dialog = gtk_dialog_new_with_buttons(_("Command Applet Preferences"),
                                                      NULL,
                                                      0,
                                                      _("_Close"),
                                                      GTK_RESPONSE_CLOSE,
-                                                     NULL));
+                                                     NULL);
     grid = GTK_GRID (gtk_grid_new ());
     gtk_grid_set_row_spacing (grid, 12);
     gtk_grid_set_column_spacing (grid, 12);
 
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 350, 150);
-    gtk_container_set_border_width (GTK_CONTAINER (dialog), 10);
+    gtk_window_set_default_size (GTK_WINDOW (command_applet->preferences_dialog), 350, 150);
+    gtk_container_set_border_width (GTK_CONTAINER (command_applet->preferences_dialog), 10);
 
     widget = gtk_label_new (_("Command:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
@@ -153,19 +172,19 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     showicon = gtk_check_button_new_with_label (_("Show icon"));
     gtk_grid_attach (grid, showicon, 2, 3, 2, 1);
 
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), GTK_WIDGET (grid), TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (command_applet->preferences_dialog))), GTK_WIDGET (grid), TRUE, TRUE, 0);
 
     gtk_entry_set_text (command_applet->command_entry, g_settings_get_string (command_applet->settings, COMMAND_KEY));
 
     g_signal_connect (button, "clicked", G_CALLBACK (apply_command_callback), command_applet);
-    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), dialog);
+    g_signal_connect (command_applet->preferences_dialog, "response", G_CALLBACK (command_preferences_dialog_response_cb), command_applet);
 
     /* use g_settings_bind to manage settings */
     g_settings_bind (command_applet->settings, INTERVAL_KEY, interval, "value", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind (command_applet->settings, WIDTH_KEY, width, "value", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind (command_applet->settings, SHOW_ICON_KEY, showicon, "active", G_SETTINGS_BIND_DEFAULT);
 
-    gtk_widget_show_all (GTK_WIDGET (dialog));
+    gtk_widget_show_all (command_applet->preferences_dialog);
 }
 
 static void
@@ -394,6 +413,8 @@ command_applet_dispose (GObject *object)
 
   g_clear_object (&self->settings);
   g_clear_object (&self->command);
+
+  g_clear_pointer (&self->preferences_dialog, gtk_widget_destroy);
 
   G_OBJECT_CLASS (command_applet_parent_class)->dispose (object);
 }
