@@ -57,6 +57,7 @@ struct _CommandApplet
   GtkLabel    *label;
   GtkImage    *image;
   GtkBox      *box;
+  GtkEntry    *command_entry;
 
   guint        width;
 
@@ -82,6 +83,17 @@ command_about_callback (GSimpleAction *action,
   gp_applet_show_about (GP_APPLET (user_data));
 }
 
+static void
+apply_command_callback (GtkButton *button,
+                        gpointer   data)
+{
+  CommandApplet *command_applet;
+
+  command_applet = (CommandApplet *) data;
+
+  g_settings_set_string (command_applet->settings, COMMAND_KEY, gtk_entry_get_text (command_applet->command_entry));
+}
+
 /* Show the preferences dialog */
 static void
 command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
@@ -90,7 +102,7 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     GtkDialog *dialog;
     GtkGrid *grid;
     GtkWidget *widget;
-    GtkWidget *command;
+    GtkWidget *button;
     GtkWidget *interval;
     GtkWidget *width;
     GtkWidget *showicon;
@@ -115,8 +127,12 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     gtk_label_set_yalign (GTK_LABEL (widget), 0.5);
     gtk_grid_attach (grid, widget, 1, 0, 1, 1);
 
-    command = gtk_entry_new ();
-    gtk_grid_attach (grid, command, 2, 0, 1, 1);
+    command_applet->command_entry = GTK_ENTRY (gtk_entry_new ());
+    gtk_grid_attach (grid, GTK_WIDGET (command_applet->command_entry), 2, 0, 1, 1);
+
+    button = gtk_button_new_with_mnemonic (_("_Apply"));
+    gtk_widget_set_tooltip_text (button, _("Click to apply the new command."));
+    gtk_grid_attach (grid, button, 3, 0, 1, 1);
 
     widget = gtk_label_new (_("Interval (seconds):"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
@@ -124,7 +140,7 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     gtk_grid_attach (grid, widget, 1, 1, 1, 1);
 
     interval = gtk_spin_button_new_with_range (1.0, 600.0, 1.0);
-    gtk_grid_attach (grid, interval, 2, 1, 1, 1);
+    gtk_grid_attach (grid, interval, 2, 1, 2, 1);
 
     widget = gtk_label_new (_("Maximum width (chars):"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
@@ -132,17 +148,19 @@ command_settings_callback (GSimpleAction *action, GVariant *parameter, gpointer 
     gtk_grid_attach (grid, widget, 1, 2, 1, 1);
 
     width = gtk_spin_button_new_with_range(1.0, 100.0, 1.0);
-    gtk_grid_attach (grid, width, 2, 2, 1, 1);
+    gtk_grid_attach (grid, width, 2, 2, 2, 1);
 
     showicon = gtk_check_button_new_with_label (_("Show icon"));
-    gtk_grid_attach (grid, showicon, 2, 3, 1, 1);
+    gtk_grid_attach (grid, showicon, 2, 3, 2, 1);
 
     gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), GTK_WIDGET (grid), TRUE, TRUE, 0);
 
+    gtk_entry_set_text (command_applet->command_entry, g_settings_get_string (command_applet->settings, COMMAND_KEY));
+
+    g_signal_connect (button, "clicked", G_CALLBACK (apply_command_callback), command_applet);
     g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), dialog);
 
     /* use g_settings_bind to manage settings */
-    g_settings_bind (command_applet->settings, COMMAND_KEY, command, "text", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind (command_applet->settings, INTERVAL_KEY, interval, "value", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind (command_applet->settings, WIDTH_KEY, width, "value", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind (command_applet->settings, SHOW_ICON_KEY, showicon, "active", G_SETTINGS_BIND_DEFAULT);
