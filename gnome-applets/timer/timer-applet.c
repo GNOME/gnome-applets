@@ -58,6 +58,8 @@ struct _TimerApplet
     GtkSpinButton      *minutes;
     GtkSpinButton      *seconds;
 
+    GtkWidget          *preferences_dialog;
+
     gboolean            active;
     gboolean            pause;
     gint                elapsed;
@@ -254,35 +256,52 @@ timer_spin_button_value_changed (GtkSpinButton *spinbutton, TimerApplet *applet)
     g_settings_set_int (applet->settings, DURATION_KEY, duration);
 }
 
+static void
+timer_preferences_dialog_response_cb (GtkDialog *dialog,
+                                      gint       response_id,
+                                      gpointer   data)
+{
+    TimerApplet *applet;
+
+    applet = (TimerApplet *) data;
+
+    gtk_widget_destroy (GTK_WIDGET (applet->preferences_dialog));
+    applet->preferences_dialog = NULL;
+}
+
 /* Show the preferences dialog */
 static void
 timer_preferences_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
 {
     TimerApplet *applet;
-    GtkDialog *dialog;
     GtkGrid *grid;
     GtkWidget *widget;
     gint duration, hours, minutes, seconds;
 
     applet = (TimerApplet *) data;
 
+    if (applet->preferences_dialog != NULL) {
+        gtk_window_present (GTK_WINDOW (applet->preferences_dialog));
+        return;
+    }
+
     duration = g_settings_get_int (applet->settings, DURATION_KEY);
     hours = duration / 60 / 60;
     minutes = duration / 60 % 60;
     seconds = duration % 60;
 
-    dialog = GTK_DIALOG (gtk_dialog_new_with_buttons(_("Timer Applet Preferences"),
+    applet->preferences_dialog = gtk_dialog_new_with_buttons(_("Timer Applet Preferences"),
                                                      NULL,
-                                                     GTK_DIALOG_MODAL,
+                                                     0,
                                                      _("_Close"),
                                                      GTK_RESPONSE_CLOSE,
-                                                     NULL));
+                                                     NULL);
     grid = GTK_GRID (gtk_grid_new ());
     gtk_grid_set_row_spacing (grid, 12);
     gtk_grid_set_column_spacing (grid, 12);
 
-    gtk_window_set_default_size (GTK_WINDOW (dialog), 350, 150);
-    gtk_container_set_border_width (GTK_CONTAINER (dialog), 10);
+    gtk_window_set_default_size (GTK_WINDOW (applet->preferences_dialog), 350, 150);
+    gtk_container_set_border_width (GTK_CONTAINER (applet->preferences_dialog), 10);
 
     widget = gtk_label_new (_("Name:"));
     gtk_label_set_xalign (GTK_LABEL (widget), 1.0);
@@ -334,11 +353,11 @@ timer_preferences_callback (GSimpleAction *action, GVariant *parameter, gpointer
     gtk_grid_attach (grid, widget, 2, 5, 1, 1);
     g_settings_bind (applet->settings, SHOW_DIALOG_KEY, widget, "active", G_SETTINGS_BIND_DEFAULT);
 
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), GTK_WIDGET (grid), TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (applet->preferences_dialog))), GTK_WIDGET (grid), TRUE, TRUE, 0);
 
-    g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), dialog);
+    g_signal_connect (applet->preferences_dialog, "response", G_CALLBACK (timer_preferences_dialog_response_cb), applet);
 
-    gtk_widget_show_all (GTK_WIDGET (dialog));
+    gtk_widget_show_all (applet->preferences_dialog);
 }
 
 static void
@@ -416,6 +435,8 @@ timer_applet_finalize (GObject *object)
     }
 
   g_object_unref (self->settings);
+
+  g_clear_pointer (&self->preferences_dialog, gtk_widget_destroy);
 
   notify_uninit ();
 
