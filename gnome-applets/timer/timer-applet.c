@@ -224,6 +224,7 @@ timer_stop_callback (GSimpleAction *action, GVariant *parameter, gpointer data)
     applet = (TimerApplet *) data;
 
     applet->active = FALSE;
+    applet->pause = FALSE;
     if (applet->timeout_id != 0)
     {
         g_source_remove(applet->timeout_id);
