@@ -767,6 +767,7 @@ append_font_color (StickyNote *note,
   g_string_append_printf (string, "#%s textview text,\n", note->name);
   g_string_append_printf (string, "#%s textview text:backdrop {\n", note->name);
   g_string_append_printf (string, "\tcolor: %s;\n", font_color);
+  g_string_append_printf (string, "\tcaret-color: %s;\n", font_color);
   g_string_append (string, "}\n");
 
   g_free (font_color);
