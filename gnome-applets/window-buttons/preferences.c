@@ -403,7 +403,8 @@ cb_orientation (GtkRadioButton *style,
 }
 
 static void
-properties_close (GtkButton *object,
+properties_close (GtkDialog *dialog,
+                  gint       response_id,
                   WBApplet  *wbapplet)
 {
   gtk_widget_destroy(wbapplet->window_prefs);
@@ -441,7 +442,6 @@ wb_applet_properties_cb (GSimpleAction *action,
 	GtkToggleButton *chkb_metacity_order;
 	GtkToggleButton *chkb_show_tooltips;
 	GtkButton *btn_reload_order;
-	GtkButton *btn_close;
 	GtkEntry *entry_custom_order;
 	GtkComboBox *combo_theme;
 	GtkToggleButton **chkb_btn_hidden;
@@ -491,7 +491,6 @@ wb_applet_properties_cb (GSimpleAction *action,
 	chkb_metacity_order = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_USE_METACITY_LAYOUT));
 	chkb_show_tooltips = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, CFG_SHOW_TOOLTIPS));
 	btn_reload_order = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_reload_order"));
-	btn_close = GTK_BUTTON (gtk_builder_get_object(wbapplet->prefbuilder, "btn_close"));
 	entry_custom_order = GTK_ENTRY (gtk_builder_get_object(wbapplet->prefbuilder, CFG_BUTTON_LAYOUT));
 	combo_theme = GTK_COMBO_BOX (gtk_builder_get_object(wbapplet->prefbuilder, CFG_THEME));
 	chkb_btn_hidden = getHideButtons(wbapplet->prefbuilder);
@@ -541,8 +540,7 @@ wb_applet_properties_cb (GSimpleAction *action,
 	g_signal_connect(G_OBJECT(chkb_show_tooltips), "clicked", G_CALLBACK (cb_show_tooltips), wbapplet);
 	g_signal_connect(G_OBJECT(btn_reload_order), "clicked", G_CALLBACK (cb_reload_buttons), wbapplet);
 	g_signal_connect(G_OBJECT(combo_theme), "changed", G_CALLBACK(cb_theme_changed), wbapplet);
-	g_signal_connect(G_OBJECT(btn_close), "clicked", G_CALLBACK (properties_close), wbapplet);
-	g_signal_connect(G_OBJECT(wbapplet->window_prefs), "destroy", G_CALLBACK(properties_close), wbapplet);
+	g_signal_connect(G_OBJECT(wbapplet->window_prefs), "response", G_CALLBACK(properties_close), wbapplet);
 
 	gtk_widget_show (wbapplet->window_prefs);
 
