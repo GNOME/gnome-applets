@@ -69,6 +69,7 @@ wb_applet_dispose (GObject *object)
   self = WB_APPLET (object);
 
   g_clear_pointer (&self->window_prefs, gtk_widget_destroy);
+  g_clear_object (&self->prefbuilder);
 
   if (self->active_window_changed_id != 0)
     {
@@ -677,7 +678,7 @@ init_wbapplet (WBApplet *wbapplet)
 	wbapplet->activewindow = wnck_screen_get_active_window(wbapplet->activescreen);
 	wbapplet->umaxedwindow = getUpperMaximized(wbapplet);
 	wbapplet->rootwindow = getRootWindow(wbapplet->activescreen);
-	wbapplet->prefbuilder = gtk_builder_new();
+	wbapplet->prefbuilder = NULL;
 	wbapplet->box = GTK_BOX(gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0));
 	wbapplet->button = createButtons(wbapplet);
 	wbapplet->orient = gp_applet_get_orientation(GP_APPLET (wbapplet));

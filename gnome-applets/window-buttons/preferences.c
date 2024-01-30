@@ -409,6 +409,8 @@ properties_close (GtkDialog *dialog,
 {
   gtk_widget_destroy(wbapplet->window_prefs);
   wbapplet->window_prefs = NULL;
+  g_object_unref (wbapplet->prefbuilder);
+  wbapplet->prefbuilder = NULL;
 }
 
 static void
@@ -456,6 +458,7 @@ wb_applet_properties_cb (GSimpleAction *action,
 	}
 
 	// Create the Properties dialog from the GtkBuilder file
+	wbapplet->prefbuilder = gtk_builder_new ();
 	gtk_builder_set_translation_domain (wbapplet->prefbuilder, GETTEXT_PACKAGE);
 	gtk_builder_add_from_resource (wbapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-buttons.ui", NULL);
 	wbapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wbapplet->prefbuilder, "properties"));
