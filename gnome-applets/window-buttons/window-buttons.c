@@ -68,6 +68,8 @@ wb_applet_dispose (GObject *object)
 
   self = WB_APPLET (object);
 
+  g_clear_pointer (&self->window_prefs, gtk_widget_destroy);
+
   if (self->active_window_changed_id != 0)
     {
       g_signal_handler_disconnect (self->activescreen,
