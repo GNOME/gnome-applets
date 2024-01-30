@@ -223,14 +223,17 @@ wt_applet_properties_cb (GSimpleAction *action,
 
 	wtapplet = (WTApplet *) user_data;
 
-	// Create the Properties dialog from the GtkBuilder file
-	if(wtapplet->window_prefs) {
+	if (wtapplet->window_prefs != NULL) {
+		// Window already exists, only open
 		gtk_window_present(GTK_WINDOW(wtapplet->window_prefs));
-	} else {
-		gtk_builder_set_translation_domain (wtapplet->prefbuilder, GETTEXT_PACKAGE);
-		gtk_builder_add_from_resource (wtapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-title.ui", NULL);
-		wtapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wtapplet->prefbuilder, "properties"));
+		return;
 	}
+
+	// Create the Properties dialog from the GtkBuilder file
+	gtk_builder_set_translation_domain (wtapplet->prefbuilder, GETTEXT_PACKAGE);
+	gtk_builder_add_from_resource (wtapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-title.ui", NULL);
+	wtapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wtapplet->prefbuilder, "properties"));
+
 	//gtk_builder_connect_signals (wtapplet->prefbuilder, NULL); // no need for now
 
 	chkb_only_maximized = GTK_TOGGLE_BUTTON (gtk_builder_get_object(wtapplet->prefbuilder, CFG_ONLY_MAXIMIZED));
