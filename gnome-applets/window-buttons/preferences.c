@@ -449,16 +449,16 @@ wb_applet_properties_cb (GSimpleAction *action,
 
 	wbapplet = (WBApplet *) user_data;
 
-	// Create the Properties dialog from the GtkBuilder file
-	if (wbapplet->window_prefs) {
+	if (wbapplet->window_prefs != NULL) {
 		// Window already exists, only open
-		gtk_window_present(GTK_WINDOW(wbapplet->window_prefs)); // CRASHES HERE BECAUSE window_prefs IS NOT NULL WHEN IT SHOULD BE!!!
-	} else {
-		// Create window from builder
-		gtk_builder_set_translation_domain (wbapplet->prefbuilder, GETTEXT_PACKAGE);
-		gtk_builder_add_from_resource (wbapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-buttons.ui", NULL);
-		wbapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wbapplet->prefbuilder, "properties"));
+		gtk_window_present(GTK_WINDOW(wbapplet->window_prefs));
+		return;
 	}
+
+	// Create the Properties dialog from the GtkBuilder file
+	gtk_builder_set_translation_domain (wbapplet->prefbuilder, GETTEXT_PACKAGE);
+	gtk_builder_add_from_resource (wbapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-buttons.ui", NULL);
+	wbapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wbapplet->prefbuilder, "properties"));
 
 	/* Get the widgets from GtkBuilder & Init data structures we'll pass to our buttons */
 	btn = getImageButtons(wbapplet->prefbuilder);
