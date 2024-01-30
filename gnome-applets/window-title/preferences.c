@@ -229,6 +229,7 @@ wt_applet_properties_cb (GSimpleAction *action,
 	}
 
 	// Create the Properties dialog from the GtkBuilder file
+	wtapplet->prefbuilder = gtk_builder_new ();
 	gtk_builder_set_translation_domain (wtapplet->prefbuilder, GETTEXT_PACKAGE);
 	gtk_builder_add_from_resource (wtapplet->prefbuilder, GRESOURCE_PREFIX "/ui/window-title.ui", NULL);
 	wtapplet->window_prefs = GTK_WIDGET (gtk_builder_get_object (wtapplet->prefbuilder, "properties"));
@@ -297,4 +298,6 @@ properties_close (GtkDialog *dialog,
 {
 	gtk_widget_destroy(wtapplet->window_prefs);
 	wtapplet->window_prefs = NULL;
+	g_object_unref (wtapplet->prefbuilder);
+	wtapplet->prefbuilder = NULL;
 }

@@ -62,6 +62,7 @@ wt_applet_dispose (GObject *object)
   self = WT_APPLET (object);
 
   g_clear_pointer (&self->window_prefs, gtk_widget_destroy);
+  g_clear_object (&self->prefbuilder);
 
   if (self->active_window_changed_id != 0)
     {
@@ -706,7 +707,7 @@ init_wtapplet (WTApplet *wtapplet)
 	wtapplet->activewindow = wnck_screen_get_active_window(wtapplet->activescreen);
 	wtapplet->umaxedwindow = getUpperMaximized(wtapplet);
 	wtapplet->rootwindow = getRootWindow(wtapplet->activescreen);
-	wtapplet->prefbuilder = gtk_builder_new ();
+	wtapplet->prefbuilder = NULL;
 	wtapplet->box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
 	wtapplet->icon = GTK_IMAGE(gtk_image_new());
 	wtapplet->title = GTK_LABEL(gtk_label_new(NULL));
