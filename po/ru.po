@@ -24,9 +24,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2022-10-31 12:26+0000\n"
-"PO-Revision-Date: 2022-11-02 22:21+1000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues/\n"
+"POT-Creation-Date: 2024-01-29 21:34+0000\n"
+"PO-Revision-Date: 2024-01-30 18:50+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -167,7 +167,7 @@ msgid "Number of characters to display"
 msgstr "Число отображаемых символов"
 
 #: data/schemas/org.gnome.gnome-applets.command.gschema.xml.in:22
-#: gnome-applets/command/command-applet.c:137
+#: gnome-applets/command/command-applet.c:172
 msgid "Show icon"
 msgstr "Показывать значок"
 
@@ -1086,22 +1086,22 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Показывает состояние возможностей AccessX"
 
 #: gnome-applets/accessx-status/accessx-status-applet.c:1336
-#: gnome-applets/battstat/battstat-applet.c:1545
-#: gnome-applets/brightness/brightness-applet.c:815
+#: gnome-applets/battstat/battstat-applet.c:1550
+#: gnome-applets/brightness/brightness-applet.c:823
 #: gnome-applets/charpick/charpick-applet.c:838
-#: gnome-applets/command/command-applet.c:415
+#: gnome-applets/command/command-applet.c:454
 #: gnome-applets/cpufreq/cpufreq-applet.c:1005
 #: gnome-applets/drivemount/drivemount-applet.c:176
 #: gnome-applets/geyes/geyes-applet.c:410
 #: gnome-applets/gweather/gweather-applet.c:616
-#: gnome-applets/inhibit/inhibit-applet.c:431
-#: gnome-applets/mini-commander/mini-commander-applet.c:470
-#: gnome-applets/multiload/multiload-applet.c:514
+#: gnome-applets/inhibit/inhibit-applet.c:444
+#: gnome-applets/mini-commander/mini-commander-applet.c:472
+#: gnome-applets/multiload/multiload-applet.c:515
 #: gnome-applets/netspeed/netspeed-applet.c:1538
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:841
-#: gnome-applets/timer/timer-applet.c:463
-#: gnome-applets/tracker-search-bar/tracker-applet.c:464
-#: gnome-applets/trash/trash-applet.c:592
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:842
+#: gnome-applets/timer/timer-applet.c:485
+#: gnome-applets/tracker-search-bar/tracker-applet.c:456
+#: gnome-applets/trash/trash-applet.c:608
 #: gnome-applets/window-buttons/window-buttons.c:795
 #: gnome-applets/window-picker/wp-applet.c:386
 #: gnome-applets/window-title/window-title.c:817
@@ -1199,7 +1199,7 @@ msgstr "Оставшееся время (%d%%) неизвестно"
 msgid "Unknown time (%d%%) until charged"
 msgstr "Оставшееся до полного заряда время (%d%%) неизвестно"
 
-#: gnome-applets/battstat/battstat-applet.c:333
+#: gnome-applets/battstat/battstat-applet.c:334
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -1207,7 +1207,7 @@ msgstr[0] "Осталась %d минута (%d%%)"
 msgstr[1] "Осталось %d минуты (%d%%)"
 msgstr[2] "Осталось %d минут (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:338
+#: gnome-applets/battstat/battstat-applet.c:340
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -1215,7 +1215,7 @@ msgstr[0] "До полного заряда осталась %d минута (%d
 msgstr[1] "До полного заряда осталось %d минуты (%d%%)"
 msgstr[2] "До полного заряда осталось %d минут (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:344
+#: gnome-applets/battstat/battstat-applet.c:347
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -1223,7 +1223,7 @@ msgstr[0] "Остался %d час (%d%%)"
 msgstr[1] "Осталось %d часа (%d%%)"
 msgstr[2] "Осталось %d часов (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:349
+#: gnome-applets/battstat/battstat-applet.c:353
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -1233,21 +1233,21 @@ msgstr[2] "До полного заряда %d часов (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: gnome-applets/battstat/battstat-applet.c:356
+#: gnome-applets/battstat/battstat-applet.c:360
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Осталось %d %s %d %s (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:357
-#: gnome-applets/battstat/battstat-applet.c:364
+#: gnome-applets/battstat/battstat-applet.c:361
+#: gnome-applets/battstat/battstat-applet.c:368
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "час"
 msgstr[1] "часа"
 msgstr[2] "часов"
 
-#: gnome-applets/battstat/battstat-applet.c:358
-#: gnome-applets/battstat/battstat-applet.c:365
+#: gnome-applets/battstat/battstat-applet.c:362
+#: gnome-applets/battstat/battstat-applet.c:369
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "минута"
@@ -1256,32 +1256,32 @@ msgstr[2] "минут"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: gnome-applets/battstat/battstat-applet.c:363
+#: gnome-applets/battstat/battstat-applet.c:367
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s до полного заряда (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:377
+#: gnome-applets/battstat/battstat-applet.c:381
 msgid "Battery Monitor"
 msgstr "Индикатор батареи"
 
-#: gnome-applets/battstat/battstat-applet.c:387
-#: gnome-applets/battstat/battstat-applet.c:443
+#: gnome-applets/battstat/battstat-applet.c:391
+#: gnome-applets/battstat/battstat-applet.c:447
 msgid "Your battery is now fully recharged"
 msgstr "Батарея полностью заряжена"
 
-#: gnome-applets/battstat/battstat-applet.c:420
-#: gnome-applets/battstat/battstat-applet.c:575
+#: gnome-applets/battstat/battstat-applet.c:424
+#: gnome-applets/battstat/battstat-applet.c:580
 msgid "Battery Notice"
 msgstr "Уведомление от батареи"
 
 #. we don't know the remaining time
-#: gnome-applets/battstat/battstat-applet.c:520
+#: gnome-applets/battstat/battstat-applet.c:524
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "У вас осталось %d%% заряда батареи."
 
-#: gnome-applets/battstat/battstat-applet.c:526
+#: gnome-applets/battstat/battstat-applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -1297,7 +1297,7 @@ msgstr[2] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: gnome-applets/battstat/battstat-applet.c:538
+#: gnome-applets/battstat/battstat-applet.c:543
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -1310,7 +1310,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: gnome-applets/battstat/battstat-applet.c:546
+#: gnome-applets/battstat/battstat-applet.c:551
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -1322,31 +1322,31 @@ msgstr ""
 " • подключите компьютер к источнику питания, или\n"
 " • сохраните открытые документы и выключите компьютер."
 
-#: gnome-applets/battstat/battstat-applet.c:554
+#: gnome-applets/battstat/battstat-applet.c:559
 msgid "Your battery is running low"
 msgstr "Батарея разряжена"
 
-#: gnome-applets/battstat/battstat-applet.c:649
+#: gnome-applets/battstat/battstat-applet.c:654
 msgid "No battery present"
 msgstr "Батарея отсутствует"
 
-#: gnome-applets/battstat/battstat-applet.c:652
+#: gnome-applets/battstat/battstat-applet.c:657
 msgid "Battery status unknown"
 msgstr "Состояния батареи неизвестно"
 
-#: gnome-applets/battstat/battstat-applet.c:833
+#: gnome-applets/battstat/battstat-applet.c:838
 msgid "N/A"
 msgstr "Н/Д"
 
-#: gnome-applets/battstat/battstat-applet.c:1443 gnome-applets/ga-module.c:76
+#: gnome-applets/battstat/battstat-applet.c:1448 gnome-applets/ga-module.c:76
 msgid "Battery Charge Monitor"
 msgstr "Индикатор состояния батареи"
 
-#: gnome-applets/battstat/battstat-applet.c:1444 gnome-applets/ga-module.c:77
+#: gnome-applets/battstat/battstat-applet.c:1449 gnome-applets/ga-module.c:77
 msgid "Monitor a laptop's remaining power"
 msgstr "Отслеживает уровень заряда батареи ноутбука"
 
-#: gnome-applets/battstat/battstat-applet.c:1515
+#: gnome-applets/battstat/battstat-applet.c:1520
 msgid ""
 "This utility shows the status of your laptop battery.\n"
 "\n"
@@ -1360,7 +1360,7 @@ msgstr ""
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: gnome-applets/battstat/properties.c:258
+#: gnome-applets/battstat/properties.c:260
 msgid "Percent"
 msgstr "Процентов"
 
@@ -1368,7 +1368,7 @@ msgstr "Процентов"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: gnome-applets/battstat/properties.c:264
+#: gnome-applets/battstat/properties.c:266
 msgid "Minutes Remaining"
 msgstr "Оставшихся минут"
 
@@ -1385,11 +1385,11 @@ msgstr "Не удалось получить яркость экрана ноу�
 msgid "LCD brightness : %d%%"
 msgstr "Яркость LCD: %d%%"
 
-#: gnome-applets/brightness/brightness-applet.c:784
+#: gnome-applets/brightness/brightness-applet.c:792
 msgid "Adjusts laptop panel brightness."
 msgstr "Корректировка яркости экрана ноутбука."
 
-#: gnome-applets/brightness/brightness-applet.c:793
+#: gnome-applets/brightness/brightness-applet.c:801
 msgid ""
 "Licensed under the GNU General Public License Version 2\n"
 "\n"
@@ -1426,7 +1426,7 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA.\n"
 
-#: gnome-applets/brightness/brightness-applet.c:810
+#: gnome-applets/brightness/brightness-applet.c:818
 msgid "Copyright © 2006 Benjamin Canou"
 msgstr "Авторские права © 2006 Benjamin Canou"
 
@@ -1470,7 +1470,9 @@ msgstr ""
 "клавиатуре. Выпущен под лицензией GNU General Public Licence."
 
 #: gnome-applets/charpick/properties.c:74
-#: gnome-applets/trash/trash-applet.c:422 gnome-applets/trash/trash-empty.c:323
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete-all.ui:23
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete.ui:24
+#: gnome-applets/trash/trash-applet.c:470 gnome-applets/trash/trash-empty.c:324
 msgid "_Cancel"
 msgstr "_Отмена"
 
@@ -1531,7 +1533,8 @@ msgid "Click to edit the selected palette"
 msgstr "Нажмите кнопку для редактирования выбранного шаблона"
 
 #: gnome-applets/charpick/properties.c:463
-#: gnome-applets/trash/trash-applet.c:424
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete.ui:39
+#: gnome-applets/trash/trash-applet.c:472
 msgid "_Delete"
 msgstr "_Удалить"
 
@@ -1548,26 +1551,34 @@ msgid "Character Palette Preferences"
 msgstr "Параметры «Кассы символов»"
 
 #: gnome-applets/charpick/properties.c:509
-#: gnome-applets/command/command-applet.c:103 gnome-applets/geyes/themes.c:269
+#: gnome-applets/command/command-applet.c:134 gnome-applets/geyes/themes.c:269
 #: gnome-applets/netspeed/preferences.c:335
-#: gnome-applets/timer/timer-applet.c:276
+#: gnome-applets/timer/timer-applet.c:296
 #: gnome-applets/window-picker/wp-preferences-dialog.ui:24
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: gnome-applets/command/command-applet.c:100
+#: gnome-applets/command/command-applet.c:131
 msgid "Command Applet Preferences"
 msgstr "Параметры апплета «Команда»"
 
-#: gnome-applets/command/command-applet.c:113
+#: gnome-applets/command/command-applet.c:144
 msgid "Command:"
 msgstr "Команда:"
 
-#: gnome-applets/command/command-applet.c:121
+#: gnome-applets/command/command-applet.c:152
+msgid "_Apply"
+msgstr "_Применить"
+
+#: gnome-applets/command/command-applet.c:153
+msgid "Click to apply the new command."
+msgstr "Нажмите, чтобы применить новую команду."
+
+#: gnome-applets/command/command-applet.c:156
 msgid "Interval (seconds):"
 msgstr "Интервал (секунды):"
 
-#: gnome-applets/command/command-applet.c:129
+#: gnome-applets/command/command-applet.c:164
 msgid "Maximum width (chars):"
 msgstr "Максимальная ширина (символов):"
 
@@ -1701,7 +1712,7 @@ msgstr "Апплет «Установка яркости»"
 msgid "Adjusts Laptop panel brightness"
 msgstr "Настройка яркости экрана ноутбука"
 
-#: gnome-applets/ga-module.c:105 gnome-applets/mini-commander/preferences.c:627
+#: gnome-applets/ga-module.c:105 gnome-applets/mini-commander/preferences.c:628
 msgid "Command"
 msgstr "Команда"
 
@@ -1769,7 +1780,7 @@ msgid "Netspeed Applet"
 msgstr "Апплет «Скорость сети»"
 
 #: gnome-applets/ga-module.c:195
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:719
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:720
 msgid "Sticky Notes"
 msgstr "Липкие записки"
 
@@ -2167,13 +2178,13 @@ msgstr "Автоматический переход в спящий режим �
 msgid "Manual inhibit"
 msgstr "Ручная блокировка"
 
-#: gnome-applets/inhibit/inhibit-applet.c:399
+#: gnome-applets/inhibit/inhibit-applet.c:412
 msgid "Allows user to inhibit automatic power saving."
 msgstr ""
 "Позволяет пользователю запретить автоматический переход в режим "
 "энергосбережения."
 
-#: gnome-applets/inhibit/inhibit-applet.c:408
+#: gnome-applets/inhibit/inhibit-applet.c:421
 msgid ""
 "Licensed under the GNU General Public License Version 2\n"
 "\n"
@@ -2209,7 +2220,7 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA.\n"
 
-#: gnome-applets/inhibit/inhibit-applet.c:425
+#: gnome-applets/inhibit/inhibit-applet.c:438
 msgid "Copyright © 2006-2007 Richard Hughes"
 msgstr "Авторские права © 2006-2007 Richard Hughes"
 
@@ -2222,11 +2233,11 @@ msgstr "Элементы истории отсутствуют"
 msgid "Start program"
 msgstr "Запуск программы"
 
-#: gnome-applets/mini-commander/command-line.c:541
+#: gnome-applets/mini-commander/command-line.c:545
 msgid "Command line"
 msgstr "Командная строка"
 
-#: gnome-applets/mini-commander/command-line.c:542
+#: gnome-applets/mini-commander/command-line.c:546
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Введите здесь команду и среда Gnome выполнит её"
 
@@ -2260,7 +2271,7 @@ msgstr "Апплет «Минималистичная командная стр�
 msgid "This applet adds a command line to the panel"
 msgstr "Этот апплет добавляет командную строку на панель"
 
-#: gnome-applets/mini-commander/mini-commander-applet.c:445
+#: gnome-applets/mini-commander/mini-commander-applet.c:447
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
@@ -2360,7 +2371,7 @@ msgstr "Необходимо указать команду"
 msgid "You may not specify duplicate patterns"
 msgstr "Нельзя определять повторяющиеся шаблоны"
 
-#: gnome-applets/mini-commander/preferences.c:617
+#: gnome-applets/mini-commander/preferences.c:618
 msgid "Pattern"
 msgstr "Шаблон"
 
@@ -2400,7 +2411,7 @@ msgid "Swap Space"
 msgstr "Подкачка"
 
 #: gnome-applets/multiload/multiload-applet.c:207
-#: gnome-applets/multiload/multiload-applet.c:281
+#: gnome-applets/multiload/multiload-applet.c:282
 msgid "Load Average"
 msgstr "Средняя загрузка"
 
@@ -2439,7 +2450,7 @@ msgstr ""
 "Получение %s\n"
 "Отправка %s"
 
-#: gnome-applets/multiload/multiload-applet.c:256
+#: gnome-applets/multiload/multiload-applet.c:257
 #, c-format
 msgid ""
 "%s:\n"
@@ -2457,27 +2468,27 @@ msgstr[2] ""
 "%s:\n"
 "%u%% используется"
 
-#: gnome-applets/multiload/multiload-applet.c:277
+#: gnome-applets/multiload/multiload-applet.c:278
 msgid "CPU Load"
 msgstr "Загрузка процессора"
 
-#: gnome-applets/multiload/multiload-applet.c:278
+#: gnome-applets/multiload/multiload-applet.c:279
 msgid "Memory Load"
 msgstr "Загрузка памяти"
 
-#: gnome-applets/multiload/multiload-applet.c:279
+#: gnome-applets/multiload/multiload-applet.c:280
 msgid "Net Load"
 msgstr "Загрузка сети"
 
-#: gnome-applets/multiload/multiload-applet.c:280
+#: gnome-applets/multiload/multiload-applet.c:281
 msgid "Swap Load"
 msgstr "Загрузка подкачки"
 
-#: gnome-applets/multiload/multiload-applet.c:282
+#: gnome-applets/multiload/multiload-applet.c:283
 msgid "Disk Load"
 msgstr "Загрузка диска"
 
-#: gnome-applets/multiload/multiload-applet.c:488
+#: gnome-applets/multiload/multiload-applet.c:489
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2827,7 +2838,7 @@ msgstr "Менять _значок в соответствии с выбранн
 msgid "Netspeed Preferences"
 msgstr "Параметры апплета «Скорость сети»"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:779
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:780
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2835,19 +2846,19 @@ msgstr[0] "%d записка"
 msgstr[1] "%d записки"
 msgstr[2] "%d записок"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:780
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:781
 msgid "Show sticky notes"
 msgstr "Отображать липкие записки"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:818
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:819
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Липкие записки для среды GNOME"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1028
+#: gnome-applets/sticky-notes/sticky-notes.c:1032
 msgid "This note is locked."
 msgstr "Эта записка заблокирована."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1032
+#: gnome-applets/sticky-notes/sticky-notes.c:1036
 msgid "This note is unlocked."
 msgstr "Эта записка разблокирована."
 
@@ -3069,123 +3080,123 @@ msgstr "_Приостановить таймер"
 msgid "S_top timer"
 msgstr "_Остановить таймер"
 
-#: gnome-applets/timer/timer-applet.c:118
+#: gnome-applets/timer/timer-applet.c:120
 msgid "Finished"
 msgstr "Завершено"
 
-#: gnome-applets/timer/timer-applet.c:125
-#: gnome-applets/timer/timer-applet.c:137
+#: gnome-applets/timer/timer-applet.c:127
+#: gnome-applets/timer/timer-applet.c:139
 msgid "Timer finished!"
 msgstr "Таймер завершён!"
 
-#: gnome-applets/timer/timer-applet.c:273
+#: gnome-applets/timer/timer-applet.c:293
 msgid "Timer Applet Preferences"
 msgstr "Параметры апплета «Таймер»"
 
-#: gnome-applets/timer/timer-applet.c:286
+#: gnome-applets/timer/timer-applet.c:306
 msgid "Name:"
 msgstr "Название:"
 
-#: gnome-applets/timer/timer-applet.c:295
+#: gnome-applets/timer/timer-applet.c:315
 msgid "Hours:"
 msgstr "Часов:"
 
-#: gnome-applets/timer/timer-applet.c:306
+#: gnome-applets/timer/timer-applet.c:326
 msgid "Minutes:"
 msgstr "Минут:"
 
-#: gnome-applets/timer/timer-applet.c:317
+#: gnome-applets/timer/timer-applet.c:337
 msgid "Seconds:"
 msgstr "Секунд:"
 
-#: gnome-applets/timer/timer-applet.c:328
+#: gnome-applets/timer/timer-applet.c:348
 msgid "Show notification popup"
 msgstr "Показать всплывающее уведомление"
 
-#: gnome-applets/timer/timer-applet.c:332
+#: gnome-applets/timer/timer-applet.c:352
 msgid "Show dialog"
 msgstr "Показывать диалоговое окно"
 
-#: gnome-applets/tracker-search-bar/tracker-applet.c:411
+#: gnome-applets/tracker-search-bar/tracker-applet.c:403
 msgid "A search bar applet for finding content stored in Tracker"
 msgstr "Апплет панели поиска для поиска данных, хранящихся в «Tracker»"
 
-#: gnome-applets/tracker-search-bar/tracker-applet.c:459
+#: gnome-applets/tracker-search-bar/tracker-applet.c:451
 msgid "Copyright Tracker Authors 2005-2010"
 msgstr "Авторские права - разработчики «Tracker» 2005-2010"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:687
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:704
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:689
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:706
 msgid "Other"
 msgstr "Другое"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:688
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:690
 msgid "Contacts"
 msgstr "Контакты"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:689
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:691
 msgid "Tags"
 msgstr "Теги"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:690
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:692
 msgid "Email Addresses"
 msgstr "Адрес эл.почты"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:691
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:693
 msgid "Documents"
 msgstr "Документы"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:692
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:694
 msgid "Applications"
 msgstr "Приложения"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:693
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:695
 msgid "Images"
 msgstr "Изображения"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:694
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:696
 msgid "Audio"
 msgstr "Аудио"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:695
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:697
 msgid "Folders"
 msgstr "Папки"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:696
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:698
 msgid "Fonts"
 msgstr "Шрифты"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:697
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:699
 msgid "Videos"
 msgstr "Видео"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:698
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:700
 msgid "Archives"
 msgstr "Архивы"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:699
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:701
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:700
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:702
 msgid "Links"
 msgstr "Ссылки"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1073
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1075
 msgid "Category"
 msgstr "Категория"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1101
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1103
 #: gnome-applets/window-title/window-title.ui:424
 msgid "Title"
 msgstr "Заголовок"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1158
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1160
 #, c-format
 msgid "No results found for “%s”"
 msgstr "Ничего не найдено для «%s»"
 
-#: gnome-applets/trash/trash-applet.c:123
+#: gnome-applets/trash/trash-applet.c:124
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3193,11 +3204,11 @@ msgstr[0] "%d элемент в корзине"
 msgstr[1] "%d элемента в корзине"
 msgstr[2] "%d элементов в корзине"
 
-#: gnome-applets/trash/trash-applet.c:131
+#: gnome-applets/trash/trash-applet.c:132
 msgid "No Items in Trash"
 msgstr "В корзине нет элементов"
 
-#: gnome-applets/trash/trash-applet.c:340
+#: gnome-applets/trash/trash-applet.c:386
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3206,15 +3217,15 @@ msgstr ""
 "Ошибка запуска Nautilus:\n"
 "%s"
 
-#: gnome-applets/trash/trash-applet.c:361
+#: gnome-applets/trash/trash-applet.c:407
 msgid "Delete Immediately?"
 msgstr "Удалить окончательно?"
 
-#: gnome-applets/trash/trash-applet.c:390
+#: gnome-applets/trash/trash-applet.c:436
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Не удается переместить элементы в корзину, удалить их окончательно?"
 
-#: gnome-applets/trash/trash-applet.c:391
+#: gnome-applets/trash/trash-applet.c:438
 #, c-format
 msgid "The selected item cannot be moved to the trash"
 msgid_plural "None of the %d selected items can be moved to the Trash"
@@ -3222,12 +3233,12 @@ msgstr[0] "Выбранный %d элемент не может быть пер�
 msgstr[1] "Ни один из %d выбранных элементов не может быть перемещён в корзину"
 msgstr[2] "Ни один из %d выбранных элементов не может быть перемещён в корзину"
 
-#: gnome-applets/trash/trash-applet.c:397
+#: gnome-applets/trash/trash-applet.c:444
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "Не удается переместить элементы в корзину, удалить их окончательно?"
 
-#: gnome-applets/trash/trash-applet.c:398
+#: gnome-applets/trash/trash-applet.c:446
 #, c-format
 msgid "The selected item cannot be moved to the Trash"
 msgid_plural "%d of the selected items cannot be moved to the Trash"
@@ -3235,7 +3246,7 @@ msgstr[0] "Выбранный %d элемент не может быть пер�
 msgstr[1] "Ни один из %d выбранных элементов не может быть перемещён в корзину"
 msgstr[2] "Ни один из %d выбранных элементов не может быть перемещён в корзину"
 
-#: gnome-applets/trash/trash-applet.c:565
+#: gnome-applets/trash/trash-applet.c:581
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3255,11 +3266,11 @@ msgstr "Удаляется элемент %s из %s"
 msgid "Removing: %s"
 msgstr "Удаляется: %s"
 
-#: gnome-applets/trash/trash-empty.c:305
+#: gnome-applets/trash/trash-empty.c:306
 msgid "Empty all of the items from the trash?"
 msgstr "Очистить все элементы из корзины?"
 
-#: gnome-applets/trash/trash-empty.c:312
+#: gnome-applets/trash/trash-empty.c:313
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3267,7 +3278,7 @@ msgstr ""
 "Если вы очистите корзину, элементы будут окончательно удалены. Учтите, что "
 "их также можно удалять по одному."
 
-#: gnome-applets/trash/trash-empty.c:326 gnome-applets/trash/trash-menu.ui:9
+#: gnome-applets/trash/trash-empty.c:327 gnome-applets/trash/trash-menu.ui:9
 msgid "_Empty Trash"
 msgstr "_Очистить корзину"
 
@@ -3638,6 +3649,12 @@ msgstr ""
 "если этот параметр будет включен! Получить доступ можно с помощью щелчок "
 "правой кнопкой мыши на значке, если он не скрыт. Вы всегда можете изменить "
 "значения этого параметра в редакторе gconf."
+
+#. display "custom" icon/title (TODO: customization via preferences?)
+#. This has to be unrefed!
+#: gnome-applets/window-title/window-title.c:236
+msgid "Desktop"
+msgstr "Рабочий стол"
 
 #: gnome-applets/window-title/window-title.c:787
 msgid "Window title for your GNOME Panel."
