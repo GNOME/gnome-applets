@@ -48,7 +48,7 @@ static const char* wireless_quality_icon[] = {
 
 static const char IN_ICON[] = "go-down";
 static const char OUT_ICON[] = "go-up";
-static const char ERROR_ICON[] = "gtk-dialog-error";
+static const char ERROR_ICON[] = "dialog-error";
 
 /* How many old in out values do we store?
  * The value actually shown in the applet is the average
