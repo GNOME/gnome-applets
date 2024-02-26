@@ -383,7 +383,7 @@ gweather_dialog_create (GWeatherDialog *dialog)
   gtk_box_pack_end (GTK_BOX (cond_hbox), cond_frame_alignment, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (cond_frame_alignment), 2);
 
-  dialog->cond_image = gtk_image_new_from_icon_name ("stock-unknown", GTK_ICON_SIZE_BUTTON);
+  dialog->cond_image = gtk_image_new_from_icon_name ("image-missing", GTK_ICON_SIZE_BUTTON);
   gtk_widget_show (dialog->cond_image);
   gtk_container_add (GTK_CONTAINER (cond_frame_alignment), dialog->cond_image);
 

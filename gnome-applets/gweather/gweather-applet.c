@@ -494,7 +494,7 @@ update_finish (GWeatherInfo *info, gpointer data)
 
 			 icon = gweather_info_get_icon_name (gw_applet->gweather_info);
 			 if (icon == NULL)
-				 icon = "stock-unknown";
+				 icon = "image-missing";
 	           	 
 			 n = notify_notification_new (message, detail, icon);
 	
