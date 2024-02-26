@@ -31,7 +31,7 @@
 #include "wp-task-title.h"
 
 #define CLOSE_WINDOW_ICON "window-close"
-#define LOGOUT_ICON "gnome-logout"
+#define LOGOUT_ICON "system-log-out"
 
 struct _WpTaskTitle
 {
