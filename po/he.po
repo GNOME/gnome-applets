@@ -16,16 +16,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues/\n"
-"POT-Creation-Date: 2024-01-29 13:58+0000\n"
-"PO-Revision-Date: 2024-02-09 10:01+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2024-05-02 12:36+0000\n"
+"PO-Revision-Date: 2024-05-29 14:19+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/schemas/org.gnome.gnome-applets.battstat.gschema.xml.in:6
 msgid "Red value level"
@@ -157,7 +158,7 @@ msgid "Number of characters to display"
 msgstr "Number of characters to display"
 
 #: data/schemas/org.gnome.gnome-applets.command.gschema.xml.in:22
-#: gnome-applets/command/command-applet.c:153
+#: gnome-applets/command/command-applet.c:172
 msgid "Show icon"
 msgstr "הצגת סמל"
 
@@ -769,6 +770,8 @@ msgid ""
 "When enabled, the button will change image to 'hovered' whenever the mouse "
 "passes it."
 msgstr ""
+"כשהאפשרות פעילה, הכפתור יחליף תמונה ל‚ריחוף מעל’/‚hovered’ כשהעכבר עובר "
+"מעליו."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:131
 msgid "Show tooltips on buttons."
@@ -983,6 +986,8 @@ msgstr "העדפות מחליף פריסות לוח־_מקשים"
 #: gnome-applets/netspeed/netspeed-menu.ui:13
 #: gnome-applets/netspeed/preferences.c:334
 #: gnome-applets/sticky-notes/ui/sticky-notes-applet-menu.ui:27
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:41
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:24
 #: gnome-applets/trash/trash-menu.ui:15
 msgid "_Help"
 msgstr "ע_זרה"
@@ -1047,7 +1052,7 @@ msgstr "מצב AccessX"
 #: gnome-applets/accessx-status/accessx-status-applet.c:1116
 #: gnome-applets/accessx-status/accessx-status-applet.c:1120
 msgid "Shows keyboard status when accessibility features are used."
-msgstr "מציג את מצב המקלדת כאשר אפשרויות הנגישות מופעלות"
+msgstr "מציג את מצב המקלדת כאשר אפשרויות הנגישות מופעלות."
 
 #: gnome-applets/accessx-status/accessx-status-applet.c:1246
 #: gnome-applets/ga-module.c:66
@@ -1066,7 +1071,7 @@ msgstr "הצגת מצב תכונות AccessX כמו משנים נעולים"
 #: gnome-applets/battstat/battstat-applet.c:1550
 #: gnome-applets/brightness/brightness-applet.c:823
 #: gnome-applets/charpick/charpick-applet.c:838
-#: gnome-applets/command/command-applet.c:433
+#: gnome-applets/command/command-applet.c:454
 #: gnome-applets/cpufreq/cpufreq-applet.c:1005
 #: gnome-applets/drivemount/drivemount-applet.c:176
 #: gnome-applets/geyes/geyes-applet.c:410
@@ -1076,7 +1081,7 @@ msgstr "הצגת מצב תכונות AccessX כמו משנים נעולים"
 #: gnome-applets/multiload/multiload-applet.c:515
 #: gnome-applets/netspeed/netspeed-applet.c:1538
 #: gnome-applets/sticky-notes/sticky-notes-applet.c:842
-#: gnome-applets/timer/timer-applet.c:464
+#: gnome-applets/timer/timer-applet.c:485
 #: gnome-applets/tracker-search-bar/tracker-applet.c:456
 #: gnome-applets/trash/trash-applet.c:608
 #: gnome-applets/window-buttons/window-buttons.c:795
@@ -1187,36 +1192,44 @@ msgstr "זמן לא ידוע (%d%%) עד לטעינה מלאה"
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
-msgstr[0] "‏%d דקות (%d%%) נשארו"
-msgstr[1] "‏%d דקות (%d%%) נשארו"
+msgstr[0] "נותרה דקה %d‏ (%d%%)"
+msgstr[1] "נותרו ‏%d דקות (%d%%)"
+msgstr[2] "נותרו ‏%d דקות (%d%%)"
+msgstr[3] "נותרו ‏%d דקות (%d%%)"
 
 #: gnome-applets/battstat/battstat-applet.c:340
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
-msgstr[0] "דקה אחת עד לטעינה מלאה (%d%%)"
-msgstr[1] "נותרו עוד ‏%d דקות (%d%%) לטעינה מלאה"
+msgstr[0] "דקה עד לטעינה מלאה (%d%%)"
+msgstr[1] "נותרו ‏%d דקות (%d%%) לטעינה מלאה"
+msgstr[2] "נותרו ‏%d דקות (%d%%) לטעינה מלאה"
+msgstr[3] "נותרו ‏%d דקות (%d%%) לטעינה מלאה"
 
 #: gnome-applets/battstat/battstat-applet.c:347
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "נותרה ‏שעה אחת (%d%%)"
-msgstr[1] "נותרו ‏%d שעות (%d%%)"
+msgstr[1] "נותרו שעתיים (‏%d) - (%d%%)"
+msgstr[2] "נותרו %d שעות (%d%%)"
+msgstr[3] "נותרו %d שעות (%d%%)"
 
 #: gnome-applets/battstat/battstat-applet.c:353
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
-msgstr[0] "שעה אחת עד לטעינה מלאה (%d%%)"
-msgstr[1] "‏%d שעות עד לטעינה מלאה (%d%%)"
+msgstr[0] "שעה עד לטעינה מלאה (%d%%)"
+msgstr[1] "שעתיים (%d) עד לטעינה מלאה (%d%%)"
+msgstr[2] "‫%d שעות עד לטעינה מלאה (%d%%)"
+msgstr[3] "‫%d שעות עד לטעינה מלאה (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
 #: gnome-applets/battstat/battstat-applet.c:360
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "נותרו נותרו ‏‏%d %s ו־%d %s (%d%%) "
+msgstr "נותרו ‏‏%d %s ו־%d %s (%d%%)"
 
 #: gnome-applets/battstat/battstat-applet.c:361
 #: gnome-applets/battstat/battstat-applet.c:368
@@ -1224,6 +1237,8 @@ msgid "hour"
 msgid_plural "hours"
 msgstr[0] "שעה"
 msgstr[1] "שעות"
+msgstr[2] ""
+msgstr[3] ""
 
 #: gnome-applets/battstat/battstat-applet.c:362
 #: gnome-applets/battstat/battstat-applet.c:369
@@ -1231,6 +1246,8 @@ msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "דקה"
 msgstr[1] "דקות"
+msgstr[2] ""
+msgstr[3] ""
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -1265,8 +1282,10 @@ msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
 msgid_plural ""
 "You have %d minutes of battery power remaining (%d%% of the total capacity)."
-msgstr[0] "נותרה דקה אחת של עצמת סוללה (%d%% מהקיבולת)."
-msgstr[1] "נותרו %d דקות של עצמת סוללה (%d%% מהקיבולת)."
+msgstr[0] "נותרה דקה של עוצמת סוללה (%d%% מהקיבולת)."
+msgstr[1] "נותרו %d דקות של עוצמת סוללה (%d%% מהקיבולת)."
+msgstr[2] "נותרו %d דקות של עוצמת סוללה (%d%% מהקיבולת)."
+msgstr[3] "נותרו %d דקות של עוצמת סוללה (%d%% מהקיבולת)."
 
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
@@ -1382,6 +1401,20 @@ msgid ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA.\n"
 msgstr ""
+"כפוף לגרסה 2 של הרישיון הציבורי הכללי של גנו‬\n"
+"\n"
+"‫‫‫יישומון הבהירות הוא בגדר תוכנה חופשית: מותר להפיצה ו/או לשנותה על פי תנאי "
+"הרישיון הציבורי הכללי של גנו כפי שמפורסמים על-ידי קרן התוכנה החופשית, בין אם "
+"גרסה 3 של הרישיון או (לבחירתך) כל גרסה מאוחרת יותר.‬‬\n"
+"\n"
+"‫‫‫יישומון הבהירות מופץ בתקווה שיביא תועלת אבל בלא כל אחריות; בלא אפילו אחריות "
+"משתמעת למסחריות או התאמה לשימוש מסוים. כדאי לעיין ברישיון הציבורי הכללי של "
+"גנו לפרטים נוספים.‬\n"
+"\n"
+"‫‫‫לתוכנית זאת אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי של גנו. אם "
+"לא, כדאי לכתוב ל־ Free Software‬‬\n"
+"‫‫‏‫Foundation, Inc.,‏ 51 Franklin Street,‏ Fifth Floor,‏ Boston,‏ MA‬\n"
+"‫‫‏‫02110-1301, USA.‬‬\n"
 
 #: gnome-applets/brightness/brightness-applet.c:818
 msgid "Copyright © 2006 Benjamin Canou"
@@ -1508,34 +1541,36 @@ msgid "Character Palette Preferences"
 msgstr "העדפות פלטת התווים"
 
 #: gnome-applets/charpick/properties.c:509
-#: gnome-applets/command/command-applet.c:115 gnome-applets/geyes/themes.c:269
+#: gnome-applets/command/command-applet.c:134 gnome-applets/geyes/themes.c:269
 #: gnome-applets/netspeed/preferences.c:335
-#: gnome-applets/timer/timer-applet.c:277
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:56
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:39
+#: gnome-applets/timer/timer-applet.c:296
 #: gnome-applets/window-picker/wp-preferences-dialog.ui:24
 msgid "_Close"
 msgstr "_סגירה"
 
-#: gnome-applets/command/command-applet.c:112
+#: gnome-applets/command/command-applet.c:131
 msgid "Command Applet Preferences"
 msgstr "העדפות שורת הפקודה"
 
-#: gnome-applets/command/command-applet.c:125
+#: gnome-applets/command/command-applet.c:144
 msgid "Command:"
 msgstr "פקודה:"
 
-#: gnome-applets/command/command-applet.c:133
+#: gnome-applets/command/command-applet.c:152
 msgid "_Apply"
 msgstr "ה_חלה"
 
-#: gnome-applets/command/command-applet.c:134
+#: gnome-applets/command/command-applet.c:153
 msgid "Click to apply the new command."
 msgstr "יש ללחוץ להחלת הפקודה החדשה."
 
-#: gnome-applets/command/command-applet.c:137
+#: gnome-applets/command/command-applet.c:156
 msgid "Interval (seconds):"
 msgstr "מרווח (שניות):"
 
-#: gnome-applets/command/command-applet.c:145
+#: gnome-applets/command/command-applet.c:164
 msgid "Maximum width (chars):"
 msgstr "רוחב מרבי (תווים):"
 
@@ -1577,7 +1612,7 @@ msgstr "מנטר התאמת תדירות המעבד"
 
 #: gnome-applets/cpufreq/cpufreq-applet.c:960
 msgid "This utility shows the current CPU Frequency"
-msgstr "תוכנית שירות זו מציגה את תדירות המעבד הנוכחית."
+msgstr "תוכנית שירות זו מציגה את תדירות המעבד הנוכחית"
 
 #: gnome-applets/cpufreq/cpufreq-applet.c:977
 msgid "This utility shows the current CPU Frequency Scaling."
@@ -1601,7 +1636,7 @@ msgstr "שינוי התאמת תדירות המעבד"
 
 #: gnome-applets/cpufreq/cpufreq-selector/org.gnome.cpufreqselector.policy.in:15
 msgid "Privileges are required to change the CPU Frequency scaling."
-msgstr "דרושות הרשאות כדי לשנות את התאמת תדירות המעבד"
+msgstr "דרושות הרשאות כדי לשנות את דירוג תדירות המעבד."
 
 #: gnome-applets/drivemount/drive-button.c:324
 #: gnome-applets/drivemount/drive-button.c:337
@@ -1801,7 +1836,7 @@ msgstr "זוג עיניים מצחיקות עבור הלוח של GNOME. הם ע
 
 #: gnome-applets/geyes/themes.c:144
 msgid "Can not launch the eyes applet."
-msgstr "לא ניתן להפעיל את יישומון העיניים"
+msgstr "לא ניתן להפעיל את יישומון העיניים."
 
 #: gnome-applets/geyes/themes.c:145
 msgid "There was a fatal error while trying to load the theme."
@@ -1934,7 +1969,7 @@ msgstr "תחזית"
 
 #: gnome-applets/gweather/gweather-dialog.c:674
 msgid "Forecast not currently available for this location."
-msgstr "אין תחזית עבור מיקום זה"
+msgstr "אין תחזית עבור מיקום זה."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gnome-applets/gweather/gweather-pref.c:117
@@ -2133,7 +2168,7 @@ msgstr "עיכוב ידני"
 
 #: gnome-applets/inhibit/inhibit-applet.c:412
 msgid "Allows user to inhibit automatic power saving."
-msgstr "מאפשר למשתמש לעכב חיסכון אוטומטי בחשמל"
+msgstr "מאפשר למשתמש לעכב חיסכון אוטומטי בחשמל."
 
 #: gnome-applets/inhibit/inhibit-applet.c:421
 msgid ""
@@ -2153,6 +2188,20 @@ msgid ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA.\n"
 msgstr ""
+"כפוף לגרסה 2 של הרישיון הציבורי הכללי של גנו‬\n"
+"\n"
+"‫‫‫יישומון המניעה הוא בגדר תוכנה חופשית: מותר להפיצה ו/או לשנותה על פי תנאי "
+"הרישיון הציבורי הכללי של גנו כפי שמפורסמים על-ידי קרן התוכנה החופשית, בין אם "
+"גרסה 3 של הרישיון או (לבחירתך) כל גרסה מאוחרת יותר‬\n"
+"\n"
+"‫‫‫יישומון המניעה מופץ בתקווה שיביא תועלת אבל בלא כל אחריות; בלא אפילו אחריות "
+"משתמעת למסחריות או התאמה לשימוש מסוים. כדאי לעיין ברישיון הציבורי הכללי של "
+"גנו לפרטים נוספים.‬‬\n"
+"\n"
+"‫‫‫לתוכנית זאת אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי של גנו. אם "
+"לא, כדאי לכתוב ל־ Free Software‬\n"
+"‫‫‬‏‫Foundation, Inc.,‏ 51 Franklin Street,‏ Fifth Floor,‏ Boston,‏ MA‬‬\n"
+"‫‫‏‫02110-1301, USA.‬‬\n"
 
 #: gnome-applets/inhibit/inhibit-applet.c:438
 msgid "Copyright © 2006-2007 Richard Hughes"
@@ -2360,8 +2409,10 @@ msgid ""
 "%u%% in use as cache"
 msgstr ""
 "‏%s:\n"
-"‏%u%% בשימוש על ידי תוכניות\n"
-"‏%u%% בשימוש כמטמון:"
+"‬\n"
+"‫‏%u%% בשימוש על ידי תוכניות\n"
+"‬\n"
+"‫‏%u%% בשימוש כמטמון"
 
 #: gnome-applets/multiload/multiload-applet.c:233
 #, c-format
@@ -2390,10 +2441,24 @@ msgid_plural ""
 "%u%% in use"
 msgstr[0] ""
 "‏%s:\n"
-"‏%u%% בשימוש‏"
+"‬\n"
+"‫‏%u%% בשימוש‏"
 msgstr[1] ""
 "‏%s:\n"
-"‏%u%% בשימוש‏"
+"‬\n"
+"‫‏%u%% בשימוש‏"
+msgstr[2] ""
+"‏%s:\n"
+"‬\n"
+"‏‫‬\n"
+"‬\n"
+"‫‫‏%u%% בשימוש‏"
+msgstr[3] ""
+"‏%s:\n"
+"‬\n"
+"‏‫‬\n"
+"‬\n"
+"‫‫‏%u%% בשימוש‏"
 
 #: gnome-applets/multiload/multiload-applet.c:278
 msgid "CPU Load"
@@ -2768,7 +2833,9 @@ msgstr "העדפות Netspeed"
 msgid "%d note"
 msgid_plural "%d notes"
 msgstr[0] "פתקית אחת"
-msgstr[1] "‏%d פתקיות"
+msgstr[1] "שתי פתקיות"
+msgstr[2] "‏%d פתקיות"
+msgstr[3] "‏%d פתקיות"
 
 #: gnome-applets/sticky-notes/sticky-notes-applet.c:781
 msgid "Show sticky notes"
@@ -2778,11 +2845,11 @@ msgstr "הצג פתקיות דביקות"
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "פתקיות דביקות לסביבת שולחן העבודה Gnome"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1031
+#: gnome-applets/sticky-notes/sticky-notes.c:1032
 msgid "This note is locked."
 msgstr "פתקית זאת נעולה."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1035
+#: gnome-applets/sticky-notes/sticky-notes.c:1036
 msgid "This note is unlocked."
 msgstr "פתקית זאת אינה נעולה."
 
@@ -3004,40 +3071,40 @@ msgstr "ה_שהיית קוצב זמן"
 msgid "S_top timer"
 msgstr "ע_צירת קוצב זמן"
 
-#: gnome-applets/timer/timer-applet.c:118
+#: gnome-applets/timer/timer-applet.c:120
 msgid "Finished"
 msgstr "הסתיים"
 
-#: gnome-applets/timer/timer-applet.c:125
-#: gnome-applets/timer/timer-applet.c:137
+#: gnome-applets/timer/timer-applet.c:127
+#: gnome-applets/timer/timer-applet.c:139
 msgid "Timer finished!"
 msgstr "הספירה לאחור הסתיימה!"
 
-#: gnome-applets/timer/timer-applet.c:274
+#: gnome-applets/timer/timer-applet.c:293
 msgid "Timer Applet Preferences"
 msgstr "העדפות יישומון קוצב זמן"
 
-#: gnome-applets/timer/timer-applet.c:287
+#: gnome-applets/timer/timer-applet.c:306
 msgid "Name:"
 msgstr "שם:"
 
-#: gnome-applets/timer/timer-applet.c:296
+#: gnome-applets/timer/timer-applet.c:315
 msgid "Hours:"
 msgstr "שעות:"
 
-#: gnome-applets/timer/timer-applet.c:307
+#: gnome-applets/timer/timer-applet.c:326
 msgid "Minutes:"
 msgstr "דקות:"
 
-#: gnome-applets/timer/timer-applet.c:318
+#: gnome-applets/timer/timer-applet.c:337
 msgid "Seconds:"
 msgstr "שניות:"
 
-#: gnome-applets/timer/timer-applet.c:329
+#: gnome-applets/timer/timer-applet.c:348
 msgid "Show notification popup"
 msgstr "הצגת התרעות קופצות"
 
-#: gnome-applets/timer/timer-applet.c:333
+#: gnome-applets/timer/timer-applet.c:352
 msgid "Show dialog"
 msgstr "הצגת דו־שיח"
 
@@ -3124,8 +3191,10 @@ msgstr "לא נמצאו הגדרות עבור „%s”"
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
-msgstr[0] "‏%d פריטים באשפה"
+msgstr[0] "פריט באשפה"
 msgstr[1] "‏%d פריטים באשפה"
+msgstr[2] "‏%d פריטים באשפה"
+msgstr[3] "‏%d פריטים באשפה"
 
 #: gnome-applets/trash/trash-applet.c:132
 msgid "No Items in Trash"
@@ -3152,8 +3221,10 @@ msgstr "לא ניתן להזיז את הפריטים לאשפה, האם למחו
 #, c-format
 msgid "The selected item cannot be moved to the trash"
 msgid_plural "None of the %d selected items can be moved to the Trash"
-msgstr[0] "לא ניתן להעביר את הפריט הנבחר לאשפה."
-msgstr[1] "לא ניתן להעביר אף לא %d מהפריטים הנבחרים לאשפה."
+msgstr[0] "לא ניתן להעביר את הפריט הנבחר לאשפה"
+msgstr[1] "לא ניתן להעביר אף אחד מ־%d הפריטים לאשפה"
+msgstr[2] "לא ניתן להעביר אף אחד מ־%d הפריטים לאשפה"
+msgstr[3] "לא ניתן להעביר אף אחד מ־%d הפריטים לאשפה"
 
 #: gnome-applets/trash/trash-applet.c:444
 msgid ""
@@ -3166,12 +3237,16 @@ msgid "The selected item cannot be moved to the Trash"
 msgid_plural "%d of the selected items cannot be moved to the Trash"
 msgstr[0] "לא ניתן להעביר את הפריט הנבחר לאשפה"
 msgstr[1] "לא ניתן להעביר %d מהפריטים הנבחרים לאשפה"
+msgstr[2] "לא ניתן להעביר %d מהפריטים הנבחרים לאשפה"
+msgstr[3] "לא ניתן להעביר %d מהפריטים הנבחרים לאשפה"
 
 #: gnome-applets/trash/trash-applet.c:581
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
-msgstr "ישומון אשפה עבור GNOME"
+msgstr ""
+"ישומון אשפה עבור GNOME שחי בלוח שלך. אפשר להשתמש בו כדי לצפות באשפה או לגרור "
+"ולהשליך פריטים לאשפה."
 
 #. Translators: the %s in this string should be read as %d.
 #: gnome-applets/trash/trash-empty.c:70
@@ -3404,30 +3479,24 @@ msgstr "ה_סתרה בזמן שאין חלון מוגדל פעיל"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1084
 msgid "Enable _click effect"
-msgstr ""
+msgstr "הפעלת אפקט _לחיצה"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1100
 msgid "Enable _hover effect"
-msgstr ""
+msgstr "הפעלת אפקט _ריחוף"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1117
 #: gnome-applets/window-title/window-title.ui:514
-#, fuzzy
-#| msgid "Show bits"
 msgid "Show _tooltips"
-msgstr "Show bits"
+msgstr "הצגת חלוניות _עצה"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1139
 msgid "<b>Internal</b>"
 msgstr "<b>פנימי</b>"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1167
-#, fuzzy
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for maximized windows"
 msgid "Hide Compiz _decorations for maximized windows"
-msgstr "הצגת כותרת יישום וצלמית סגירה עבור חלונות מוגדלים"
+msgstr "הסתרת _עיצובי Compiz לחלונות מוגדלים"
 
 #: gnome-applets/window-buttons/window-buttons.ui:1189
 msgid "<b>External</b>"
@@ -3541,11 +3610,11 @@ msgstr "צבע גופן:"
 
 #: gnome-applets/window-title/window-title.ui:480
 msgid "_Hide when no active maximized windows"
-msgstr ""
+msgstr "לה_סתיר כשאין חלונות מוגדלים פעילים"
 
 #: gnome-applets/window-title/window-title.ui:496
 msgid "Show window _action menu on right-click"
-msgstr ""
+msgstr "הצגת תפריט ה_פעולות של החלון בלחיצה ימנית"
 
 #: gnome-applets/window-title/window-title.ui:500
 msgid ""
@@ -3557,6 +3626,11 @@ msgid ""
 "do so by right-clicking the icon if it is not hidden. You may always change "
 "this setting from gconf-editor."
 msgstr ""
+"יגרום לתפריט הפעולה של החלון להופיע בלחיצה ימנית על הכותרת.‬\n"
+"‫היכולת הניסיונית הזאת עדיין בפיתוח!‬\n"
+"‫אזהרה! במצב היכולת הנוכחי לא תהיה לך גישה לתפריט הפעולות של היישומון בלחיצה "
+"ימנית על הכותרת כשהאפשרות הזאת פעילה! אפשר עדיין ללחוץ על הסמל אם הוא לא "
+"מוסתר. תמיד אפשר לשנות את ההגדרות הזאת דרך gconf-editor."
 
 #. display "custom" icon/title (TODO: customization via preferences?)
 #. This has to be unrefed!
