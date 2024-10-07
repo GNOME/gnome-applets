@@ -102,7 +102,7 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 
 	int max;
 
-	guint64 read, write;
+	unsigned long read, write;
 	guint64 readdiff, writediff;
 
 	if(first_call)
