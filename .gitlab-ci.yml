@@ -43,12 +43,12 @@ variables:
                   yelp-tools
 
 .build-libwnck: &build-libwnck
-  - git clone https://gitlab.gnome.org/GNOME/libwnck.git
+  - git clone https://gitlab.gnome.org/GNOME/libwnck.git -b wip/muktupavels/widgets
   - meson setup libwnck libwnck/build --prefix /usr -Dintrospection=disabled
   - meson install -C libwnck/build
 
 .build-gnome-panel: &build-gnome-panel
-  - git clone https://gitlab.gnome.org/GNOME/gnome-panel.git
+  - git clone https://gitlab.gnome.org/GNOME/gnome-panel.git -b wip/muktupavels/libwnck-gtk3
   - cd gnome-panel
   - ./autogen.sh --disable-Werror --disable-gtk-doc --prefix=/usr
   - make

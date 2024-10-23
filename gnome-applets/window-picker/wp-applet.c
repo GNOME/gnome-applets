@@ -28,7 +28,7 @@
 #include <glib.h>
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include <string.h>
 
 #include "task-list.h"

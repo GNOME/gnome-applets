@@ -21,7 +21,7 @@
 #include "task-list.h"
 #include "task-item.h"
 
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include <libgnome-panel/gp-applet.h>
 #include <X11/Xlib.h>
 

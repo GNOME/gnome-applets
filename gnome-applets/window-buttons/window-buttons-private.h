@@ -35,7 +35,7 @@
 #ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #endif
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 
 /* static paths and stuff */
 #define PATH_THEMES 					WB_DATA_DIR"/themes"

@@ -25,7 +25,7 @@
 
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include <libgnome-panel/gp-applet.h>
 
 #include "wp-task-title.h"

@@ -27,7 +27,7 @@
 #ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE
 #endif
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 
 #define ICON_WIDTH						16
 #define ICON_HEIGHT						16

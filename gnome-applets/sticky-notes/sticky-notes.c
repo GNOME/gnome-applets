@@ -24,7 +24,7 @@
 #include <glib/gi18n-lib.h>
 #include <glib/gstdio.h>
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include <string.h>
 
 #include "util.h"

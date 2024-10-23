@@ -23,7 +23,7 @@
 #ifndef WP_APPLET_PRIVATE_H
 #define WP_APPLET_PRIVATE_H
 
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include "wp-applet.h"
 
 G_BEGIN_DECLS
