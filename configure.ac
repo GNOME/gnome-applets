@@ -116,7 +116,7 @@ dnl -- check for libgtop (required) -------------------------------------------
 PKG_CHECK_MODULES(GTOP_APPLETS, [libgtop-2.0 >= $LIBGTOP_REQUIRED])
 
 dnl -- check for libwnck (required) -------------------------------------------
-PKG_CHECK_MODULES(LIBWNCK, libwnck-3.0 >= $LIBWNCK_REQUIRED,,
+PKG_CHECK_MODULES(LIBWNCK, libwnck-4.0 >= $LIBWNCK_REQUIRED,,
 	AC_MSG_ERROR([libwnck is required to build gnome-applets.], 1))
 
 dnl -- check for libnotify (required) -----------------------------------------
