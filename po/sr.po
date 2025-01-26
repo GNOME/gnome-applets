@@ -1,25 +1,26 @@
 # Serbian translation of gnome-applets
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2018.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2025.
 # This file is distributed under the same license as the gnome-applets package.
 # Данило Шеган <danilo@gnome.org>
 # Игор Несторовић <igor@prevod.org>, 2005
 # Милош Поповић <gpopac@gmail.com>, 2010.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2021.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011—2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues\n"
-"POT-Creation-Date: 2020-10-14 22:43+0000\n"
-"PO-Revision-Date: 2021-01-19 22:04+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues/\n"
+"POT-Creation-Date: 2025-01-12 16:44+0000\n"
+"PO-Revision-Date: 2025-01-21 23:11+0100\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/schemas/org.gnome.gnome-applets.battstat.gschema.xml.in:6
 msgid "Red value level"
@@ -151,7 +152,7 @@ msgid "Number of characters to display"
 msgstr "Број знакова за исписивање"
 
 #: data/schemas/org.gnome.gnome-applets.command.gschema.xml.in:22
-#: gnome-applets/command/command-applet.c:137
+#: gnome-applets/command/command-applet.c:172
 msgid "Show icon"
 msgstr "Приказује иконицу"
 
@@ -221,18 +222,10 @@ msgid "The interval, in seconds, between automatic updates."
 msgstr "Време, у секундама, између самосталних освежавања."
 
 #: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:15
-msgid "Display radar map"
-msgstr "Приказивање радарске мапе"
-
-#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:16
-msgid "Fetch a radar map on each update."
-msgstr "Преузима радарску мапу при сваком освежавању."
-
-#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:20
 msgid "Show notification"
 msgstr "Приказивање обавештења"
 
-#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:21
+#: data/schemas/org.gnome.gnome-applets.gweather.gschema.xml.in:16
 msgid "Show notifications for critical weather conditions"
 msgstr "Приказује обавештења за критичне временске услове"
 
@@ -445,7 +438,6 @@ msgid "Show sum"
 msgstr "Приказује укупност"
 
 #: data/schemas/org.gnome.gnome-applets.netspeed.gschema.xml.in:7
-#| msgid "Show _sum instead of in & out"
 msgid "Show sum instead of in & out"
 msgstr "Приказује укупност уместо улаза и излаза"
 
@@ -498,7 +490,6 @@ msgid "Out graph color"
 msgstr "Боја графика излаза"
 
 #: data/schemas/org.gnome.gnome-applets.stickynotes.gschema.xml.in:5
-#| msgid "Delete all sticky notes?"
 msgid "File name for sticky notes"
 msgstr "Назив датотеке за лепљиве белешке"
 
@@ -984,13 +975,15 @@ msgstr "Поставке приступачности _тастатуре"
 #: gnome-applets/charpick/properties.c:510
 #: gnome-applets/cpufreq/cpufreq-applet-menu.ui:9
 #: gnome-applets/drivemount/drivemount-applet-menu.ui:5
-#: gnome-applets/geyes/geyes-applet-menu.ui:9 gnome-applets/geyes/themes.c:268
+#: gnome-applets/geyes/geyes-applet-menu.ui:9 gnome-applets/geyes/themes.c:270
 #: gnome-applets/gweather/gweather-applet-menu.ui:19
 #: gnome-applets/mini-commander/mini-commander-applet-menu.ui:9
 #: gnome-applets/multiload/multiload-applet-menu.ui:15
 #: gnome-applets/netspeed/netspeed-menu.ui:13
 #: gnome-applets/netspeed/preferences.c:334
 #: gnome-applets/sticky-notes/ui/sticky-notes-applet-menu.ui:27
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:41
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:24
 #: gnome-applets/trash/trash-menu.ui:15
 msgid "_Help"
 msgstr "По_моћ"
@@ -1072,25 +1065,25 @@ msgstr ""
 "Приказује стање функција Приступачности Икса као што су задржани измењивачи"
 
 #: gnome-applets/accessx-status/accessx-status-applet.c:1336
-#: gnome-applets/battstat/battstat-applet.c:1545
-#: gnome-applets/brightness/brightness-applet.c:815
-#: gnome-applets/charpick/charpick-applet.c:837
-#: gnome-applets/command/command-applet.c:415
+#: gnome-applets/battstat/battstat-applet.c:1550
+#: gnome-applets/brightness/brightness-applet.c:823
+#: gnome-applets/charpick/charpick-applet.c:838
+#: gnome-applets/command/command-applet.c:454
 #: gnome-applets/cpufreq/cpufreq-applet.c:1005
 #: gnome-applets/drivemount/drivemount-applet.c:176
 #: gnome-applets/geyes/geyes-applet.c:410
-#: gnome-applets/gweather/gweather-applet.c:598
-#: gnome-applets/inhibit/inhibit-applet.c:431
-#: gnome-applets/mini-commander/mini-commander-applet.c:470
-#: gnome-applets/multiload/multiload-applet.c:514
+#: gnome-applets/gweather/gweather-applet.c:616
+#: gnome-applets/inhibit/inhibit-applet.c:444
+#: gnome-applets/mini-commander/mini-commander-applet.c:472
+#: gnome-applets/multiload/multiload-applet.c:515
 #: gnome-applets/netspeed/netspeed-applet.c:1538
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:848
-#: gnome-applets/timer/timer-applet.c:463
-#: gnome-applets/tracker-search-bar/tracker-applet.c:464
-#: gnome-applets/trash/trash-applet.c:592
-#: gnome-applets/window-buttons/window-buttons.c:792
-#: gnome-applets/window-picker/wp-applet.c:421
-#: gnome-applets/window-title/window-title.c:815
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:842
+#: gnome-applets/timer/timer-applet.c:485
+#: gnome-applets/tracker-search-bar/tracker-applet.c:456
+#: gnome-applets/trash/trash-applet.c:608
+#: gnome-applets/window-buttons/window-buttons.c:795
+#: gnome-applets/window-picker/wp-applet.c:386
+#: gnome-applets/window-title/window-title.c:817
 msgid "translator-credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -1191,7 +1184,7 @@ msgstr "Није познато преостало време (%d%%)"
 msgid "Unknown time (%d%%) until charged"
 msgstr "Није познато преостало време пуњења (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:333
+#: gnome-applets/battstat/battstat-applet.c:334
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -1200,7 +1193,7 @@ msgstr[1] "Преостају %d минута (%d%%)"
 msgstr[2] "Преостаје %d минута (%d%%)"
 msgstr[3] "Преостао је један минут (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:338
+#: gnome-applets/battstat/battstat-applet.c:340
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -1209,7 +1202,7 @@ msgstr[1] "%d минута до пуне батерије (%d%%)"
 msgstr[2] "%d минута до пуне батерије (%d%%)"
 msgstr[3] "Још минут до пуне батерије (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:344
+#: gnome-applets/battstat/battstat-applet.c:347
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -1218,7 +1211,7 @@ msgstr[1] "Преостају %d сата (%d%%)"
 msgstr[2] "Преостаје %d сати (%d%%)"
 msgstr[3] "Преостао је један сат (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:349
+#: gnome-applets/battstat/battstat-applet.c:353
 #, c-format
 msgid "%d hour until charged (%d%%)"
 msgid_plural "%d hours until charged (%d%%)"
@@ -1229,13 +1222,13 @@ msgstr[3] "Један сат до пуне батерије (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: gnome-applets/battstat/battstat-applet.c:356
+#: gnome-applets/battstat/battstat-applet.c:360
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Преостаје %d %s и %d %s (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:357
-#: gnome-applets/battstat/battstat-applet.c:364
+#: gnome-applets/battstat/battstat-applet.c:361
+#: gnome-applets/battstat/battstat-applet.c:368
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "сат"
@@ -1243,8 +1236,8 @@ msgstr[1] "сата"
 msgstr[2] "сати"
 msgstr[3] "сат"
 
-#: gnome-applets/battstat/battstat-applet.c:358
-#: gnome-applets/battstat/battstat-applet.c:365
+#: gnome-applets/battstat/battstat-applet.c:362
+#: gnome-applets/battstat/battstat-applet.c:369
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "минут"
@@ -1254,32 +1247,32 @@ msgstr[3] "минут"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: gnome-applets/battstat/battstat-applet.c:363
+#: gnome-applets/battstat/battstat-applet.c:367
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s до пуне батерије (%d%%)"
 
-#: gnome-applets/battstat/battstat-applet.c:377
+#: gnome-applets/battstat/battstat-applet.c:381
 msgid "Battery Monitor"
 msgstr "Праћење стања батерије"
 
-#: gnome-applets/battstat/battstat-applet.c:387
-#: gnome-applets/battstat/battstat-applet.c:443
+#: gnome-applets/battstat/battstat-applet.c:391
+#: gnome-applets/battstat/battstat-applet.c:447
 msgid "Your battery is now fully recharged"
 msgstr "Батерија је сада у потпуности напуњена"
 
-#: gnome-applets/battstat/battstat-applet.c:420
-#: gnome-applets/battstat/battstat-applet.c:575
+#: gnome-applets/battstat/battstat-applet.c:424
+#: gnome-applets/battstat/battstat-applet.c:580
 msgid "Battery Notice"
 msgstr "Обавештење о батерији"
 
 #. we don't know the remaining time
-#: gnome-applets/battstat/battstat-applet.c:520
+#: gnome-applets/battstat/battstat-applet.c:524
 #, c-format
 msgid "You have %d%% of your total battery capacity remaining."
 msgstr "Преостало вам је укупно %d%% од капацитета батерије."
 
-#: gnome-applets/battstat/battstat-applet.c:526
+#: gnome-applets/battstat/battstat-applet.c:531
 #, c-format
 msgid ""
 "You have %d minute of battery power remaining (%d%% of the total capacity)."
@@ -1297,7 +1290,7 @@ msgstr[3] ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop does not support suspend.
-#: gnome-applets/battstat/battstat-applet.c:538
+#: gnome-applets/battstat/battstat-applet.c:543
 msgid ""
 "To avoid losing your work:\n"
 " • plug your laptop into external power, or\n"
@@ -1310,7 +1303,7 @@ msgstr ""
 #. TRANSLATORS: this is a list, it is left as a single string
 #. * to allow you to make it appear like a list would in your
 #. * locale.  This is if the laptop supports suspend.
-#: gnome-applets/battstat/battstat-applet.c:546
+#: gnome-applets/battstat/battstat-applet.c:551
 msgid ""
 "To avoid losing your work:\n"
 " • suspend your laptop to save power,\n"
@@ -1322,32 +1315,31 @@ msgstr ""
 " • прикључите га на електричну мрежу, или\n"
 " • сачувајте отворене документе и искључите рачунар."
 
-#: gnome-applets/battstat/battstat-applet.c:554
+#: gnome-applets/battstat/battstat-applet.c:559
 msgid "Your battery is running low"
 msgstr "Батерија је скоро празна"
 
-#: gnome-applets/battstat/battstat-applet.c:649
+#: gnome-applets/battstat/battstat-applet.c:654
 msgid "No battery present"
 msgstr "Батерија није присутна"
 
-#: gnome-applets/battstat/battstat-applet.c:652
+#: gnome-applets/battstat/battstat-applet.c:657
 msgid "Battery status unknown"
 msgstr "Није познато стање батерије"
 
-#: gnome-applets/battstat/battstat-applet.c:833
+#: gnome-applets/battstat/battstat-applet.c:838
 msgid "N/A"
 msgstr "Недоступно"
 
-#: gnome-applets/battstat/battstat-applet.c:1443 gnome-applets/ga-module.c:76
+#: gnome-applets/battstat/battstat-applet.c:1448 gnome-applets/ga-module.c:76
 msgid "Battery Charge Monitor"
 msgstr "Праћење стања батерије"
 
-#: gnome-applets/battstat/battstat-applet.c:1444 gnome-applets/ga-module.c:77
+#: gnome-applets/battstat/battstat-applet.c:1449 gnome-applets/ga-module.c:77
 msgid "Monitor a laptop's remaining power"
 msgstr "Пратите преостало напајање преносног рачунара"
 
-#: gnome-applets/battstat/battstat-applet.c:1515
-#| msgid "This utility shows the status of your laptop battery."
+#: gnome-applets/battstat/battstat-applet.c:1520
 msgid ""
 "This utility shows the status of your laptop battery.\n"
 "\n"
@@ -1360,7 +1352,7 @@ msgstr ""
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] percent".
 #.
-#: gnome-applets/battstat/properties.c:258
+#: gnome-applets/battstat/properties.c:260
 msgid "Percent"
 msgstr "Постотак"
 
@@ -1368,7 +1360,7 @@ msgstr "Постотак"
 #. * this sentence:
 #. *   "Warn when battery charge drops to: [XX] minutes remaining"
 #.
-#: gnome-applets/battstat/properties.c:264
+#: gnome-applets/battstat/properties.c:266
 msgid "Minutes Remaining"
 msgstr "Преостало минута"
 
@@ -1385,25 +1377,11 @@ msgstr "Не могу да добавим осветљеност панела п
 msgid "LCD brightness : %d%%"
 msgstr "Осветљеност ЛЦД-а : %d%%"
 
-#: gnome-applets/brightness/brightness-applet.c:784
+#: gnome-applets/brightness/brightness-applet.c:792
 msgid "Adjusts laptop panel brightness."
 msgstr "Дотерајте осветљеност панела преносног рачунара."
 
-#: gnome-applets/brightness/brightness-applet.c:793
-#| msgid ""
-#| "Tracker is free software; you can redistribute it and/or modify it under "
-#| "the terms of the GNU General Public License as published by the Free "
-#| "Software Foundation; either version 2 of the License, or (at your option) "
-#| "any later version.\n"
-#| "\n"
-#| "Tracker is distributed in the hope that it will be useful, but WITHOUT "
-#| "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-#| "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-#| "more details.\n"
-#| "\n"
-#| "You should have received a copy of the GNU General Public License along "
-#| "with Tracker; if not, write to the Free Software Foundation, Inc., 51 "
-#| "Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA."
+#: gnome-applets/brightness/brightness-applet.c:801
 msgid ""
 "Licensed under the GNU General Public License Version 2\n"
 "\n"
@@ -1439,7 +1417,7 @@ msgstr ""
 "софтвера на адресу: „Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA“.\n"
 
-#: gnome-applets/brightness/brightness-applet.c:810
+#: gnome-applets/brightness/brightness-applet.c:818
 msgid "Copyright © 2006 Benjamin Canou"
 msgstr "Ауторска права © 2006 Бенџамин Кану"
 
@@ -1465,19 +1443,16 @@ msgstr "Уметни нарочити знак"
 msgid "insert special character %s"
 msgstr "умеће нарочити знак %s"
 
-#: gnome-applets/charpick/charpick-applet.c:641
+#: gnome-applets/charpick/charpick-applet.c:642
 #: gnome-applets/charpick/properties.c:431 gnome-applets/ga-module.c:95
 msgid "Character Palette"
 msgstr "Палета знакова"
 
-#: gnome-applets/charpick/charpick-applet.c:641 gnome-applets/ga-module.c:96
+#: gnome-applets/charpick/charpick-applet.c:642 gnome-applets/ga-module.c:96
 msgid "Insert characters"
 msgstr "Унесите знакове"
 
-#: gnome-applets/charpick/charpick-applet.c:812
-#| msgid ""
-#| "Gnome Panel applet for selecting strange characters that are not on my "
-#| "keyboard. Released under GNU General Public Licence."
+#: gnome-applets/charpick/charpick-applet.c:813
 msgid ""
 "GNOME Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -1486,7 +1461,9 @@ msgstr ""
 "тастатури. Објављено под Гнуовом Општом јавном лиценцом (GNU GPL)."
 
 #: gnome-applets/charpick/properties.c:74
-#: gnome-applets/trash/trash-applet.c:422 gnome-applets/trash/trash-empty.c:339
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete-all.ui:23
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete.ui:24
+#: gnome-applets/trash/trash-applet.c:470 gnome-applets/trash/trash-empty.c:324
 msgid "_Cancel"
 msgstr "_Откажи"
 
@@ -1547,7 +1524,8 @@ msgid "Click to edit the selected palette"
 msgstr "Кликните да уредите изабрану палету"
 
 #: gnome-applets/charpick/properties.c:463
-#: gnome-applets/trash/trash-applet.c:424
+#: gnome-applets/sticky-notes/ui/sticky-notes-delete.ui:39
+#: gnome-applets/trash/trash-applet.c:472
 msgid "_Delete"
 msgstr "_Обриши"
 
@@ -1564,26 +1542,36 @@ msgid "Character Palette Preferences"
 msgstr "Поставке палете знакова"
 
 #: gnome-applets/charpick/properties.c:509
-#: gnome-applets/command/command-applet.c:103 gnome-applets/geyes/themes.c:267
+#: gnome-applets/command/command-applet.c:134 gnome-applets/geyes/themes.c:269
 #: gnome-applets/netspeed/preferences.c:335
-#: gnome-applets/timer/timer-applet.c:276
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:56
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:39
+#: gnome-applets/timer/timer-applet.c:296
 #: gnome-applets/window-picker/wp-preferences-dialog.ui:24
 msgid "_Close"
 msgstr "_Затвори"
 
-#: gnome-applets/command/command-applet.c:100
+#: gnome-applets/command/command-applet.c:131
 msgid "Command Applet Preferences"
 msgstr "Поставке терминалчића"
 
-#: gnome-applets/command/command-applet.c:113
+#: gnome-applets/command/command-applet.c:144
 msgid "Command:"
 msgstr "Наредба:"
 
-#: gnome-applets/command/command-applet.c:121
+#: gnome-applets/command/command-applet.c:152
+msgid "_Apply"
+msgstr "_Примени"
+
+#: gnome-applets/command/command-applet.c:153
+msgid "Click to apply the new command."
+msgstr "Кликните да примените нову наредбу."
+
+#: gnome-applets/command/command-applet.c:156
 msgid "Interval (seconds):"
 msgstr "Период (у секундама):"
 
-#: gnome-applets/command/command-applet.c:129
+#: gnome-applets/command/command-applet.c:164
 msgid "Maximum width (chars):"
 msgstr "Највећа ширина (знакова):"
 
@@ -1717,7 +1705,7 @@ msgstr "Програмче осветљености"
 msgid "Adjusts Laptop panel brightness"
 msgstr "Дотерајте осветљеност панела преносног рачунара"
 
-#: gnome-applets/ga-module.c:105 gnome-applets/mini-commander/preferences.c:627
+#: gnome-applets/ga-module.c:105 gnome-applets/mini-commander/preferences.c:628
 msgid "Command"
 msgstr "Наредба"
 
@@ -1784,7 +1772,7 @@ msgid "Netspeed Applet"
 msgstr "Програмче брзине мреже"
 
 #: gnome-applets/ga-module.c:195
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:726
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:720
 msgid "Sticky Notes"
 msgstr "Белешке"
 
@@ -1829,9 +1817,6 @@ msgid "Window Picker"
 msgstr "Избирач прозора"
 
 #: gnome-applets/ga-module.c:245
-#| msgid ""
-#| "Show the application title and close icon\n"
-#| "for the active window"
 msgid "Shows a list of icons for the open windows."
 msgstr "Приказује списак иконица за отворене прозоре."
 
@@ -1851,23 +1836,23 @@ msgstr "Погледом очи верно прате кретњу миша"
 msgid "A goofy set of eyes for the GNOME panel. They follow your mouse."
 msgstr "Шашаве очи за Гномов панел која прате курсор миша."
 
-#: gnome-applets/geyes/themes.c:141
+#: gnome-applets/geyes/themes.c:144
 msgid "Can not launch the eyes applet."
 msgstr "Не могу да покренем програмче с очима."
 
-#: gnome-applets/geyes/themes.c:142
+#: gnome-applets/geyes/themes.c:145
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Дошло је до кобне грешке при покушају учитавања теме."
 
-#: gnome-applets/geyes/themes.c:265
+#: gnome-applets/geyes/themes.c:267
 msgid "Geyes Preferences"
 msgstr "Поставке ГОчију"
 
-#: gnome-applets/geyes/themes.c:298
+#: gnome-applets/geyes/themes.c:300
 msgid "Themes"
 msgstr "Теме"
 
-#: gnome-applets/geyes/themes.c:319
+#: gnome-applets/geyes/themes.c:321
 msgid "_Select a theme:"
 msgstr "_Изаберите тему:"
 
@@ -1876,20 +1861,20 @@ msgid "_Details"
 msgstr "_Детаљи"
 
 #: gnome-applets/gweather/gweather-applet-menu.ui:9
-#: gnome-applets/gweather/gweather-dialog.c:193
+#: gnome-applets/gweather/gweather-dialog.c:176
 msgid "_Update"
 msgstr "_Освежи"
 
-#: gnome-applets/gweather/gweather-applet.c:354
 #: gnome-applets/gweather/gweather-applet.c:358
+#: gnome-applets/gweather/gweather-applet.c:362
 msgid "GNOME Weather"
 msgstr "Гном време"
 
-#: gnome-applets/gweather/gweather-applet.c:454
+#: gnome-applets/gweather/gweather-applet.c:467
 msgid "Weather Forecast"
 msgstr "Временска прогноза"
 
-#: gnome-applets/gweather/gweather-applet.c:473
+#: gnome-applets/gweather/gweather-applet.c:486
 #, c-format
 msgid ""
 "City: %s\n"
@@ -1900,148 +1885,123 @@ msgstr ""
 "Небо: %s\n"
 "Температура: %s"
 
-#: gnome-applets/gweather/gweather-applet.c:524
+#: gnome-applets/gweather/gweather-applet.c:539
 msgid "Updating..."
 msgstr "Освежава..."
 
-#: gnome-applets/gweather/gweather-applet.c:570
+#: gnome-applets/gweather/gweather-applet.c:588
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Програмче панела за праћење локалних временских прилика."
 
-#: gnome-applets/gweather/gweather-applet.c:592
+#: gnome-applets/gweather/gweather-applet.c:610
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999–2005 — С. Пападимитроу и други"
 
-#: gnome-applets/gweather/gweather-dialog.c:191
+#: gnome-applets/gweather/gweather-dialog.c:174
 msgid "Details"
 msgstr "Детаљи"
 
-#: gnome-applets/gweather/gweather-dialog.c:232
+#: gnome-applets/gweather/gweather-dialog.c:212
 msgid "City:"
 msgstr "Место:"
 
-#: gnome-applets/gweather/gweather-dialog.c:238
+#: gnome-applets/gweather/gweather-dialog.c:218
 msgid "Last update:"
 msgstr "Последња допуна:"
 
-#: gnome-applets/gweather/gweather-dialog.c:244
+#: gnome-applets/gweather/gweather-dialog.c:224
 msgid "Conditions:"
 msgstr "Услови:"
 
-#: gnome-applets/gweather/gweather-dialog.c:250
+#: gnome-applets/gweather/gweather-dialog.c:230
 msgid "Sky:"
 msgstr "Небо:"
 
-#: gnome-applets/gweather/gweather-dialog.c:256
+#: gnome-applets/gweather/gweather-dialog.c:236
 msgid "Temperature:"
 msgstr "Температура:"
 
-#: gnome-applets/gweather/gweather-dialog.c:262
+#: gnome-applets/gweather/gweather-dialog.c:242
 msgid "Feels like:"
 msgstr "Осећа се као:"
 
-#: gnome-applets/gweather/gweather-dialog.c:268
+#: gnome-applets/gweather/gweather-dialog.c:248
 msgid "Dew point:"
 msgstr "Тачка росе:"
 
-#: gnome-applets/gweather/gweather-dialog.c:274
+#: gnome-applets/gweather/gweather-dialog.c:254
 msgid "Relative humidity:"
 msgstr "Релативна влажност:"
 
-#: gnome-applets/gweather/gweather-dialog.c:280
+#: gnome-applets/gweather/gweather-dialog.c:260
 msgid "Wind:"
 msgstr "Ветар:"
 
-#: gnome-applets/gweather/gweather-dialog.c:286
+#: gnome-applets/gweather/gweather-dialog.c:266
 msgid "Pressure:"
 msgstr "Притисак:"
 
-#: gnome-applets/gweather/gweather-dialog.c:292
+#: gnome-applets/gweather/gweather-dialog.c:272
 msgid "Visibility:"
 msgstr "Видљивост:"
 
-#: gnome-applets/gweather/gweather-dialog.c:298
+#: gnome-applets/gweather/gweather-dialog.c:278
 msgid "Sunrise:"
 msgstr "Зора:"
 
-#: gnome-applets/gweather/gweather-dialog.c:304
+#: gnome-applets/gweather/gweather-dialog.c:284
 msgid "Sunset:"
 msgstr "Залазак:"
 
-#: gnome-applets/gweather/gweather-dialog.c:410
+#: gnome-applets/gweather/gweather-dialog.c:390
 msgid "Current Conditions"
 msgstr "Текуће прилике"
 
-#: gnome-applets/gweather/gweather-dialog.c:425
+#: gnome-applets/gweather/gweather-dialog.c:405
 msgid "Forecast Report"
 msgstr "Временска прогноза"
 
-#: gnome-applets/gweather/gweather-dialog.c:425
+#: gnome-applets/gweather/gweather-dialog.c:405
 msgid "See the ForeCast Details"
 msgstr "Погледајте детаљну прогнозу"
 
-#: gnome-applets/gweather/gweather-dialog.c:445
+#: gnome-applets/gweather/gweather-dialog.c:425
 msgid "Forecast"
 msgstr "Прогноза"
 
-#: gnome-applets/gweather/gweather-dialog.c:451
-msgid "Radar Map"
-msgstr "Радарска мапа"
-
-#. XXX: weather.com? is this an advert?
-#: gnome-applets/gweather/gweather-dialog.c:483
-msgid "_Visit Weather.com"
-msgstr "_Посети „Weather.com“"
-
-#: gnome-applets/gweather/gweather-dialog.c:484
-msgid "Visit Weather.com"
-msgstr "Посетите „Weather.com“"
-
-#: gnome-applets/gweather/gweather-dialog.c:484
-msgid "Click to Enter Weather.com"
-msgstr "Кликните да посетите „Weather.com“"
-
-#: gnome-applets/gweather/gweather-dialog.c:739
+#: gnome-applets/gweather/gweather-dialog.c:674
 msgid "Forecast not currently available for this location."
 msgstr "Прогноза није тренутно доступна за ово место."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gnome-applets/gweather/gweather-pref.c:131
+#: gnome-applets/gweather/gweather-pref.c:117
 msgid "Location view"
 msgstr "Преглед према месту"
 
-#: gnome-applets/gweather/gweather-pref.c:131
+#: gnome-applets/gweather/gweather-pref.c:117
 msgid "Select Location from the list"
 msgstr "Изаберите место из списка"
 
-#: gnome-applets/gweather/gweather-pref.c:132
+#: gnome-applets/gweather/gweather-pref.c:118
 msgid "Update spin button"
 msgstr "Освежи вртеће дугме"
 
-#: gnome-applets/gweather/gweather-pref.c:132
+#: gnome-applets/gweather/gweather-pref.c:118
 msgid "Spinbutton for updating"
 msgstr "Вртеће дугме за освежавање"
 
-#: gnome-applets/gweather/gweather-pref.c:133
-msgid "Address Entry"
-msgstr "Унос адресе"
-
-#: gnome-applets/gweather/gweather-pref.c:133
-msgid "Enter the URL"
-msgstr "Унесите адресу"
-
-#: gnome-applets/gweather/gweather-pref.c:365
+#: gnome-applets/gweather/gweather-pref.c:332
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
 msgstr ""
 "Није успело учитавање ИксМЛ базе са местима.  Пријавите ово као грешку."
 
-#: gnome-applets/gweather/gweather-pref.c:703
+#: gnome-applets/gweather/gweather-pref.c:626
 msgid "Weather Preferences"
 msgstr "Поставке времена"
 
-#: gnome-applets/gweather/gweather-pref.c:734
-#: gnome-applets/gweather/gweather-pref.c:893
+#: gnome-applets/gweather/gweather-pref.c:657
+#: gnome-applets/gweather/gweather-pref.c:776
 msgid "_Automatically update every:"
 msgstr "_Самостално освежи сваких:"
 
@@ -2049,161 +2009,149 @@ msgstr "_Самостално освежи сваких:"
 #. * Units settings page.
 #.
 #. Temperature Unit
-#: gnome-applets/gweather/gweather-pref.c:745
+#: gnome-applets/gweather/gweather-pref.c:668
 msgid "_Temperature unit:"
 msgstr "_Јединица температуре:"
 
 #. Default means device with default route set
-#: gnome-applets/gweather/gweather-pref.c:754
-#: gnome-applets/gweather/gweather-pref.c:772
-#: gnome-applets/gweather/gweather-pref.c:795
-#: gnome-applets/gweather/gweather-pref.c:821
+#: gnome-applets/gweather/gweather-pref.c:677
+#: gnome-applets/gweather/gweather-pref.c:695
+#: gnome-applets/gweather/gweather-pref.c:718
+#: gnome-applets/gweather/gweather-pref.c:744
 #: gnome-applets/netspeed/preferences.c:171
 msgid "Default"
 msgstr "Основна"
 
-#: gnome-applets/gweather/gweather-pref.c:755
+#: gnome-applets/gweather/gweather-pref.c:678
 msgid "Kelvin"
 msgstr "Келвини"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gnome-applets/gweather/gweather-pref.c:757
+#: gnome-applets/gweather/gweather-pref.c:680
 msgid "Celsius"
 msgstr "Целзијуси"
 
-#: gnome-applets/gweather/gweather-pref.c:758
+#: gnome-applets/gweather/gweather-pref.c:681
 msgid "Fahrenheit"
 msgstr "Фаренхајти"
 
 #. Speed Unit
-#: gnome-applets/gweather/gweather-pref.c:763
+#: gnome-applets/gweather/gweather-pref.c:686
 msgid "_Wind speed unit:"
 msgstr "Јединица _брзине ветра:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gnome-applets/gweather/gweather-pref.c:774
+#: gnome-applets/gweather/gweather-pref.c:697
 msgid "m/s"
 msgstr "м/с"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gnome-applets/gweather/gweather-pref.c:776
+#: gnome-applets/gweather/gweather-pref.c:699
 msgid "km/h"
 msgstr "км/ч"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gnome-applets/gweather/gweather-pref.c:778
+#: gnome-applets/gweather/gweather-pref.c:701
 msgid "mph"
 msgstr "миља/ч"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gnome-applets/gweather/gweather-pref.c:780
+#: gnome-applets/gweather/gweather-pref.c:703
 msgid "knots"
 msgstr "чворова"
 
-#: gnome-applets/gweather/gweather-pref.c:781
+#: gnome-applets/gweather/gweather-pref.c:704
 msgid "Beaufort scale"
 msgstr "Бофорова скала"
 
 #. Pressure Unit
-#: gnome-applets/gweather/gweather-pref.c:786
+#: gnome-applets/gweather/gweather-pref.c:709
 msgid "_Pressure unit:"
 msgstr "Јединица _притиска:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gnome-applets/gweather/gweather-pref.c:797
+#: gnome-applets/gweather/gweather-pref.c:720
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gnome-applets/gweather/gweather-pref.c:799
+#: gnome-applets/gweather/gweather-pref.c:722
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gnome-applets/gweather/gweather-pref.c:801
+#: gnome-applets/gweather/gweather-pref.c:724
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gnome-applets/gweather/gweather-pref.c:803
+#: gnome-applets/gweather/gweather-pref.c:726
 msgid "mmHg"
 msgstr "mmHg"
 
 # Kod nas treba mmHg
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gnome-applets/gweather/gweather-pref.c:805
+#: gnome-applets/gweather/gweather-pref.c:728
 msgid "inHg"
 msgstr "inHg"
 
 #. TRANSLATOR: The pressure unit "atmospheres"
-#: gnome-applets/gweather/gweather-pref.c:807
+#: gnome-applets/gweather/gweather-pref.c:730
 msgid "atm"
 msgstr "атмосфера"
 
 #. Distance Unit
-#: gnome-applets/gweather/gweather-pref.c:812
+#: gnome-applets/gweather/gweather-pref.c:735
 msgid "_Visibility unit:"
 msgstr "Јединица _видљивости:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gnome-applets/gweather/gweather-pref.c:823
+#: gnome-applets/gweather/gweather-pref.c:746
 msgid "meters"
 msgstr "метара"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gnome-applets/gweather/gweather-pref.c:825
+#: gnome-applets/gweather/gweather-pref.c:748
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gnome-applets/gweather/gweather-pref.c:827
+#: gnome-applets/gweather/gweather-pref.c:750
 msgid "miles"
 msgstr "миља"
 
-#: gnome-applets/gweather/gweather-pref.c:850
-msgid "Enable _radar map"
-msgstr "Укључи _радарску мапу"
-
-#: gnome-applets/gweather/gweather-pref.c:862
-msgid "Use _custom address for radar map"
-msgstr "Користи произвољну _адресу за радарску мапу"
-
-#: gnome-applets/gweather/gweather-pref.c:877
-msgid "A_ddress:"
-msgstr "А_дреса:"
-
-#: gnome-applets/gweather/gweather-pref.c:889
+#: gnome-applets/gweather/gweather-pref.c:772
 msgid "Update"
 msgstr "Освежи"
 
 # bug:plural-forms
-#: gnome-applets/gweather/gweather-pref.c:912
+#: gnome-applets/gweather/gweather-pref.c:795
 msgid "minutes"
 msgstr "минута"
 
-#: gnome-applets/gweather/gweather-pref.c:924
+#: gnome-applets/gweather/gweather-pref.c:807
 msgid "Display"
 msgstr "Приказ"
 
-#: gnome-applets/gweather/gweather-pref.c:939
+#: gnome-applets/gweather/gweather-pref.c:815
 #: gnome-applets/mini-commander/mini-commander.ui:429
 #: gnome-applets/window-title/window-title.ui:127
 msgid "General"
 msgstr "Опште"
 
-#: gnome-applets/gweather/gweather-pref.c:952
+#: gnome-applets/gweather/gweather-pref.c:828
 msgid "_Select a location:"
 msgstr "Изаберите _место:"
 
-#: gnome-applets/gweather/gweather-pref.c:977
+#: gnome-applets/gweather/gweather-pref.c:853
 msgid "_Find:"
 msgstr "_Нађи:"
 
-#: gnome-applets/gweather/gweather-pref.c:984
+#: gnome-applets/gweather/gweather-pref.c:860
 msgid "Find _Next"
 msgstr "Нађи _следеће"
 
-#: gnome-applets/gweather/gweather-pref.c:1002
+#: gnome-applets/gweather/gweather-pref.c:878
 msgid "Location"
 msgstr "Место"
 
@@ -2223,25 +2171,11 @@ msgstr "Самостално спавање је укључено"
 msgid "Manual inhibit"
 msgstr "Ручно спречи"
 
-#: gnome-applets/inhibit/inhibit-applet.c:399
+#: gnome-applets/inhibit/inhibit-applet.c:412
 msgid "Allows user to inhibit automatic power saving."
 msgstr "Омогућава корисницима да спрече самостално чување енергије."
 
-#: gnome-applets/inhibit/inhibit-applet.c:408
-#| msgid ""
-#| "Tracker is free software; you can redistribute it and/or modify it under "
-#| "the terms of the GNU General Public License as published by the Free "
-#| "Software Foundation; either version 2 of the License, or (at your option) "
-#| "any later version.\n"
-#| "\n"
-#| "Tracker is distributed in the hope that it will be useful, but WITHOUT "
-#| "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-#| "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-#| "more details.\n"
-#| "\n"
-#| "You should have received a copy of the GNU General Public License along "
-#| "with Tracker; if not, write to the Free Software Foundation, Inc., 51 "
-#| "Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA."
+#: gnome-applets/inhibit/inhibit-applet.c:421
 msgid ""
 "Licensed under the GNU General Public License Version 2\n"
 "\n"
@@ -2276,7 +2210,7 @@ msgstr ""
 "софтвера на адресу: „Free Software Foundation, Inc., 51 Franklin Street, "
 "Fifth Floor, Boston, MA  02110-1301, USA“.\n"
 
-#: gnome-applets/inhibit/inhibit-applet.c:425
+#: gnome-applets/inhibit/inhibit-applet.c:438
 msgid "Copyright © 2006-2007 Richard Hughes"
 msgstr "Ауторска права © 2006-2007 Ричард Хјуџис"
 
@@ -2289,11 +2223,11 @@ msgstr "Нема ставки у историјату"
 msgid "Start program"
 msgstr "Покрени програм"
 
-#: gnome-applets/mini-commander/command-line.c:541
+#: gnome-applets/mini-commander/command-line.c:545
 msgid "Command line"
 msgstr "Наредба"
 
-#: gnome-applets/mini-commander/command-line.c:542
+#: gnome-applets/mini-commander/command-line.c:546
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Овде унесите наредбу и Гном ће је извршити за вас"
 
@@ -2327,7 +2261,7 @@ msgstr "Програмче Мали-наредник"
 msgid "This applet adds a command line to the panel"
 msgstr "Ово програмче додаје поље за издавање наредби на панел"
 
-#: gnome-applets/mini-commander/mini-commander-applet.c:445
+#: gnome-applets/mini-commander/mini-commander-applet.c:447
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
@@ -2427,7 +2361,7 @@ msgstr "Морате навести наредбу"
 msgid "You may not specify duplicate patterns"
 msgstr "Не можете двоструко навести исте обрасце"
 
-#: gnome-applets/mini-commander/preferences.c:617
+#: gnome-applets/mini-commander/preferences.c:618
 msgid "Pattern"
 msgstr "Образац"
 
@@ -2465,7 +2399,7 @@ msgid "Swap Space"
 msgstr "Заменска меморија"
 
 #: gnome-applets/multiload/multiload-applet.c:207
-#: gnome-applets/multiload/multiload-applet.c:281
+#: gnome-applets/multiload/multiload-applet.c:282
 msgid "Load Average"
 msgstr "Просечно оптерећење"
 
@@ -2504,7 +2438,7 @@ msgstr ""
 "Прима %s\n"
 "Шаље %s"
 
-#: gnome-applets/multiload/multiload-applet.c:256
+#: gnome-applets/multiload/multiload-applet.c:257
 #, c-format
 msgid ""
 "%s:\n"
@@ -2525,28 +2459,28 @@ msgstr[3] ""
 "%s:\n"
 "%u%% у употреби"
 
-#: gnome-applets/multiload/multiload-applet.c:277
+#: gnome-applets/multiload/multiload-applet.c:278
 msgid "CPU Load"
 msgstr "Оптерећење процесора"
 
-#: gnome-applets/multiload/multiload-applet.c:278
+#: gnome-applets/multiload/multiload-applet.c:279
 msgid "Memory Load"
 msgstr "Оптерећење меморије"
 
 # bug: Ili je ovo "net" kao "ukupno"?
-#: gnome-applets/multiload/multiload-applet.c:279
+#: gnome-applets/multiload/multiload-applet.c:280
 msgid "Net Load"
 msgstr "Оптерећење мреже"
 
-#: gnome-applets/multiload/multiload-applet.c:280
+#: gnome-applets/multiload/multiload-applet.c:281
 msgid "Swap Load"
 msgstr "Оптерећење меморије на диску"
 
-#: gnome-applets/multiload/multiload-applet.c:282
+#: gnome-applets/multiload/multiload-applet.c:283
 msgid "Disk Load"
 msgstr "Оптерећење диска"
 
-#: gnome-applets/multiload/multiload-applet.c:488
+#: gnome-applets/multiload/multiload-applet.c:489
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -2896,7 +2830,7 @@ msgstr "Промени _иконицу у складу са изабраним �
 msgid "Netspeed Preferences"
 msgstr "Поставке Брзине мреже"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:786
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:780
 #, c-format
 msgid "%d note"
 msgid_plural "%d notes"
@@ -2905,19 +2839,19 @@ msgstr[1] "%d белешке"
 msgstr[2] "%d белешки"
 msgstr[3] "Једна белешка"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:787
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:781
 msgid "Show sticky notes"
 msgstr "Прикажи белешке"
 
-#: gnome-applets/sticky-notes/sticky-notes-applet.c:825
+#: gnome-applets/sticky-notes/sticky-notes-applet.c:819
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "Белешке за радно окружење Гном"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1006
+#: gnome-applets/sticky-notes/sticky-notes.c:1032
 msgid "This note is locked."
 msgstr "Ова белешка је закључана."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1010
+#: gnome-applets/sticky-notes/sticky-notes.c:1036
 msgid "This note is unlocked."
 msgstr "Ова белешка је откључана."
 
@@ -3134,7 +3068,6 @@ msgid "_Start timer"
 msgstr "_Покрени одбројавач"
 
 #: gnome-applets/timer/timer-applet-menu.ui:9
-#| msgid "Name of timer"
 msgid "P_ause timer"
 msgstr "П_аузирај одбројавач"
 
@@ -3142,125 +3075,125 @@ msgstr "П_аузирај одбројавач"
 msgid "S_top timer"
 msgstr "_Заустави одбројавач"
 
-#: gnome-applets/timer/timer-applet.c:118
+#: gnome-applets/timer/timer-applet.c:120
 msgid "Finished"
 msgstr "Завршено"
 
-#: gnome-applets/timer/timer-applet.c:125
-#: gnome-applets/timer/timer-applet.c:137
+#: gnome-applets/timer/timer-applet.c:127
+#: gnome-applets/timer/timer-applet.c:139
 msgid "Timer finished!"
 msgstr "Одбројавање је завршено!"
 
-#: gnome-applets/timer/timer-applet.c:273
+#: gnome-applets/timer/timer-applet.c:293
 msgid "Timer Applet Preferences"
 msgstr "Поставке одбројавача"
 
-#: gnome-applets/timer/timer-applet.c:286
+#: gnome-applets/timer/timer-applet.c:306
 msgid "Name:"
 msgstr "Назив:"
 
-#: gnome-applets/timer/timer-applet.c:295
+#: gnome-applets/timer/timer-applet.c:315
 msgid "Hours:"
 msgstr "Часови:"
 
 # bug:plural-forms
-#: gnome-applets/timer/timer-applet.c:306
+#: gnome-applets/timer/timer-applet.c:326
 msgid "Minutes:"
 msgstr "Минути:"
 
-#: gnome-applets/timer/timer-applet.c:317
+#: gnome-applets/timer/timer-applet.c:337
 msgid "Seconds:"
 msgstr "Секунде:"
 
-#: gnome-applets/timer/timer-applet.c:328
+#: gnome-applets/timer/timer-applet.c:348
 msgid "Show notification popup"
 msgstr "Прикажи облачић обавештења"
 
-#: gnome-applets/timer/timer-applet.c:332
+#: gnome-applets/timer/timer-applet.c:352
 msgid "Show dialog"
 msgstr "Прикажи прозорче"
 
-#: gnome-applets/tracker-search-bar/tracker-applet.c:411
+#: gnome-applets/tracker-search-bar/tracker-applet.c:403
 msgid "A search bar applet for finding content stored in Tracker"
 msgstr "Програмче траке претраге за налажење садржаја смештеног у Трагачу"
 
-#: gnome-applets/tracker-search-bar/tracker-applet.c:459
+#: gnome-applets/tracker-search-bar/tracker-applet.c:451
 msgid "Copyright Tracker Authors 2005-2010"
 msgstr "Ауторска права 2005-2010 Аутори Трагача"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:707
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:724
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:689
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:706
 msgid "Other"
 msgstr "Друго"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:708
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:690
 msgid "Contacts"
 msgstr "Контакти"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:709
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:691
 msgid "Tags"
 msgstr "Ознаке"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:710
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:692
 msgid "Email Addresses"
 msgstr "Адресе ел. поште"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:711
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:693
 msgid "Documents"
 msgstr "Документи"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:712
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:694
 msgid "Applications"
 msgstr "Програми"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:713
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:695
 msgid "Images"
 msgstr "Слике"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:714
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:696
 msgid "Audio"
 msgstr "Аудио"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:715
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:697
 msgid "Folders"
 msgstr "Фасцикле"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:716
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:698
 msgid "Fonts"
 msgstr "Словни ликови"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:717
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:699
 msgid "Videos"
 msgstr "Видео снимци"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:718
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:700
 msgid "Archives"
 msgstr "Архиве"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:719
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:701
 msgid "Bookmarks"
 msgstr "Обележивачи"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:720
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:702
 msgid "Links"
 msgstr "Везе"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1093
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1075
 msgid "Category"
 msgstr "Категорија"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1121
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1103
 #: gnome-applets/window-title/window-title.ui:424
 msgid "Title"
 msgstr "Наслов"
 
-#: gnome-applets/tracker-search-bar/tracker-results-window.c:1178
+#: gnome-applets/tracker-search-bar/tracker-results-window.c:1160
 #, c-format
 msgid "No results found for “%s”"
 msgstr "Нема резултата за „%s“"
 
 # bug: plural-forms
-#: gnome-applets/trash/trash-applet.c:123
+#: gnome-applets/trash/trash-applet.c:124
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -3269,11 +3202,11 @@ msgstr[1] "%d ставке у смећу"
 msgstr[2] "%d ставки у смећу"
 msgstr[3] "Једна ставка у смећу"
 
-#: gnome-applets/trash/trash-applet.c:131
+#: gnome-applets/trash/trash-applet.c:132
 msgid "No Items in Trash"
 msgstr "Нема ставки у Смећу"
 
-#: gnome-applets/trash/trash-applet.c:340
+#: gnome-applets/trash/trash-applet.c:386
 #, c-format
 msgid ""
 "Error while spawning Nautilus:\n"
@@ -3282,15 +3215,15 @@ msgstr ""
 "Грешка при позивању Наутилуса:\n"
 "%s"
 
-#: gnome-applets/trash/trash-applet.c:361
+#: gnome-applets/trash/trash-applet.c:407
 msgid "Delete Immediately?"
 msgstr "Да обришем одмах?"
 
-#: gnome-applets/trash/trash-applet.c:390
+#: gnome-applets/trash/trash-applet.c:436
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Не могу да преместим ставке у смеће, желите ли да их одмах обришете?"
 
-#: gnome-applets/trash/trash-applet.c:391
+#: gnome-applets/trash/trash-applet.c:438
 #, c-format
 msgid "The selected item cannot be moved to the trash"
 msgid_plural "None of the %d selected items can be moved to the Trash"
@@ -3299,13 +3232,13 @@ msgstr[1] "%d изабране ставке се не могу премести�
 msgstr[2] "%d изабраних ставки се не може преместити у смеће"
 msgstr[3] "Изабрана ставка се не може преместити у смеће"
 
-#: gnome-applets/trash/trash-applet.c:397
+#: gnome-applets/trash/trash-applet.c:444
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Не могу да преместим неке ставке у смеће, желите ли да их одмах обришете?"
 
-#: gnome-applets/trash/trash-applet.c:398
+#: gnome-applets/trash/trash-applet.c:446
 #, c-format
 msgid "The selected item cannot be moved to the Trash"
 msgid_plural "%d of the selected items cannot be moved to the Trash"
@@ -3314,7 +3247,7 @@ msgstr[1] "%d изабране ставке се не могу премести�
 msgstr[2] "%d изабраних ставки се не може преместити у смеће"
 msgstr[3] "Изабрана ставка се не може преместити у смеће"
 
-#: gnome-applets/trash/trash-applet.c:565
+#: gnome-applets/trash/trash-applet.c:581
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -3334,11 +3267,11 @@ msgstr "Уклања ставку %s од %s"
 msgid "Removing: %s"
 msgstr "Уклањам: %s"
 
-#: gnome-applets/trash/trash-empty.c:321
+#: gnome-applets/trash/trash-empty.c:306
 msgid "Empty all of the items from the trash?"
 msgstr "Избацити све ставке из смећа?"
 
-#: gnome-applets/trash/trash-empty.c:328
+#: gnome-applets/trash/trash-empty.c:313
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -3346,7 +3279,7 @@ msgstr ""
 "Уколико избаците смеће, све ставке из њега ће бити трајно уклоњене. "
 "Приметите да сваку можете засебно избацити."
 
-#: gnome-applets/trash/trash-empty.c:342 gnome-applets/trash/trash-menu.ui:9
+#: gnome-applets/trash/trash-empty.c:327 gnome-applets/trash/trash-menu.ui:9
 msgid "_Empty Trash"
 msgstr "Из_баци смеће"
 
@@ -3362,32 +3295,32 @@ msgstr "Из:"
 msgid "_Open Trash"
 msgstr "_Отвори смеће"
 
-#: gnome-applets/window-buttons/window-buttons.c:254
+#: gnome-applets/window-buttons/window-buttons.c:256
 #: gnome-applets/window-buttons/window-buttons.ui:113
 msgid "Unmaximize"
 msgstr "Поништи увеличање"
 
-#: gnome-applets/window-buttons/window-buttons.c:258
+#: gnome-applets/window-buttons/window-buttons.c:260
 #: gnome-applets/window-buttons/window-buttons.ui:127
 msgid "Maximize"
 msgstr "Увеличај"
 
-#: gnome-applets/window-buttons/window-buttons.c:265
+#: gnome-applets/window-buttons/window-buttons.c:267
 #: gnome-applets/window-buttons/window-buttons.ui:155
 msgid "Minimize"
 msgstr "Умањи"
 
-#: gnome-applets/window-buttons/window-buttons.c:266
+#: gnome-applets/window-buttons/window-buttons.c:268
 #: gnome-applets/window-buttons/window-buttons.ui:141
 msgid "Close"
 msgstr "Затвори"
 
-#: gnome-applets/window-buttons/window-buttons.c:753
+#: gnome-applets/window-buttons/window-buttons.c:756
 msgid "Window buttons for your GNOME Panel."
 msgstr "Дугмад прозора за ваш Гном панел."
 
-#: gnome-applets/window-buttons/window-buttons.c:795
-#: gnome-applets/window-title/window-title.c:818
+#: gnome-applets/window-buttons/window-buttons.c:798
+#: gnome-applets/window-title/window-title.c:820
 msgid "Window Applets on Gnome-Look"
 msgstr "Програмчићи прозора на Гном-изгледу"
 
@@ -3715,9 +3648,48 @@ msgstr ""
 "И даље можете да урадите ово десним кликом на иконицу ако није скривена. "
 "Увек можеет изменити ово подешавање из гконф-уређивача."
 
-#: gnome-applets/window-title/window-title.c:785
+#. display "custom" icon/title (TODO: customization via preferences?)
+#. This has to be unrefed!
+#: gnome-applets/window-title/window-title.c:236
+msgid "Desktop"
+msgstr "Радна површ"
+
+#: gnome-applets/window-title/window-title.c:787
 msgid "Window title for your GNOME Panel."
 msgstr "Наслов прозора за ваш Гном панел."
+
+#~ msgid "Display radar map"
+#~ msgstr "Приказивање радарске мапе"
+
+#~ msgid "Fetch a radar map on each update."
+#~ msgstr "Преузима радарску мапу при сваком освежавању."
+
+#~ msgid "Radar Map"
+#~ msgstr "Радарска мапа"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "_Посети „Weather.com“"
+
+#~ msgid "Visit Weather.com"
+#~ msgstr "Посетите „Weather.com“"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Кликните да посетите „Weather.com“"
+
+#~ msgid "Address Entry"
+#~ msgstr "Унос адресе"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Унесите адресу"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Укључи _радарску мапу"
+
+#~ msgid "Use _custom address for radar map"
+#~ msgstr "Користи произвољну _адресу за радарску мапу"
+
+#~ msgid "A_ddress:"
+#~ msgstr "А_дреса:"
 
 #~ msgid "AccessX Status Applet Factory"
 #~ msgstr "Производња програмчета стања приступасчности Икса"
