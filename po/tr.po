@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-applets/issues/\n"
-"POT-Creation-Date: 2024-01-29 16:29+0000\n"
-"PO-Revision-Date: 2024-03-25 17:26+0300\n"
+"POT-Creation-Date: 2025-08-10 15:31+0000\n"
+"PO-Revision-Date: 2025-09-01 23:23+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.7\n"
 "X-POOTLE-MTIME: 1424440211.000000\n"
 
 #: data/schemas/org.gnome.gnome-applets.battstat.gschema.xml.in:6
@@ -163,7 +163,7 @@ msgid "Number of characters to display"
 msgstr "Gösterilecek karakter sayısı"
 
 #: data/schemas/org.gnome.gnome-applets.command.gschema.xml.in:22
-#: gnome-applets/command/command-applet.c:153
+#: gnome-applets/command/command-applet.c:172
 msgid "Show icon"
 msgstr "Simge göster"
 
@@ -207,10 +207,9 @@ msgid ""
 "frequency and units, and 'percentage' to show percentage instead of "
 "frequency."
 msgstr ""
-"'frequency' (frekans) değeri işlemci frekansını göster; 'frequency-"
-"unit' (frekans-birimi) değeri frekansı ve birimleri göster, "
-"'percentage' (yüzde) değeri de frekans yerine yüzde olarak göster anlamına "
-"gelir."
+"'frequency' (frekans) değeri işlemci frekansını göster; 'frequency-unit' "
+"(frekans-birimi) değeri frekansı ve birimleri göster, 'percentage' (yüzde) "
+"değeri de frekans yerine yüzde olarak göster anlamına gelir."
 
 #: data/schemas/org.gnome.gnome-applets.geyes.gschema.xml.in:5
 msgid "Directory in which the theme is located"
@@ -776,8 +775,8 @@ msgid ""
 "When enabled, the button will change image to 'hovered' whenever the mouse "
 "passes it."
 msgstr ""
-"Etkinleştirildiğinde, düğme, fare her geçtiğinde görüntüyü "
-"'hovered' (üstünde) olarak değiştirir."
+"Etkinleştirildiğinde, düğme, fare her geçtiğinde görüntüyü 'hovered' "
+"(üstünde) olarak değiştirir."
 
 #: data/schemas/org.gnome.gnome-applets.window-buttons.gschema.xml.in:131
 msgid "Show tooltips on buttons."
@@ -946,7 +945,7 @@ msgstr ""
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:60
 msgid "Active title font."
-msgstr "Başlık yazı tipini etkinleştir."
+msgstr "Etkin başlık yazı tipi."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:61
 msgid "Font name and size for the active window state."
@@ -954,7 +953,7 @@ msgstr "Etkin pencere durumu için yazı tipi adı ve boyutu."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:65
 msgid "Inactive title font."
-msgstr "Başlık yazı tipini devre dışı bırak."
+msgstr "Etkin olmayan başlık yazı tipi."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:66
 msgid "Font name and size for the inactive window state."
@@ -962,7 +961,7 @@ msgstr "Etkin olmayan pencere durumu için yazı tipi adı ve boyutu."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:70
 msgid "Active title foreground color."
-msgstr "Başlık ön plan rengini etkinleştir."
+msgstr "Etkin başlık ön plan rengi."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:71
 msgid "Title foreground color in hex format for the active window state."
@@ -970,7 +969,7 @@ msgstr "Etkin pencere durumu için hex biçimindeki başlık ön plan rengi."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:75
 msgid "Inactive title foreground color."
-msgstr "Başlık ön plan rengini devre dışı bırak."
+msgstr "Etkin olmayan başlık ön plan rengi."
 
 #: data/schemas/org.gnome.gnome-applets.window-title.gschema.xml.in:76
 msgid "Title foreground color in hex format for the inactive window state."
@@ -994,6 +993,8 @@ msgstr "Klavye _Erişilebilirlik Tercihleri"
 #: gnome-applets/netspeed/netspeed-menu.ui:13
 #: gnome-applets/netspeed/preferences.c:334
 #: gnome-applets/sticky-notes/ui/sticky-notes-applet-menu.ui:27
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:41
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:24
 #: gnome-applets/trash/trash-menu.ui:15
 msgid "_Help"
 msgstr "_Yardım"
@@ -1079,7 +1080,7 @@ msgstr ""
 #: gnome-applets/battstat/battstat-applet.c:1550
 #: gnome-applets/brightness/brightness-applet.c:823
 #: gnome-applets/charpick/charpick-applet.c:838
-#: gnome-applets/command/command-applet.c:433
+#: gnome-applets/command/command-applet.c:454
 #: gnome-applets/cpufreq/cpufreq-applet.c:1005
 #: gnome-applets/drivemount/drivemount-applet.c:176
 #: gnome-applets/geyes/geyes-applet.c:410
@@ -1089,7 +1090,7 @@ msgstr ""
 #: gnome-applets/multiload/multiload-applet.c:515
 #: gnome-applets/netspeed/netspeed-applet.c:1538
 #: gnome-applets/sticky-notes/sticky-notes-applet.c:842
-#: gnome-applets/timer/timer-applet.c:464
+#: gnome-applets/timer/timer-applet.c:485
 #: gnome-applets/tracker-search-bar/tracker-applet.c:456
 #: gnome-applets/trash/trash-applet.c:608
 #: gnome-applets/window-buttons/window-buttons.c:795
@@ -1527,34 +1528,36 @@ msgid "Character Palette Preferences"
 msgstr "Karakter Paleti Tercihleri"
 
 #: gnome-applets/charpick/properties.c:509
-#: gnome-applets/command/command-applet.c:115 gnome-applets/geyes/themes.c:269
+#: gnome-applets/command/command-applet.c:134 gnome-applets/geyes/themes.c:269
 #: gnome-applets/netspeed/preferences.c:335
-#: gnome-applets/timer/timer-applet.c:277
+#: gnome-applets/sticky-notes/ui/sticky-notes-preferences.ui:56
+#: gnome-applets/sticky-notes/ui/sticky-notes-properties.ui:39
+#: gnome-applets/timer/timer-applet.c:296
 #: gnome-applets/window-picker/wp-preferences-dialog.ui:24
 msgid "_Close"
 msgstr "_Kapat"
 
-#: gnome-applets/command/command-applet.c:112
+#: gnome-applets/command/command-applet.c:131
 msgid "Command Applet Preferences"
 msgstr "Komut Uygulamacığı Tercihleri"
 
-#: gnome-applets/command/command-applet.c:125
+#: gnome-applets/command/command-applet.c:144
 msgid "Command:"
 msgstr "Komut:"
 
-#: gnome-applets/command/command-applet.c:133
+#: gnome-applets/command/command-applet.c:152
 msgid "_Apply"
 msgstr "_Uygula"
 
-#: gnome-applets/command/command-applet.c:134
+#: gnome-applets/command/command-applet.c:153
 msgid "Click to apply the new command."
 msgstr "Yeni komutu uygulamak için tıkla."
 
-#: gnome-applets/command/command-applet.c:137
+#: gnome-applets/command/command-applet.c:156
 msgid "Interval (seconds):"
 msgstr "Zaman aralığı (saniye):"
 
-#: gnome-applets/command/command-applet.c:145
+#: gnome-applets/command/command-applet.c:164
 msgid "Maximum width (chars):"
 msgstr "Azami genişlik (karakter):"
 
@@ -2812,11 +2815,11 @@ msgstr "Yapışkan notları göster"
 msgid "Sticky Notes for the GNOME Desktop Environment"
 msgstr "GNOME Masaüstü Ortamı için Yapışkan Notlar"
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1031
+#: gnome-applets/sticky-notes/sticky-notes.c:1032
 msgid "This note is locked."
 msgstr "Bu not kilitlendi."
 
-#: gnome-applets/sticky-notes/sticky-notes.c:1035
+#: gnome-applets/sticky-notes/sticky-notes.c:1036
 msgid "This note is unlocked."
 msgstr "Bu notun kilidi açıldı."
 
@@ -3038,40 +3041,40 @@ msgstr "Zamanlayıcıyı dur_aklat"
 msgid "S_top timer"
 msgstr "Zamanlayıcıyı _durdur"
 
-#: gnome-applets/timer/timer-applet.c:118
+#: gnome-applets/timer/timer-applet.c:120
 msgid "Finished"
 msgstr "Bitti"
 
-#: gnome-applets/timer/timer-applet.c:125
-#: gnome-applets/timer/timer-applet.c:137
+#: gnome-applets/timer/timer-applet.c:127
+#: gnome-applets/timer/timer-applet.c:139
 msgid "Timer finished!"
 msgstr "Zamanlayıcı bitti!"
 
-#: gnome-applets/timer/timer-applet.c:274
+#: gnome-applets/timer/timer-applet.c:293
 msgid "Timer Applet Preferences"
 msgstr "Zamanlayıcı Uygulamacığı Tercihleri"
 
-#: gnome-applets/timer/timer-applet.c:287
+#: gnome-applets/timer/timer-applet.c:306
 msgid "Name:"
 msgstr "Ad:"
 
-#: gnome-applets/timer/timer-applet.c:296
+#: gnome-applets/timer/timer-applet.c:315
 msgid "Hours:"
 msgstr "Saat:"
 
-#: gnome-applets/timer/timer-applet.c:307
+#: gnome-applets/timer/timer-applet.c:326
 msgid "Minutes:"
 msgstr "Dakika:"
 
-#: gnome-applets/timer/timer-applet.c:318
+#: gnome-applets/timer/timer-applet.c:337
 msgid "Seconds:"
 msgstr "Saniye:"
 
-#: gnome-applets/timer/timer-applet.c:329
+#: gnome-applets/timer/timer-applet.c:348
 msgid "Show notification popup"
 msgstr "Bildirim açılır penceresi göster"
 
-#: gnome-applets/timer/timer-applet.c:333
+#: gnome-applets/timer/timer-applet.c:352
 msgid "Show dialog"
 msgstr "İletişim penceresi göster"
 
