@@ -89,7 +89,9 @@ register_command_line_stock_icons (GtkIconFactory *factory)
        GtkIconSet *icon_set;
        GdkPixbuf *pixbuf;
 
+       G_GNUC_BEGIN_IGNORE_DEPRECATIONS
        pixbuf = gdk_pixbuf_new_from_xpm_data ((items[i].icon_data));
+       G_GNUC_END_IGNORE_DEPRECATIONS
 
        icon_set = gtk_icon_set_new_from_pixbuf (pixbuf);
        gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
