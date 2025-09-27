@@ -202,6 +202,8 @@ static GdkColor darkred[] = {
 static void
 initialise_global_pixmaps( void )
 {
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
   statusimage[STATUS_PIXMAP_BATTERY] =
     gdk_pixbuf_new_from_xpm_data ((const char **) battery_small_xpm);
 
@@ -216,6 +218,8 @@ initialise_global_pixmaps( void )
    
   statusimage[STATUS_PIXMAP_WARNING] =
     gdk_pixbuf_new_from_xpm_data ((const char **) warning_small_xpm);
+
+  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /* Our backends may be either event driven or poll-based.
@@ -743,10 +747,13 @@ update_battery_image (ProgressData *battstat, int batt_percent, int batt_time)
   /* Depending on if the meter is horizontally oriented start out with the
      appropriate XPM image (from pixmaps.h)
   */
+
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (battstat->horizont)
     pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) battery_gray_xpm);
   else
     pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) battery_y_gray_xpm);
+  G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* The core code responsible for painting the battery meter.  For each
      colour in our gradient array, draw a vertical or horizontal line
