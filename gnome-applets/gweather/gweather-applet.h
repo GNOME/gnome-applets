@@ -44,6 +44,7 @@ struct _GWeatherApplet
   GtkWidget         *image;
 
   gint               size;
+  guint              place_widgets_idle_id;
   gint               timeout_tag;
   gint               suncalc_timeout_tag;
 

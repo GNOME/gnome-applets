@@ -210,6 +210,17 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gtk_widget_show_all (GTK_WIDGET (gw_applet));
 }
 
+static gboolean
+place_widgets_idle_cb (gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+
+    gw_applet->place_widgets_idle_id = 0;
+    place_widgets (gw_applet);
+
+    return G_SOURCE_REMOVE;
+}
+
 static void
 placement_changed_cb (GpApplet        *applet,
                       GtkOrientation   orientation,
@@ -234,7 +245,9 @@ size_allocate_cb (GtkWidget      *widget,
       gw_applet->size = allocation->height;
     }
 	
-    place_widgets(gw_applet);
+    if (gw_applet->place_widgets_idle_id == 0)
+        gw_applet->place_widgets_idle_id = g_idle_add (place_widgets_idle_cb, gw_applet);
+
     return;
 }
 
@@ -302,6 +315,11 @@ static void
 applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 {
     GNetworkMonitor *monitor;
+
+    if (gw_applet->place_widgets_idle_id > 0) {
+        g_source_remove (gw_applet->place_widgets_idle_id);
+        gw_applet->place_widgets_idle_id = 0;
+    }
 
     if (gw_applet->pref_dialog)
        gtk_widget_destroy (gw_applet->pref_dialog);
