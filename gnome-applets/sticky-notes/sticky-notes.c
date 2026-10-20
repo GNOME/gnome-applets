@@ -564,7 +564,7 @@ stickynote_new_aux (StickyNotesApplet *applet,
 	g_signal_connect (G_OBJECT (note->w_entry), "activate",
 			G_CALLBACK (properties_activate_cb), note);
 	g_signal_connect (G_OBJECT (note->w_properties), "delete-event",
-			G_CALLBACK (gtk_widget_hide), note);
+			G_CALLBACK (gtk_widget_hide_on_delete), note);
 
 	g_object_unref(builder);
 
