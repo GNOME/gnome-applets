@@ -51,6 +51,7 @@ struct _MiniCommanderApplet
 
     int            label_timeout;
     int            cmd_line_size_y;
+    guint          draw_idle_id;
 
     MCPreferences  preferences;
     MCPrefsDialog  prefs_dialog;

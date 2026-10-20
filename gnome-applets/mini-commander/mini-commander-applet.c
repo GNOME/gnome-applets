@@ -295,6 +295,17 @@ placement_changed_cb (GpApplet            *applet,
   mc_applet_draw (self);
 }
 
+static gboolean
+mc_applet_draw_idle_cb (gpointer data)
+{
+  MCData *mc = data;
+
+  mc->draw_idle_id = 0;
+  mc_applet_draw (mc);
+
+  return G_SOURCE_REMOVE;
+}
+
 static void
 mc_pixel_size_changed (GtkWidget     *widget,
                        GtkAllocation *allocation,
@@ -310,7 +321,8 @@ mc_pixel_size_changed (GtkWidget     *widget,
     mc->preferences.normal_size_y = allocation->height;
   }
 
-  mc_applet_draw (mc);
+  if (mc->draw_idle_id == 0)
+    mc->draw_idle_id = g_idle_add (mc_applet_draw_idle_cb, mc);
 }
 
 static void
@@ -394,6 +406,12 @@ mini_commander_applet_dispose (GObject *object)
   MiniCommanderApplet *self;
 
   self = MINI_COMMANDER_APPLET (object);
+
+  if (self->draw_idle_id != 0)
+    {
+      g_source_remove (self->draw_idle_id);
+      self->draw_idle_id = 0;
+    }
 
   g_clear_object (&self->global_settings);
   g_clear_object (&self->settings);
